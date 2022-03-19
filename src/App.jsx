@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import SkillsList from './components/Skills';
 
 function App() {
   const [count, setCount] = useState(0);
 
-  return <div>IT WORKS</div>;
+  return <SkillsList></SkillsList>;
 }
 
 export default App;
