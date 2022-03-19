@@ -1,0 +1,31 @@
+{
+  "name": "portfoliov3",
+  "private": true,
+  "version": "0.3.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^1.0.7",
+    "sass": "^1.49.9",
+    "vite": "^2.8.0"
+  },
+  "description": "Porfolio page using React and Vite",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dant3s15/portfoliov3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dant3s15/portfoliov3/issues"
+  },
+  "homepage": "https://github.com/Dant3s15/portfoliov3#readme"
+}

@@ -1,0 +1,52 @@
+/*
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98]
+*/
+/*
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128]
+*/
+
+//Colors palette
+//#090D20
+//#14213D
+//#FCA311
+//#E5E5E5
+//#FFFFFF
+
+// CSS variables
+
+:root {
+  //COLORS
+  --color-primary: rgb(252, 163, 17);
+  --color-primary-transparent-1: #fca2111f;
+  --color-primary-transparent-2: #fca2114d;
+  --color-primary-transparent-3: #fca21185;
+  --color-dark: rgb(9, 13, 32);
+  --color-dark-shade-1: rgb(34, 37, 54);
+
+  --color-gray: #e5e5e5;
+  --color-gray-tint-dark: rgb(46, 46, 46);
+  // // --color-primary-background: #14213d;
+  // --color-primary-background2: #162050;
+
+  //TRANSITIONS TIMES
+  --transition-short: 0.3s;
+  --transition-short-medium: 0.5s;
+  --transition-medium: 0.9s;
+  --transition-long: 3s;
+  --transition-very-long: 8s;
+
+  //TRANSTIONS
+  --transition-all-medium: all var(--transition-medium) ease-in-out;
+
+  //JS variables
+  --characters-width: 100px;
+}
+
+//SCSS variables
+//SCREEN SIZES
+$mobile: 576px;
+$small-tablet: 768px;
+$big-tablet: 992px;
+$laptop: 1200px;
