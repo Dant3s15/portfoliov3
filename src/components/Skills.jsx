@@ -74,14 +74,20 @@ const allSkills = [
   { id: 70, name: 'Proton Native' },
 ];
 
-const skillsList = [{ name: 'javascript' }, { name: 'css' }, { name: 'html' }];
+const skillsListLeft = [1, 2, 3, 4, 5, 8, 10, 13, 21, 22, 23, 26];
 
 const SkillsList = props => {
   // const [skills, setSkills] = useState('testx');
   const skillsStruct = (
     <ul>
-      {skillsList.map(item => {
-        return <li key={Math.random()}>{item.name}</li>;
+      {skillsListLeft.map(item => {
+        const curSkill = allSkills.find(skill => skill.id === item);
+        console.log(curSkill.name);
+        {
+          {
+            return <li key={curSkill.id}>{curSkill.name}</li>;
+          }
+        }
       })}
     </ul>
   );
