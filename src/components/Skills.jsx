@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import ReactDOM from 'react-dom';
+import classes from './Skills.module.scss';
 // import { useState } from 'react/cjs/react.production.min';
 const allSkills = [
   { id: 1, name: 'HTML' },
@@ -74,18 +75,23 @@ const allSkills = [
   { id: 70, name: 'Proton Native' },
 ];
 
-const skillsListLeft = [1, 2, 3, 4, 5, 8, 10, 13, 21, 22, 23, 26];
+const skillsListFront = [1, 2, 3, 4, 5, 8, 10, 13, 21, 22, 23, 26];
 
 const SkillsList = props => {
   // const [skills, setSkills] = useState('testx');
   const skillsStruct = (
-    <ul>
-      {skillsListLeft.map(item => {
+    <ul className={classes['skills-list']} data-character='1'>
+      {skillsListFront.map(item => {
         const curSkill = allSkills.find(skill => skill.id === item);
-        console.log(curSkill.name);
         {
           {
-            return <li key={curSkill.id}>{curSkill.name}</li>;
+            return (
+              <li className={classes['skills-list__skill']} key={curSkill.id}>
+                <a href='/#' className={classes['skill-name']}>
+                  {curSkill.name}
+                </a>
+              </li>
+            );
           }
         }
       })}
