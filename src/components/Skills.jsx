@@ -1,11 +1,24 @@
 import { Fragment, useState } from 'react';
 import ReactDOM from 'react-dom';
+import Skill from './Skill';
 import classes from './Skills.module.scss';
-// import { useState } from 'react/cjs/react.production.min';
+
 const allSkills = [
-  { id: 1, name: 'HTML' },
-  { id: 2, name: 'CSS' },
-  { id: 3, name: 'JavaScript ' },
+  {
+    id: 1,
+    name: 'HTML',
+    icon: <ion-icon class='skill-icon' name='logo-html5' />,
+  },
+  {
+    id: 2,
+    name: 'CSS',
+    icon: <ion-icon class='skill-icon' name='logo-css3' />,
+  },
+  {
+    id: 3,
+    name: 'JavaScript',
+    icon: <ion-icon class='skill-icon' name='logo-javascript' />,
+  },
   { id: 4, name: 'Git' },
   { id: 5, name: 'GitHub' },
   { id: 6, name: 'GitLab' },
@@ -15,7 +28,11 @@ const allSkills = [
   { id: 10, name: 'BEM' },
   { id: 11, name: 'OOCSS' },
   { id: 12, name: 'SMACSS' },
-  { id: 13, name: 'Sass' },
+  {
+    id: 13,
+    name: 'Sass',
+    icon: <ion-icon class='skill-icon' name='logo-sass' />,
+  },
   { id: 14, name: 'PostCSS' },
   { id: 15, name: 'Less' },
   { id: 16, name: 'npm scripts' },
@@ -28,7 +45,11 @@ const allSkills = [
   { id: 23, name: 'CSS Modules' },
   { id: 24, name: 'Styled JSX' },
   { id: 25, name: 'Emotion' },
-  { id: 26, name: 'React' },
+  {
+    id: 26,
+    name: 'React',
+    icon: <ion-icon class='skill-icon' name='logo-react' />,
+  },
   { id: 27, name: 'Redux' },
   { id: 28, name: 'MobX' },
   { id: 29, name: 'Recoil' },
@@ -75,34 +96,30 @@ const allSkills = [
   { id: 70, name: 'Proton Native' },
 ];
 
-const skillsListFront = [1, 2, 3, 4, 5, 8, 10, 13, 21, 22, 23, 26];
+const skillsByCharacters = [
+  [1, 3, 2],
+  [1, 2, 3, 4, 5, 8, 10, 13, 21, 22, 23, 26],
+  [4, 6, 8],
+];
+
+const charIDs = [0, 1, 2];
+
+const skillsStruct = id => (
+  <ul className={classes['skills-list']} data-character={id}>
+    {skillsByCharacters[id].map(item => {
+      const curSkill = allSkills.find(skill => skill.id === item);
+      return <Skill key={curSkill.id} skill={curSkill} />;
+    })}
+  </ul>
+);
 
 const SkillsList = props => {
-  // const [skills, setSkills] = useState('testx');
-  const skillsStruct = (
-    <ul className={classes['skills-list']} data-character='1'>
-      {skillsListFront.map(item => {
-        const curSkill = allSkills.find(skill => skill.id === item);
-        {
-          {
-            return (
-              <li className={classes['skills-list__skill']} key={curSkill.id}>
-                <a href='/#' className={classes['skill-name']}>
-                  {curSkill.name}
-                </a>
-              </li>
-            );
-          }
-        }
-      })}
-    </ul>
-  );
+  const skillsRoot = document.getElementById('skills-root');
   return (
     <Fragment>
-      {ReactDOM.createPortal(
-        skillsStruct,
-        document.getElementById('skills-root')
-      )}
+      {ReactDOM.createPortal(skillsStruct(0), skillsRoot)}
+      {ReactDOM.createPortal(skillsStruct(1), skillsRoot)}
+      {ReactDOM.createPortal(skillsStruct(2), skillsRoot)}
     </Fragment>
   );
 };

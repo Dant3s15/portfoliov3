@@ -1,0 +1,116 @@
+@import '../scss/_variables';
+@import '../scss/_animations';
+
+.skills-list {
+  // list-style: none;
+  // text-transform: uppercase;
+  // display: flex;
+  // gap: 5px;
+  // flex-direction: column;
+  // // flex-wrap: wrap;
+  // transition: all var(--transition-short-medium) ease-out;
+  // position: absolute;
+  // // overflow-y: scroll;
+  // // left: 5rem;
+  // width: 80%;
+
+  &__skill {
+    font-size: 1.5rem;
+    // max-width: 70%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.625rem;
+    padding: 0.25rem 0.25rem 0.25rem 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-short);
+    // border: 1px solid rgba(252, 163, 17, 0.5);
+    @media (max-width: $small-tablet) {
+      font-size: 1rem;
+    }
+  }
+
+  &__skill::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 1px;
+    background-color: var(--color-primary);
+    opacity: 0;
+  }
+
+  &__skill:hover {
+    clip-path: polygon(
+      0% 100%,
+      calc(100% - 15px) 100%,
+      100% calc(100% - 15px),
+      100% 0%,
+      0% 0%
+    );
+    transform: scale(1.2);
+
+    // cursor: pointer;
+    display: flex;
+    background-color: var(--color-primary-transparent-1);
+  }
+
+  &__skill:hover:before {
+    opacity: 1;
+    animation: slide-right-left var(--transition-long) ease-in-out infinite both;
+  }
+
+  .skill-name {
+    display: inline-flex;
+  }
+  // //TODO
+  // .skill-bar {
+  //   width: 100%;
+  //   height: 5px;
+  //   // background-color: var(--color-primary);
+  //   filter: drop-shadow(0 0 5px var(--color-primary));
+  //   border: 1px solid var(--color-primary);
+  //   &-fill {
+  //     height: 100%;
+  //     width: 30%;
+  //     background-color: #fff;
+  //   }
+  // }
+
+  // &[data-character='0'] {
+  //   animation: none;
+  //   transform: translate(-500px);
+  //   opacity: 0;
+  //   position: absolute;
+  // }
+
+  // &[data-character='1'] {
+  //   transform: translate(0px);
+  //   position: absolute;
+  //   animation: blink 0.7s;
+  // }
+
+  // &[data-character='2'] {
+  //   animation: none;
+  //   transform: translate(500px);
+  //   opacity: 0;
+  //   position: absolute;
+  // }
+}
+
+// .skills-list-name {
+//   text-transform: uppercase;
+//   font-size: 1.875rem;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   color: var(--color-primary);
+
+//   @media (max-width: $small-tablet) {
+//     font-size: 1.5rem;
+//   }
+// }
