@@ -16,3 +16,8 @@ TODO:
 - level up animation fix
 - fix level up shaking
 - remake skills list
+- editing own character
+- adding custom skills
+- store own character on local storage
+- store own character on firebase
+- google log in

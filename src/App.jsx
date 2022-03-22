@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import SkillsList from './components/Skills/Skills';
+import Characters from './components/Characters/Characters';
 
 function App() {
   const [count, setCount] = useState(0);
 
-  return <SkillsList></SkillsList>;
+  return (
+    <Fragment>
+      <Characters></Characters>
+      <SkillsList></SkillsList>;
+    </Fragment>
+  );
 }
 
 export default App;

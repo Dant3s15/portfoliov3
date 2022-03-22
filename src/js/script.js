@@ -87,44 +87,44 @@ const rotateLeft = () => {
   removeSelected();
 };
 
-const removeSelected = () => {
-  charF.classList.remove('selected');
-  charL.classList.remove('selected');
-  charR.classList.remove('selected');
-  skillsWindow.classList.remove('selected--skills');
-};
+// const removeSelected = () => {
+//   charF.classList.remove('selected');
+//   charL.classList.remove('selected');
+//   charR.classList.remove('selected');
+//   skillsWindow.classList.remove('selected--skills');
+// };
 
-const charRotation = el => {
-  const clickedEl = el.target.parentElement;
+// const charRotation = el => {
+//   const clickedEl = el.target.parentElement;
 
-  charL = document.querySelector('.character__left');
-  charF = document.querySelector('.character__front');
-  charR = document.querySelector('.character__right');
+//   charL = document.querySelector('.character__left');
+//   charF = document.querySelector('.character__front');
+//   charR = document.querySelector('.character__right');
 
-  //Adding selected state to character
-  if (
-    clickedEl.hasAttribute('data-character') == 1 &&
-    clickedEl.classList.contains('character__front') &&
-    !clickedEl.classList.contains('selected')
-  ) {
-    skillsWindow.classList.add('selected--skills');
-    charF.classList.toggle('selected');
-  } else {
-    skillsWindow.classList.remove('selected--skills');
-    removeSelected();
-  }
+//   //Adding selected state to character
+//   if (
+//     clickedEl.hasAttribute('data-character') == 1 &&
+//     clickedEl.classList.contains('character__front') &&
+//     !clickedEl.classList.contains('selected')
+//   ) {
+//     skillsWindow.classList.add('selected--skills');
+//     charF.classList.toggle('selected');
+//   } else {
+//     skillsWindow.classList.remove('selected--skills');
+//     removeSelected();
+//   }
 
-  if (clickedEl.classList.contains('character__left')) {
-    rotateLeft();
-  }
-  if (clickedEl.classList.contains('character__right')) {
-    rotateRight();
-  }
-};
+//   if (clickedEl.classList.contains('character__left')) {
+//     rotateLeft();
+//   }
+//   if (clickedEl.classList.contains('character__right')) {
+//     rotateRight();
+//   }
+// };
 
-characterColEl.addEventListener('click', el => {
-  charRotation(el);
-});
+// characterColEl.addEventListener('click', el => {
+//   charRotation(el);
+// });
 
 //disabled blue outline
 characterColEl.ondragstart = () => {
@@ -151,30 +151,30 @@ buttonEl.addEventListener('click', () => {
   skillsWindowEl.classList.toggle('not-started');
   skillsCard.classList.toggle('abs-down');
   skillsText.classList.toggle('abs-up');
-  calcCharWidth();
+  // calcCharWidth();
 });
 
 //calculate characters width
 let sideChar = document.querySelector('.char__img--right');
 
-const calcCharWidth = () => {
-  let characterImgComputedWidth = parseInt(
-    window.getComputedStyle(sideChar).width
-  );
-  // console.log(sideChar);
+// const calcCharWidth = () => {
+//   let characterImgComputedWidth = parseInt(
+//     window.getComputedStyle(sideChar).width
+//   );
+//   // console.log(sideChar);
 
-  let charactersComputedWith =
-    parseInt(window.getComputedStyle(charactersEl).width) / 2 -
-    characterImgComputedWidth / 2;
+//   let charactersComputedWith =
+//     parseInt(window.getComputedStyle(charactersEl).width) / 2 -
+//     characterImgComputedWidth / 2;
 
-  // console.log(characterImgComputedWidth);
+//   // console.log(characterImgComputedWidth);
 
-  let root = document.documentElement;
-  root.style.setProperty('--characters-width', charactersComputedWith + 'px');
-};
+//   let root = document.documentElement;
+//   root.style.setProperty('--characters-width', charactersComputedWith + 'px');
+// };
 
 // trigger calculation function on window resize
-window.addEventListener('resize', calcCharWidth);
+// window.addEventListener('resize', calcCharWidth);
 
 // console.log(sideChar);
 
@@ -225,10 +225,7 @@ const onMouseUp = e => {
 
 const heroSection = document.querySelector('.section-hero');
 
-// charactersEl.addEventListener('mousedown', onMouseDown);
-// charactersEl.addEventListener('mousemove', onMouseMove);
-// heroSection.addEventListener('mouseup', onMouseUp);
-calcCharWidth();
+// calcCharWidth();
 
 /****************** */
 //Hamburger button handling
