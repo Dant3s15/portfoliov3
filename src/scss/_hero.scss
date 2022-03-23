@@ -214,65 +214,65 @@
   transform: scale(1.1);
 }
 
-.character {
-  width: 20%;
-  display: flex;
-  object-fit: contain;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  transition: all var(--transition-short-medium) ease-in-out;
-  height: 60%;
-  margin: auto 0;
-  cursor: pointer;
-  z-index: 10;
-  position: absolute;
-  transform-origin: center;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+// .character {
+//   width: 20%;
+//   display: flex;
+//   object-fit: contain;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 1.5rem;
+//   transition: all var(--transition-short-medium) ease-in-out;
+//   height: 60%;
+//   margin: auto 0;
+//   cursor: pointer;
+//   z-index: 10;
+//   position: absolute;
+//   transform-origin: center;
+//   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
-  &__name {
-    font-size: 1.5rem;
-    text-align: center;
-    text-transform: uppercase;
-  }
+//   &__name {
+//     font-size: 1.5rem;
+//     text-align: center;
+//     text-transform: uppercase;
+//   }
 
-  & img {
-    max-width: 100%;
-    max-height: 100%;
-    transition: all var(--transition-short-medium) ease-in-out;
-    filter: brightness(0.1);
-  }
+//   & img {
+//     max-width: 100%;
+//     max-height: 100%;
+//     transition: all var(--transition-short-medium) ease-in-out;
+//     filter: brightness(0.1);
+//   }
 
-  &__front {
-    color: var(--color-primary);
-    height: 100%;
-    width: 30%;
-    z-index: 2;
-    & img {
-      filter: brightness(1);
-    }
-  }
+//   &__front {
+//     color: var(--color-primary);
+//     height: 100%;
+//     width: 30%;
+//     z-index: 2;
+//     & img {
+//       filter: brightness(1);
+//     }
+//   }
 
-  &__right {
-    z-index: -2;
-    transform: translateX(var(--characters-width));
-    width: 15%;
-  }
+//   &__right {
+//     z-index: -2;
+//     transform: translateX(var(--characters-width));
+//     width: 15%;
+//   }
 
-  &__left {
-    z-index: -1;
-    transform: translateX(calc(var(--characters-width) * -1));
-  }
+//   &__left {
+//     z-index: -1;
+//     transform: translateX(calc(var(--characters-width) * -1));
+//   }
 
-  &:hover .character__name {
-    transform: scale(1.1);
-  }
+//   &:hover .character__name {
+//     transform: scale(1.1);
+//   }
 
-  @media (max-width: $big-tablet) {
-    transform-origin: bottom;
-  }
-}
+//   @media (max-width: $big-tablet) {
+//     transform-origin: bottom;
+//   }
+// }
 
 .character-level {
   border: 4px solid var(--color-primary);
