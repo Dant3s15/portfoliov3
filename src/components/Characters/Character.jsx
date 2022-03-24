@@ -17,7 +17,7 @@ const Character = props => {
       <div className={classes.character__name}>{props.name}</div>
       <img
         data-character={props.data}
-        src='src/resources/img/character.png'
+        src='/src/resources/img/character.png'
         alt='character image'
       />
     </div>
