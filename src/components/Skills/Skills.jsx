@@ -102,24 +102,31 @@ const skillsByCharacters = [
   [4, 6, 8],
 ];
 
-const charIDs = [0, 1, 2];
-
-const skillsStruct = id => (
-  <ul className={classes['skills-list']} data-character={id}>
-    {skillsByCharacters[id].map(item => {
-      const curSkill = allSkills.find(skill => skill.id === item);
-      return <Skill key={curSkill.id} skill={curSkill} />;
-    })}
-  </ul>
-);
-
 const SkillsList = props => {
+  const skillsStruct = (id, pos) => (
+    <ul className={classes['skills-list']} data-character={pos}>
+      {skillsByCharacters[id].map(item => {
+        const curSkill = allSkills.find(skill => skill.id === item);
+        return <Skill key={curSkill.id} skill={curSkill} />;
+      })}
+    </ul>
+  );
+
   const skillsRoot = document.getElementById('skills-root');
   return (
     <Fragment>
-      {ReactDOM.createPortal(skillsStruct(0), skillsRoot)}
-      {ReactDOM.createPortal(skillsStruct(1), skillsRoot)}
-      {ReactDOM.createPortal(skillsStruct(2), skillsRoot)}
+      {ReactDOM.createPortal(
+        skillsStruct(0, props.charStateData.leftChar),
+        skillsRoot
+      )}
+      {ReactDOM.createPortal(
+        skillsStruct(1, props.charStateData.frontChar),
+        skillsRoot
+      )}
+      {ReactDOM.createPortal(
+        skillsStruct(2, props.charStateData.rightChar),
+        skillsRoot
+      )}
     </Fragment>
   );
 };

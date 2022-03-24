@@ -1,16 +1,27 @@
 import { useState, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
+// import CharDataContext from './components/context/character-data-context';
 import SkillsList from './components/Skills/Skills';
 import Characters from './components/Characters/Characters';
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
+  const [charState, setCharState] = useState({
+    leftChar: 0,
+    frontChar: 1,
+    rightChar: 2,
+  });
+  const charStateDataHandler = data => {
+    setCharState(data);
+    // console.log(charState);
+    return charState;
+  };
 
   return (
     <Fragment>
-      <Characters></Characters>
-      <SkillsList></SkillsList>;
+      <Characters onCharStateChange={charStateDataHandler}></Characters>
+      <SkillsList charStateData={charState}></SkillsList>;
     </Fragment>
   );
 }

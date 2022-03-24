@@ -14,7 +14,10 @@ const Character = props => {
       className={`${classes.character} ${curChar}`}
       onClick={e => props.onRotateCharacters(e)}
     >
-      <div className={classes.character__name}>{props.name}</div>
+      <div className={classes.character__name}>
+        {props.name}
+        {props.data}
+      </div>
       <img
         data-character={props.data}
         src='/src/resources/img/character.png'

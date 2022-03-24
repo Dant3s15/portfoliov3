@@ -1,12 +1,29 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Character from './Character';
+// import CharDataContext from '../context/character-data-context';
+// import CharDataCtx from '../context/character-data-context';
+
 const Characters = props => {
+  // const charDataCtx = useContext(CharDataContext);
+  // charDataCtx.frontChar = 'wtf';
+  // console.log(charDataCtx);
+
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
 
+  useEffect(() => {
+    const charStateData = {
+      leftChar,
+      frontChar,
+      rightChar,
+    };
+    props.onCharStateChange(charStateData);
+  }, [leftChar, frontChar, rightChar]);
+
   const wrapRotate = function (num, direc = -1) {
+    // console.log(CharDataCtx);
     if (direc == 1) {
       return (num + 1) % 3;
     }
