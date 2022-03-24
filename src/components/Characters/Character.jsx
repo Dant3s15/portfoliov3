@@ -1,5 +1,6 @@
 // import { useState } from 'react';
 import classes from './Character.module.scss';
+import characterImage from '../../resources/img/character.png';
 const Character = props => {
   const whichSide = data => {
     if (data === 0) return 'left';
@@ -20,7 +21,7 @@ const Character = props => {
       </div>
       <img
         data-character={props.data}
-        src='/src/resources/img/character.png'
+        src={characterImage}
         alt='character image'
       />
     </div>
