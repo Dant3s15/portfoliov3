@@ -155,7 +155,7 @@ buttonEl.addEventListener('click', () => {
 });
 
 //calculate characters width
-let sideChar = document.querySelector('.char__img--right');
+// let sideChar = document.querySelector('.char__img--right');
 
 // const calcCharWidth = () => {
 //   let characterImgComputedWidth = parseInt(

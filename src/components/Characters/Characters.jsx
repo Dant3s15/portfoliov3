@@ -1,13 +1,20 @@
 import { Fragment, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Character from './Character';
-// import CharDataContext from '../context/character-data-context';
-// import CharDataCtx from '../context/character-data-context';
 
 const Characters = props => {
-  // const charDataCtx = useContext(CharDataContext);
-  // charDataCtx.frontChar = 'wtf';
-  // console.log(charDataCtx);
+  const calcCharWidth = () => {
+    let characters = document.querySelector('.characters');
+    let characterImgComputedWidth = parseInt(
+      window.getComputedStyle(characters).width
+    );
+    let charactersComputedWith = characterImgComputedWidth * 0.4;
+
+    let root = document.documentElement;
+    root.style.setProperty('--characters-width', charactersComputedWith + 'px');
+  };
+  calcCharWidth();
+  window.addEventListener('resize', calcCharWidth);
 
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
