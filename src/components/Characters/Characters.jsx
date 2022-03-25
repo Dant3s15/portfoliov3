@@ -66,6 +66,31 @@ const Characters = props => {
       setChars(direc);
     }
   };
+  //TODO handle swipe gestures
+  let touchstartX = 0;
+  let touchendX = 0;
+
+  function handleGesture() {
+    if (Math.abs(touchendX - touchstartX) > 50) {
+      if (touchendX < touchstartX) {
+        rotateRight();
+      }
+      if (touchendX > touchstartX) {
+        rotateLeft();
+      }
+    }
+  }
+  const charactersEl = document.querySelector('.characters');
+
+  charactersEl.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+  });
+
+  charactersEl.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+
+    handleGesture();
+  });
 
   const charactersRoot = document.getElementById('characters-root');
   return (

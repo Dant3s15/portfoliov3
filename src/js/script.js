@@ -179,29 +179,29 @@ buttonEl.addEventListener('click', () => {
 // console.log(sideChar);
 
 // Character swipe rotation
-let touchstartX = 0;
-let touchendX = 0;
+// let touchstartX = 0;
+// let touchendX = 0;
 
-function handleGesture() {
-  if (Math.abs(touchendX - touchstartX) > 50) {
-    if (touchendX < touchstartX) {
-      rotateRight();
-    }
-    if (touchendX > touchstartX) {
-      rotateLeft();
-    }
-  }
-}
+// function handleGesture() {
+//   if (Math.abs(touchendX - touchstartX) > 50) {
+//     if (touchendX < touchstartX) {
+//       rotateRight();
+//     }
+//     if (touchendX > touchstartX) {
+//       rotateLeft();
+//     }
+//   }
+// }
 
-charactersEl.addEventListener('touchstart', e => {
-  touchstartX = e.changedTouches[0].screenX;
-});
+// charactersEl.addEventListener('touchstart', e => {
+//   touchstartX = e.changedTouches[0].screenX;
+// });
 
-charactersEl.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX;
+// charactersEl.addEventListener('touchend', e => {
+//   touchendX = e.changedTouches[0].screenX;
 
-  handleGesture();
-});
+//   handleGesture();
+// });
 
 //Mouse swipe handler
 let dragging = false;

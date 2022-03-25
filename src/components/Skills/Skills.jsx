@@ -4,13 +4,19 @@ import Skill from './Skill';
 import AllSkills from '../Utils/AllSkills';
 import classes from './Skills.module.scss';
 
-const skillsByCharacters = [
-  [1, 3, 2],
-  [1, 2, 3, 4, 5, 8, 10, 13, 21, 22, 23, 26],
-  [4, 6, 8],
-];
+// const skillsByCharacters = [
+//   [1, 3, 2],
+//   [1, 2, 3, 4, 5, 8, 10, 13, 21, 22, 23, 26],
+//   [4, 6, 8],
+// ];
 
 const SkillsList = props => {
+  const skillsByCharacters = [[1, 3, 2], [], [4, 6, 8]];
+  //TODO TEMP:
+  for (let i = 1; i < 71; i++) {
+    skillsByCharacters[1][i] = AllSkills[i].id;
+  }
+
   const skillsStruct = (id, pos) => (
     <ul className={classes['skills-list']} data-character={pos}>
       {skillsByCharacters[id].map(item => {
