@@ -29,6 +29,45 @@ import skill27 from '../../resources/skillIcons/27.svg';
 import skill28 from '../../resources/skillIcons/28.svg';
 import skill29 from '../../resources/skillIcons/29.svg';
 import skill30 from '../../resources/skillIcons/30.svg';
+import skill31 from '../../resources/skillIcons/31.svg';
+import skill32 from '../../resources/skillIcons/32.svg';
+import skill33 from '../../resources/skillIcons/33.svg';
+import skill34 from '../../resources/skillIcons/33.svg';
+import skill35 from '../../resources/skillIcons/35.svg';
+import skill36 from '../../resources/skillIcons/36.svg';
+import skill37 from '../../resources/skillIcons/37.svg';
+import skill38 from '../../resources/skillIcons/38.svg';
+import skill39 from '../../resources/skillIcons/39.svg';
+import skill40 from '../../resources/skillIcons/40.svg';
+import skill41 from '../../resources/skillIcons/41.svg';
+import skill42 from '../../resources/skillIcons/42.png';
+import skill43 from '../../resources/skillIcons/43.svg';
+import skill44 from '../../resources/skillIcons/26.svg';
+import skill45 from '../../resources/skillIcons/45.svg';
+import skill46 from '../../resources/skillIcons/46.svg';
+import skill47 from '../../resources/skillIcons/47.svg';
+import skill48 from '../../resources/skillIcons/48.svg';
+import skill49 from '../../resources/skillIcons/49.svg';
+import skill50 from '../../resources/skillIcons/50.svg';
+import skill51 from '../../resources/skillIcons/51.svg';
+import skill52 from '../../resources/skillIcons/52.png';
+import skill53 from '../../resources/skillIcons/30.svg';
+import skill54 from '../../resources/skillIcons/54.svg';
+import skill55 from '../../resources/skillIcons/55.svg';
+import skill56 from '../../resources/skillIcons/56.svg';
+import skill57 from '../../resources/skillIcons/57.svg';
+import skill58 from '../../resources/skillIcons/58.svg';
+import skill59 from '../../resources/skillIcons/59.png';
+import skill60 from '../../resources/skillIcons/60.svg';
+import skill61 from '../../resources/skillIcons/61.svg';
+import skill62 from '../../resources/skillIcons/62.svg';
+import skill63 from '../../resources/skillIcons/63.svg';
+import skill64 from '../../resources/skillIcons/26.svg';
+import skill65 from '../../resources/skillIcons/65.svg';
+import skill66 from '../../resources/skillIcons/66.svg';
+import skill67 from '../../resources/skillIcons/67.svg';
+import skill68 from '../../resources/skillIcons/68.svg';
+import skill69 from '../../resources/skillIcons/69.svg';
 
 const skillsArr = [
   skill0,
@@ -62,6 +101,45 @@ const skillsArr = [
   skill28,
   skill29,
   skill30,
+  skill31,
+  skill32,
+  skill33,
+  skill34,
+  skill35,
+  skill36,
+  skill37,
+  skill38,
+  skill39,
+  skill40,
+  skill41,
+  skill42,
+  skill43,
+  skill44,
+  skill45,
+  skill46,
+  skill47,
+  skill48,
+  skill49,
+  skill50,
+  skill51,
+  skill52,
+  skill53,
+  skill54,
+  skill55,
+  skill56,
+  skill57,
+  skill58,
+  skill59,
+  skill60,
+  skill61,
+  skill62,
+  skill63,
+  skill64,
+  skill65,
+  skill66,
+  skill67,
+  skill68,
+  skill69,
 ];
 
 // for (let i = 0; i < 71; i++) {
@@ -138,8 +216,7 @@ const AllSkills = [
   { id: 66, name: 'Flutter' },
   { id: 67, name: 'Ionic' },
   { id: 68, name: 'Electron' },
-  { id: 69, name: 'Carlo' },
-  { id: 70, name: 'Proton Native' },
+  { id: 69, name: 'Proton Native' },
 ];
 
 for (let i = 1; i < AllSkills.length; i++) {

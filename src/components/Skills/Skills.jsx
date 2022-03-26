@@ -13,7 +13,7 @@ import classes from './Skills.module.scss';
 const SkillsList = props => {
   const skillsByCharacters = [[1, 3, 2], [], [4, 6, 8]];
   //TODO TEMP:
-  for (let i = 1; i < 71; i++) {
+  for (let i = 1; i < 70; i++) {
     skillsByCharacters[1][i] = AllSkills[i].id;
   }
 
