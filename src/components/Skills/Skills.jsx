@@ -11,9 +11,9 @@ import classes from './Skills.module.scss';
 // ];
 
 const SkillsList = props => {
-  const calcCurSkillLvl = (skillNmb, skillLvl) => {
-    return { skillNmb, skillLvl };
-  };
+  // const calcCurSkillLvl = (skillNmb, skillLvl) => {
+  //   return { skillNmb, skillLvl };
+  // };
   // console.log(calcCurSkillLvl(2, 9));
   const leftChar = [
     { ...AllSkills[3], lvl: 2 },

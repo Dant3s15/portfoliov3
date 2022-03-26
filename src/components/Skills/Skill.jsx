@@ -1,4 +1,4 @@
-import { Fragment } from 'react/cjs/react.development';
+import { Fragment } from 'react';
 import classes from './Skill.module.scss';
 
 const Skill = props => {
