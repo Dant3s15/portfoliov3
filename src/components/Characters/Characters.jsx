@@ -48,8 +48,8 @@ const Characters = props => {
   };
 
   // *****************************************************
-
-  const rotateCharactersHandler = (e, gesture) => {
+  // let swipeDir;
+  const rotateCharactersHandler = e => {
     const setChars = direc => {
       setLeftChar(wrapRotate(leftChar, direc));
       setFrontChar(wrapRotate(frontChar, direc));
@@ -57,10 +57,10 @@ const Characters = props => {
     };
 
     let direc = 0;
-    let charData;
-    if (!e === undefined) {
-      charData = +e.target.dataset.character;
-    } else charData = gesture;
+    let charData = +e.target.dataset.character;
+    // if (!e === undefined) {
+    //   charData = +e.target.dataset.character;
+    // } else charData = gesture;
 
     //TODO if===1
     if (charData === 1) {
@@ -78,18 +78,18 @@ const Characters = props => {
   };
   // *****************************************************
   //TODO handle swipe gestures
-  let touchstartX = 0;
-  let touchendX = 0;
+  // let touchstartX = 0;
+  // let touchendX = 0;
 
-  function debounce(func, timeout = 3000) {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        func.apply(this, args);
-      }, timeout);
-    };
-  }
+  // function debounce(func, timeout = 3000) {
+  //   let timer;
+  //   return (...args) => {
+  //     clearTimeout(timer);
+  //     timer = setTimeout(() => {
+  //       func.apply(this, args);
+  //     }, timeout);
+  //   };
+  // }
 
   // function checkSwipeDirection() {
   //   if (Math.abs(touchendX - touchstartX) > 50) {
@@ -112,12 +112,11 @@ const Characters = props => {
   //   if (touchendX > touchstartX) rotateCharactersHandler(null, 2);
   // }
   //TODO fix swipe endless loop
-  const charactersEl = document.querySelector('.characters');
-  charactersEl.addEventListener('swiped', function (e) {
-    // console.log(e.target);
-    if (e.detail.dir === 'right') rotateCharactersHandler(null, 0);
-    if (e.detail.dir === 'left') rotateCharactersHandler(null, 2);
-  });
+  // const charactersEl = document.querySelector('.characters');
+  // charactersEl.addEventListener('swiped', function (e) {
+  //   // console.log(e.target);
+  //   rotateCharactersHandler(e);
+  // });
 
   // charactersEl.addEventListener('touchstart', e => {
   //   touchstartX = e.changedTouches[0].screenX;
