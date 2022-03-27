@@ -84,6 +84,7 @@
   z-index: -10;
   transform-origin: bottom;
   transition: var(--transition-all-medium);
+  transition-property: transform, opacity;
 }
 
 //************************************************
@@ -102,6 +103,7 @@
   height: 100%;
   z-index: 9999;
   transition: all var(--transition-medium) ease-in-out;
+  transition-property: transform, opacity;
 
   &--hidden {
     transform: translateX(-100rem);
@@ -122,6 +124,7 @@
       font-size: 1.125rem;
       transition: all var(--transition-short) ease-out, color 0.1s ease-out,
         text-shadow 0.1s ease-out;
+      transition-property: transform, opacity;
       background-color: var(--color-primary);
       z-index: 9999;
       cursor: default;
@@ -140,6 +143,7 @@
       cursor: pointer;
       transition: all var(--transition-short) ease-out, color 0.1s ease-out,
         text-shadow 0.1s ease-out;
+      transition-property: transform, opacity;
       z-index: 10;
       animation: flicker2 5s infinite alternate;
 
@@ -171,6 +175,7 @@
         & ~ .cta__text {
           transition: all var(--transition-short) ease-out, color 0.1s ease-out,
             text-shadow 0.1s ease-out;
+          transition-property: transform, opacity;
           background-color: var(--color-primary);
           animation: shine4 7s ease-in-out;
         }
@@ -303,6 +308,7 @@
     width: 5rem;
     color: var(--color-primary);
     transition: all var(--transition-short-medium) ease-in-out;
+    transition-property: transform, opacity;
     position: absolute;
     left: 50%;
     right: 50%;
@@ -406,6 +412,7 @@
   background-color: rgba(95, 95, 95, 0.109);
   height: 100%;
   transition: all var(--transition-short-medium) ease-in-out;
+  transition-property: transform, opacity;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-right: 7px solid rgba(255, 255, 255, 0.18);
@@ -492,6 +499,7 @@
   font-size: 3rem;
   text-transform: uppercase;
   transition: all var(--transition-short-medium);
+  transition-property: transform, opacity;
   height: 100%;
   text-align: center;
   padding: 3.875rem;
@@ -509,6 +517,7 @@
     animation: shine3 7s ease-in-out alternate infinite;
     // animation: popzoom 1s 1.6s ease-in-out;
     transition: all var(--transition-medium);
+    transition-property: transform, opacity;
   }
 
   @media (max-width: $small-tablet) {
@@ -548,6 +557,7 @@
   align-items: center;
   justify-content: center;
   transition: all var(--transition-short-medium);
+  transition-property: transform, opacity;
 }
 
 // .skills-list {
