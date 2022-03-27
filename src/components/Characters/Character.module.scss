@@ -59,3 +59,9 @@
     transform-origin: bottom;
   }
 }
+
+.selected {
+  max-height: 100%;
+  transform: scale(1.1);
+  filter: brightness(1) drop-shadow(0 0 1px var(--color-primary));
+}

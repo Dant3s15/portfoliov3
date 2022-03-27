@@ -6,6 +6,7 @@ const Characters = props => {
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
+  const [selected, setSelected] = useState(false);
 
   useEffect(() => {
     const charStateData = {
@@ -14,6 +15,7 @@ const Characters = props => {
       rightChar,
     };
     props.onCharStateChange(charStateData);
+    // console.log(charStateData);
   }, [leftChar, frontChar, rightChar]);
 
   // ********************************************************
@@ -65,15 +67,24 @@ const Characters = props => {
     //TODO if===1
     if (charData === 1) {
       console.log('FRONT TODO');
+      console.log(selected);
+      setSelected(true);
+      // setSelected(true);
+      // e.target.classList.toggle('selected');
+      // console.log(e.target.classList.toggle('test'));
     }
 
     if (charData === 0) {
+      // setSelected(false);
       direc = 1;
       setChars(direc);
+      setSelected(false);
     }
     if (charData === 2) {
+      // setSelected(false);
       direc = -1;
       setChars(direc);
+      setSelected(false);
     }
   };
   // *****************************************************
@@ -131,11 +142,17 @@ const Characters = props => {
 
   const charactersRoot = document.getElementById('characters-root');
 
+  // console.log((frontChar === 1) & selected, 'check');
+  let leftIsSelected = (leftChar === 1) & selected;
+  let frontIsSelected = (frontChar === 1) & selected;
+  let rightIsSelected = (rightChar === 1) & selected;
+
   return (
     <Fragment>
       {ReactDOM.createPortal(
         <Character
           data={leftChar}
+          selected={leftIsSelected}
           name='Left'
           onRotateCharacters={rotateCharactersHandler}
         ></Character>,
@@ -144,6 +161,7 @@ const Characters = props => {
       {ReactDOM.createPortal(
         <Character
           data={frontChar}
+          selected={frontIsSelected}
           name='Front'
           onRotateCharacters={rotateCharactersHandler}
         ></Character>,
@@ -151,6 +169,7 @@ const Characters = props => {
       )}
       {ReactDOM.createPortal(
         <Character
+          selected={rightIsSelected}
           data={rightChar}
           name='Right'
           onRotateCharacters={rotateCharactersHandler}

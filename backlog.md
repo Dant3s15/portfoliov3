@@ -21,3 +21,4 @@ TODO:
 - store own character on local storage
 - store own character on firebase
 - google log in
+- add categories to skills window
