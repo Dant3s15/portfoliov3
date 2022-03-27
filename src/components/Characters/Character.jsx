@@ -8,8 +8,6 @@ const Character = props => {
     if (data === 2) return 'right';
   };
 
-  // const [selected, setSelected] = useState(false);
-
   const curChar = classes[`character__${whichSide(props.data)}`];
   //TODO unset selected when clicked on different char
   return (
@@ -18,15 +16,7 @@ const Character = props => {
         props.selected ? classes.selected : ''
       }`}
       onClick={e => {
-        console.log(props.data);
         props.onRotateCharacters(e);
-        if (props.data === 1) {
-          console.log('im front');
-        }
-        //   props.setSelected(true);
-        // }
-        //   setSelected(true);
-        // } else setSelected(false);
       }}
     >
       <div className={classes.character__name}>

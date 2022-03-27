@@ -18,6 +18,18 @@ const Characters = props => {
     // console.log(charStateData);
   }, [leftChar, frontChar, rightChar]);
 
+  useEffect(() => {
+    if (selected) {
+      document
+        .querySelector('.skills-window')
+        .classList.add('selected--skills');
+    } else {
+      document
+        .querySelector('.skills-window')
+        .classList.remove('selected--skills');
+    }
+  }, [selected]);
+
   // ********************************************************
   const calcCharWidth = () => {
     let characters = document.querySelector('.characters');
@@ -60,28 +72,17 @@ const Characters = props => {
 
     let direc = 0;
     let charData = +e.target.dataset.character;
-    // if (!e === undefined) {
-    //   charData = +e.target.dataset.character;
-    // } else charData = gesture;
 
-    //TODO if===1
     if (charData === 1) {
-      console.log('FRONT TODO');
-      console.log(selected);
       setSelected(true);
-      // setSelected(true);
-      // e.target.classList.toggle('selected');
-      // console.log(e.target.classList.toggle('test'));
     }
 
     if (charData === 0) {
-      // setSelected(false);
       direc = 1;
       setChars(direc);
       setSelected(false);
     }
     if (charData === 2) {
-      // setSelected(false);
       direc = -1;
       setChars(direc);
       setSelected(false);
