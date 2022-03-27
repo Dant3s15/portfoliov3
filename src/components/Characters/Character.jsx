@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import classes from './Character.module.scss';
 import characterImage from '../../resources/img/character.png';
 const Character = props => {

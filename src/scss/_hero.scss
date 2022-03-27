@@ -143,13 +143,15 @@
       z-index: 10;
       animation: flicker2 5s infinite alternate;
 
-      clip-path: polygon(
-        0% 100%,
-        calc(100% - 29px) 100%,
-        100% calc(100% - 29px),
-        100% 0%,
-        0% 0%
-      );
+      // clip-path: polygon(
+      //   0% 100%,
+      //   calc(100% - 29px) 100%,
+      //   100% calc(100% - 29px),
+      //   100% 0%,
+      //   0% 0%
+      // );
+      @include corner-cut(29px, var(--color-primary), 4px, 17px);
+      // @include corner-cut(20px, var(--color-primary), 29px, 30px);
       &::after {
         content: none;
       }
@@ -282,13 +284,14 @@
   position: relative;
   overflow: hidden;
   background-color: var(--color-primary-transparent-1);
-  clip-path: polygon(
-    0% 100%,
-    calc(100% - 25px) 100%,
-    100% calc(100% - 25px),
-    100% 0%,
-    0% 0%
-  );
+  // clip-path: polygon(
+  //   0% 100%,
+  //   calc(100% - 20px) 100%,
+  //   100% calc(100% - 20px),
+  //   100% 0%,
+  //   0% 0%
+  // );
+  @include corner-cut(20px, var(--color-primary), 4px, 17px);
 
   &__level-title {
     text-transform: uppercase;
@@ -315,17 +318,17 @@
       opacity: 0;
     }
   }
-  &::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 200%;
-    transform: rotate(45deg);
-    transform-origin: left bottom;
-    bottom: 0;
-    left: calc(100% - 22px);
-    background-color: var(--color-primary);
-  }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   width: 4px;
+  //   height: 200%;
+  //   transform: rotate(45deg);
+  //   transform-origin: left bottom;
+  //   bottom: 0;
+  //   left: calc(100% - 18px);
+  //   background-color: var(--color-primary);
+  // }
 }
 
 .character-levels {
@@ -407,6 +410,9 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-right: 7px solid rgba(255, 255, 255, 0.18);
   transform-origin: 5%;
+
+  @include corner-cut(100px, rgba(255, 255, 255, 0.18), 4px, 98px);
+
   @media (max-width: $big-tablet) {
     height: 100%;
     width: 100%;
@@ -425,17 +431,17 @@
     transform: translateZ(-10px);
     animation-fill-mode: both;
   }
-  &::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 200%;
-    transform: rotate(45deg);
-    transform-origin: left bottom;
-    bottom: 0;
-    left: calc(100% - 98px);
-    background-color: rgba(255, 255, 255, 0.18);
-  }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   width: 4px;
+  //   height: 200%;
+  //   transform: rotate(45deg);
+  //   transform-origin: left bottom;
+  //   bottom: 0;
+  //   left: calc(100% - 98px);
+  //   background-color: rgba(255, 255, 255, 0.18);
+  // }
 
   &:hover {
     background-color: #e5e5e51a;
@@ -451,24 +457,25 @@
     border: 1px solid var(--color-primary);
     margin: 1rem 1rem 0 1rem;
     position: relative;
-    clip-path: polygon(
-      0% 100%,
-      calc(100% - 40px) 100%,
-      100% calc(100% - 40px),
-      100% 0%,
-      0% 0%
-    );
-    &::after {
-      content: '';
-      position: absolute;
-      width: 2px;
-      height: 200%;
-      transform: rotate(45deg);
-      transform-origin: left bottom;
-      bottom: 0;
-      left: calc(100% - 40px);
-      background-color: var(--color-primary);
-    }
+    // clip-path: polygon(
+    //   0% 100%,
+    //   calc(100% - 30px) 100%,
+    //   100% calc(100% - 30px),
+    //   100% 0%,
+    //   0% 0%
+    // );
+    @include corner-cut(30px, var(--color-primary), 2px, 30px) // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   width: 2px;
+      //   height: 200%;
+      //   transform: rotate(45deg);
+      //   transform-origin: left bottom;
+      //   bottom: 0;
+      //   left: calc(100% - 30px);
+      //   background-color: var(--color-primary);
+      // }
+;
   }
 
   @media (max-width: $big-tablet) {

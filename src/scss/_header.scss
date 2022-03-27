@@ -115,13 +115,15 @@
     // border: 1px solid red;
     transform: rotateX(0deg);
     transition: all var(--transition-short-medium);
-    clip-path: polygon(
-      0% 100%,
-      calc(100% - 23px) 100%,
-      100% calc(100% - 23px),
-      100% 0%,
-      0% 0%
-    );
+    // clip-path: polygon(
+    //   0% 100%,
+    //   calc(100% - 23px) 100%,
+    //   100% calc(100% - 23px),
+    //   100% 0%,
+    //   0% 0%
+    // );
+    @include corner-cut(23px, #00000000, 4px, 23px);
+
     color: var(--color-gray);
     height: 35px;
     width: 35px;

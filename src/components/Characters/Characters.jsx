@@ -15,7 +15,6 @@ const Characters = props => {
       rightChar,
     };
     props.onCharStateChange(charStateData);
-    // console.log(charStateData);
   }, [leftChar, frontChar, rightChar]);
 
   useEffect(() => {
@@ -62,7 +61,6 @@ const Characters = props => {
   };
 
   // *****************************************************
-  // let swipeDir;
   const rotateCharactersHandler = e => {
     const setChars = direc => {
       setLeftChar(wrapRotate(leftChar, direc));
