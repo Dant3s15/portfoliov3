@@ -16,6 +16,10 @@ const SkillsList = props => {
     { ...AllSkills[3], lvl: 7 },
     { ...AllSkills[4], lvl: 4 },
     { ...AllSkills[5], lvl: 3 },
+    { ...AllSkills[13], lvl: 7 },
+    { ...AllSkills[22], lvl: 5 },
+    { ...AllSkills[23], lvl: 5 },
+    { ...AllSkills[26], lvl: 5 },
   ];
   const rightChar = [
     { ...AllSkills[1], lvl: 2 },
