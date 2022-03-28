@@ -4,6 +4,7 @@ import './App.css';
 // import CharDataContext from './components/context/character-data-context';
 import SkillsList from './components/Skills/Skills';
 import Characters from './components/Characters/Characters';
+import Section1 from './components/Sections/Section1';
 
 function App() {
   const [charState, setCharState] = useState({
@@ -20,6 +21,7 @@ function App() {
     <Fragment>
       <Characters onCharStateChange={charStateDataHandler}></Characters>
       <SkillsList charStateData={charState}></SkillsList>;
+      {/* <Section1></Section1> */}
     </Fragment>
   );
 }
