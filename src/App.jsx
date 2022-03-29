@@ -1,10 +1,9 @@
 import { useState, Fragment } from 'react';
-import logo from './logo.svg';
 import './App.css';
-// import CharDataContext from './components/context/character-data-context';
 import Header from './components/Sections/Header';
+import Hero from './components/Sections/Hero/Hero';
 import SkillsList from './components/Skills/Skills';
-import Characters from './components/Characters/Characters';
+// import Characters from './components/Characters/Characters';
 import Section1 from './components/Sections/Section1';
 
 function App() {
@@ -21,8 +20,12 @@ function App() {
   return (
     <Fragment>
       <Header></Header>
-      <Characters onCharStateChange={charStateDataHandler}></Characters>
-      <SkillsList charStateData={charState}></SkillsList>;
+      <main>
+        <Hero></Hero>
+        {/* <Characters onCharStateChange={charStateDataHandler}></Characters> */}
+        <SkillsList charStateData={charState}></SkillsList>
+      </main>
+
       {/* <Section1></Section1> */}
     </Fragment>
   );

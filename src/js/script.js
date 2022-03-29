@@ -36,56 +36,56 @@ const charLevelsList = document.querySelectorAll(
 
 //Character rotation
 
-let charL = document.querySelector('.character__left');
-let charF = document.querySelector('.character__front');
-let charR = document.querySelector('.character__right');
+// let charL = document.querySelector('.character__left');
+// let charF = document.querySelector('.character__front');
+// let charR = document.querySelector('.character__right');
 
-const reassignSides = () => {
-  charL = document.querySelector('.character__left');
-  charF = document.querySelector('.character__front');
-  charR = document.querySelector('.character__right');
-};
+// const reassignSides = () => {
+//   charL = document.querySelector('.character__left');
+//   charF = document.querySelector('.character__front');
+//   charR = document.querySelector('.character__right');
+// };
 
-const rotateRight = () => {
-  charL.classList.remove(charPos[0]);
-  charL.classList.add(charPos[(0 + 2) % 3]);
+// const rotateRight = () => {
+//   charL.classList.remove(charPos[0]);
+//   charL.classList.add(charPos[(0 + 2) % 3]);
 
-  charF.classList.remove(charPos[1]);
-  charF.classList.add(charPos[(1 - 1) % 3]);
+//   charF.classList.remove(charPos[1]);
+//   charF.classList.add(charPos[(1 - 1) % 3]);
 
-  charR.classList.remove(charPos[2]);
-  charR.classList.add(charPos[(2 - 1) % 3]);
+//   charR.classList.remove(charPos[2]);
+//   charR.classList.add(charPos[(2 - 1) % 3]);
 
-  for (let i = 0; i < 3; i++) {
-    const dataValue = +skillsList[i].getAttribute('data-character');
-    skillsList[i].setAttribute('data-character', wrapRotate(dataValue, -1));
-    characterList[i].setAttribute('data-character', wrapRotate(dataValue, -1));
-    charLevelsList[i].setAttribute('data-character', wrapRotate(dataValue, -1));
-  }
-  reassignSides();
-  removeSelected();
-};
+//   for (let i = 0; i < 3; i++) {
+//     const dataValue = +skillsList[i].getAttribute('data-character');
+//     skillsList[i].setAttribute('data-character', wrapRotate(dataValue, -1));
+//     characterList[i].setAttribute('data-character', wrapRotate(dataValue, -1));
+//     charLevelsList[i].setAttribute('data-character', wrapRotate(dataValue, -1));
+//   }
+//   reassignSides();
+//   removeSelected();
+// };
 
-const rotateLeft = () => {
-  charL.classList.remove(charPos[0]);
-  charL.classList.add(charPos[(0 + 1) % 3]);
+// const rotateLeft = () => {
+//   charL.classList.remove(charPos[0]);
+//   charL.classList.add(charPos[(0 + 1) % 3]);
 
-  charF.classList.remove(charPos[1]);
-  charF.classList.add(charPos[(1 + 1) % 3]);
+//   charF.classList.remove(charPos[1]);
+//   charF.classList.add(charPos[(1 + 1) % 3]);
 
-  charR.classList.remove(charPos[2]);
-  charR.classList.add(charPos[(2 + 1) % 3]);
+//   charR.classList.remove(charPos[2]);
+//   charR.classList.add(charPos[(2 + 1) % 3]);
 
-  for (let i = 0; i < 3; i++) {
-    const dataValue = +skillsList[i].getAttribute('data-character');
+//   for (let i = 0; i < 3; i++) {
+//     const dataValue = +skillsList[i].getAttribute('data-character');
 
-    skillsList[i].setAttribute('data-character', wrapRotate(dataValue, 1));
-    characterList[i].setAttribute('data-character', wrapRotate(dataValue, 1));
-    charLevelsList[i].setAttribute('data-character', wrapRotate(dataValue, 1));
-  }
-  reassignSides();
-  removeSelected();
-};
+//     skillsList[i].setAttribute('data-character', wrapRotate(dataValue, 1));
+//     characterList[i].setAttribute('data-character', wrapRotate(dataValue, 1));
+//     charLevelsList[i].setAttribute('data-character', wrapRotate(dataValue, 1));
+//   }
+//   reassignSides();
+//   removeSelected();
+// };
 
 // const removeSelected = () => {
 //   charF.classList.remove('selected');
@@ -145,14 +145,14 @@ const buttonEl = document.querySelector('.cta__button');
 const skillsText = document.querySelector('.skills-text');
 const skillsCard = document.querySelector('.skills-card');
 
-buttonEl.addEventListener('click', () => {
-  characterOverlayEl.classList.toggle('character__overlay--hidden');
-  charactersEl.classList.toggle('hidden');
-  skillsWindowEl.classList.toggle('not-started');
-  skillsCard.classList.toggle('abs-down');
-  skillsText.classList.toggle('abs-up');
-  // calcCharWidth();
-});
+// buttonEl.addEventListener('click', () => {
+//   characterOverlayEl.classList.toggle('character__overlay--hidden');
+//   charactersEl.classList.toggle('hidden');
+//   skillsWindowEl.classList.toggle('not-started');
+//   skillsCard.classList.toggle('abs-down');
+//   skillsText.classList.toggle('abs-up');
+//   // calcCharWidth();
+// });
 
 //calculate characters width
 // let sideChar = document.querySelector('.char__img--right');
@@ -231,10 +231,10 @@ const heroSection = document.querySelector('.section-hero');
 //Hamburger button handling
 /****************** */
 
-const headerWrapperEl = document.querySelector('.header-wrapper');
-const hamburgerButtonEl = document.querySelector('.hamburger-button');
-const hamburgerIconEl = document.querySelector('.hamburger-icon');
-const closeIconEl = document.querySelector('.close-icon');
+// const headerWrapperEl = document.querySelector('.header-wrapper');
+// const hamburgerButtonEl = document.querySelector('.hamburger-button');
+// const hamburgerIconEl = document.querySelector('.hamburger-icon');
+// const closeIconEl = document.querySelector('.close-icon');
 
 // hamburgerButtonEl.addEventListener('click', () => {
 //   headerWrapperEl.classList.toggle('hamburger-active');

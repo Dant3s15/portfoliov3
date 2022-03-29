@@ -1,5 +1,6 @@
-import { Fragment, useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import { useState, useEffect, useRef } from 'react';
+
+import classes from './Characters.module.scss';
 import Character from './Character';
 
 const Characters = props => {
@@ -7,7 +8,16 @@ const Characters = props => {
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
   const [selected, setSelected] = useState(false);
+  const [ctaButtonClicked, setCtaButton] = useState('false');
 
+  const ctaButtonHandler = () => {
+    if (!ctaButtonClicked) setCtaButton(true);
+    else setCtaButton(false);
+    calcCharWidth();
+  };
+
+  const charactersRef = useRef();
+  console.log(charactersRef);
   useEffect(() => {
     const charStateData = {
       leftChar,
@@ -31,17 +41,14 @@ const Characters = props => {
 
   // ********************************************************
   const calcCharWidth = () => {
-    let characters = document.querySelector('.characters');
     let characterImgComputedWidth = parseInt(
-      window.getComputedStyle(characters).width
+      window.getComputedStyle(charactersRef.current).width
     );
     let charactersComputedWith = characterImgComputedWidth * 0.4;
 
     let root = document.documentElement;
     root.style.setProperty('--characters-width', charactersComputedWith + 'px');
   };
-
-  calcCharWidth();
 
   window.addEventListener('resize', calcCharWidth);
 
@@ -139,7 +146,7 @@ const Characters = props => {
 
   // *****************************************************
 
-  const charactersRoot = document.getElementById('characters-root');
+  // const charactersRoot = document.getElementById('characters-root');
 
   // console.log((frontChar === 1) & selected, 'check');
   let leftIsSelected = (leftChar === 1) & selected;
@@ -147,35 +154,53 @@ const Characters = props => {
   let rightIsSelected = (rightChar === 1) & selected;
 
   return (
-    <Fragment>
-      {ReactDOM.createPortal(
+    <div className={classes['character-col']}>
+      <div
+        className={`${classes['character__overlay']} ${
+          !ctaButtonClicked ? classes['character__overlay--hidden'] : ''
+        }`}
+      >
+        <div className={classes.cta}>
+          <button
+            className={`${classes.cta__button} card--glass`}
+            onClick={ctaButtonHandler}
+          >
+            <div className={classes['cta__button--text']}>Select player</div>
+          </button>
+          <div className={`${classes['cta__text']}  shine`}>
+            And let your adventure begin...
+          </div>
+        </div>
+      </div>
+
+      <div
+        ref={charactersRef}
+        className={`${classes.characters} ${
+          ctaButtonClicked ? classes.hidden : ''
+        }`}
+      >
         <Character
           data={leftChar}
           selected={leftIsSelected}
           name='Left'
           onRotateCharacters={rotateCharactersHandler}
-        ></Character>,
-        charactersRoot
-      )}
-      {ReactDOM.createPortal(
+        ></Character>
+
         <Character
           data={frontChar}
           selected={frontIsSelected}
           name='Front'
           onRotateCharacters={rotateCharactersHandler}
-        ></Character>,
-        charactersRoot
-      )}
-      {ReactDOM.createPortal(
+        ></Character>
+
         <Character
           selected={rightIsSelected}
           data={rightChar}
           name='Right'
           onRotateCharacters={rotateCharactersHandler}
-        ></Character>,
-        charactersRoot
-      )}
-    </Fragment>
+        ></Character>
+      </div>
+    </div>
   );
 };
 
