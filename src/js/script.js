@@ -127,9 +127,9 @@ const charLevelsList = document.querySelectorAll(
 // });
 
 //disabled blue outline
-characterColEl.ondragstart = () => {
-  return false;
-};
+// characterColEl.ondragstart = () => {
+//   return false;
+// };
 
 const skillsWindowEl = document.querySelector('.skills-window');
 
@@ -223,7 +223,7 @@ const onMouseUp = e => {
   dragging = false;
 };
 
-const heroSection = document.querySelector('.section-hero');
+// const heroSection = document.querySelector('.section-hero');
 
 // calcCharWidth();
 

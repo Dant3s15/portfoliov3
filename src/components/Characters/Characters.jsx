@@ -14,10 +14,19 @@ const Characters = props => {
     if (!ctaButtonClicked) setCtaButton(true);
     else setCtaButton(false);
     calcCharWidth();
+
+    //disabling blue outline on drag
+    charactersColRef.current.ondragstart = () => {
+      return false;
+    };
   };
 
   const charactersRef = useRef();
-  console.log(charactersRef);
+  const charactersColRef = useRef();
+
+  // console.log(charactersColRef.current);
+
+  // console.log(charactersRef);
   useEffect(() => {
     const charStateData = {
       leftChar,
@@ -154,7 +163,7 @@ const Characters = props => {
   let rightIsSelected = (rightChar === 1) & selected;
 
   return (
-    <div className={classes['character-col']}>
+    <div ref={charactersColRef} className={classes['character-col']}>
       <div
         className={`${classes['character__overlay']} ${
           !ctaButtonClicked ? classes['character__overlay--hidden'] : ''
