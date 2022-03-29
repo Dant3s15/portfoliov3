@@ -9,33 +9,58 @@ const Characters = props => {
   const [rightChar, setRightChar] = useState(2);
   const [selected, setSelected] = useState(false);
   const [ctaButtonClicked, setCtaButton] = useState('false');
+  const [charState, setCharState] = useState({
+    leftChar: 0,
+    frontChar: 1,
+    rightChar: 2,
+  });
+
+  // useEffect(() => {
+  //   if (ctaButtonClicked) props.onCtaButtonChange(ctaButtonClicked);
+  //   // return () => {
+  //   //   props.onCtaButtonChange(ctaButtonClicked);
+  //   // };
+  // }, [ctaButtonClicked]);
 
   const ctaButtonHandler = () => {
+    console.log('click');
     if (!ctaButtonClicked) setCtaButton(true);
     else setCtaButton(false);
     calcCharWidth();
-
+    props.onCtaButtonChange({ clicked: true });
     //disabling blue outline on drag
     charactersColRef.current.ondragstart = () => {
-      return false;
+      return;
     };
   };
 
   const charactersRef = useRef();
   const charactersColRef = useRef();
 
-  // console.log(charactersColRef.current);
+  const charStateDataHandler = data => {
+    setCharState(data);
+    return charState;
+  };
 
-  // console.log(charactersRef);
   useEffect(() => {
     const charStateData = {
       leftChar,
       frontChar,
       rightChar,
     };
-    props.onCharStateChange(charStateData);
+    charStateDataHandler(charStateData);
+    // props.onCharStateChange(charStateData);
   }, [leftChar, frontChar, rightChar]);
-
+  // useEffect(() => {
+  //   const charStateData = {
+  //     leftChar,
+  //     frontChar,
+  //     rightChar,
+  //   };
+  //   charStateDataHandler(charStateData);
+  //   // props.onCharStateChange(charStateData);
+  // }, [leftChar, frontChar, rightChar]);
+  //TODO VVV
   useEffect(() => {
     if (selected) {
       document
@@ -47,6 +72,12 @@ const Characters = props => {
         .classList.remove('selected--skills');
     }
   }, [selected]);
+
+  // useEffect(() => {
+  //   if (ctaButtonClicked) {
+  //     props.onCtaButtonChange(ctaButtonClicked);
+  //   }
+  // }, [ctaButtonClicked]);
 
   // ********************************************************
   const calcCharWidth = () => {

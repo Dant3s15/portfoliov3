@@ -1,55 +1,64 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classes from './Hero.module.scss';
 
 import Characters from '../../Characters/Characters';
+import SkillsList from '../../Skills/Skills';
 
 const Hero = props => {
-  const [ctaButtonClicked, setCtaButton] = useState('false');
+  // const [ctaButtonClicked, setCtaButton] = useState('false');
+  // const [charState, setCharState] = useState({
+  //   leftChar: 0,
+  //   frontChar: 1,
+  //   rightChar: 2,
+  // });
+
+  // const charStateDataHandler = data => {
+  //   setCharState(data);
+  //   return charState;
+  // };
+  const [ctaButtonClicked, setCtaButtonClicked] = useState('false');
+
   const [charState, setCharState] = useState({
     leftChar: 0,
     frontChar: 1,
     rightChar: 2,
   });
 
+  // useEffect(() => {
+  //   console.log('test');
+  //   // return () => {
+  //   //   if (ctaButtonClicked) console.log(ctaButtonClicked);
+  //   // };
+  // }, [ctaButtonClicked]);
+
   const charStateDataHandler = data => {
     setCharState(data);
     return charState;
   };
 
-  // const ctaButtonHandler = () => {
-  //   if (!ctaButtonClicked) setCtaButton(true);
-  //   else setCtaButton(false);
-  // };
+  const ctaButtonStateHandler = data => {
+    // setCtaButtonClicked(data);
+    console.log(data);
+    // return ctaButtonClicked;
+  };
+
+  const receivedDataHandler = data => {
+    console.log(data);
+    setCtaButtonClicked(data);
+    // console.log(ctaButtonClicked);
+  };
 
   return (
     <section className={classes['section-hero']}>
       <div className={classes['character-selection']}>
-        {/* <div className={classes['character-col']}>
-          <div
-            className={`${classes['character__overlay']} ${
-              !ctaButtonClicked ? classes['character__overlay--hidden'] : ''
-            }`}
-          >
-            <div className={classes.cta}>
-              <button
-                className={`${classes.cta__button} card--glass`}
-                onClick={ctaButtonHandler}
-              >
-                <div className={classes['cta__button--text']}>
-                  Select player
-                </div>
-              </button>
-              <div className={`${classes['cta__text']}  shine`}>
-                And let your adventure begin...
-              </div>
-            </div>
-          </div>
-        </div> */}
-        <Characters
-          onCharStateChange={charStateDataHandler}
-          onCtaButtonClick={ctaButtonClicked}
-        ></Characters>
-        <div className={classes['skills-col']}>
+        {/* <div>{ctaButtonClicked ? 'xx' : ''}</div> */}
+        <Characters onCtaButtonChange={receivedDataHandler}></Characters>
+        <SkillsList
+          className={classes['character-skills']}
+          onCtaButtonChange={ctaButtonClicked}
+          charStateData={charState}
+        ></SkillsList>
+        {/* <div className={classes['skills-col']}>
           <div
             className={`card--glass ${classes['skills-window']} not-started`}
           >
@@ -93,12 +102,9 @@ const Hero = props => {
                   </div>
                 </div>
               </header>
-              <div id='skills-root' className={classes['character-skills']}>
-                {' '}
-              </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

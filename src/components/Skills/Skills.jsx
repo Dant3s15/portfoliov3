@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import Skill from './Skill';
 import AllSkills from '../Utils/AllSkills';
 import classes from './Skills.module.scss';
@@ -41,21 +41,79 @@ const SkillsList = props => {
   );
 
   const skillsRoot = document.getElementById('skills-root');
+  // return (
+  //   <div className={classes['skills-list']}>
+  //     {skillsStruct(0, props.charStateData.leftChar)}
+  //     {skillsStruct(1, props.charStateData.frontChar)}
+  //     {skillsStruct(2, props.charStateData.rightChar)}
+  //   </div>
+  // );
+  console.log(props.onCtaButtonChange);
   return (
-    <Fragment>
-      {ReactDOM.createPortal(
-        skillsStruct(0, props.charStateData.leftChar),
-        skillsRoot
-      )}
-      {ReactDOM.createPortal(
-        skillsStruct(1, props.charStateData.frontChar),
-        skillsRoot
-      )}
-      {ReactDOM.createPortal(
-        skillsStruct(2, props.charStateData.rightChar),
-        skillsRoot
-      )}
-    </Fragment>
+    <div className={classes['skills-col']}>
+      {/* <div>{props.onCtaButtonChange ? 'tru' : 'fal'}</div> */}
+      <div
+        className={`card--glass ${classes['skills-window']} ${
+          !props.onCtaButtonChange.clicked ? 'not-started' : ''
+        } `}
+      >
+        <div
+          className={`${classes['skills-text']} shine ${
+            props.onCtaButtonChange.clicked ? 'abs-up' : ''
+          }`}
+        >
+          <p>Choose</p>
+          <p>and</p>
+          <p>
+            <strong className='shine'> level up</strong>
+          </p>
+          <p>your</p>
+          <p>developer!</p>
+        </div>
+        <div
+          className={`${classes['skills-card']} ${
+            !props.onCtaButtonChange.clicked ? 'abs-down' : ''
+          }`}
+        >
+          <header className={classes['skills-window__header']}>
+            <div className={classes['skills-list-name']}>
+              <h2>Skills</h2>
+            </div>
+            <div className={classes['character-level']}>
+              <div className={classes['character-level__level-title']}>
+                level
+              </div>
+              <div className={classes['character-levels']}>
+                <div
+                  className={classes['character-level__level-number']}
+                  data-character='0'
+                >
+                  111
+                </div>
+                <div
+                  className={classes['character-level__level-number']}
+                  data-character='1'
+                >
+                  222
+                </div>
+                <div
+                  className={classes['character-level__level-number']}
+                  data-character='2'
+                >
+                  333
+                </div>
+              </div>
+            </div>
+          </header>
+          {/* <div className={classes['skills-list']}> */}
+          <div className={classes['character-skills']}>
+            {skillsStruct(0, props.charStateData.leftChar)}
+            {skillsStruct(1, props.charStateData.frontChar)}
+            {skillsStruct(2, props.charStateData.rightChar)}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
