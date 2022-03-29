@@ -88,37 +88,31 @@
   }
 }
 
-.hamburger-not-active {
-  // clip-path: polygon(
-  //   0% 100%,
-  //   calc(100% - 30px) 100%,
-  //   100% calc(100% - 30px),
-  //   100% 0%,
-  //   0% 0%
-  // );
-  @include corner-cut(30px, rgba(255, 255, 255, 0.18), 4px, 28px);
-  &::after {
-    left: calc(100% - 28px);
-  }
-  transition: all var(--transition-short-medium) ease-in-out !important;
-  height: 100%;
-  width: 100%;
-  transition: none;
-  transform: none !important;
-  z-index: 990;
-}
+// .hamburger-not-active {
 
-.hamburger-active {
-  height: 99.5vh;
-  z-index: 990;
-  @include corner-cut(30px, rgba(255, 255, 255, 0.18), 4px, 28px);
-  transform: none !important;
+//   @include corner-cut(30px, rgba(255, 255, 255, 0.18), 4px, 28px);
+//   &::after {
+//     left: calc(100% - 28px);
+//   }
+//   transition: all var(--transition-short-medium) ease-in-out !important;
+//   height: 100%;
+//   width: 100%;
+//   transition: none;
+//   transform: none !important;
+//   z-index: 990;
+// }
 
-  &::after {
-    left: calc(100% - 28px);
-    // border-right: 7px solid var(--color-primary);
-  }
-}
+// .hamburger-active {
+//   height: 99.5vh;
+//   z-index: 990;
+//   @include corner-cut(30px, rgba(255, 255, 255, 0.18), 4px, 28px);
+//   transform: none !important;
+
+//   &::after {
+//     left: calc(100% - 28px);
+//     // border-right: 7px solid var(--color-primary);
+//   }
+// }
 //HAMBURGER BUTTON:
 .hidden-btn {
   // display: none;

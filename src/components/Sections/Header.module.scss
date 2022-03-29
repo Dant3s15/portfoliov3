@@ -1,4 +1,5 @@
 @import '../../scss/style.scss';
+
 .header {
   position: absolute;
   width: 100%;
@@ -151,6 +152,30 @@
   margin-top: 12px;
 }
 
+.hamburger-not-active {
+  @include corner-cut(30px, rgba(255, 255, 255, 0.18), 4px, 28px);
+  &::after {
+    left: calc(100% - 28px);
+  }
+  transition: all var(--transition-short-medium) ease-in-out !important;
+  height: 100%;
+  width: 100%;
+  transition: none;
+  transform: none !important;
+  z-index: 990;
+}
+
+.hamburger-active {
+  height: 99.5vh;
+  z-index: 990;
+  @include corner-cut(30px, rgba(255, 255, 255, 0.18), 4px, 28px);
+  transform: none !important;
+
+  &::after {
+    left: calc(100% - 28px);
+    // border-right: 7px solid var(--color-primary);
+  }
+}
 //TODO
 // *:focus {
 //   outline: none;

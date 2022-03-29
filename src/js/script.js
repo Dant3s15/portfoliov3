@@ -236,11 +236,11 @@ const hamburgerButtonEl = document.querySelector('.hamburger-button');
 const hamburgerIconEl = document.querySelector('.hamburger-icon');
 const closeIconEl = document.querySelector('.close-icon');
 
-hamburgerButtonEl.addEventListener('click', () => {
-  headerWrapperEl.classList.toggle('hamburger-active');
-  headerWrapperEl.classList.toggle('hamburger-not-active');
-  hamburgerIconEl.classList.toggle('hidden-btn');
-  closeIconEl.classList.toggle('hidden-btn');
-  // hamburgerIconEl.classList.toggle('visible-btn');
-  closeIconEl.classList.toggle('visible-btn');
-});
+// hamburgerButtonEl.addEventListener('click', () => {
+//   headerWrapperEl.classList.toggle('hamburger-active');
+//   headerWrapperEl.classList.toggle('hamburger-not-active');
+//   hamburgerIconEl.classList.toggle('hidden-btn');
+//   closeIconEl.classList.toggle('hidden-btn');
+//   // hamburgerIconEl.classList.toggle('visible-btn');
+//   closeIconEl.classList.toggle('visible-btn');
+// });

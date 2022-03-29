@@ -1,10 +1,29 @@
+import { useState } from 'react';
 import classes from './Header.module.scss';
+import HamburgerIcon from '../Icons/HamburgerIcon';
+import CloseIcon from '../Icons/CloseIcon';
 
 const Header = props => {
+  const [hamburgerState, setHamburgerState] = useState(false);
+
+  const hamburgerButtonHandler = () => {
+    if (!hamburgerState) {
+      setHamburgerState(true);
+      console.log('hamburger opened');
+    } else {
+      setHamburgerState(false);
+      console.log('hamburger closed');
+    }
+  };
+
   return (
     <header className={classes.header}>
       <div
-        className={`${classes['header-wrapper']} ${classes['card-glass']} ${classes['hamburger-not-active']}`}
+        className={`${classes['header-wrapper']} card-glass ${
+          hamburgerState
+            ? classes['hamburger-active']
+            : classes['hamburger-not-active']
+        }`}
       >
         <div className={classes.navigation}>
           <div className={classes['logo-item']}>
@@ -26,15 +45,23 @@ const Header = props => {
               SECTION4
             </a>
           </nav>
-          <button className={classes['hamburger-button']}>
-            <ion-icon
-              className={classes['hamburger-icon']}
-              name='menu-outline'
-            ></ion-icon>
-            <ion-icon
-              className={`${classes['close-icon']} ${classes['hidden-btn']}`}
-              name='close-outline'
-            ></ion-icon>
+          <button
+            className={classes['hamburger-button']}
+            onClick={hamburgerButtonHandler}
+          >
+            <HamburgerIcon
+              className={`${classes['hamburger-icon']} ${
+                hamburgerState ? classes['hidden-btn'] : ''
+              } `}
+              alt='hamburger icon'
+            ></HamburgerIcon>
+
+            <CloseIcon
+              className={`${classes['close-icon']} ${
+                !hamburgerState ? classes['hidden-btn'] : ''
+              }`}
+              alt='close icon'
+            ></CloseIcon>
           </button>
         </div>
         <nav className={classes['nav-mobile']}>
