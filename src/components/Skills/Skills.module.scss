@@ -321,3 +321,15 @@
 .abs-up {
   transform: translate(0, -110%);
 }
+
+.selected--skills {
+  background-color: #e5e5e51a;
+  transform: rotateY(-5deg) scale(1.1) !important;
+
+  &:first-child {
+    color: var(--color-primary);
+  }
+  @media (max-width: $big-tablet) {
+    transform: scale(1.05) !important;
+  }
+}

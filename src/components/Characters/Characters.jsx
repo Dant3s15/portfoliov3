@@ -30,7 +30,7 @@ const Characters = props => {
     props.onCtaButtonChange({ clicked: ctaButtonClicked });
     //disabling blue outline on drag
     charactersColRef.current.ondragstart = () => {
-      return;
+      return false;
     };
   };
 
@@ -39,7 +39,7 @@ const Characters = props => {
 
   const charStateDataHandler = data => {
     setCharState(data);
-    return charState;
+    // return charState;
   };
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Characters = props => {
     };
 
     charStateDataHandler(charStateData);
-    // props.onCharStateChange(charStateData);
+    props.charState(charStateData);
   }, [leftChar, frontChar, rightChar]);
   // useEffect(() => {
   //   const charStateData = {

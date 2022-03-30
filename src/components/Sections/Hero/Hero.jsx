@@ -6,6 +6,11 @@ import SkillsList from '../../Skills/Skills';
 
 const Hero = props => {
   const [selected, setSelected] = useState(false);
+
+  const [charState, setCharState] = useState({}, cur => {
+    console.log(cur);
+  });
+  const [ctaButtonClicked, setCtaButtonClicked] = useState('false');
   // const [ctaButtonClicked, setCtaButton] = useState('false');
   // const [charState, setCharState] = useState({
   //   leftChar: 0,
@@ -17,13 +22,6 @@ const Hero = props => {
   //   setCharState(data);
   //   return charState;
   // };
-  const [ctaButtonClicked, setCtaButtonClicked] = useState('false');
-
-  const [charState, setCharState] = useState({
-    leftChar: 0,
-    frontChar: 1,
-    rightChar: 2,
-  });
 
   // useEffect(() => {
   //   console.log('test');
@@ -33,8 +31,10 @@ const Hero = props => {
   // }, [ctaButtonClicked]);
 
   const charStateDataHandler = data => {
+    // setCharState(data);
+    // return charState;
     setCharState(data);
-    return charState;
+    // console.log(charState);
   };
 
   const ctaDataButtonHandler = data => {
@@ -52,6 +52,7 @@ const Hero = props => {
           onCtaButtonChange={ctaDataButtonHandler}
           onSelectedChange={selectedStateHandler}
           selectedState={selected}
+          charState={charStateDataHandler}
         ></Characters>
         <SkillsList
           className={classes['character-skills']}

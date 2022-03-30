@@ -6,13 +6,22 @@ import classes from './Skills.module.scss';
 
 const SkillsList = props => {
   const skillsWindowRef = useRef();
+
   useEffect(() => {
     if (props.onReceivedSelectState) {
-      skillsWindowRef.current.classList.add('selected--skills');
+      skillsWindowRef.current.classList.add(`${classes['selected--skills']}`);
     } else {
-      skillsWindowRef.current.classList.remove('selected--skills');
+      skillsWindowRef.current.classList.remove(
+        `${classes['selected--skills']}`
+      );
     }
   }, [props.onReceivedSelectState]);
+
+  // useEffect(() => {
+  //   if (props.charStateData) {
+  //     console.log(props.charStateData);
+  //   }
+  // }, [props.charStateData]);
 
   // useEffect(() => {
   //   if (selected) {

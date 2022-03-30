@@ -76,17 +76,17 @@
 //   filter: brightness(1) drop-shadow(0 0 1px var(--color-primary));
 // }
 
-.selected--skills {
-  background-color: #e5e5e51a;
-  transform: rotateY(-5deg) scale(1.1) !important;
+// .selected--skills {
+//   background-color: #e5e5e51a;
+//   transform: rotateY(-5deg) scale(1.1) !important;
 
-  &:first-child {
-    color: var(--color-primary);
-  }
-  @media (max-width: $big-tablet) {
-    transform: scale(1.05) !important;
-  }
-}
+//   &:first-child {
+//     color: var(--color-primary);
+//   }
+//   @media (max-width: $big-tablet) {
+//     transform: scale(1.05) !important;
+//   }
+// }
 
 // .hamburger-not-active {
 
