@@ -313,3 +313,11 @@
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
 }
+
+.abs-down {
+  transform: translate(0, 110%);
+}
+
+.abs-up {
+  transform: translate(0, -110%);
+}

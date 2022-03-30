@@ -5,6 +5,7 @@ import Characters from '../../Characters/Characters';
 import SkillsList from '../../Skills/Skills';
 
 const Hero = props => {
+  const [selected, setSelected] = useState(false);
   // const [ctaButtonClicked, setCtaButton] = useState('false');
   // const [charState, setCharState] = useState({
   //   leftChar: 0,
@@ -36,27 +37,27 @@ const Hero = props => {
     return charState;
   };
 
-  const ctaButtonStateHandler = data => {
-    // setCtaButtonClicked(data);
-    console.log(data);
-    // return ctaButtonClicked;
+  const ctaDataButtonHandler = data => {
+    setCtaButtonClicked(data);
   };
 
-  const receivedDataHandler = data => {
-    console.log(data);
-    setCtaButtonClicked(data);
-    // console.log(ctaButtonClicked);
+  const selectedStateHandler = selec => {
+    setSelected(selec);
   };
 
   return (
     <section className={classes['section-hero']}>
       <div className={classes['character-selection']}>
-        {/* <div>{ctaButtonClicked ? 'xx' : ''}</div> */}
-        <Characters onCtaButtonChange={receivedDataHandler}></Characters>
+        <Characters
+          onCtaButtonChange={ctaDataButtonHandler}
+          onSelectedChange={selectedStateHandler}
+          selectedState={selected}
+        ></Characters>
         <SkillsList
           className={classes['character-skills']}
           onCtaButtonChange={ctaButtonClicked}
           charStateData={charState}
+          onReceivedSelectState={selected}
         ></SkillsList>
         {/* <div className={classes['skills-col']}>
           <div

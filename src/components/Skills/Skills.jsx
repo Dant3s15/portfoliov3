@@ -1,10 +1,25 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect, useRef } from 'react';
 // import ReactDOM from 'react-dom';
 import Skill from './Skill';
 import AllSkills from '../Utils/AllSkills';
 import classes from './Skills.module.scss';
 
 const SkillsList = props => {
+  const skillsWindowRef = useRef();
+  useEffect(() => {
+    if (props.onReceivedSelectState) {
+      skillsWindowRef.current.classList.add('selected--skills');
+    } else {
+      skillsWindowRef.current.classList.remove('selected--skills');
+    }
+  }, [props.onReceivedSelectState]);
+
+  // useEffect(() => {
+  //   if (selected) {
+  //     console.log('selected');
+  //   }
+  // }, [selected]);
+
   const leftChar = [
     { ...AllSkills[3], lvl: 2 },
     { ...AllSkills[4], lvl: 1 },
@@ -40,7 +55,7 @@ const SkillsList = props => {
     </ul>
   );
 
-  const skillsRoot = document.getElementById('skills-root');
+  // const skillsRoot = document.getElementById('skills-root');
   // return (
   //   <div className={classes['skills-list']}>
   //     {skillsStruct(0, props.charStateData.leftChar)}
@@ -48,18 +63,20 @@ const SkillsList = props => {
   //     {skillsStruct(2, props.charStateData.rightChar)}
   //   </div>
   // );
-  console.log(props.onCtaButtonChange);
+  // console.log(props.onCtaButtonChange);
+
   return (
     <div className={classes['skills-col']}>
       {/* <div>{props.onCtaButtonChange ? 'tru' : 'fal'}</div> */}
       <div
+        ref={skillsWindowRef}
         className={`card--glass ${classes['skills-window']} ${
           !props.onCtaButtonChange.clicked ? 'not-started' : ''
         } `}
       >
         <div
           className={`${classes['skills-text']} shine ${
-            props.onCtaButtonChange.clicked ? 'abs-up' : ''
+            props.onCtaButtonChange.clicked ? classes['abs-up'] : ''
           }`}
         >
           <p>Choose</p>
@@ -72,7 +89,7 @@ const SkillsList = props => {
         </div>
         <div
           className={`${classes['skills-card']} ${
-            !props.onCtaButtonChange.clicked ? 'abs-down' : ''
+            !props.onCtaButtonChange.clicked ? classes['abs-down'] : ''
           }`}
         >
           <header className={classes['skills-window__header']}>

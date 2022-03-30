@@ -7,7 +7,7 @@ const Characters = props => {
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
-  const [selected, setSelected] = useState(false);
+  // const [selected, setSelected] = useState(false);
   const [ctaButtonClicked, setCtaButton] = useState('false');
   const [charState, setCharState] = useState({
     leftChar: 0,
@@ -23,11 +23,11 @@ const Characters = props => {
   // }, [ctaButtonClicked]);
 
   const ctaButtonHandler = () => {
-    console.log('click');
+    // console.log('click');
     if (!ctaButtonClicked) setCtaButton(true);
     else setCtaButton(false);
     calcCharWidth();
-    props.onCtaButtonChange({ clicked: true });
+    props.onCtaButtonChange({ clicked: ctaButtonClicked });
     //disabling blue outline on drag
     charactersColRef.current.ondragstart = () => {
       return;
@@ -48,6 +48,7 @@ const Characters = props => {
       frontChar,
       rightChar,
     };
+
     charStateDataHandler(charStateData);
     // props.onCharStateChange(charStateData);
   }, [leftChar, frontChar, rightChar]);
@@ -61,26 +62,27 @@ const Characters = props => {
   //   // props.onCharStateChange(charStateData);
   // }, [leftChar, frontChar, rightChar]);
   //TODO VVV
-  useEffect(() => {
-    if (selected) {
-      document
-        .querySelector('.skills-window')
-        .classList.add('selected--skills');
-    } else {
-      document
-        .querySelector('.skills-window')
-        .classList.remove('selected--skills');
-    }
-  }, [selected]);
+  // useEffect(() => {
+  //   if (selected) {
+  //     document
+  //       .querySelector('.skills-window')
+  //       .classList.add('selected--skills');
+  //   } else {
+  //     document
+  //       .querySelector('.skills-window')
+  //       .classList.remove('selected--skills');
+  //   }
+  // }, [selected]);
 
   // useEffect(() => {
   //   if (ctaButtonClicked) {
   //     props.onCtaButtonChange(ctaButtonClicked);
   //   }
   // }, [ctaButtonClicked]);
-
+  //TODO limit the calcCharWidth triggering too many times
   // ********************************************************
   const calcCharWidth = () => {
+    // console.log(charactersRef.current);
     let characterImgComputedWidth = parseInt(
       window.getComputedStyle(charactersRef.current).width
     );
@@ -90,6 +92,9 @@ const Characters = props => {
     root.style.setProperty('--characters-width', charactersComputedWith + 'px');
   };
 
+  // window.addEventListener('DOMContentLoaded', event => {
+  //   calcCharWidth();
+  // });
   window.addEventListener('resize', calcCharWidth);
 
   // ********************************************************
@@ -119,18 +124,18 @@ const Characters = props => {
     let charData = +e.target.dataset.character;
 
     if (charData === 1) {
-      setSelected(true);
+      props.onSelectedChange(true);
     }
 
     if (charData === 0) {
       direc = 1;
       setChars(direc);
-      setSelected(false);
+      props.onSelectedChange(false);
     }
     if (charData === 2) {
       direc = -1;
       setChars(direc);
-      setSelected(false);
+      props.onSelectedChange(false);
     }
   };
   // *****************************************************
@@ -189,10 +194,11 @@ const Characters = props => {
   // const charactersRoot = document.getElementById('characters-root');
 
   // console.log((frontChar === 1) & selected, 'check');
-  let leftIsSelected = (leftChar === 1) & selected;
-  let frontIsSelected = (frontChar === 1) & selected;
-  let rightIsSelected = (rightChar === 1) & selected;
+  let leftIsSelected = (leftChar === 1) & props.selectedState;
+  let frontIsSelected = (frontChar === 1) & props.selectedState;
+  let rightIsSelected = (rightChar === 1) & props.selectedState;
 
+  // console.log(props.selectedState);
   return (
     <div ref={charactersColRef} className={classes['character-col']}>
       <div
