@@ -1,5 +1,4 @@
-import { Fragment, useState, useEffect, useRef } from 'react';
-// import ReactDOM from 'react-dom';
+import { useEffect, useRef } from 'react';
 import Skill from './Skill';
 import AllSkills from '../Utils/AllSkills';
 import classes from './Skills.module.scss';
@@ -16,18 +15,6 @@ const SkillsList = props => {
       );
     }
   }, [props.onReceivedSelectState]);
-
-  // useEffect(() => {
-  //   if (props.charStateData) {
-  //     console.log(props.charStateData);
-  //   }
-  // }, [props.charStateData]);
-
-  // useEffect(() => {
-  //   if (selected) {
-  //     console.log('selected');
-  //   }
-  // }, [selected]);
 
   const leftChar = [
     { ...AllSkills[3], lvl: 2 },
@@ -64,19 +51,8 @@ const SkillsList = props => {
     </ul>
   );
 
-  // const skillsRoot = document.getElementById('skills-root');
-  // return (
-  //   <div className={classes['skills-list']}>
-  //     {skillsStruct(0, props.charStateData.leftChar)}
-  //     {skillsStruct(1, props.charStateData.frontChar)}
-  //     {skillsStruct(2, props.charStateData.rightChar)}
-  //   </div>
-  // );
-  // console.log(props.onCtaButtonChange);
-
   return (
     <div className={classes['skills-col']}>
-      {/* <div>{props.onCtaButtonChange ? 'tru' : 'fal'}</div> */}
       <div
         ref={skillsWindowRef}
         className={`card--glass ${classes['skills-window']} ${
@@ -112,26 +88,25 @@ const SkillsList = props => {
               <div className={classes['character-levels']}>
                 <div
                   className={classes['character-level__level-number']}
-                  data-character='0'
+                  data-character={props.charStateData.leftChar}
                 >
                   111
                 </div>
                 <div
                   className={classes['character-level__level-number']}
-                  data-character='1'
+                  data-character={props.charStateData.frontChar}
                 >
                   222
                 </div>
                 <div
                   className={classes['character-level__level-number']}
-                  data-character='2'
+                  data-character={props.charStateData.rightChar}
                 >
                   333
                 </div>
               </div>
             </div>
           </header>
-          {/* <div className={classes['skills-list']}> */}
           <div className={classes['character-skills']}>
             {skillsStruct(0, props.charStateData.leftChar)}
             {skillsStruct(1, props.charStateData.frontChar)}

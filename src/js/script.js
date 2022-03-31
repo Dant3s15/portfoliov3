@@ -1,38 +1,34 @@
 'use strict';
-//TODO
-//-calculate char height based on screen size
-//TODO count level using front end map
-//TODO add skills from drop down menu
 
 //////////////
 //Character change mechanic
 //////////////
-const characterEls = document.querySelectorAll('.character');
-const characterColEl = document.querySelector('.character-col');
-// const characterImgFrontEl = document.querySelector('.char__img--front');
-const skillsWindow = document.querySelector('.skills-window');
+// const characterEls = document.querySelectorAll('.character');
+// const characterColEl = document.querySelector('.character-col');
+// // const characterImgFrontEl = document.querySelector('.char__img--front');
+// const skillsWindow = document.querySelector('.skills-window');
 
-const charPos = ['character__left', 'character__front', 'character__right'];
-const charDataset = [0, 1, 2];
+// const charPos = ['character__left', 'character__front', 'character__right'];
+// const charDataset = [0, 1, 2];
 
-const wrapRotate = function (num, direc) {
-  if (direc == 1) {
-    return (num + 1) % 3;
-  }
+// const wrapRotate = function (num, direc) {
+//   if (direc == 1) {
+//     return (num + 1) % 3;
+//   }
 
-  if (direc == -1) {
-    if (num == 0) {
-      return num + 2;
-    }
-    return (num - 1) % 3;
-  }
-};
+//   if (direc == -1) {
+//     if (num == 0) {
+//       return num + 2;
+//     }
+//     return (num - 1) % 3;
+//   }
+// };
 
-const skillsList = document.querySelectorAll('.skills-list');
-const characterList = document.querySelectorAll('.character');
-const charLevelsList = document.querySelectorAll(
-  '.character-level__level-number'
-);
+// const skillsList = document.querySelectorAll('.skills-list');
+// const characterList = document.querySelectorAll('.character');
+// const charLevelsList = document.querySelectorAll(
+//   '.character-level__level-number'
+// );
 
 //Character rotation
 
@@ -131,19 +127,19 @@ const charLevelsList = document.querySelectorAll(
 //   return false;
 // };
 
-const skillsWindowEl = document.querySelector('.skills-window');
+// const skillsWindowEl = document.querySelector('.skills-window');
 
-/****************** */
-//Cta hide
-/****************** */
-const characterOverlayEl = document.querySelector('.character__overlay');
-const characterSkillsEl = document.querySelector('.character-skills');
-const characterOverlay = document.querySelector('.character__overlay');
-const skillsWindowHeader = document.querySelector('.skills-window__header');
-const charactersEl = document.querySelector('.characters');
-const buttonEl = document.querySelector('.cta__button');
-const skillsText = document.querySelector('.skills-text');
-const skillsCard = document.querySelector('.skills-card');
+// /****************** */
+// //Cta hide
+// /****************** */
+// const characterOverlayEl = document.querySelector('.character__overlay');
+// const characterSkillsEl = document.querySelector('.character-skills');
+// const characterOverlay = document.querySelector('.character__overlay');
+// const skillsWindowHeader = document.querySelector('.skills-window__header');
+// const charactersEl = document.querySelector('.characters');
+// const buttonEl = document.querySelector('.cta__button');
+// const skillsText = document.querySelector('.skills-text');
+// const skillsCard = document.querySelector('.skills-card');
 
 // buttonEl.addEventListener('click', () => {
 //   characterOverlayEl.classList.toggle('character__overlay--hidden');
@@ -204,24 +200,24 @@ const skillsCard = document.querySelector('.skills-card');
 // });
 
 //Mouse swipe handler
-let dragging = false;
-const onMouseDown = () => {
-  dragging = true;
-};
-let mouseMovementX = 0;
+// let dragging = false;
+// const onMouseDown = () => {
+//   dragging = true;
+// };
+// let mouseMovementX = 0;
 
-const onMouseMove = e => {
-  if (!dragging) return;
-  mouseMovementX = e.movementX;
-};
+// const onMouseMove = e => {
+//   if (!dragging) return;
+//   mouseMovementX = e.movementX;
+// };
 
-const onMouseUp = e => {
-  if (Math.abs(mouseMovementX) > 1) {
-    if (mouseMovementX > 0) rotateRight();
-    if (mouseMovementX < 0) rotateLeft();
-  }
-  dragging = false;
-};
+// const onMouseUp = e => {
+//   if (Math.abs(mouseMovementX) > 1) {
+//     if (mouseMovementX > 0) rotateRight();
+//     if (mouseMovementX < 0) rotateLeft();
+//   }
+//   dragging = false;
+// };
 
 // const heroSection = document.querySelector('.section-hero');
 

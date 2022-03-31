@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-
 import classes from './Characters.module.scss';
 import Character from './Character';
 
@@ -7,7 +6,6 @@ const Characters = props => {
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
-  // const [selected, setSelected] = useState(false);
   const [ctaButtonClicked, setCtaButton] = useState('false');
   const [charState, setCharState] = useState({
     leftChar: 0,
@@ -15,15 +13,7 @@ const Characters = props => {
     rightChar: 2,
   });
 
-  // useEffect(() => {
-  //   if (ctaButtonClicked) props.onCtaButtonChange(ctaButtonClicked);
-  //   // return () => {
-  //   //   props.onCtaButtonChange(ctaButtonClicked);
-  //   // };
-  // }, [ctaButtonClicked]);
-
   const ctaButtonHandler = () => {
-    // console.log('click');
     if (!ctaButtonClicked) setCtaButton(true);
     else setCtaButton(false);
     calcCharWidth();
@@ -171,15 +161,10 @@ const Characters = props => {
   // });
 
   // *****************************************************
-
-  // const charactersRoot = document.getElementById('characters-root');
-
-  // console.log((frontChar === 1) & selected, 'check');
   let leftIsSelected = (leftChar === 1) & props.selectedState;
   let frontIsSelected = (frontChar === 1) & props.selectedState;
   let rightIsSelected = (rightChar === 1) & props.selectedState;
 
-  // console.log(props.selectedState);
   return (
     <div ref={charactersColRef} className={classes['character-col']}>
       <div

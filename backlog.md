@@ -23,3 +23,4 @@ TODO:
 - google log in
 - add categories to skills window
 - add bright light after cta button long hold
+- optimize images and icons
