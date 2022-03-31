@@ -34,12 +34,11 @@ const Characters = props => {
     };
   };
 
-  const charactersRef = useRef();
-  const charactersColRef = useRef();
+  const charactersRef = useRef(null);
+  const charactersColRef = useRef(null);
 
   const charStateDataHandler = data => {
     setCharState(data);
-    // return charState;
   };
 
   useEffect(() => {
@@ -52,50 +51,32 @@ const Characters = props => {
     charStateDataHandler(charStateData);
     props.charState(charStateData);
   }, [leftChar, frontChar, rightChar]);
-  // useEffect(() => {
-  //   const charStateData = {
-  //     leftChar,
-  //     frontChar,
-  //     rightChar,
-  //   };
-  //   charStateDataHandler(charStateData);
-  //   // props.onCharStateChange(charStateData);
-  // }, [leftChar, frontChar, rightChar]);
-  //TODO VVV
-  // useEffect(() => {
-  //   if (selected) {
-  //     document
-  //       .querySelector('.skills-window')
-  //       .classList.add('selected--skills');
-  //   } else {
-  //     document
-  //       .querySelector('.skills-window')
-  //       .classList.remove('selected--skills');
-  //   }
-  // }, [selected]);
 
-  // useEffect(() => {
-  //   if (ctaButtonClicked) {
-  //     props.onCtaButtonChange(ctaButtonClicked);
-  //   }
-  // }, [ctaButtonClicked]);
-  //TODO limit the calcCharWidth triggering too many times
   // ********************************************************
+  const debounce = (func, timeout = 300) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(this, args);
+      }, timeout);
+    };
+  };
+
+  const processChange = debounce(() => calcCharWidth());
+
   const calcCharWidth = () => {
-    // console.log(charactersRef.current);
-    let characterImgComputedWidth = parseInt(
-      window.getComputedStyle(charactersRef.current).width
-    );
+    let characterImgComputedWidth;
+    if (charactersRef.current) {
+      characterImgComputedWidth = charactersRef.current.offsetWidth;
+    }
     let charactersComputedWith = characterImgComputedWidth * 0.4;
 
     let root = document.documentElement;
     root.style.setProperty('--characters-width', charactersComputedWith + 'px');
   };
 
-  // window.addEventListener('DOMContentLoaded', event => {
-  //   calcCharWidth();
-  // });
-  window.addEventListener('resize', calcCharWidth);
+  window.addEventListener('resize', processChange);
 
   // ********************************************************
 
