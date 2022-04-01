@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import Skill from './Skill';
 import AllSkills from '../../../Utils/AllSkills';
 import classes from './Skills.module.scss';

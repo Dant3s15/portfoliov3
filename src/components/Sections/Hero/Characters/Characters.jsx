@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import classes from './Characters.module.scss';
 import Character from './Character';
+// import SelectedContext from '../../../../context/selected-context';
 
 const Characters = props => {
   const [leftChar, setLeftChar] = useState(0);
@@ -12,6 +13,7 @@ const Characters = props => {
     frontChar: 1,
     rightChar: 2,
   });
+  // const ctx = useContext(SelectedContext);
 
   const ctaButtonHandler = () => {
     if (!ctaButtonClicked) setCtaButton(true);
@@ -85,6 +87,10 @@ const Characters = props => {
 
   // *****************************************************
   const rotateCharactersHandler = e => {
+    // ctx.setSelected(true);
+    // console.log(ctx);
+    // ctx.isSelected = true;
+    // console.log(ctx.isSelected);
     const setChars = direc => {
       setLeftChar(wrapRotate(leftChar, direc));
       setFrontChar(wrapRotate(frontChar, direc));
@@ -95,21 +101,21 @@ const Characters = props => {
     let charData = +e.target.dataset.character;
 
     if (charData === 1) {
-      props.onSelectedChange(true);
+      props.selectedState.setSelected(true);
     }
 
     if (charData === 0) {
       direc = 1;
       setChars(direc);
-      props.onSelectedChange(false);
+      props.selectedState.setSelected(false);
     }
     if (charData === 2) {
       direc = -1;
       setChars(direc);
-      props.onSelectedChange(false);
+      props.selectedState.setSelected(false);
     }
     if (e.target === charactersRef.current) {
-      props.onSelectedChange(false);
+      props.selectedState.setSelected(false);
     }
   };
 
@@ -165,9 +171,9 @@ const Characters = props => {
   // });
 
   // *****************************************************
-  let leftIsSelected = (leftChar === 1) & props.selectedState;
-  let frontIsSelected = (frontChar === 1) & props.selectedState;
-  let rightIsSelected = (rightChar === 1) & props.selectedState;
+  let leftIsSelected = (leftChar === 1) & props.selectedState.isSelected;
+  let frontIsSelected = (frontChar === 1) & props.selectedState.isSelected;
+  let rightIsSelected = (rightChar === 1) & props.selectedState.isSelected;
 
   return (
     <div ref={charactersColRef} className={classes['character-col']}>
