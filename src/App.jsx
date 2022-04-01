@@ -10,6 +10,7 @@ import FutureChar from './components/Sections/FutureChar';
 function App() {
   const [selected, setSelected] = useState(false);
   const [whichSelected, setWhichSelected] = useState(null);
+  const [renderSection, setRenderSection] = useState(false);
 
   return (
     <SelectedContext.Provider
@@ -18,14 +19,16 @@ function App() {
         setSelected,
         whichIsSelected: whichSelected,
         setWhichSelected,
+        renderSection,
+        setRenderSection,
       }}
     >
       <Header></Header>
       <main>
         <Hero></Hero>
-        {whichSelected === 0 ? <CharacterCreator /> : ''}
-        {whichSelected === 1 ? <AboutMe /> : ''}
-        {whichSelected === 2 ? <FutureChar /> : ''}
+        {whichSelected === 0 && renderSection ? <CharacterCreator /> : ''}
+        {whichSelected === 1 && renderSection ? <AboutMe /> : ''}
+        {whichSelected === 2 && renderSection ? <FutureChar /> : ''}
       </main>
     </SelectedContext.Provider>
   );

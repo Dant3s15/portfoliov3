@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import Character from './Character';
+import SelectedContext from '../../../../context/selected-context';
 import ButtonBig from '../../../UI/ButtonBig';
 import classes from './Characters.module.scss';
 
@@ -8,6 +9,7 @@ const Characters = props => {
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
   const [ctaButtonClicked, setCtaButton] = useState('false');
+  const ctx = useContext(SelectedContext);
 
   const ctaButtonHandler = () => {
     if (!ctaButtonClicked) setCtaButton(true);
@@ -102,16 +104,19 @@ const Characters = props => {
       setChars(direc);
       props.selectedState.setSelected(false);
       renderContentHandler(null);
+      ctx.setRenderSection(false);
     }
     if (charData === 2) {
       direc = -1;
       setChars(direc);
       props.selectedState.setSelected(false);
       renderContentHandler(null);
+      ctx.setRenderSection(false);
     }
     if (e.target === charactersRef.current) {
       props.selectedState.setSelected(false);
       renderContentHandler(null);
+      ctx.setRenderSection(false);
     }
   };
 
@@ -174,15 +179,15 @@ const Characters = props => {
   // console.log(leftIsSelected, frontIsSelected, rightIsSelected);
   const isAnythingSelected = () => {
     if (leftIsSelected) {
-      return { isSelected: true, text: 'Create character' };
+      return { isSelected: true, text: 'Create character', moveTo: 'creator' };
     }
     if (frontIsSelected) {
-      return { isSelected: true, text: 'Level me up' };
+      return { isSelected: true, text: 'Level me up', moveTo: 'about-me' };
     } else return { isSelected: false };
   };
 
-  const frontSelectedHandler = {
-    text: 'Level me up',
+  const frontCharButtonHandler = () => {
+    ctx.setRenderSection(true);
   };
 
   return (
@@ -213,7 +218,9 @@ const Characters = props => {
       >
         {isAnythingSelected().isSelected ? (
           <ButtonBig
-            // onClick={ctaButtonHandler}
+            onClick={frontCharButtonHandler}
+            // animate={true}
+            moveTo={isAnythingSelected().moveTo}
             isAbsolute={{ isAbsolute: true }}
             text={isAnythingSelected().text}
           ></ButtonBig>

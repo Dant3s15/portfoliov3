@@ -1,10 +1,11 @@
 import { Fragment } from 'react';
+import classes from './AboutMe.module.scss';
 
 const AboutMe = props => {
   return (
-    <Fragment>
+    <div id='about-me' className={classes['about-me']}>
       <h1>FRONT</h1>
-    </Fragment>
+    </div>
   );
 };
 

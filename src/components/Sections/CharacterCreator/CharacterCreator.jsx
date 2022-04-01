@@ -1,5 +1,10 @@
+import classes from './CharacterCreator.module.scss';
 const CharacterCreator = props => {
-  return <h2>CREATOR</h2>;
+  return (
+    <div id='creator' className={classes.creator}>
+      <h2>CREATOR</h2>
+    </div>
+  );
 };
 
 export default CharacterCreator;
