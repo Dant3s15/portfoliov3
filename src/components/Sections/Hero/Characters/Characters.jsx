@@ -1,23 +1,13 @@
-import { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Character from './Character';
 import ButtonBig from '../../../UI/ButtonBig';
 import classes from './Characters.module.scss';
-// import SelectedContext from '../../../../context/selected-context';
 
 const Characters = props => {
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
   const [ctaButtonClicked, setCtaButton] = useState('false');
-  // const [charState, setCharState] = useState({
-  //   leftChar: 0,
-  //   frontChar: 1,
-  //   rightChar: 2,
-  // });
-  // const ctx = useContext(SelectedContext);
-  // const leftCharRef = useRef(null);
-  // const frontCharRef = useRef(null);
-  // const rightCharRef = useRef(null);
 
   const ctaButtonHandler = () => {
     if (!ctaButtonClicked) setCtaButton(true);
@@ -33,10 +23,6 @@ const Characters = props => {
   const charactersRef = useRef(null);
   const charactersColRef = useRef(null);
 
-  // const charStateDataHandler = data => {
-  //   setCharState(data);
-  // };
-
   useEffect(() => {
     const charStateData = {
       leftChar,
@@ -44,7 +30,6 @@ const Characters = props => {
       rightChar,
     };
 
-    // charStateDataHandler(charStateData);
     props.charState(charStateData);
   }, [leftChar, frontChar, rightChar]);
 
@@ -93,15 +78,10 @@ const Characters = props => {
 
   // *****************************************************
   const renderContentHandler = constPos => {
-    // console.log(frontIsSelected);
     props.selectedState.setWhichSelected(constPos);
   };
 
   const rotateCharactersHandler = e => {
-    // ctx.setSelected(true);
-    // console.log(ctx);
-    // ctx.isSelected = true;
-    // console.log(ctx.isSelected);
     const setChars = direc => {
       setLeftChar(wrapRotate(leftChar, direc));
       setFrontChar(wrapRotate(frontChar, direc));
@@ -122,14 +102,12 @@ const Characters = props => {
       setChars(direc);
       props.selectedState.setSelected(false);
       renderContentHandler(null);
-      // props.selectedState.setWhichSelected(0);
     }
     if (charData === 2) {
       direc = -1;
       setChars(direc);
       props.selectedState.setSelected(false);
       renderContentHandler(null);
-      // props.selectedState.setWhichSelected(2);
     }
     if (e.target === charactersRef.current) {
       props.selectedState.setSelected(false);
@@ -193,6 +171,20 @@ const Characters = props => {
   let frontIsSelected = (frontChar === 1) & props.selectedState.isSelected;
   let rightIsSelected = (rightChar === 1) & props.selectedState.isSelected;
 
+  // console.log(leftIsSelected, frontIsSelected, rightIsSelected);
+  const isAnythingSelected = () => {
+    if (leftIsSelected) {
+      return { isSelected: true, text: 'Create character' };
+    }
+    if (frontIsSelected) {
+      return { isSelected: true, text: 'Level me up' };
+    } else return { isSelected: false };
+  };
+
+  const frontSelectedHandler = {
+    text: 'Level me up',
+  };
+
   return (
     <div ref={charactersColRef} className={classes['character-col']}>
       <div
@@ -201,13 +193,8 @@ const Characters = props => {
         }`}
       >
         <div className={classes.cta}>
-          {/* <button
-            className={`${classes.cta__button} card--glass`}
-            // onClick={ctaButtonHandler}
-          >
-            <div className={classes['cta__button--text']}>Select player</div>
-          </button> */}
           <ButtonBig
+            isAbsolute={false}
             onClick={ctaButtonHandler}
             text='Select Character'
           ></ButtonBig>
@@ -224,6 +211,15 @@ const Characters = props => {
           ctaButtonClicked ? classes.hidden : ''
         }`}
       >
+        {isAnythingSelected().isSelected ? (
+          <ButtonBig
+            // onClick={ctaButtonHandler}
+            isAbsolute={{ isAbsolute: true }}
+            text={isAnythingSelected().text}
+          ></ButtonBig>
+        ) : (
+          ''
+        )}
         <Character
           // ref={leftCharRef}
           dataConstPos={CONST_POS[0]}

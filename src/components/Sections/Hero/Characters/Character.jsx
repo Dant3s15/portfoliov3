@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+// import ButtonBig from '../../../UI/ButtonBig';
 import classes from './Character.module.scss';
 import characterImage from '../../../../resources/img/character.png';
 const Character = props => {

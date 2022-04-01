@@ -11,6 +11,7 @@
   transform-origin: bottom;
   transition: var(--transition-all-medium);
   transition-property: transform, opacity;
+  position: relative;
 }
 .hidden {
   opacity: 0;

@@ -11,6 +11,15 @@
     transform: translateX(-100%);
   }
 }
+@keyframes slide-left-right {
+  0% {
+    transform: translateX(-200%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
 
 @keyframes rotate-left-right {
   0% {

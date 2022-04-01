@@ -2,7 +2,9 @@ import classes from './ButtonBig.module.scss';
 const ButtonBig = props => {
   return (
     <button
-      className={`${classes['button-big']} card--glass`}
+      className={`${classes['button-big']} ${
+        props.isAbsolute.isAbsolute ? classes.absolute : ''
+      } card--glass`}
       onClick={props.onClick}
     >
       <div className={classes['cta__button--text']}>{props.text}</div>

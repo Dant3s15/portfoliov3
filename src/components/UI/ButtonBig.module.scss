@@ -7,13 +7,13 @@
   font-size: 2rem;
   text-transform: uppercase;
   border: none;
-
   padding: 30px 55px;
   cursor: pointer;
   transition: all var(--transition-short) ease-out, color 0.1s ease-out,
     text-shadow 0.1s ease-out;
   transition-property: transform, opacity;
   z-index: 10;
+
   animation: flicker2 5s infinite alternate;
 
   @include corner-cut(28px, var(--color-primary), 4px, 17px);
@@ -75,4 +75,14 @@
 .button-big:hover,
 .button-big:hover ~ .cta__text {
   transform: scale(1.1);
+}
+
+.absolute {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
 }
