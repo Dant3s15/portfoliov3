@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useContext } from 'react';
-import classes from './Characters.module.scss';
 import Character from './Character';
+import ButtonBig from '../../../UI/ButtonBig';
+import classes from './Characters.module.scss';
 // import SelectedContext from '../../../../context/selected-context';
 
 const Characters = props => {
@@ -200,12 +201,16 @@ const Characters = props => {
         }`}
       >
         <div className={classes.cta}>
-          <button
+          {/* <button
             className={`${classes.cta__button} card--glass`}
-            onClick={ctaButtonHandler}
+            // onClick={ctaButtonHandler}
           >
             <div className={classes['cta__button--text']}>Select player</div>
-          </button>
+          </button> */}
+          <ButtonBig
+            onClick={ctaButtonHandler}
+            text='Select Character'
+          ></ButtonBig>
           <div className={`${classes['cta__text']}  shine`}>
             And let your adventure begin...
           </div>
