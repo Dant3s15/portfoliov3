@@ -108,7 +108,11 @@ const Characters = props => {
       setChars(direc);
       props.onSelectedChange(false);
     }
+    if (e.target === charactersRef.current) {
+      props.onSelectedChange(false);
+    }
   };
+
   // *****************************************************
   //TODO handle swipe gestures
   // let touchstartX = 0;
@@ -187,6 +191,7 @@ const Characters = props => {
 
       <div
         ref={charactersRef}
+        onClick={rotateCharactersHandler}
         className={`${classes.characters} ${
           ctaButtonClicked ? classes.hidden : ''
         }`}

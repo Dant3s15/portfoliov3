@@ -8,7 +8,7 @@ const Character = props => {
   };
 
   const curChar = classes[`character__${whichSide(props.data)}`];
-  //TODO unset selected when clicked on different char
+
   return (
     <div
       className={`${classes.character} ${curChar} ${
