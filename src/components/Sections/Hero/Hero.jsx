@@ -26,28 +26,22 @@ const Hero = props => {
   };
 
   return (
-    <SelectedContext.Consumer>
-      {ctx => {
-        return (
-          <section className={classes['section-hero']}>
-            <div className={classes['character-selection']}>
-              <Characters
-                onCtaButtonChange={ctaDataButtonHandler}
-                onSelectedChange={selectedStateHandler}
-                selectedState={ctx}
-                charState={charStateDataHandler}
-              ></Characters>
-              <SkillsList
-                className={classes['character-skills']}
-                onCtaButtonChange={ctaButtonClicked}
-                charStateData={charState}
-                onReceivedSelectState={selected}
-              ></SkillsList>
-            </div>
-          </section>
-        );
-      }}
-    </SelectedContext.Consumer>
+    <section className={classes['section-hero']}>
+      <div className={classes['character-selection']}>
+        <Characters
+          onCtaButtonChange={ctaDataButtonHandler}
+          onSelectedChange={selectedStateHandler}
+          selectedState={ctx}
+          charState={charStateDataHandler}
+        ></Characters>
+        <SkillsList
+          className={classes['character-skills']}
+          onCtaButtonChange={ctaButtonClicked}
+          charStateData={charState}
+          onReceivedSelectState={selected}
+        ></SkillsList>
+      </div>
+    </section>
   );
 };
 

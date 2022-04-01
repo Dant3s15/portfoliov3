@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import './App.css';
 import SelectedContext from './context/selected-context';
 import Header from './components/Sections/Header';
@@ -6,6 +6,7 @@ import Hero from './components/Sections/Hero/Hero';
 // import SkillsList from './components/Skills/Skills';
 // import Characters from './components/Characters/Characters';
 import AboutMe from './components/Sections/AboutMe';
+import CharacterCreator from './components/Sections/CharacterCreator/CharacterCreator';
 
 function App() {
   // const [charState, setCharState] = useState({
@@ -18,20 +19,27 @@ function App() {
   //   return charState;
   // };
   const [selected, setSelected] = useState(false);
+  const [whichSelected, setWhichSelected] = useState(null);
+
+  useEffect(() => {
+    console.log(whichSelected, 'tss');
+  }, [whichSelected]);
 
   return (
     <SelectedContext.Provider
       value={{
         isSelected: selected,
-        setSelected: setSelected,
+        setSelected,
+        whichIsSelected: whichSelected,
+        setWhichSelected,
       }}
     >
       <Header></Header>
       <main>
         <Hero></Hero>
       </main>
-      <AboutMe></AboutMe>
-      {/* <Section1></Section1> */}
+      {whichSelected === 1 ? <AboutMe /> : ''}
+      {whichSelected === 0 ? <CharacterCreator /> : ''}
     </SelectedContext.Provider>
   );
 }

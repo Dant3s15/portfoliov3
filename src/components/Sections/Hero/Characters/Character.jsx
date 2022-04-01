@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import classes from './Character.module.scss';
 import characterImage from '../../../../resources/img/character.png';
 const Character = props => {
@@ -7,10 +8,13 @@ const Character = props => {
     if (data === 2) return 'right';
   };
 
+  // const charRef = useRef(null);
+  // console.log(charRef);
   const curChar = classes[`character__${whichSide(props.data)}`];
 
   return (
     <div
+      // ref={charRef}
       className={`${classes.character} ${curChar} ${
         props.selected ? classes.selected : ''
       }`}
@@ -23,6 +27,7 @@ const Character = props => {
         {props.data}
       </div>
       <img
+        data-const-pos={props.dataConstPos}
         data-character={props.data}
         src={characterImage}
         alt='character image'

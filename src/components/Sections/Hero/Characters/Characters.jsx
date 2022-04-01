@@ -8,12 +8,15 @@ const Characters = props => {
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
   const [ctaButtonClicked, setCtaButton] = useState('false');
-  const [charState, setCharState] = useState({
-    leftChar: 0,
-    frontChar: 1,
-    rightChar: 2,
-  });
+  // const [charState, setCharState] = useState({
+  //   leftChar: 0,
+  //   frontChar: 1,
+  //   rightChar: 2,
+  // });
   // const ctx = useContext(SelectedContext);
+  // const leftCharRef = useRef(null);
+  // const frontCharRef = useRef(null);
+  // const rightCharRef = useRef(null);
 
   const ctaButtonHandler = () => {
     if (!ctaButtonClicked) setCtaButton(true);
@@ -29,9 +32,9 @@ const Characters = props => {
   const charactersRef = useRef(null);
   const charactersColRef = useRef(null);
 
-  const charStateDataHandler = data => {
-    setCharState(data);
-  };
+  // const charStateDataHandler = data => {
+  //   setCharState(data);
+  // };
 
   useEffect(() => {
     const charStateData = {
@@ -40,9 +43,11 @@ const Characters = props => {
       rightChar,
     };
 
-    charStateDataHandler(charStateData);
+    // charStateDataHandler(charStateData);
     props.charState(charStateData);
   }, [leftChar, frontChar, rightChar]);
+
+  const CONST_POS = [0, 1, 2];
 
   // ********************************************************
   const debounce = (func, timeout = 300) => {
@@ -86,6 +91,11 @@ const Characters = props => {
   };
 
   // *****************************************************
+  const renderContentHandler = constPos => {
+    // console.log(frontIsSelected);
+    props.selectedState.setWhichSelected(constPos);
+  };
+
   const rotateCharactersHandler = e => {
     // ctx.setSelected(true);
     // console.log(ctx);
@@ -102,20 +112,27 @@ const Characters = props => {
 
     if (charData === 1) {
       props.selectedState.setSelected(true);
+
+      renderContentHandler(+e.target.dataset.constPos);
     }
 
     if (charData === 0) {
       direc = 1;
       setChars(direc);
       props.selectedState.setSelected(false);
+      renderContentHandler(null);
+      // props.selectedState.setWhichSelected(0);
     }
     if (charData === 2) {
       direc = -1;
       setChars(direc);
       props.selectedState.setSelected(false);
+      renderContentHandler(null);
+      // props.selectedState.setWhichSelected(2);
     }
     if (e.target === charactersRef.current) {
       props.selectedState.setSelected(false);
+      renderContentHandler(null);
     }
   };
 
@@ -203,6 +220,8 @@ const Characters = props => {
         }`}
       >
         <Character
+          // ref={leftCharRef}
+          dataConstPos={CONST_POS[0]}
           data={leftChar}
           selected={leftIsSelected}
           name='Left'
@@ -210,6 +229,8 @@ const Characters = props => {
         ></Character>
 
         <Character
+          // ref={frontCharRef}
+          dataConstPos={CONST_POS[1]}
           data={frontChar}
           selected={frontIsSelected}
           name='Front'
@@ -217,6 +238,8 @@ const Characters = props => {
         ></Character>
 
         <Character
+          // ref={rightCharRef}
+          dataConstPos={CONST_POS[2]}
           selected={rightIsSelected}
           data={rightChar}
           name='Right'
