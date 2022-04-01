@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import classes from './Hero.module.scss';
 
-import Characters from '../../Characters/Characters';
-import SkillsList from '../../Skills/Skills';
+import Characters from './Characters/Characters';
+import SkillsList from './Skills/Skills';
 
 const Hero = props => {
   const [selected, setSelected] = useState(false);

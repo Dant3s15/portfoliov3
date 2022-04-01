@@ -24,3 +24,4 @@ TODO:
 - add categories to skills window
 - add bright light after cta button long hold
 - optimize images and icons
+- fix level up text animation bug

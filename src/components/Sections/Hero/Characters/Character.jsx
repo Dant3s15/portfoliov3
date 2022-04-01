@@ -1,5 +1,5 @@
 import classes from './Character.module.scss';
-import characterImage from '../../resources/img/character.png';
+import characterImage from '../../../../resources/img/character.png';
 const Character = props => {
   const whichSide = data => {
     if (data === 0) return 'left';

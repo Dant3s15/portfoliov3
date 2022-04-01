@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import Skill from './Skill';
-import AllSkills from '../Utils/AllSkills';
+import AllSkills from '../../../Utils/AllSkills';
 import classes from './Skills.module.scss';
 
 const SkillsList = props => {
