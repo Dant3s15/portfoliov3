@@ -2,19 +2,21 @@ import { useEffect, useRef, useContext } from 'react';
 import Skill from './Skill';
 import AllSkills from '../../../Utils/AllSkills';
 import classes from './Skills.module.scss';
+import SelectedContext from '../../../../context/selected-context';
 
 const SkillsList = props => {
   const skillsWindowRef = useRef();
+  const ctx = useContext(SelectedContext);
 
   useEffect(() => {
-    if (props.onReceivedSelectState) {
+    if (ctx.isSelected) {
       skillsWindowRef.current.classList.add(`${classes['selected--skills']}`);
     } else {
       skillsWindowRef.current.classList.remove(
         `${classes['selected--skills']}`
       );
     }
-  }, [props.onReceivedSelectState]);
+  }, [ctx]);
 
   const leftChar = [
     { ...AllSkills[3], lvl: 2 },

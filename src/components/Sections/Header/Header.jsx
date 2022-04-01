@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import classes from './Header.module.scss';
-import HamburgerIcon from '../Icons/HamburgerIcon';
-import CloseIcon from '../Icons/CloseIcon';
+import HamburgerIcon from '../../Icons/HamburgerIcon';
+import CloseIcon from '../../Icons/CloseIcon';
 
 const Header = props => {
   const [hamburgerState, setHamburgerState] = useState(false);
