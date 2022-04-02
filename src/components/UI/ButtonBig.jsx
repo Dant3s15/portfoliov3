@@ -16,12 +16,13 @@ const ButtonBig = props => {
     <button
       key={Math.random()}
       className={`${classes['button-big']}
-      ${props.isAbsolute.isAbsolute ? classes.absolute : ''}
+      ${props.isAbsolute && props.isAbsolute.isAbsolute ? classes.absolute : ''}
 
        card--glass`}
       onClick={props.onClick}
     >
       <a
+        className={classes['button-text']}
         // className={classes['cta__button--text']}
         href={`#${props.moveTo ? props.moveTo : ''}`}
       >
