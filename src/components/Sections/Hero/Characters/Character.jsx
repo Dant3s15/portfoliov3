@@ -15,7 +15,7 @@ const Character = props => {
   return (
     <div
       // ref={charRef}
-      className={`${classes.character} ${curChar} ${
+      className={`${classes.character} ${curChar ? curChar : ''} ${
         props.selected ? classes.selected : ''
       }`}
       onClick={e => {

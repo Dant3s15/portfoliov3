@@ -7,6 +7,20 @@
 //   overflow: hidden;
 // }
 
+.absolute-center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  // bottom: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+}
+
+.cancel-absolute {
+  position: relative;
+}
+
 .shine {
   background-image: linear-gradient(
     -75deg,

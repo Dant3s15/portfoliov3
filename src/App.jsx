@@ -3,7 +3,7 @@ import './App.css';
 import SelectedContext from './context/selected-context';
 import Header from './components/Sections/Header/Header';
 import Hero from './components/Sections/Hero/Hero';
-import AboutMe from './components/Sections/AboutMe';
+import AboutMe from './components/Sections/AboutMe/AboutMe';
 import CharacterCreator from './components/Sections/CharacterCreator/CharacterCreator';
 import FutureChar from './components/Sections/FutureChar';
 

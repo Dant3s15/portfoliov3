@@ -1,8 +1,9 @@
 import { useEffect, useRef, useContext } from 'react';
 import Skill from './Skill';
 import AllSkills from '../../../Utils/AllSkills';
-import classes from './Skills.module.scss';
 import SelectedContext from '../../../../context/selected-context';
+import CardGlass from '../../../UI/CardGlass';
+import classes from './Skills.module.scss';
 
 const SkillsList = props => {
   const skillsWindowRef = useRef();
