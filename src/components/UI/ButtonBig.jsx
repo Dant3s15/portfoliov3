@@ -1,31 +1,34 @@
 import 'animate.css';
 import classes from './ButtonBig.module.scss';
 const ButtonBig = props => {
-  return (
-    <a
-      key={Math.random()}
-      className={`${classes['button-big']} 
-      ${props.isAbsolute.isAbsolute ? classes.absolute : ''} card--glass`}
-      href={`#${props.moveTo ? props.moveTo : ''}`}
-      onClick={props.onClick}
-    >
-      {props.text}
-    </a>
-  );
   // return (
   //   <button
   //     key={Math.random()}
   //     className={`${classes['button-big']}
-  //     ${props.isAbsolute.isAbsolute ? classes.absolute : ''}
-
-  //      card--glass`}
+  //     ${props.isAbsolute.isAbsolute ? classes.absolute : ''} card--glass`}
+  //     href={`#${props.moveTo ? props.moveTo : ''}`}
   //     onClick={props.onClick}
   //   >
-  //     <div className={classes['cta__button--text']}>
-  //       <a href={`#${props.moveTo ? props.moveTo : ''}`}>{props.text}</a>
-  //     </div>
+  //     {props.text}
   //   </button>
   // );
+  return (
+    <button
+      key={Math.random()}
+      className={`${classes['button-big']}
+      ${props.isAbsolute.isAbsolute ? classes.absolute : ''}
+
+       card--glass`}
+      onClick={props.onClick}
+    >
+      <a
+        // className={classes['cta__button--text']}
+        href={`#${props.moveTo ? props.moveTo : ''}`}
+      >
+        {props.text}
+      </a>
+    </button>
+  );
 };
 
 export default ButtonBig;
