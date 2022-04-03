@@ -1,40 +1,29 @@
 import 'animate.css';
 import classes from './ButtonBig.module.scss';
+
 const ButtonBig = props => {
-  // return (
-  //   <button
-  //     key={Math.random()}
-  //     className={`${classes['button-big']}
-  //     ${props.isAbsolute.isAbsolute ? classes.absolute : ''} card--glass`}
-  //     href={`#${props.moveTo ? props.moveTo : ''}`}
-  //     onClick={props.onClick}
-  //   >
-  //     {props.text}
-  //   </button>
-  // );
   return (
     <button
+      type={props.type ? props.type : ''}
       key={Math.random()}
       className={`${classes['button-big']}
-      ${props.isAbsolute && props.isAbsolute.isAbsolute ? classes.absolute : ''}
+    ${props.isAbsolute && props.isAbsolute.isAbsolute ? classes.absolute : ''}
 
-       card--glass`}
+     card--glass`}
       onClick={props.onClick}
     >
-      <a
-        className={classes['button-text']}
-        // className={classes['cta__button--text']}
-        href={`#${props.moveTo ? props.moveTo : ''}`}
-      >
-        {props.text}
-      </a>
+      {props.type !== 'submit' ? (
+        <a
+          className={classes['button-text']}
+          href={`#${props.moveTo ? props.moveTo : ''}`}
+        >
+          {props.text}
+        </a>
+      ) : (
+        <p className={classes['button-text']}>{props.text}</p>
+      )}
     </button>
   );
 };
 
 export default ButtonBig;
-// ${
-//   props.animate
-//     ? 'animate__animated animate__fadeInUpBig animate__faster '
-//     : ''
-// }

@@ -6,13 +6,13 @@ const validate = values => {
   const errors = {};
   if (!values.name) {
     errors.name = 'Required';
-  } else if (values.name.length < 3) {
-    errors.name = 'More than 2 characters';
+  } else if (values.name.length < 2) {
+    errors.name = 'More than 1 characters';
   }
 
   if (!values.text) {
     errors.text = 'Required';
-  } else if (values.text.length < 3) {
+  } else if (values.text.length < 2) {
     errors.text = 'More than 2 characters';
   }
 
@@ -97,26 +97,11 @@ const ContactForm = props => {
               value={formik.values.text}
             />
           </div>
-          <ButtonBig text='Send'></ButtonBig>
+          <ButtonBig type='submit' text='Send'></ButtonBig>
         </form>
       </div>
     </div>
   );
-  // return (
-  //   <div className={classes['contact-me']}>
-  //     <div className={classes.container}>
-  //       <label htmlFor='name'>Name</label>
-  //       <div className='input'>
-  //         <input id='name' type='text' />
-  //       </div>
-  //       <label htmlFor='email'>E-mail</label>
-  //       <input id='email' type='email' />
-  //       <label htmlFor='text'>Message...</label>
-
-  //       <input id='text' type='text' />
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default ContactForm;
