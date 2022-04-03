@@ -25,3 +25,4 @@ TODO:
 - add bright light after cta button long hold
 - optimize images and icons
 - fix level up text animation bug
+- fix button corner transition

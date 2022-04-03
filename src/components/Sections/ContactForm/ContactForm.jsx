@@ -32,26 +32,45 @@ const ContactForm = props => {
       text: '',
     },
     validate,
-    onsubmit: values => {
+    onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
     },
   });
 
+  const checkErrors = inptName => {
+    if (formik.errors[inptName] && formik.touched[inptName]) {
+      return (
+        <div className={classes['form-error']}>{formik.errors[inptName]}</div>
+      );
+    }
+    return null;
+  };
+
+  const checkErrorState = inptName => {
+    if (formik.errors[inptName] && formik.touched[inptName]) {
+      return classes['input-error'];
+    } else return null;
+  };
+
+  const checkCorner = inptName => {
+    if (formik.errors[inptName] && formik.touched[inptName])
+      return classes['error-corner'];
+    else return null;
+  };
+
+  //TODO function to check errors return boolean
   return (
     <div className={classes['contact-me']}>
       <div className={classes.container}>
         <form onSubmit={formik.handleSubmit}>
           <div className={classes['name-email']}>
-            <div className={classes.name}>
+            <div className={`${classes.name} ${checkCorner('name')}`}>
               <div className={classes.labels}>
                 <label htmlFor='name'>Your Name</label>
-                {formik.errors.name && formik.touched.name ? (
-                  <div className={classes['form-error']}>
-                    {formik.errors.name}
-                  </div>
-                ) : null}
+                {checkErrors('name')}
               </div>
               <input
+                className={checkErrorState('name')}
                 id='name'
                 type='text'
                 name='name'
@@ -60,16 +79,13 @@ const ContactForm = props => {
                 value={formik.values.name}
               />
             </div>
-            <div className={classes.email}>
+            <div className={`${classes.email} ${checkCorner('email')}`}>
               <div className={classes.labels}>
                 <label htmlFor='email'>Your Email</label>
-                {formik.errors.email && formik.touched.email ? (
-                  <div className={classes['form-error']}>
-                    {formik.errors.email}
-                  </div>
-                ) : null}
+                {checkErrors('email')}
               </div>
               <input
+                className={`${checkErrorState('email')}`}
                 id='email'
                 type='email'
                 name='email'
@@ -79,16 +95,13 @@ const ContactForm = props => {
               />
             </div>
           </div>
-          <div className={classes.textfield}>
+          <div className={`${classes.textfield} ${checkCorner('text')}`}>
             <div className={classes.labels}>
               <label htmlFor='text'>Your Message</label>
-              {formik.errors.text && formik.touched.text ? (
-                <div className={classes['form-error']}>
-                  {formik.errors.text}
-                </div>
-              ) : null}
+              {checkErrors('text')}
             </div>
             <textarea
+              className={checkErrorState('text')}
               id='text'
               type='text'
               name='text'
