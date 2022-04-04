@@ -26,3 +26,4 @@ TODO:
 - optimize images and icons
 - fix level up text animation bug
 - fix button corner transition
+- add lazy loading on section elements

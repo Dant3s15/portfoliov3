@@ -3,4 +3,29 @@
 .creator {
   height: 100vh;
   background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .skill-selector__col {
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .image-selector__col {
+    width: 50%;
+    height: 100%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .image-selector {
+      width: 300px;
+      height: 100%;
+      overflow: hidden;
+      padding: 2.25rem;
+    }
+  }
 }
