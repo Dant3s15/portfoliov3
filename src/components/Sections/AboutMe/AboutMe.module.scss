@@ -4,6 +4,7 @@
   background-color: gray;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  position: relative;
 
   &-text {
     display: flex;

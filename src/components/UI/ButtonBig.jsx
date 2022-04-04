@@ -10,6 +10,7 @@ const ButtonBig = props => {
     ${props.isAbsolute && props.isAbsolute.isAbsolute ? classes.absolute : ''}
 
      card--glass`}
+      style={props.style}
       onClick={props.onClick}
     >
       {props.type !== 'submit' ? (

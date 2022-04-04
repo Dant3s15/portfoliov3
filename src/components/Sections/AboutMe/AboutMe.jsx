@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import Character from '../Hero/Characters/Character';
 import CardGlass from '../../UI/CardGlass';
 import ContactForm from '../ContactForm/ContactForm';
+import ButtonBig from '../../UI/ButtonBig';
 import classes from './AboutMe.module.scss';
 const AboutMe = props => {
   // const receiveClass = cls => {
@@ -28,6 +29,12 @@ const AboutMe = props => {
           </CardGlass>
         </div>
         <div className={classes['about-me-char']}>
+          <ButtonBig
+            isAbsolute={{ isAbsolute: true }}
+            style={{ top: '80%' }}
+            text='Contact Me'
+            moveTo='contact-me'
+          ></ButtonBig>
           <div className={`${classes['char__container']} cancel-absolute`}>
             <Character
               onRotateCharacters={() => {

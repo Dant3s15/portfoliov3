@@ -58,9 +58,8 @@ const ContactForm = props => {
     else return null;
   };
 
-  //TODO function to check errors return boolean
   return (
-    <div className={classes['contact-me']}>
+    <div id='contact-me' className={classes['contact-me']}>
       <div className={classes.container}>
         <form onSubmit={formik.handleSubmit}>
           <div className={classes['name-email']}>
