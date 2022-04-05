@@ -22,7 +22,12 @@
 
     .skills-menu {
       border: 1px solid red;
-      @include flexbox;
+      // @include flexbox;
+      flex-direction: column;
+      // gap: 24px;
+
+      overflow-y: scroll;
+      // box-sizing: border-box;
     }
   }
 }
