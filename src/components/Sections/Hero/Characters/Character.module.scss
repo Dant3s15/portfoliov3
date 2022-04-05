@@ -3,16 +3,16 @@
 .character {
   // width: 20%;
   // max-height: 50%;
-  display: flex;
+
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: 100%;
   // object-fit: contain;
   // object-fit: cover;
+  @include flexbox;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
   gap: 1.5rem;
   transition: all var(--transition-short-medium) ease-in-out;
   // height: 60%;

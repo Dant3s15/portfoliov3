@@ -2,13 +2,13 @@
 .card--glass {
   // border: 1px solid rgba(255, 255, 255, 0.18);
   // border-right: 7px solid rgba(255, 255, 255, 0.18);
-  max-width: 500px;
+  // max-width: 500px;
   min-height: 300px;
+  width: 100%;
+  height: 100%;
   // height: 50%;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flexbox;
   flex-direction: column;
   gap: 2.25rem;
   padding: 36px;

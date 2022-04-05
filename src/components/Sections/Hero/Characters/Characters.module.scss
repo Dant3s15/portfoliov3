@@ -3,9 +3,7 @@
 .characters {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexbox;
   align-self: end;
   z-index: -10;
   transform-origin: bottom;
@@ -21,9 +19,7 @@
 .character-col {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  @include flexbox(space-around);
   justify-self: center;
   transform-style: preserve-3d;
   position: relative;
@@ -37,9 +33,7 @@
 .characters {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexbox;
   align-self: end;
   z-index: -10;
   transform-origin: bottom;
@@ -52,9 +46,7 @@
 //************************************************
 
 .character__overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexbox;
   position: absolute;
   top: 0;
   left: 0;
@@ -72,10 +64,8 @@
   }
 
   .cta {
-    display: flex;
+    @include flexbox;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 1.5rem;
     transform: scale(1);
 
@@ -214,7 +204,5 @@
 
 .character-levels {
   width: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexbox;
 }
