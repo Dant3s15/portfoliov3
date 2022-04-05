@@ -2,7 +2,6 @@
 
 //TODO DON'T FORGET TO SET PARENT'S POSITION TO RELATIVE!
 @mixin corner-cut($pixels, $bg-color, $width, $translate) {
-  position: relative;
   clip-path: polygon(
     0% 100%,
     calc(100% - $pixels) 100%,

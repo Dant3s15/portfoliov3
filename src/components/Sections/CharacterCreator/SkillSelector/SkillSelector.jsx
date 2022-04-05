@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import classes from './SkillSelector.scss';
-//TODO classes not taking effect
+import classes from './SkillSelector.module.scss';
+
 const SkillSelector = props => {
   return (
     <Fragment>

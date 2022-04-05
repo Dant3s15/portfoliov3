@@ -37,7 +37,7 @@
     .name-email,
     .name,
     .email {
-      // position: relative;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -61,6 +61,7 @@
     }
 
     .textfield {
+      position: relative;
       width: 100%;
       height: 200px;
       @include corner-cut(20px, var(--color-primary), 4px, 26px);
