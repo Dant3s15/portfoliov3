@@ -1,6 +1,10 @@
 import classes from './Skill.module.scss';
 
 const Skill = props => {
+  const manageSkillHandler = () => {
+    console.log('click', props.data.id);
+  };
+
   return (
     <div className={classes.skill}>
       <div className={classes.icon}>
@@ -9,7 +13,9 @@ const Skill = props => {
       <div className={classes.name}>
         {props.data.name} {props.data.id}
       </div>
-      <button className={classes['manage-skill']}>+</button>
+      <button onClick={manageSkillHandler} className={classes['manage-skill']}>
+        +
+      </button>
     </div>
   );
 };

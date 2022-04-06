@@ -6,24 +6,36 @@ import classes from './SkillSelector.module.scss';
 
 const SkillSelector = props => {
   const [searchAllValue, setSearchAllValue] = useState(AllSkills);
-
+  const [addedSKills, setAddedSkills] = useState([]);
   const searchAllRef = useRef('');
+  // const [allSkillsValue, setAllSkillsValue] = useState();
 
-  useEffect(() => {
-    filterAllSkills();
-  }, []);
+  // useEffect(() => {
+  //   filterAllSkills();
+  // }, []);
+
+  // useEffect(() => {
+  //   setAllSkillsValue(searchAllRef.current.value.toLowerCase());
+  // }, [allSkillsValue]);
 
   const filterAllSkills = () => {
+    // console.log(searchAllRef.current.value.toLowerCase());
     setSearchAllValue(
       AllSkills.filter(skill => {
         if (skill.name) {
-          if (skill.name.toLowerCase().includes(searchAllRef.current.value)) {
+          if (
+            skill.name
+              .toLowerCase()
+              .includes(searchAllRef.current.value.toLowerCase())
+          ) {
             return <Skill key={skill.id} data={skill}></Skill>;
           }
         }
       })
     );
+    console.log(searchAllValue);
   };
+
   // const filterAllSkills = () => {
   //   console.log(searchAllValue);
   //   return searchAllValue.map(skill => {
@@ -60,15 +72,7 @@ const SkillSelector = props => {
             </div>
             <div className={classes['skills-menu']}>
               {searchAllValue.map(skill => {
-                if (skill.name) {
-                  if (
-                    skill.name
-                      .toLowerCase()
-                      .includes(searchAllRef.current.value)
-                  ) {
-                    return <Skill key={skill.id} data={skill}></Skill>;
-                  }
-                }
+                return <Skill key={skill.id} data={skill}></Skill>;
               })}
             </div>
             <div className={classes['skills-menu']}>Added skills list</div>
