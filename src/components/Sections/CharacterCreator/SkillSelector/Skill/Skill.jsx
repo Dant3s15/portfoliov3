@@ -13,7 +13,12 @@ const Skill = props => {
       <div className={classes.name}>
         {props.data.name} {props.data.id}
       </div>
-      <button onClick={manageSkillHandler} className={classes['manage-skill']}>
+      <button
+        onClick={() => {
+          props.onSkillChange(props.data.id);
+        }}
+        className={classes['manage-skill']}
+      >
         +
       </button>
     </div>

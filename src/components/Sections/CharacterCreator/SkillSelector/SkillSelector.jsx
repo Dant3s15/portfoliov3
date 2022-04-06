@@ -5,22 +5,29 @@ import Skill from './Skill/Skill';
 import classes from './SkillSelector.module.scss';
 
 const SkillSelector = props => {
-  const [searchAllValue, setSearchAllValue] = useState(AllSkills);
-  const [addedSKills, setAddedSkills] = useState([]);
+  const [allSkillsArr, setAllSkillsArr] = useState(AllSkills);
+  const [addedSkills, setAddedSkills] = useState([]);
   const searchAllRef = useRef('');
-  // const [allSkillsValue, setAllSkillsValue] = useState();
+  //TODO filtered skills to reflect minus added skills
+  useEffect(() => {
+    setAllSkillsArr(prevAllSkills => {
+      return [...prevAllSkills.filter(skill => !addedSkills.includes(skill))];
+    });
+  }, [addedSkills]);
 
-  // useEffect(() => {
-  //   filterAllSkills();
-  // }, []);
-
-  // useEffect(() => {
-  //   setAllSkillsValue(searchAllRef.current.value.toLowerCase());
-  // }, [allSkillsValue]);
+  const addedSkillsHandler = id => {
+    setAddedSkills(prevAddedSkills => {
+      return [
+        ...prevAddedSkills,
+        ...allSkillsArr.filter(skill => skill.id === id),
+      ];
+    });
+  };
 
   const filterAllSkills = () => {
     // console.log(searchAllRef.current.value.toLowerCase());
-    setSearchAllValue(
+
+    setAllSkillsArr(
       AllSkills.filter(skill => {
         if (skill.name) {
           if (
@@ -33,12 +40,11 @@ const SkillSelector = props => {
         }
       })
     );
-    console.log(searchAllValue);
   };
 
   // const filterAllSkills = () => {
-  //   console.log(searchAllValue);
-  //   return searchAllValue.map(skill => {
+  //   console.log(allSkillsArr);
+  //   return allSkillsArr.map(skill => {
   //     if (skill.name.toLowerCase().includes(searchAllRef.current.value)) {
   //       console.log(skill.name);
   //       return <Skill key={skill.id} data={skill}></Skill>;
@@ -71,11 +77,27 @@ const SkillSelector = props => {
               </div>
             </div>
             <div className={classes['skills-menu']}>
-              {searchAllValue.map(skill => {
-                return <Skill key={skill.id} data={skill}></Skill>;
+              {allSkillsArr.map(skill => {
+                return (
+                  <Skill
+                    onSkillChange={addedSkillsHandler}
+                    key={skill.id}
+                    data={skill}
+                  ></Skill>
+                );
               })}
             </div>
-            <div className={classes['skills-menu']}>Added skills list</div>
+            <div className={classes['skills-menu']}>
+              {addedSkills.map(skill => {
+                return (
+                  <Skill
+                    onSkillChange={addedSkillsHandler}
+                    key={skill.id}
+                    data={skill}
+                  ></Skill>
+                );
+              })}
+            </div>
           </div>
         </CardGlass>
       </div>
