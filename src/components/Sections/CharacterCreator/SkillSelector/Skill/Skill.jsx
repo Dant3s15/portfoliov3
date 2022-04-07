@@ -1,9 +1,9 @@
 import classes from './Skill.module.scss';
 
 const Skill = props => {
-  const manageSkillHandler = () => {
-    console.log('click', props.data.id);
-  };
+  // const manageSkillHandler = () => {
+  //   console.log('click', props.data.id);
+  // };
 
   return (
     <div className={classes.skill}>
