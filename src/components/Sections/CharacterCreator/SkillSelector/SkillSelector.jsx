@@ -33,7 +33,8 @@ const SkillSelector = props => {
           if (
             skill.name
               .toLowerCase()
-              .includes(searchAllRef.current.value.toLowerCase())
+              .includes(searchAllRef.current.value.toLowerCase()) &&
+            !addedSkills.includes(skill)
           ) {
             return <Skill key={skill.id} data={skill}></Skill>;
           }
