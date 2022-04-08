@@ -4,6 +4,12 @@ const Skill = props => {
   // const manageSkillHandler = () => {
   //   console.log('click', props.data.id);
   // };
+  const levelHandler = (
+    <div className={classes.level}>
+      <p className={classes['level-title']}>LVL</p>
+      <p>{props.data.level}</p>
+    </div>
+  );
 
   return (
     <div className={classes.skill}>
@@ -13,6 +19,7 @@ const Skill = props => {
       <div className={classes.name}>
         {props.data.name} {props.data.id}
       </div>
+      {props.data.level ? levelHandler : ''}
       <button
         onClick={() => {
           props.onSkillChange(props.data.id);

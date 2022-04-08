@@ -20,9 +20,15 @@ const SkillSelector = props => {
 
   //TODO BUG: when filtering list are not refreshed
   useEffect(() => {
-    setAllSkillsArr([
-      ...AllSkills.filter(skill => !addedSkills.includes(skill)),
-    ]);
+    setAllSkillsArr(_ => {
+      const newArr = [
+        ...AllSkills.filter(skill => !addedSkills.includes(skill)),
+      ];
+      newArr.forEach(skill => {
+        skill.level = null;
+      });
+      return newArr;
+    });
   }, [addedSkills]);
 
   // useEffect(() => {
@@ -37,28 +43,32 @@ const SkillSelector = props => {
 
   const addedSkillsHandler = id => {
     if (!addedSkills.some(skill => skill.id === id)) {
+      const level = window.prompt('level');
       setAddedSkills(prevAddedSkills => {
-        return [
+        const newArr = [
           ...prevAddedSkills,
           ...allSkillsArr.filter(skill => skill.id === id),
         ];
+
+        newArr.forEach(skill => {
+          if (skill.id === id) {
+            skill.level = level;
+          }
+        });
+
+        return newArr;
       });
 
       console.log('added');
     } else {
       setAddedSkills(prevAddedSkills => {
-        return [...prevAddedSkills.filter(skill => skill.id !== id)];
+        const newArr = [...prevAddedSkills.filter(skill => skill.id !== id)];
+
+        return newArr;
       });
+
       console.log('removed');
     }
-    //if skill is on added skills list then move it to
-
-    // setAllSkillsArr(prevAllSkills => {
-    //   return [
-    //     ...prevAllSkills,
-    //     ...addedSkills.filter(skill => skill.id === id),
-    //   ];
-    // });
   };
 
   //TODO
