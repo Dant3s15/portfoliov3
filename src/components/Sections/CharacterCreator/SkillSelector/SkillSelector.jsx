@@ -20,29 +20,45 @@ const SkillSelector = props => {
 
   //TODO BUG: when filtering list are not refreshed
   useEffect(() => {
-    setAllSkillsArr(prevAllSkills => {
-      return [...prevAllSkills.filter(skill => !addedSkills.includes(skill))];
-    });
+    setAllSkillsArr([
+      ...AllSkills.filter(skill => !addedSkills.includes(skill)),
+    ]);
   }, [addedSkills]);
+
+  // useEffect(() => {
+  //   setAllSkillsArr(prevAllSkills => {
+  //     return [...prevAllSkills.filter(skill => !addedSkills.includes(skill))];
+  //   });
+  // }, [allSkillsArr]);
 
   // useEffect(() => {
   //   filterAllSkills();
   // }, [searchAllRef]);
 
   const addedSkillsHandler = id => {
-    setAddedSkills(prevAddedSkills => {
-      return [
-        ...prevAddedSkills,
-        ...allSkillsArr.filter(skill => skill.id === id),
-      ];
-    });
+    if (!addedSkills.some(skill => skill.id === id)) {
+      setAddedSkills(prevAddedSkills => {
+        return [
+          ...prevAddedSkills,
+          ...allSkillsArr.filter(skill => skill.id === id),
+        ];
+      });
 
-    setAllSkillsArr(prevAllSkills => {
-      return [
-        ...prevAllSkills,
-        ...addedSkills.filter(skill => skill.id === id),
-      ];
-    });
+      console.log('added');
+    } else {
+      setAddedSkills(prevAddedSkills => {
+        return [...prevAddedSkills.filter(skill => skill.id !== id)];
+      });
+      console.log('removed');
+    }
+    //if skill is on added skills list then move it to
+
+    // setAllSkillsArr(prevAllSkills => {
+    //   return [
+    //     ...prevAllSkills,
+    //     ...addedSkills.filter(skill => skill.id === id),
+    //   ];
+    // });
   };
 
   //TODO
@@ -93,13 +109,14 @@ const SkillSelector = props => {
     );
   };
 
-  const renderSkills = skillsArr => {
+  const renderSkills = (skillsArr, sign) => {
     return skillsArr.map(skill => {
       return (
         <Skill
           onSkillChange={addedSkillsHandler}
           key={skill.id}
           data={skill}
+          sign={sign}
         ></Skill>
       );
     });
@@ -136,13 +153,13 @@ const SkillSelector = props => {
             </div>
             <div className={classes['skills-menu']}>
               {allSkillsIsFiltered === false
-                ? renderSkills(allSkillsArr)
-                : renderSkills(allSkillsArrFiltered)}
+                ? renderSkills(allSkillsArr, '+')
+                : renderSkills(allSkillsArrFiltered, '+')}
             </div>
             <div className={classes['skills-menu']}>
               {addedSkillsIsFiltered === false
-                ? renderSkills(addedSkills)
-                : renderSkills(addedSkillsFiltered)}
+                ? renderSkills(addedSkills, '-')
+                : renderSkills(addedSkillsFiltered, '-')}
               {/* {renderSkills(addedSkills)} */}
             </div>
           </div>

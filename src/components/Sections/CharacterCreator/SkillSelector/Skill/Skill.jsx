@@ -19,7 +19,7 @@ const Skill = props => {
         }}
         className={classes['manage-skill']}
       >
-        +
+        {props.sign}
       </button>
     </div>
   );
