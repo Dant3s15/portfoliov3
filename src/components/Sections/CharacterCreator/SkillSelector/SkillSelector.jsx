@@ -2,6 +2,7 @@ import { Fragment, useRef, useState, useEffect } from 'react';
 import CardGlass from '../../../UI/CardGlass';
 import AllSkills from '../../../Utils/AllSkills';
 import Skill from './Skill/Skill';
+import SkillAddWindow from './SkillAddWindow';
 import classes from './SkillSelector.module.scss';
 
 const SkillSelector = props => {
@@ -12,6 +13,7 @@ const SkillSelector = props => {
   const [addedSkills, setAddedSkills] = useState([]);
   const [addedSkillsFiltered, setAddedSkillsFiltered] = useState(addedSkills);
   const [addedSkillsIsFiltered, setAddedSkillsIsFiltered] = useState(false);
+  const [isLevel, setIsLevel] = useState(false);
 
   const searchAllRef = useRef('');
   const searchAddedRef = useRef('');
@@ -44,6 +46,8 @@ const SkillSelector = props => {
   const addedSkillsHandler = id => {
     if (!addedSkills.some(skill => skill.id === id)) {
       const level = window.prompt('level');
+      setIsLevel(true);
+
       setAddedSkills(prevAddedSkills => {
         const newArr = [
           ...prevAddedSkills,
@@ -119,6 +123,10 @@ const SkillSelector = props => {
     );
   };
 
+  const addingSkillWindowHandler = () => {
+    return <SkillAddWindow skillData={AllSkills[1]}></SkillAddWindow>;
+  };
+
   const renderSkills = (skillsArr, sign) => {
     return skillsArr.map(skill => {
       return (
@@ -136,6 +144,7 @@ const SkillSelector = props => {
     <Fragment>
       <div className={classes['skill-selector']}>
         <CardGlass>
+          {addingSkillWindowHandler()}
           <div className={classes['skills-selector__grid']}>
             <div className={classes['title-row']}>
               All Skills
