@@ -3,16 +3,19 @@ import { useState, useRef } from 'react';
 import classes from './SkillAddWindow.module.scss';
 const SkillAddWindow = props => {
   const [level, setLevel] = useState(null);
+
   const levelSliderRef = useRef();
 
   const getLevel = level => {
     setLevel(level);
     props.skillData.level = level;
+    props.onSetLevel(true);
     console.log(level);
     return level;
   };
   const cancelHandler = () => {
     props.skillData.level = undefined;
+    props.onSetLevel(false);
     props.onCancel();
   };
   // const render10buttons = () => {

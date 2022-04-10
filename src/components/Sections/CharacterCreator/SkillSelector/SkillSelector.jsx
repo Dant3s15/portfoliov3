@@ -16,7 +16,8 @@ const SkillSelector = props => {
 
   const [isAdding, setIsAdding] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-  const [skillAddingData, setSkillAddingData] = useState(AllSkills[2]);
+  const [skillAddingData, setSkillAddingData] = useState(AllSkills[0]);
+  const [levelIsSet, setlevelIsSet] = useState(false);
 
   const searchAllRef = useRef('');
   const searchAddedRef = useRef('');
@@ -101,7 +102,7 @@ const SkillSelector = props => {
           // const noLevel = prevAllSkills.map(skill => (skill.level = undefined));
           return sortSkills([
             ...addedSkills.filter(curSkill => {
-              curSkill.level = null;
+              skill.level = null;
               return curSkill === skill;
             }),
             ...prevAllSkills,
@@ -112,9 +113,11 @@ const SkillSelector = props => {
   };
 
   const skillAddHandler = skill => {
-    setIsAdded(true);
-    skillChangeHandler(skill);
-    console.log('handling');
+    if (levelIsSet) {
+      setIsAdded(true);
+      skillChangeHandler(skill);
+      console.log('handling');
+    }
     // setIsAdding(false);
   };
 
@@ -146,6 +149,7 @@ const SkillSelector = props => {
         <CardGlass>
           {isAdding && (
             <SkillAddWindow
+              onSetLevel={setlevelIsSet}
               onCancel={cancelAddingHandler}
               onSkillAdd={skillAddHandler}
               skillData={skillAddingData}
