@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState, useEffect } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import CardGlass from '../../../UI/CardGlass';
 import AllSkills from '../../../Utils/AllSkills';
 import Skill from './Skill/Skill';
@@ -10,11 +10,13 @@ const SkillSelector = props => {
   const [allSkillsArrFiltered, setAllSkillsArrFiltered] =
     useState(allSkillsArr);
   const [allSkillsIsFiltered, setAllSkillsIsFiltered] = useState(false);
-
   const [addedSkills, setAddedSkills] = useState([]);
   const [addedSkillsFiltered, setAddedSkillsFiltered] = useState(addedSkills);
   const [addedSkillsIsFiltered, setAddedSkillsIsFiltered] = useState(false);
-  const [isLevel, setIsLevel] = useState(false);
+
+  const [isAdding, setIsAdding] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
+  const [skillAddingData, setSkillAddingData] = useState(AllSkills[2]);
 
   const searchAllRef = useRef('');
   const searchAddedRef = useRef('');
@@ -43,45 +45,87 @@ const SkillSelector = props => {
     }
   };
 
+  const cancelAddingHandler = e => {
+    setIsAdding(false);
+    setIsAdded(false);
+  };
+
   const skillChangeHandler = skill => {
     const sortSkills = arr => {
       return arr.sort((a, b) => a.name.localeCompare(b.name));
     };
+    console.log(isAdding, isAdded);
+    //SKILL ADDING
 
     if (allSkillsArr.some(curSkill => curSkill === skill)) {
-      setAllSkillsArr(prevAllSkills => {
-        return sortSkills(prevAllSkills.filter(curSkill => curSkill !== skill));
-      });
-      setAllSkillsArrFiltered(prevAllSkills => {
-        return sortSkills(prevAllSkills.filter(curSkill => curSkill !== skill));
-      });
+      setIsAdding(true);
+      setSkillAddingData(skill);
+      if (isAdding & !isAdded) {
+        console.log('adding');
+        setAllSkillsArr(prevAllSkills => {
+          return sortSkills(
+            prevAllSkills.filter(curSkill => curSkill !== skill)
+          );
+        });
+        setAllSkillsArrFiltered(prevAllSkills => {
+          return sortSkills(
+            prevAllSkills.filter(curSkill => curSkill !== skill)
+          );
+        });
 
-      setAddedSkills(prevAddedSKills => {
-        return sortSkills([
-          ...allSkillsArr.filter(curSkill => curSkill === skill),
-          ...prevAddedSKills,
-        ]);
-      });
-    } else {
-      setAddedSkills(prevAllSkills => {
-        return sortSkills(prevAllSkills.filter(curSkill => curSkill !== skill));
-      });
-      setAddedSkillsFiltered(prevAllSkills => {
-        return sortSkills(prevAllSkills.filter(curSkill => curSkill !== skill));
-      });
+        setAddedSkills(prevAddedSKills => {
+          return sortSkills([
+            ...allSkillsArr.filter(curSkill => curSkill === skill),
+            ...prevAddedSKills,
+          ]);
+        });
+        setIsAdding(false);
+        setIsAdded(false);
+      }
+    } else if (allSkillsArr.some(curSkill => curSkill !== skill)) {
+      //SKILL REMOVING
+      if (!isAdding) {
+        console.log('removing');
+        setAddedSkills(prevAllSkills => {
+          return sortSkills(
+            prevAllSkills.filter(curSkill => curSkill !== skill)
+          );
+        });
+        setAddedSkillsFiltered(prevAllSkills => {
+          return sortSkills(
+            prevAllSkills.filter(curSkill => curSkill !== skill)
+          );
+        });
 
-      setAllSkillsArr(prevAddedSKills => {
-        return sortSkills([
-          ...addedSkills.filter(curSkill => curSkill === skill),
-          ...prevAddedSKills,
-        ]);
-      });
+        setAllSkillsArr(prevAllSkills => {
+          // const noLevel = prevAllSkills.map(skill => (skill.level = undefined));
+          return sortSkills([
+            ...addedSkills.filter(curSkill => {
+              curSkill.level = null;
+              return curSkill === skill;
+            }),
+            ...prevAllSkills,
+          ]);
+        });
+      }
     }
   };
 
-  const addingSkillWindowHandler = () => {
-    return <SkillAddWindow skillData={AllSkills[1]}></SkillAddWindow>;
+  const skillAddHandler = skill => {
+    setIsAdded(true);
+    skillChangeHandler(skill);
+    console.log('handling');
+    // setIsAdding(false);
   };
+
+  // const addingSkillWindowHandler = () => {
+  //   return (
+  //     <SkillAddWindow
+  //       onSkillAdd={skillAddHandler}
+  //       skillData={AllSkills[1]}
+  //     ></SkillAddWindow>
+  //   );
+  // };
 
   const renderSkills = (skillsArr, sign) => {
     return skillsArr.map(skill => {
@@ -100,7 +144,13 @@ const SkillSelector = props => {
     <Fragment>
       <div className={classes['skill-selector']}>
         <CardGlass>
-          {/* {addingSkillWindowHandler()} */}
+          {isAdding && (
+            <SkillAddWindow
+              onCancel={cancelAddingHandler}
+              onSkillAdd={skillAddHandler}
+              skillData={skillAddingData}
+            ></SkillAddWindow>
+          )}
           <div className={classes['skills-selector__grid']}>
             <div className={classes['title-row']}>
               All Skills
