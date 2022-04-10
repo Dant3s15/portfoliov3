@@ -6,6 +6,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid red;
   position: absolute;
+  z-index: 100;
   @include flexbox;
 
   .skill-add-window {

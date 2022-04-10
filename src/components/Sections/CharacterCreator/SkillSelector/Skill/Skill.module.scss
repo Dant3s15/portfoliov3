@@ -1,12 +1,14 @@
 @import '../../../../../scss/style.scss';
 .skill {
+  @include corner-cut(20px, var(--color-primary), 4px, 17px, none);
   // border: 1px solid red;
+  z-index: 10;
   background-color: var(--color-gray);
-  @include corner-cut(20px, var(--color-primary), 4px, 17px);
   @include flexbox(space-evenly);
   // gap: 16px;
   width: 100%;
   height: 50px;
+
   &:not(:last-child) {
     margin-bottom: 8px;
   }
@@ -33,13 +35,21 @@
   .manage-skill {
     // border: 1px solid red;
     height: 100%;
-
+    color: var(--color-primary);
     min-width: 50px;
     min-height: 50px;
     font-size: 2.25rem;
+    background-color: var(--color-dark);
+
+    // &:hover {
+    //   transform: scale(1.5);
+    // }
+
+    // z-index: 999;
     // width: auto;
   }
   .level {
+    color: var(--color-primary);
     width: 50px;
     height: 50px;
     // border: 1px solid red;
