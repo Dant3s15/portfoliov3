@@ -10,7 +10,7 @@ const SkillAddWindow = props => {
     setLevel(level);
     props.skillData.level = level;
     props.onSetLevel(true);
-    console.log(level);
+    // console.log(level);
     return level;
   };
   const cancelHandler = () => {
@@ -18,6 +18,7 @@ const SkillAddWindow = props => {
     props.onSetLevel(false);
     props.onCancel();
   };
+
   // const render10buttons = () => {
   //   let arr = [];
   //   for (let i = 1; i <= 10; i++) {

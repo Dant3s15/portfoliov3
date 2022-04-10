@@ -55,14 +55,14 @@ const SkillSelector = props => {
     const sortSkills = arr => {
       return arr.sort((a, b) => a.name.localeCompare(b.name));
     };
-    console.log(isAdding, isAdded);
+    // console.log(isAdding, isAdded);
     //SKILL ADDING
 
     if (allSkillsArr.some(curSkill => curSkill === skill)) {
       setIsAdding(true);
       setSkillAddingData(skill);
       if (isAdding & !isAdded) {
-        console.log('adding');
+        // console.log('adding');
         setAllSkillsArr(prevAllSkills => {
           return sortSkills(
             prevAllSkills.filter(curSkill => curSkill !== skill)
@@ -86,7 +86,7 @@ const SkillSelector = props => {
     } else if (allSkillsArr.some(curSkill => curSkill !== skill)) {
       //SKILL REMOVING
       if (!isAdding) {
-        console.log('removing');
+        // console.log('removing');
         setAddedSkills(prevAllSkills => {
           return sortSkills(
             prevAllSkills.filter(curSkill => curSkill !== skill)
@@ -102,7 +102,7 @@ const SkillSelector = props => {
           // const noLevel = prevAllSkills.map(skill => (skill.level = undefined));
           return sortSkills([
             ...addedSkills.filter(curSkill => {
-              skill.level = null;
+              skill.level = undefined;
               return curSkill === skill;
             }),
             ...prevAllSkills,
@@ -110,13 +110,17 @@ const SkillSelector = props => {
         });
       }
     }
+    setlevelIsSet(false);
   };
-
+  console.log(addedSkills);
   const skillAddHandler = skill => {
     if (levelIsSet) {
       setIsAdded(true);
       skillChangeHandler(skill);
-      console.log('handling');
+      // console.log('handling');
+    } else {
+      //TODO select skill level popup
+      console.log('scroll');
     }
     // setIsAdding(false);
   };
