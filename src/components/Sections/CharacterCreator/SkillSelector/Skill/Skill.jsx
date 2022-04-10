@@ -22,7 +22,7 @@ const Skill = props => {
       {props.data.level ? levelHandler : ''}
       <button
         onClick={() => {
-          props.onSkillChange(props.data.id);
+          props.onSkillChange(props.data);
         }}
         className={classes['manage-skill']}
       >
