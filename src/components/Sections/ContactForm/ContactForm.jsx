@@ -24,6 +24,18 @@ const validate = values => {
   return errors;
 };
 
+const sendEmail = values => {
+  Email.send({
+    Host: 'smtp.gmail.com',
+    Username: 'portfoliod3s@gmail.com',
+    Password: 'ZAQ!2wsx',
+    To: 'damiansobierajdev@gmail.com',
+    From: values.email,
+    Subject: 'Contact from Portfolio',
+    Body: `${values.email} ${values.text}`,
+  }).then(message => alert(message));
+};
+
 const ContactForm = props => {
   const formik = useFormik({
     initialValues: {
@@ -32,8 +44,19 @@ const ContactForm = props => {
       text: '',
     },
     validate,
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async values => {
+      sendEmail(values);
+      const response = await fetch(
+        'https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app/emails.json',
+        {
+          method: 'POST',
+          body: JSON.stringify(values, null, 2),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      const data = await response.json();
     },
   });
 
