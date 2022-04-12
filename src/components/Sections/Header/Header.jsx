@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import classes from './Header.module.scss';
 import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
@@ -15,6 +15,10 @@ const Header = props => {
       console.log('hamburger closed');
     }
   };
+
+  const googleLoginRef = useRef();
+
+  const googleLoginHandler = () => {};
 
   return (
     <header className={classes.header}>
@@ -44,6 +48,13 @@ const Header = props => {
             <a href='#' className={classes.nav__item}>
               SECTION4
             </a>
+            <button
+              onClick={googleLoginHandler}
+              ref={googleLoginRef}
+              id='login'
+            >
+              Google
+            </button>
           </nav>
           <button
             className={classes['hamburger-button']}

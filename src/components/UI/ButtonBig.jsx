@@ -17,6 +17,7 @@ const ButtonBig = props => {
         <a
           className={classes['button-text']}
           href={`#${props.moveTo ? props.moveTo : ''}`}
+          // href={props.moveTo ? `#${props.moveTo}` : ''}
         >
           {props.text}
         </a>

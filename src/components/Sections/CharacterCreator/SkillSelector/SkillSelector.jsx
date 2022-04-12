@@ -3,6 +3,7 @@ import CardGlass from '../../../UI/CardGlass';
 import AllSkills from '../../../Utils/AllSkills';
 import Skill from './Skill/Skill';
 import SkillAddWindow from './SkillAddWindow';
+import ButtonBig from '../../../UI/ButtonBig';
 import classes from './SkillSelector.module.scss';
 
 const SkillSelector = props => {
@@ -112,7 +113,7 @@ const SkillSelector = props => {
     }
     setlevelIsSet(false);
   };
-  console.log(addedSkills);
+  // console.log(addedSkills);
   const skillAddHandler = skill => {
     if (levelIsSet) {
       setIsAdded(true);
@@ -133,6 +134,26 @@ const SkillSelector = props => {
   //     ></SkillAddWindow>
   //   );
   // };
+  const saveCharHandler = async () => {
+    if (addedSkills.length === 0) {
+      console.log('add Skills');
+      return;
+    } else {
+      const response = await fetch(
+        'https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app/saved-characters.json',
+        {
+          method: 'POST',
+          body: JSON.stringify(addedSkills),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data.name);
+      // console.log(JSON.stringify(addedSkills));
+    }
+  };
 
   const renderSkills = (skillsArr, sign) => {
     return skillsArr.map(skill => {
@@ -198,6 +219,11 @@ const SkillSelector = props => {
               {/* {renderSkills(addedSkills)} */}
             </div>
           </div>
+          <ButtonBig
+            onClick={saveCharHandler}
+            type='submit'
+            text='Save Character'
+          ></ButtonBig>
         </CardGlass>
       </div>
     </Fragment>
