@@ -18,7 +18,7 @@ const Header = props => {
 
   const googleLoginRef = useRef();
 
-  const googleLoginHandler = () => {};
+  const googleLoginHandler = e => {};
 
   return (
     <header className={classes.header}>
@@ -49,6 +49,7 @@ const Header = props => {
               SECTION4
             </a>
             <button
+              className={classes.nav__item}
               onClick={googleLoginHandler}
               ref={googleLoginRef}
               id='login'

@@ -1,4 +1,20 @@
 'use strict';
+// import { initializeApp } from 'firebase/app';
+// const firebaseConfig = {
+//   hosting: {
+//     public: 'dist',
+//     ignore: ['firebase.json', '**/.*', '**/node_modules/**'],
+//   },
+//   emulators: {
+//     hosting: {
+//       port: 5000,
+//     },
+//     ui: {
+//       enabled: true,
+//     },
+//   },
+// };
+// const app = initializeApp(firebaseConfig);
 
 //////////////
 //Character change mechanic
