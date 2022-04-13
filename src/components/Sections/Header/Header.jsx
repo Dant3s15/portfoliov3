@@ -1,7 +1,8 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import classes from './Header.module.scss';
 import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
+import GoogleLogIn from '../../Icons/google/GoogleLogIn';
 
 const Header = props => {
   const [hamburgerState, setHamburgerState] = useState(false);
@@ -15,10 +16,6 @@ const Header = props => {
       console.log('hamburger closed');
     }
   };
-
-  const googleLoginRef = useRef();
-
-  const googleLoginHandler = e => {};
 
   return (
     <header className={classes.header}>
@@ -48,14 +45,29 @@ const Header = props => {
             <a href='#' className={classes.nav__item}>
               SECTION4
             </a>
-            <button
-              className={classes.nav__item}
-              onClick={googleLoginHandler}
-              ref={googleLoginRef}
-              id='login'
-            >
-              Google
-            </button>
+            {!props.data.google.user && (
+              <button
+                className={`${classes.nav__item} ${classes.google}`}
+                onClick={props.data.google.signInWithGoogle}
+                id='login'
+              >
+                <GoogleLogIn></GoogleLogIn>
+                <p>Sign in with Google</p>
+              </button>
+            )}
+            {props.data.google.auth.currentUser && (
+              <button
+                className={`${classes.nav__item} ${classes.google}`}
+                onClick={() => props.data.google.auth.signOut()}
+                // ref={googleLoginRef}
+                id='login'
+              >
+                <GoogleLogIn></GoogleLogIn>
+                <p>Sign Out</p>
+              </button>
+            )}
+            {/* <GoogleButton googleData={props.googleData}></GoogleButton> */}
+            {/* <SignIn></SignIn> */}
           </nav>
           <button
             className={classes['hamburger-button']}
@@ -94,5 +106,47 @@ const Header = props => {
     </header>
   );
 };
+
+// function GoogleButton(props) {
+//   console.log(props.LoggedIn);
+//   if (!props.LoggedIn) {
+//     return (
+//       <button
+//         className={`${classes.nav__item} ${classes.google}`}
+//         onClick={props.googleData.signInWithGoogle}
+//         // ref={googleLoginRef}
+//         id='login'
+//       >
+//         <GoogleLogIn></GoogleLogIn>
+//         <p>Sign in with Google</p>
+//       </button>
+//     );
+//   } else {
+//     return (
+//       <button
+//         className={`${classes.nav__item} ${classes.google}`}
+//         onClick={props.googleData.auth.signOut()}
+//         // ref={googleLoginRef}
+//         id='login'
+//       >
+//         <GoogleLogIn></GoogleLogIn>
+//         <p>Sign Out</p>
+//       </button>
+//     );
+//   }
+// }
+
+// function SignIn() {
+//   const signInWithGoogle = () => {
+//     const provider = new GoogleAuthProvider();
+//     signInWithPopup(auth, provider);
+//   };
+
+//   return (
+//     <button onClick={signInWithGoogle} className={classes.nav__item} id='login'>
+//       <GoogleLogIn></GoogleLogIn> <p>Sign in with Google</p>
+//     </button>
+//   );
+// }
 
 export default Header;

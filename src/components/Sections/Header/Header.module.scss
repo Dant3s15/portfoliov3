@@ -83,6 +83,9 @@
   text-decoration: none;
   color: var(--color-gray);
   transition: all var(--transition-short);
+  &__item {
+    @include flexbox;
+  }
   &__item:link,
   &__item:visited {
     overflow: hidden;
@@ -171,6 +174,12 @@
     left: calc(100% - 28px);
     // border-right: 7px solid var(--color-primary);
   }
+}
+
+.google {
+  background-color: white;
+  color: black;
+  padding: 0 10px;
 }
 //TODO
 // *:focus {

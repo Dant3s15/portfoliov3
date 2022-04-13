@@ -13,7 +13,12 @@ import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getFirestore } from 'firebase/firestore';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+} from 'firebase/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -40,6 +45,10 @@ function App() {
   const [renderSection, setRenderSection] = useState(false);
   const [user] = useAuthState(auth);
 
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+  };
   return (
     <Fragment>
       <SelectedContext.Provider
@@ -52,12 +61,19 @@ function App() {
           setRenderSection,
         }}
       >
-        <Header></Header>
+        <Header
+          data={{
+            google: {
+              user,
+              auth,
+              signInWithGoogle,
+            },
+          }}
+        ></Header>
 
         <main>
           <Hero></Hero>
-          {user ? <SignOut></SignOut> : <SignIn></SignIn>}
-
+          {/* {user ? <SignOut user={user}></SignOut> : <SignIn></SignIn>} */}
           {whichSelected === 0 && renderSection ? <CharacterCreator /> : ''}
           {whichSelected === 1 && renderSection ? <AboutMe /> : ''}
           {whichSelected === 2 && renderSection ? <FutureChar /> : ''}
@@ -77,9 +93,13 @@ function SignIn() {
   return <button onClick={signInWithGoogle}>Sign in with Google</button>;
 }
 
-function SignOut() {
+function SignOut(props) {
   return (
-    auth.currentUser && <button onClick={() => auth.signOut()}>Sign Out</button>
+    auth.currentUser && (
+      <button onClick={() => auth.signOut()}>
+        {` Sign Out, hello ${props.user.displayName}`}
+      </button>
+    )
   );
 }
 

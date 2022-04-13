@@ -27,3 +27,5 @@ TODO:
 - fix level up text animation bug
 - fix button corner transition
 - add lazy loading on section elements
+- add parallax using react spring
+- add projects section with card like showcases of projects and skills used
