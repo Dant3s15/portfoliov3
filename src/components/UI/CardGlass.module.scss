@@ -7,11 +7,14 @@
   width: 100%;
   height: 100%;
   // height: 50%;
-
+  // transform-style: preserve-3d;
+  // transform: rotateY(-50deg);
+  // perspective: 400px;
+  transform-style: preserve-3d;
   @include flexbox;
   flex-direction: column;
-  gap: 2.25rem;
-  padding: 36px;
+  // gap: 2.25rem;
+  // padding: 36px;
   transition: all var(--transition-short-medium) ease-in-out;
   transition-property: transform, opacity;
   position: relative;

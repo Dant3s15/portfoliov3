@@ -170,8 +170,8 @@ const SkillSelector = props => {
 
   return (
     <Fragment>
-      <div className={classes['skill-selector']}>
-        <CardGlass>
+      <CardGlass>
+        <div className={classes['skill-selector']}>
           {isAdding && (
             <SkillAddWindow
               onSetLevel={setlevelIsSet}
@@ -224,8 +224,8 @@ const SkillSelector = props => {
             type='submit'
             text='Save Character'
           ></ButtonBig>
-        </CardGlass>
-      </div>
+        </div>
+      </CardGlass>
     </Fragment>
   );
 };

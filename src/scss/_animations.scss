@@ -221,3 +221,42 @@
     transform: scale(1);
   }
 }
+
+@keyframes cardmove {
+  0% {
+    z-index: inherit;
+    transform: scale(0.7) rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(0deg) scale(0.9) translateX(250px);
+  }
+  80% {
+    z-index: 11;
+    perspective: 2000px;
+    transform: rotateY(0deg) scale(0.9) translateX(0px);
+  }
+  100% {
+    perspective: 2000px;
+    transform: rotateY(0deg) scale(0.9) translateX(0px);
+  }
+}
+
+@keyframes cardmoverev {
+  0% {
+    perspective: 2000px;
+    transform: rotateY(0deg) scale(0.9) translateX(0px);
+  }
+  20% {
+    z-index: 11;
+    perspective: 2000px;
+    transform: rotateY(0deg) scale(0.9) translateX(0px);
+  }
+  50% {
+    transform: rotateY(0deg) scale(0.9) translateX(250px);
+  }
+
+  100% {
+    z-index: inherit;
+    transform: scale(0.7) rotateY(0deg);
+  }
+}

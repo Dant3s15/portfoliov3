@@ -1,0 +1,125 @@
+@import '../../../scss/style.scss';
+.projects {
+  background-color: lightgray;
+  height: 100vh;
+  padding: 0 100px;
+  @include flexbox;
+  flex-direction: column;
+  .title {
+    text-transform: uppercase;
+    font-size: 86px;
+  }
+  // border: 1px solid red;
+  .my-projects {
+    position: relative;
+    border: 1px solid red;
+    height: 80%;
+    width: 100%;
+    padding: 96px; // display: grid;
+    // grid-template-rows: 1fr 1fr;
+    // grid-template-columns: 1fr 1fr 1fr;
+    @include flexbox;
+    flex-direction: column;
+    //WIP
+    // & ~ .scene {
+    //   color: blue;
+    //   transform: scale(0.7) rotateY(0deg) translateX(250px) !important;
+    // }
+
+    // &:hover .scene {
+    //   color: red;
+
+    // }
+
+    //WIP
+
+    .scene {
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      perspective: 400px;
+      transform-origin: 50%;
+      transform: scale(0.7) rotateY(0deg);
+
+      transition: all 0.3s;
+      // z-index: 10;
+      // &:not(:nth-child(3)) {
+      //   animation: cardmoverev 0.9s normal forwards;
+      // }
+      &:nth-child(3) {
+        z-index: 11;
+        left: 9%;
+      }
+      &:nth-child(2) {
+        z-index: 10;
+      }
+      &:nth-child(1) {
+        z-index: 9;
+        right: 9%;
+      }
+      // &:hover {
+      //   z-index: 9999;
+      //   perspective: 2000px;
+      //   transform: rotateY(0deg) scale(0.9);
+      //   & + .scene {
+      //     color: red;
+      //     transform: scale(0.7) rotateY(0deg) translateX(250px);
+      //   }
+      // }
+      // .scene + & {
+      //   color: red;
+      //   transform: scale(0.7) rotateY(0deg) translateX(250px) !important;
+      // }
+    }
+    & .scene:hover ~ .scene {
+      // transform: scale(0.7) rotateY(0deg) translateX(50px);
+    }
+    & .scene:hover {
+      // z-index: 9999;
+      perspective: 2000px;
+      color: red;
+      transform: rotateY(0deg) scale(0.9);
+    }
+    & .scene:hover:not(:nth-child(3)) {
+      transform: rotateY(0deg) scale(0.9) translateX(200px);
+      // animation: cardmove 0.9s normal forwards;
+      color: green;
+    }
+    & .scene:nth-child(3):hover {
+      animation: none;
+      perspective: 2000px;
+      transform: scale(0.9) rotateY(0deg);
+      color: greenyellow;
+    }
+    // &:hover .scene {
+    //   & ~ .scene {
+    //     color: red;
+    //     transform: scale(0.7) rotateY(0deg) translateX(100px);
+    //   }
+    // }
+    // & .scene:hover,
+    // & ~ .scene:hover {
+    //   // transform: scale(0.7) rotateY(0deg) translateX(100px);
+    // }
+    .project {
+      @include flexbox;
+      flex-direction: column;
+      &-image {
+        transform-style: preserve-3d;
+        background-color: lightseagreen;
+        width: 100%;
+        height: 300px;
+        height: 100%;
+        background-image: url('../../../resources/img/projects/project1.png');
+        background-size: cover;
+        // justify-self: flex-start;
+      }
+
+      &-description {
+        // border: 1px solid red;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}

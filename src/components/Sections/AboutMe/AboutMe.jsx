@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import Character from '../Hero/Characters/Character';
 import CardGlass from '../../UI/CardGlass';
 import ContactForm from '../ContactForm/ContactForm';
+import Projects from '../Projects/Projects';
 import ButtonBig from '../../UI/ButtonBig';
 import classes from './AboutMe.module.scss';
 const AboutMe = props => {
@@ -47,6 +48,7 @@ const AboutMe = props => {
           </div>
         </div>
       </div>
+      <Projects></Projects>
       <ContactForm></ContactForm>
     </Fragment>
   );

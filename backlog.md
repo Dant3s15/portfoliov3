@@ -3,7 +3,9 @@ DONE:
 - fix missing transition on hiding hamburger menu
 - hamburger menu with glass card style
   -fix animation speed too fast,
-  -cyberpunk themed window and button,
+  -cyberpunk themed window andbutton
+- google log in
+- fix button corner transition
 
 TODO:
 -add image that moves to the left when showing characters(idea: bricked wall moving into metro)
@@ -20,12 +22,14 @@ TODO:
 - adding custom skills
 - store own character on local storage
 - store own character on firebase
-- google log in
+
 - add categories to skills window
 - add bright light after cta button long hold
 - optimize images and icons
 - fix level up text animation bug
-- fix button corner transition
+
 - add lazy loading on section elements
 - add parallax using react spring
 - add projects section with card like showcases of projects and skills used
+- add contact me button to the navbar
+- add border-radius: 3px;

@@ -4,7 +4,7 @@ const CardGlass = props => {
   return (
     <div
       className={`${classes['card--glass']} ${
-        props.classes ? props.classes : ''
+        props.className ? props.className : ''
       }`}
     >
       {props.children}
