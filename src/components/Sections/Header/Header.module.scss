@@ -79,10 +79,11 @@
   justify-self: flex-start;
   order: 1;
   z-index: 9999;
-  overflow: hidden;
+  // overflow: hidden;
   text-decoration: none;
   color: var(--color-gray);
   transition: all var(--transition-short);
+  height: 45px;
   &__item {
     @include flexbox;
   }
@@ -177,9 +178,21 @@
 }
 
 .google {
-  background-color: white;
   color: black;
-  padding: 0 10px;
+
+  background-color: white;
+  color: #000;
+  height: 40px;
+  transition: inherit;
+  &:hover {
+    color: var(--color-primary);
+  }
+  @include flexbox;
+
+  @include corner-cut(20px);
+  p {
+    padding: 0 2rem 0 1rem;
+  }
 }
 //TODO
 // *:focus {

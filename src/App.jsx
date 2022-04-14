@@ -84,23 +84,23 @@ function App() {
   );
 }
 
-function SignIn() {
-  const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
-  };
+// function SignIn() {
+//   const signInWithGoogle = () => {
+//     const provider = new GoogleAuthProvider();
+//     signInWithPopup(auth, provider);
+//   };
 
-  return <button onClick={signInWithGoogle}>Sign in with Google</button>;
-}
+//   return <button onClick={signInWithGoogle}>Sign in with Google</button>;
+// }
 
-function SignOut(props) {
-  return (
-    auth.currentUser && (
-      <button onClick={() => auth.signOut()}>
-        {` Sign Out, hello ${props.user.displayName}`}
-      </button>
-    )
-  );
-}
+// function SignOut(props) {
+//   return (
+//     auth.currentUser && (
+//       <button onClick={() => auth.signOut()}>
+//         {` Sign Out, hello ${props.user.displayName}`}
+//       </button>
+//     )
+//   );
+// }
 
 export default App;

@@ -1,7 +1,13 @@
 //@include corner-cut(20px, var(--color-primary), 4px, 17px);
 
 //TODO DON'T FORGET TO SET PARENT'S POSITION TO RELATIVE!
-@mixin corner-cut($pixels, $bg-color, $width, $translate, $after: '') {
+@mixin corner-cut(
+  $pixels: 20px,
+  $bg-color: #00000000,
+  $width: 4px,
+  $translate: 17px,
+  $after: ''
+) {
   clip-path: polygon(
     0% 100%,
     calc(100% - $pixels) 100%,

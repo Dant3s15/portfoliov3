@@ -3,6 +3,7 @@ import classes from './Header.module.scss';
 import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
 import GoogleLogIn from '../../Icons/google/GoogleLogIn';
+import googleLogin from '../../../resources/img/google/btn_google_signin_light_normal_web@2x.png';
 
 const Header = props => {
   const [hamburgerState, setHamburgerState] = useState(false);
@@ -51,13 +52,15 @@ const Header = props => {
                 onClick={props.data.google.signInWithGoogle}
                 id='login'
               >
+                {/* <img src={googleLogin} alt='' /> */}
+
                 <GoogleLogIn></GoogleLogIn>
                 <p>Sign in with Google</p>
               </button>
             )}
             {props.data.google.auth.currentUser && (
               <button
-                className={`${classes.nav__item} ${classes.google}`}
+                className={`${classes.nav__item} ${classes['google']}`}
                 onClick={() => props.data.google.auth.signOut()}
                 // ref={googleLoginRef}
                 id='login'
