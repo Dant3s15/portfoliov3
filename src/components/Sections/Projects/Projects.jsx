@@ -1,6 +1,8 @@
+import { Fragment } from 'react';
 import classes from './Projects.module.scss';
 import CardGlass from '../../UI/CardGlass';
-import { Fragment } from 'react';
+import project1 from '../../../resources/img/projects/project1.png';
+
 const Projects = props => {
   // const test = useRef(null);
   // console.log(test.current.childNodes[1]);
@@ -10,17 +12,24 @@ const Projects = props => {
       <div className={classes['my-projects']}>
         <div className={classes.scene}>
           <CardGlass className={`${classes.project}`}>
-            <CardProject />
+            <CardProject projectData={{ image: project1 }} />
           </CardGlass>
         </div>
         <div className={classes.scene}>
           <CardGlass className={`${classes.project}`}>
-            <CardProject />
+            <CardProject projectData={{ image: project1 }} />
           </CardGlass>
         </div>
         <div className={classes.scene}>
           <CardGlass className={`${classes.project}`}>
-            <CardProject />
+            <CardProject
+              projectData={{
+                image: project1,
+                title: 'portfolio',
+                overview:
+                  '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, accusamus? Non doloremque quasi earum nisi aut fuga totam, iure reiciendis.',
+              }}
+            />
           </CardGlass>
         </div>
       </div>
@@ -31,13 +40,18 @@ const Projects = props => {
 const CardProject = props => {
   return (
     <Fragment>
-      <div
-        // onMouseOver={() => console.log('test')}
+      <img
+        src={props.projectData?.image}
         className={classes['project-image']}
-      ></div>
+      ></img>
       <div className={classes['project-description']}>
-        <div>Project Title</div>
-        <div>Project Descripiton</div>
+        <div className={classes['project-title']}>
+          {props.projectData?.title ?? 'Title'}
+        </div>
+        <div className={classes['project-overview']}>
+          <p>{props.projectData?.overview}</p>
+        </div>
+
         <div>Used Skills</div>
       </div>
     </Fragment>
