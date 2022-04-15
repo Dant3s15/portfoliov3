@@ -3,6 +3,8 @@ import classes from './Projects.module.scss';
 import CardGlass from '../../UI/CardGlass';
 import AllSkils from '../../../components/Utils/AllSkills';
 import project1 from '../../../resources/img/projects/project1.png';
+import webLink from '../../../resources/icons/globe-outline.svg';
+import github from '../../../resources/icons/logo-github.svg';
 
 const Projects = props => {
   // const test = useRef(null);
@@ -12,52 +14,85 @@ const Projects = props => {
       <p className={classes.title}>My Projects</p>
       <div className={classes['my-projects']}>
         <div className={classes.scene}>
-          <CardGlass className={`${classes.project}`}>
-            <CardProject
-              projectData={{
-                image: project1,
-                title: 'portfolio',
-                overview:
-                  '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, accusamus? Non doloremque quasi earum nisi aut fuga totam, iure reiciendis.',
-                skills: [AllSkils[1], AllSkils[2]],
-              }}
-            />
-          </CardGlass>
+          <CardProject
+            projectData={{
+              image: project1,
+              title: 'portfolio',
+              overview: (
+                <Fragment>
+                  Frontend game-like character <strong>selector</strong> and{' '}
+                  <strong>creator</strong> , create your own character or
+                  contact me and <strong>LEVEL ME UP!</strong>
+                </Fragment>
+              ),
+              skills: [
+                AllSkils[1],
+                AllSkils[2],
+                AllSkils[3],
+                AllSkils[26],
+                AllSkils[13],
+                AllSkils[23],
+                AllSkils[5],
+                AllSkils[21],
+              ],
+              link: 'https://portfolio-27cdd.web.app/',
+              repo: 'https://github.com/Dant3s15/portfoliov3',
+            }}
+          />
         </div>
         <div className={classes.scene}>
-          <CardGlass className={`${classes.project}`}>
-            <CardProject
-              projectData={{
-                image: project1,
-                title: 'portfolio',
-                overview:
-                  '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, accusamus? Non doloremque quasi earum nisi aut fuga totam, iure reiciendis.',
-                skills: [AllSkils[1], AllSkils[2]],
-              }}
-            />
-          </CardGlass>
+          <CardProject
+            projectData={{
+              image: project1,
+              title: 'portfolio',
+              overview: (
+                <Fragment>
+                  Frontend game-like character <strong>selector</strong> and{' '}
+                  <strong>creator</strong> , create your own character or
+                  contact me and <strong>LEVEL ME UP!</strong>
+                </Fragment>
+              ),
+              skills: [
+                AllSkils[1],
+                AllSkils[2],
+                AllSkils[3],
+                AllSkils[26],
+                AllSkils[13],
+                AllSkils[23],
+                AllSkils[5],
+                AllSkils[21],
+              ],
+              link: 'https://portfolio-27cdd.web.app/',
+              repo: 'https://github.com/Dant3s15/portfoliov3',
+            }}
+          />
         </div>
         <div className={classes.scene}>
-          <CardGlass className={`${classes.project}`}>
-            <CardProject
-              projectData={{
-                image: project1,
-                title: 'portfolio',
-                overview:
-                  'My portfolio project inspired by game character selecion screens, with custom character creator.',
-                skills: [
-                  AllSkils[1],
-                  AllSkils[2],
-                  AllSkils[3],
-                  AllSkils[26],
-                  AllSkils[13],
-                  AllSkils[23],
-                  AllSkils[5],
-                  AllSkils[21],
-                ],
-              }}
-            />
-          </CardGlass>
+          <CardProject
+            projectData={{
+              image: project1,
+              title: 'portfolio',
+              overview: (
+                <Fragment>
+                  Frontend game-like character <strong>selector</strong> and{' '}
+                  <strong>creator</strong> , create your own character or
+                  contact me and <strong>LEVEL ME UP!</strong>
+                </Fragment>
+              ),
+              skills: [
+                AllSkils[1],
+                AllSkils[2],
+                AllSkils[3],
+                AllSkils[26],
+                AllSkils[13],
+                AllSkils[23],
+                AllSkils[5],
+                AllSkils[21],
+              ],
+              link: 'https://portfolio-27cdd.web.app/',
+              repo: 'https://github.com/Dant3s15/portfoliov3',
+            }}
+          />
         </div>
       </div>
     </div>
@@ -67,31 +102,42 @@ const Projects = props => {
 const CardProject = props => {
   const skillsArr = props.projectData?.skills;
   const skills = skillsArr?.map(skill => (
-    <li className={classes['skill']}>
+    <li key={Math.random()} className={classes['skill']}>
       <img src={skill.icon} alt='' />
       <p className={classes['skill-title']}>{skill.name}</p>
     </li>
   ));
-  console.log(skills);
+  // console.log(skills);
   return (
-    <Fragment>
+    <CardGlass className={`${classes.project}`}>
+      <div className={classes.links}>
+        <a href={props.projectData?.repo} target='_blank'>
+          <img src={github} alt='github' />
+        </a>
+      </div>
       <div className={classes['project-image-window']}>
-        <img
-          src={props.projectData?.image}
-          className={classes['project-image']}
-        ></img>
+        <a
+          className={classes['project-link']}
+          href={props.projectData?.link}
+          target='_blank'
+        >
+          <img
+            src={props.projectData?.image}
+            className={classes['project-image']}
+          />
+        </a>
       </div>
       <div className={classes['project-description']}>
-        <div className={classes['project-title']}>
+        <h3 className={classes['project-title']}>
           {props.projectData?.title ?? 'Title'}
-        </div>
+        </h3>
         <div className={classes['project-overview']}>
           <p>{props.projectData?.overview}</p>
         </div>
-        <p className={classes['used-skills-title']}>Used:</p>
+        <h3 className={classes['used-skills-title']}>Skills Used:</h3>
         <ul className={classes['used-skills']}>{skills}</ul>
       </div>
-    </Fragment>
+    </CardGlass>
   );
 };
 

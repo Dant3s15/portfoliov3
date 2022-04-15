@@ -33,3 +33,4 @@ TODO:
 - add projects section with card like showcases of projects and skills used
 - add contact me button to the navbar
 - add border-radius: 3px;
+- remove scss import clutter
