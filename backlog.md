@@ -34,3 +34,4 @@ TODO:
 - add contact me button to the navbar
 - add border-radius: 3px;
 - remove scss import clutter
+  -calculate width for my projects cards

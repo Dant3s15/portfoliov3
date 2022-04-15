@@ -13,7 +13,9 @@
     position: relative;
 
     height: 80%;
-    width: 100%;
+    width: 1150px;
+
+    // max-width: 1200px;
     padding: 96px;
 
     @include flexbox;
@@ -22,7 +24,8 @@
     .scene {
       // filter: grayscale(1);
       position: absolute;
-      width: 40%;
+      width: 500px;
+      min-width: 500px;
       height: 100%;
       perspective: 400px;
       transform-origin: 50%;
@@ -31,14 +34,14 @@
       transition: var(--transition-short-medium);
       &:nth-child(3) {
         z-index: 11;
-        left: 9%;
+        left: 5%;
       }
       &:nth-child(2) {
         z-index: 10;
       }
       &:nth-child(1) {
         z-index: 9;
-        right: 9%;
+        right: 5%;
       }
     }
 
@@ -48,7 +51,7 @@
       transform: rotateY(0deg) scale(0.9);
     }
     & .scene:hover:not(:nth-child(3)) {
-      transform: rotateY(0deg) scale(0.9) translateX(240px);
+      transform: rotateY(0deg) scale(0.9) translateX(200px);
     }
     & .scene:nth-child(3):hover {
       animation: none;
