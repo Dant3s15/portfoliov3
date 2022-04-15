@@ -75,10 +75,12 @@ const CardProject = props => {
   console.log(skills);
   return (
     <Fragment>
-      <img
-        src={props.projectData?.image}
-        className={classes['project-image']}
-      ></img>
+      <div className={classes['project-image-window']}>
+        <img
+          src={props.projectData?.image}
+          className={classes['project-image']}
+        ></img>
+      </div>
       <div className={classes['project-description']}>
         <div className={classes['project-title']}>
           {props.projectData?.title ?? 'Title'}
