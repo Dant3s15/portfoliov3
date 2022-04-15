@@ -9,29 +9,15 @@
     text-transform: uppercase;
     font-size: 86px;
   }
-  // border: 1px solid red;
   .my-projects {
     position: relative;
-    border: 1px solid red;
+
     height: 80%;
     width: 100%;
-    padding: 96px; // display: grid;
-    // grid-template-rows: 1fr 1fr;
-    // grid-template-columns: 1fr 1fr 1fr;
+    padding: 96px;
+
     @include flexbox;
     flex-direction: column;
-    //WIP
-    // & ~ .scene {
-    //   color: blue;
-    //   transform: scale(0.7) rotateY(0deg) translateX(250px) !important;
-    // }
-
-    // &:hover .scene {
-    //   color: red;
-
-    // }
-
-    //WIP
 
     .scene {
       position: absolute;
@@ -42,10 +28,6 @@
       transform: scale(0.7) rotateY(0deg);
 
       transition: var(--transition-short-medium);
-      // z-index: 10;
-      // &:not(:nth-child(3)) {
-      //   animation: cardmoverev 0.9s normal forwards;
-      // }
       &:nth-child(3) {
         z-index: 11;
         left: 9%;
@@ -57,23 +39,8 @@
         z-index: 9;
         right: 9%;
       }
-      // &:hover {
-      //   z-index: 9999;
-      //   perspective: 2000px;
-      //   transform: rotateY(0deg) scale(0.9);
-      //   & + .scene {
-      //     color: red;
-      //     transform: scale(0.7) rotateY(0deg) translateX(250px);
-      //   }
-      // }
-      // .scene + & {
-      //   color: red;
-      //   transform: scale(0.7) rotateY(0deg) translateX(250px) !important;
-      // }
     }
-    // & .scene:hover ~ .scene {
-    //   // transform: scale(0.7) rotateY(0deg) translateX(50px);
-    // }
+
     & .scene:hover {
       perspective: 4000px;
 
@@ -86,12 +53,9 @@
       animation: none;
       perspective: 4000px;
       transform: scale(0.9) rotateY(0deg);
-      // color: greenyellow;
     }
 
     .project {
-      // @include flexbox;
-      // flex-direction: column;
       display: grid;
       grid-template-rows: 1fr 1fr;
       min-width: 350px;
@@ -99,46 +63,25 @@
 
       &-image {
         transform-style: preserve-3d;
-        // background-color: lightseagreen;
         width: 100%;
-        // height: 300px;
         height: 100%;
-        // background-image: url('../../../resources/img/projects/project1.png');
-        // background-size: contain;
-        // background-repeat: no-repeat;
-        // justify-self: flex-start;
         padding: 1rem;
 
         @include corner-cut(40px);
       }
 
       &-description {
-        // border: 1px solid red;
         padding: 0 2rem 2rem 2rem;
-        // min-height: 0;
         height: 100%;
         overflow: hidden;
-        // width: 100%;
-        // @include flexbox(space-between, flex-start);
-        // flex-direction: column;
-
-        // flex: 1;
         @include flexbox(space-between);
         flex-direction: column;
-        // gap: 2rem;
-        // display: grid;
-        // grid-template-columns: 3fr 1fr;
-        // grid-template-rows: 1fr 5fr 1fr;
-        // grid-column-gap: 0px;
-        // grid-row-gap: 0px;
         & * {
           // border: 1px solid red;
         }
       }
       .project-title {
         grid-area: 1 / 1 / 2 / 2;
-        // flex-basis: 0;
-        // text-align: center;
         align-self: flex-end;
         text-transform: uppercase;
         font-size: 36px;
@@ -153,30 +96,18 @@
 
         @include flexbox;
         p {
-          // color: red;
           display: inline-block;
-          // border: 1px solid red;
           height: auto;
         }
       }
 
       .used-skills {
-        // backdrop-filter: blur(20px);
-        // width: 100%;
-        // position: absolute;
-        // row-gap: 1rem;
-        // grid-area: 1 / 2 / 3 / 3;
-
         height: 50%;
         width: 100%;
-        // border: 1px solid red;
         @include flexbox;
         flex: 1;
         flex-wrap: wrap;
         gap: 6px;
-        // flex-direction: column;
-
-        // overflow-y: scroll;
       }
     }
   }
@@ -190,16 +121,11 @@
 .skill {
   @include flexbox(space-evenly);
   flex-direction: column;
-  // flex-basis: 0px;
   flex: 1 1 25%;
   min-width: 0;
-  // width: 90px;
   height: 90px;
   max-width: 20%;
-  // height: 50%;
-  // width: 25%;
   padding: 4px;
-  // flex-direction: row;
   transition: var(--transition-short);
   @include corner-cut(0.625rem);
   &:hover {
@@ -207,10 +133,8 @@
     transform: scale(1.2);
   }
   &-title {
-    // height: 50px;
     font-size: 12px;
 
-    // border: 1px solid red;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -218,14 +142,9 @@
     width: 100%;
   }
 
-  // height: 50px;
   img {
-    // height: 50px;
-    // width: 50px;
     height: 80%;
     width: auto;
     max-width: 100%;
-    // max-height: 100%;
-    // max-height: 90px;
   }
 }
