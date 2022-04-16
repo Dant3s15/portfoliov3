@@ -1,8 +1,9 @@
 import { useEffect, useRef, useContext } from 'react';
 import Skill from './Skill';
+import Skill2 from './Skill2';
 import AllSkills from '../../../Utils/AllSkills';
 import SelectedContext from '../../../../context/selected-context';
-import CardGlass from '../../../UI/CardGlass';
+// import CardGlass from '../../../UI/CardGlass';
 import classes from './Skills.module.scss';
 
 const SkillsList = props => {
@@ -31,7 +32,7 @@ const SkillsList = props => {
     { ...AllSkills[4], lvl: 4 },
     { ...AllSkills[5], lvl: 3 },
     { ...AllSkills[13], lvl: 7 },
-    { ...AllSkills[22], lvl: 5 },
+    { ...AllSkills[8], lvl: 5 },
     { ...AllSkills[23], lvl: 5 },
     { ...AllSkills[26], lvl: 5 },
   ];
@@ -48,7 +49,10 @@ const SkillsList = props => {
     <ul className={classes['skills-list']} data-character={pos}>
       {skillsByCharacters[id].map(item => {
         {
-          return <Skill key={item.id} skill={item} />;
+          return <Skill2 key={item.id} skill={item} />;
+          {
+            /* return <Skill key={item.id} skill={item} />; */
+          }
         }
       })}
     </ul>

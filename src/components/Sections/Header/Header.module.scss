@@ -12,7 +12,7 @@
 .header-wrapper {
   background-color: var(--color-dark-shade-1);
   height: 3.25rem;
-  padding: 0 2.25rem;
+  padding: 0 10px;
 
   @include flexbox(null, flex-start);
   @media (max-width: $big-tablet) {
@@ -89,6 +89,8 @@
   }
   &__item:link,
   &__item:visited {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
     overflow: hidden;
     text-decoration: none;
     color: var(--color-gray);
@@ -179,6 +181,8 @@
 
 .google {
   color: black;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
 
   background-color: white;
   color: #000;
