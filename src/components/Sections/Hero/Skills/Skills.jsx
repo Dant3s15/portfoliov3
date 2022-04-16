@@ -11,8 +11,28 @@ const SkillsList = props => {
   const characerSkills = useRef(null);
   const ctx = useContext(SelectedContext);
 
+  const countLevel = char => {
+    const charExp = char.reduce((acc = 0, cur) => {
+      return (acc += cur.lvl);
+    }, 0);
+    // console.log(charExp);
+
+    const totalExp = (AllSkills.length - 1) * 10;
+
+    // console.log(AllSkills.length - 1, rightChar.length);
+    // console.log('Char', charExp);
+    // console.log('TOTAL', totalExp);
+    function percentage(partialValue, totalValue) {
+      return (100 * partialValue) / totalValue;
+    }
+
+    const result = percentage(charExp, totalExp);
+    return Math.floor(result);
+  };
+
   useEffect(() => {
     if (ctx.isSelected) {
+      // console.log(countLevel(leftChar));
       skillsWindowRef.current.classList.add(`${classes['selected--skills']}`);
     } else {
       skillsWindowRef.current.classList.remove(
@@ -169,19 +189,19 @@ const SkillsList = props => {
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.leftChar}
                 >
-                  111
+                  {countLevel(leftChar)}
                 </div>
                 <div
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.frontChar}
                 >
-                  222
+                  {countLevel(frontChar)}
                 </div>
                 <div
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.rightChar}
                 >
-                  333
+                  {countLevel(rightChar)}
                 </div>
               </div>
             </div>
