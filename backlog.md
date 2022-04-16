@@ -35,3 +35,4 @@ TODO:
 - add border-radius: 3px;
 - remove scss import clutter
   -calculate width for my projects cards
+  - fix long scrolling on skills in hero section

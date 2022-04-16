@@ -5,7 +5,7 @@ const Skill2 = props => {
     <Fragment>
       <button className={classes['skill-tile']}>
         <div className={classes['skill-tile-level']}>
-          <p>5</p>
+          <p>{props.skill.lvl}</p>
           {/* <p>LVL</p> */}
         </div>
         <div className={classes['skill-tile-icon']}>

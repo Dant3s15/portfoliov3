@@ -8,6 +8,7 @@ import classes from './Skills.module.scss';
 
 const SkillsList = props => {
   const skillsWindowRef = useRef();
+  const characerSkills = useRef(null);
   const ctx = useContext(SelectedContext);
 
   useEffect(() => {
@@ -35,28 +36,99 @@ const SkillsList = props => {
     { ...AllSkills[8], lvl: 5 },
     { ...AllSkills[23], lvl: 5 },
     { ...AllSkills[26], lvl: 5 },
+    { ...AllSkills[10], lvl: 5 },
   ];
   const rightChar = [
-    { ...AllSkills[1], lvl: 2 },
-
-    { ...AllSkills[4], lvl: 3 },
-    { ...AllSkills[5], lvl: 5 },
+    { ...AllSkills[1], lvl: 9 },
+    { ...AllSkills[2], lvl: 9 },
+    { ...AllSkills[3], lvl: 9 },
+    { ...AllSkills[4], lvl: 9 },
+    { ...AllSkills[5], lvl: 9 },
+    { ...AllSkills[6], lvl: 9 },
+    { ...AllSkills[7], lvl: 9 },
+    { ...AllSkills[8], lvl: 9 },
+    { ...AllSkills[9], lvl: 9 },
+    { ...AllSkills[10], lvl: 9 },
+    { ...AllSkills[11], lvl: 9 },
+    { ...AllSkills[12], lvl: 9 },
+    { ...AllSkills[13], lvl: 9 },
+    { ...AllSkills[14], lvl: 9 },
+    { ...AllSkills[15], lvl: 9 },
+    { ...AllSkills[16], lvl: 9 },
+    { ...AllSkills[17], lvl: 9 },
+    { ...AllSkills[18], lvl: 9 },
+    { ...AllSkills[19], lvl: 9 },
+    { ...AllSkills[20], lvl: 9 },
+    { ...AllSkills[21], lvl: 9 },
+    { ...AllSkills[22], lvl: 9 },
+    { ...AllSkills[23], lvl: 9 },
+    { ...AllSkills[24], lvl: 9 },
+    { ...AllSkills[25], lvl: 9 },
+    { ...AllSkills[26], lvl: 9 },
+    { ...AllSkills[27], lvl: 9 },
+    { ...AllSkills[28], lvl: 9 },
+    { ...AllSkills[29], lvl: 9 },
+    { ...AllSkills[30], lvl: 9 },
+    { ...AllSkills[31], lvl: 9 },
+    { ...AllSkills[32], lvl: 9 },
+    { ...AllSkills[33], lvl: 9 },
+    { ...AllSkills[34], lvl: 9 },
+    { ...AllSkills[35], lvl: 9 },
+    { ...AllSkills[36], lvl: 9 },
+    { ...AllSkills[37], lvl: 9 },
+    { ...AllSkills[38], lvl: 9 },
+    { ...AllSkills[39], lvl: 9 },
+    { ...AllSkills[40], lvl: 9 },
+    { ...AllSkills[41], lvl: 9 },
+    { ...AllSkills[42], lvl: 9 },
+    { ...AllSkills[43], lvl: 9 },
+    { ...AllSkills[44], lvl: 9 },
+    { ...AllSkills[45], lvl: 9 },
+    { ...AllSkills[46], lvl: 9 },
+    { ...AllSkills[47], lvl: 9 },
+    { ...AllSkills[48], lvl: 9 },
+    { ...AllSkills[49], lvl: 9 },
+    { ...AllSkills[50], lvl: 9 },
+    { ...AllSkills[51], lvl: 9 },
+    { ...AllSkills[52], lvl: 9 },
+    { ...AllSkills[53], lvl: 9 },
+    { ...AllSkills[54], lvl: 9 },
+    { ...AllSkills[55], lvl: 9 },
+    { ...AllSkills[56], lvl: 9 },
+    { ...AllSkills[57], lvl: 9 },
+    { ...AllSkills[58], lvl: 9 },
+    { ...AllSkills[59], lvl: 9 },
+    { ...AllSkills[60], lvl: 9 },
+    { ...AllSkills[61], lvl: 9 },
+    { ...AllSkills[62], lvl: 9 },
+    { ...AllSkills[63], lvl: 9 },
+    { ...AllSkills[64], lvl: 9 },
+    { ...AllSkills[65], lvl: 9 },
+    { ...AllSkills[66], lvl: 9 },
+    { ...AllSkills[67], lvl: 9 },
+    { ...AllSkills[68], lvl: 9 },
+    { ...AllSkills[69], lvl: 9 },
   ];
 
   const skillsByCharacters = [[...leftChar], [...frontChar], [...rightChar]];
 
-  const skillsStruct = (id, pos) => (
-    <ul className={classes['skills-list']} data-character={pos}>
-      {skillsByCharacters[id].map(item => {
-        {
-          return <Skill2 key={item.id} skill={item} />;
+  const skillsStruct = (id, pos) => {
+    if (characerSkills.current) {
+      characerSkills.current.scrollTop = 0;
+    }
+    return (
+      <ul className={classes['skills-list']} data-character={pos}>
+        {skillsByCharacters[id].map(item => {
           {
-            /* return <Skill key={item.id} skill={item} />; */
+            return <Skill2 key={item.id} skill={item} />;
+            {
+              /* return <Skill key={item.id} skill={item} />; */
+            }
           }
-        }
-      })}
-    </ul>
-  );
+        })}
+      </ul>
+    );
+  };
 
   return (
     <div className={classes['skills-col']}>
@@ -114,7 +186,11 @@ const SkillsList = props => {
               </div>
             </div>
           </header>
-          <div className={classes['character-skills']}>
+          <div
+            ref={characerSkills}
+            className={`${classes['character-skills']} `}
+          >
+            {/* <div className={classes['skill-wrapper']}></div> */}
             {skillsStruct(0, props.charStateData.leftChar)}
             {skillsStruct(1, props.charStateData.frontChar)}
             {skillsStruct(2, props.charStateData.rightChar)}
