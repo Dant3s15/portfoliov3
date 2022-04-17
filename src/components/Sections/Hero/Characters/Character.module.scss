@@ -46,7 +46,7 @@
 
     transition: all var(--transition-short);
     transition-property: transform, filter;
-    filter: brightness(0.1);
+    filter: brightness(0.4);
     // &:hover {
     //   filter: brightness(0.5);
     //   // animation: jiggle 1s infinite;
@@ -70,6 +70,7 @@
     width: 15%;
     z-index: -2;
     transform: translateX(var(--characters-width));
+
     // &:hover img {
     //   // filter: brightness(0.5);
     // }
@@ -84,6 +85,24 @@
     //   filter: brightness(1);
     // }
   }
+  // [data-character='0'] {
+  //   &:hover {
+  //     filter: brightness(0.4);
+  //     animation: jump 3s infinite;
+  //   }
+  // }
+  [data-const-pos='2'] {
+    filter: brightness(0.1) !important;
+    &:hover {
+      filter: brightness(0.1) !important;
+    }
+  }
+  [data-const-pos] {
+    &:hover {
+      filter: brightness(1);
+      animation: jump 3s 0.3s infinite;
+    }
+  }
 
   // &:hover .character__name {
   //   transform: scale(1.1);
@@ -94,15 +113,13 @@
   }
 
   &:hover &__name {
-    animation: jumpnorotate 3s infinite;
-  }
-  &:hover img {
-    // filter: brightness(0.5);
-    animation: jump 3s infinite;
-  }
-  &:hover &__name {
+    animation: jumpnorotate 3s 0.3s infinite;
     color: var(--color-primary);
   }
+  // &:hover img {
+  //   filter: brightness(0.8);
+  //   animation: jump 3s 0.3s infinite;
+  // }
 }
 
 .selected {
@@ -114,6 +131,7 @@
   &:hover img,
   &:hover .character__name {
     animation: none;
+    filter: brightness(1);
   }
   transform: scale(1.1);
   filter: drop-shadow(0 0 1px var(--color-primary));
