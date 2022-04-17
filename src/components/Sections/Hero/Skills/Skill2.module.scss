@@ -16,8 +16,8 @@
   @include flexbox;
   flex-direction: column;
   // background-color: #898a8732;
-  filter: drop-shadow(0px 4px 1px rgba(0, 0, 0, 0.7));
-  filter: none;
+  // filter: drop-shadow(0px 4px 1px rgba(0, 0, 0, 0.7));
+  // filter: none;
   transition: var(--transition-short);
 
   // background-color: #b6b6b6;
@@ -36,7 +36,7 @@
     position: relative;
     z-index: 999px;
     transform: scale(1.1);
-    filter: drop-shadow(0px 15px 2.5px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0px 15px 2.5px rgba(0, 0, 0, 0.7)) !important;
     .skill-tile-level > *,
     .skill-tile-name > * {
       color: rgb(255, 255, 255);

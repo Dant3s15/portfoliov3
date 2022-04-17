@@ -16,6 +16,7 @@
 
   gap: 1.5rem;
   transition: all var(--transition-short-medium) ease-in-out;
+  transition-property: transform, filter, width, z-index;
   // height: 60%;
   // margin: auto 0;
   cursor: pointer;
@@ -30,6 +31,8 @@
     font-size: 1.5rem;
     text-align: center;
     text-transform: uppercase;
+    transition: all var(--transition-short);
+    transition-property: transform, filter;
   }
 
   & img {
@@ -40,6 +43,7 @@
     width: auto;
 
     transition: all var(--transition-short-medium) ease-in-out;
+    transition-property: transform, filter;
     filter: brightness(0.1);
   }
 
@@ -51,23 +55,33 @@
     & img {
       filter: brightness(1);
     }
+    // &:hover {
+    //   transform: scale(1.1);
+    // }
   }
 
   &__right {
     width: 15%;
     z-index: -2;
     transform: translateX(var(--characters-width));
+    // &:hover {
+    //   transform: translateX(var(--characters-width)) scale(1.1);
+    // }
   }
 
   &__left {
     width: 20%;
     z-index: -1;
     transform: translateX(calc(var(--characters-width) * -1));
+    // &:hover {
+    //   transform: translateX(calc(var(--characters-width) * -1)) scale(1.1);
+    //   filter: brightness(1);
+    // }
   }
 
-  &:hover .character__name {
-    transform: scale(1.1);
-  }
+  // &:hover .character__name {
+  //   transform: scale(1.1);
+  // }
 
   @media (max-width: $big-tablet) {
     transform-origin: bottom;
