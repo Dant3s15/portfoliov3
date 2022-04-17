@@ -3,7 +3,7 @@ import classes from './Skill2.module.scss';
 const Skill2 = props => {
   return (
     <Fragment>
-      <button className={classes['skill-tile']}>
+      <button className={`${classes['skill-tile']}`}>
         <div className={classes['skill-tile-level']}>
           <p>{props.skill.lvl}</p>
           {/* <p>LVL</p> */}

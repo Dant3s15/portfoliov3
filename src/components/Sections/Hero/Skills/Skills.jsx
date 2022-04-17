@@ -13,8 +13,22 @@ const SkillsList = props => {
 
   const countLevel = char => {
     const charExp = char.reduce((acc = 0, cur) => {
+      if (
+        cur.name === 'JavaScript' ||
+        cur.name === 'React' ||
+        cur.name === 'Vue' ||
+        cur.name === 'Angular'
+      ) {
+        return (acc += 2 * cur.lvl);
+      }
       return (acc += cur.lvl);
     }, 0);
+    // const charExp = char.reduce((acc = 0, cur) => {
+    //   if (cur.name === 'React') {
+    //     return (acc += 2 * cur.lvl);
+    //   }
+    //   return (acc += cur.lvl);
+    // }, 0);
     // console.log(charExp);
 
     const totalExp = (AllSkills.length - 1) * 10;
@@ -27,7 +41,7 @@ const SkillsList = props => {
     }
 
     const result = percentage(charExp, totalExp);
-    return Math.floor(result);
+    return Math.round(result);
   };
 
   useEffect(() => {
@@ -47,14 +61,14 @@ const SkillsList = props => {
     { ...AllSkills[5], lvl: 4 },
   ];
   const frontChar = [
-    { ...AllSkills[1], lvl: 6 },
-    { ...AllSkills[2], lvl: 7 },
+    { ...AllSkills[1], lvl: 8 },
+    { ...AllSkills[2], lvl: 8 },
     { ...AllSkills[3], lvl: 7 },
     { ...AllSkills[4], lvl: 4 },
-    { ...AllSkills[5], lvl: 3 },
+    { ...AllSkills[5], lvl: 6 },
     { ...AllSkills[13], lvl: 7 },
     { ...AllSkills[8], lvl: 5 },
-    { ...AllSkills[23], lvl: 5 },
+    { ...AllSkills[23], lvl: 9 },
     { ...AllSkills[26], lvl: 5 },
     { ...AllSkills[10], lvl: 5 },
   ];
@@ -180,7 +194,10 @@ const SkillsList = props => {
             <div className={classes['skills-list-name']}>
               <h2>Skills</h2>
             </div>
-            <div className={classes['character-level']}>
+            <div
+              className={`${classes['character-level']}`}
+              id='character-level'
+            >
               <div className={classes['character-level__level-title']}>
                 level
               </div>
