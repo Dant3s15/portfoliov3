@@ -260,3 +260,27 @@
     transform: scale(0.7) rotateY(0deg);
   }
 }
+
+@keyframes jump {
+  // from {
+  //   transform: translateY(0);
+  // }
+  0% {
+    transform: translateY(0);
+  }
+  5% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-10px) rotateY(20deg);
+  }
+  15% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

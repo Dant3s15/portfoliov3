@@ -1,5 +1,6 @@
 @import '../../../../scss/mixins.scss';
 @import '../../../../scss/variables.scss';
+@import '../../../../scss/animations.scss';
 
 .character {
   // width: 20%;
@@ -42,9 +43,13 @@
     height: auto;
     width: auto;
 
-    transition: all var(--transition-short-medium) ease-in-out;
-    transition-property: transform, filter;
+    transition: all var(--transition-short) ease-in-out;
+    transition-property: transform;
     filter: brightness(0.1);
+    &:hover {
+      filter: brightness(0.5);
+      // animation: jiggle 1s infinite;
+    }
   }
 
   &__front {
@@ -53,20 +58,20 @@
     width: 30%;
     z-index: 2;
     & img {
-      filter: brightness(1);
+      filter: brightness(0.9);
+      &:hover {
+        filter: brightness(1);
+      }
     }
-    // &:hover {
-    //   transform: scale(1.1);
-    // }
   }
 
   &__right {
     width: 15%;
     z-index: -2;
     transform: translateX(var(--characters-width));
-    // &:hover {
-    //   transform: translateX(var(--characters-width)) scale(1.1);
-    // }
+    &:hover {
+      // transform: translateX(var(--characters-width)) scale(1.1);
+    }
   }
 
   &__left {
@@ -86,10 +91,19 @@
   @media (max-width: $big-tablet) {
     transform-origin: bottom;
   }
+  &:hover &__name,
+  &:hover img {
+    // filter: brightness(0.5);
+    animation: jump 3s infinite;
+  }
 }
 
 .selected {
   // max-height: 100%;
+  &:hover img,
+  &:hover .character__name {
+    animation: none;
+  }
   transform: scale(1.1);
   filter: brightness(1) drop-shadow(0 0 1px var(--color-primary));
 }
