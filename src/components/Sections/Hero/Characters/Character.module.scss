@@ -100,7 +100,7 @@
   [data-const-pos] {
     &:hover {
       filter: brightness(1);
-      animation: jump 3s 0.3s infinite;
+      animation: jump 3s infinite;
     }
   }
 
@@ -113,7 +113,7 @@
   }
 
   &:hover &__name {
-    animation: jumpnorotate 3s 0.3s infinite;
+    animation: jumpnorotate 3s infinite;
     color: var(--color-primary);
   }
   // &:hover img {
@@ -124,13 +124,12 @@
 
 .selected {
   // max-height: 100%;
-
   & img {
     filter: brightness(1);
   }
   &:hover img,
   &:hover .character__name {
-    animation: none;
+    animation: none !important;
     filter: brightness(1);
   }
   transform: scale(1.1);
