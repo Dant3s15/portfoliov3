@@ -131,7 +131,7 @@
   background-color: rgba(95, 95, 95, 0.109);
   height: 100%;
   transition: all var(--transition-short-medium) ease-in-out;
-  transition-property: transform, opacity;
+  transition-property: transform, opacity, filter;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-right: 7px solid rgba(255, 255, 255, 0.18);
@@ -171,6 +171,11 @@
       //   opacity: 0;
       //   background-color: red;
       // }
+    }
+    & > div {
+      transition: all var(--transition-short);
+      transition-property: filter;
+      filter: drop-shadow(0px 4px 1px rgba(0, 0, 0, 0.7));
     }
   }
 
@@ -254,7 +259,7 @@
   align-items: center;
   justify-content: center;
   transition: all var(--transition-short-medium);
-  transition-property: transform, opacity;
+  transition-property: transform, opacity, filter;
 }
 
 .character-level {
@@ -319,5 +324,11 @@
   }
   @media (max-width: $big-tablet) {
     transform: scale(1.05) !important;
+  }
+
+  & > div {
+    transition: all var(--transition-short);
+    transition-property: filter;
+    filter: drop-shadow(0px 4px 1px rgba(0, 0, 0, 0.7));
   }
 }
