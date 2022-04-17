@@ -1,4 +1,8 @@
-@import '../../scss/style.scss';
+@import '../../scss/mixins.scss';
+@import '../../scss/animations.scss';
+@import '../../scss/variables.scss';
+@import '../../scss/utility.scss';
+
 .card--glass {
   // border: 1px solid rgba(255, 255, 255, 0.18);
   // border-right: 7px solid rgba(255, 255, 255, 0.18);

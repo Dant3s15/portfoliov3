@@ -36,3 +36,4 @@ TODO:
 - remove scss import clutter
   -calculate width for my projects cards
   - fix long scrolling on skills in hero section
+    -disable skill tiles shadows if skill is not selected for performance reasons

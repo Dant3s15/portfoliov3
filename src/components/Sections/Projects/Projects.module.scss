@@ -1,4 +1,6 @@
-@import '../../../scss/style.scss';
+@import '../../../scss/mixins.scss';
+@import '../../../scss/variables.scss';
+
 .projects {
   background-color: lightgray;
   height: 100vh;
@@ -31,7 +33,9 @@
       transform-origin: 50%;
       transform: scale(0.7) rotateY(0deg);
 
-      transition: var(--transition-short-medium);
+      transition: all var(--transition-short-medium);
+      transition-property: transform, perspective;
+
       &:nth-child(3) {
         z-index: 11;
         left: 5%;
@@ -48,6 +52,7 @@
     & .scene:hover {
       perspective: 4000px;
       // filter: grayscale(0);
+      transition-delay: 0s;
       transform: rotateY(0deg) scale(0.9);
     }
     & .scene:hover:not(:nth-child(3)) {
@@ -184,7 +189,9 @@
     // background-color: #fff;
     filter: invert(1);
     img {
-      transition: var(--transition-short);
+      transition: all var(--transition-short);
+      transition-property: transform;
+
       // filter: contrast(100) hue-rotate(180deg);
       &:hover {
         // filter: none;
@@ -209,7 +216,9 @@
 
   padding: 6px;
 
-  transition: var(--transition-short);
+  transition: all var(--transition-short);
+
+  transition-property: transform;
 
   @include corner-cut(0.625rem);
   &:hover {
