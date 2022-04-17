@@ -30,10 +30,11 @@
 
   &__name {
     font-size: 1.5rem;
+    font-weight: 700;
     text-align: center;
     text-transform: uppercase;
     transition: all var(--transition-short);
-    transition-property: transform, filter;
+    transition-property: transform, filter, color;
   }
 
   & img {
@@ -43,13 +44,13 @@
     height: auto;
     width: auto;
 
-    transition: all var(--transition-short) ease-in-out;
-    transition-property: transform;
+    transition: all var(--transition-short);
+    transition-property: transform, filter;
     filter: brightness(0.1);
-    &:hover {
-      filter: brightness(0.5);
-      // animation: jiggle 1s infinite;
-    }
+    // &:hover {
+    //   filter: brightness(0.5);
+    //   // animation: jiggle 1s infinite;
+    // }
   }
 
   &__front {
@@ -59,9 +60,9 @@
     z-index: 2;
     & img {
       filter: brightness(0.9);
-      &:hover {
-        filter: brightness(1);
-      }
+      // &:hover {
+      //   filter: brightness(1);
+      // }
     }
   }
 
@@ -69,9 +70,9 @@
     width: 15%;
     z-index: -2;
     transform: translateX(var(--characters-width));
-    &:hover {
-      // transform: translateX(var(--characters-width)) scale(1.1);
-    }
+    // &:hover img {
+    //   // filter: brightness(0.5);
+    // }
   }
 
   &__left {
@@ -91,19 +92,29 @@
   @media (max-width: $big-tablet) {
     transform-origin: bottom;
   }
-  &:hover &__name,
+
+  &:hover &__name {
+    animation: jumpnorotate 3s infinite;
+  }
   &:hover img {
     // filter: brightness(0.5);
     animation: jump 3s infinite;
+  }
+  &:hover &__name {
+    color: var(--color-primary);
   }
 }
 
 .selected {
   // max-height: 100%;
+
+  & img {
+    filter: brightness(1);
+  }
   &:hover img,
   &:hover .character__name {
     animation: none;
   }
   transform: scale(1.1);
-  filter: brightness(1) drop-shadow(0 0 1px var(--color-primary));
+  filter: drop-shadow(0 0 1px var(--color-primary));
 }

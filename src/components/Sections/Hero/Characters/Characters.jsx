@@ -183,6 +183,9 @@ const Characters = props => {
     }
     if (frontIsSelected) {
       return { isSelected: true, text: 'Level me up', moveTo: 'about-me' };
+    }
+    if (rightIsSelected) {
+      return { isSelected: true, text: 'Character Locked', greyedOut: true };
     } else return { isSelected: false };
   };
 
@@ -223,6 +226,7 @@ const Characters = props => {
             moveTo={isAnythingSelected().moveTo}
             isAbsolute={{ isAbsolute: true }}
             text={isAnythingSelected().text}
+            isGreyedOut={isAnythingSelected().greyedOut}
           ></ButtonBig>
         ) : (
           ''
@@ -232,7 +236,7 @@ const Characters = props => {
           dataConstPos={CONST_POS[0]}
           data={leftChar}
           selected={leftIsSelected}
-          name='Left'
+          name='Character Creator'
           onRotateCharacters={rotateCharactersHandler}
         ></Character>
 
@@ -241,7 +245,7 @@ const Characters = props => {
           dataConstPos={CONST_POS[1]}
           data={frontChar}
           selected={frontIsSelected}
-          name='Front'
+          name='Damian'
           onRotateCharacters={rotateCharactersHandler}
         ></Character>
 
@@ -250,7 +254,7 @@ const Characters = props => {
           dataConstPos={CONST_POS[2]}
           selected={rightIsSelected}
           data={rightChar}
-          name='Right'
+          name='Future Damian'
           onRotateCharacters={rotateCharactersHandler}
         ></Character>
       </div>

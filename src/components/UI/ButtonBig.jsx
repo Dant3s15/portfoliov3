@@ -9,7 +9,7 @@ const ButtonBig = props => {
       className={`${classes['button-big']}
     ${props.isAbsolute && props.isAbsolute.isAbsolute ? classes.absolute : ''}
 
-     card--glass`}
+     card--glass ${props.isGreyedOut === true ? classes['greyed-out'] : ''}`}
       style={props.style}
       onClick={props.onClick}
     >

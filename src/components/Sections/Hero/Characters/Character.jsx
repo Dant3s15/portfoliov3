@@ -24,7 +24,7 @@ const Character = props => {
     >
       <div className={classes.character__name}>
         {props.name}
-        {props.data}
+        {/* {props.data} */}
       </div>
       <img
         data-const-pos={props.dataConstPos}
