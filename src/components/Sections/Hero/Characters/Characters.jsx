@@ -102,14 +102,14 @@ const Characters = props => {
     if (charData === 0) {
       direc = 1;
       setChars(direc);
-      props.selectedState.setSelected(true);
+      props.selectedState.setSelected(false);
       renderContentHandler(null);
       ctx.setRenderSection(false);
     }
     if (charData === 2) {
       direc = -1;
       setChars(direc);
-      props.selectedState.setSelected(true);
+      props.selectedState.setSelected(false);
       renderContentHandler(null);
       ctx.setRenderSection(false);
     }
