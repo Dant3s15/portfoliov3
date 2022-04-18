@@ -4,12 +4,26 @@
 .projects {
   background-color: lightgray;
   height: 100vh;
+  position: relative;
   padding: 0 100px;
   @include flexbox;
   flex-direction: column;
   .title {
     text-transform: uppercase;
     font-size: 86px;
+  }
+
+  &::before {
+    // content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('../../../resources/img/hero3.jpg');
+    // background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
   }
   .my-projects {
     position: relative;
@@ -24,14 +38,18 @@
     flex-direction: column;
 
     .scene {
+      // backdrop-filter: blur(10px);
+      // border: 1px solid red;
       // filter: grayscale(1);
+      // padding: 32px;
+      // overflow: hidden;
       position: absolute;
       width: 500px;
       min-width: 500px;
       height: 100%;
       perspective: 400px;
       transform-origin: 50%;
-      transform: scale(0.7) rotateY(0deg);
+      transform: scale(0.8) rotateY(0deg);
 
       transition: all var(--transition-short-medium);
       transition-property: transform, perspective;
@@ -39,24 +57,28 @@
       &:nth-child(3) {
         z-index: 11;
         left: 5%;
+        backdrop-filter: blur(10px);
       }
       &:nth-child(2) {
         z-index: 10;
+        backdrop-filter: blur(10px);
       }
       &:nth-child(1) {
         z-index: 9;
         right: 5%;
+        backdrop-filter: blur(10px);
       }
     }
 
     & .scene:hover {
-      perspective: 4000px;
+      // padding: 1rem;
+      perspective: 2000px;
       // filter: grayscale(0);
       transition-delay: 0s;
       transform: rotateY(0deg) scale(0.9);
     }
     & .scene:hover:not(:nth-child(3)) {
-      transform: rotateY(0deg) scale(0.9) translateX(200px);
+      transform: rotateY(0deg) scale(0.9) translateX(180px);
     }
     & .scene:nth-child(3):hover {
       animation: none;
@@ -66,6 +88,7 @@
 
     .project {
       // font-family: 'Jura', sans-serif;
+      transform-origin: right center;
       font-family: 'Orbitron', sans-serif;
       // font-size: 1.25rem;
       // font-weight: 400;
@@ -74,7 +97,7 @@
       display: grid;
       grid-template-rows: 1fr 3fr;
       min-width: 350px;
-      height: 850px;
+      // height: 850px;
       @include corner-cut(40px);
       .project-image-window {
         position: relative;

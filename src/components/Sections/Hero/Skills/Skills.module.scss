@@ -123,7 +123,7 @@
 
 .skills-window {
   color: var(--color-primary-transparent-3);
-
+  backdrop-filter: blur(10px);
   // width: 80%;
   width: 500px;
   min-width: 500px;
