@@ -19,6 +19,7 @@ const Hero = props => {
 
   const ctaDataButtonHandler = data => {
     setCtaButtonClicked(data);
+    console.log(ctaButtonClicked);
   };
 
   const selectedStateHandler = selec => {
@@ -26,7 +27,11 @@ const Hero = props => {
   };
 
   return (
-    <section className={classes['section-hero']}>
+    <section
+      className={`${classes['section-hero']} ${
+        !ctaButtonClicked.clicked ? classes.gray : ''
+      }`}
+    >
       <div className={classes['character-selection']}>
         <Characters
           onCtaButtonChange={ctaDataButtonHandler}
