@@ -8,7 +8,7 @@ const Characters = props => {
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
-  const [ctaButtonClicked, setCtaButton] = useState('false');
+  const [ctaButtonClicked, setCtaButton] = useState({ clicked: false });
   const ctx = useContext(SelectedContext);
 
   const ctaButtonHandler = () => {
@@ -102,17 +102,20 @@ const Characters = props => {
     if (charData === 0) {
       direc = 1;
       setChars(direc);
-      props.selectedState.setSelected(false);
-      renderContentHandler(null);
+      props.selectedState.setSelected(true);
+      // renderContentHandler(null);
+      renderContentHandler(+e.target.dataset.constPos);
       ctx.setRenderSection(false);
     }
     if (charData === 2) {
       direc = -1;
       setChars(direc);
-      props.selectedState.setSelected(false);
-      renderContentHandler(null);
+      props.selectedState.setSelected(true);
+      // renderContentHandler(null);
+      renderContentHandler(+e.target.dataset.constPos);
       ctx.setRenderSection(false);
     }
+    //disable selected if background is clicked
     if (e.target === charactersRef.current) {
       props.selectedState.setSelected(false);
       renderContentHandler(null);
