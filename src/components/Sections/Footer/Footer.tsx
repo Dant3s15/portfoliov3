@@ -1,5 +1,5 @@
 import classes from './Footer.module.scss';
-const Footer = props => {
+const Footer = () => {
   return <div className={classes.footer}>Footer</div>;
 };
 

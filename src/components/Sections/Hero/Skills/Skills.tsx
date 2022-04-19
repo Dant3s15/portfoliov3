@@ -1,5 +1,5 @@
 import { useEffect, useRef, useContext, FC } from 'react';
-import Skill from './Skill';
+// import Skill from './Skill';
 import Skill2 from './Skill2';
 import AllSkills from '../../../Utils/AllSkills';
 import SelectedContext from '../../../../context/selected-context';

@@ -36,7 +36,13 @@ const sendEmail = values => {
   }).then(message => alert(message));
 };
 
-const ContactForm = props => {
+// interface FormValues {
+//   name: string;
+//   email: string;
+//   text: string;
+// }
+
+const ContactForm = () => {
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -60,25 +66,25 @@ const ContactForm = props => {
     },
   });
 
-  const checkErrors = inptName => {
+  const checkErrors = (inptName: string) => {
     if (formik.errors[inptName] && formik.touched[inptName]) {
       return (
         <div className={classes['form-error']}>{formik.errors[inptName]}</div>
       );
     }
-    return null;
+    return '';
   };
 
   const checkErrorState = inptName => {
     if (formik.errors[inptName] && formik.touched[inptName]) {
       return classes['input-error'];
-    } else return null;
+    } else return '';
   };
 
   const checkCorner = inptName => {
     if (formik.errors[inptName] && formik.touched[inptName])
       return classes['error-corner'];
-    else return null;
+    else return '';
   };
 
   return (
@@ -125,7 +131,7 @@ const ContactForm = props => {
             <textarea
               className={checkErrorState('text')}
               id='text'
-              type='text'
+              // type='text'
               name='text'
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}

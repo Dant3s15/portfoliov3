@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const GoogleLogIn = (props: string) => (
+const GoogleLogIn = (props: {}) => (
   <svg
     width={46}
     height={46}

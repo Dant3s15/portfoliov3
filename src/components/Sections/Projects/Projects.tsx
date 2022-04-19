@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { FC, Fragment, ReactNode } from 'react';
 import classes from './Projects.module.scss';
 import CardGlass from '../../UI/CardGlass';
 import AllSkils from '../../../components/Utils/AllSkills';
@@ -6,7 +6,7 @@ import project1 from '../../../resources/img/projects/project1.png';
 import webLink from '../../../resources/icons/globe-outline.svg';
 import github from '../../../resources/icons/logo-github.svg';
 
-const Projects = props => {
+const Projects = () => {
   // const test = useRef(null);
   // console.log(test.current.childNodes[1]);
   return (
@@ -99,7 +99,18 @@ const Projects = props => {
   );
 };
 
-const CardProject = props => {
+interface CardProjectProps {
+  projectData: {
+    skills: any[];
+    repo: string;
+    link: string;
+    image: string;
+    title: string;
+    overview: ReactNode | undefined;
+  };
+}
+
+const CardProject: FC<CardProjectProps> = props => {
   const skillsArr = props.projectData?.skills;
   const skills = skillsArr?.map(skill => (
     <li key={Math.random()} className={classes['skill']}>
