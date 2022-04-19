@@ -1,6 +1,13 @@
+import { FC } from 'react';
 import classes from './Skill.module.scss';
 
-const Skill = props => {
+interface Props {
+  onSkillChange: Function;
+  data: { level: number | undefined; icon: string; name: string; id: number };
+  sign?: string;
+}
+
+const Skill: FC<Props> = props => {
   // const manageSkillHandler = () => {
   //   console.log('click', props.data.id);
   // };

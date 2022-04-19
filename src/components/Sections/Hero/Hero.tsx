@@ -1,30 +1,38 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, FC } from 'react';
 import classes from './Hero.module.scss';
 import SelectedContext from '../../../context/selected-context';
 import Characters from './Characters/Characters';
 import SkillsList from './Skills/Skills';
 
-const Hero = props => {
+const Hero: FC = props => {
   const ctx = useContext(SelectedContext);
-  const [selected, setSelected] = useState(false);
+  // const [selected, setSelected] = useState(false);
 
-  const [charState, setCharState] = useState({}, cur => {
-    console.log(cur);
+  const [charState, setCharState] = useState({
+    leftChar: 0,
+    frontChar: 1,
+    rightChar: 2,
   });
-  const [ctaButtonClicked, setCtaButtonClicked] = useState('false');
+  const [ctaButtonClicked, setCtaButtonClicked] = useState({ clicked: false });
 
-  const charStateDataHandler = data => {
+  const charStateDataHandler = (data: {
+    leftChar: number;
+    frontChar: number;
+    rightChar: number;
+  }) => {
+    // console.log(data);
     setCharState(data);
   };
 
-  const ctaDataButtonHandler = data => {
+  const ctaDataButtonHandler = (data: { clicked: boolean }) => {
     setCtaButtonClicked(data);
-    console.log(ctaButtonClicked);
+    // console.log(data);
   };
 
-  const selectedStateHandler = selec => {
-    setSelected(selec);
-  };
+  // const selectedStateHandler = (selec: any) => {
+  //   setSelected(selec);
+  //   console.log(selec);
+  // };
 
   return (
     <section
@@ -35,7 +43,7 @@ const Hero = props => {
       <div className={classes['character-selection']}>
         <Characters
           onCtaButtonChange={ctaDataButtonHandler}
-          onSelectedChange={selectedStateHandler}
+          // onSelectedChange={selectedStateHandler}
           selectedState={ctx}
           charState={charStateDataHandler}
         ></Characters>
@@ -43,7 +51,7 @@ const Hero = props => {
           className={classes['character-skills']}
           onCtaButtonChange={ctaButtonClicked}
           charStateData={charState}
-          onReceivedSelectState={selected}
+          // onReceivedSelectState={selected}
         ></SkillsList>
       </div>
     </section>

@@ -1,29 +1,41 @@
-import { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useRef, useContext, FC } from 'react';
 import Character from './Character';
 import SelectedContext from '../../../../context/selected-context';
 import ButtonBig from '../../../UI/ButtonBig';
 import classes from './Characters.module.scss';
 
-const Characters = props => {
+interface Props {
+  onCtaButtonChange: any;
+  // onSelectedChange?: (selec: any) => void;
+  selectedState: any;
+  charState: (data: any) => void;
+}
+
+const Characters: FC<Props> = props => {
+  console.log(props);
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
   const [ctaButtonClicked, setCtaButton] = useState({ clicked: false });
   const ctx = useContext(SelectedContext);
 
-  const ctaButtonHandler = () => {
-    if (!ctaButtonClicked) setCtaButton(true);
-    else setCtaButton(false);
-    calcCharWidth();
-    props.onCtaButtonChange({ clicked: ctaButtonClicked });
-    //disabling blue outline on drag
-    charactersColRef.current.ondragstart = () => {
-      return false;
-    };
-  };
+  const charactersRef = useRef<HTMLDivElement>(null);
+  const charactersColRef = useRef<HTMLDivElement>(null);
 
-  const charactersRef = useRef(null);
-  const charactersColRef = useRef(null);
+  const ctaButtonHandler = () => {
+    if (!ctaButtonClicked.clicked) {
+      setCtaButton({ clicked: true });
+    } else setCtaButton({ clicked: false });
+    calcCharWidth();
+    props.onCtaButtonChange({ clicked: true });
+    console.log(ctaButtonClicked);
+    //disabling blue outline on drag
+    if (charactersColRef?.current) {
+      charactersColRef.current.ondragstart = () => {
+        return false;
+      };
+    }
+  };
 
   useEffect(() => {
     const charStateData = {
@@ -32,15 +44,15 @@ const Characters = props => {
       rightChar,
     };
 
-    props.charState(charStateData);
+    props.charState && props.charState(charStateData);
   }, [leftChar, frontChar, rightChar]);
 
   const CONST_POS = [0, 1, 2];
 
   // ********************************************************
-  const debounce = (func, timeout = 300) => {
-    let timer;
-    return (...args) => {
+  const debounce = (func: Function, timeout = 300) => {
+    let timer: any;
+    return (...args: any) => {
       clearTimeout(timer);
       timer = setTimeout(() => {
         func.apply(this, args);
@@ -51,21 +63,24 @@ const Characters = props => {
   const processChange = debounce(() => calcCharWidth());
 
   const calcCharWidth = () => {
-    let characterImgComputedWidth;
+    let characterImgComputedWidth: number;
+    let charactersComputedWith: number;
     if (charactersRef.current) {
       characterImgComputedWidth = charactersRef.current.offsetWidth;
+      charactersComputedWith = characterImgComputedWidth * 0.4;
+      let root = document.documentElement;
+      root.style.setProperty(
+        '--characters-width',
+        charactersComputedWith + 'px'
+      );
     }
-    let charactersComputedWith = characterImgComputedWidth * 0.4;
-
-    let root = document.documentElement;
-    root.style.setProperty('--characters-width', charactersComputedWith + 'px');
   };
 
   window.addEventListener('resize', processChange);
 
   // ********************************************************
 
-  const wrapRotate = function (num, direc = -1) {
+  const wrapRotate = function (num: number, direc = -1) {
     if (direc == 1) {
       return (num + 1) % 3;
     }
@@ -75,16 +90,16 @@ const Characters = props => {
         return num + 2;
       }
       return (num - 1) % 3;
-    }
+    } else return 0;
   };
 
   // *****************************************************
-  const renderContentHandler = constPos => {
-    props.selectedState.setWhichSelected(constPos);
+  const renderContentHandler = (constPos: number) => {
+    props.selectedState?.setWhichSelected(constPos);
   };
 
-  const rotateCharactersHandler = e => {
-    const setChars = direc => {
+  const rotateCharactersHandler = (e: any) => {
+    const setChars = (direc: number) => {
       setLeftChar(wrapRotate(leftChar, direc));
       setFrontChar(wrapRotate(frontChar, direc));
       setRightChar(wrapRotate(rightChar, direc));
@@ -105,6 +120,7 @@ const Characters = props => {
       props.selectedState.setSelected(true);
       // renderContentHandler(null);
       renderContentHandler(+e.target.dataset.constPos);
+      //TODO FIX CONTEXT
       ctx.setRenderSection(false);
     }
     if (charData === 2) {
@@ -118,7 +134,7 @@ const Characters = props => {
     //disable selected if background is clicked
     if (e.target === charactersRef.current) {
       props.selectedState.setSelected(false);
-      renderContentHandler(null);
+      renderContentHandler(0);
       ctx.setRenderSection(false);
     }
   };
@@ -175,9 +191,9 @@ const Characters = props => {
   // });
 
   // *****************************************************
-  let leftIsSelected = (leftChar === 1) & props.selectedState.isSelected;
-  let frontIsSelected = (frontChar === 1) & props.selectedState.isSelected;
-  let rightIsSelected = (rightChar === 1) & props.selectedState.isSelected;
+  let leftIsSelected = leftChar === 1 && props.selectedState.isSelected;
+  let frontIsSelected = frontChar === 1 && props.selectedState.isSelected;
+  let rightIsSelected = rightChar === 1 && props.selectedState.isSelected;
 
   // console.log(leftIsSelected, frontIsSelected, rightIsSelected);
   const isAnythingSelected = () => {
@@ -200,7 +216,7 @@ const Characters = props => {
     <div ref={charactersColRef} className={classes['character-col']}>
       <div
         className={`${classes['character__overlay']} ${
-          !ctaButtonClicked ? classes['character__overlay--hidden'] : ''
+          ctaButtonClicked.clicked ? classes['character__overlay--hidden'] : ''
         }`}
       >
         <div className={classes.cta}>
@@ -219,7 +235,7 @@ const Characters = props => {
         ref={charactersRef}
         onClick={rotateCharactersHandler}
         className={`${classes.characters} ${
-          ctaButtonClicked ? classes.hidden : ''
+          !ctaButtonClicked.clicked ? classes.hidden : ''
         }`}
       >
         {isAnythingSelected().isSelected ? (

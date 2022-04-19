@@ -1,14 +1,28 @@
 import Skill from './Skill/Skill';
-import { useState, useRef } from 'react';
+import { useState, useRef, FC } from 'react';
 import classes from './SkillAddWindow.module.scss';
-const SkillAddWindow = props => {
-  const [level, setLevel] = useState(null);
 
-  const levelSliderRef = useRef();
+interface Props {
+  onSetLevel: React.Dispatch<React.SetStateAction<boolean>>;
+  onCancel: () => void;
+  onSkillAdd: (skill: {}) => void;
+  skillData: {
+    level: number | undefined;
+    icon: string;
+    name: string;
+    id: number;
+  };
+}
 
-  const getLevel = level => {
-    setLevel(level);
-    props.skillData.level = level;
+const SkillAddWindow: FC<Props> = props => {
+  const [level, setLevel] = useState<number | null>(null);
+
+  const levelSliderRef = useRef<HTMLInputElement>(null);
+
+  const getLevel = (level: number | string) => {
+    let lvl = +level;
+    setLevel(lvl);
+    props.skillData.level = lvl;
     props.onSetLevel(true);
     // console.log(level);
     return level;
@@ -58,7 +72,7 @@ const SkillAddWindow = props => {
           {/* {render10buttons()} */}
           <input
             onChange={() => {
-              getLevel(levelSliderRef.current.value);
+              getLevel(levelSliderRef.current?.value!);
             }}
             ref={levelSliderRef}
             type='range'

@@ -5,12 +5,7 @@ import ContactForm from '../ContactForm/ContactForm';
 import Projects from '../Projects/Projects';
 import ButtonBig from '../../UI/ButtonBig';
 import classes from './AboutMe.module.scss';
-const AboutMe = props => {
-  // const receiveClass = cls => {
-  //   receivedClass = cls;
-  //   return cls;
-  // };
-
+const AboutMe = () => {
   return (
     <Fragment>
       <div id='about-me' className={classes['about-me']}>
@@ -42,7 +37,7 @@ const AboutMe = props => {
               onRotateCharacters={() => {
                 return;
               }}
-              data='1'
+              data={3}
               name='Front'
             ></Character>
           </div>

@@ -1,11 +1,29 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, FC } from 'react';
 import classes from './Header.module.scss';
 import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
 import GoogleLogIn from '../../Icons/google/GoogleLogIn';
 import googleLogin from '../../../resources/img/google/btn_google_signin_light_normal_web@2x.png';
 
-const Header = props => {
+// interface InsideGoogle {
+//   user?: USER | null | undefined;
+// }
+
+// interface Google {
+//   google?: InsideGoogle;
+// }
+
+interface Props {
+  data: {
+    google: {
+      user?: any;
+      auth?: any;
+      signInWithGoogle?: () => void;
+    };
+  };
+}
+
+const Header: FC<Props> = props => {
   const [hamburgerState, setHamburgerState] = useState(false);
 
   const hamburgerButtonHandler = () => {

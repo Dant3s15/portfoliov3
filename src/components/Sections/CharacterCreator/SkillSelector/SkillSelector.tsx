@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from 'react';
+import { FC, Fragment, useRef, useState } from 'react';
 import CardGlass from '../../../UI/CardGlass';
 import AllSkills from '../../../Utils/AllSkills';
 import Skill from './Skill/Skill';
@@ -6,28 +6,29 @@ import SkillAddWindow from './SkillAddWindow';
 import ButtonBig from '../../../UI/ButtonBig';
 import classes from './SkillSelector.module.scss';
 
-const SkillSelector = props => {
+const SkillSelector = () => {
   const [allSkillsArr, setAllSkillsArr] = useState(AllSkills);
   const [allSkillsArrFiltered, setAllSkillsArrFiltered] =
     useState(allSkillsArr);
   const [allSkillsIsFiltered, setAllSkillsIsFiltered] = useState(false);
-  const [addedSkills, setAddedSkills] = useState([]);
-  const [addedSkillsFiltered, setAddedSkillsFiltered] = useState(addedSkills);
+  const [addedSkills, setAddedSkills] = useState<any[]>([]);
+  const [addedSkillsFiltered, setAddedSkillsFiltered] =
+    useState<any[]>(addedSkills);
   const [addedSkillsIsFiltered, setAddedSkillsIsFiltered] = useState(false);
 
   const [isAdding, setIsAdding] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-  const [skillAddingData, setSkillAddingData] = useState(AllSkills[0]);
+  const [skillAddingData, setSkillAddingData] = useState<any>(AllSkills[0]);
   const [levelIsSet, setlevelIsSet] = useState(false);
 
-  const searchAllRef = useRef('');
-  const searchAddedRef = useRef('');
+  const searchAllRef = useRef<HTMLInputElement>(null);
+  const searchAddedRef = useRef<HTMLInputElement>(null);
 
   const filterSkills = () => {
-    const searchAllVal = searchAllRef.current.value.toLowerCase();
-    const searchAddedVal = searchAddedRef.current.value.toLowerCase();
+    const searchAllVal = searchAllRef.current?.value.toLowerCase();
+    const searchAddedVal = searchAddedRef.current?.value.toLowerCase();
 
-    if (searchAllVal !== '') {
+    if (searchAllVal) {
       const newArr = allSkillsArr.filter(skill => {
         return skill.name.toLowerCase().includes(searchAllVal);
       });
@@ -37,9 +38,10 @@ const SkillSelector = props => {
       setAllSkillsIsFiltered(false);
     }
     if (searchAddedVal !== '') {
-      const newArr = addedSkills.filter(skill => {
-        return skill.name.toLowerCase().includes(searchAddedVal);
-      });
+      const newArr: any[] = addedSkills.filter(skill =>
+        skill.name.toLowerCase().includes(searchAddedVal)
+      );
+      console.log(newArr);
       setAddedSkillsIsFiltered(true);
       setAddedSkillsFiltered(newArr);
     } else {
@@ -47,13 +49,14 @@ const SkillSelector = props => {
     }
   };
 
-  const cancelAddingHandler = e => {
+  const cancelAddingHandler = () => {
     setIsAdding(false);
     setIsAdded(false);
   };
 
-  const skillChangeHandler = skill => {
-    const sortSkills = arr => {
+  const skillChangeHandler = (skill: {}) => {
+    // console.log(skill);
+    const sortSkills = (arr: any[]) => {
       return arr.sort((a, b) => a.name.localeCompare(b.name));
     };
     // console.log(isAdding, isAdded);
@@ -62,7 +65,7 @@ const SkillSelector = props => {
     if (allSkillsArr.some(curSkill => curSkill === skill)) {
       setIsAdding(true);
       setSkillAddingData(skill);
-      if (isAdding & !isAdded) {
+      if (isAdding && !isAdded) {
         // console.log('adding');
         setAllSkillsArr(prevAllSkills => {
           return sortSkills(
@@ -103,7 +106,10 @@ const SkillSelector = props => {
           // const noLevel = prevAllSkills.map(skill => (skill.level = undefined));
           return sortSkills([
             ...addedSkills.filter(curSkill => {
-              skill.level = undefined;
+              console.log(skill);
+              curSkill.level = undefined;
+              // delete skill.level;
+
               return curSkill === skill;
             }),
             ...prevAllSkills,
@@ -114,7 +120,7 @@ const SkillSelector = props => {
     setlevelIsSet(false);
   };
   // console.log(addedSkills);
-  const skillAddHandler = skill => {
+  const skillAddHandler = (skill: {}) => {
     if (levelIsSet) {
       setIsAdded(true);
       skillChangeHandler(skill);
@@ -155,8 +161,8 @@ const SkillSelector = props => {
     }
   };
 
-  const renderSkills = (skillsArr, sign) => {
-    return skillsArr.map(skill => {
+  const renderSkills = (skillsArr: {}[], sign: string) => {
+    return skillsArr.map((skill: any) => {
       return (
         <Skill
           onSkillChange={skillChangeHandler}

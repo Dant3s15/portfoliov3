@@ -1,14 +1,15 @@
-const CloseIcon = props => (
+const HamburgerIcon = (props: any) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' {...props}>
-    <title>{'Close'}</title>
+    <title>{'Menu'}</title>
     <path
       fill='none'
       stroke='currentColor'
       strokeLinecap='round'
-      strokeLinejoin='round'
+      strokeMiterlimit={10}
       strokeWidth={32}
-      d='M368 368 144 144m224 0L144 368'
+      d='M80 160h352M80 256h352M80 352h352'
     />
   </svg>
 );
-export default CloseIcon;
+
+export default HamburgerIcon;

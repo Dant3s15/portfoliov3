@@ -1,9 +1,9 @@
-import { useFormik } from 'formik';
+import { FormikValues, useFormik, FormikErrors } from 'formik';
 import classes from './ContactForm.module.scss';
 import ButtonBig from '../../UI/ButtonBig';
 
-const validate = values => {
-  const errors = {};
+const validate = (values: FormikValues) => {
+  const errors: FormikErrors<FormikValues> = {};
   if (!values.name) {
     errors.name = 'Required';
   } else if (values.name.length < 2) {

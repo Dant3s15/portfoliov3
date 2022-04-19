@@ -1,4 +1,4 @@
-import { useEffect, useRef, useContext } from 'react';
+import { useEffect, useRef, useContext, FC } from 'react';
 import Skill from './Skill';
 import Skill2 from './Skill2';
 import AllSkills from '../../../Utils/AllSkills';
@@ -6,13 +6,28 @@ import SelectedContext from '../../../../context/selected-context';
 // import CardGlass from '../../../UI/CardGlass';
 import classes from './Skills.module.scss';
 
-const SkillsList = props => {
-  const skillsWindowRef = useRef();
-  const characerSkills = useRef(null);
-  const ctx = useContext(SelectedContext);
+interface Props {
+  className: string;
+  onCtaButtonChange: { clicked: boolean };
+  charStateData: {
+    leftChar: number;
+    frontChar: number;
+    rightChar: number;
+  };
+}
 
-  const countLevel = char => {
-    const charExp = char.reduce((acc = 0, cur) => {
+const SkillsList: FC<Props> = props => {
+  const skillsWindowRef = useRef<HTMLDivElement>(null);
+  const characerSkills = useRef<HTMLDivElement>(null);
+  const ctx = useContext(SelectedContext);
+  const countLevel = (
+    skill: {
+      lvl: number;
+      id: number;
+      name: string;
+    }[]
+  ) => {
+    const charExp = skill.reduce((acc = 0, cur) => {
       if (
         cur.name === 'JavaScript' ||
         cur.name === 'React' ||
@@ -36,7 +51,7 @@ const SkillsList = props => {
     // console.log(AllSkills.length - 1, rightChar.length);
     // console.log('Char', charExp);
     // console.log('TOTAL', totalExp);
-    function percentage(partialValue, totalValue) {
+    function percentage(partialValue: number, totalValue: number) {
       return (100 * partialValue) / totalValue;
     }
 
@@ -45,10 +60,11 @@ const SkillsList = props => {
   };
 
   useEffect(() => {
-    if (ctx.isSelected) {
+    console.log(skillsWindowRef);
+    if (ctx.isSelected && skillsWindowRef.current) {
       // console.log(countLevel(leftChar));
       skillsWindowRef.current.classList.add(`${classes['selected--skills']}`);
-    } else {
+    } else if (ctx.isSelected && skillsWindowRef.current) {
       skillsWindowRef.current.classList.remove(
         `${classes['selected--skills']}`
       );
@@ -64,12 +80,13 @@ const SkillsList = props => {
     { ...AllSkills[1], lvl: 8 },
     { ...AllSkills[2], lvl: 8 },
     { ...AllSkills[3], lvl: 7 },
+    { ...AllSkills[49], lvl: 2 },
+    { ...AllSkills[26], lvl: 5 },
+    { ...AllSkills[13], lvl: 7 },
     { ...AllSkills[4], lvl: 4 },
     { ...AllSkills[5], lvl: 6 },
-    { ...AllSkills[13], lvl: 7 },
     { ...AllSkills[8], lvl: 5 },
     { ...AllSkills[23], lvl: 9 },
-    { ...AllSkills[26], lvl: 5 },
     { ...AllSkills[10], lvl: 5 },
   ];
   const rightChar = [
@@ -146,7 +163,7 @@ const SkillsList = props => {
 
   const skillsByCharacters = [[...leftChar], [...frontChar], [...rightChar]];
 
-  const skillsStruct = (id, pos) => {
+  const skillsStruct = (id: number, pos: number) => {
     if (characerSkills.current) {
       characerSkills.current.scrollTop = 0;
     }

@@ -1,16 +1,27 @@
 // import ButtonBig from '../../../UI/ButtonBig';
 import classes from './Character.module.scss';
 import characterImage from '../../../../resources/img/character.png';
-const Character = props => {
-  const whichSide = data => {
-    if (data === 0) return 'left';
-    if (data === 1) return 'front';
-    if (data === 2) return 'right';
+import { FC } from 'react';
+
+interface Props {
+  dataConstPos?: number;
+  data?: number | string;
+  selected?: boolean;
+  name: string;
+  onRotateCharacters: (e: any) => void;
+}
+const Character = (props: Props) => {
+  const whichSide = (data: number | string): string | undefined => {
+    let side = +data;
+    console.log(data);
+    if (side === 0) return 'left';
+    if (side === 1) return 'front';
+    if (side === 2) return 'right';
   };
 
   // const charRef = useRef(null);
   // console.log(charRef);
-  const curChar = classes[`character__${whichSide(props.data)}`];
+  const curChar = classes[`character__${whichSide(props.data!)}`];
 
   return (
     <div

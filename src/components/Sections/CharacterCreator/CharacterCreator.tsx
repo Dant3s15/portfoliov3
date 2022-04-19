@@ -1,7 +1,7 @@
 import Character from '../Hero/Characters/Character';
 import SkillSelector from './SkillSelector/SkillSelector';
 import classes from './CharacterCreator.module.scss';
-const CharacterCreator = props => {
+const CharacterCreator = () => {
   return (
     <div id='creator' className={classes.creator}>
       <div className={classes['skill-selector__col']}>
@@ -13,7 +13,7 @@ const CharacterCreator = props => {
             onRotateCharacters={() => {
               return;
             }}
-            data='1'
+            data={3}
             name='Front'
           ></Character>
         </div>
