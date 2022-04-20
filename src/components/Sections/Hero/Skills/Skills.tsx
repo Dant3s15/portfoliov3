@@ -60,11 +60,11 @@ const SkillsList: FC<Props> = props => {
   };
 
   useEffect(() => {
-    console.log(skillsWindowRef);
+    // console.log(skillsWindowRef);
     if (ctx.isSelected && skillsWindowRef.current) {
       // console.log(countLevel(leftChar));
       skillsWindowRef.current.classList.add(`${classes['selected--skills']}`);
-    } else if (ctx.isSelected && skillsWindowRef.current) {
+    } else if (!ctx.isSelected && skillsWindowRef.current) {
       skillsWindowRef.current.classList.remove(
         `${classes['selected--skills']}`
       );

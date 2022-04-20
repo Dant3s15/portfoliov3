@@ -206,7 +206,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
+  font-size: 48px;
   text-transform: uppercase;
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
@@ -219,7 +219,8 @@
   strong {
     background-color: var(--color-primary);
     display: block;
-    font-size: 4rem;
+    font-size: 48px;
+    font-weight: 700;
     position: relative;
     overflow: hidden;
     z-index: 999;

@@ -9,10 +9,11 @@ interface Props {
   // onSelectedChange?: (selec: any) => void;
   selectedState: any;
   charState: (data: any) => void;
+  heroRef: React.MutableRefObject<null>;
 }
 
 const Characters: FC<Props> = props => {
-  console.log(props);
+  // console.log(props);
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
@@ -28,7 +29,7 @@ const Characters: FC<Props> = props => {
     } else setCtaButton({ clicked: false });
     calcCharWidth();
     props.onCtaButtonChange({ clicked: true });
-    console.log(ctaButtonClicked);
+    // console.log(ctaButtonClicked);
     //disabling blue outline on drag
     if (charactersColRef?.current) {
       charactersColRef.current.ondragstart = () => {

@@ -307,3 +307,14 @@
     transform: translateY(0);
   }
 }
+
+@keyframes slidedown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

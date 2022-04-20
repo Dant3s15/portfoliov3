@@ -23,7 +23,7 @@ const validate = (values: FormikValues) => {
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid email address';
   }
-  console.log(errors.name);
+  // console.log(errors.name);
   return errors;
 };
 
@@ -80,7 +80,7 @@ const ContactForm = () => {
       const errorDiv = (
         <div className={classes['form-error']}>{formik.errors[inptName]}</div>
       );
-      console.log(errorDiv);
+      // console.log(errorDiv);
       return errorDiv;
     }
     return null;

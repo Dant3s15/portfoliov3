@@ -13,7 +13,7 @@ interface Props {
 const Character = (props: Props) => {
   const whichSide = (data: number | string): string | undefined => {
     let side = +data;
-    console.log(data);
+    // console.log(data);
     if (side === 0) return 'left';
     if (side === 1) return 'front';
     if (side === 2) return 'right';

@@ -9,10 +9,10 @@
   $after: ''
 ) {
   clip-path: polygon(
-    0% 100%,
+    0% 101%,
     calc(100% - $pixels) 100%,
     100% calc(100% - $pixels),
-    100% 0%,
+    101% 0%,
     0% 0%
   );
 

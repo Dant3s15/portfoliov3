@@ -3,9 +3,11 @@ import classes from './Hero.module.scss';
 import SelectedContext from '../../../context/selected-context';
 import Characters from './Characters/Characters';
 import SkillsList from './Skills/Skills';
+import { useRef } from 'react';
 
 const Hero: FC = props => {
   const ctx = useContext(SelectedContext);
+  const heroRef = useRef(null);
   // const [selected, setSelected] = useState(false);
 
   const [charState, setCharState] = useState({
@@ -29,6 +31,7 @@ const Hero: FC = props => {
     // console.log(data);
   };
 
+  const heroOnClickHandler = () => {};
   // const selectedStateHandler = (selec: any) => {
   //   setSelected(selec);
   //   console.log(selec);
@@ -36,12 +39,15 @@ const Hero: FC = props => {
 
   return (
     <section
+      ref={heroRef}
+      onClick={heroOnClickHandler}
       className={`${classes['section-hero']} ${
         !ctaButtonClicked.clicked ? classes.gray : ''
       }`}
     >
       <div className={classes['character-selection']}>
         <Characters
+          heroRef={heroRef}
           onCtaButtonChange={ctaDataButtonHandler}
           // onSelectedChange={selectedStateHandler}
           selectedState={ctx}
