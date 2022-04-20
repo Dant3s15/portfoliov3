@@ -1,9 +1,11 @@
 import { FormikValues, useFormik, FormikErrors } from 'formik';
 import classes from './ContactForm.module.scss';
 import ButtonBig from '../../UI/ButtonBig';
+import { useState } from 'react';
 
 const validate = (values: FormikValues) => {
-  const errors: FormikErrors<FormikValues> = {};
+  const errors: FormikErrors<any> = {};
+
   if (!values.name) {
     errors.name = 'Required';
   } else if (values.name.length < 2) {
@@ -21,28 +23,26 @@ const validate = (values: FormikValues) => {
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid email address';
   }
+  console.log(errors.name);
   return errors;
 };
 
-const sendEmail = values => {
-  Email.send({
-    Host: 'smtp.gmail.com',
-    Username: 'portfoliod3s@gmail.com',
-    Password: 'ZAQ!2wsx',
-    To: 'damiansobierajdev@gmail.com',
-    From: values.email,
-    Subject: 'Contact from Portfolio',
-    Body: `${values.email} ${values.text}`,
-  }).then(message => alert(message));
-};
-
-// interface FormValues {
-//   name: string;
-//   email: string;
-//   text: string;
-// }
+//TODO send email
+// const sendEmail = values => {
+//   Email.send({
+//     Host: 'smtp.gmail.com',
+//     Username: 'portfoliod3s@gmail.com',
+//     Password: 'ZAQ!2wsx',
+//     To: 'damiansobierajdev@gmail.com',
+//     From: values.email,
+//     Subject: 'Contact from Portfolio',
+//     Body: `${values.email} ${values.text}`,
+//   }).then(message => alert(message));
+// };
 
 const ContactForm = () => {
+  // const [nameHasError, setNameHasError] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -51,7 +51,7 @@ const ContactForm = () => {
     },
     validate,
     onSubmit: async values => {
-      sendEmail(values);
+      // sendEmail(values);
       const response = await fetch(
         'https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app/emails.json',
         {
@@ -66,25 +66,43 @@ const ContactForm = () => {
     },
   });
 
-  const checkErrors = (inptName: string) => {
+  // const [nameHasError, setNameHasError] = useState(false);
+  // const [nameIsTouched, setNameIsTouched] = useState(false);
+  interface FormValues {
+    // [key: string]: any;
+    [key: string]: string | number;
+  }
+
+  const checkErrors = (
+    inptName: 'name' | 'email' | 'text'
+  ): JSX.Element | string | null => {
     if (formik.errors[inptName] && formik.touched[inptName]) {
-      return (
+      const errorDiv = (
         <div className={classes['form-error']}>{formik.errors[inptName]}</div>
       );
+      console.log(errorDiv);
+      return errorDiv;
     }
-    return '';
+    return null;
   };
 
-  const checkErrorState = inptName => {
+  function checkErrorState(inptName: 'name' | 'email' | 'text') {
     if (formik.errors[inptName] && formik.touched[inptName]) {
       return classes['input-error'];
-    } else return '';
-  };
+    } else return undefined;
+  }
 
-  const checkCorner = inptName => {
+  // const checkErrorState = (inptName: string) => {
+  //   console.log(formik.errors);
+  //   if (formik.errors[inptName] !== '' && formik.touched[inptName]) {
+  //     return classes['input-error'];
+  //   } else return undefined;
+  // };
+
+  const checkCorner = (inptName: 'name' | 'email' | 'text') => {
     if (formik.errors[inptName] && formik.touched[inptName])
       return classes['error-corner'];
-    else return '';
+    else return null;
   };
 
   return (
@@ -96,6 +114,9 @@ const ContactForm = () => {
               <div className={classes.labels}>
                 <label htmlFor='name'>Your Name</label>
                 {checkErrors('name')}
+                {/* <div className={classes['form-error']}>
+                  {formik.errors['name']}
+                </div> */}
               </div>
               <input
                 className={checkErrorState('name')}
@@ -111,9 +132,12 @@ const ContactForm = () => {
               <div className={classes.labels}>
                 <label htmlFor='email'>Your Email</label>
                 {checkErrors('email')}
+                {/* <div className={classes['form-error']}>
+                  {formik.errors['email']}
+                </div> */}
               </div>
               <input
-                className={`${checkErrorState('email')}`}
+                className={checkErrorState('email')}
                 id='email'
                 type='email'
                 name='email'
@@ -127,6 +151,9 @@ const ContactForm = () => {
             <div className={classes.labels}>
               <label htmlFor='text'>Your Message</label>
               {checkErrors('text')}
+              {/* <div className={classes['form-error']}>
+                {formik.errors['text']}
+              </div> */}
             </div>
             <textarea
               className={checkErrorState('text')}

@@ -1,4 +1,4 @@
-const FutureChar = props => {
+const FutureChar = (key: any) => {
   return <h1>FUTURE</h1>;
 };
 

@@ -243,7 +243,7 @@ const Characters: FC<Props> = props => {
             onClick={frontCharButtonHandler}
             // animate={true}
             moveTo={isAnythingSelected().moveTo}
-            isAbsolute={{ isAbsolute: true }}
+            isAbsolute={true}
             text={isAnythingSelected().text}
             isGreyedOut={isAnythingSelected().greyedOut}
           ></ButtonBig>

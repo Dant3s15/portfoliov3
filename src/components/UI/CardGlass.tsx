@@ -1,6 +1,12 @@
 // import { Fragment, useEffect } from 'react';
+import { FC } from 'react';
 import classes from './CardGlass.module.scss';
-const CardGlass = props => {
+interface Props {
+  className?: string;
+  children: any;
+}
+
+const CardGlass: FC<Props> = props => {
   return (
     <div
       className={`${classes['card--glass']} ${

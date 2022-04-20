@@ -27,7 +27,7 @@ const AboutMe = () => {
         </div>
         <div className={classes['about-me-char']}>
           <ButtonBig
-            isAbsolute={{ isAbsolute: true }}
+            isAbsolute={true}
             style={{ top: '80%' }}
             text='Contact Me'
             moveTo='contact-me'

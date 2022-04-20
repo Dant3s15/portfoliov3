@@ -1,13 +1,25 @@
 import 'animate.css';
+import { CSSProperties, FC, MouseEventHandler } from 'react';
 import classes from './ButtonBig.module.scss';
 //TODO
-const ButtonBig = props => {
+
+interface Props {
+  style?: CSSProperties | undefined;
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+  type?: 'button' | 'submit' | 'reset' | undefined;
+  isAbsolute?: boolean;
+  isGreyedOut?: boolean;
+  moveTo?: string;
+  text?: string;
+}
+
+const ButtonBig: FC<Props> = (props: any) => {
   return (
     <button
-      type={props.type ? props.type : ''}
+      type={props.type ? props.type : undefined}
       key={Math.random()}
       className={`${classes['button-big']}
-    ${props.isAbsolute && props.isAbsolute.isAbsolute ? classes.absolute : ''}
+    ${props.isAbsolute && props.isAbsolute ? classes.absolute : ''}
 
      card--glass ${props.isGreyedOut === true ? classes['greyed-out'] : ''}`}
       style={props.style}

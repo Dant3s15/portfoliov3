@@ -1,6 +1,15 @@
-import { Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import classes from './Skill2.module.scss';
-const Skill2 = props => {
+
+interface Props {
+  skill: {
+    name: string;
+    lvl: number;
+    icon: string;
+  };
+}
+
+const Skill2: FC<Props> = (props: Props) => {
   return (
     <Fragment>
       <button className={`${classes['skill-tile']}`}>
