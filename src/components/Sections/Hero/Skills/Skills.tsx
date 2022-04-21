@@ -86,6 +86,7 @@ const SkillsList: FC<Props> = props => {
     { ...AllSkills[4], lvl: 4 },
     { ...AllSkills[5], lvl: 6 },
     { ...AllSkills[8], lvl: 5 },
+    { ...AllSkills[27], lvl: 2 },
     { ...AllSkills[23], lvl: 9 },
     { ...AllSkills[10], lvl: 5 },
   ];
