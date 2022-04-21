@@ -2,91 +2,32 @@
 @import '../../../../scss/animations';
 @import '../../../../scss/mixins';
 
-.skills-list {
-  list-style: none;
-  text-transform: capitalize;
-  // display: flex;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-  flex-direction: column;
-  transition: all var(--transition-short-medium) ease-out;
-  transition-property: transform, opacity;
-  position: absolute;
-  width: 80%;
-
-  // border: 1px solid red;
-  padding-bottom: 1.5rem;
-  &[data-character='0'] {
-    animation: none;
-    transform: translate(-500px);
-    opacity: 0;
-    position: absolute;
-  }
-
-  &[data-character='1'] {
-    transform: translate(0px);
-    position: absolute;
-    animation: blink 0.7s;
-  }
-
-  &[data-character='2'] {
-    animation: none;
-    transform: translate(500px);
-    opacity: 0;
-    position: absolute;
-  }
-}
-
-// .skill-wrapper {
-//   position: absolute;
-//   border: 1px solid red;
-//   width: 100%;
-//   height: 100%;
-//   overflow-y: scroll;
-//   @include flexbox;
-// }
-
-.skills-list-name {
-  text-transform: uppercase;
-  font-size: 1.875rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  color: var(--color-primary);
-
-  @media (max-width: $small-tablet) {
-    font-size: 1.5rem;
-  }
-}
-
 .character-skills {
   display: flex;
   align-items: flex-start;
-
+  // overflow: hidden;
   justify-content: center;
   width: 100%;
   height: 100%;
+  // padding-top: 0.7rem;
   // width: 300px;
   // height: 300px;
   // height: 300px[;
   position: relative;
-  padding-top: 1.5rem;
+  // padding-top: 1.5rem;
 
   // overflow-x: hidden;
-  overflow: hidden;
-  overflow-y: scroll;
+  // overflow: hidden;
+  // overflow-y: scroll;
   // border: 1px solid red;
   // scroll-snap-align: center;
   transition: var(--transition-short);
 
   //TODO
-  &::-webkit-scrollbar {
-    // width: 5px;
-    display: none;
-  }
+  // &::-webkit-scrollbar {
+  //   // width: 5px;
+  //   display: none;
+  // }
   // &::-webkit-scrollbar-thumb {
   //   background: var(--color-primary);
   // }
@@ -250,6 +191,109 @@
     forwards;
   strong {
     transform: scale(1.1);
+  }
+}
+.skills-list {
+  list-style: none;
+  text-transform: capitalize;
+  // display: flex;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  flex-direction: column;
+  transition: all var(--transition-short-medium) ease-out;
+  transition-property: transform, opacity;
+  position: absolute;
+  // width: 85%;
+  width: 100%;
+  // height: auto;
+  padding: 0 2rem;
+  padding-bottom: 2rem;
+  // border: 1px solid var(--color-primary);
+
+  // padding-bottom: 1.5rem;
+  // &[data-character='0'] {
+  //   animation: none;
+  //   transform: translate(-500px);
+  //   opacity: 0;
+  //   position: absolute;
+  // }
+
+  // &[data-character='1'] {
+  //   transform: translate(0px);
+  //   position: absolute;
+  //   animation: blink 0.7s;
+  // }
+
+  // &[data-character='2'] {
+  //   animation: none;
+  //   transform: translate(500px);
+  //   opacity: 0;
+  //   position: absolute;
+  // }
+  &--text {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+  }
+}
+
+.skill-char-col {
+  width: 100%;
+  height: 100%;
+  // border: 1px solid red;
+  padding-top: 0.7rem;
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  transition: all var(--transition-short-medium) ease-out;
+  transition-property: transform, opacity;
+  &::-webkit-scrollbar {
+    // width: 5px;
+    display: none;
+  }
+  @include flexbox(center, flex-start);
+  &[data-character='0'] {
+    animation: none;
+    transform: translate(-500px);
+    opacity: 0;
+    position: absolute;
+  }
+
+  &[data-character='1'] {
+    transform: translate(0px);
+    position: absolute;
+    animation: blink 0.7s;
+  }
+
+  &[data-character='2'] {
+    animation: none;
+    transform: translate(500px);
+    opacity: 0;
+    position: absolute;
+  }
+}
+
+// .skill-wrapper {
+//   position: absolute;
+//   border: 1px solid red;
+//   width: 100%;
+//   height: 100%;
+//   overflow-y: scroll;
+//   @include flexbox;
+// }
+
+.skills-list-name {
+  text-transform: uppercase;
+  font-size: 1.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: var(--color-primary);
+
+  @media (max-width: $small-tablet) {
+    font-size: 1.5rem;
   }
 }
 

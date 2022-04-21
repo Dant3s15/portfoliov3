@@ -54,6 +54,7 @@ const Hero: FC = props => {
           charState={charStateDataHandler}
         ></Characters>
         <SkillsList
+          // heroRef={heroRef}
           className={classes['character-skills']}
           onCtaButtonChange={ctaButtonClicked}
           charStateData={charState}

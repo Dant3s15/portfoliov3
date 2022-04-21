@@ -1,4 +1,4 @@
-import { useEffect, useRef, useContext, FC } from 'react';
+import { useEffect, useRef, useContext, FC, LegacyRef } from 'react';
 // import Skill from './Skill';
 import Skill2 from './Skill2';
 import AllSkills from '../../../Utils/AllSkills';
@@ -7,6 +7,7 @@ import SelectedContext from '../../../../context/selected-context';
 import classes from './Skills.module.scss';
 
 interface Props {
+  // ref: React.RefObject<HTMLDivElement>;
   className: string;
   onCtaButtonChange: { clicked: boolean };
   charStateData: {
@@ -14,11 +15,16 @@ interface Props {
     frontChar: number;
     rightChar: number;
   };
+  // heroRef: React.RefObject<HTMLDivElement>;
 }
 
 const SkillsList: FC<Props> = props => {
   const skillsWindowRef = useRef<HTMLDivElement>(null);
   const characerSkills = useRef<HTMLDivElement>(null);
+  const skillCharCol0 = useRef<HTMLDivElement>(null);
+  const skillCharCol1 = useRef<HTMLDivElement>(null);
+  const skillCharCol2 = useRef<HTMLDivElement>(null);
+
   const ctx = useContext(SelectedContext);
   const countLevel = (
     skill: {
@@ -34,29 +40,19 @@ const SkillsList: FC<Props> = props => {
         cur.name === 'Vue' ||
         cur.name === 'Angular'
       ) {
-        return (acc += 2 * cur.lvl);
+        return (acc += 3 * cur.lvl);
       }
       return (acc += cur.lvl);
     }, 0);
-    // const charExp = char.reduce((acc = 0, cur) => {
-    //   if (cur.name === 'React') {
-    //     return (acc += 2 * cur.lvl);
-    //   }
-    //   return (acc += cur.lvl);
-    // }, 0);
-    // console.log(charExp);
 
     const totalExp = (AllSkills.length - 1) * 10;
 
-    // console.log(AllSkills.length - 1, rightChar.length);
-    // console.log('Char', charExp);
-    // console.log('TOTAL', totalExp);
     function percentage(partialValue: number, totalValue: number) {
       return (100 * partialValue) / totalValue;
     }
 
     const result = percentage(charExp, totalExp);
-    return Math.round(result);
+    return Math.ceil(result);
   };
 
   useEffect(() => {
@@ -71,22 +67,23 @@ const SkillsList: FC<Props> = props => {
     }
   }, [ctx]);
 
-  const leftChar = [
-    { ...AllSkills[3], lvl: 2 },
-    { ...AllSkills[4], lvl: 1 },
-    { ...AllSkills[5], lvl: 4 },
+  const leftChar: { lvl: number; id: number; name: string }[] = [
+    // { ...AllSkills[3], lvl: 2 },
+    // { ...AllSkills[4], lvl: 1 },
+    // { ...AllSkills[5], lvl: 1 },
   ];
+
   const frontChar = [
     { ...AllSkills[1], lvl: 8 },
     { ...AllSkills[2], lvl: 8 },
     { ...AllSkills[3], lvl: 7 },
-    { ...AllSkills[49], lvl: 2 },
+    { ...AllSkills[49], lvl: 3 },
     { ...AllSkills[26], lvl: 5 },
     { ...AllSkills[13], lvl: 7 },
     { ...AllSkills[4], lvl: 4 },
     { ...AllSkills[5], lvl: 6 },
     { ...AllSkills[8], lvl: 5 },
-    { ...AllSkills[27], lvl: 2 },
+    { ...AllSkills[27], lvl: 3 },
     { ...AllSkills[23], lvl: 9 },
     { ...AllSkills[10], lvl: 5 },
   ];
@@ -164,21 +161,40 @@ const SkillsList: FC<Props> = props => {
 
   const skillsByCharacters = [[...leftChar], [...frontChar], [...rightChar]];
 
-  const skillsStruct = (id: number, pos: number) => {
-    if (characerSkills.current) {
-      characerSkills.current.scrollTop = 0;
-    }
+  const skillsStruct = (
+    id: number,
+    pos: number,
+    ref: React.RefObject<HTMLDivElement>
+  ) => {
+    //SCROLLING SKILLS TO THE TOP ON CHARACTER CHANGE
+    if (skillCharCol0.current) skillCharCol0.current.scrollTop = 0;
+    if (skillCharCol1.current) skillCharCol1.current.scrollTop = 0;
+    if (skillCharCol2.current) skillCharCol2.current.scrollTop = 0;
+
+    // console.log(ref);
     return (
-      <ul className={classes['skills-list']} data-character={pos}>
-        {skillsByCharacters[id].map(item => {
-          {
-            return <Skill2 key={item.id} skill={item} />;
+      <div ref={ref} className={classes['skill-char-col']} data-character={pos}>
+        <ul className={classes['skills-list']}>
+          {skillsByCharacters[id].map(item => {
             {
-              /* return <Skill key={item.id} skill={item} />; */
+              return <Skill2 key={item.id} skill={item} />;
             }
-          }
-        })}
-      </ul>
+          })}
+        </ul>
+      </div>
+    );
+  };
+
+  const charCreatorText = (pos: number) => {
+    return (
+      <div className={classes['skill-char-col']} data-character={pos}>
+        <div
+          className={`${classes['skills-list']} ${classes['skills-list--text']}`}
+          data-character={pos}
+        >
+          TEST
+        </div>
+      </div>
     );
   };
 
@@ -186,6 +202,11 @@ const SkillsList: FC<Props> = props => {
     <div className={classes['skills-col']}>
       <div
         ref={skillsWindowRef}
+        // onMouseEnter={e => {
+        //   if (props.heroRef.current)
+        //     props.heroRef.current.style.overflow = 'hidden';
+        //   console.log(props.heroRef);
+        // }}
         className={`card--glass ${classes['skills-window']} ${
           !props.onCtaButtonChange.clicked ? 'not-started' : ''
         } `}
@@ -246,9 +267,14 @@ const SkillsList: FC<Props> = props => {
             className={`${classes['character-skills']} `}
           >
             {/* <div className={classes['skill-wrapper']}></div> */}
-            {skillsStruct(0, props.charStateData.leftChar)}
-            {skillsStruct(1, props.charStateData.frontChar)}
-            {skillsStruct(2, props.charStateData.rightChar)}
+            {/* <div className={classes['skill-char-col']}></div>
+            <div className={classes['skill-char-col']}></div>
+            <div className={classes['skill-char-col']}></div> */}
+            {leftChar.length !== 0
+              ? skillsStruct(0, props.charStateData.leftChar, skillCharCol0)
+              : charCreatorText(props.charStateData.leftChar)}
+            {skillsStruct(1, props.charStateData.frontChar, skillCharCol1)}
+            {skillsStruct(2, props.charStateData.rightChar, skillCharCol2)}
           </div>
         </div>
       </div>

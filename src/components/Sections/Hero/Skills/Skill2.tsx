@@ -4,8 +4,8 @@ import classes from './Skill2.module.scss';
 interface Props {
   skill: {
     name: string;
-    lvl: number;
-    icon: string;
+    lvl?: number;
+    icon?: string;
   };
 }
 
