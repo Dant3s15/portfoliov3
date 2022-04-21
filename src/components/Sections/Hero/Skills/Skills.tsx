@@ -1,13 +1,12 @@
 import { useEffect, useRef, useContext, FC, LegacyRef } from 'react';
-// import Skill from './Skill';
+
 import Skill2 from './Skill2';
 import AllSkills from '../../../Utils/AllSkills';
 import SelectedContext from '../../../../context/selected-context';
-// import CardGlass from '../../../UI/CardGlass';
+
 import classes from './Skills.module.scss';
 
 interface Props {
-  // ref: React.RefObject<HTMLDivElement>;
   className: string;
   onCtaButtonChange: { clicked: boolean };
   charStateData: {
@@ -15,7 +14,6 @@ interface Props {
     frontChar: number;
     rightChar: number;
   };
-  // heroRef: React.RefObject<HTMLDivElement>;
 }
 
 const SkillsList: FC<Props> = props => {
@@ -56,9 +54,7 @@ const SkillsList: FC<Props> = props => {
   };
 
   useEffect(() => {
-    // console.log(skillsWindowRef);
     if (ctx.isSelected && skillsWindowRef.current) {
-      // console.log(countLevel(leftChar));
       skillsWindowRef.current.classList.add(`${classes['selected--skills']}`);
     } else if (!ctx.isSelected && skillsWindowRef.current) {
       skillsWindowRef.current.classList.remove(
@@ -171,7 +167,6 @@ const SkillsList: FC<Props> = props => {
     if (skillCharCol1.current) skillCharCol1.current.scrollTop = 0;
     if (skillCharCol2.current) skillCharCol2.current.scrollTop = 0;
 
-    // console.log(ref);
     return (
       <div ref={ref} className={classes['skill-char-col']} data-character={pos}>
         <ul className={classes['skills-list']}>
@@ -188,11 +183,12 @@ const SkillsList: FC<Props> = props => {
   const charCreatorText = (pos: number) => {
     return (
       <div className={classes['skill-char-col']} data-character={pos}>
-        <div
-          className={`${classes['skills-list']} ${classes['skills-list--text']}`}
-          data-character={pos}
-        >
-          TEST
+        <div className={`${classes['skills-list--text']}`} data-character={pos}>
+          <p>create</p>
+          <strong>your own</strong>
+          <p> custom</p>
+          <strong> front end dev</strong>
+          <p>character</p>
         </div>
       </div>
     );
@@ -202,11 +198,6 @@ const SkillsList: FC<Props> = props => {
     <div className={classes['skills-col']}>
       <div
         ref={skillsWindowRef}
-        // onMouseEnter={e => {
-        //   if (props.heroRef.current)
-        //     props.heroRef.current.style.overflow = 'hidden';
-        //   console.log(props.heroRef);
-        // }}
         className={`card--glass ${classes['skills-window']} ${
           !props.onCtaButtonChange.clicked ? 'not-started' : ''
         } `}
@@ -219,7 +210,7 @@ const SkillsList: FC<Props> = props => {
           <p>Choose</p>
           <p>and</p>
           <p>
-            <strong className='shine'> level up</strong>
+            <strong className='shine'>level up</strong>
           </p>
           <p>your</p>
           <p>developer!</p>
@@ -266,10 +257,6 @@ const SkillsList: FC<Props> = props => {
             ref={characerSkills}
             className={`${classes['character-skills']} `}
           >
-            {/* <div className={classes['skill-wrapper']}></div> */}
-            {/* <div className={classes['skill-char-col']}></div>
-            <div className={classes['skill-char-col']}></div>
-            <div className={classes['skill-char-col']}></div> */}
             {leftChar.length !== 0
               ? skillsStruct(0, props.charStateData.leftChar, skillCharCol0)
               : charCreatorText(props.charStateData.leftChar)}

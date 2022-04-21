@@ -35,3 +35,10 @@
   justify-content: $justify;
   align-items: $align;
 }
+
+@mixin textglow {
+  color: var(--color-primary);
+  color: #fff;
+  text-shadow: 0 0 4px var(--color-primary), 0 0 11px var(--color-primary),
+    0 0 19px var(--color-primary), 0 0 150px var(--color-primary);
+}

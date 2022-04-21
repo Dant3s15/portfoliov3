@@ -1,9 +1,9 @@
 @import '../../../../scss/variables';
 @import '../../../../scss/mixins';
 
-.skill-tile * {
-  // border: 1px solid red;
-}
+// .skill-tile * {
+//   // border: 1px solid red;
+// }
 
 .skill-tile {
   position: relative;
@@ -42,7 +42,7 @@
       color: rgb(255, 255, 255);
 
       // transform: scale(1.1);
-      text-shadow: 0 0 4px #fff, 0 0 1px var(--color-primary),
+      text-shadow: 0 0 4px var(--color-primary), 0 0 1px var(--color-primary),
         0 0 150px var(--color-primary);
     }
   }
