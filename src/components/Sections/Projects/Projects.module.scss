@@ -1,8 +1,11 @@
 @import '../../../scss/mixins.scss';
 @import '../../../scss/variables.scss';
+@import '../../../scss/animations.scss';
 
 .projects {
+  // z-index: 2;
   margin-top: 8rem;
+
   background-color: lightgray;
   height: 100vh;
   position: relative;
@@ -13,6 +16,7 @@
   .title {
     text-transform: uppercase;
     font-size: 86px;
+    // border: 1px solid red;
   }
 
   &::before {
@@ -30,85 +34,63 @@
     filter: blur(2px) saturate(0.7);
   }
   .my-projects {
+    margin-bottom: 4.25rem;
     position: relative;
 
     height: 80%;
     width: 1150px;
 
-    // max-width: 1200px;
-    padding: 96px;
-
     @include flexbox;
     flex-direction: column;
-
+    & > div:nth-child(3) {
+      z-index: 11;
+      left: 5%;
+    }
+    & > div:nth-child(2) {
+      z-index: 10;
+    }
+    & > div:nth-child(1) {
+      z-index: 9;
+      right: 5%;
+    }
     .scene {
-      // backdrop-filter: blur(10px);
-      // border: 1px solid red;
-      // filter: grayscale(1);
-      // padding: 32px;
-      // overflow: hidden;
       position: absolute;
-      width: 500px;
-      min-width: 500px;
+      width: 450px;
+      min-width: 450px;
       height: 100%;
       perspective: 400px;
       transform-origin: 50%;
-      transform: scale(0.8) rotateY(0deg);
+      transform: scale(1);
 
       transition: all var(--transition-short-medium);
       transition-property: transform, perspective;
-
-      &:nth-child(3) {
-        z-index: 11;
-        left: 5%;
-        backdrop-filter: blur(10px);
-      }
-      &:nth-child(2) {
-        z-index: 10;
-        backdrop-filter: blur(10px);
-      }
-      &:nth-child(1) {
-        z-index: 9;
-        right: 5%;
-        backdrop-filter: blur(10px);
-      }
     }
 
-    & .scene:hover {
-      // padding: 1rem;
-      perspective: 2000px;
-      // filter: grayscale(0);
-      transition-delay: 0s;
-      transform: rotateY(0deg) scale(0.9);
-    }
-    & .scene:hover:not(:nth-child(3)) {
-      transform: rotateY(0deg) scale(0.9) translateX(180px);
-    }
-    & .scene:nth-child(3):hover {
-      animation: none;
-      perspective: 4000px;
-      transform: scale(0.9) rotateY(0deg);
+    & div:nth-child(3) > .project:hover {
+      transform: scale(1.1) translateX(0px) rotateY(0deg);
     }
 
     .project {
+      position: relative;
+      backdrop-filter: blur(10px);
       // font-family: 'Jura', sans-serif;
       transform-origin: right center;
       font-family: 'Orbitron', sans-serif;
-      // font-size: 1.25rem;
-      // font-weight: 400;
-      // font-weight: 600;
       position: relative;
       display: grid;
       grid-template-rows: 1fr 3fr;
       min-width: 350px;
-      // height: 850px;
+      &:hover {
+        transform: scale(1.1) translateX(200px) rotateY(0deg);
+        .project-title {
+          @include textglowsmall;
+        }
+      }
       @include corner-cut(40px);
       .project-image-window {
         position: relative;
-        // background-color: red;
       }
       .project-link {
-        // border: 1px solid red;
         display: block;
       }
 
@@ -133,29 +115,24 @@
 
         @include flexbox(space-between);
         flex-direction: column;
-        & * {
-          // border: 1px solid red;
-        }
       }
       .project-title {
+        // border: 1px solid red;
         font-weight: 700;
         grid-area: 1 / 1 / 2 / 2;
         align-self: flex-end;
         text-transform: uppercase;
         font-size: 36px;
-        // background-color: var(--color-dark-shade-1);
-        padding: 0 2rem;
+        padding: 0.75rem 2rem;
         margin-right: -1rem;
-        // color: var(--color-primary);
-        // @include corner-cut(30px);
+        transition: all var(--transition-short);
+        transition-property: text-shadow, color;
       }
       .project-overview {
         grid-area: 2 / 1 / 3 / 2;
         text-align: left;
         font-size: 20px;
         line-height: 1.5;
-        // letter-spacing: 0.5px;
-
         padding: 0 1rem 1rem 1rem;
 
         @include flexbox;
@@ -168,110 +145,97 @@
 
       .used-skills {
         position: relative;
-        // height: 60%;
         width: 100%;
+
         @include flexbox(center, center);
-        flex: 1 1 30%;
-        padding: 0 1rem;
+
         flex-wrap: wrap;
 
-        // background-color: var(--color-dark-shade-1);
-        // backdrop-filter: blur(20px);
-        // @include corner-cut(40px);
         box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
-
-        // overflow: visible !important;
-        // gap: 6px;
       }
     }
   }
 }
 
 .used-skills-title {
-  // position: absolute;
-  // left: 0;
-  // top: -30px;
   align-self: flex-start;
   font-size: 24px;
 }
 .links {
-  // @include corner-cut;
   @include flexbox(flex-start, flex-start);
-  // flex-direction: column;
+
   gap: 1rem;
   z-index: 10;
   top: 0;
   left: 0rem;
   width: 130px;
   height: 130px;
-  // border: 1px solid red;
+
   background-color: rgba(0, 0, 0, 0.788);
   @include corner-cut(140px);
   position: absolute;
   a {
-    // @include corner-cut;
     padding: 6px;
     width: 70px;
     height: 70px;
-    // background-color: #fff;
+
     filter: invert(1);
     img {
       transition: all var(--transition-short);
       transition-property: transform;
 
-      // filter: contrast(100) hue-rotate(180deg);
       &:hover {
-        // filter: none;
-        // background-color: var(--color-gray);
         transform: scale(1.2);
-
-        // filter: invert(1);
       }
     }
   }
-  // backdrop-filter: blur(20px);
 }
 
 .skill {
   @include flexbox(space-between);
-
+  // border: 1px solid red;
   flex-direction: column;
-  flex: 1 1 25%;
+  gap: 1rem;
+  flex: 1 1 20%;
 
-  max-width: 25%;
+  max-width: 20%;
+
   height: 50%;
 
   padding: 6px;
 
   transition: all var(--transition-short);
 
-  transition-property: transform, background-color;
-  // transition-delay: 0.1s;
-
+  transition-property: transform, background-color, color;
+  // @include textglowsmall;
   @include corner-cut(0.625rem);
+  color: var(--color-primary);
   &:hover {
     background-color: var(--color-gray);
     box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
     transform: scale(1.2);
     z-index: 999;
-    // transition-delay: 0s;
+  }
+  &:hover &-title {
+    // @include textglowsmall;
+    word-break: keep-all;
+
+    color: black;
   }
   &-title {
+    // border: 1px solid red;
     display: inline-block;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    // text-overflow: clip;
     text-align: center;
     width: 105%;
-    // border: 1px solid red;
   }
 
   img {
-    // flex: 1 1 100%;
-    // height: auto;
-    // width: auto;
+    // @include iconglow;
     width: 100%;
     max-width: 100%;
   }

@@ -20,12 +20,12 @@
   flex-direction: column;
   // gap: 2.25rem;
   // padding: 36px;
-  transition: all var(--transition-short-medium) ease-in-out;
+  transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-right: 7px solid rgba(255, 255, 255, 0.18);
-  transform-origin: 5%;
+  // transform-origin: 5%;
   background-color: rgba(95, 95, 95, 0.109);
 
   @include corner-cut(100px, rgba(255, 255, 255, 0.18), 10px, 98px);

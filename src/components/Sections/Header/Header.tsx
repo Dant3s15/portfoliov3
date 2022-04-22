@@ -16,7 +16,7 @@ import googleLogin from '../../../resources/img/google/btn_google_signin_light_n
 interface Props {
   data: {
     google: {
-      user?: any;
+      user?: string;
       auth?: any;
       signInWithGoogle?: () => void;
     };

@@ -318,3 +318,34 @@
     opacity: 1;
   }
 }
+
+@keyframes backdropblur {
+  from {
+    backdrop-filter: blur(10px);
+  }
+  to {
+    backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes cardrotate {
+  0% {
+    perspective: 400px;
+    transform: scale(1) translateX(0px) rotateY(-10deg);
+  }
+
+  100% {
+    perspective: 4000px;
+    transform: scale(1.2) translateX(180px) rotateY(0deg);
+  }
+}
+@keyframes cardrotate2 {
+  0% {
+    perspective: 4000px;
+    transform: scale(1.2) translateX(180px) rotateY(0deg);
+  }
+  100% {
+    perspective: 400px;
+    transform: scale(1) translateX(0px) rotateY(-10deg);
+  }
+}

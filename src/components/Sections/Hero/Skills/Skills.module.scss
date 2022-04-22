@@ -398,7 +398,9 @@
 .selected--skills {
   background-color: #e5e5e51a;
   transform: rotateY(-5deg) scale(1.1) !important;
-
+  h2 {
+    @include textglow;
+  }
   &:first-child {
     color: var(--color-primary);
   }

@@ -29,6 +29,7 @@ const Projects = () => {
                 AllSkils[1],
                 AllSkils[2],
                 AllSkils[3],
+
                 AllSkils[26],
                 AllSkils[13],
                 AllSkils[23],
@@ -84,6 +85,7 @@ const Projects = () => {
                 AllSkils[2],
                 AllSkils[3],
                 AllSkils[26],
+                AllSkils[49],
                 AllSkils[13],
                 AllSkils[23],
                 AllSkils[5],
