@@ -4,6 +4,7 @@ import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
 import GoogleLogIn from '../../Icons/google/GoogleLogIn';
 import googleLogin from '../../../resources/img/google/btn_google_signin_light_normal_web@2x.png';
+import { User } from 'firebase/auth';
 
 // interface InsideGoogle {
 //   user?: USER | null | undefined;
@@ -16,7 +17,7 @@ import googleLogin from '../../../resources/img/google/btn_google_signin_light_n
 interface Props {
   data: {
     google: {
-      user?: string;
+      user?: User | null | undefined;
       auth?: any;
       signInWithGoogle?: () => void;
     };
