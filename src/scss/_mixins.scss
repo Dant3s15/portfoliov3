@@ -39,8 +39,9 @@
 @mixin textglow {
   color: var(--color-primary);
   color: #fff;
-  text-shadow: 0 0 4px var(--color-primary), 0 0 11px var(--color-primary),
-    0 0 19px var(--color-primary), 0 0 150px var(--color-primary);
+
+  text-shadow: 0 0 4px #fff, 0 0 11px var(--color-primary),
+    0 0 19px var(--color-primary), 0 0 80px var(--color-primary);
 }
 
 @mixin textglowsmall {

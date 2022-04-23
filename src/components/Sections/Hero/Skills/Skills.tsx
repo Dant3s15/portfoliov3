@@ -184,11 +184,11 @@ const SkillsList: FC<Props> = props => {
     return (
       <div className={classes['skill-char-col']} data-character={pos}>
         <div className={`${classes['skills-list--text']}`} data-character={pos}>
-          <p>create</p>
-          <strong>your own</strong>
-          <p> custom</p>
-          <strong> front end dev</strong>
-          <p>character</p>
+          <strong>create</strong>
+          <p>your</p>
+
+          <p> frontend</p>
+          <strong>character</strong>
         </div>
       </div>
     );
