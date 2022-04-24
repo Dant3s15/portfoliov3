@@ -4,9 +4,10 @@
 
 .about-me {
   margin-top: 8rem;
+  padding: 0 8rem;
   overflow: hidden;
   height: 100vh;
-  // background-color: gray;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -17,7 +18,6 @@
     animation: slidedown 0.7s forwards, jump 3s 0.7s;
   }
 
-  // transition-property: filter;
   &::before {
     position: absolute;
     content: '';
@@ -34,19 +34,26 @@
 
   &-text {
     @include flexbox;
+    @include textglow;
     height: 100%;
-    // background-color: darkgray;
+
     .text-container {
-      width: 70%;
-      height: 60%;
-
-      // border: 1px solid red;
-      // @include corner-cut(100px, red, 4px, 99px);
+      perspective: 400px;
+      width: 100%;
+      height: 80%;
+      max-width: 700px;
     }
+    .text-wrapper {
+      padding: 5rem;
 
+      @include flexbox;
+      gap: 4rem;
+      flex-direction: column;
+    }
     .title {
       font-size: 50px;
       color: var(--color-primary);
+      color: white;
     }
 
     .text {
@@ -54,17 +61,11 @@
     }
   }
   &-char {
-    // background-color: wheat;
     @include flexbox;
     height: 100%;
     width: 100%;
 
     .char__container {
-      // width: 200px;
-      // height: 100%;
-      // height: 100%;
-      // display: contents;
-      // max-height: 100%;
       width: 300px;
       height: 100%;
       overflow: hidden;

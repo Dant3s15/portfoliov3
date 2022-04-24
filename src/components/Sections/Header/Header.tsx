@@ -54,16 +54,16 @@ const Header: FC<Props> = props => {
           </div>
           <nav className={classes.nav}>
             <a href='#' className={classes.nav__item}>
-              SECTION1
+              About me
             </a>
             <a href='#' className={classes.nav__item}>
-              SECTION2
+              My projects
             </a>
             <a href='#' className={classes.nav__item}>
-              SECTION3
+              Contact me
             </a>
             <a href='#' className={classes.nav__item}>
-              SECTION4
+              Character creator
             </a>
             {!props.data.google.user && (
               <button

@@ -3,28 +3,19 @@
 @import '../../../../scss/animations.scss';
 
 .character {
-  // width: 20%;
-  // max-height: 50%;
-
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: 100%;
-  // object-fit: contain;
-  // object-fit: cover;
   @include flexbox;
   flex-direction: column;
 
   gap: 1.5rem;
   transition: all var(--transition-short-medium) ease-in-out;
   transition-property: transform, filter, width, z-index, margin;
-  // height: 60%;
-  // margin: auto 0;
   cursor: pointer;
   z-index: 10;
   position: absolute;
-  // border: 1px solid red;
-  // position: relative;
   transform-origin: center;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
@@ -41,29 +32,20 @@
   & img {
     max-width: 100%;
     max-height: 100%;
-    // // height: auto;
     height: auto;
     width: auto;
 
     transition: all var(--transition-short);
     transition-property: transform, filter;
     filter: brightness(0.4);
-    // &:hover {
-    //   filter: brightness(0.5);
-    //   // animation: jiggle 1s infinite;
-    // }
   }
 
   &__front {
     color: var(--color-primary);
-    // height: 100%;
     width: 40%;
     z-index: 2;
     & img {
       filter: brightness(0.9);
-      // &:hover {
-      //   filter: brightness(1);
-      // }
     }
   }
 
@@ -72,10 +54,6 @@
     width: 30%;
     margin-bottom: 9rem;
     transform: translateX(var(--characters-width));
-
-    // &:hover img {
-    //   // filter: brightness(0.5);
-    // }
   }
 
   &__left {
@@ -84,17 +62,8 @@
     margin-bottom: 8rem;
 
     transform: translateX(calc(var(--characters-width) * -1));
-    // &:hover {
-    //   transform: translateX(calc(var(--characters-width) * -1)) scale(1.1);
-    //   filter: brightness(1);
-    // }
   }
-  // [data-character='0'] {
-  //   &:hover {
-  //     filter: brightness(0.4);
-  //     animation: jump 3s infinite;
-  //   }
-  // }
+
   [data-const-pos='2'] {
     filter: brightness(0.1) !important;
     &:hover {
@@ -109,10 +78,6 @@
     }
   }
 
-  // &:hover .character__name {
-  //   transform: scale(1.1);
-  // }
-
   @media (max-width: $big-tablet) {
     transform-origin: bottom;
   }
@@ -121,14 +86,9 @@
     animation: jumpnorotate 3s infinite;
     color: var(--color-primary);
   }
-  // &:hover img {
-  //   filter: brightness(0.8);
-  //   animation: jump 3s 0.3s infinite;
-  // }
 }
 
 .selected {
-  // max-height: 100%;
   & img {
     filter: brightness(1);
   }

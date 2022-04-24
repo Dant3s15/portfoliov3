@@ -6,12 +6,10 @@
   width: 100%;
   top: 0;
   left: 0;
-  // visibility: hidden;
 }
 
 .header,
 .header-wrapper {
-  // background-color: var(--color-dark-shade-1);
   height: 3.25rem;
   padding: 0 10px;
 
@@ -39,7 +37,6 @@
 
 .header-wrapper {
   position: absolute;
-  // background-color: rgba(34, 37, 54, 1);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-right: 7px solid rgba(255, 255, 255, 0.18);
   height: 100%;
@@ -59,18 +56,13 @@
 }
 //TODO
 .logo-item {
-  // width: 100%;
   height: 100%;
 }
 .logo {
   img {
-    // padding: 2rem;
-    // background-color: white;
-    // fill: red;
     width: 100%;
     height: 100%;
     padding: 5px;
-    //TODO logo fill and stroke
   }
 }
 
@@ -80,20 +72,21 @@
   justify-self: flex-start;
   order: 1;
   z-index: 9999;
-  // border: 1px solid red;
   width: 70%;
   text-decoration: none;
   color: var(--color-gray);
   transition: all var(--transition-short);
   transition-property: transform;
-  // height: 45px;
   height: 100%;
+  &:not(:last-child) {
+    text-transform: uppercase;
+  }
   &__item {
     height: 100%;
     width: 100%;
-    // border: 1px solid red;
     @include flexbox;
   }
+
   &__item:link,
   &__item:visited {
     font-family: 'Orbitron', sans-serif;
@@ -120,27 +113,16 @@
 
 .hamburger-button {
   @include flexbox(flex-end);
-
   width: 40px;
   z-index: 999;
   height: 100%;
   position: relative;
-
   .hamburger-icon,
   .close-icon {
     position: absolute;
-    // border: 1px solid red;
     transform: rotateX(0deg);
     transition: all var(--transition-short-medium);
-    // clip-path: polygon(
-    //   0% 100%,
-    //   calc(100% - 23px) 100%,
-    //   100% calc(100% - 23px),
-    //   100% 0%,
-    //   0% 0%
-    // );
     @include corner-cut(23px, #00000000, 4px, 23px);
-
     color: var(--color-gray);
     height: 35px;
     width: 35px;
@@ -187,7 +169,6 @@
 
   &::after {
     left: calc(100% - 28px);
-    // border-right: 7px solid var(--color-primary);
   }
 }
 
@@ -212,7 +193,3 @@
     padding: 0 2rem 0 1rem;
   }
 }
-//TODO
-// *:focus {
-//   outline: none;
-// }

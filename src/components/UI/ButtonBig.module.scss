@@ -20,7 +20,6 @@
   transition: all var(--transition-short) ease-out, color 0.1s ease-out,
     text-shadow 0.1s ease-out;
   transition-property: transform, opacity, outline;
-  // z-index: 10;
   animation: flicker2 5s infinite alternate;
   @include corner-cut(29px, var(--color-primary), 4px, 17px);
 
@@ -44,18 +43,7 @@
     overflow: hidden;
     text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
       0 0 150px var(--color-primary);
-    // text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
-    //   0 0 40px var(--color-primary), 0 0 80px var(--color-primary),
-    //   0 0 90px var(--color-primary), 0 0 100px var(--color-primary),
-    //   0 0 150px var(--color-primary);
     animation: none;
-    // & ~ .cta__text {
-    //   transition: all var(--transition-short) ease-out, color 0.1s ease-out,
-    //     text-shadow 0.1s ease-out;
-    //   transition-property: transform, opacity;
-    //   background-color: var(--color-primary);
-    //   animation: shine4 7s ease-in-out;
-    // }
 
     &::after {
       content: '';
@@ -68,7 +56,6 @@
       bottom: 0;
       left: calc(100% - 33px);
       background-color: #fff;
-      // animation: pxmove var(--transition-short) ease-in;
     }
     &:active {
       transform: scale(0.95);
@@ -101,9 +88,6 @@
   margin-left: auto;
   margin-right: auto;
   width: 400px;
-  // & .bottom {
-  //   bottom: 20%;
-  // }
 }
 
 .greyed-out {
@@ -113,7 +97,6 @@
   transform: none !important;
   filter: grayscale(1) brightness(0.5);
   outline: none;
-  // pointer-events: none;
   &::after {
     display: none;
   }
@@ -134,10 +117,3 @@
     pointer-events: none;
   }
 }
-
-// .submit-button {
-//   border: none;
-//   outline: none;
-//   // color: red;
-//   border: 1px solid red;
-// }
