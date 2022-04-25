@@ -24,7 +24,7 @@
     height: 200%;
     transform: rotate(45deg);
     transform-origin: left bottom;
-    bottom: 0;
+    bottom: 3px;
     left: calc(100% - $translate);
     background-color: $bg-color;
   }
@@ -49,6 +49,11 @@
   color: #fff;
   text-shadow: 0 0 4px var(--color-primary), 0 0 11px var(--color-primary),
     0 0 19px var(--color-primary);
+}
+@mixin textglowsmaller($color: var(--color-primary)) {
+  color: var(--color-primary);
+  color: #fff;
+  text-shadow: 0 0 4px $color, 0 0 11px $color;
 }
 
 // @mixin iconglow {

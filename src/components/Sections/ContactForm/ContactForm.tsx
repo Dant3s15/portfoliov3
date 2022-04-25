@@ -9,19 +9,19 @@ const validate = (values: FormikValues) => {
   if (!values.name) {
     errors.name = 'Required';
   } else if (values.name.length < 2) {
-    errors.name = 'More than 1 characters';
+    errors.name = '> 1 characters';
   }
 
   if (!values.text) {
     errors.text = 'Required';
   } else if (values.text.length < 2) {
-    errors.text = 'More than 2 characters';
+    errors.text = '> 2 characters';
   }
 
   if (!values.email) {
     errors.email = 'Required';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
+    errors.email = 'Invalid email';
   }
   // console.log(errors.name);
   return errors;
@@ -105,21 +105,32 @@ const ContactForm = () => {
     else return null;
   };
 
+  const checkError = (inptName: 'name' | 'email' | 'text') => {
+    if (formik.errors[inptName] && formik.touched[inptName])
+      return classes['label--error'];
+    else return null;
+  };
+
   return (
     <div id='contact-me' className={classes['contact-me']}>
       <div className={classes.container}>
         <form onSubmit={formik.handleSubmit}>
           <div className={classes['name-email']}>
             <div className={`${classes.name} ${checkCorner('name')}`}>
-              <div className={classes.labels}>
-                <label htmlFor='name'>Your Name</label>
+              <div className={`${classes.labels}`}>
+                <label
+                  className={`${classes.label} ${checkError('name')}`}
+                  htmlFor='name'
+                >
+                  Your Name
+                </label>
                 {checkErrors('name')}
                 {/* <div className={classes['form-error']}>
                   {formik.errors['name']}
                 </div> */}
               </div>
               <input
-                className={checkErrorState('name')}
+                className={`${classes.input} ${checkErrorState('name')}`}
                 id='name'
                 type='text'
                 name='name'
@@ -130,14 +141,19 @@ const ContactForm = () => {
             </div>
             <div className={`${classes.email} ${checkCorner('email')}`}>
               <div className={classes.labels}>
-                <label htmlFor='email'>Your Email</label>
+                <label
+                  className={`${classes.label} ${checkError('email')}`}
+                  htmlFor='email'
+                >
+                  Your Email
+                </label>
                 {checkErrors('email')}
                 {/* <div className={classes['form-error']}>
                   {formik.errors['email']}
                 </div> */}
               </div>
               <input
-                className={checkErrorState('email')}
+                className={`${classes.input} ${checkErrorState('email')}`}
                 id='email'
                 type='email'
                 name='email'
@@ -149,7 +165,12 @@ const ContactForm = () => {
           </div>
           <div className={`${classes.textfield} ${checkCorner('text')}`}>
             <div className={classes.labels}>
-              <label htmlFor='text'>Your Message</label>
+              <label
+                className={`${classes.label} ${checkError('text')}`}
+                htmlFor='text'
+              >
+                Your Message
+              </label>
               {checkErrors('text')}
               {/* <div className={classes['form-error']}>
                 {formik.errors['text']}

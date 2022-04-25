@@ -73,14 +73,14 @@ const SkillsList: FC<Props> = props => {
     { ...AllSkills[1], lvl: 8 },
     { ...AllSkills[2], lvl: 8 },
     { ...AllSkills[3], lvl: 7 },
-    { ...AllSkills[49], lvl: 3 },
-    { ...AllSkills[26], lvl: 5 },
+    { ...AllSkills[49], lvl: 4 },
+    { ...AllSkills[26], lvl: 6 },
     { ...AllSkills[13], lvl: 7 },
     { ...AllSkills[4], lvl: 4 },
     { ...AllSkills[5], lvl: 6 },
     { ...AllSkills[8], lvl: 5 },
     { ...AllSkills[27], lvl: 3 },
-    { ...AllSkills[23], lvl: 9 },
+    { ...AllSkills[23], lvl: 7 },
     { ...AllSkills[10], lvl: 5 },
   ];
   const rightChar = [

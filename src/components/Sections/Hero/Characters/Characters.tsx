@@ -224,7 +224,7 @@ const Characters: FC<Props> = props => {
           <ButtonBig
             isAbsolute={false}
             onClick={ctaButtonHandler}
-            text='Select Character'
+            text='Choose your dev'
           ></ButtonBig>
           <div className={`${classes['cta__text']}  shine`}>
             And let your adventure begin...

@@ -1,4 +1,5 @@
 @import '../../scss/variables.scss';
+@import '../../scss/animations.scss';
 @import '../../scss/mixins.scss';
 @import '../../scss/globals.scss';
 
@@ -12,21 +13,24 @@
   text-align: center;
   text-transform: uppercase;
   border: none;
-
   z-index: 999;
 
   border-radius: var(--border-radius);
   cursor: pointer;
+  // animation: fadein var(--transition-short) forwards;
+  // background: transparent;
   transition: all var(--transition-short) ease-out, color 0.1s ease-out,
     text-shadow 0.1s ease-out;
   transition-property: transform, opacity, outline;
-  animation: flicker2 5s infinite alternate;
   @include corner-cut(29px, var(--color-primary), 4px, 17px);
 
+  &::before {
+  }
   &::after {
     content: none;
   }
   .button-text {
+    animation: flicker2 5s infinite alternate;
     font-weight: 700;
     padding: 30px 55px;
     display: inline-block;
@@ -43,8 +47,10 @@
     overflow: hidden;
     text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
       0 0 150px var(--color-primary);
-    animation: none;
 
+    .button-text {
+      animation: none;
+    }
     &::after {
       content: '';
       opacity: 1;

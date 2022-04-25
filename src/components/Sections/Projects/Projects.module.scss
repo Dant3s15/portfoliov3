@@ -78,6 +78,7 @@
       display: grid;
       grid-template-rows: 1fr 3fr;
       min-width: 350px;
+
       &:hover {
         transform: scale(1.1) translateX(200px) rotateY(0deg);
         .project-title {
