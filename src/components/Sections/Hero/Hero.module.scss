@@ -50,17 +50,20 @@
   user-select: none;
   padding: 0 4rem;
 
+  @media (max-width: $desktop) {
+    // padding: 0;
+    margin: 0 5%;
+  }
   @media (max-width: $laptop) {
     margin: 0;
   }
 
   @media (max-width: $big-tablet) {
     padding: 2rem 4rem;
-
     flex-direction: column;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 3fr 2fr;
+    // display: grid;
+    // grid-template-columns: 100%;
+    // grid-template-rows: 3fr 2fr;
     justify-content: center;
   }
 

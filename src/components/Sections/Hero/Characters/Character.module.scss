@@ -27,6 +27,9 @@
     color: var(--color-gray);
     transition: all var(--transition-short);
     transition-property: transform, filter, color;
+    @media (max-width: $small-tablet) {
+      font-size: 1rem;
+    }
   }
 
   & img {

@@ -63,7 +63,7 @@ const Header: FC<Props> = props => {
               Contact me
             </a>
             <a href='#' className={classes.nav__item}>
-              Character creator
+              Creator
             </a>
             {!props.data.google.user && (
               <button
@@ -111,16 +111,16 @@ const Header: FC<Props> = props => {
           </button>
         </div>
         <nav className={classes['nav-mobile']}>
-          <a href='#' className={classes['nav__item']}>
+          <a href='#' className={classes['nav__item--mobile']}>
             SECTION1
           </a>
-          <a href='#' className={classes['nav__item']}>
+          <a href='#' className={classes['nav__item--mobile']}>
             SECTION2
           </a>
-          <a href='#' className={classes['nav__item']}>
+          <a href='#' className={classes['nav__item--mobile']}>
             SECTION3
           </a>
-          <a href='#' className={classes['nav__item']}>
+          <a href='#' className={classes['nav__item--mobile']}>
             SECTION4
           </a>
         </nav>

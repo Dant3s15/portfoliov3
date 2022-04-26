@@ -40,6 +40,18 @@
   transform-origin: bottom;
   transition: var(--transition-all-medium);
   transition-property: transform, opacity;
+  @media (max-width: $big-tablet) {
+    height: 30vh;
+    width: 35vw;
+  }
+  @media (max-width: $small-tablet) {
+    height: 40vh;
+    width: 40vw;
+  }
+  @media (max-width: $mobile) {
+    height: 40vh;
+    width: 60vw;
+  }
 }
 
 //************************************************

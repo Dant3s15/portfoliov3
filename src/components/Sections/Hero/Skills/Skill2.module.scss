@@ -5,7 +5,9 @@
   position: relative;
   z-index: 888;
 
-  height: 140px;
+  height: 120px;
+  min-width: 120px;
+  // min-height: 130px;
   overflow: hidden;
   border-radius: 3px;
 
@@ -63,7 +65,7 @@
   }
   &-icon {
     // border: 1px solid red;
-    padding: 0.75rem;
+    padding: 0.375rem;
     padding-bottom: 0;
     width: 70%;
     height: 70%;
@@ -82,5 +84,20 @@
     text-overflow: ellipsis;
     text-align: center;
     @include flexbox;
+  }
+  @media (max-width: $big-tablet) {
+    height: 6.25rem;
+    min-width: 6.25rem;
+    width: 6.25rem;
+    &-level {
+      width: 2.1875rem;
+      height: 2.1875rem;
+      font-size: 1rem;
+    }
+    @media (max-width: $mobile) {
+      height: 85px;
+      min-width: 85px;
+      width: 85px;
+    }
   }
 }

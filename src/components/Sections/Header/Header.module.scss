@@ -16,8 +16,8 @@
   @include flexbox(null, flex-start);
   @media (max-width: $big-tablet) {
     height: 4rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    // padding-left: 4rem;
+    // padding-right: 4rem;
   }
   @media (max-width: $mobile) {
     padding-left: 1rem;
@@ -84,7 +84,15 @@
   &__item {
     height: 100%;
     width: 100%;
+    font-size: 1rem;
     @include flexbox;
+    // @media (max-width: $big-laptop) {
+    //   font-size: 14px;
+    // }
+
+    @media (max-width: $laptop) {
+      font-size: 14px;
+    }
   }
 
   &__item:link,
@@ -105,6 +113,11 @@
   &__item:active:not(:last-child) {
     @include textglow;
   }
+
+  @media (max-width: $big-laptop) {
+    width: 90%;
+  }
+
   @media (max-width: $big-tablet) {
     visibility: hidden;
     display: none;
@@ -117,10 +130,12 @@
   z-index: 999;
   height: 100%;
   position: relative;
+
+  // border: 1px solid red;
   .hamburger-icon,
   .close-icon {
-    position: absolute;
-    transform: rotateX(0deg);
+    position: absolute !important;
+    transform: rotateY(0deg);
     transition: all var(--transition-short-medium);
     @include corner-cut(23px, #00000000, 4px, 23px);
     color: var(--color-gray);
@@ -130,6 +145,10 @@
   @media (min-width: 993px) {
     visibility: hidden;
     display: none;
+  }
+  .hidden-btn {
+    // opacity: 0;
+    transform: rotateY(90deg);
   }
 }
 
@@ -142,9 +161,19 @@
   top: 0;
   left: 0;
   right: 0;
-  font-size: 45px;
-  margin: 12px;
-  margin-top: 12px;
+  // bottom: 5rem;
+  // margin-top: 12px;
+  // padding-bottom: 12px;
+  // margin: 12px;
+}
+
+.nav__item--mobile {
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--color-gray);
+  @include flexbox;
+  height: 100%;
+  width: 100%;
 }
 
 .hamburger-not-active {
@@ -191,5 +220,9 @@
   @include corner-cut(20px);
   p {
     padding: 0 2rem 0 1rem;
+  }
+  @media (max-width: $laptop) {
+    font-size: 14px;
+    min-width: 15.5rem;
   }
 }
