@@ -85,7 +85,7 @@
           @include textglowsmall;
         }
       }
-      @include corner-cut(40px);
+      @include corner-cut(40px, rgba(255, 255, 255, 0.18), null, 38px);
       .project-image-window {
         position: relative;
       }

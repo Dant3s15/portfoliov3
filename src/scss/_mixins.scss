@@ -24,7 +24,7 @@
     height: 200%;
     transform: rotate(45deg);
     transform-origin: left bottom;
-    bottom: 3px;
+    bottom: 0;
     left: calc(100% - $translate);
     background-color: $bg-color;
   }
