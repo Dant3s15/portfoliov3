@@ -73,7 +73,7 @@
   justify-self: flex-start;
   order: 1;
   z-index: 9999;
-  width: 70%;
+  width: 90%;
   text-decoration: none;
   color: var(--color-gray);
   transition: all var(--transition-short);
@@ -93,7 +93,10 @@
     // }
     // border: 1px solid red;
     padding: 0 1rem;
+    // @media (max-width: $desktop) {
+    // }
     @media (max-width: $laptop) {
+      padding: 0;
       font-size: 14px;
     }
     @media (max-width: $big-tablet) {
@@ -125,9 +128,10 @@
     @include textglowsmall;
   }
 
-  @media (max-width: $big-laptop) {
-    width: 90%;
+  @media (min-width: $big-laptop) {
+    width: 80%;
   }
+  // border: 1px solid red;
 
   @media (max-width: $big-tablet) {
     // visibility: hidden;
@@ -174,20 +178,20 @@
   }
 }
 
-.nav-mobile {
-  position: absolute;
-  @include flexbox;
-  flex-direction: column;
-  gap: 2rem;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  // bottom: 5rem;
-  // margin-top: 12px;
-  // padding-bottom: 12px;
-  // margin: 12px;
-}
+// .nav-mobile {
+//   position: absolute;
+//   @include flexbox;
+//   flex-direction: column;
+//   gap: 2rem;
+//   height: 100%;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   // bottom: 5rem;
+//   // margin-top: 12px;
+//   // padding-bottom: 12px;
+//   // margin: 12px;
+// }
 
 // .nav__item--mobile {
 //   font-size: 44px;
@@ -243,6 +247,9 @@
   p {
     padding: 0 2rem 0 1rem;
   }
+  @media (max-width: $desktop) {
+    padding: 0;
+  }
   @media (max-width: $laptop) {
     font-size: 14px;
     min-width: 15.5rem;
@@ -254,6 +261,5 @@
   @media (max-width: $mobile) {
     height: 3rem;
     font-size: 1rem;
-    padding: 0;
   }
 }

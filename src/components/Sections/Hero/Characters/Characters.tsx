@@ -52,7 +52,7 @@ const Characters: FC<Props> = props => {
 
   // ********************************************************
   const debounce = (func: Function, timeout = 300) => {
-    let timer: any;
+    let timer: NodeJS.Timeout;
     return (...args: any) => {
       clearTimeout(timer);
       timer = setTimeout(() => {
@@ -60,8 +60,6 @@ const Characters: FC<Props> = props => {
       }, timeout);
     };
   };
-
-  const processChange = debounce(() => calcCharWidth());
 
   const calcCharWidth = () => {
     let characterImgComputedWidth: number;
@@ -76,6 +74,7 @@ const Characters: FC<Props> = props => {
       );
     }
   };
+  const processChange = debounce(calcCharWidth, 1000);
 
   window.addEventListener('resize', processChange);
 

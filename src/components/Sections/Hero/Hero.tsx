@@ -31,7 +31,17 @@ const Hero: FC = props => {
     // console.log(data);
   };
 
-  const heroOnClickHandler = () => {};
+  const heroOnClickHandler = (e: {
+    stopPropagation: () => void;
+    target: any;
+  }) => {
+    e.stopPropagation();
+    // console.log(e.target.classList.contains(classes['section-hero']));
+    if (e.target.classList.contains(classes['section-hero'])) {
+      // console.log(ctx);
+      ctx.setSelected(false);
+    }
+  };
   // const selectedStateHandler = (selec: any) => {
   //   setSelected(selec);
   //   console.log(selec);

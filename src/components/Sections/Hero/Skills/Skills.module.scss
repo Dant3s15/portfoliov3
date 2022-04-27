@@ -224,6 +224,25 @@
 
     @include flexbox;
     flex-direction: column;
+
+    @media (max-width: $big-tablet) {
+      font-size: 36px;
+      strong {
+        font-size: 44px;
+      }
+    }
+    // @media (max-width: $small-tablet) {
+    //   font-size: 36px;
+    //   strong {
+    //     font-size: 44px;
+    //   }
+    // }
+    @media (max-width: $mobile) {
+      font-size: 30px;
+      strong {
+        font-size: 36px;
+      }
+    }
   }
   @media (max-width: $big-tablet) {
     // font-size: 14px;
@@ -379,6 +398,6 @@
     color: var(--color-primary);
   }
   @media (max-width: $big-tablet) {
-    transform: scale(1.05) !important;
+    transform: scale(1) !important;
   }
 }

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, FC } from 'react';
+import { useState, useEffect, FC } from 'react';
 import classes from './Header.module.scss';
 import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
@@ -12,6 +12,17 @@ import { User } from 'firebase/auth';
 
 // interface Google {
 //   google?: InsideGoogle;
+// }
+
+// function debounce(fn: () => {}, ms: number) {
+//   let timer: any;
+//   return () => {
+//     clearTimeout(timer);
+//     timer = setTimeout(() => {
+//       timer = null;
+//       fn.apply(this, arguments);
+//     }, ms);
+//   };
 // }
 
 interface Props {
@@ -30,12 +41,20 @@ const Header: FC<Props> = props => {
   const hamburgerButtonHandler = () => {
     if (!hamburgerState) {
       setHamburgerState(true);
-      console.log('hamburger opened');
     } else {
       setHamburgerState(false);
-      console.log('hamburger closed');
     }
   };
+  useEffect(() => {
+    function closeHamburgerOnBigScreens() {
+      setHamburgerState(false);
+    }
+
+    window.addEventListener('resize', closeHamburgerOnBigScreens);
+    return () => {
+      window.removeEventListener('resize', closeHamburgerOnBigScreens);
+    };
+  });
 
   return (
     <header className={classes.header}>

@@ -12,7 +12,7 @@
 
   gap: 1.5rem;
   transition: all var(--transition-short-medium) ease-in-out;
-  transition-property: transform, filter, width, z-index, margin;
+  transition-property: transform, filter, width, z-index, margin, text-shadow;
   cursor: pointer;
   z-index: 10;
   position: absolute;
@@ -27,7 +27,7 @@
     color: var(--color-gray);
     transition: all var(--transition-short);
     transition-property: transform, filter, color;
-    @media (max-width: $small-tablet) {
+    @media (max-width: $big-tablet) {
       font-size: 1rem;
     }
   }
@@ -88,6 +88,7 @@
   &:hover &__name {
     animation: jumpnorotate 3s infinite;
     color: var(--color-primary);
+    @include textglow;
   }
 }
 

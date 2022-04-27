@@ -25,8 +25,8 @@
   transition-property: transform, opacity, outline;
   @include corner-cut(29px, var(--color-primary), 4px, 17px);
 
-  &::before {
-  }
+  // &::before {
+  // }
   &::after {
     content: none;
   }
@@ -72,12 +72,12 @@
     }
   }
 
-  @media (max-width: $laptop) {
+  @media (max-width: $big-laptop) {
     font-size: 24px;
   }
   @media (max-width: $big-tablet) {
     .button-text {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
