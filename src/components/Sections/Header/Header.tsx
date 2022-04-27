@@ -110,7 +110,7 @@ const Header: FC<Props> = props => {
             ></CloseIcon>
           </button>
         </div>
-        <nav className={classes['nav-mobile']}>
+        {/* <nav className={classes['nav-mobile']}>
           <a href='#' className={classes['nav__item--mobile']}>
             SECTION1
           </a>
@@ -123,7 +123,7 @@ const Header: FC<Props> = props => {
           <a href='#' className={classes['nav__item--mobile']}>
             SECTION4
           </a>
-        </nav>
+        </nav> */}
       </div>
     </header>
   );
