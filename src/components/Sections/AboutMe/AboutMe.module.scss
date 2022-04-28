@@ -11,8 +11,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
-  & .text-containe {
-    animation: slidedown 0.7s forwards;
+  & .text-wrapper {
+    transition: all var(--transition-short);
+  }
+  & .text-wrapper:hover {
+    perspective: 1000px;
+    transition: all var(--transition-short);
+  }
+  & .text-container * div {
+    animation: slidedown 0.7s;
   }
   & .char__container {
     animation: slidedown 0.7s forwards, jump 3s 0.7s;
@@ -38,21 +45,22 @@
     height: 100%;
 
     .text-container {
-      perspective: 400px;
-      width: 100%;
-      height: 80%;
-      max-width: 700px;
-    }
-    .text-wrapper {
       padding: 5rem;
 
       @include flexbox;
       gap: 4rem;
       flex-direction: column;
     }
+    .text-wrapper {
+      width: 100%;
+      height: 80%;
+      max-width: 700px;
+      perspective: 400px;
+    }
     .title {
-      font-size: 50px;
+      font-size: 64px;
       color: var(--color-primary);
+      text-transform: uppercase;
       color: white;
     }
 
@@ -69,7 +77,7 @@
       width: 300px;
       height: 100%;
       overflow: hidden;
-      padding: 2.25rem;
+      padding-top: 2.25rem;
       img {
         &:hover {
           animation: jump 3s;

@@ -90,6 +90,10 @@
     color: var(--color-primary);
     @include textglow;
   }
+
+  // &__name:hover {
+  //   animation: none !important;
+  // }
 }
 
 .selected {

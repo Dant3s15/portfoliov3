@@ -38,3 +38,4 @@ TODO:
   - fix long scrolling on skills in hero section
     -disable skill tiles shadows if skill is not selected for performance reasons
 - snap scroll to section
+- fix pixel moving on scale hover

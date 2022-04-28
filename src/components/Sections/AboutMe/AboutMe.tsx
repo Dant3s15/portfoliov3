@@ -10,26 +10,20 @@ const AboutMe = () => {
     <Fragment>
       <div id='about-me' className={classes['about-me']}>
         <div className={classes['about-me-char']}>
-          <ButtonBig
-            isAbsolute={true}
-            style={{ top: '80%' }}
-            text='Contact Me'
-            moveTo='contact-me'
-          ></ButtonBig>
           <div className={`${classes['char__container']} cancel-absolute`}>
             <Character
               onRotateCharacters={() => {
                 return;
               }}
               data={3}
-              name='Front'
+              name='Damian'
             ></Character>
           </div>
         </div>
         <div className={classes['about-me-text']}>
-          <div className={`${classes['text-container']}`}>
+          <div className={classes['text-wrapper']}>
             <CardGlass>
-              <div className={classes['text-wrapper']}>
+              <div className={`${classes['text-container']} `}>
                 <h2 className={classes.title}>About Me</h2>
                 <p className={classes.text}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
@@ -39,6 +33,12 @@ const AboutMe = () => {
                   culpa reiciendis dolorum obcaecati laudantium excepturi
                   cupiditate?
                 </p>
+                <ButtonBig
+                  isAbsolute={true}
+                  style={{ top: '80%' }}
+                  text='Contact Me'
+                  moveTo='contact-me'
+                ></ButtonBig>
               </div>
             </CardGlass>
           </div>
