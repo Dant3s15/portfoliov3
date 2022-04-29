@@ -28,10 +28,10 @@ const AboutMe = () => {
               <Typewriter
                 options={{
                   delay: 200,
-                  deleteSpeed: 200,
-                  cursor: '',
+                  // deleteSpeed: 200,
+                  cursor: '_',
                   wrapperClassName: classes.title,
-                  // cursorClassName: classes.title,
+                  cursorClassName: classes['title__cursor'],
                   loop: true,
                 }}
                 onInit={typewriter => {
@@ -50,19 +50,29 @@ const AboutMe = () => {
               <div className={classes.text}>
                 <Typewriter
                   options={{
-                    delay: 40,
-                    cursor: '_',
+                    delay: 60,
+                    cursor: '',
+                    // cursorClassName: classes['text__cursor'],
                   }}
                   onInit={typewriter => {
                     typewriter
+                      .pauseFor(2000)
                       .typeString(
-                        `              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, atque nemo! Magni asperiores fugit voluptatem omnis, reprehenderit molestiae repellat quae officiis harum ab non. Quae voluptas voluptatem quod placeat sit!`
+                        "<span>Hey, I'm Damian, your Frontend Developer from Poland 😊</span>"
                       )
+                      .pauseFor(2000)
+                      .typeString(
+                        '<span>I can help you build your dream project 😉</span>'
+                      )
+                      .pauseFor(2000)
+                      .typeString(
+                        '<span>You can contact me by sending me an email📧 using the form below:</span>'
+                      )
+
                       .start();
                   }}
                 />
               </div>
-
               <ContactForm />
               {/* <ButtonBig
                   isAbsolute={true}

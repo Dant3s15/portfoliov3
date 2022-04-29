@@ -72,9 +72,9 @@ const Header: FC<Props> = props => {
             </a>
           </div>
           <nav className={classes.nav}>
-            <a href='#' className={classes.nav__item}>
+            {/* <a href='#' className={classes.nav__item}>
               About me
-            </a>
+            </a> */}
             <a href='#' className={classes.nav__item}>
               My projects
             </a>

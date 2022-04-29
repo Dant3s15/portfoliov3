@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useContext, FC } from 'react';
 import Character from './Character';
 import SelectedContext from '../../../../context/selected-context';
 import ButtonBig from '../../../UI/ButtonBig';
+import Typewriter from 'typewriter-effect';
 import classes from './Characters.module.scss';
 
 interface Props {
@@ -225,8 +226,26 @@ const Characters: FC<Props> = props => {
             onClick={ctaButtonHandler}
             text='Choose your dev'
           ></ButtonBig>
-          <div className={`${classes['cta__text']}  shine`}>
-            And let your adventure begin...
+          <div className={`${classes['cta__text']}`}>
+            <Typewriter
+              options={{
+                loop: true,
+                delay: 100,
+                cursor: '',
+                // cursorClassName: classes['cta__text'],
+              }}
+              onInit={typewriter => {
+                typewriter
+                  .typeString('Create')
+                  .pauseFor(4000)
+                  .deleteAll()
+                  .typeString('Level Up')
+                  .pauseFor(4000)
+                  .deleteAll()
+                  .start();
+              }}
+            />
+            <span className={classes['your-dev']}>your Dev</span>
           </div>
         </div>
       </div>
