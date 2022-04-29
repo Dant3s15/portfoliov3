@@ -4,6 +4,7 @@ import CardGlass from '../../UI/CardGlass';
 import ContactForm from '../ContactForm/ContactForm';
 import Projects from '../Projects/Projects';
 import ButtonBig from '../../UI/ButtonBig';
+import Typewriter from 'typewriter-effect';
 import classes from './AboutMe.module.scss';
 const AboutMe = () => {
   return (
@@ -20,32 +21,60 @@ const AboutMe = () => {
             ></Character>
           </div>
         </div>
-        <div className={classes['about-me-text']}>
-          <div className={classes['text-wrapper']}>
-            <CardGlass>
-              <div className={`${classes['text-container']} `}>
-                <h2 className={classes.title}>About Me</h2>
-                <p className={classes.text}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                  provident quae assumenda consequatur rem minus animi,
-                  voluptatem, quisquam nihil fugiat ea dignissimos, similique
-                  eum porro atque. Vitae est delectus numquam fugiat quidem. Ab,
-                  culpa reiciendis dolorum obcaecati laudantium excepturi
-                  cupiditate?
-                </p>
-                <ButtonBig
+
+        <div className={classes['text-wrapper']}>
+          <CardGlass className={classes['glass-card--custom']}>
+            <div className={`${classes['text-container']} `}>
+              <Typewriter
+                options={{
+                  delay: 200,
+                  deleteSpeed: 200,
+                  cursor: '',
+                  wrapperClassName: classes.title,
+                  // cursorClassName: classes.title,
+                  loop: true,
+                }}
+                onInit={typewriter => {
+                  typewriter
+                    .typeString(`<h2>About Me</h2>`)
+                    .pauseFor(4000)
+                    .deleteAll()
+                    .typeString(`<h2>Contact Me</h2>`)
+                    .pauseFor(4000)
+                    .deleteAll()
+                    .start();
+                }}
+              />
+              {/* <span className={classes.title}>Me</span> */}
+              {/* <h2 className={classes.title}>About Me</h2> */}
+              <div className={classes.text}>
+                <Typewriter
+                  options={{
+                    delay: 40,
+                    cursor: '_',
+                  }}
+                  onInit={typewriter => {
+                    typewriter
+                      .typeString(
+                        `              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, atque nemo! Magni asperiores fugit voluptatem omnis, reprehenderit molestiae repellat quae officiis harum ab non. Quae voluptas voluptatem quod placeat sit!`
+                      )
+                      .start();
+                  }}
+                />
+              </div>
+
+              <ContactForm />
+              {/* <ButtonBig
                   isAbsolute={true}
                   style={{ top: '80%' }}
                   text='Contact Me'
                   moveTo='contact-me'
-                ></ButtonBig>
-              </div>
-            </CardGlass>
-          </div>
+                ></ButtonBig> */}
+            </div>
+          </CardGlass>
         </div>
       </div>
-      <Projects></Projects>
-      <ContactForm></ContactForm>
+      <Projects />
     </Fragment>
   );
 };

@@ -139,6 +139,8 @@
   justify-content: center;
   align-items: center;
   font-size: 48px;
+  height: 100%;
+
   text-transform: uppercase;
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
@@ -147,12 +149,12 @@
   padding: 3.875rem;
   background-color: var(--color-gray);
   animation: lineheight var(--transition-medium) forwards;
+  font-weight: 700;
 
   strong {
     background-color: var(--color-primary);
     display: block;
     font-size: 48px;
-    font-weight: 700;
     position: relative;
     overflow: hidden;
     z-index: 999;

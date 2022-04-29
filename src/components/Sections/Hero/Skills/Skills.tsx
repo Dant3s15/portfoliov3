@@ -3,8 +3,8 @@ import { useEffect, useRef, useContext, FC, LegacyRef } from 'react';
 import Skill2 from './Skill2';
 import AllSkills from '../../../Utils/AllSkills';
 import SelectedContext from '../../../../context/selected-context';
-
 import classes from './Skills.module.scss';
+import Typewriter from 'typewriter-effect';
 
 interface Props {
   className: string;
@@ -207,6 +207,20 @@ const SkillsList: FC<Props> = props => {
             props.onCtaButtonChange.clicked ? classes['abs-up'] : ''
           }`}
         >
+          {/* <Typewriter
+            options={{
+              // wrapperClassName: 'skills-text',
+              cursor: '_',
+            }}
+            onInit={typewriter => {
+              typewriter
+                .typeString('Choose')
+                .typeString('   and')
+                .pasteString('<strong class="shine">level up</strong>', null)
+                .typeString('your developer')
+                .start();
+            }}
+          /> */}
           <p>Choose</p>
           <p>and</p>
           <p>

@@ -115,84 +115,82 @@ const ContactForm = () => {
   return (
     <div id='contact-me' className={classes['contact-me']}>
       <div className={classes.container}>
-        <CardGlass>
-          <form onSubmit={formik.handleSubmit}>
-            <div className={classes['name-email']}>
-              <div className={`${classes.name} ${checkCorner('name')}`}>
-                <div className={`${classes.labels}`}>
-                  <label
-                    className={`${classes.label} ${checkError('name')}`}
-                    htmlFor='name'
-                  >
-                    Your Name
-                  </label>
-                  {checkErrors('name')}
-                  {/* <div className={classes['form-error']}>
+        <form onSubmit={formik.handleSubmit}>
+          <div className={classes['name-email']}>
+            <div className={`${classes.name} ${checkCorner('name')}`}>
+              <div className={`${classes.labels}`}>
+                <label
+                  className={`${classes.label} ${checkError('name')}`}
+                  htmlFor='name'
+                >
+                  Your Name
+                </label>
+                {checkErrors('name')}
+                {/* <div className={classes['form-error']}>
                   {formik.errors['name']}
                 </div> */}
-                </div>
-                <input
-                  className={`${classes.input} ${checkErrorState('name')}`}
-                  id='name'
-                  type='text'
-                  autoComplete='off'
-                  name='name'
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  value={formik.values.name}
-                />
               </div>
-              <div className={`${classes.email} ${checkCorner('email')}`}>
-                <div className={classes.labels}>
-                  <label
-                    className={`${classes.label} ${checkError('email')}`}
-                    htmlFor='email'
-                  >
-                    Your Email
-                  </label>
-                  {checkErrors('email')}
-                  {/* <div className={classes['form-error']}>
-                  {formik.errors['email']}
-                </div> */}
-                </div>
-                <input
-                  className={`${classes.input} ${checkErrorState('email')}`}
-                  id='email'
-                  type='email'
-                  name='email'
-                  autoComplete='off'
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  value={formik.values.email}
-                />
-              </div>
-            </div>
-            <div className={`${classes.textfield}`}>
-              <div className={classes.labels}>
-                <label
-                  className={`${classes.label} ${checkError('text')}`}
-                  htmlFor='text'
-                >
-                  Your Message
-                </label>
-                {checkErrors('text')}
-                {/* <div className={classes['form-error']}>
-                {formik.errors['text']}
-              </div> */}
-              </div>
-              <textarea
-                className={checkErrorState('text')}
-                id='text'
-                // type='text'
-                name='text'
+              <input
+                className={`${classes.input} ${checkErrorState('name')}`}
+                id='name'
+                type='text'
+                autoComplete='off'
+                name='name'
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
-                value={formik.values.text}
+                value={formik.values.name}
               />
             </div>
-            <ButtonBig type='submit' text='Send'></ButtonBig>
-          </form>
-        </CardGlass>
+            <div className={`${classes.email} ${checkCorner('email')}`}>
+              <div className={classes.labels}>
+                <label
+                  className={`${classes.label} ${checkError('email')}`}
+                  htmlFor='email'
+                >
+                  Your Email
+                </label>
+                {checkErrors('email')}
+                {/* <div className={classes['form-error']}>
+                  {formik.errors['email']}
+                </div> */}
+              </div>
+              <input
+                className={`${classes.input} ${checkErrorState('email')}`}
+                id='email'
+                type='email'
+                name='email'
+                autoComplete='off'
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.email}
+              />
+            </div>
+          </div>
+          <div className={`${classes.textfield}`}>
+            <div className={classes.labels}>
+              <label
+                className={`${classes.label} ${checkError('text')}`}
+                htmlFor='text'
+              >
+                Your Message
+              </label>
+              {checkErrors('text')}
+              {/* <div className={classes['form-error']}>
+                {formik.errors['text']}
+              </div> */}
+            </div>
+            <textarea
+              className={checkErrorState('text')}
+              id='text'
+              // type='text'
+              name='text'
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.text}
+            />
+          </div>
+          <ButtonBig type='submit' text='Send'></ButtonBig>
+        </form>
       </div>
     </div>
   );
