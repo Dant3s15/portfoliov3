@@ -1,6 +1,55 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+* {
+  // border: 1px solid red;
+}
 .footer {
   position: relative;
-  height: 20vw;
-  background-color: burlywood;
+  height: 15vh;
+  // background-color: burlywood;
+  color: var(--color-gray-dark);
   z-index: 1;
+  @include flexbox(space-around);
+  flex-direction: column;
+  // text-transform: uppercase;
+  letter-spacing: 1px;
+  .wrapper {
+    width: 100%;
+    padding-top: 3rem;
+    // @include flexbox(space-around);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .col {
+    @include flexbox(center, flex-start);
+    gap: 1rem;
+    .title {
+      font-weight: 600;
+    }
+    a {
+      display: block;
+      color: var(--color-gray);
+      &:hover {
+        color: var(--color-primary);
+        @include textglowsmall;
+      }
+    }
+  }
+
+  .link {
+    @include flexbox(flex-start);
+
+    gap: 0.3125rem;
+
+    img {
+      // filter: brightness(0.1);
+      width: 24px;
+      height: 24px;
+      filter: invert(1);
+    }
+  }
+  .copyright {
+    font-weight: 700;
+  }
 }
