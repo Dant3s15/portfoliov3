@@ -17,6 +17,12 @@ const Hero: FC = props => {
   });
   const [ctaButtonClicked, setCtaButtonClicked] = useState({ clicked: false });
 
+  const init = () => {
+    ctx.ctaButtonClicked = ctaButtonClicked;
+    ctx.setCtaButtonClicked = setCtaButtonClicked;
+  };
+  init();
+
   const charStateDataHandler = (data: {
     leftChar: number;
     frontChar: number;

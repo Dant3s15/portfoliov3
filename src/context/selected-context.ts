@@ -1,4 +1,5 @@
 import React from 'react';
+//TODO fix types
 
 type ContextProps = {
   isSelected: boolean;
@@ -9,6 +10,9 @@ type ContextProps = {
   setRenderSection: any;
   event?: any;
   rotateCharactersHandler?: any;
+  ctaButtonHandler: any;
+  ctaButtonClicked?: any;
+  setCtaButtonClicked?: any;
 };
 
 const SelectedContext = React.createContext<Partial<ContextProps>>({});

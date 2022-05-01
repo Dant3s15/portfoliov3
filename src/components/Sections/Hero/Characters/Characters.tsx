@@ -38,7 +38,13 @@ const Characters: FC<Props> = props => {
       };
     }
   };
+  const init = () => {
+    ctx.ctaButtonHandler = ctaButtonHandler;
 
+    // ctx.ctaButtonClicked = ctaButtonClicked;
+    // ctx.setCtaButtonClicked = setCtaButton;
+  };
+  init();
   // useEffect(() => {
   //   if (ctx.event) {
   //     console.log(ctx.event);

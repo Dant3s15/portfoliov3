@@ -62,8 +62,11 @@ const Header: FC<Props> = props => {
   const navItemHandler:
     | MouseEventHandler<HTMLButtonElement>
     | undefined = data => {
+    if (!ctx.ctaButtonClicked.clicked) {
+      ctx.ctaButtonHandler();
+    }
     const charNr = Number(data.currentTarget.getAttribute('data-character'));
-    console.log(charNr);
+    // console.log(charNr);
     let char = document
       .querySelector(`[data-const-pos="${charNr}"]`)
       ?.getAttribute('data-character');
@@ -71,6 +74,9 @@ const Header: FC<Props> = props => {
     ctx.setRenderSection(true);
     ctx.setWhichSelected(charNr);
     ctx.setSelected(true);
+    // ctx.setCtaClicked({ clicked: true });
+    // console.log(ctx.ctaClicked.clicked);
+
     //TODO add scroll to effect
   };
 
@@ -93,7 +99,13 @@ const Header: FC<Props> = props => {
             {/* <a href='#' className={classes.nav__item}>
               About me
             </a> */}
-            <button className={classes.nav__item}>My projects</button>
+            <button
+              data-character='1'
+              onClick={navItemHandler}
+              className={classes.nav__item}
+            >
+              My projects
+            </button>
             <button
               data-character='1'
               onClick={navItemHandler}
