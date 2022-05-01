@@ -73,7 +73,7 @@ const Hero: FC = props => {
         <SkillsList
           // heroRef={heroRef}
           className={classes['character-skills']}
-          onCtaButtonChange={ctaButtonClicked}
+          // onCtaButtonChange={ctaButtonClicked}
           charStateData={charState}
           // onReceivedSelectState={selected}
         ></SkillsList>

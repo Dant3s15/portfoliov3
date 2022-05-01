@@ -8,7 +8,7 @@ import Typewriter from 'typewriter-effect';
 
 interface Props {
   className: string;
-  onCtaButtonChange: { clicked: boolean };
+  // onCtaButtonChange: { clicked: boolean };
   charStateData: {
     leftChar: number;
     frontChar: number;
@@ -199,12 +199,12 @@ const SkillsList: FC<Props> = props => {
       <div
         ref={skillsWindowRef}
         className={`card--glass ${classes['skills-window']} ${
-          !props.onCtaButtonChange.clicked ? 'not-started' : ''
+          !ctx.ctaButtonClicked.clicked ? 'not-started' : ''
         } `}
       >
         <div
           className={`${classes['skills-text']} shine ${
-            props.onCtaButtonChange.clicked ? classes['abs-up'] : ''
+            ctx.ctaButtonClicked.clicked ? classes['abs-up'] : ''
           }`}
         >
           {/* <Typewriter
@@ -231,7 +231,7 @@ const SkillsList: FC<Props> = props => {
         </div>
         <div
           className={`${classes['skills-card']} ${
-            !props.onCtaButtonChange.clicked ? classes['abs-down'] : ''
+            !ctx.ctaButtonClicked.clicked ? classes['abs-down'] : ''
           }`}
         >
           <header className={classes['skills-window__header']}>
