@@ -40,6 +40,7 @@ const Hero: FC = props => {
     if (e.target.classList.contains(classes['section-hero'])) {
       // console.log(ctx);
       ctx.setSelected(false);
+      ctx.setRenderSection(false);
     }
   };
   // const selectedStateHandler = (selec: any) => {

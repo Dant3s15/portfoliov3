@@ -7,6 +7,8 @@ type ContextProps = {
   setWhichSelected: any;
   renderSection: any;
   setRenderSection: any;
+  event?: any;
+  rotateCharactersHandler?: any;
 };
 
 const SelectedContext = React.createContext<Partial<ContextProps>>({});

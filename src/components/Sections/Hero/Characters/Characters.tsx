@@ -39,6 +39,18 @@ const Characters: FC<Props> = props => {
     }
   };
 
+  // useEffect(() => {
+  //   if (ctx.event) {
+  //     console.log(ctx.event);
+  //     rotateCharactersHandler(ctx.event);
+  //   }
+  //   // return () => {
+  //   //   // let char1 = document
+  //   //   //   .querySelector('[data-const-pos="1"]')
+  //   //   //   ?.getAttribute('data-character');
+  //   // };
+  // }, [ctx.event]);
+
   useEffect(() => {
     const charStateData = {
       leftChar,
@@ -99,7 +111,7 @@ const Characters: FC<Props> = props => {
     props.selectedState?.setWhichSelected(constPos);
   };
 
-  const rotateCharactersHandler = (e: any) => {
+  ctx.rotateCharactersHandler = (e: any) => {
     const setChars = (direc: number) => {
       setLeftChar(wrapRotate(leftChar, direc));
       setFrontChar(wrapRotate(frontChar, direc));
@@ -107,12 +119,19 @@ const Characters: FC<Props> = props => {
     };
 
     let direc = 0;
-    let charData = +e.target.dataset.character;
 
+    let charData;
+    if (typeof e === 'number') {
+      charData = e;
+    } else charData = +e.target?.dataset.character;
+
+    // console.log(charData);
+    let charConstPos = +e.target?.dataset.constPos;
+    // console.log(charData);
     if (charData === 1) {
       props.selectedState.setSelected(true);
 
-      renderContentHandler(+e.target.dataset.constPos);
+      renderContentHandler(charConstPos);
     }
 
     if (charData === 0) {
@@ -120,8 +139,8 @@ const Characters: FC<Props> = props => {
       setChars(direc);
       props.selectedState.setSelected(true);
       // renderContentHandler(null);
-      renderContentHandler(+e.target.dataset.constPos);
-      //TODO FIX CONTEXT
+      renderContentHandler(charConstPos);
+
       ctx.setRenderSection(false);
     }
     if (charData === 2) {
@@ -129,11 +148,12 @@ const Characters: FC<Props> = props => {
       setChars(direc);
       props.selectedState.setSelected(true);
       // renderContentHandler(null);
-      renderContentHandler(+e.target.dataset.constPos);
+      renderContentHandler(charConstPos);
       ctx.setRenderSection(false);
     }
     //disable selected if background is clicked
     if (e.target === charactersRef.current) {
+      // console.log(e.target);
       props.selectedState.setSelected(false);
       renderContentHandler(0);
       ctx.setRenderSection(false);
@@ -252,7 +272,7 @@ const Characters: FC<Props> = props => {
 
       <div
         ref={charactersRef}
-        onClick={rotateCharactersHandler}
+        onClick={ctx.rotateCharactersHandler}
         className={`${classes.characters} ${
           !ctaButtonClicked.clicked ? classes.hidden : ''
         }`}
@@ -275,7 +295,7 @@ const Characters: FC<Props> = props => {
           data={leftChar}
           selected={leftIsSelected}
           name='Character Creator'
-          onRotateCharacters={rotateCharactersHandler}
+          onRotateCharacters={ctx.rotateCharactersHandler}
         ></Character>
 
         <Character
@@ -284,7 +304,7 @@ const Characters: FC<Props> = props => {
           data={frontChar}
           selected={frontIsSelected}
           name='Damian'
-          onRotateCharacters={rotateCharactersHandler}
+          onRotateCharacters={ctx.rotateCharactersHandler}
         ></Character>
 
         <Character
@@ -293,7 +313,7 @@ const Characters: FC<Props> = props => {
           selected={rightIsSelected}
           data={rightChar}
           name='Future Damian'
-          onRotateCharacters={rotateCharactersHandler}
+          onRotateCharacters={ctx.rotateCharactersHandler}
         ></Character>
       </div>
     </div>

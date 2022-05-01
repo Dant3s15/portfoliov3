@@ -1,9 +1,10 @@
-import { useState, useEffect, FC } from 'react';
+import { useState, useEffect, FC, MouseEventHandler, useContext } from 'react';
+import SelectedContext from '../../../context/selected-context';
 import classes from './Header.module.scss';
 import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
 import GoogleLogIn from '../../Icons/google/GoogleLogIn';
-import googleLogin from '../../../resources/img/google/btn_google_signin_light_normal_web@2x.png';
+// import googleLogin from '../../../resources/img/google/btn_google_signin_light_normal_web@2x.png';
 import { User } from 'firebase/auth';
 
 // interface InsideGoogle {
@@ -38,6 +39,8 @@ interface Props {
 const Header: FC<Props> = props => {
   const [hamburgerState, setHamburgerState] = useState(false);
 
+  const ctx = useContext(SelectedContext);
+
   const hamburgerButtonHandler = () => {
     if (!hamburgerState) {
       setHamburgerState(true);
@@ -55,6 +58,21 @@ const Header: FC<Props> = props => {
       window.removeEventListener('resize', closeHamburgerOnBigScreens);
     };
   });
+
+  const navItemHandler:
+    | MouseEventHandler<HTMLButtonElement>
+    | undefined = data => {
+    const charNr = Number(data.currentTarget.getAttribute('data-character'));
+    console.log(charNr);
+    let char = document
+      .querySelector(`[data-const-pos="${charNr}"]`)
+      ?.getAttribute('data-character');
+    ctx.rotateCharactersHandler(char ? +char : null);
+    ctx.setRenderSection(true);
+    ctx.setWhichSelected(charNr);
+    ctx.setSelected(true);
+    //TODO add scroll to effect
+  };
 
   return (
     <header className={classes.header}>
@@ -75,23 +93,27 @@ const Header: FC<Props> = props => {
             {/* <a href='#' className={classes.nav__item}>
               About me
             </a> */}
-            <a href='#' className={classes.nav__item}>
-              My projects
-            </a>
-            <a href='#' className={classes.nav__item}>
-              Contact me
-            </a>
-            <a href='#' className={classes.nav__item}>
-              Creator
-            </a>
+            <button className={classes.nav__item}>My projects</button>
+            <button
+              data-character='1'
+              onClick={navItemHandler}
+              className={classes.nav__item}
+            >
+              About Me
+            </button>
+            <button
+              data-character='0'
+              onClick={navItemHandler}
+              className={classes.nav__item}
+            >
+              Character Creator
+            </button>
             {!props.data.google.user && (
               <button
                 className={`${classes.nav__item} ${classes.google}`}
                 onClick={props.data.google.signInWithGoogle}
                 id='login'
               >
-                {/* <img src={googleLogin} alt='' /> */}
-
                 <GoogleLogIn></GoogleLogIn>
                 <p>Sign in with Google</p>
               </button>
