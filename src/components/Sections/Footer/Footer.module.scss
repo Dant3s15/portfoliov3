@@ -1,8 +1,6 @@
 @import '../../../scss/variables';
 @import '../../../scss/mixins';
-* {
-  // border: 1px solid red;
-}
+
 .footer {
   position: relative;
   height: 15vh;
@@ -15,7 +13,7 @@
   letter-spacing: 1px;
   .wrapper {
     width: 100%;
-    padding-top: 3rem;
+    padding-top: 2rem;
     // @include flexbox(space-around);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -36,7 +34,11 @@
       }
     }
   }
-
+  .links-list {
+    @include flexbox(null, flex-start);
+    flex-direction: column;
+    gap: 0.4375rem;
+  }
   .link {
     @include flexbox(flex-start);
 

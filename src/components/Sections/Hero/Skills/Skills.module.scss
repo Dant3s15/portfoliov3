@@ -124,7 +124,7 @@
     border-radius: 3px;
     margin: 1rem 1rem 0 1rem;
     position: relative;
-    @include corner-cut(30px, var(--color-primary), 3px, 30px);
+    @include corner-cut(30px, var(--color-primary), 2px, 29px);
   }
 
   @media (max-width: $big-tablet) {

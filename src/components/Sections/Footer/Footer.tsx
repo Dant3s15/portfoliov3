@@ -10,7 +10,7 @@ const Footer = () => {
         </div>
         <div className={classes.col}>
           <p className={classes.title}>Links:</p>
-          <div>
+          <div className={classes['links-list']}>
             <div className={classes.link}>
               <img src={github} alt='github' />
               <a href='https://github.com/Dant3s15'>Github</a>
