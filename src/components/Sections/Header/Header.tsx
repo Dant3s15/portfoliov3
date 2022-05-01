@@ -59,13 +59,11 @@ const Header: FC<Props> = props => {
     };
   });
 
-  const navItemHandler:
-    | MouseEventHandler<HTMLButtonElement>
-    | undefined = data => {
+  const navItemHandler = (event: { currentTarget: Element }, id: string) => {
     if (!ctx.ctaButtonClicked.clicked) {
       ctx.ctaButtonHandler();
     }
-    const charNr = Number(data.currentTarget.getAttribute('data-character'));
+    const charNr = Number(event.currentTarget.getAttribute('data-character'));
     // console.log(charNr);
     let char = document
       .querySelector(`[data-const-pos="${charNr}"]`)
@@ -74,6 +72,11 @@ const Header: FC<Props> = props => {
     ctx.setRenderSection(true);
     ctx.setWhichSelected(charNr);
     ctx.setSelected(true);
+
+    setTimeout(() => {
+      const element = document.querySelector(`#${id}`);
+      element?.scrollIntoView();
+    }, 500);
     // ctx.setCtaClicked({ clicked: true });
     // console.log(ctx.ctaClicked.clicked);
 
@@ -101,21 +104,21 @@ const Header: FC<Props> = props => {
             </a> */}
             <button
               data-character='1'
-              onClick={navItemHandler}
+              onClick={e => navItemHandler(e, 'my-projects')}
               className={classes.nav__item}
             >
               My projects
             </button>
             <button
               data-character='1'
-              onClick={navItemHandler}
+              onClick={e => navItemHandler(e, 'about-me')}
               className={classes.nav__item}
             >
               About Me
             </button>
             <button
               data-character='0'
-              onClick={navItemHandler}
+              onClick={e => navItemHandler(e, 'creator')}
               className={classes.nav__item}
             >
               Character Creator

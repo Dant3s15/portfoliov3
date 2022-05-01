@@ -2,10 +2,14 @@
 @import '../../../scss/variables.scss';
 
 .header {
-  position: absolute;
+  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
+  z-index: 999;
+  @media (max-width: $big-tablet) {
+    position: absolute;
+  }
 }
 
 .header,

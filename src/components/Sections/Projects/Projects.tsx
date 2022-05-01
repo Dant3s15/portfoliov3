@@ -10,7 +10,7 @@ const Projects = () => {
   // const test = useRef(null);
   // console.log(test.current.childNodes[1]);
   return (
-    <div className={classes.projects}>
+    <div id='my-projects' className={classes.projects}>
       <p className={classes.title}>My Projects</p>
       <div className={classes['my-projects']}>
         <div className={classes.scene}>
