@@ -65,7 +65,7 @@ const Hero: FC = props => {
       <div className={classes['character-selection']}>
         <Characters
           heroRef={heroRef}
-          onCtaButtonChange={ctaDataButtonHandler}
+          // onCtaButtonChange={ctaDataButtonHandler}
           // onSelectedChange={selectedStateHandler}
           selectedState={ctx}
           charState={charStateDataHandler}

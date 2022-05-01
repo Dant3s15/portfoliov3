@@ -6,7 +6,7 @@ import Typewriter from 'typewriter-effect';
 import classes from './Characters.module.scss';
 
 interface Props {
-  onCtaButtonChange: any;
+  // onCtaButtonChange: any;
   // onSelectedChange?: (selec: any) => void;
   selectedState: any;
   charState: (data: any) => void;
@@ -18,18 +18,18 @@ const Characters: FC<Props> = props => {
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
-  const [ctaButtonClicked, setCtaButton] = useState({ clicked: false });
+  // const [ctaButtonClicked, setCtaButton] = useState({ clicked: false });
   const ctx = useContext(SelectedContext);
 
   const charactersRef = useRef<HTMLDivElement>(null);
   const charactersColRef = useRef<HTMLDivElement>(null);
 
   const ctaButtonHandler = () => {
-    if (!ctaButtonClicked.clicked) {
-      setCtaButton({ clicked: true });
-    } else setCtaButton({ clicked: false });
+    if (!ctx.ctaButtonClicked.clicked) {
+      ctx.setCtaButtonClicked({ clicked: true });
+    } else ctx.setCtaButtonClicked({ clicked: false });
     calcCharWidth();
-    props.onCtaButtonChange({ clicked: true });
+    // props.onCtaButtonChange({ clicked: true });
     // console.log(ctaButtonClicked);
     //disabling blue outline on drag
     if (charactersColRef?.current) {
@@ -40,9 +40,6 @@ const Characters: FC<Props> = props => {
   };
   const init = () => {
     ctx.ctaButtonHandler = ctaButtonHandler;
-
-    // ctx.ctaButtonClicked = ctaButtonClicked;
-    // ctx.setCtaButtonClicked = setCtaButton;
   };
   init();
   // useEffect(() => {
@@ -243,7 +240,9 @@ const Characters: FC<Props> = props => {
     <div ref={charactersColRef} className={classes['character-col']}>
       <div
         className={`${classes['character__overlay']} ${
-          ctaButtonClicked.clicked ? classes['character__overlay--hidden'] : ''
+          ctx.ctaButtonClicked.clicked
+            ? classes['character__overlay--hidden']
+            : ''
         }`}
       >
         <div className={classes.cta}>
@@ -280,7 +279,7 @@ const Characters: FC<Props> = props => {
         ref={charactersRef}
         onClick={ctx.rotateCharactersHandler}
         className={`${classes.characters} ${
-          !ctaButtonClicked.clicked ? classes.hidden : ''
+          !ctx.ctaButtonClicked.clicked ? classes.hidden : ''
         }`}
       >
         {isAnythingSelected().isSelected ? (
