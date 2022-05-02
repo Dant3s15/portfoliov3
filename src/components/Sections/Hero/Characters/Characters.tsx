@@ -31,7 +31,9 @@ const Characters: FC<Props> = props => {
     calcCharWidth();
     // props.onCtaButtonChange({ clicked: true });
     // console.log(ctaButtonClicked);
+
     //disabling blue outline on drag
+
     if (charactersColRef?.current) {
       charactersColRef.current.ondragstart = () => {
         return false;
@@ -234,6 +236,9 @@ const Characters: FC<Props> = props => {
 
   const frontCharButtonHandler = () => {
     ctx.setRenderSection(true);
+
+    // const hero = document.querySelector(`#about-me`);
+    // hero?.scrollIntoView();
   };
 
   return (

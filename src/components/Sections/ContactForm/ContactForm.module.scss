@@ -1,6 +1,9 @@
 @import '../../../scss/mixins.scss';
 @import '../../../scss/variables.scss';
 .contact-me {
+  width: 100%;
+  // border: 1px solid red;
+
   // height: 80vh;
   // background-color: rgb(55, 55, 55);
   // background: url('../../../resources/img/hero8.webp');
@@ -15,8 +18,9 @@
     background-color: var(--color-gray-tint-dark-transparent-1);
     border: none;
     outline: none;
-    width: 300px;
-    height: 50px;
+    max-width: 300px;
+    width: 100%;
+    height: 40px;
     // border: 3px solid var(--color-primary);
     border-radius: 3px;
     color: var(--color-gray);
@@ -43,6 +47,7 @@
     // perspective: 600px;
     transition: all var(--transition-short);
     transition-property: perspective;
+    width: 100%;
 
     &:hover {
       // perspective: 1000px;
@@ -51,6 +56,8 @@
       @include flexbox;
       flex-direction: column;
       gap: 1.5rem;
+
+      // width: 200px;
       // padding: 4rem;
     }
     .labels {
@@ -89,7 +96,7 @@
     .textfield {
       position: relative;
       width: 100%;
-      height: 150px;
+      // height: 150px;
 
       //TODO
       // @include corner-cut(20px, var(--color-primary), 3px, 22px);
@@ -114,6 +121,9 @@
       width: 100%;
       // color: red;
       // border: 1px solid red;
+      @media (max-width: $big-tablet) {
+        font-size: 1rem;
+      }
     }
 
     .label--error {
@@ -163,7 +173,7 @@
     font-weight: 700;
     position: absolute;
     right: 7px;
-    bottom: -20px;
+    bottom: -30px;
     @include textglowsmaller(red);
   }
   .input-error {

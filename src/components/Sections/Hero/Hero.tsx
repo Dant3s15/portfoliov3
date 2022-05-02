@@ -32,10 +32,10 @@ const Hero: FC = props => {
     setCharState(data);
   };
 
-  const ctaDataButtonHandler = (data: { clicked: boolean }) => {
-    setCtaButtonClicked(data);
-    // console.log(data);
-  };
+  // const ctaDataButtonHandler = (data: { clicked: boolean }) => {
+  //   setCtaButtonClicked(data);
+  //   // console.log(data);
+  // };
 
   const heroOnClickHandler = (e: {
     stopPropagation: () => void;
@@ -56,6 +56,7 @@ const Hero: FC = props => {
 
   return (
     <section
+      id='hero'
       ref={heroRef}
       onClick={heroOnClickHandler}
       className={`${classes['section-hero']} ${

@@ -18,8 +18,13 @@
   & .text-wrapper {
     transition: all var(--transition-short);
     .glass-card--custom {
+      position: relative;
       height: 80%;
       padding: 2.25rem;
+      // width: 500px;
+      @media (max-width: $big-tablet) {
+        transform: none;
+      }
     }
   }
   & .text-wrapper:hover {
@@ -43,6 +48,7 @@
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center 65%;
+    background-size: cover;
     transition: all 3s 10s;
     filter: saturate(0.5) blur(3px);
   }
@@ -68,9 +74,16 @@
     // & div {
     //   border: 1px solid red;
     // }
+    @media (max-width: $big-tablet) {
+      height: 80%;
+      align-self: flex-end;
+      justify-self: center;
+      // border: 1px solid red;
+      // perspective: 1000px;
+    }
   }
   .title {
-    font-size: 64px;
+    font-size: 54px;
     // height: 100%;
     // min-height: 100px;
 
@@ -82,7 +95,19 @@
     display: inline-flex;
     &__cursor {
       animation: cursor 1.1s infinite;
-      font-size: 64px;
+      font-size: 54px;
+      @media (max-width: $big-laptop) {
+        font-size: 2.25rem;
+      }
+      @media (max-width: $big-tablet) {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: $big-laptop) {
+      font-size: 2.25rem;
+    }
+    @media (max-width: $big-tablet) {
+      font-size: 2rem;
     }
   }
 
@@ -93,7 +118,7 @@
     text-align: left;
     // align-self: flex-start;
     // justify-self: flex-start;
-    padding-top: 1.5rem;
+    // padding-top: 1.5rem;
     height: 100%;
     font-size: 24px;
     // line-height: 1.5;
@@ -103,6 +128,9 @@
     span {
       display: inline-block;
       width: 100%;
+    }
+    span :first-child {
+      padding-top: 10px;
     }
     span:not(:last-child) {
       padding-bottom: 1.5rem;
@@ -117,6 +145,12 @@
     // white-space: nowrap;
     // letter-spacing: 0.15em;
     // animation: typing 3.5s steps(40, end);
+    @media (max-width: $big-tablet) {
+      font-size: 20px;
+    }
+    @media (max-width: $mobile) {
+      font-size: 16px;
+    }
   }
 
   &-char {
@@ -125,15 +159,33 @@
     width: 100%;
 
     .char__container {
-      width: 300px;
-      height: 100%;
+      width: 15.625rem;
+      height: 80%;
       overflow: hidden;
       padding-top: 2.25rem;
+      @include flexbox(center, flex-end);
+
+      // border: 1px solid red;
       img {
         &:hover {
           animation: jump 3s;
         }
       }
     }
+    @media (max-width: $big-tablet) {
+      position: absolute;
+      padding-bottom: 3.375rem;
+    }
+  }
+  @media (max-width: $laptop) {
+    padding: 0 4rem;
+  }
+
+  @media (max-width: $big-tablet) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  @media (max-width: $small-tablet) {
+    padding: 0 1rem;
   }
 }

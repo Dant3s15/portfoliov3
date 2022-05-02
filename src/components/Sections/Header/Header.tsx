@@ -75,12 +75,11 @@ const Header: FC<Props> = props => {
 
     setTimeout(() => {
       const element = document.querySelector(`#${id}`);
-      element?.scrollIntoView();
-    }, 500);
-    // ctx.setCtaClicked({ clicked: true });
-    // console.log(ctx.ctaClicked.clicked);
-
-    //TODO add scroll to effect
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+    //TODO switch sequence and remove anchors from characters
+    // const hero = document.querySelector(`#hero`);
+    // hero?.scrollIntoView();
   };
 
   return (
