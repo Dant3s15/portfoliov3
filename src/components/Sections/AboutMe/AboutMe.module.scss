@@ -11,7 +11,8 @@
   padding: 0 8rem;
   overflow: hidden;
   height: 100vh;
-
+  // height: 100%;
+  // height: calc(100vh - calc(100vh - 100%));
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -21,9 +22,13 @@
       position: relative;
       height: 80%;
       padding: 2.25rem;
+
       // width: 500px;
       @media (max-width: $big-tablet) {
         transform: none;
+      }
+      @media (max-width: $mobile) {
+        padding: 16px;
       }
     }
   }
@@ -59,7 +64,7 @@
     width: 100%;
     height: 100%;
     @include textglow;
-    @include flexbox(space-between, flex-start);
+    @include flexbox(space-around, flex-start);
     // gap: 4rem;
 
     flex-direction: column;
@@ -121,6 +126,7 @@
     // padding-top: 1.5rem;
     height: 100%;
     font-size: 24px;
+    @include flexbox;
     // line-height: 1.5;
 
     // div {
@@ -132,8 +138,8 @@
     span :first-child {
       padding-top: 10px;
     }
-    span:not(:last-child) {
-      padding-bottom: 1.5rem;
+    span span:not(:last-child) {
+      padding-bottom: 1.2rem;
     }
     // &__cursor {
     //   display: inline-block;
@@ -146,10 +152,13 @@
     // letter-spacing: 0.15em;
     // animation: typing 3.5s steps(40, end);
     @media (max-width: $big-tablet) {
-      font-size: 20px;
+      font-size: 1.25rem;
     }
     @media (max-width: $mobile) {
-      font-size: 16px;
+      font-size: 14px;
+      span span:not(:last-child) {
+        padding-bottom: 0rem;
+      }
     }
   }
 
@@ -161,7 +170,7 @@
     .char__container {
       width: 15.625rem;
       height: 80%;
-      overflow: hidden;
+      // overflow: hidden;
       padding-top: 2.25rem;
       @include flexbox(center, flex-end);
 
@@ -170,6 +179,12 @@
         &:hover {
           animation: jump 3s;
         }
+      }
+      @media (max-width: $big-tablet) {
+        align-items: flex-start;
+      }
+      @media (max-width: $mobile) {
+        width: 11.3rem;
       }
     }
     @media (max-width: $big-tablet) {

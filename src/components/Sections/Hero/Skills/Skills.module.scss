@@ -63,8 +63,8 @@
   border-right: 7px solid rgba(255, 255, 255, 0.18);
   transform-origin: 5%;
 
-  @include corner-cut(60px, rgba(255, 255, 255, 0.18), 4px, 58px);
-
+  @include corner-cut(65px, rgba(255, 255, 255, 0.18), 4px, 59px);
+  border-bottom: 5px solid rgba(255, 255, 255, 0.18);
   // @media (max-width: $big-laptop) {
   //   width: 400px;
   //   min-width: 400px;

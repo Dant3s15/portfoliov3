@@ -17,6 +17,7 @@
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-right: 7px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 5px solid rgba(255, 255, 255, 0.18);
   background-color: rgba(95, 95, 95, 0.109);
-  @include corner-cut(100px, rgba(255, 255, 255, 0.18), 10px, 98px);
+  @include corner-cut(50px, rgba(255, 255, 255, 0.18), 10px, 48px);
 }
