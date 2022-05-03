@@ -8,10 +8,22 @@
   background-color: lightgray;
   height: 100vh;
   position: relative;
-  padding: 0 100px;
+  // padding: 0 100px;
   overflow: hidden;
+  // overflow-y: visible;
   @include flexbox(space-around);
   flex-direction: column;
+  .wrapper {
+    overflow-y: hidden;
+    overflow-x: auto; // overflow-x: visible;
+    z-index: 10;
+    // @include flexbox(space-around);
+    // flex-direction: column;
+    width: 100%;
+    height: 100%;
+    // border: 1px solid red;
+  }
+
   .title {
     text-transform: uppercase;
     font-size: 86px;
@@ -36,18 +48,26 @@
   }
   .my-projects {
     // margin-bottom: 4.25rem;
+    padding: 0 7rem;
     position: relative;
-
-    height: 75%;
-    width: 1150px;
-    width: 100%;
+    // overflow-x: clip;
+    // overflow-x: hidden;
+    // overflow-y: scroll;
+    height: 90%;
+    // width: 1150px;
+    width: 90%;
+    // height: 700px;
+    // width: 500px;
     // border: 1px solid red;
-    @include flexbox;
-    // flex-direction: column;
+    @include flexbox(flex-end);
+    // flex: 0 0 300px;
+    // display: inline-flex;
+    flex-direction: row-reverse;
+    min-height: 0;
     // & .scene:nth-child(1) {
     //   z-index: 3;
     //   left: 5%;
-    //   border: 1px solid red;
+    // border: 1px solid red;
     // }
     // & .scene:nth-child(2) {
     //   z-index: 2;
@@ -57,28 +77,60 @@
     //   z-index: 1;
     //   left: 55%;
     // }
+    // width: 500px;
+    // height: 500px;
+    // white-space: nowrap;
+    // position: relative;
+    // overflow-x: scroll;
+    // overflow-y: hidden;
+    // -webkit-overflow-scrolling: touch;
+    z-index: 10;
+    display: inline-flex;
     .scene {
+      min-height: 0;
       // position: absolute;
+      position: relative;
+
       // width: 100%;
-      // border: 1px solid red;
+      @include flexbox;
+
       width: 450px;
+
       min-width: 450px;
       height: 100%;
+
       perspective: 400px;
       transform-origin: 50%;
-      transform: scale(1);
+      transform: scale(0.7);
 
       transition: all var(--transition-short-medium);
       transition-property: transform, perspective;
+      margin-right: -13.5rem;
+      z-index: 5;
+      animation: zindexback 1s forwards;
+      &:hover {
+        // z-index: 10 !important;
+        position: relative;
+        animation: zindex 100s 0.4s forwards;
+      }
     }
-    & .scene:not(:last-child) {
-      margin-right: -10rem;
-    }
-    & div:nth-child(1) > .project:hover {
-      transform: scale(1.1) translateX(0px) rotateY(0deg);
+    // & .scene {
+    // transition: all var(--transition-short-medium);
+    // &:hover {
+    //   animation: zindex 1s 1s forwards;
+    // }
+    // }
+    // & .scene:not(:last-child) {
+    //   margin-right: -10rem;
+    // }
+    & div:last-child > .project:hover {
+      transform: scale(1.3) translateX(0px) rotateY(0deg) !important;
     }
 
     .project {
+      // border: 1px solid red;
+      height: 80vh;
+
       position: relative;
       backdrop-filter: blur(20px);
       // font-family: 'Jura', sans-serif;
@@ -89,12 +141,27 @@
       grid-template-rows: 1fr 3fr;
       min-width: 350px;
 
+      // aspect-ratio: 3/1;
+      transform: scale(1.2) rotateY(-15deg);
+
+      // animation: cardslideback 1s 0.4s forwards;
+      transition: all var(--transition-short-medium);
+      transition-property: transform;
+      // transition-delay: 0.3s;
+
       &:hover {
-        transform: scale(1.1) translateX(200px) rotateY(0deg);
+        //TODO
+        transform: scale(1.3) translateX(200px) rotateY(0deg);
+        transition: all var(--transition-short-medium);
+
+        animation: cardslide 0.7s 0.6s forwards;
+        // animation: test 0.8s forwards;
+
         .project-title {
           @include textglowsmall;
         }
       }
+
       @include corner-cut(40px, rgba(255, 255, 255, 0.18), null, 38px);
       .project-image-window {
         @include corner-cut(50px);
@@ -208,7 +275,7 @@
   gap: 0.5rem;
   flex: 0 1 20%;
   width: 0;
-  min-height: 33%;
+  min-height: 50%;
   // width: 70px;
   // height: 60px;
   // height: 50%;

@@ -82,7 +82,59 @@ const Projects = () => {
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
+    {
+      id: 3,
+      image: project1,
+      title: 'portfolio',
+      overview: (
+        <Fragment>
+          Frontend game-like character <strong>selector</strong> and{' '}
+          <strong>creator</strong> , create your own character or contact me and{' '}
+          <strong>LEVEL ME UP!</strong>
+        </Fragment>
+      ),
+      skills: [
+        AllSkils[1],
+        AllSkils[2],
+        AllSkils[3],
+        AllSkils[26],
+        AllSkils[13],
+        AllSkils[23],
+        AllSkils[5],
+        AllSkils[21],
+      ],
+      link: 'https://portfolio-27cdd.web.app/',
+      repo: 'https://github.com/Dant3s15/portfoliov3',
+    },
+    {
+      id: 4,
+      image: project1,
+      title: 'portfolio',
+      overview: (
+        <Fragment>
+          Frontend game-like character <strong>selector</strong> and{' '}
+          <strong>creator</strong> , create your own character or contact me and{' '}
+          <strong>LEVEL ME UP!</strong>
+        </Fragment>
+      ),
+      skills: [
+        AllSkils[1],
+        AllSkils[2],
+        AllSkils[3],
+        AllSkils[26],
+        AllSkils[13],
+        AllSkils[23],
+        AllSkils[5],
+        AllSkils[21],
+      ],
+      link: 'https://portfolio-27cdd.web.app/',
+      repo: 'https://github.com/Dant3s15/portfoliov3',
+    },
   ];
+
+  // const projectHoverHandler = (id: number) => {
+  //   // console.log(projectsRefs[id]);
+  // };
 
   const projectsList = (): JSX.Element[] => {
     const calcPos = (id: number) => {
@@ -90,13 +142,17 @@ const Projects = () => {
       console.log(result);
     };
     calcPos(2);
-    return projectsArr.map(project => (
+    return projectsArr.reverse().map(project => (
       <div
+        // ref={projectsRefs[project.id]}
         key={project.id}
         className={classes.scene}
-        style={{ zIndex: `${projectsArr.length - project.id}` }}
+        // onMouseEnter={() => {
+        //   projectHoverHandler(project.id);
+        // }}
+        // style={{ zIndex: `${project.id}` }}
       >
-        <CardProject projectData={project} />
+        <CardProject key={project.id} projectData={project} />
       </div>
     ));
   };
@@ -104,18 +160,20 @@ const Projects = () => {
   return (
     <div id='my-projects' className={classes.projects}>
       <p className={classes.title}>My Projects</p>
-      <div className={classes['my-projects']}>
-        {projectsList()}
-        {/* 
+      <div className={classes.wrapper}>
+        <div className={classes['my-projects']}>
+          {projectsList()}
+          {/* 
         <div className={classes.scene}>
-          <CardProject projectData={projects[0]} />
+        <CardProject projectData={projects[0]} />
         </div>
         <div className={classes.scene}>
-          <CardProject projectData={projects[1]} />
+        <CardProject projectData={projects[1]} />
         </div>
         <div className={classes.scene}>
-          <CardProject projectData={projects[3]} />
-        </div> */}
+        <CardProject projectData={projects[3]} />
+      </div> */}
+        </div>
       </div>
     </div>
   );
