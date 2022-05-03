@@ -4,6 +4,7 @@ import classes from './Header.module.scss';
 import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
 import GoogleLogIn from '../../Icons/google/GoogleLogIn';
+import logo from '../../../resources/logo.svg';
 // import googleLogin from '../../../resources/img/google/btn_google_signin_light_normal_web@2x.png';
 import { User } from 'firebase/auth';
 
@@ -94,7 +95,7 @@ const Header: FC<Props> = props => {
         <div className={classes.navigation}>
           <div className={classes['logo-item']}>
             <a className={classes.logo} href='#'>
-              <img src='src/resources/logo.svg' alt='' />
+              <img src={logo} alt='' />
             </a>
           </div>
           <nav className={classes.nav}>

@@ -33,7 +33,7 @@
   .button-text {
     animation: flicker2 5s infinite alternate;
     font-weight: 700;
-    padding: 20px 40px;
+    padding: 20px 30px;
 
     display: block;
     width: 100%;
@@ -90,7 +90,7 @@
   @media (max-width: $mobile) {
     // padding: 25px 10px;
     .button-text {
-      font-size: 18px;
+      font-size: 0.875rem;
     }
     // width: 90vw;
   }

@@ -21,6 +21,20 @@
   }
   .logo {
     // border: 1px solid red;
+    img {
+      height: 100%;
+      min-height: 70px;
+      // width: 100px;
+    }
+  }
+  .contact {
+    padding-right: 1rem;
+  }
+  .copyright {
+    @include flexbox;
+    &:last-child p {
+      padding-left: 10px;
+    }
   }
   .col {
     @include flexbox(center, flex-start);
@@ -83,6 +97,12 @@
     .links {
       justify-self: flex-end;
       padding-right: 3rem;
+    }
+    .copyright {
+      flex-direction: column;
+      &:last-child p {
+        padding-left: 0;
+      }
     }
   }
 }
