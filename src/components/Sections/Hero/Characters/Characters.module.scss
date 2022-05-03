@@ -42,11 +42,11 @@
   transition-property: transform, opacity;
   @media (max-width: $big-tablet) {
     height: 30vh;
-    width: 30vw;
+    width: 35vw;
   }
   @media (max-width: $small-tablet) {
     height: 40vh;
-    width: 35vw;
+    width: 40vw;
   }
   @media (max-width: $mobile) {
     height: 40vh;

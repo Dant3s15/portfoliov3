@@ -3,7 +3,7 @@
 
 .footer {
   position: relative;
-  height: 15vh;
+  height: 20vh;
   // background-color: burlywood;
   color: var(--color-gray-dark);
   z-index: 1;
@@ -11,6 +11,7 @@
   flex-direction: column;
   // text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: 1rem;
   .wrapper {
     width: 100%;
     padding-top: 2rem;
@@ -18,12 +19,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
-
+  .logo {
+    // border: 1px solid red;
+  }
   .col {
     @include flexbox(center, flex-start);
-    gap: 1rem;
+    flex-direction: column;
+    justify-self: center;
+    gap: 0.5rem;
     .title {
-      font-weight: 600;
+      font-weight: 700;
+      text-transform: uppercase;
     }
     a {
       display: block;
@@ -53,5 +59,30 @@
   }
   .copyright {
     font-weight: 700;
+  }
+  @media (max-width: $big-tablet) {
+    font-size: 0.875rem;
+  }
+  @media (max-width: $small-tablet) {
+    font-size: 12px;
+  }
+  @media (max-width: $mobile) {
+    // color: red;
+    height: 35vh;
+    .wrapper {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .col {
+      justify-self: flex-start;
+      padding-left: 3rem;
+      // gap: 2rem;
+    }
+
+    .links {
+      justify-self: flex-end;
+      padding-right: 3rem;
+    }
   }
 }

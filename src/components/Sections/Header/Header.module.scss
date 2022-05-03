@@ -210,7 +210,7 @@
 // }
 
 .hamburger-not-active {
-  @include corner-cut(34px, var(--color-border-transparent), 4px, 32px);
+  @include corner-cut(32px, var(--color-border-transparent), 7px, 32px);
   overflow: hidden;
   &::after {
     left: calc(100% - 28px);
@@ -227,7 +227,7 @@
   overflow: hidden;
   height: 99.5vh;
   z-index: 990;
-  @include corner-cut(34px, var(--color-border-transparent), 4px, 32px);
+  @include corner-cut(32px, var(--color-border-transparent), 7px, 32px);
   transform: none !important;
 
   &::after {

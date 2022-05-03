@@ -5,10 +5,10 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <div className={classes.wrapper}>
-        <div className={classes.col}>
+        <div className={`${classes.col} ${classes.logo}`}>
           <img src='' alt='Logo' />
         </div>
-        <div className={classes.col}>
+        <div className={`${classes.col} ${classes.links}`}>
           <p className={classes.title}>Links:</p>
           <div className={classes['links-list']}>
             <div className={classes.link}>
@@ -21,7 +21,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className={classes.col}>
+        <div className={`${classes.col} ${classes.email}`}>
           <p className={classes.title}>Contact:</p>
           <div>
             <a href='mailto:damiansobierajdev@gmail.com'>

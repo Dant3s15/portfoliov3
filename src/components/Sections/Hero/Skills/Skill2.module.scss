@@ -25,7 +25,8 @@
     z-index: -1;
     position: absolute;
   }
-  &:hover {
+  &:hover,
+  &::selection {
     position: relative;
     z-index: 999px;
     transform: scale(1.1);
