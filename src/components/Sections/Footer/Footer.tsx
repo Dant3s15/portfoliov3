@@ -14,11 +14,15 @@ const Footer = () => {
           <div className={classes['links-list']}>
             <div className={classes.link}>
               <img src={github} alt='github' />
-              <a href='https://github.com/Dant3s15'>Github</a>
+              <a target='_blank' href='https://github.com/Dant3s15'>
+                Github
+              </a>
             </div>
             <div className={classes.link}>
               <img src={linkedin} alt='linkedin' />
-              <a href='#'>LinkedIn</a>
+              <a target='_blank' href='#'>
+                LinkedIn
+              </a>
             </div>
           </div>
         </div>

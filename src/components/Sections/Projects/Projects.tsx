@@ -3,99 +3,119 @@ import classes from './Projects.module.scss';
 import CardGlass from '../../UI/CardGlass';
 import AllSkils from '../../../components/Utils/AllSkills';
 import project1 from '../../../resources/img/projects/project1.png';
-import webLink from '../../../resources/icons/globe-outline.svg';
+// import webLink from '../../../resources/icons/globe-outline.svg';
 import github from '../../../resources/icons/logo-github.svg';
 
 const Projects = () => {
-  // const test = useRef(null);
-  // console.log(test.current.childNodes[1]);
+  const projectsArr = [
+    {
+      id: 0,
+      image: project1,
+      title: 'portfolio',
+      overview: (
+        <Fragment>
+          Frontend game-like character <strong>selector</strong> and{' '}
+          <strong>creator</strong> , create your own character or contact me and{' '}
+          <strong>LEVEL ME UP!</strong>
+        </Fragment>
+      ),
+      skills: [
+        AllSkils[1],
+        AllSkils[2],
+        AllSkils[3],
+        AllSkils[26],
+        AllSkils[49],
+        AllSkils[13],
+        AllSkils[23],
+        AllSkils[5],
+        AllSkils[21],
+      ],
+      link: 'https://portfolio-27cdd.web.app/',
+      repo: 'https://github.com/Dant3s15/portfoliov3',
+    },
+    {
+      id: 1,
+      image: project1,
+      title: 'portfolio',
+      overview: (
+        <Fragment>
+          Frontend game-like character <strong>selector</strong> and{' '}
+          <strong>creator</strong> , create your own character or contact me and{' '}
+          <strong>LEVEL ME UP!</strong>
+        </Fragment>
+      ),
+      skills: [
+        AllSkils[1],
+        AllSkils[2],
+        AllSkils[3],
+        AllSkils[26],
+        AllSkils[49],
+        AllSkils[13],
+        AllSkils[23],
+        AllSkils[5],
+        AllSkils[21],
+      ],
+      link: 'https://portfolio-27cdd.web.app/',
+      repo: 'https://github.com/Dant3s15/portfoliov3',
+    },
+    {
+      id: 2,
+      image: project1,
+      title: 'portfolio',
+      overview: (
+        <Fragment>
+          Frontend game-like character <strong>selector</strong> and{' '}
+          <strong>creator</strong> , create your own character or contact me and{' '}
+          <strong>LEVEL ME UP!</strong>
+        </Fragment>
+      ),
+      skills: [
+        AllSkils[1],
+        AllSkils[2],
+        AllSkils[3],
+        AllSkils[26],
+        AllSkils[13],
+        AllSkils[23],
+        AllSkils[5],
+        AllSkils[21],
+      ],
+      link: 'https://portfolio-27cdd.web.app/',
+      repo: 'https://github.com/Dant3s15/portfoliov3',
+    },
+  ];
+
+  const projectsList = (): JSX.Element[] => {
+    const calcPos = (id: number) => {
+      const result = 100 / id;
+      console.log(result);
+    };
+    calcPos(2);
+    return projectsArr.map(project => (
+      <div
+        key={project.id}
+        className={classes.scene}
+        style={{ zIndex: `${projectsArr.length - project.id}` }}
+      >
+        <CardProject projectData={project} />
+      </div>
+    ));
+  };
+
   return (
     <div id='my-projects' className={classes.projects}>
       <p className={classes.title}>My Projects</p>
       <div className={classes['my-projects']}>
+        {projectsList()}
+        {/* 
         <div className={classes.scene}>
-          <CardProject
-            projectData={{
-              image: project1,
-              title: 'portfolio',
-              overview: (
-                <Fragment>
-                  Frontend game-like character <strong>selector</strong> and{' '}
-                  <strong>creator</strong> , create your own character or
-                  contact me and <strong>LEVEL ME UP!</strong>
-                </Fragment>
-              ),
-              skills: [
-                AllSkils[1],
-                AllSkils[2],
-                AllSkils[3],
-
-                AllSkils[26],
-                AllSkils[13],
-                AllSkils[23],
-                AllSkils[5],
-                AllSkils[21],
-              ],
-              link: 'https://portfolio-27cdd.web.app/',
-              repo: 'https://github.com/Dant3s15/portfoliov3',
-            }}
-          />
+          <CardProject projectData={projects[0]} />
         </div>
         <div className={classes.scene}>
-          <CardProject
-            projectData={{
-              image: project1,
-              title: 'portfolio',
-              overview: (
-                <Fragment>
-                  Frontend game-like character <strong>selector</strong> and{' '}
-                  <strong>creator</strong> , create your own character or
-                  contact me and <strong>LEVEL ME UP!</strong>
-                </Fragment>
-              ),
-              skills: [
-                AllSkils[1],
-                AllSkils[2],
-                AllSkils[3],
-                AllSkils[26],
-                AllSkils[13],
-                AllSkils[23],
-                AllSkils[5],
-                AllSkils[21],
-              ],
-              link: 'https://portfolio-27cdd.web.app/',
-              repo: 'https://github.com/Dant3s15/portfoliov3',
-            }}
-          />
+          <CardProject projectData={projects[1]} />
         </div>
         <div className={classes.scene}>
-          <CardProject
-            projectData={{
-              image: project1,
-              title: 'portfolio',
-              overview: (
-                <Fragment>
-                  Frontend game-like character <strong>selector</strong> and{' '}
-                  <strong>creator</strong> , create your own character or
-                  contact me and <strong>LEVEL ME UP!</strong>
-                </Fragment>
-              ),
-              skills: [
-                AllSkils[1],
-                AllSkils[2],
-                AllSkils[3],
-                AllSkils[26],
-                AllSkils[49],
-                AllSkils[13],
-                AllSkils[23],
-                AllSkils[5],
-                AllSkils[21],
-              ],
-              link: 'https://portfolio-27cdd.web.app/',
-              repo: 'https://github.com/Dant3s15/portfoliov3',
-            }}
-          />
-        </div>
+          <CardProject projectData={projects[3]} />
+        </div> */}
       </div>
     </div>
   );
@@ -120,7 +140,6 @@ const CardProject: FC<CardProjectProps> = props => {
       <p className={classes['skill-title']}>{skill.name}</p>
     </li>
   ));
-  // console.log(skills);
   return (
     <CardGlass className={`${classes.project}`}>
       <div className={classes.links}>
