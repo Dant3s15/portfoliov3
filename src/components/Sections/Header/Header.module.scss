@@ -34,10 +34,12 @@
   width: 100%;
   height: 100%;
   position: relative;
+  // padding-right: 1rem;
 
   @include flexbox(space-between);
   @media (max-width: $big-tablet) {
     height: 4rem;
+    padding-right: 1rem;
   }
 }
 

@@ -62,7 +62,7 @@
   border: 1px solid var(--color-border-transparent);
   border-right: 7px solid var(--color-border-transparent);
   transform-origin: 5%;
-
+  will-change: transform;
   @include corner-cut(63px, var(--color-border-transparent), 7px, 59px);
   border-bottom: 5px solid var(--color-border-transparent);
   // @media (max-width: $big-laptop) {

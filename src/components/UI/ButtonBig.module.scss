@@ -79,6 +79,7 @@
     .button-text {
       font-size: 1.25rem;
     }
+    @include corner-cut2(20px, var(--color-primary), 4px, 17px);
   }
 
   @media (max-width: $small-tablet) {

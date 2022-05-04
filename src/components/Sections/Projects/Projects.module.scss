@@ -107,6 +107,7 @@
       transition-property: transform, perspective;
       margin-right: -13.5rem;
       z-index: 5;
+      will-change: transform;
       animation: zindexback 1s forwards;
       &:hover {
         // z-index: 10 !important;
