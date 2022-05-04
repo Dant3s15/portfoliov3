@@ -4,11 +4,13 @@ import classes from './CardGlass.module.scss';
 interface Props {
   className?: string;
   children: any;
+  onClick?: any;
 }
 
 const CardGlass: FC<Props> = props => {
   return (
     <div
+      onClick={props.onClick}
       className={`${classes['card--glass']} ${
         props.className ? props.className : ''
       }`}

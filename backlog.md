@@ -39,3 +39,4 @@ TODO:
     -disable skill tiles shadows if skill is not selected for performance reasons
 - snap scroll to section
 - fix pixel moving on scale hover
+- fix react spring using api
