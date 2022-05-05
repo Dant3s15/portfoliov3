@@ -147,10 +147,11 @@
       z-index: 5;
       will-change: transform;
       animation: zindexback 1s forwards;
+      // animation: zindex 100s 0.4s forwards;
       &:hover {
         // z-index: 10 !important;
         position: relative;
-        animation: zindex 100s 0.4s forwards;
+        // animation: zindex 100s 0.4s forwards;
       }
     }
     // & .scene {
@@ -186,11 +187,12 @@
       backdrop-filter: blur(20px);
       // display: inline-block;
       // @include flexbox(flex-start);
+      // animation: zindexback 1s forwards;
       @include corner-cut(50px);
       &:hover {
         //TODO
 
-        transform: perspective(500px) scale(1) translateX(100px) rotateY(-15deg) !important;
+        transform: perspective(500px) scale(1) translateX(30%) rotateY(-15deg) !important;
         // transition: all var(--transition-short-medium);
 
         // animation: cardslide 0.7s 0.6s forwards, zindex 100s 0.4s forwards;
@@ -214,6 +216,9 @@
       }
       &:nth-child(5) {
         z-index: 6;
+      }
+      & ~ .selected-project:hover {
+        transform: perspective(1000px) scale(1) translateX(30%) rotateY(0deg) !important;
       }
     }
     .project {
@@ -339,7 +344,14 @@
 }
 
 .selected-project {
-  transform: perspective(1000px) !important;
+  transform: perspective(1000px) translateX(30%) !important;
+  // animation: zindexback 1s forwards;
+  animation: zindex 100s forwards;
+  // transition: all 100s;
+
+  // &:hover {
+  //   transform: scale(1.2) !important;
+  // }
 }
 
 .used-skills-title {
