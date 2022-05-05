@@ -189,10 +189,10 @@ const Projects = () => {
   return (
     <div id='my-projects' className={classes.projects}>
       <p className={classes.title}>My Projects</p>
-      <div className={classes.wrapper}>
-        <div className={classes['my-projects']} {...bind()}>
-          {/* {projectsList()} */}
-          {/* 
+      {/* <div className={classes.wrapper}> */}
+      <div className={classes['my-projects']} {...bind()}>
+        {/* {projectsList()} */}
+        {/* 
         <div className={classes.scene}>
         <CardProject projectData={projects[0]} />
         </div>
@@ -202,15 +202,15 @@ const Projects = () => {
         <div className={classes.scene}>
         <CardProject projectData={projects[3]} />
       </div> */}
-          <ProjectsList
-            data={{
-              array: projectsArr,
-              style: style,
-            }}
-          ></ProjectsList>
-        </div>
+        <ProjectsList
+          data={{
+            array: projectsArr,
+            style: style,
+          }}
+        ></ProjectsList>
       </div>
     </div>
+    // </div>
   );
 };
 
