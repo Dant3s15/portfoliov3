@@ -18,10 +18,10 @@ const Projects = () => {
 
   const bind = useScroll(event => {
     let scrollVal = event.scrolling
-      ? event.delta[0] >= 0 || -25
+      ? event.delta[0] >= 0 || -15
         ? -5
         : event.delta[0]
-      : -25;
+      : -15;
 
     set({
       transformOrigin: 'right center',

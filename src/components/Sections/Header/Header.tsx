@@ -61,6 +61,7 @@ const Header: FC<Props> = props => {
   });
 
   const navItemHandler = (event: { currentTarget: Element }, id: string) => {
+    setHamburgerState(false);
     if (!ctx.ctaButtonClicked.clicked) {
       ctx.ctaButtonHandler();
     }
