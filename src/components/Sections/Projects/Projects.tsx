@@ -1,12 +1,14 @@
-import { FC, Fragment, ReactNode, useEffect, useRef, useState } from 'react';
+import { Fragment } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { useScroll } from '@use-gesture/react';
 import classes from './Projects.module.scss';
-import CardGlass from '../../UI/CardGlass';
+// import CardProject from './ProjectCard';
+import ProjectsList from './ProjectsList';
+// import CardGlass from '../../UI/CardGlass';
 import AllSkils from '../../../components/Utils/AllSkills';
 import project1 from '../../../resources/img/projects/project1.png';
+// import github from '../../../resources/icons/logo-github.svg';
 // import webLink from '../../../resources/icons/globe-outline.svg';
-import github from '../../../resources/icons/logo-github.svg';
 
 const Projects = () => {
   // const [isSelected, setIsSelected] = useState(false);
@@ -214,156 +216,116 @@ const Projects = () => {
   );
 };
 
-interface CardProjectProps {
-  projectData: {
-    skills: any[];
-    repo: string;
-    link: string;
-    image: string;
-    title: string;
-    overview: ReactNode | undefined;
-    id: number;
-  };
-  onClick?: any;
-  style?: any;
-  selectedState?: any;
-  // selectedCardHandler?: any;
-}
+// interface CardProjectProps {
+//   projectData: {
+//     skills: any[];
+//     repo: string;
+//     link: string;
+//     image: string;
+//     title: string;
+//     overview: ReactNode | undefined;
+//     id: number;
+//   };
+//   onClick?: any;
+//   style?: any;
+//   selectedState?: any;
+//   // selectedCardHandler?: any;
+// }
 
-const CardProject: FC<CardProjectProps> = props => {
-  // const [isSelected, setIsSelected] = useState(false);
-  // const ProjCardRef = useRef(null);
-  const cardClickHandler = (e: any) => {
-    props.selectedState.setWhichSelected(props.projectData.id);
-    // ProjCardRef.current.scrollIntoView({ block: 'center' });
-    // console.log(props.selectedState.isAnythingSelected);
-    // props.selectedState.setIsAnythingSelected(true);
-    // setIsSelected(!isSelected);
-    // if (props.selectedState.isAnythingSelected) {
-    //   setIsSelected(true);
-    // }
-    // if (props.projectData.id === props.selectedState.whichSelected) {
-    //   setIsSelected(true);
-    // } else {
-    //   setIsSelected(false);
-    // }
-  };
+// const CardProject: FC<CardProjectProps> = props => {
+//   const cardClickHandler = (e: any) => {
+//     props.selectedState.setWhichSelected(props.projectData.id);
+//   };
 
-  const skillsArr = props.projectData?.skills;
-  const skills = skillsArr?.map(skill => (
-    <li key={Math.random()} className={classes['skill']}>
-      <img src={skill.icon} alt='' />
-      <p className={classes['skill-title']}>{skill.name}</p>
-    </li>
-  ));
-  // console.log(props.selectedState.whichSelected);
-  return (
-    <animated.div
-      // ref={ProjCardRef}
-      className={`${classes['project-wrapper']} ${
-        props.projectData.id === props.selectedState.whichSelected
-          ? classes['selected-project']
-          : ''
-      } `}
-      // key={props.data.project.id}
-      style={{ ...props.style }}
-    >
-      <CardGlass className={`${classes.project}`}>
-        <div className={classes.links}>
-          <a href={props.projectData?.repo} target='_blank'>
-            <img src={github} alt='github' />
-          </a>
-        </div>
-        <div className={classes['project-image-window']}>
-          <a
-            className={classes['project-link']}
-            href={props.projectData?.link}
-            target='_blank'
-          >
-            <img
-              src={props.projectData?.image}
-              className={classes['project-image']}
-            />
-          </a>
-        </div>
-        <div
-          onClick={cardClickHandler}
-          className={classes['project-description']}
-        >
-          <h3 className={classes['project-title']}>
-            {props.projectData?.title ?? 'Title'}
-          </h3>
-          <div className={classes['project-overview']}>
-            <p>{props.projectData?.overview}</p>
-          </div>
-          <h3 className={classes['used-skills-title']}>Skills Used:</h3>
-          <ul className={classes['used-skills']}>{skills}</ul>
-        </div>
-      </CardGlass>
-    </animated.div>
-  );
-};
-interface ProjectsProps {
-  data?: any;
-}
+//   const skillsArr = props.projectData?.skills;
+//   const skills = skillsArr?.map(skill => (
+//     <li key={Math.random()} className={classes['skill']}>
+//       <img src={skill.icon} alt='' />
+//       <p className={classes['skill-title']}>{skill.name}</p>
+//     </li>
+//   ));
 
-const ProjectsList: FC<ProjectsProps> = props => {
-  const [whichSelected, setWhichSelected] = useState(null);
-  const myProjects = document.getElementById('my-projects');
+//   return (
+//     <animated.div
+//       className={`${classes['project-wrapper']} ${
+//         props.projectData.id === props.selectedState.whichSelected
+//           ? classes['selected-project']
+//           : ''
+//       } `}
+//       style={{ ...props.style }}
+//     >
+//       <CardGlass className={`${classes.project}`}>
+//         <div className={classes.links}>
+//           <a href={props.projectData?.repo} target='_blank'>
+//             <img src={github} alt='github' />
+//           </a>
+//         </div>
+//         <div className={classes['project-image-window']}>
+//           <a
+//             className={classes['project-link']}
+//             href={props.projectData?.link}
+//             target='_blank'
+//           >
+//             <img
+//               src={props.projectData?.image}
+//               className={classes['project-image']}
+//             />
+//           </a>
+//         </div>
+//         <div
+//           onClick={cardClickHandler}
+//           className={classes['project-description']}
+//         >
+//           <h3 className={classes['project-title']}>
+//             {props.projectData?.title ?? 'Title'}
+//           </h3>
+//           <div className={classes['project-overview']}>
+//             <p>{props.projectData?.overview}</p>
+//           </div>
+//           <h3 className={classes['used-skills-title']}>Skills Used:</h3>
+//           <ul className={classes['used-skills']}>{skills}</ul>
+//         </div>
+//       </CardGlass>
+//     </animated.div>
+//   );
+// };
+// interface ProjectsProps {
+//   data?: any;
+// }
 
-  useEffect(() => {
-    myProjects?.addEventListener('click', () => {
-      setWhichSelected(null);
-    });
-    myProjects?.addEventListener('touch', () => {
-      setWhichSelected(null);
-    });
+// const ProjectsList: FC<ProjectsProps> = props => {
+//   const [whichSelected, setWhichSelected] = useState(null);
+//   const myProjects = document.getElementById('my-projects');
 
-    return () => {
-      myProjects?.removeEventListener('click', () => {
-        setWhichSelected(null);
-      });
-      myProjects?.removeEventListener('touch', () => {
-        setWhichSelected(null);
-      });
-    };
-  }, [whichSelected]);
-  // const selectedCardHandler = () => {
+//   useEffect(() => {
+//     myProjects?.addEventListener('click', () => {
+//       setWhichSelected(null);
+//     });
+//     myProjects?.addEventListener('touch', () => {
+//       setWhichSelected(null);
+//     });
 
-  // };
-  // const [isSelected, setIsSelected] = useState(false);
-  // const cardClickHandler = (e: any) => {
-  //   console.log(e);
-  //   setIsSelected(!isSelected);
-  // };
+//     return () => {
+//       myProjects?.removeEventListener('click', () => {
+//         setWhichSelected(null);
+//       });
+//       myProjects?.removeEventListener('touch', () => {
+//         setWhichSelected(null);
+//       });
+//     };
+//   }, [whichSelected]);
 
-  // const calcPos = (id: number) => {
-  //   const result = 100 / id;
-  // };
-  // calcPos(2);
-  return props.data.array.reverse().map((project: any) => (
-    // <animated.div
-    //   className={`${classes['project-wrapper']} ${
-    //     isSelected ? classes['selected-project'] : ''
-    //   } `}
-    //   key={project.id}
-    // >
-    <CardProject
-      style={props.data.style}
-      selectedState={{
-        whichSelected,
-        setWhichSelected,
-      }}
-      // selectedCard={selectedCardHandler}
-      // onClick={(e: any) => {
-      //   cardClickHandler(e);
-      //   console.log('test', e);
-      // }}
-      key={project.id}
-      projectData={project}
-    />
-    // </animated.div>
-  ));
-};
+//   return props.data.array.reverse().map((project: any) => (
+//     <CardProject
+//       style={props.data.style}
+//       selectedState={{
+//         whichSelected,
+//         setWhichSelected,
+//       }}
+//       key={project.id}
+//       projectData={project}
+//     />
+//   ));
+// };
 
 export default Projects;

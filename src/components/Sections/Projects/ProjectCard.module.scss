@@ -1,0 +1,206 @@
+@import '../../../scss/mixins.scss';
+@import '../../../scss/variables.scss';
+@import '../../../scss/animations.scss';
+
+.project-wrapper {
+  height: auto;
+  width: fit-content;
+  position: relative;
+  transition: all var(--transition-short-medium);
+  transition-property: transform;
+  backdrop-filter: blur(20px);
+
+  @include corner-cut(52px, rgba(255, 255, 255, 0.18), 10px, 48px);
+
+  &:hover {
+    transform: perspective(500px) scale(1) translateX(36%) rotateY(-15deg) !important;
+    .project-title {
+      @include textglowsmall;
+    }
+  }
+  &:hover:first-child {
+    transform: perspective(500px) scale(0.9) translateX(0) rotateY(0deg) !important;
+  }
+  &:nth-child(1) {
+    z-index: 10;
+  }
+  &:nth-child(2) {
+    z-index: 9;
+  }
+  &:nth-child(3) {
+    z-index: 8;
+  }
+  &:nth-child(4) {
+    z-index: 7;
+  }
+  &:nth-child(5) {
+    z-index: 6;
+  }
+  &.selected-project:hover {
+    transform: perspective(1000px) scale(1) translateX(30%) rotateY(0deg) !important;
+  }
+
+  &.selected-project {
+    transform: perspective(1000px) scale(1) translateX(30%) !important;
+    animation: zindex 100s forwards;
+  }
+}
+
+.project {
+  user-select: none;
+  height: 75vh;
+  aspect-ratio: 1/1.7;
+  font-family: 'Orbitron', sans-serif;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  transition: all var(--transition-short-medium);
+  transition-property: transform;
+
+  .project-image-window {
+    @include corner-cut(30px);
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    a {
+      height: 100%;
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+  .project-link {
+    display: block;
+  }
+
+  &-image {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    filter: brightness(0.9);
+    transition: var(--transition-short);
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
+
+  &-description {
+    padding: 6px 6px;
+    height: 100%;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 1fr;
+  }
+  .project-title {
+    font-weight: 700;
+    justify-self: end;
+    align-self: center;
+    text-transform: uppercase;
+    font-size: 36px;
+    padding: 6px 24px;
+    margin-right: -1rem;
+    transition: all var(--transition-short);
+    transition-property: text-shadow, color;
+  }
+  .project-overview {
+    text-align: left;
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 0 6px;
+    @include flexbox;
+    p {
+      display: inline-block;
+      height: auto;
+      color: var(--color-dark);
+    }
+  }
+
+  .used-skills {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    @include flexbox(center, flex-end);
+    @include corner-cut3(100px);
+
+    flex-wrap: wrap;
+
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+  }
+}
+.used-skills-title {
+  align-self: center;
+  padding-left: 1rem;
+  font-size: 24px;
+}
+.links {
+  @include flexbox(flex-start, flex-start);
+  gap: 1rem;
+  z-index: 10;
+  top: 0;
+  left: 0rem;
+  width: 130px;
+  height: 130px;
+
+  background-color: rgba(0, 0, 0, 0.788);
+  @include corner-cut(140px);
+  position: absolute;
+  a {
+    padding: 6px;
+    width: 70px;
+    height: 70px;
+
+    filter: invert(1);
+    img {
+      transition: all var(--transition-short);
+      transition-property: transform;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.skill {
+  @include flexbox(flex-end);
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 0 1 20%;
+  width: 0;
+  min-height: 50%;
+
+  padding: 6px;
+
+  transition: all var(--transition-short);
+
+  transition-property: transform, background-color, color;
+  @include corner-cut(0.625rem);
+  color: var(--color-primary);
+  &:hover {
+    background-color: var(--color-gray);
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    transform: scale(1.1);
+    z-index: 999;
+  }
+  &:hover &-title {
+    word-break: keep-all;
+    color: black;
+  }
+  &-title {
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    width: 115%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
