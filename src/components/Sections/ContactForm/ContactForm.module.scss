@@ -53,9 +53,9 @@
     transition-property: perspective;
     width: 100%;
 
-    &:hover {
-      // perspective: 1000px;
-    }
+    // &:hover {
+    //   // perspective: 1000px;
+    // }
     form {
       @include flexbox;
       flex-direction: column;
@@ -195,11 +195,13 @@
     background-color: rgba(255, 0, 0, 0.168);
     &:hover,
     &:active {
-      border: 3px solid red;
-      box-shadow: 0 0 4px red, 0 0 11px red, 0 0 19px red !important;
+      // outline: 3px solid red;
+      // box-shadow: 0 0 4px red, 0 0 11px red, 0 0 19px red !important;
+      box-shadow: 0 0 1px 3px red !important;
     }
     &:focus {
-      border: 3px solid red;
+      // outline: 3px solid red;
+      box-shadow: 0 0 1px 3px red;
     }
   }
 

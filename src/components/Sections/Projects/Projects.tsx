@@ -234,7 +234,6 @@ const CardProject: FC<CardProjectProps> = props => {
   // const [isSelected, setIsSelected] = useState(false);
   // const ProjCardRef = useRef(null);
   const cardClickHandler = (e: any) => {
-    console.log(props.projectData.id);
     props.selectedState.setWhichSelected(props.projectData.id);
     // ProjCardRef.current.scrollIntoView({ block: 'center' });
     // console.log(props.selectedState.isAnythingSelected);
