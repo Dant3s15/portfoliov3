@@ -232,7 +232,7 @@ interface CardProjectProps {
 
 const CardProject: FC<CardProjectProps> = props => {
   // const [isSelected, setIsSelected] = useState(false);
-  const ProjCardRef = useRef(null);
+  // const ProjCardRef = useRef(null);
   const cardClickHandler = (e: any) => {
     console.log(props.projectData.id);
     props.selectedState.setWhichSelected(props.projectData.id);
@@ -257,9 +257,10 @@ const CardProject: FC<CardProjectProps> = props => {
       <p className={classes['skill-title']}>{skill.name}</p>
     </li>
   ));
+  // console.log(props.selectedState.whichSelected);
   return (
     <animated.div
-      ref={ProjCardRef}
+      // ref={ProjCardRef}
       className={`${classes['project-wrapper']} ${
         props.projectData.id === props.selectedState.whichSelected
           ? classes['selected-project']
@@ -327,7 +328,7 @@ const ProjectsList: FC<ProjectsProps> = props => {
         setWhichSelected(null);
       });
     };
-  }, []);
+  }, [whichSelected]);
   // const selectedCardHandler = () => {
 
   // };

@@ -58,7 +58,8 @@ const Header: FC<Props> = props => {
     return () => {
       window.removeEventListener('resize', closeHamburgerOnBigScreens);
     };
-  });
+  }),
+    [hamburgerState];
 
   const navItemHandler = (event: { currentTarget: Element }, id: string) => {
     setHamburgerState(false);

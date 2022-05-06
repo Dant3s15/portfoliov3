@@ -59,6 +59,34 @@
     background-color: $bg-color;
   }
 }
+@mixin corner-cut3(
+  $pixels: 20px,
+  $bg-color: #00000000,
+  $width: 4px,
+  $translate: 17px,
+  $after: ''
+) {
+  clip-path: polygon(
+    -10% 110%,
+    calc(110% - $pixels) 110%,
+    110% calc(110% - $pixels),
+    110% -10%,
+    -10% -10%
+  );
+  // background-color: red;
+  position: relative;
+  &::after {
+    content: $after;
+    position: absolute;
+    width: $width;
+    height: 200%;
+    transform: rotate(45deg);
+    transform-origin: left bottom;
+    bottom: 0;
+    left: calc(100% - $translate);
+    background-color: $bg-color;
+  }
+}
 
 @mixin flexbox($justify: center, $align: center) {
   display: flex;
