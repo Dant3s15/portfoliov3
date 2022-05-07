@@ -3,7 +3,6 @@ import Character from '../Hero/Characters/Character';
 import CardGlass from '../../UI/CardGlass';
 import ContactForm from '../ContactForm/ContactForm';
 import Projects from '../Projects/Projects';
-import ButtonBig from '../../UI/ButtonBig';
 import Typewriter from 'typewriter-effect';
 import classes from './AboutMe.module.scss';
 const AboutMe = () => {
@@ -28,7 +27,6 @@ const AboutMe = () => {
               <Typewriter
                 options={{
                   delay: 200,
-                  // deleteSpeed: 200,
                   cursor: '_',
                   wrapperClassName: classes.title,
                   cursorClassName: classes['title__cursor'],
@@ -45,14 +43,11 @@ const AboutMe = () => {
                     .start();
                 }}
               />
-              {/* <span className={classes.title}>Me</span> */}
-              {/* <h2 className={classes.title}>About Me</h2> */}
               <div className={classes.text}>
                 <Typewriter
                   options={{
                     delay: 60,
                     cursor: '',
-                    // cursorClassName: classes['text__cursor'],
                   }}
                   onInit={typewriter => {
                     typewriter
@@ -74,12 +69,6 @@ const AboutMe = () => {
                 />
               </div>
               <ContactForm />
-              {/* <ButtonBig
-                  isAbsolute={true}
-                  style={{ top: '80%' }}
-                  text='Contact Me'
-                  moveTo='contact-me'
-                ></ButtonBig> */}
             </div>
           </CardGlass>
         </div>

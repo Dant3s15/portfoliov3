@@ -27,17 +27,6 @@
     transition: all var(--transition-medium);
     transition-property: filter;
     transition-delay: var(--transition-short);
-
-    // @media (max-width: 1900px) {
-    //   background-position: 0 -250px;
-    // }
-    // @media (max-width: 1650px) {
-    //   // background-position: 0 -150px;
-    //   transform: scale(0.8);
-    // }
-    // @media (max-width: $laptop) {
-    //   background-position: 0 -100px;
-    // }
   }
 }
 
@@ -51,7 +40,6 @@
   padding: 0 4rem;
 
   @media (max-width: $desktop) {
-    // padding: 0;
     margin: 0 5%;
   }
   @media (max-width: $laptop) {
@@ -61,9 +49,6 @@
   @media (max-width: $big-tablet) {
     padding: 2rem 4rem;
     flex-direction: column;
-    // display: grid;
-    // grid-template-columns: 100%;
-    // grid-template-rows: 3fr 2fr;
     justify-content: center;
   }
 

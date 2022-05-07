@@ -8,7 +8,6 @@ import { useRef } from 'react';
 const Hero: FC = props => {
   const ctx = useContext(SelectedContext);
   const heroRef = useRef(null);
-  // const [selected, setSelected] = useState(false);
 
   const [charState, setCharState] = useState({
     leftChar: 0,
@@ -28,31 +27,19 @@ const Hero: FC = props => {
     frontChar: number;
     rightChar: number;
   }) => {
-    // console.log(data);
     setCharState(data);
   };
-
-  // const ctaDataButtonHandler = (data: { clicked: boolean }) => {
-  //   setCtaButtonClicked(data);
-  //   // console.log(data);
-  // };
 
   const heroOnClickHandler = (e: {
     stopPropagation: () => void;
     target: any;
   }) => {
     e.stopPropagation();
-    // console.log(e.target.classList.contains(classes['section-hero']));
     if (e.target.classList.contains(classes['section-hero'])) {
-      // console.log(ctx);
       ctx.setSelected(false);
       ctx.setRenderSection(false);
     }
   };
-  // const selectedStateHandler = (selec: any) => {
-  //   setSelected(selec);
-  //   console.log(selec);
-  // };
 
   return (
     <section
@@ -66,17 +53,12 @@ const Hero: FC = props => {
       <div className={classes['character-selection']}>
         <Characters
           heroRef={heroRef}
-          // onCtaButtonChange={ctaDataButtonHandler}
-          // onSelectedChange={selectedStateHandler}
           selectedState={ctx}
           charState={charStateDataHandler}
         ></Characters>
         <SkillsList
-          // heroRef={heroRef}
           className={classes['character-skills']}
-          // onCtaButtonChange={ctaButtonClicked}
           charStateData={charState}
-          // onReceivedSelectState={selected}
         ></SkillsList>
       </div>
     </section>

@@ -1,7 +1,6 @@
 // import 'animate.css';
 import { CSSProperties, FC, MouseEventHandler } from 'react';
 import classes from './ButtonBig.module.scss';
-//TODO
 
 interface Props {
   style?: CSSProperties | undefined;
@@ -29,7 +28,6 @@ const ButtonBig: FC<Props> = (props: any) => {
         <a
           className={classes['button-text']}
           href={`#${props.moveTo ? props.moveTo : ''}`}
-          // href={props.moveTo ? `#${props.moveTo}` : ''}
         >
           {props.text}
         </a>

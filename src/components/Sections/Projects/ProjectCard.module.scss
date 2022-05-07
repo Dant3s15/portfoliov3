@@ -9,11 +9,11 @@
   transition: all var(--transition-short-medium);
   transition-property: transform;
   backdrop-filter: blur(20px);
-
+  transform: scale(0.9) perspective(500px) rotateY(-15deg);
   @include corner-cut(52px, rgba(255, 255, 255, 0.18), 10px, 48px);
 
   &:hover {
-    transform: perspective(500px) scale(1) translateX(36%) rotateY(-15deg) !important;
+    transform: perspective(500px) scale(1) translateX(30%) rotateY(-15deg) !important;
     .project-title {
       @include textglowsmall;
     }

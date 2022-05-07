@@ -1,8 +1,6 @@
 import { FormikValues, useFormik, FormikErrors } from 'formik';
 import classes from './ContactForm.module.scss';
 import ButtonBig from '../../UI/ButtonBig';
-import { useState } from 'react';
-import CardGlass from '../../UI/CardGlass';
 
 const validate = (values: FormikValues) => {
   const errors: FormikErrors<any> = {};
@@ -24,7 +22,6 @@ const validate = (values: FormikValues) => {
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid email';
   }
-  // console.log(errors.name);
   return errors;
 };
 
@@ -42,8 +39,6 @@ const validate = (values: FormikValues) => {
 // };
 
 const ContactForm = () => {
-  // const [nameHasError, setNameHasError] = useState(false);
-
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -67,13 +62,6 @@ const ContactForm = () => {
     },
   });
 
-  // const [nameHasError, setNameHasError] = useState(false);
-  // const [nameIsTouched, setNameIsTouched] = useState(false);
-  interface FormValues {
-    // [key: string]: any;
-    [key: string]: string | number;
-  }
-
   const checkErrors = (
     inptName: 'name' | 'email' | 'text'
   ): JSX.Element | string | null => {
@@ -92,13 +80,6 @@ const ContactForm = () => {
       return classes['input-error'];
     } else return undefined;
   }
-
-  // const checkErrorState = (inptName: string) => {
-  //   console.log(formik.errors);
-  //   if (formik.errors[inptName] !== '' && formik.touched[inptName]) {
-  //     return classes['input-error'];
-  //   } else return undefined;
-  // };
 
   const checkCorner = (inptName: 'name' | 'email' | 'text') => {
     if (formik.errors[inptName] && formik.touched[inptName])
@@ -126,9 +107,6 @@ const ContactForm = () => {
                   Your Name
                 </label>
                 {checkErrors('name')}
-                {/* <div className={classes['form-error']}>
-                  {formik.errors['name']}
-                </div> */}
               </div>
               <input
                 className={`${classes.input} ${checkErrorState('name')}`}
@@ -150,9 +128,6 @@ const ContactForm = () => {
                   Your Email
                 </label>
                 {checkErrors('email')}
-                {/* <div className={classes['form-error']}>
-                  {formik.errors['email']}
-                </div> */}
               </div>
               <input
                 className={`${classes.input} ${checkErrorState('email')}`}
@@ -175,14 +150,10 @@ const ContactForm = () => {
                 Your Message
               </label>
               {checkErrors('text')}
-              {/* <div className={classes['form-error']}>
-                {formik.errors['text']}
-              </div> */}
             </div>
             <textarea
               className={checkErrorState('text')}
               id='text'
-              // type='text'
               name='text'
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}

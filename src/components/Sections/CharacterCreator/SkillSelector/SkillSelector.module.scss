@@ -4,14 +4,9 @@
 .skill-selector {
   width: 90%;
   height: 90%;
-  // background-color: cadetblue;
-  // border: 1px solid red;
-  // color: red;
-  // margin: 36px;
   position: relative;
   @include flexbox(space-between);
   flex-direction: column;
-  // gap: 2rem;
   .skills-selector__grid {
     display: grid;
     grid-template-rows: 1fr 6fr;
@@ -28,12 +23,8 @@
 
     .skills-menu {
       border: 1px solid red;
-      // @include flexbox;
       flex-direction: column;
-      // gap: 24px;
-
       overflow-y: scroll;
-      // box-sizing: border-box;
     }
   }
 }

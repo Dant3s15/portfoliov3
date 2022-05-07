@@ -15,7 +15,6 @@ const Skill2: FC<Props> = (props: Props) => {
       <button className={`${classes['skill-tile']}`}>
         <div className={classes['skill-tile-level']}>
           <p>{props.skill.lvl}</p>
-          {/* <p>LVL</p> */}
         </div>
         <div className={classes['skill-tile-icon']}>
           <img src={props.skill.icon}></img>

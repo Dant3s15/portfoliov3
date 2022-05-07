@@ -32,7 +32,6 @@ const Footer = () => {
             <a href='mailto:damiansobierajdev@gmail.com'>
               damiansobierajdev@gmail.com
             </a>
-            {/* <p>phone</p> */}
           </div>
         </div>
       </div>

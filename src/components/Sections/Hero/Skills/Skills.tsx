@@ -1,14 +1,12 @@
-import { useEffect, useRef, useContext, FC, LegacyRef } from 'react';
+import { useEffect, useRef, useContext, FC } from 'react';
 
 import Skill2 from './Skill2';
 import AllSkills from '../../../Utils/AllSkills';
 import SelectedContext from '../../../../context/selected-context';
 import classes from './Skills.module.scss';
-import Typewriter from 'typewriter-effect';
 
 interface Props {
   className: string;
-  // onCtaButtonChange: { clicked: boolean };
   charStateData: {
     leftChar: number;
     frontChar: number;
@@ -63,11 +61,7 @@ const SkillsList: FC<Props> = props => {
     }
   }, [ctx]);
 
-  const leftChar: { lvl: number; id: number; name: string }[] = [
-    // { ...AllSkills[3], lvl: 2 },
-    // { ...AllSkills[4], lvl: 1 },
-    // { ...AllSkills[5], lvl: 1 },
-  ];
+  const leftChar: { lvl: number; id: number; name: string }[] = [];
 
   const frontChar = [
     { ...AllSkills[1], lvl: 8 },
@@ -207,20 +201,6 @@ const SkillsList: FC<Props> = props => {
             ctx.ctaButtonClicked.clicked ? classes['abs-up'] : ''
           }`}
         >
-          {/* <Typewriter
-            options={{
-              // wrapperClassName: 'skills-text',
-              cursor: '_',
-            }}
-            onInit={typewriter => {
-              typewriter
-                .typeString('Choose')
-                .typeString('   and')
-                .pasteString('<strong class="shine">level up</strong>', null)
-                .typeString('your developer')
-                .start();
-            }}
-          /> */}
           <p>Choose</p>
           <p>and</p>
           <p>

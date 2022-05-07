@@ -8,9 +8,6 @@ interface Props {
 }
 
 const Skill: FC<Props> = props => {
-  // const manageSkillHandler = () => {
-  //   console.log('click', props.data.id);
-  // };
   const levelHandler = (
     <div className={classes.level}>
       <p className={classes['level-title']}>LVL</p>

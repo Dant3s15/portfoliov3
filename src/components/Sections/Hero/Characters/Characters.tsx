@@ -6,19 +6,15 @@ import Typewriter from 'typewriter-effect';
 import classes from './Characters.module.scss';
 
 interface Props {
-  // onCtaButtonChange: any;
-  // onSelectedChange?: (selec: any) => void;
   selectedState: any;
   charState: (data: any) => void;
   heroRef: React.MutableRefObject<null>;
 }
 
 const Characters: FC<Props> = props => {
-  // console.log(props);
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
-  // const [ctaButtonClicked, setCtaButton] = useState({ clicked: false });
   const ctx = useContext(SelectedContext);
 
   const charactersRef = useRef<HTMLDivElement>(null);
@@ -29,9 +25,6 @@ const Characters: FC<Props> = props => {
       ctx.setCtaButtonClicked({ clicked: true });
     } else ctx.setCtaButtonClicked({ clicked: false });
     calcCharWidth();
-    // props.onCtaButtonChange({ clicked: true });
-    // console.log(ctaButtonClicked);
-
     //disabling blue outline on drag
 
     if (charactersColRef?.current) {
@@ -44,17 +37,6 @@ const Characters: FC<Props> = props => {
     ctx.ctaButtonHandler = ctaButtonHandler;
   };
   init();
-  // useEffect(() => {
-  //   if (ctx.event) {
-  //     console.log(ctx.event);
-  //     rotateCharactersHandler(ctx.event);
-  //   }
-  //   // return () => {
-  //   //   // let char1 = document
-  //   //   //   .querySelector('[data-const-pos="1"]')
-  //   //   //   ?.getAttribute('data-character');
-  //   // };
-  // }, [ctx.event]);
 
   useEffect(() => {
     const charStateData = {
@@ -130,9 +112,7 @@ const Characters: FC<Props> = props => {
       charData = e;
     } else charData = +e.target?.dataset.character;
 
-    // console.log(charData);
     let charConstPos = +e.target?.dataset.constPos;
-    // console.log(charData);
     if (charData === 1) {
       props.selectedState.setSelected(true);
 
@@ -143,7 +123,6 @@ const Characters: FC<Props> = props => {
       direc = 1;
       setChars(direc);
       props.selectedState.setSelected(true);
-      // renderContentHandler(null);
       renderContentHandler(charConstPos);
 
       ctx.setRenderSection(false);
@@ -152,13 +131,11 @@ const Characters: FC<Props> = props => {
       direc = -1;
       setChars(direc);
       props.selectedState.setSelected(true);
-      // renderContentHandler(null);
       renderContentHandler(charConstPos);
       ctx.setRenderSection(false);
     }
     //disable selected if background is clicked
     if (e.target === charactersRef.current) {
-      // console.log(e.target);
       props.selectedState.setSelected(false);
       renderContentHandler(0);
       ctx.setRenderSection(false);
@@ -167,61 +144,12 @@ const Characters: FC<Props> = props => {
 
   // *****************************************************
   //TODO handle swipe gestures
-  // let touchstartX = 0;
-  // let touchendX = 0;
-
-  // function debounce(func, timeout = 3000) {
-  //   let timer;
-  //   return (...args) => {
-  //     clearTimeout(timer);
-  //     timer = setTimeout(() => {
-  //       func.apply(this, args);
-  //     }, timeout);
-  //   };
-  // }
-
-  // function checkSwipeDirection() {
-  //   if (Math.abs(touchendX - touchstartX) > 50) {
-  //     if (touchendX < touchstartX) {
-  //       // rotateCharactersHandler();
-  //       rotateCharactersHandler(null, 2);
-  //       // console.log('rotate right');
-  //     }
-  //     if (touchendX > touchstartX) {
-  //       // rotateLeft();
-  //       rotateCharactersHandler(null, 0);
-  //       // console.log('rotate left');
-  //     }
-  //   }
-  // }
-
-  // function handleGesture() {
-  //   // console.log('handling');
-  //   if (touchendX < touchstartX) rotateCharactersHandler(null, 0);
-  //   if (touchendX > touchstartX) rotateCharactersHandler(null, 2);
-  // }
-  //TODO fix swipe endless loop
-  // const charactersEl = document.querySelector('.characters');
-  // charactersEl.addEventListener('swiped', function (e) {
-  //   // console.log(e.target);
-  //   rotateCharactersHandler(e);
-  // });
-
-  // charactersEl.addEventListener('touchstart', e => {
-  //   touchstartX = e.changedTouches[0].screenX;
-  // });
-
-  // charactersEl.addEventListener('touchend', e => {
-  //   touchendX = e.changedTouches[0].screenX;
-  //   handleGesture();
-  // });
 
   // *****************************************************
   let leftIsSelected = leftChar === 1 && props.selectedState.isSelected;
   let frontIsSelected = frontChar === 1 && props.selectedState.isSelected;
   let rightIsSelected = rightChar === 1 && props.selectedState.isSelected;
 
-  // console.log(leftIsSelected, frontIsSelected, rightIsSelected);
   const isAnythingSelected = () => {
     if (leftIsSelected) {
       return { isSelected: true, text: 'Create character', moveTo: 'creator' };
@@ -236,9 +164,6 @@ const Characters: FC<Props> = props => {
 
   const frontCharButtonHandler = () => {
     ctx.setRenderSection(true);
-
-    // const hero = document.querySelector(`#about-me`);
-    // hero?.scrollIntoView();
   };
 
   return (
@@ -262,7 +187,6 @@ const Characters: FC<Props> = props => {
                 loop: true,
                 delay: 100,
                 cursor: '',
-                // cursorClassName: classes['cta__text'],
               }}
               onInit={typewriter => {
                 typewriter
@@ -300,7 +224,6 @@ const Characters: FC<Props> = props => {
           ''
         )}
         <Character
-          // ref={leftCharRef}
           dataConstPos={CONST_POS[0]}
           data={leftChar}
           selected={leftIsSelected}
@@ -309,7 +232,6 @@ const Characters: FC<Props> = props => {
         ></Character>
 
         <Character
-          // ref={frontCharRef}
           dataConstPos={CONST_POS[1]}
           data={frontChar}
           selected={frontIsSelected}
@@ -318,7 +240,6 @@ const Characters: FC<Props> = props => {
         ></Character>
 
         <Character
-          // ref={rightCharRef}
           dataConstPos={CONST_POS[2]}
           selected={rightIsSelected}
           data={rightChar}

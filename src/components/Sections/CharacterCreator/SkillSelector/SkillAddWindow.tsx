@@ -24,7 +24,6 @@ const SkillAddWindow: FC<Props> = props => {
     setLevel(lvl);
     props.skillData.level = lvl;
     props.onSetLevel(true);
-    // console.log(level);
     return level;
   };
   const cancelHandler = () => {
@@ -32,22 +31,6 @@ const SkillAddWindow: FC<Props> = props => {
     props.onSetLevel(false);
     props.onCancel();
   };
-
-  // const render10buttons = () => {
-  //   let arr = [];
-  //   for (let i = 1; i <= 10; i++) {
-  //     arr.push(
-  //       <button
-  //         key={i}
-  //         onClick={() => {
-  //           getLevel(i);
-  //         }}
-  //       ></button>
-  //     );
-  //   }
-
-  //   return arr;
-  // };
 
   return (
     <div className={classes.blur} onClick={cancelHandler}>
@@ -64,12 +47,6 @@ const SkillAddWindow: FC<Props> = props => {
           sign={'+'}
         ></Skill>
         <div className={classes.levels}>
-          {/* <button
-            onClick={() => {
-              getLevel(1);
-            }}
-          ></button> */}
-          {/* {render10buttons()} */}
           <input
             onChange={() => {
               getLevel(levelSliderRef.current?.value!);

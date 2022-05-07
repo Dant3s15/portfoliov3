@@ -52,7 +52,6 @@
       &[type='range']::-webkit-slider-thumb {
         -webkit-appearance: none;
         background: var(--color-primary);
-        // @include corner-cut(20px, var(--color-primary), 4px, 17px);
         clip-path: polygon(
           -300px 100%,
           calc(100% - 13px) 100%,

@@ -55,18 +55,15 @@ const SkillSelector = () => {
   };
 
   const skillChangeHandler = (skill: {}) => {
-    // console.log(skill);
     const sortSkills = (arr: any[]) => {
       return arr.sort((a, b) => a.name.localeCompare(b.name));
     };
-    // console.log(isAdding, isAdded);
     //SKILL ADDING
 
     if (allSkillsArr.some(curSkill => curSkill === skill)) {
       setIsAdding(true);
       setSkillAddingData(skill);
       if (isAdding && !isAdded) {
-        // console.log('adding');
         setAllSkillsArr(prevAllSkills => {
           return sortSkills(
             prevAllSkills.filter(curSkill => curSkill !== skill)
@@ -90,7 +87,6 @@ const SkillSelector = () => {
     } else if (allSkillsArr.some(curSkill => curSkill !== skill)) {
       //SKILL REMOVING
       if (!isAdding) {
-        // console.log('removing');
         setAddedSkills(prevAllSkills => {
           return sortSkills(
             prevAllSkills.filter(curSkill => curSkill !== skill)
@@ -103,13 +99,10 @@ const SkillSelector = () => {
         });
 
         setAllSkillsArr(prevAllSkills => {
-          // const noLevel = prevAllSkills.map(skill => (skill.level = undefined));
           return sortSkills([
             ...addedSkills.filter(curSkill => {
               console.log(skill);
               curSkill.level = undefined;
-              // delete skill.level;
-
               return curSkill === skill;
             }),
             ...prevAllSkills,
@@ -119,7 +112,6 @@ const SkillSelector = () => {
     }
     setlevelIsSet(false);
   };
-  // console.log(addedSkills);
   const skillAddHandler = (skill: {}) => {
     if (levelIsSet) {
       setIsAdded(true);
@@ -129,17 +121,8 @@ const SkillSelector = () => {
       //TODO select skill level popup
       console.log('scroll');
     }
-    // setIsAdding(false);
   };
 
-  // const addingSkillWindowHandler = () => {
-  //   return (
-  //     <SkillAddWindow
-  //       onSkillAdd={skillAddHandler}
-  //       skillData={AllSkills[1]}
-  //     ></SkillAddWindow>
-  //   );
-  // };
   const saveCharHandler = async () => {
     if (addedSkills.length === 0) {
       console.log('add Skills');
@@ -157,7 +140,6 @@ const SkillSelector = () => {
       );
       const data = await response.json();
       console.log(data.name);
-      // console.log(JSON.stringify(addedSkills));
     }
   };
 
@@ -212,17 +194,14 @@ const SkillSelector = () => {
               </div>
             </div>
             <div className={classes['skills-menu']}>
-              {/* {renderSkills(allSkillsArr, '+')} */}
               {allSkillsIsFiltered === false
                 ? renderSkills(allSkillsArr, '+')
                 : renderSkills(allSkillsArrFiltered, '+')}
             </div>
             <div className={classes['skills-menu']}>
-              {/* {renderSkills(addedSkills, '-')} */}
               {addedSkillsIsFiltered === false
                 ? renderSkills(addedSkills, '-')
                 : renderSkills(addedSkillsFiltered, '-')}
-              {/* {renderSkills(addedSkills)} */}
             </div>
           </div>
           <ButtonBig

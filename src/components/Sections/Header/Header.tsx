@@ -5,27 +5,7 @@ import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
 import GoogleLogIn from '../../Icons/google/GoogleLogIn';
 import logo from '../../../resources/logo.svg';
-// import googleLogin from '../../../resources/img/google/btn_google_signin_light_normal_web@2x.png';
 import { User } from 'firebase/auth';
-
-// interface InsideGoogle {
-//   user?: USER | null | undefined;
-// }
-
-// interface Google {
-//   google?: InsideGoogle;
-// }
-
-// function debounce(fn: () => {}, ms: number) {
-//   let timer: any;
-//   return () => {
-//     clearTimeout(timer);
-//     timer = setTimeout(() => {
-//       timer = null;
-//       fn.apply(this, arguments);
-//     }, ms);
-//   };
-// }
 
 interface Props {
   data: {
@@ -101,9 +81,6 @@ const Header: FC<Props> = props => {
             </a>
           </div>
           <nav className={classes.nav}>
-            {/* <a href='#' className={classes.nav__item}>
-              About me
-            </a> */}
             <button
               data-character='1'
               onClick={e => navItemHandler(e, 'my-projects')}
@@ -139,15 +116,12 @@ const Header: FC<Props> = props => {
               <button
                 className={`${classes.nav__item} ${classes['google']}`}
                 onClick={() => props.data.google.auth.signOut()}
-                // ref={googleLoginRef}
                 id='login'
               >
                 <GoogleLogIn></GoogleLogIn>
                 <p>Sign Out</p>
               </button>
             )}
-            {/* <GoogleButton googleData={props.googleData}></GoogleButton> */}
-            {/* <SignIn></SignIn> */}
           </nav>
           <button
             className={classes['hamburger-button']}
@@ -168,65 +142,9 @@ const Header: FC<Props> = props => {
             ></CloseIcon>
           </button>
         </div>
-        {/* <nav className={classes['nav-mobile']}>
-          <a href='#' className={classes['nav__item--mobile']}>
-            SECTION1
-          </a>
-          <a href='#' className={classes['nav__item--mobile']}>
-            SECTION2
-          </a>
-          <a href='#' className={classes['nav__item--mobile']}>
-            SECTION3
-          </a>
-          <a href='#' className={classes['nav__item--mobile']}>
-            SECTION4
-          </a>
-        </nav> */}
       </div>
     </header>
   );
 };
-
-// function GoogleButton(props) {
-//   console.log(props.LoggedIn);
-//   if (!props.LoggedIn) {
-//     return (
-//       <button
-//         className={`${classes.nav__item} ${classes.google}`}
-//         onClick={props.googleData.signInWithGoogle}
-//         // ref={googleLoginRef}
-//         id='login'
-//       >
-//         <GoogleLogIn></GoogleLogIn>
-//         <p>Sign in with Google</p>
-//       </button>
-//     );
-//   } else {
-//     return (
-//       <button
-//         className={`${classes.nav__item} ${classes.google}`}
-//         onClick={props.googleData.auth.signOut()}
-//         // ref={googleLoginRef}
-//         id='login'
-//       >
-//         <GoogleLogIn></GoogleLogIn>
-//         <p>Sign Out</p>
-//       </button>
-//     );
-//   }
-// }
-
-// function SignIn() {
-//   const signInWithGoogle = () => {
-//     const provider = new GoogleAuthProvider();
-//     signInWithPopup(auth, provider);
-//   };
-
-//   return (
-//     <button onClick={signInWithGoogle} className={classes.nav__item} id='login'>
-//       <GoogleLogIn></GoogleLogIn> <p>Sign in with Google</p>
-//     </button>
-//   );
-// }
 
 export default Header;

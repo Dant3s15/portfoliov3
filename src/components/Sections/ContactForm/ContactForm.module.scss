@@ -2,67 +2,42 @@
 @import '../../../scss/variables.scss';
 .contact-me {
   width: 100%;
-  // border: 1px solid red;
-
-  // height: 80vh;
-  // background-color: rgb(55, 55, 55);
-  // background: url('../../../resources/img/hero8.webp');
   @include flexbox;
 
   .input {
     transition: all var(--transition-short);
-
     font-size: 1.25rem;
     font-family: inherit;
-    // position: relative;
     background-color: var(--color-gray-tint-dark-transparent-1);
     border: none;
     outline: none;
     max-width: 300px;
     width: 100%;
-    // height: 40px;
-    // border: 3px solid var(--color-primary);
     border-radius: 3px;
     color: var(--color-gray);
     padding: 1rem;
     font-weight: 500;
-    // margin: 3rem;
-    // box-shadow: 0 0 4px #fff, 0 0 11px var(--color-primary),
-    //   0 0 19px var(--color-primary);
     &:hover,
     &:active {
       box-shadow: 0 0 4px var(--color-primary), 0 0 11px var(--color-primary),
         0 0 19px var(--color-primary);
-      // background-color: rgba(255, 255, 255, 0.955);
-      // color: #000;
-      // border: 1px solid #fff;
     }
     &:focus {
       box-shadow: 0 0 1px 3px var(--color-primary);
-      // border: 3px solid var(--color-primary);
     }
     @media (max-width: $mobile) {
-      // gap: 0.75rem;
       height: 40px;
     }
   }
 
   .container {
-    // perspective: 600px;
     transition: all var(--transition-short);
     transition-property: perspective;
     width: 100%;
-
-    // &:hover {
-    //   // perspective: 1000px;
-    // }
     form {
       @include flexbox;
       flex-direction: column;
       gap: 1.5rem;
-
-      // width: 200px;
-      // padding: 4rem;
       @media (max-width: $mobile) {
         gap: 0.75rem;
       }
@@ -84,15 +59,11 @@
 
       .name,
       .email {
-        //TODO corner cut fix shadow
         flex-direction: column;
-        // @include corner-cut(23px, var(--color-primary), 4px, 15px);
         &::after {
           left: calc(100% - 25px);
         }
         &.error-corner {
-          // @include corner-cut(23px, red, 4px, 15px);
-
           &::after {
             left: calc(100% - 25px);
           }
@@ -103,16 +74,6 @@
     .textfield {
       position: relative;
       width: 100%;
-      // height: 150px;
-
-      //TODO
-      // @include corner-cut(20px, var(--color-primary), 3px, 22px);
-      // &.error-corner {
-      //   @include corner-cut(20px, red, 3px, 26px);
-      //   &::after {
-      //     left: calc(100% - 22px);
-      //   }
-      // }
       @media (max-width: $mobile) {
         height: 70px;
       }
@@ -124,13 +85,10 @@
       text-transform: uppercase;
       font-weight: 700;
       padding: 10px;
-      // z-index: 999;
       position: absolute;
       top: -5.5px;
       @include textglowsmaller;
       width: 100%;
-      // color: red;
-      // border: 1px solid red;
       @media (max-width: $big-tablet) {
         font-size: 1rem;
       }
@@ -141,7 +99,6 @@
 
     .label--error {
       @include textglowsmaller(red);
-      // color: red;
     }
 
     textarea {
@@ -153,14 +110,11 @@
       outline: none;
       width: 100%;
       height: 87%;
-      // border: 3px solid var(--color-primary);
       resize: none;
       border-radius: 3px;
-      // background-color: var(--color-gray-tint-dark);
       background-color: var(--color-gray-tint-dark-transparent-1);
       color: var(--color-gray);
       padding: 1rem;
-      // @include corner-cut(20px, var(--color-primary), 4px, 28px);
       &.input-error {
         border: none;
         background-color: rgba(255, 0, 0, 0.168);
@@ -169,13 +123,9 @@
       &:active {
         box-shadow: 0 0 4px var(--color-primary), 0 0 11px var(--color-primary),
           0 0 19px var(--color-primary);
-        // background-color: rgba(255, 255, 255, 0.955);
-
-        // color: #000;
       }
       &:focus {
         box-shadow: 0 0 1px 3px var(--color-primary);
-        // border: 3px solid var(--color-primary);
       }
     }
   }
@@ -190,34 +140,14 @@
     @include textglowsmaller(red);
   }
   .input-error {
-    // border: 3px solid red;
     box-shadow: 0 0 4px red, 0 0 11px red, 0 0 19px red !important;
     background-color: rgba(255, 0, 0, 0.168);
     &:hover,
     &:active {
-      // outline: 3px solid red;
-      // box-shadow: 0 0 4px red, 0 0 11px red, 0 0 19px red !important;
       box-shadow: 0 0 1px 3px red !important;
     }
     &:focus {
-      // outline: 3px solid red;
       box-shadow: 0 0 1px 3px red;
     }
   }
-
-  // input:-webkit-autofill,
-  // input:-webkit-autofill:hover,
-  // input:-webkit-autofill:focus,
-  // textarea:-webkit-autofill,
-  // textarea:-webkit-autofill:hover,
-  // textarea:-webkit-autofill:focus,
-  // select:-webkit-autofill,
-  // select:-webkit-autofill:hover,
-  // select:-webkit-autofill:focus,
-  // input:-webkit-autofill::first-line {
-  //   -webkit-text-fill-color: var(--color-gray);
-  //   -webkit-box-shadow: 0 0 0px 1000px var(--color-gray-tint-dark-transparent-1);
-
-  //   transition: background-color 5000s ease-in-out 0s;
-  // }
 }
