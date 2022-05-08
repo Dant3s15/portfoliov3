@@ -24,8 +24,7 @@
     z-index: -1;
     position: absolute;
   }
-  &:hover,
-  &::selection {
+  &:hover {
     position: relative;
     z-index: 999px;
     transform: scale(1.1);
@@ -36,6 +35,7 @@
 
       text-shadow: 0 0 4px var(--color-primary), 0 0 1px var(--color-primary),
         0 0 150px var(--color-primary);
+      @include textglowsmall;
     }
   }
 

@@ -114,13 +114,27 @@
   text-shadow: 0 0 4px $color, 0 0 11px $color;
 }
 
-// @mixin iconglow {
-//   // color: var(--color-primary);
-//   // color: #fff;
-//   filter: drop-shadow(
-//     0 10px 4px var(--color-primary),
-//     0 10px 11px var(--color-primary),
-//     0 10px 19px var(--color-primary),
-//     0 10px 150px var(--color-primary)
-//   ) !important;
+// @mixin scrollbar {
+//   ::-webkit-scrollbar {
+//     width: 5px;
+//     height: 5px;
+//     background: transparent;
+//   }
+
+//   ::-webkit-scrollbar-thumb {
+//     border-radius: 3px;
+//     background: var(--color-border-transparent);
+//   }
 // }
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--color-border-transparent);
+  }
+}

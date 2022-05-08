@@ -40,3 +40,6 @@ TODO:
 - snap scroll to section
 - fix pixel moving on scale hover
 - fix react spring using api
+- fix project cards cut off on mobile
+- fix skill selector not sorted the first time and levels not removed
+- fix text jumping when transform scale is changed on hover

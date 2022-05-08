@@ -25,17 +25,12 @@ const CardProject: FC<CardProjectProps> = props => {
   const cardClickHandler = (e: any) => {
     e.nativeEvent.stopPropagation();
     props.selectedState.setWhichSelected(props.projectData.id);
-    // console.log(projectCardRef.current?.parentElement?.scrollLeft);
     if (projectCardRef.current)
       projectCardRef.current.scrollIntoView({
         behavior: 'smooth',
         inline: 'center',
         block: 'nearest',
       });
-    // console.log(e.nativeEvent.target);
-    // if (e.target.contains(classes.skill)) {
-    //   console.log('skill');
-    // }
   };
 
   const skillsArr = props.projectData?.skills;

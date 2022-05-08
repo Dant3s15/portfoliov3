@@ -1,50 +1,111 @@
-@import '../../../../../scss/style.scss';
-.skill {
-  @include corner-cut(20px, var(--color-primary), 4px, 17px, none);
-  z-index: 10;
-  background-color: var(--color-gray);
-  @include flexbox(space-evenly);
-  width: 100%;
-  height: 50px;
+@import '../../../../../scss/variables';
+@import '../../../../../scss/mixins';
 
+.skill {
+  @include corner-cut(15px, var(--color-primary), 2px, 14px);
+  z-index: 10;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  transform: translate3d(0, 0, 0);
+  // background-color: var(--color-gray);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-border-transparent);
+  font-weight: 600;
+  @include flexbox(space-between);
+  // display: grid;
+  // grid-template-columns: 1fr 7fr 1fr;
+  // gap: 0.375rem;
+  width: 95%;
+  min-height: 50px;
+
+  border-radius: 3px;
+  transition: all var(--transition-short);
+  transition-property: transform;
+
+  cursor: pointer;
   &:not(:last-child) {
     margin-bottom: 8px;
   }
   .icon {
-    height: 100%;
+    // height: 100%;
+    // border: 1px solid red;
     min-width: 50px;
-    padding: 5px;
+
+    // padding: 5px;
     @include flexbox;
     img {
       height: auto;
-      max-width: 50px;
-      max-height: 50px;
+      max-width: 40px;
+      max-height: 40px;
       width: 100%;
     }
   }
   .name {
-    text-align: center;
-    width: 100%;
+    width: 50%;
+    height: 100%;
+    padding: 0 6px;
+
+    // height: 100%;
     text-align: start;
+    overflow: hidden;
+
+    @include flexbox(flex-start);
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .manage-skill {
     height: 100%;
     color: var(--color-primary);
     min-width: 50px;
     min-height: 50px;
-    font-size: 2.25rem;
+    font-weight: 400;
+    font-size: 40px;
+    @include flexbox;
+    // border: 1px solid red;
+    position: relative;
     background-color: var(--color-dark);
+    transform: scale(1.1);
+    p {
+      position: absolute;
+      display: inline;
+      top: -2px;
+    }
+    &:hover {
+      @include textglowsmall;
+    }
   }
   .level {
-    color: var(--color-primary);
-    width: 50px;
+    color: black;
+    // color: var(--color-primary);
     height: 50px;
+    min-width: 50px;
     text-align: center;
     @include flexbox;
+    position: relative;
+    // align-self: flex-start;
+    // border: 1px solid red;
     gap: 4px;
     padding: 10px;
-    &-title {
-      font-size: 10px;
+    // padding-right: 2rem;
+    background-color: var(--color-primary);
+    clip-path: polygon(0% 0%, 100% 0, 100% 100%);
+    // &-title {
+    //   font-size: 10px;
+    // }
+    &-number {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+
+      font-size: 18px;
+    }
+  }
+  &:hover {
+    @include textglowsmaller;
+    transform: translateZ(0) scale(1.05);
+    .level {
+      color: #fff;
     }
   }
 }

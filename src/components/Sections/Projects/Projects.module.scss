@@ -4,7 +4,6 @@
 
 .projects {
   margin-top: 8rem;
-  // background-color: lightgray;
   background-color: #232323;
   height: 100vh;
   position: relative;
@@ -44,7 +43,6 @@
     background-position-y: 65%;
     width: 100%;
     height: 100%;
-    // transform: scale(1.01);
     filter: blur(2px) saturate(0.7);
   }
   .my-projects {
@@ -52,35 +50,18 @@
     position: relative;
     overflow-x: scroll;
     justify-content: safe flex-start;
-    // align-items: safe flex-start;
     min-width: 100%;
     width: 100%;
-
-    // min-height: 0;
-    // min-width: 0;
-    // width: 2000px;
-    // display: grid;
-    // grid-template-columns: repeat(5, max(240px));
-    // scroll-snap-type: x mandatory;
     flex-flow: row nowrap;
     scroll-behavior: smooth;
+    @include scrollbar;
 
     & > div:last-child {
       margin-right: 12rem;
     }
-    &::-webkit-scrollbar {
-      width: 0;
-      height: 5px;
-      background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 3px;
-      background: var(--color-border-transparent);
-    }
 
     @media (max-width: $small-tablet) {
-      scroll-snap-type: x mandatory;
+      scroll-snap-type: x proximity;
     }
   }
 }

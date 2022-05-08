@@ -2,12 +2,13 @@
 @import '../../../scss/mixins.scss';
 
 .creator {
-  margin: 8rem 0;
+  // margin: 8rem 0;
   height: 100vh;
-  background-color: lightblue;
+  background-color: #232323;
   @include flexbox;
   padding: 0 6rem;
   position: relative;
+  overflow: hidden;
 
   &::before {
     position: absolute;
@@ -16,23 +17,23 @@
     height: 100%;
     background-color: gray;
     background: url('../../../resources/img/hero3.webp');
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
-    transform: scale(1.01);
+    transform: scale(1);
     transition: all 3s 10s;
     filter: saturate(0.5) blur(3px);
   }
   .skill-selector__col {
     width: 60%;
-    height: 100%;
-    background-color: white;
+    height: 70vh;
+    // background-color: white;
     @include flexbox;
   }
   .image-selector__col {
     width: 40%;
     height: 100%;
-    background-color: whitesmoke;
+    // background-color: whitesmoke;
     @include flexbox;
     .image-selector {
       width: 300px;

@@ -10,8 +10,8 @@ interface Props {
 const Skill: FC<Props> = props => {
   const levelHandler = (
     <div className={classes.level}>
-      <p className={classes['level-title']}>LVL</p>
-      <p>{props.data.level}</p>
+      {/* <p className={classes['level-title']}>LVL</p> */}
+      <p className={classes['level-number']}>{props.data.level}</p>
     </div>
   );
 
@@ -30,7 +30,7 @@ const Skill: FC<Props> = props => {
         }}
         className={classes['manage-skill']}
       >
-        {props.sign}
+        <p>{props.sign}</p>
       </button>
     </div>
   );
