@@ -20,9 +20,7 @@ const Skill: FC<Props> = props => {
       <div className={classes.icon}>
         <img src={props.data.icon} alt='skill icon' />
       </div>
-      <div className={classes.name}>
-        {props.data.name} {props.data.id}
-      </div>
+      <div className={classes.name}>{props.data.name}</div>
       {props.data.level ? levelHandler : ''}
       <button
         onClick={() => {

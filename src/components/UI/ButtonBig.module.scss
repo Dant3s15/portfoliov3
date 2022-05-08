@@ -55,8 +55,11 @@
       transform: rotate(45deg);
       transform-origin: left bottom;
       bottom: 0;
-      left: calc(100% - 33px);
       background-color: #fff;
+      left: calc(100% - 33px);
+      @media (max-width: $big-tablet) {
+        left: calc(100% - 24px);
+      }
     }
     &:active {
       transform: scale(0.95);

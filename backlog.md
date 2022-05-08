@@ -43,3 +43,4 @@ TODO:
 - fix project cards cut off on mobile
 - fix skill selector not sorted the first time and levels not removed
 - fix text jumping when transform scale is changed on hover
+  -fix project card selected state on mobile
