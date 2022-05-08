@@ -14,6 +14,17 @@ SPACING SYSTEM (px)
 //#E5E5E5
 //#FFFFFF
 
+//SCSS variables
+//SCREEN SIZES
+$small-mobile: 396px;
+$mobile: 576px;
+$small-tablet: 768px;
+$big-tablet: 992px;
+$laptop: 1200px;
+$big-laptop: 1400px;
+$desktop: 1900px;
+$big-desktop: 2400px;
+
 // CSS variables
 
 :root {
@@ -49,15 +60,10 @@ SPACING SYSTEM (px)
 
   //BORDER RADIUS
   --border-radius: 3px;
-}
 
-//SCSS variables
-//SCREEN SIZES
-$small-mobile: 396px;
-$mobile: 576px;
-$small-tablet: 768px;
-$big-tablet: 992px;
-$laptop: 1200px;
-$big-laptop: 1400px;
-$desktop: 1900px;
-$big-desktop: 2400px;
+  //DYNAMIC VARIABLES
+  --project-card-gap: 130px;
+  @media (max-width: $big-laptop) {
+    --project-card-gap: 150px;
+  }
+}

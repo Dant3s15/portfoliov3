@@ -10,6 +10,7 @@ const Projects = () => {
   //SPRING AND GESTURE
   const [style, set] = useSpring(() => ({
     transformOrigin: 'right center',
+    // transition: 'all 0.3s',
     transform: 'scale(0.9) perspective(500px) rotateY(-15deg) ',
   }));
 
@@ -22,6 +23,7 @@ const Projects = () => {
 
     set({
       transformOrigin: 'right center',
+      // transition: 'all 0.3s',
       transform: `scale(0.9) perspective(500px) rotateY(${scrollVal}deg)`,
     });
   });
@@ -31,7 +33,7 @@ const Projects = () => {
     {
       id: 0,
       image: project1,
-      title: 'portfolio',
+      title: 'portfolio1',
       overview: (
         <Fragment>
           Frontend game-like character <strong>selector</strong> and{' '}
@@ -56,7 +58,7 @@ const Projects = () => {
     {
       id: 1,
       image: project1,
-      title: 'portfolio',
+      title: 'portfolio2',
       overview: (
         <Fragment>
           Frontend game-like character <strong>selector</strong> and{' '}
@@ -81,7 +83,7 @@ const Projects = () => {
     {
       id: 2,
       image: project1,
-      title: 'portfolio',
+      title: 'portfolio3',
       overview: (
         <Fragment>
           Frontend game-like character <strong>selector</strong> and{' '}
@@ -105,7 +107,7 @@ const Projects = () => {
     {
       id: 3,
       image: project1,
-      title: 'portfolio',
+      title: 'portfolio4',
       overview: (
         <Fragment>
           Frontend game-like character <strong>selector</strong> and{' '}
@@ -129,7 +131,7 @@ const Projects = () => {
     {
       id: 4,
       image: project1,
-      title: 'portfolio',
+      title: 'portfolio5',
       overview: (
         <Fragment>
           Frontend game-like character <strong>selector</strong> and{' '}
@@ -155,7 +157,10 @@ const Projects = () => {
   return (
     <div id='my-projects' className={classes.projects}>
       <p className={classes.title}>My Projects</p>
-      <div className={classes['my-projects']} {...bind()}>
+      <div
+        className={classes['my-projects']}
+        // {...bind()}
+      >
         <ProjectsList
           data={{
             array: projectsArr,

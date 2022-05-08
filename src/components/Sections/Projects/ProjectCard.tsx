@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useRef } from 'react';
 import { animated } from 'react-spring';
 import CardGlass from '../../UI/CardGlass';
 import github from '../../../resources/icons/logo-github.svg';
@@ -20,8 +20,22 @@ interface CardProjectProps {
 }
 
 const CardProject: FC<CardProjectProps> = props => {
+  const projectCardRef = useRef<null | HTMLDivElement>(null);
+
   const cardClickHandler = (e: any) => {
+    e.nativeEvent.stopPropagation();
     props.selectedState.setWhichSelected(props.projectData.id);
+    // console.log(projectCardRef.current?.parentElement?.scrollLeft);
+    if (projectCardRef.current)
+      projectCardRef.current.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest',
+      });
+    // console.log(e.nativeEvent.target);
+    // if (e.target.contains(classes.skill)) {
+    //   console.log('skill');
+    // }
   };
 
   const skillsArr = props.projectData?.skills;
@@ -34,6 +48,7 @@ const CardProject: FC<CardProjectProps> = props => {
 
   return (
     <animated.div
+      ref={projectCardRef}
       className={`${classes['project-wrapper']} ${
         props.projectData.id === props.selectedState.whichSelected
           ? classes['selected-project']
