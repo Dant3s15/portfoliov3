@@ -1,5 +1,6 @@
 @import '../../../../scss/variables.scss';
 @import '../../../../scss/mixins.scss';
+@import '../../../../scss/animations';
 
 .skill-selector {
   width: 90%;
@@ -34,4 +35,10 @@
       @include scrollbar;
     }
   }
+}
+.all > div {
+  animation: skillout var(--transition-short-medium);
+}
+.added > div {
+  animation: skillin var(--transition-short-medium);
 }

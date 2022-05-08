@@ -433,3 +433,22 @@
     transform: scale(1.3) translateX(0px) rotateY(0deg);
   }
 }
+
+@keyframes skillin {
+  0% {
+    transform: translateX(-300px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes skillout {
+  0% {
+    transform: translateX(300px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}

@@ -193,12 +193,12 @@ const SkillSelector = () => {
                 />
               </div>
             </div>
-            <div className={classes['skills-menu']}>
+            <div className={`${classes['skills-menu']} ${classes.all}`}>
               {allSkillsIsFiltered === false
                 ? renderSkills(allSkillsArr, '+')
                 : renderSkills(allSkillsArrFiltered, '+')}
             </div>
-            <div className={classes['skills-menu']}>
+            <div className={`${classes['skills-menu']} ${classes.added}`}>
               {addedSkillsIsFiltered === false
                 ? renderSkills(addedSkills, '-')
                 : renderSkills(addedSkillsFiltered, '-')}
