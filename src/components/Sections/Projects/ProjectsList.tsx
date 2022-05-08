@@ -27,7 +27,7 @@ const ProjectsList: FC<ProjectsProps> = props => {
     };
   }, [whichSelected]);
 
-  return props.data.array.reverse().map((project: any) => (
+  return props.data.array.map((project: any) => (
     <CardProject
       style={props.data.style}
       selectedState={{
