@@ -471,3 +471,19 @@
     opacity: 100;
   }
 }
+
+@keyframes levelblink {
+  0% {
+    color: #fff;
+    text-shadow: none;
+    transform: scale(1.2);
+  }
+  50% {
+    color: #fff;
+    transform: scale(1.1);
+    text-shadow: 0 0 4px #fff, 0 0 11px var(--color-primary);
+  }
+  100% {
+    text-shadow: none;
+  }
+}

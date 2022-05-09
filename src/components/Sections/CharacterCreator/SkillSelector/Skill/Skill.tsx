@@ -11,7 +11,9 @@ const Skill: FC<Props> = props => {
   const levelHandler = (
     <div className={classes.level}>
       {/* <p className={classes['level-title']}>LVL</p> */}
-      <p className={classes['level-number']}>{props.data.level}</p>
+      <p key={Math.random()} className={classes['level-number']}>
+        {props.data.level}
+      </p>
     </div>
   );
 
