@@ -52,7 +52,7 @@
     // height: 100%;
     text-align: start;
     overflow: hidden;
-    // margin-left: -45px;
+    text-align: center; // margin-left: -45px;
     // border: 1px solid red;
     @include flexbox(flex-start);
 
@@ -99,6 +99,7 @@
     // &-title {
     //   font-size: 10px;
     // }
+    animation: slideinfromtop 0.3s;
     &-number {
       position: absolute;
       top: 7px;
@@ -109,7 +110,7 @@
   }
   &:hover {
     @include textglowsmaller;
-    transform: translateZ(0) scale(1.05);
+    transform: translateZ(0) scale(1);
     .level {
       color: #fff;
     }

@@ -360,6 +360,15 @@
   }
 }
 
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
 @keyframes cursor {
   from {
     opacity: 0;
@@ -450,5 +459,15 @@
 
   100% {
     transform: translateX(0px);
+  }
+}
+
+@keyframes slideinfromtop {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 100;
   }
 }

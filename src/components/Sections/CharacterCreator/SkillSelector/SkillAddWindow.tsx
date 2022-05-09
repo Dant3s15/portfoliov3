@@ -40,7 +40,7 @@ const SkillAddWindow: FC<Props> = props => {
           e.stopPropagation();
         }}
       >
-        <div className={classes.title}>Adding Skill</div>
+        <p className={classes.title}>Adding Skill</p>
         <Skill
           onSkillChange={props.onSkillAdd}
           data={props.skillData}

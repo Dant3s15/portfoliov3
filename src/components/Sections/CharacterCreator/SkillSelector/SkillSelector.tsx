@@ -158,7 +158,7 @@ const SkillSelector = () => {
 
   return (
     <Fragment>
-      <CardGlass>
+      <CardGlass className={classes['skill-selector--card']}>
         <div className={classes['skill-selector']}>
           {isAdding && (
             <SkillAddWindow
@@ -170,9 +170,11 @@ const SkillSelector = () => {
           )}
           <div className={classes['skills-selector__grid']}>
             <div className={classes['title-row']}>
-              All Skills
+              <p className={classes['title']}>All Skills</p>
               <div className={classes['search-field']}>
-                <label htmlFor='search-all'>Search</label>
+                <label className={classes['search-label']} htmlFor='search-all'>
+                  Search
+                </label>
                 <input
                   onChange={filterSkills}
                   ref={searchAllRef}
@@ -182,9 +184,14 @@ const SkillSelector = () => {
               </div>
             </div>
             <div className={classes['title-row']}>
-              Added Skills
+              <p className={classes['title']}>Added Skills</p>
               <div className={classes['search-field']}>
-                <label htmlFor='search-added'>Search</label>
+                <label
+                  className={classes['search-label']}
+                  htmlFor='search-added'
+                >
+                  Search
+                </label>
                 <input
                   onChange={filterSkills}
                   ref={searchAddedRef}
