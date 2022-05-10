@@ -21,10 +21,11 @@ const SkillAddWindow: FC<Props> = props => {
 
   const getLevel = (level: number | string) => {
     let lvl = +level;
-    setLevel(lvl);
+    setLevel(+level);
     props.skillData.level = lvl;
+    // console.log(props.skillData);
     props.onSetLevel(true);
-    return level;
+    // return level;
   };
   const cancelHandler = () => {
     props.skillData.level = undefined;
