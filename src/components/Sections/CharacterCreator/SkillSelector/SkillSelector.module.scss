@@ -6,16 +6,26 @@
   width: 700px;
   height: 80vh;
   // margin-bottom: 3rem;
+  @media (max-width: $big-tablet) {
+    height: 60vh;
+    width: 100%;
+  }
 }
 
 .skill-selector {
   width: 100%;
-  padding: 1.5rem;
-  height: 100%;
+  padding: 1rem;
+  max-height: 100%;
   position: relative;
   @include flexbox(space-between);
   flex-direction: column;
-
+  // border: 1px solid red;
+  // & > button {
+  //   width: 200px;
+  //   p {
+  //     font-size: 12px;
+  //   }
+  // }
   .skills-selector__grid {
     display: grid;
     grid-template-rows: 1fr 6fr;
@@ -60,6 +70,7 @@
   }
   .search-field {
     position: relative;
+    @include flexbox;
   }
   .search-field input {
     transition: all var(--transition-short);
@@ -68,8 +79,8 @@
     background-color: var(--color-gray-tint-dark-transparent-1);
     border: none;
     outline: none;
-    max-width: 300px;
-    width: 100%;
+    // max-width: 300px;
+    width: 95%;
     height: 40px;
     border-radius: 3px;
     color: var(--color-gray);
@@ -102,7 +113,8 @@
       font-size: 1rem;
     }
     @media (max-width: $mobile) {
-      font-size: 14px;
+      font-size: 0.875rem;
+      top: -1.25rem;
     }
   }
 }

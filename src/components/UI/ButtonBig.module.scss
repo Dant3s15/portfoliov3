@@ -9,7 +9,7 @@
   position: relative;
   background-color: var(--color-primary);
   color: var(--color-dark);
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   border: none;
   z-index: 999;
@@ -28,7 +28,7 @@
     animation: flicker2 5s infinite alternate;
     font-weight: 700;
     padding: 20px 30px;
-
+    white-space: nowrap;
     display: block;
     width: 100%;
     height: 100%;
@@ -78,7 +78,7 @@
     @include corner-cut2(20px, var(--color-primary), 4px, 17px);
   }
 
-  @media (max-width: $small-tablet) {
+  @media (max-width: $big-tablet) {
     .button-text {
       font-size: 1rem;
     }

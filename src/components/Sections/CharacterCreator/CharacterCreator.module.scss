@@ -2,10 +2,13 @@
 @import '../../../scss/mixins.scss';
 
 .creator {
+  * {
+    // border: 1px solid red;
+  }
   // margin: 8rem 0;
   height: 100vh;
   background-color: #232323;
-  @include flexbox(null, center);
+  @include flexbox(center, center);
   // padding: 0 6rem;
   position: relative;
   overflow: hidden;
@@ -20,26 +23,44 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
-    transform: scale(1);
     transition: all 3s 10s;
     filter: saturate(0.5) blur(3px);
   }
   .skill-selector__col {
-    width: 60%;
-    height: 70vh;
+    position: relative;
+    width: 50%;
+    height: fit-content;
     // background-color: white;
     @include flexbox;
+    @media (max-width: $big-tablet) {
+      width: 80vh;
+      height: 60vh;
+      z-index: 10;
+      align-self: flex-end;
+      padding-bottom: 3rem;
+    }
   }
   .image-selector__col {
+    // border: 1px solid red;
     width: 40%;
     height: 100%;
     // background-color: whitesmoke;
     @include flexbox;
     .image-selector {
-      width: 300px;
+      width: 280px;
       height: 100%;
+      padding-top: 7rem;
       overflow: hidden;
-      @include flexbox;
+      @include flexbox(null, flex-start);
+    }
+    @media (max-width: $big-tablet) {
+      position: absolute;
+      top: 0;
+      z-index: 9;
+      width: 100%;
+      .image-selector {
+        width: 340px;
+      }
     }
   }
 }

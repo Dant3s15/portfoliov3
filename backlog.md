@@ -48,3 +48,5 @@ TODO:
   -add scrolling to added skill
 
 - add temporarty state when adding skill
+- todo standardized skill object
+- add my projects button in about me section
