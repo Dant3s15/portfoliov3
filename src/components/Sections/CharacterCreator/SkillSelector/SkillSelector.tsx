@@ -1,4 +1,4 @@
-import { FC, Fragment, useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import CardGlass from '../../../UI/CardGlass';
 import AllSkills from '../../../Utils/AllSkills';
 import Skill from './Skill/Skill';
@@ -11,6 +11,7 @@ const SkillSelector = () => {
   const [allSkillsArrFiltered, setAllSkillsArrFiltered] =
     useState(allSkillsArr);
   const [allSkillsIsFiltered, setAllSkillsIsFiltered] = useState(false);
+
   const [addedSkills, setAddedSkills] = useState<any[]>([]);
   const [addedSkillsFiltered, setAddedSkillsFiltered] =
     useState<any[]>(addedSkills);
@@ -53,11 +54,14 @@ const SkillSelector = () => {
     setIsAdding(false);
     setIsAdded(false);
   };
+  const sortSkills = (arr: any[]) => {
+    return arr.sort((a, b) => a.name.localeCompare(b.name));
+  };
 
   const skillChangeHandler = (skill: {}) => {
-    const sortSkills = (arr: any[]) => {
-      return arr.sort((a, b) => a.name.localeCompare(b.name));
-    };
+    // const sortSkills = (arr: any[]) => {
+    //   return arr.sort((a, b) => a.name.localeCompare(b.name));
+    // };
     //SKILL ADDING
 
     if (allSkillsArr.some(curSkill => curSkill === skill)) {
@@ -144,7 +148,8 @@ const SkillSelector = () => {
   };
 
   const renderSkills = (skillsArr: {}[], sign: string) => {
-    return skillsArr.map((skill: any) => {
+    const newArr = sortSkills(skillsArr);
+    return newArr.map((skill: any) => {
       return (
         <Skill
           onSkillChange={skillChangeHandler}
