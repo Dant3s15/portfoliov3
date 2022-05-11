@@ -1,17 +1,13 @@
 import Skill from './Skill/Skill';
 import { useState, useRef, FC } from 'react';
 import classes from './SkillAddWindow.module.scss';
+import { skillInterface } from '../../../../Types/types';
 
 interface Props {
   onSetLevel: React.Dispatch<React.SetStateAction<boolean>>;
   onCancel: () => void;
   onSkillAdd: (skill: {}) => void;
-  skillData: {
-    level: number | undefined;
-    icon: string;
-    name: string;
-    id: number;
-  };
+  skillData: skillInterface;
 }
 
 const SkillAddWindow: FC<Props> = props => {
@@ -23,12 +19,10 @@ const SkillAddWindow: FC<Props> = props => {
     let lvl = +level;
     setLevel(+level);
     props.skillData.level = lvl;
-    // console.log(props.skillData);
     props.onSetLevel(true);
-    // return level;
   };
   const cancelHandler = () => {
-    props.skillData.level = undefined;
+    props.skillData.level = 0;
     props.onSetLevel(false);
     props.onCancel();
   };
