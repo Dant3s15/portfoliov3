@@ -58,7 +58,10 @@ const SkillsList: FC<Props> = props => {
 
   // const leftChar: { level: number; id: number; name: string }[] = [];
 
-  const leftChar = JSON.parse(localStorage.getItem('leftChar') || '');
+  let leftChar = [];
+  if (localStorage.getItem('leftChar')) {
+    leftChar = JSON.parse(localStorage.getItem('leftChar') || '');
+  }
 
   // const leftChar = localStorage.getItem('leftChar')
   //   ? JSON.parse(localStorage.getItem('leftChar'))
