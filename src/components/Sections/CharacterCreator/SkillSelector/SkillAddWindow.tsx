@@ -6,7 +6,7 @@ import { skillInterface } from '../../../../Types/types';
 interface Props {
   onSetLevel: React.Dispatch<React.SetStateAction<boolean>>;
   onCancel: () => void;
-  onSkillAdd: (skill: {}) => void;
+  onSkillAdd: (skill: skillInterface) => void;
   skillData: skillInterface;
 }
 

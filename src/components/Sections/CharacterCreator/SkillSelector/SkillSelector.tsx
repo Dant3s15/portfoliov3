@@ -1,10 +1,11 @@
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import CardGlass from '../../../UI/CardGlass';
 import AllSkills from '../../../Utils/AllSkills';
 import Skill from './Skill/Skill';
 import SkillAddWindow from './SkillAddWindow';
 import ButtonBig from '../../../UI/ButtonBig';
 import classes from './SkillSelector.module.scss';
+import { skillInterface } from '../../../../Types/types';
 
 const SkillSelector = () => {
   const [allSkillsArr, setAllSkillsArr] = useState(AllSkills);
@@ -24,6 +25,27 @@ const SkillSelector = () => {
 
   const searchAllRef = useRef<HTMLInputElement>(null);
   const searchAddedRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (localStorage.getItem('leftChar')) {
+      // const localSkills = JSON.parse(localStorage.getItem('leftChar') || '');
+      // setAddedSkills(localSkills);
+      //TODO get added skills from local storage and filter them out from all skills
+      // setAllSkillsArr(curSkills => {
+      //   console.log(curSkills);
+      //   return curSkills.filter(cur => {
+      //     return !JSON.parse(localStorage.getItem('leftChar') || '').includes(
+      //       cur
+      //     );
+      //   });
+      // });
+      // console.log(localSkills);
+      // setAllSkillsArr(cur => {
+      //   return cur.filter(cr => {
+      //     return !localSkills.includes(cr);
+      //   });
+      // });
+    }
+  }, []);
 
   const filterSkills = () => {
     const searchAllVal = searchAllRef.current?.value.toLowerCase();
@@ -58,7 +80,7 @@ const SkillSelector = () => {
     return arr.sort((a, b) => a.name.localeCompare(b.name));
   };
 
-  const skillChangeHandler = (skill: any) => {
+  const skillChangeHandler = (skill: skillInterface) => {
     // const sortSkills = (arr: any[]) => {
     //   return arr.sort((a, b) => a.name.localeCompare(b.name));
     // };
@@ -67,8 +89,8 @@ const SkillSelector = () => {
 
     if (allSkillsArr.some(curSkill => curSkill === skill)) {
       setIsAdding(true);
-      const skillTemp = skill;
-      console.log(skillTemp);
+      // const skillTemp = skill;
+      // console.log(skillTemp);
       setSkillAddingData(skill);
       if (isAdding && !isAdded) {
         setAllSkillsArr(prevAllSkills => {
@@ -108,10 +130,9 @@ const SkillSelector = () => {
         setAllSkillsArr(prevAllSkills => {
           return sortSkills([
             ...addedSkills.filter(curSkill => {
-              // console.log(skill);
               //TODO
               console.log(curSkill);
-              skill.level = undefined;
+              skill.level = 0;
               return curSkill === skill;
             }),
             ...prevAllSkills,
@@ -121,7 +142,7 @@ const SkillSelector = () => {
     }
     setlevelIsSet(false);
   };
-  const skillAddHandler = (skill: {}) => {
+  const skillAddHandler = (skill: skillInterface) => {
     if (levelIsSet) {
       setIsAdded(true);
       skillChangeHandler(skill);
@@ -131,23 +152,24 @@ const SkillSelector = () => {
     }
   };
 
-  const saveCharHandler = async () => {
+  const saveCharHandler = () => {
     if (addedSkills.length === 0) {
       console.log('add Skills');
       return;
     } else {
-      const response = await fetch(
-        'https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app/saved-characters.json',
-        {
-          method: 'POST',
-          body: JSON.stringify(addedSkills),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      const data = await response.json();
-      console.log(data.name);
+      // const response = await fetch(
+      //   'https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app/saved-characters.json',
+      //   {
+      //     method: 'POST',
+      //     body: JSON.stringify(addedSkills),
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //   }
+      // );
+      localStorage.setItem('leftChar', JSON.stringify(addedSkills));
+      // const data = await response.json();
+      // console.log(data.name);
     }
   };
 

@@ -56,7 +56,13 @@ const SkillsList: FC<Props> = props => {
     }
   }, [ctx]);
 
-  const leftChar: { level: number; id: number; name: string }[] = [];
+  // const leftChar: { level: number; id: number; name: string }[] = [];
+
+  const leftChar = JSON.parse(localStorage.getItem('leftChar') || '');
+
+  // const leftChar = localStorage.getItem('leftChar')
+  //   ? JSON.parse(localStorage.getItem('leftChar'))
+  //   : [];
 
   const frontCharArr = [
     [1, 8],
