@@ -3,8 +3,9 @@ import { useSpring } from 'react-spring';
 import { useScroll } from '@use-gesture/react';
 import classes from './Projects.module.scss';
 import ProjectsList from './ProjectsList';
-import AllSkils from '../../../components/Utils/AllSkills';
+import AllSkills from '../../../components/Utils/AllSkills';
 import project1 from '../../../resources/img/projects/project1.png';
+import { skillInterface } from '../../../Types/types';
 
 const Projects = () => {
   //SPRING AND GESTURE
@@ -13,6 +14,22 @@ const Projects = () => {
     // transition: 'all 0.3s',
     transform: 'scale(0.9) perspective(500px) rotateY(-15deg) ',
   }));
+
+  const getSkills = (charArr: any[]) => {
+    const findSkill = (skillNmb: number): skillInterface => {
+      AllSkills.map(skill => {
+        return skill;
+      });
+      const resultSkill = { ...AllSkills.find(skill => skill.id === skillNmb) };
+      return resultSkill;
+    };
+    let resultArr: any[] = [];
+    charArr.forEach(item => {
+      const findResult = findSkill(item);
+      return resultArr.push(findResult);
+    });
+    return resultArr;
+  };
 
   const bind = useScroll(event => {
     let scrollVal = event.scrolling
@@ -41,17 +58,7 @@ const Projects = () => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: [
-        AllSkils[1],
-        AllSkils[2],
-        AllSkils[3],
-        AllSkils[26],
-        AllSkils[49],
-        AllSkils[13],
-        AllSkils[23],
-        AllSkils[5],
-        AllSkils[21],
-      ],
+      skills: getSkills([1, 2, 3, 26, 49, 13, 23, 5, 21]),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
@@ -66,17 +73,7 @@ const Projects = () => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: [
-        AllSkils[1],
-        AllSkils[2],
-        AllSkils[3],
-        AllSkils[26],
-        AllSkils[49],
-        AllSkils[13],
-        AllSkils[23],
-        AllSkils[5],
-        AllSkils[21],
-      ],
+      skills: getSkills([1, 2, 3, 26, 49, 13, 23, 5, 21]),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
@@ -91,16 +88,7 @@ const Projects = () => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: [
-        AllSkils[1],
-        AllSkils[2],
-        AllSkils[3],
-        AllSkils[26],
-        AllSkils[13],
-        AllSkils[23],
-        AllSkils[5],
-        AllSkils[21],
-      ],
+      skills: getSkills([3, 2, 3, 26, 49, 13, 23, 5, 21]),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
@@ -115,16 +103,7 @@ const Projects = () => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: [
-        AllSkils[1],
-        AllSkils[2],
-        AllSkils[3],
-        AllSkils[26],
-        AllSkils[13],
-        AllSkils[23],
-        AllSkils[5],
-        AllSkils[21],
-      ],
+      skills: getSkills([4, 2, 3, 26, 49, 13, 23, 5, 21]),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
@@ -139,16 +118,7 @@ const Projects = () => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: [
-        AllSkils[1],
-        AllSkils[2],
-        AllSkils[3],
-        AllSkils[26],
-        AllSkils[13],
-        AllSkils[23],
-        AllSkils[5],
-        AllSkils[21],
-      ],
+      skills: getSkills([5, 2, 3, 26, 49, 12, 23, 5, 21]),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
