@@ -1,12 +1,9 @@
 import { FC, Fragment } from 'react';
+import { skillInterface } from '../../../../Types/types';
 import classes from './Skill2.module.scss';
 
 interface Props {
-  skill: {
-    name: string;
-    lvl?: number;
-    icon?: string;
-  };
+  skill: skillInterface;
 }
 
 const Skill2: FC<Props> = (props: Props) => {
@@ -14,7 +11,7 @@ const Skill2: FC<Props> = (props: Props) => {
     <Fragment>
       <button className={`${classes['skill-tile']}`}>
         <div className={classes['skill-tile-level']}>
-          <p>{props.skill.lvl}</p>
+          <p>{props.skill.level}</p>
         </div>
         <div className={classes['skill-tile-icon']}>
           <img src={props.skill.icon}></img>

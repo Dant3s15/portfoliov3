@@ -68,8 +68,11 @@ import skill66 from '../../resources/skillIcons/66.svg';
 import skill67 from '../../resources/skillIcons/67.svg';
 import skill68 from '../../resources/skillIcons/68.svg';
 import skill69 from '../../resources/skillIcons/69.svg';
+const sortSkills = (arr: any[]) => {
+  return arr.sort((a, b) => a.name.localeCompare(b.name));
+};
 
-const AllSkills = [
+const AllSkills = sortSkills([
   { id: 0, icon: skill0, name: 'DUMMY' },
   { id: 1, icon: skill1, name: 'HTML' },
   { id: 2, icon: skill2, name: 'CSS' },
@@ -140,6 +143,6 @@ const AllSkills = [
   { id: 67, icon: skill67, name: 'Ionic' },
   { id: 68, icon: skill68, name: 'Electron' },
   { id: 69, icon: skill69, name: 'Proton Native' },
-];
+]);
 
 export default AllSkills;

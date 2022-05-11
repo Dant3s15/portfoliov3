@@ -1,9 +1,10 @@
 import { FC } from 'react';
+import { skillInterface } from '../../../../../Types/types';
 import classes from './Skill.module.scss';
 
 interface Props {
   onSkillChange: Function;
-  data: { level: number | undefined; icon: string; name: string; id: number };
+  data: skillInterface;
   sign?: string;
 }
 

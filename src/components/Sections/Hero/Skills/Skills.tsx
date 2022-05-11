@@ -1,4 +1,5 @@
 import { useEffect, useRef, useContext, FC } from 'react';
+import { skillInterface } from '../../../../Types/types';
 
 import Skill2 from './Skill2';
 import AllSkills from '../../../Utils/AllSkills';
@@ -22,13 +23,7 @@ const SkillsList: FC<Props> = props => {
   const skillCharCol2 = useRef<HTMLDivElement>(null);
 
   const ctx = useContext(SelectedContext);
-  const countLevel = (
-    skill: {
-      lvl: number;
-      id: number;
-      name: string;
-    }[]
-  ) => {
+  const countLevel = (skill: skillInterface[]) => {
     const charExp = skill.reduce((acc = 0, cur) => {
       if (
         cur.name === 'JavaScript' ||
@@ -36,9 +31,9 @@ const SkillsList: FC<Props> = props => {
         cur.name === 'Vue' ||
         cur.name === 'Angular'
       ) {
-        return (acc += 3 * cur.lvl);
+        return (acc += 3 * cur.level);
       }
-      return (acc += cur.lvl);
+      return (acc += cur.level);
     }, 0);
 
     const totalExp = (AllSkills.length - 1) * 10;
@@ -61,93 +56,47 @@ const SkillsList: FC<Props> = props => {
     }
   }, [ctx]);
 
-  const leftChar: { lvl: number; id: number; name: string }[] = [];
+  const leftChar: { level: number; id: number; name: string }[] = [];
 
-  const frontChar = [
-    { ...AllSkills[1], lvl: 8 },
-    { ...AllSkills[2], lvl: 8 },
-    { ...AllSkills[3], lvl: 7 },
-    { ...AllSkills[49], lvl: 4 },
-    { ...AllSkills[26], lvl: 6 },
-    { ...AllSkills[13], lvl: 7 },
-    { ...AllSkills[4], lvl: 4 },
-    { ...AllSkills[5], lvl: 6 },
-    { ...AllSkills[8], lvl: 5 },
-    { ...AllSkills[27], lvl: 3 },
-    { ...AllSkills[23], lvl: 7 },
-    { ...AllSkills[10], lvl: 5 },
+  const frontCharArr = [
+    [1, 8],
+    [2, 8],
+    [3, 7],
+    [49, 4],
+    [26, 6],
+    [13, 7],
+    [4, 4],
+    [5, 6],
+    [8, 5],
+    [27, 3],
+    [23, 7],
+    [10, 5],
   ];
-  const rightChar = [
-    { ...AllSkills[1], lvl: 9 },
-    { ...AllSkills[2], lvl: 9 },
-    { ...AllSkills[3], lvl: 9 },
-    { ...AllSkills[4], lvl: 9 },
-    { ...AllSkills[5], lvl: 9 },
-    { ...AllSkills[6], lvl: 9 },
-    { ...AllSkills[7], lvl: 9 },
-    { ...AllSkills[8], lvl: 9 },
-    { ...AllSkills[9], lvl: 9 },
-    { ...AllSkills[10], lvl: 9 },
-    { ...AllSkills[11], lvl: 9 },
-    { ...AllSkills[12], lvl: 9 },
-    { ...AllSkills[13], lvl: 9 },
-    { ...AllSkills[14], lvl: 9 },
-    { ...AllSkills[15], lvl: 9 },
-    { ...AllSkills[16], lvl: 9 },
-    { ...AllSkills[17], lvl: 9 },
-    { ...AllSkills[18], lvl: 9 },
-    { ...AllSkills[19], lvl: 9 },
-    { ...AllSkills[20], lvl: 9 },
-    { ...AllSkills[21], lvl: 9 },
-    { ...AllSkills[22], lvl: 9 },
-    { ...AllSkills[23], lvl: 9 },
-    { ...AllSkills[24], lvl: 9 },
-    { ...AllSkills[25], lvl: 9 },
-    { ...AllSkills[26], lvl: 9 },
-    { ...AllSkills[27], lvl: 9 },
-    { ...AllSkills[28], lvl: 9 },
-    { ...AllSkills[29], lvl: 9 },
-    { ...AllSkills[30], lvl: 9 },
-    { ...AllSkills[31], lvl: 9 },
-    { ...AllSkills[32], lvl: 9 },
-    { ...AllSkills[33], lvl: 9 },
-    { ...AllSkills[34], lvl: 9 },
-    { ...AllSkills[35], lvl: 9 },
-    { ...AllSkills[36], lvl: 9 },
-    { ...AllSkills[37], lvl: 9 },
-    { ...AllSkills[38], lvl: 9 },
-    { ...AllSkills[39], lvl: 9 },
-    { ...AllSkills[40], lvl: 9 },
-    { ...AllSkills[41], lvl: 9 },
-    { ...AllSkills[42], lvl: 9 },
-    { ...AllSkills[43], lvl: 9 },
-    { ...AllSkills[44], lvl: 9 },
-    { ...AllSkills[45], lvl: 9 },
-    { ...AllSkills[46], lvl: 9 },
-    { ...AllSkills[47], lvl: 9 },
-    { ...AllSkills[48], lvl: 9 },
-    { ...AllSkills[49], lvl: 9 },
-    { ...AllSkills[50], lvl: 9 },
-    { ...AllSkills[51], lvl: 9 },
-    { ...AllSkills[52], lvl: 9 },
-    { ...AllSkills[53], lvl: 9 },
-    { ...AllSkills[54], lvl: 9 },
-    { ...AllSkills[55], lvl: 9 },
-    { ...AllSkills[56], lvl: 9 },
-    { ...AllSkills[57], lvl: 9 },
-    { ...AllSkills[58], lvl: 9 },
-    { ...AllSkills[59], lvl: 9 },
-    { ...AllSkills[60], lvl: 9 },
-    { ...AllSkills[61], lvl: 9 },
-    { ...AllSkills[62], lvl: 9 },
-    { ...AllSkills[63], lvl: 9 },
-    { ...AllSkills[64], lvl: 9 },
-    { ...AllSkills[65], lvl: 9 },
-    { ...AllSkills[66], lvl: 9 },
-    { ...AllSkills[67], lvl: 9 },
-    { ...AllSkills[68], lvl: 9 },
-    { ...AllSkills[69], lvl: 9 },
-  ];
+
+  const rightCharArr = AllSkills.map(skill => {
+    return [skill.id, 9];
+  });
+
+  const getCharSkills = (charArr: any[]) => {
+    const findSkill = (skillNmb: number, level: number): skillInterface => {
+      AllSkills.map(skill => {
+        return skill;
+      });
+      const resultSkill = { ...AllSkills.find(skill => skill.id === skillNmb) };
+      const addLevel = { ...resultSkill, level: level };
+      return addLevel;
+    };
+    let resultArr: any[] = [];
+    charArr.forEach(item => {
+      const findResult = findSkill(item[0], item[1]);
+      return resultArr.push(findResult);
+    });
+    return resultArr;
+  };
+
+  const frontChar = getCharSkills(frontCharArr);
+
+  const rightChar = getCharSkills(rightCharArr);
 
   const skillsByCharacters = [[...leftChar], [...frontChar], [...rightChar]];
 
