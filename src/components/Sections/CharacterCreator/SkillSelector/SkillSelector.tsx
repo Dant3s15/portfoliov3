@@ -27,17 +27,22 @@ const SkillSelector = () => {
   const searchAddedRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (localStorage.getItem('leftChar')) {
-      // const localSkills = JSON.parse(localStorage.getItem('leftChar') || '');
-      // setAddedSkills(localSkills);
+      const localSkills = JSON.parse(localStorage.getItem('leftChar') || '');
+      setAddedSkills(localSkills);
+      const localSkillsIds = localSkills.map((el: { id: any }) => el.id);
+      console.log(localSkillsIds);
       //TODO get added skills from local storage and filter them out from all skills
-      // setAllSkillsArr(curSkills => {
-      //   console.log(curSkills);
-      //   return curSkills.filter(cur => {
-      //     return !JSON.parse(localStorage.getItem('leftChar') || '').includes(
-      //       cur
-      //     );
-      //   });
-      // });
+      // setAllSkillsArr(curSkills =>
+      //   curSkills.filter(cur => !localSkills.includes(cur))
+      // );
+
+      setAllSkillsArr(
+        prevAllSkills =>
+          prevAllSkills.filter(
+            curSkill => !localSkillsIds.includes(curSkill.id)
+          )
+        // prevAllSkills.filter(curSkill => curSkill.id !== localSkills[0].id)
+      );
       // console.log(localSkills);
       // setAllSkillsArr(cur => {
       //   return cur.filter(cr => {
@@ -77,7 +82,10 @@ const SkillSelector = () => {
     setIsAdded(false);
   };
   const sortSkills = (arr: any[]) => {
-    return arr.sort((a, b) => a.name.localeCompare(b.name));
+    return arr.sort((a, b) => {
+      if (arr === allSkillsArr) a.isAdded = false;
+      return a.name.localeCompare(b.name);
+    });
   };
 
   const skillChangeHandler = (skill: skillInterface) => {
@@ -92,10 +100,14 @@ const SkillSelector = () => {
       // const skillTemp = skill;
       // console.log(skillTemp);
       setSkillAddingData(skill);
+      // skill.isAdded = true;
       if (isAdding && !isAdded) {
         setAllSkillsArr(prevAllSkills => {
+          console.log(prevAllSkills);
           return sortSkills(
-            prevAllSkills.filter(curSkill => curSkill !== skill)
+            prevAllSkills.filter(curSkill => {
+              return curSkill !== skill;
+            })
           );
         });
         setAllSkillsArrFiltered(prevAllSkills => {
@@ -106,7 +118,9 @@ const SkillSelector = () => {
 
         setAddedSkills(prevAddedSKills => {
           return sortSkills([
-            ...allSkillsArr.filter(curSkill => curSkill === skill),
+            ...allSkillsArr.filter(curSkill => {
+              return curSkill === skill;
+            }),
             ...prevAddedSKills,
           ]);
         });
@@ -116,6 +130,7 @@ const SkillSelector = () => {
     } else if (allSkillsArr.some(curSkill => curSkill !== skill)) {
       //SKILL REMOVING
       if (!isAdding) {
+        // skill.isAdded = false;
         setAddedSkills(prevAllSkills => {
           return sortSkills(
             prevAllSkills.filter(curSkill => curSkill !== skill)
