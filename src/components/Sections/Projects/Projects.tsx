@@ -125,7 +125,7 @@ const Projects = () => {
   ];
 
   return (
-    <div id='my-projects' className={classes.projects}>
+    <section id='my-projects' className={classes.projects}>
       <p className={classes.title}>My Projects</p>
       <div
         className={classes['my-projects']}
@@ -138,7 +138,7 @@ const Projects = () => {
           }}
         ></ProjectsList>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -8,7 +8,7 @@ import classes from './AboutMe.module.scss';
 const AboutMe = () => {
   return (
     <Fragment>
-      <div id='about-me' className={classes['about-me']}>
+      <section id='about-me' className={classes['about-me']}>
         <div className={classes['about-me-char']}>
           <div className={`${classes['char__container']} cancel-absolute`}>
             <Character
@@ -72,7 +72,7 @@ const AboutMe = () => {
             </div>
           </CardGlass>
         </div>
-      </div>
+      </section>
       <Projects />
     </Fragment>
   );

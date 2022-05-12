@@ -3,7 +3,7 @@ import SkillSelector from './SkillSelector/SkillSelector';
 import classes from './CharacterCreator.module.scss';
 const CharacterCreator = () => {
   return (
-    <div id='creator' className={classes.creator}>
+    <section id='creator' className={classes.creator}>
       <div className={classes['skill-selector__col']}>
         <SkillSelector></SkillSelector>
       </div>
@@ -18,7 +18,7 @@ const CharacterCreator = () => {
           ></Character>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

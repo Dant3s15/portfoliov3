@@ -8,7 +8,7 @@
   position: relative;
   z-index: 1;
   overflow: hidden;
-
+  // scroll-snap-align: start;
   &::before {
     position: absolute;
     top: 0;

@@ -1,4 +1,5 @@
 import { useState, Fragment } from 'react';
+//TODO remove?
 import './App.css';
 import SelectedContext from './context/selected-context';
 import Header from './components/Sections/Header/Header';

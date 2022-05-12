@@ -50,3 +50,4 @@ TODO:
 - add temporarty state when adding skill
 - todo standardized skill object
 - add my projects button in about me section
+  -remove dummy skill
