@@ -60,14 +60,13 @@ const SkillsList: FC<Props> = props => {
   }, [ctx]);
 
   useEffect(() => {
-    //Update Skills tab in Hero when new skills are saved in Skill selector
-    const onStorage = setLeftCharSkills(
-      JSON.parse(localStorage.getItem('leftChar') || '')
-    );
-    window.addEventListener('storage', () => onStorage);
+    const onStorage = () => {
+      setLeftCharSkills(JSON.parse(localStorage.getItem('leftChar') || ''));
+    };
+    window.addEventListener('storage', () => onStorage());
     return () => {
       window.removeEventListener('storage', () => {
-        onStorage;
+        onStorage();
       });
     };
   }, []);
