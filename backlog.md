@@ -44,7 +44,7 @@ TODO:
 - fix skill selector not sorted the first time and levels not removed
 - fix text jumping when transform scale is changed on hover
   -fix project card selected state on mobile
-- fix skill removing from all items when only one is removed
+
   -add scrolling to added skill
 
 - add temporarty state when adding skill

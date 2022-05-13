@@ -80,7 +80,6 @@ const SkillSelector = () => {
       setSkillAddingData(skill);
       if (isAdding && !isAdded) {
         setAllSkillsArr(prevAllSkills => {
-          // console.log(prevAllSkills);
           return sortSkills(
             prevAllSkills.filter(curSkill => {
               return curSkill !== skill;
@@ -157,6 +156,7 @@ const SkillSelector = () => {
       //   }
       // );
       localStorage.setItem('leftChar', JSON.stringify(addedSkills));
+      window.dispatchEvent(new Event('storage'));
       // const data = await response.json();
       // console.log(data.name);
     }

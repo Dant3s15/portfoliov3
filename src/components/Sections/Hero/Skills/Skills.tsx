@@ -1,4 +1,4 @@
-import { useEffect, useRef, useContext, FC } from 'react';
+import { useEffect, useRef, useContext, FC, useState } from 'react';
 import { skillInterface } from '../../../../Types/types';
 
 import Skill2 from './Skill2';
@@ -21,6 +21,9 @@ const SkillsList: FC<Props> = props => {
   const skillCharCol0 = useRef<HTMLDivElement>(null);
   const skillCharCol1 = useRef<HTMLDivElement>(null);
   const skillCharCol2 = useRef<HTMLDivElement>(null);
+  const [leftCharSkills, setLeftCharSkills] = useState(
+    JSON.parse(window.localStorage.getItem('leftChar') || '')
+  );
 
   const ctx = useContext(SelectedContext);
   const countLevel = (skill: skillInterface[]) => {
@@ -56,16 +59,18 @@ const SkillsList: FC<Props> = props => {
     }
   }, [ctx]);
 
-  // const leftChar: { level: number; id: number; name: string }[] = [];
-
-  let leftChar = [];
-  if (localStorage.getItem('leftChar')) {
-    leftChar = JSON.parse(localStorage.getItem('leftChar') || '');
-  }
-
-  // const leftChar = localStorage.getItem('leftChar')
-  //   ? JSON.parse(localStorage.getItem('leftChar'))
-  //   : [];
+  useEffect(() => {
+    //Update Skills tab in Hero when new skills are saved in Skill selector
+    const onStorage = setLeftCharSkills(
+      JSON.parse(localStorage.getItem('leftChar') || '')
+    );
+    window.addEventListener('storage', () => onStorage);
+    return () => {
+      window.removeEventListener('storage', () => {
+        onStorage;
+      });
+    };
+  }, []);
 
   const frontCharArr = [
     [1, 8],
@@ -107,7 +112,11 @@ const SkillsList: FC<Props> = props => {
 
   const rightChar = getCharSkills(rightCharArr);
 
-  const skillsByCharacters = [[...leftChar], [...frontChar], [...rightChar]];
+  const skillsByCharacters = [
+    [...leftCharSkills],
+    [...frontChar],
+    [...rightChar],
+  ];
 
   const skillsStruct = (
     id: number,
@@ -188,7 +197,7 @@ const SkillsList: FC<Props> = props => {
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.leftChar}
                 >
-                  {countLevel(leftChar)}
+                  {countLevel(leftCharSkills)}
                 </div>
                 <div
                   className={classes['character-level__level-number']}
@@ -209,7 +218,7 @@ const SkillsList: FC<Props> = props => {
             ref={characerSkills}
             className={`${classes['character-skills']} `}
           >
-            {leftChar.length !== 0
+            {leftCharSkills.length !== 0
               ? skillsStruct(0, props.charStateData.leftChar, skillCharCol0)
               : charCreatorText(props.charStateData.leftChar)}
             {skillsStruct(1, props.charStateData.frontChar, skillCharCol1)}
