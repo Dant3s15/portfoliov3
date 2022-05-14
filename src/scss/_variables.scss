@@ -63,7 +63,7 @@ $big-desktop: 2400px;
   --border-radius: 3px;
 
   //DYNAMIC VARIABLES
-  --project-card-gap: 130px;
+  --project-card-gap: 140px;
   @media (max-width: $big-laptop) {
     --project-card-gap: 150px;
   }

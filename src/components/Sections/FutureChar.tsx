@@ -1,5 +1,5 @@
 const FutureChar = (key: any) => {
-  return <h1>FUTURE</h1>;
+  return <h1></h1>;
 };
 
 export default FutureChar;

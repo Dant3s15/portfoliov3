@@ -17,6 +17,16 @@ const CharacterCreator = () => {
             name='Front'
           ></Character>
         </div>
+        {/* <form
+          onSubmit={e => {
+            e.preventDefault();
+            console.log('test');
+          }}
+          // action='gs://portfolio-27cdd.appspot.com/'
+        >
+          <input type='file' id='myFile' name='filename' />
+          <input type='submit' />
+        </form> */}
       </div>
     </section>
   );

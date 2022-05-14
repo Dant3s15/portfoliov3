@@ -43,6 +43,9 @@ const CardProject: FC<CardProjectProps> = props => {
 
   return (
     <animated.div
+      onMouseLeave={() => {
+        props.selectedState.setWhichSelected(null);
+      }}
       ref={projectCardRef}
       className={`${classes['project-wrapper']} ${
         props.projectData.id === props.selectedState.whichSelected

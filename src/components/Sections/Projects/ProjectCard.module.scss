@@ -12,7 +12,7 @@
   transition-property: transform;
   backdrop-filter: blur(20px);
   @include corner-cut(52px, rgba(255, 255, 255, 0.18), 10px, 48px);
-
+  // animation: cardgoback 1.5s;
   &:hover {
     transform: perspective(500px) scale(1) translateX(var(--project-card-gap))
       rotateY(-15deg) !important;
@@ -112,6 +112,7 @@
     font-size: 1.5rem;
     line-height: 1.5;
     padding: 0 6px;
+    cursor: pointer;
     @include flexbox;
     p {
       display: inline-block;
@@ -173,6 +174,7 @@
 }
 
 .skill {
+  cursor: help;
   @include flexbox(flex-end);
   flex-direction: column;
   gap: 0.5rem;

@@ -9,6 +9,7 @@
   max-height: 100%;
   @include flexbox;
   flex-direction: column;
+  will-change: transform;
 
   gap: 1.5rem;
   transition: all var(--transition-short-medium) ease-in-out;
