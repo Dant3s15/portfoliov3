@@ -182,7 +182,7 @@ const SkillsList: FC<Props> = props => {
         >
           <header className={classes['skills-window__header']}>
             <div className={classes['skills-list-name']}>
-              <h2>Skills</h2>
+              <h2>Unlocked Skills</h2>
             </div>
             <div
               className={`${classes['character-level']}`}

@@ -101,5 +101,13 @@
         font-size: 10px;
       }
     }
+    @media (max-width: $small-mobile) {
+      height: 70px;
+      min-width: 70px;
+      width: 70px;
+      &-name {
+        font-size: 8px;
+      }
+    }
   }
 }
