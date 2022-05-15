@@ -18,6 +18,6 @@
   border-right: 7px solid var(--color-border-transparent);
   border-bottom: 5px solid var(--color-border-transparent);
   background-color: rgba(95, 95, 95, 0.109);
-  @include corner-cut(53px, var(--color-border-transparent), 10px, 48px);
+  @include corner-cut(40px, var(--color-border-transparent), 10px, 38px);
   will-change: transform;
 }

@@ -4,10 +4,12 @@ import { useScroll } from '@use-gesture/react';
 import classes from './Projects.module.scss';
 import ProjectsList from './ProjectsList';
 import AllSkills from '../../../components/Utils/AllSkills';
-import project1 from '../../../resources/img/projects/project1.png';
+import project1 from '../../../resources/img/projects/project1.webp';
+import project2 from '../../../resources/img/projects/project2.webp';
 import { skillInterface } from '../../../Types/types';
 
 const Projects = () => {
+  //TODO
   //SPRING AND GESTURE
   const [style, set] = useSpring(() => ({
     transformOrigin: 'right center',
@@ -50,7 +52,7 @@ const Projects = () => {
     {
       id: 0,
       image: project1,
-      title: 'portfolio1',
+      title: 'Portfolio',
       overview: (
         <Fragment>
           Frontend game-like character <strong>selector</strong> and{' '}
@@ -58,24 +60,24 @@ const Projects = () => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: getSkills([1, 2, 3, 26, 49, 13, 23, 5, 21]),
+      skills: getSkills([1, 2, 3, 26, 49, 13, 23, 4, 5, 21]),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
     {
       id: 1,
-      image: project1,
-      title: 'portfolio2',
+      image: project2,
+      title: 'Splitter',
       overview: (
         <Fragment>
-          Frontend game-like character <strong>selector</strong> and{' '}
-          <strong>creator</strong> , create your own character or contact me and{' '}
-          <strong>LEVEL ME UP!</strong>
+          <strong>FrontendMentor.io</strong> challenge{' '}
+          <strong>Tip Calculator</strong>, done in <strong>overkill</strong>{' '}
+          stack.
         </Fragment>
       ),
-      skills: getSkills([1, 2, 3, 26, 49, 13, 23, 5, 21]),
-      link: 'https://portfolio-27cdd.web.app/',
-      repo: 'https://github.com/Dant3s15/portfoliov3',
+      skills: getSkills([1, 2, 3, 26, 49, 13, 23, 4, 5, 21]),
+      link: 'https://devmian-tip-calculator.web.app/',
+      repo: 'https://github.com/Dant3s15/tip-calculator-react',
     },
     {
       id: 2,

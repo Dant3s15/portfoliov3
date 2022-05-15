@@ -11,8 +11,9 @@
   transition: all var(--transition-short-medium);
   transition-property: transform;
   backdrop-filter: blur(20px);
-  @include corner-cut(52px, rgba(255, 255, 255, 0.18), 10px, 48px);
+  @include corner-cut(40px, rgba(255, 255, 255, 0.18), 10px, 38px);
   // animation: cardgoback 1.5s;
+
   &:hover {
     transform: perspective(500px) scale(1) translateX(var(--project-card-gap))
       rotateY(-15deg) !important;
@@ -40,11 +41,11 @@
   }
 
   &.selected-project:hover {
-    transform: perspective(1000px) scale(1) translateX(45%) rotateY(0deg) !important;
+    transform: perspective(1000px) scale(1) translateX(35%) rotateY(0deg) !important;
   }
 
   &.selected-project {
-    transform: perspective(1000px) scale(1) translateX(45%) !important;
+    transform: perspective(1000px) scale(1) translateX(35%) !important;
     animation: zindex 100s forwards;
   }
 }
@@ -60,6 +61,7 @@
   transition: all var(--transition-short-medium);
   transition-property: transform;
   backdrop-filter: blur(20px);
+
   .project-image-window {
     @include corner-cut(30px);
     position: relative;
@@ -94,6 +96,7 @@
     height: 100%;
     overflow: hidden;
     display: grid;
+    cursor: pointer;
     grid-template-rows: 0.5fr 1fr 1fr;
   }
   .project-title {
@@ -101,7 +104,7 @@
     justify-self: end;
     align-self: center;
     text-transform: uppercase;
-    font-size: 36px;
+    font-size: 32px;
     padding: 6px 24px;
     margin-right: -1rem;
     transition: all var(--transition-short);
@@ -132,7 +135,7 @@
     width: 100%;
     height: fit-content;
     @include flexbox(center, flex-end);
-    @include corner-cut3(100px);
+    @include corner-cut3(80px);
 
     flex-wrap: wrap;
 
@@ -140,8 +143,9 @@
   }
 }
 .used-skills-title {
-  align-self: center;
+  align-self: flex-end;
   padding-left: 1rem;
+  padding-bottom: 1rem;
   font-size: 24px;
 }
 .links {
