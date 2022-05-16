@@ -3,5 +3,5 @@ export interface skillInterface {
   id: number;
   name: string;
   level: number;
-  isAdded?: boolean;
+  // isAdded?: boolean;
 }

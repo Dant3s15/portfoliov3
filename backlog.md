@@ -32,16 +32,12 @@ TODO:
 - add parallax using react spring
 - add projects section with card like showcases of projects and skills used
 - add contact me button to the navbar
-- add border-radius: 3px;
 - remove scss import clutter
-  -calculate width for my projects cards
-  - fix long scrolling on skills in hero section
-    -disable skill tiles shadows if skill is not selected for performance reasons
+
 - snap scroll to section
 - fix pixel moving on scale hover
 - fix react spring using api
-- fix project cards cut off on mobile
-- fix skill selector not sorted the first time and levels not removed
+
 - fix text jumping when transform scale is changed on hover
   -fix project card selected state on mobile
 
@@ -51,3 +47,4 @@ TODO:
 - todo standardized skill object
 - add my projects button in about me section
   -remove dummy skill
+- preload section before selecting character
