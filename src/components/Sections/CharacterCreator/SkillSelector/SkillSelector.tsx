@@ -80,7 +80,6 @@ const SkillSelector = () => {
       setSkillAddingData(skill);
       if (isAdding && !isAdded) {
         setAllSkillsArr(prevAllSkills => {
-          // console.log(prevAllSkills);
           return sortSkills(
             prevAllSkills.filter(curSkill => {
               return curSkill !== skill;
