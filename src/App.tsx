@@ -42,7 +42,7 @@ const firestore = getFirestore();
 
 function App() {
   const [selected, setSelected] = useState(false);
-  const [whichSelected, setWhichSelected] = useState(null);
+  const [whichSelected, setWhichSelected] = useState(1);
   const [renderSection, setRenderSection] = useState(false);
   const [ctaButtonClicked, setCtaButtonClicked] = useState({ clicked: false });
   const [user] = useAuthState(auth);

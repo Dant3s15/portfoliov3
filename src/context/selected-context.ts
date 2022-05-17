@@ -1,18 +1,21 @@
 import React from 'react';
-//TODO fix types
 
 type ContextProps = {
   isSelected: boolean;
-  setSelected: any;
-  whichIsSelected: number | null;
-  setWhichSelected: any;
-  renderSection: any;
-  setRenderSection: any;
-  event?: any;
-  rotateCharactersHandler?: any;
-  ctaButtonHandler: any;
-  ctaButtonClicked?: any;
-  setCtaButtonClicked?: any;
+  setSelected: React.Dispatch<React.SetStateAction<boolean>>;
+  whichIsSelected: number;
+  setWhichSelected: React.Dispatch<React.SetStateAction<number>>;
+  renderSection: boolean;
+  setRenderSection: React.Dispatch<React.SetStateAction<boolean>>;
+  event?: React.MouseEvent<HTMLDivElement, MouseEvent>;
+  rotateCharactersHandler?: (e: any) => void;
+  ctaButtonHandler: () => void;
+  ctaButtonClicked?: { clicked: boolean };
+  setCtaButtonClicked?: React.Dispatch<
+    React.SetStateAction<{
+      clicked: boolean;
+    }>
+  >;
 };
 
 const SelectedContext = React.createContext<Partial<ContextProps>>({});

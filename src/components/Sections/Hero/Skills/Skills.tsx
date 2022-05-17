@@ -161,12 +161,12 @@ const SkillsList: FC<Props> = props => {
       <div
         ref={skillsWindowRef}
         className={`card--glass ${classes['skills-window']} ${
-          !ctx.ctaButtonClicked.clicked ? 'not-started' : ''
+          !ctx.ctaButtonClicked?.clicked ? 'not-started' : ''
         } `}
       >
         <div
           className={`${classes['skills-text']} shine ${
-            ctx.ctaButtonClicked.clicked ? classes['abs-up'] : ''
+            ctx.ctaButtonClicked?.clicked ? classes['abs-up'] : ''
           }`}
         >
           <p>Choose</p>
@@ -179,7 +179,7 @@ const SkillsList: FC<Props> = props => {
         </div>
         <div
           className={`${classes['skills-card']} ${
-            !ctx.ctaButtonClicked.clicked ? classes['abs-down'] : ''
+            !ctx.ctaButtonClicked?.clicked ? classes['abs-down'] : ''
           }`}
         >
           <header className={classes['skills-window__header']}>

@@ -43,18 +43,19 @@ const Header: FC<Props> = props => {
 
   const navItemHandler = (event: { currentTarget: Element }, id: string) => {
     setHamburgerState(false);
-    if (!ctx.ctaButtonClicked.clicked) {
-      ctx.ctaButtonHandler();
+    if (!ctx.ctaButtonClicked?.clicked) {
+      ctx.ctaButtonHandler?.();
     }
     const charNr = Number(event.currentTarget.getAttribute('data-character'));
     // console.log(charNr);
     let char = document
       .querySelector(`[data-const-pos="${charNr}"]`)
       ?.getAttribute('data-character');
-    ctx.rotateCharactersHandler(char ? +char : null);
-    ctx.setRenderSection(true);
-    ctx.setWhichSelected(charNr);
-    ctx.setSelected(true);
+
+    ctx.rotateCharactersHandler?.(char ? +char : null);
+    ctx.setRenderSection?.(true);
+    ctx.setWhichSelected?.(charNr);
+    ctx.setSelected?.(true);
 
     setTimeout(() => {
       const element = document.querySelector(`#${id}`);

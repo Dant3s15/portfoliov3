@@ -6,7 +6,7 @@ import Typewriter from 'typewriter-effect';
 import classes from './Characters.module.scss';
 
 interface Props {
-  selectedState: any;
+  // selectedState: any;
   charState: (data: any) => void;
   heroRef: React.MutableRefObject<null>;
 }
@@ -21,9 +21,11 @@ const Characters: FC<Props> = props => {
   const charactersColRef = useRef<HTMLDivElement>(null);
 
   const ctaButtonHandler = () => {
-    if (!ctx.ctaButtonClicked.clicked) {
-      ctx.setCtaButtonClicked({ clicked: true });
-    } else ctx.setCtaButtonClicked({ clicked: false });
+    if (ctx.setCtaButtonClicked !== undefined) {
+      if (!ctx.ctaButtonClicked?.clicked) {
+        ctx.setCtaButtonClicked({ clicked: true });
+      } else ctx.setCtaButtonClicked({ clicked: false });
+    }
     calcCharWidth();
     //disabling blue outline on drag
 
@@ -95,10 +97,10 @@ const Characters: FC<Props> = props => {
 
   // *****************************************************
   const renderContentHandler = (constPos: number) => {
-    props.selectedState?.setWhichSelected(constPos);
+    ctx.setWhichSelected?.(constPos);
   };
 
-  ctx.rotateCharactersHandler = (e: any) => {
+  ctx.rotateCharactersHandler = e => {
     const setChars = (direc: number) => {
       setLeftChar(wrapRotate(leftChar, direc));
       setFrontChar(wrapRotate(frontChar, direc));
@@ -114,7 +116,7 @@ const Characters: FC<Props> = props => {
 
     let charConstPos = +e.target?.dataset.constPos;
     if (charData === 1) {
-      props.selectedState.setSelected(true);
+      ctx.setSelected?.(true);
 
       renderContentHandler(charConstPos);
     }
@@ -122,23 +124,23 @@ const Characters: FC<Props> = props => {
     if (charData === 0) {
       direc = 1;
       setChars(direc);
-      props.selectedState.setSelected(true);
+      ctx.setSelected?.(true);
       renderContentHandler(charConstPos);
 
-      ctx.setRenderSection(false);
+      ctx.setRenderSection?.(false);
     }
     if (charData === 2) {
       direc = -1;
       setChars(direc);
-      props.selectedState.setSelected(true);
+      ctx.setSelected?.(true);
       renderContentHandler(charConstPos);
-      ctx.setRenderSection(false);
+      ctx.setRenderSection?.(false);
     }
     //disable selected if background is clicked
     if (e.target === charactersRef.current) {
-      props.selectedState.setSelected(false);
+      if (ctx.setSelected) ctx.setSelected(false);
       renderContentHandler(0);
-      ctx.setRenderSection(false);
+      ctx.setRenderSection?.(false);
     }
   };
 
@@ -146,9 +148,9 @@ const Characters: FC<Props> = props => {
   //TODO handle swipe gestures
 
   // *****************************************************
-  let leftIsSelected = leftChar === 1 && props.selectedState.isSelected;
-  let frontIsSelected = frontChar === 1 && props.selectedState.isSelected;
-  let rightIsSelected = rightChar === 1 && props.selectedState.isSelected;
+  let leftIsSelected = leftChar === 1 && ctx.isSelected;
+  let frontIsSelected = frontChar === 1 && ctx.isSelected;
+  let rightIsSelected = rightChar === 1 && ctx.isSelected;
 
   const isAnythingSelected = () => {
     if (leftIsSelected) {
@@ -163,14 +165,14 @@ const Characters: FC<Props> = props => {
   };
 
   const frontCharButtonHandler = () => {
-    ctx.setRenderSection(true);
+    ctx.setRenderSection?.(true);
   };
 
   return (
     <div ref={charactersColRef} className={classes['character-col']}>
       <div
         className={`${classes['character__overlay']} ${
-          ctx.ctaButtonClicked.clicked
+          ctx.ctaButtonClicked?.clicked
             ? classes['character__overlay--hidden']
             : ''
         }`}
@@ -208,7 +210,7 @@ const Characters: FC<Props> = props => {
         ref={charactersRef}
         onClick={ctx.rotateCharactersHandler}
         className={`${classes.characters} ${
-          !ctx.ctaButtonClicked.clicked ? classes.hidden : ''
+          !ctx.ctaButtonClicked?.clicked ? classes.hidden : ''
         }`}
       >
         {isAnythingSelected().isSelected ? (
