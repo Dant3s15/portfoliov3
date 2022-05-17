@@ -21,9 +21,7 @@ const SkillsList: FC<Props> = props => {
   const skillCharCol0 = useRef<HTMLDivElement>(null);
   const skillCharCol1 = useRef<HTMLDivElement>(null);
   const skillCharCol2 = useRef<HTMLDivElement>(null);
-  const [leftCharSkills, setLeftCharSkills] = useState(
-    JSON.parse(window.localStorage.getItem('leftChar') || '')
-  );
+  const [leftCharSkills, setLeftCharSkills] = useState([]);
 
   const ctx = useContext(SelectedContext);
   const countLevel = (skill: skillInterface[]) => {
@@ -60,6 +58,10 @@ const SkillsList: FC<Props> = props => {
   }, [ctx]);
 
   useEffect(() => {
+    if (window.localStorage.getItem('leftChar'))
+      setLeftCharSkills(
+        JSON.parse(window.localStorage.getItem('leftChar') || '')
+      );
     const onStorage = () => {
       setLeftCharSkills(JSON.parse(localStorage.getItem('leftChar') || ''));
     };
