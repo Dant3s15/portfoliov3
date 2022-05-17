@@ -13,14 +13,16 @@ const SkillSelector = () => {
     useState(allSkillsArr);
   const [allSkillsIsFiltered, setAllSkillsIsFiltered] = useState(false);
 
-  const [addedSkills, setAddedSkills] = useState<any[]>([]);
+  const [addedSkills, setAddedSkills] = useState<skillInterface[]>([]);
   const [addedSkillsFiltered, setAddedSkillsFiltered] =
-    useState<any[]>(addedSkills);
+    useState<skillInterface[]>(addedSkills);
   const [addedSkillsIsFiltered, setAddedSkillsIsFiltered] = useState(false);
 
   const [isAdding, setIsAdding] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-  const [skillAddingData, setSkillAddingData] = useState<any>(AllSkills[0]);
+  const [skillAddingData, setSkillAddingData] = useState<skillInterface>(
+    AllSkills[0]
+  );
   const [levelIsSet, setlevelIsSet] = useState(false);
 
   const searchAllRef = useRef<HTMLInputElement>(null);
@@ -29,7 +31,7 @@ const SkillSelector = () => {
     if (localStorage.getItem('leftChar')) {
       const localSkills = JSON.parse(localStorage.getItem('leftChar') || '');
       setAddedSkills(localSkills);
-      const localSkillsIds = localSkills.map((el: { id: any }) => el.id);
+      const localSkillsIds = localSkills.map((el: { id: number }) => el.id);
 
       setAllSkillsArr(prevAllSkills =>
         prevAllSkills.filter(curSkill => !localSkillsIds.includes(curSkill.id))
@@ -50,8 +52,8 @@ const SkillSelector = () => {
     } else {
       setAllSkillsIsFiltered(false);
     }
-    if (searchAddedVal !== '') {
-      const newArr: any[] = addedSkills.filter(skill =>
+    if (searchAddedVal !== undefined) {
+      const newArr: skillInterface[] = addedSkills.filter(skill =>
         skill.name.toLowerCase().includes(searchAddedVal)
       );
       setAddedSkillsIsFiltered(true);
@@ -65,9 +67,9 @@ const SkillSelector = () => {
     setIsAdding(false);
     setIsAdded(false);
   };
-  const sortSkills = (arr: any[]) => {
+  const sortSkills = (arr: skillInterface[]) => {
     return arr.sort((a, b) => {
-      if (arr === allSkillsArr) a.isAdded = false;
+      // if (arr === allSkillsArr) a.isAdded = false;
       return a.name.localeCompare(b.name);
     });
   };
@@ -163,10 +165,10 @@ const SkillSelector = () => {
     }
   };
 
-  const renderSkills = (skillsArr: {}[], sign: string) => {
+  const renderSkills = (skillsArr: skillInterface[], sign: string) => {
     const newArr = sortSkills(skillsArr);
 
-    return newArr.map((skill: any) => {
+    return newArr.map((skill: skillInterface) => {
       return (
         <Skill
           onSkillChange={skillChangeHandler}
