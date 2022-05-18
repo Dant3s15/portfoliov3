@@ -127,20 +127,20 @@ const Characters: FC<Props> = props => {
       ctx.setSelected?.(true);
       renderContentHandler(charConstPos);
 
-      ctx.setRenderSection?.(false);
+      // ctx.setRenderSection?.(false);
     }
     if (charData === 2) {
       direc = -1;
       setChars(direc);
       ctx.setSelected?.(true);
       renderContentHandler(charConstPos);
-      ctx.setRenderSection?.(false);
+      // ctx.setRenderSection?.(false);
     }
     //disable selected if background is clicked
     if (e.target === charactersRef.current) {
       if (ctx.setSelected) ctx.setSelected(false);
       renderContentHandler(0);
-      ctx.setRenderSection?.(false);
+      // ctx.setRenderSection?.(false);
     }
   };
 
@@ -165,7 +165,8 @@ const Characters: FC<Props> = props => {
   };
 
   const frontCharButtonHandler = () => {
-    ctx.setRenderSection?.(true);
+    // ctx.setRenderSection?.(true);
+    console.log('test');
   };
 
   return (

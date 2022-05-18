@@ -43,7 +43,7 @@ const firestore = getFirestore();
 function App() {
   const [selected, setSelected] = useState(false);
   const [whichSelected, setWhichSelected] = useState(1);
-  const [renderSection, setRenderSection] = useState(false);
+  // const [renderSection, setRenderSection] = useState(false);
   const [ctaButtonClicked, setCtaButtonClicked] = useState({ clicked: false });
   const [user] = useAuthState(auth);
 
@@ -59,8 +59,8 @@ function App() {
           setSelected,
           whichIsSelected: whichSelected,
           setWhichSelected,
-          renderSection,
-          setRenderSection,
+          // renderSection,
+          // setRenderSection,
           ctaButtonClicked,
           setCtaButtonClicked,
         }}
@@ -78,9 +78,9 @@ function App() {
         <main>
           <Hero></Hero>
           {/* {user ? <SignOut user={user}></SignOut> : <SignIn></SignIn>} */}
-          {whichSelected === 0 && renderSection ? <CharacterCreator /> : ''}
-          {whichSelected === 1 && renderSection ? <AboutMe /> : ''}
-          {whichSelected === 2 && renderSection ? <FutureChar /> : ''}
+          {whichSelected === 0 && selected ? <CharacterCreator /> : ''}
+          {whichSelected === 1 && selected ? <AboutMe /> : ''}
+          {whichSelected === 2 && selected ? <FutureChar /> : ''}
         </main>
       </SelectedContext.Provider>
       <Footer></Footer>

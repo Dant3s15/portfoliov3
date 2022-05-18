@@ -5,8 +5,8 @@ type ContextProps = {
   setSelected: React.Dispatch<React.SetStateAction<boolean>>;
   whichIsSelected: number;
   setWhichSelected: React.Dispatch<React.SetStateAction<number>>;
-  renderSection: boolean;
-  setRenderSection: React.Dispatch<React.SetStateAction<boolean>>;
+  // renderSection: boolean;
+  // setRenderSection: React.Dispatch<React.SetStateAction<boolean>>;
   event?: React.MouseEvent<HTMLDivElement, MouseEvent>;
   rotateCharactersHandler?: (e: any) => void;
   ctaButtonHandler: () => void;

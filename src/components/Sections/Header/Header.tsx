@@ -53,7 +53,7 @@ const Header: FC<Props> = props => {
       ?.getAttribute('data-character');
 
     ctx.rotateCharactersHandler?.(char ? +char : null);
-    ctx.setRenderSection?.(true);
+    // ctx.setRenderSection?.(true);
     ctx.setWhichSelected?.(charNr);
     ctx.setSelected?.(true);
 
