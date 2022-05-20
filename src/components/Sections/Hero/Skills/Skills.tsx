@@ -27,10 +27,10 @@ const SkillsList: FC<Props> = props => {
   const countLevel = (skill: skillInterface[]) => {
     const charExp = skill.reduce((acc = 0, cur) => {
       if (
-        cur.name === 'JavaScript' ||
-        cur.name === 'React' ||
-        cur.name === 'Vue' ||
-        cur.name === 'Angular'
+        cur.names[0] === 'JavaScript' ||
+        cur.names[0] === 'React' ||
+        cur.names[0] === 'Vue' ||
+        cur.names[0] === 'Angular'
       ) {
         return (acc += 3 * cur.level);
       }
@@ -93,12 +93,13 @@ const SkillsList: FC<Props> = props => {
   });
 
   const getCharSkills = (charArr: any[]) => {
-    const findSkill = (skillNmb: number, level: number): skillInterface => {
+    const findSkill = (skillNmb: number, level: number) => {
       AllSkills.map(skill => {
         return skill;
       });
       const resultSkill = { ...AllSkills.find(skill => skill.id === skillNmb) };
       const addLevel = { ...resultSkill, level: level };
+
       return addLevel;
     };
     let resultArr: any[] = [];
@@ -134,6 +135,7 @@ const SkillsList: FC<Props> = props => {
         <ul className={classes['skills-list']}>
           {skillsByCharacters[id].map(item => {
             {
+              if (item.id === 0) return;
               return <Skill2 key={item.id} skill={item} />;
             }
           })}

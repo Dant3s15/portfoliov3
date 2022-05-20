@@ -3,13 +3,14 @@
   "private": true,
   "version": "0.3.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3001",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@use-gesture/react": "^10.2.12",
     "animate.css": "^4.1.1",
+    "axios": "^0.27.2",
     "firebase": "^9.6.10",
     "formik": "^2.2.9",
     "react": "^17.0.2",

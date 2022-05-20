@@ -45,7 +45,7 @@ const SkillSelector = () => {
 
     if (searchAllVal) {
       const newArr = allSkillsArr.filter(skill => {
-        return skill.name.toLowerCase().includes(searchAllVal);
+        return skill.names[0].toLowerCase().includes(searchAllVal);
       });
       setAllSkillsIsFiltered(true);
       setAllSkillsArrFiltered(newArr);
@@ -54,7 +54,7 @@ const SkillSelector = () => {
     }
     if (searchAddedVal !== undefined) {
       const newArr: skillInterface[] = addedSkills.filter(skill =>
-        skill.name.toLowerCase().includes(searchAddedVal)
+        skill.names[0].toLowerCase().includes(searchAddedVal)
       );
       setAddedSkillsIsFiltered(true);
       setAddedSkillsFiltered(newArr);
@@ -70,7 +70,7 @@ const SkillSelector = () => {
   const sortSkills = (arr: skillInterface[]) => {
     return arr.sort((a, b) => {
       // if (arr === allSkillsArr) a.isAdded = false;
-      return a.name.localeCompare(b.name);
+      return a.names[0].localeCompare(b.names[0]);
     });
   };
 

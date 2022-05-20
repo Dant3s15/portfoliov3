@@ -18,7 +18,7 @@ const Projects = () => {
   }));
 
   const getSkills = (charArr: any[]) => {
-    const findSkill = (skillNmb: number): skillInterface => {
+    const findSkill = (skillNmb: number) => {
       AllSkills.map(skill => {
         return skill;
       });
@@ -62,7 +62,7 @@ const Projects = () => {
       ),
       skills: getSkills([1, 2, 3, 26, 49, 13, 23, 4, 5, 21]),
       link: 'https://portfolio-27cdd.web.app/',
-      repo: 'https://github.com/Dant3s15/portfoliov3',
+      repo: 'https://github.com/DevmianS/portfoliov3',
     },
     {
       id: 1,
@@ -77,7 +77,7 @@ const Projects = () => {
       ),
       skills: getSkills([1, 2, 3, 26, 49, 13, 23, 4, 5, 21]),
       link: 'https://devmian-tip-calculator.web.app/',
-      repo: 'https://github.com/Dant3s15/tip-calculator-react',
+      repo: 'https://github.com/DevmianS/tip-calculator-react',
     },
     {
       id: 2,

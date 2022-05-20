@@ -36,8 +36,8 @@ const CardProject: FC<CardProjectProps> = props => {
   const skillsArr = props.projectData?.skills;
   const skills = skillsArr?.map(skill => (
     <li key={Math.random()} className={classes['skill']}>
-      <img src={skill.icon} alt={`${skill.name} icon`} />
-      <p className={classes['skill-title']}>{skill.name}</p>
+      <img src={skill.icon} alt={`${skill.names[0]} icon`} />
+      <p className={classes['skill-title']}>{skill.names[0]}</p>
     </li>
   ));
 

@@ -3,10 +3,21 @@ import linkedin from '../../../resources/icons/icon-linkedin-dark.svg';
 import logo from '../../../resources/logo.svg';
 import classes from './Footer.module.scss';
 const Footer = () => {
+  const testFetch = () => {
+    async function getSkill() {
+      const response = await fetch(
+        'https://web-dev-skills-api.herokuapp.com/v1/skills'
+      );
+      const data = await response.json();
+      console.log(data);
+    }
+    getSkill();
+  };
+
   return (
     <footer className={classes.footer}>
       <div className={classes.wrapper}>
-        <div className={`${classes.col} ${classes.logo}`}>
+        <div onClick={testFetch} className={`${classes.col} ${classes.logo}`}>
           <img src={logo} alt='Logo' />
         </div>
         <div className={`${classes.col} ${classes.links}`}>
@@ -14,7 +25,7 @@ const Footer = () => {
           <div className={classes['links-list']}>
             <div className={classes.link}>
               <img src={github} alt='github' />
-              <a target='_blank' href='https://github.com/Dant3s15'>
+              <a target='_blank' href='https://github.com/DevmianS'>
                 Github
               </a>
             </div>

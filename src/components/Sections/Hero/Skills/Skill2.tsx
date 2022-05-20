@@ -14,10 +14,13 @@ const Skill2: FC<Props> = (props: Props) => {
           <p>{props.skill.level}</p>
         </div>
         <div className={classes['skill-tile-icon']}>
-          <img src={props.skill.icon}></img>
+          <img
+            src={props.skill.icon}
+            alt={`${props.skill.names[0]} icon`}
+          ></img>
         </div>
         <div className={classes['skill-tile-name']}>
-          <p>{props.skill.name}</p>
+          <p>{props.skill.names[0]}</p>
         </div>
       </button>
     </Fragment>
