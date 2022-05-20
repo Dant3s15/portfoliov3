@@ -1,5 +1,6 @@
 import { useEffect, useRef, useContext, FC, useState } from 'react';
 import { skillInterface } from '../../../../Types/types';
+import axios from 'axios';
 
 import Skill2 from './Skill2';
 import AllSkills from '../../../Utils/AllSkills';
@@ -14,6 +15,16 @@ interface Props {
     rightChar: number;
   };
 }
+
+//todo
+const getAllSkillsData = async () => {
+  const response = await axios.get(
+    'https://web-dev-skills-api.herokuapp.com/v1/skills'
+  );
+  return response.data;
+};
+
+const AllSkillsData: skillInterface[] = await getAllSkillsData();
 
 const SkillsList: FC<Props> = props => {
   const skillsWindowRef = useRef<HTMLDivElement>(null);
@@ -37,7 +48,7 @@ const SkillsList: FC<Props> = props => {
       return (acc += cur.level);
     }, 0);
 
-    const totalExp = (AllSkills.length - 1) * 10;
+    const totalExp = (AllSkillsData.length - 1) * 10;
 
     function percentage(partialValue: number, totalValue: number) {
       return (100 * partialValue) / totalValue;
@@ -88,16 +99,18 @@ const SkillsList: FC<Props> = props => {
     [10, 5],
   ];
 
-  const rightCharArr = AllSkills.map(skill => {
+  const rightCharArr = AllSkillsData.map(skill => {
     return [skill.id, 9];
   });
 
   const getCharSkills = (charArr: any[]) => {
     const findSkill = (skillNmb: number, level: number) => {
-      AllSkills.map(skill => {
+      AllSkillsData.map(skill => {
         return skill;
       });
-      const resultSkill = { ...AllSkills.find(skill => skill.id === skillNmb) };
+      const resultSkill = {
+        ...AllSkillsData.find(skill => skill.id === skillNmb),
+      };
       const addLevel = { ...resultSkill, level: level };
 
       return addLevel;
