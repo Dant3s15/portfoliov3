@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { skillInterface } from '../../Types/types';
 
 // import skill0 from '../../resources/skillIcons/1.svg';
@@ -164,13 +164,13 @@ const AllSkills = sortSkills([
 //   console.log(el.names[0], el.description);
 // });
 
-const getAllSkillsData = async () => {
-  const response = await axios.get(
-    'https://web-dev-skills-api.herokuapp.com/v1/skills'
-  );
-  return response.data;
-};
+// const getAllSkillsData = async () => {
+//   const response = await axios.get(
+//     'https://web-dev-skills-api.herokuapp.com/v1/skills'
+//   );
+//   return response.data;
+// };
 
-const AllSkillsData: skillInterface[] = await getAllSkillsData();
+// const AllSkillsData: skillInterface[] = await getAllSkillsData();
 
 // export default AllSkills;

@@ -67,9 +67,7 @@ function App() {
       // setAllSkillsData(response.data);
       // return response.data;
     };
-    setTimeout(() => {
-      getAllSkillsData();
-    }, 3000);
+    getAllSkillsData();
   }, []);
 
   const signInWithGoogle = () => {

@@ -5,7 +5,7 @@ import Skill2 from './Skill2';
 // import AllSkills from '../../../Utils/AllSkills';
 import SelectedContext from '../../../../context/selected-context';
 import classes from './Skills.module.scss';
-import axios from 'axios';
+// import axios from 'axios';
 
 interface Props {
   className: string;
