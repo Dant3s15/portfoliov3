@@ -4,8 +4,12 @@ import SelectedContext from '../../../context/selected-context';
 import Characters from './Characters/Characters';
 import SkillsList from './Skills/Skills';
 import { useRef } from 'react';
+import { skillInterface } from '../../../Types/types';
+interface Props {
+  allSkillsData: skillInterface[];
+}
 
-const Hero: FC = props => {
+const Hero: FC<Props> = props => {
   const ctx = useContext(SelectedContext);
   const heroRef = useRef(null);
 
@@ -52,6 +56,7 @@ const Hero: FC = props => {
         <SkillsList
           className={classes['character-skills']}
           charStateData={charState}
+          allSkillsData={props.allSkillsData}
         ></SkillsList>
       </div>
     </section>

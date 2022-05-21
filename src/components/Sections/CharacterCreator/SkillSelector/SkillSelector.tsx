@@ -1,14 +1,17 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { FC, Fragment, useEffect, useRef, useState } from 'react';
 import CardGlass from '../../../UI/CardGlass';
-import AllSkills from '../../../Utils/AllSkills';
+// import AllSkills from '../../../Utils/AllSkills';
 import Skill from './Skill/Skill';
 import SkillAddWindow from './SkillAddWindow';
 import ButtonBig from '../../../UI/ButtonBig';
 import classes from './SkillSelector.module.scss';
 import { skillInterface } from '../../../../Types/types';
 
-const SkillSelector = () => {
-  const [allSkillsArr, setAllSkillsArr] = useState(AllSkills);
+interface Props {
+  allSkillsData: skillInterface[];
+}
+const SkillSelector: FC<Props> = props => {
+  const [allSkillsArr, setAllSkillsArr] = useState(props.allSkillsData);
   const [allSkillsArrFiltered, setAllSkillsArrFiltered] =
     useState(allSkillsArr);
   const [allSkillsIsFiltered, setAllSkillsIsFiltered] = useState(false);
@@ -21,7 +24,7 @@ const SkillSelector = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const [skillAddingData, setSkillAddingData] = useState<skillInterface>(
-    AllSkills[0]
+    props.allSkillsData[0]
   );
   const [levelIsSet, setlevelIsSet] = useState(false);
 
@@ -159,7 +162,7 @@ const SkillSelector = () => {
       // );
       localStorage.setItem('leftChar', JSON.stringify(addedSkills));
       window.dispatchEvent(new Event('storage'));
-      console.log('storage');
+      // console.log('storage');
       // const data = await response.json();
       // console.log(data.name);
     }

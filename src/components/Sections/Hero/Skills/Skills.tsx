@@ -1,11 +1,11 @@
 import { useEffect, useRef, useContext, FC, useState } from 'react';
 import { skillInterface } from '../../../../Types/types';
-import axios from 'axios';
 
 import Skill2 from './Skill2';
-import AllSkills from '../../../Utils/AllSkills';
+// import AllSkills from '../../../Utils/AllSkills';
 import SelectedContext from '../../../../context/selected-context';
 import classes from './Skills.module.scss';
+import axios from 'axios';
 
 interface Props {
   className: string;
@@ -14,17 +14,8 @@ interface Props {
     frontChar: number;
     rightChar: number;
   };
+  allSkillsData: skillInterface[];
 }
-
-//todo
-const getAllSkillsData = async () => {
-  const response = await axios.get(
-    'https://web-dev-skills-api.herokuapp.com/v1/skills'
-  );
-  return response.data;
-};
-
-const AllSkillsData: skillInterface[] = await getAllSkillsData();
 
 const SkillsList: FC<Props> = props => {
   const skillsWindowRef = useRef<HTMLDivElement>(null);
@@ -33,9 +24,10 @@ const SkillsList: FC<Props> = props => {
   const skillCharCol1 = useRef<HTMLDivElement>(null);
   const skillCharCol2 = useRef<HTMLDivElement>(null);
   const [leftCharSkills, setLeftCharSkills] = useState([]);
+  // const [allSkillsData, setAllSkillsData] = useState<skillInterface[]>([]);
 
   const ctx = useContext(SelectedContext);
-  const countLevel = (skill: skillInterface[]) => {
+  const calcLevel = (skill: skillInterface[]) => {
     const charExp = skill.reduce((acc = 0, cur) => {
       if (
         cur.names[0] === 'JavaScript' ||
@@ -48,7 +40,7 @@ const SkillsList: FC<Props> = props => {
       return (acc += cur.level);
     }, 0);
 
-    const totalExp = (AllSkillsData.length - 1) * 10;
+    const totalExp = (props.allSkillsData.length - 1) * 10;
 
     function percentage(partialValue: number, totalValue: number) {
       return (100 * partialValue) / totalValue;
@@ -57,6 +49,16 @@ const SkillsList: FC<Props> = props => {
     const result = percentage(charExp, totalExp);
     return Math.ceil(result);
   };
+  // useEffect(() => {
+  //   const getAllSkillsData = async () => {
+  //     const response = await axios.get(
+  //       'https://web-dev-skills-api.herokuapp.com/v1/skills'
+  //     );
+  //     setAllSkillsData(response.data);
+  //     return response.data;
+  //   };
+  //   getAllSkillsData();
+  // }, []);
 
   useEffect(() => {
     if (ctx.isSelected && skillsWindowRef.current) {
@@ -99,17 +101,17 @@ const SkillsList: FC<Props> = props => {
     [10, 5],
   ];
 
-  const rightCharArr = AllSkillsData.map(skill => {
+  const rightCharArr = props.allSkillsData.map(skill => {
     return [skill.id, 9];
   });
 
   const getCharSkills = (charArr: any[]) => {
     const findSkill = (skillNmb: number, level: number) => {
-      AllSkillsData.map(skill => {
+      props.allSkillsData.map(skill => {
         return skill;
       });
       const resultSkill = {
-        ...AllSkillsData.find(skill => skill.id === skillNmb),
+        ...props.allSkillsData.find(skill => skill.id === skillNmb),
       };
       const addLevel = { ...resultSkill, level: level };
 
@@ -213,33 +215,39 @@ const SkillsList: FC<Props> = props => {
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.leftChar}
                 >
-                  {countLevel(leftCharSkills)}
+                  {props.allSkillsData.length !== 0
+                    ? calcLevel(leftCharSkills)
+                    : ''}
                 </div>
                 <div
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.frontChar}
                 >
-                  {countLevel(frontChar)}
+                  {props.allSkillsData.length !== 0 ? calcLevel(frontChar) : ''}
                 </div>
                 <div
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.rightChar}
                 >
-                  {countLevel(rightChar)}
+                  {props.allSkillsData.length !== 0 ? calcLevel(rightChar) : ''}
                 </div>
               </div>
             </div>
           </header>
-          <div
-            ref={characerSkills}
-            className={`${classes['character-skills']} `}
-          >
-            {leftCharSkills.length !== 0
-              ? skillsStruct(0, props.charStateData.leftChar, skillCharCol0)
-              : charCreatorText(props.charStateData.leftChar)}
-            {skillsStruct(1, props.charStateData.frontChar, skillCharCol1)}
-            {skillsStruct(2, props.charStateData.rightChar, skillCharCol2)}
-          </div>
+          {props.allSkillsData.length !== 0 ? (
+            <div
+              ref={characerSkills}
+              className={`${classes['character-skills']} `}
+            >
+              {leftCharSkills.length !== 0
+                ? skillsStruct(0, props.charStateData.leftChar, skillCharCol0)
+                : charCreatorText(props.charStateData.leftChar)}
+              {skillsStruct(1, props.charStateData.frontChar, skillCharCol1)}
+              {skillsStruct(2, props.charStateData.rightChar, skillCharCol2)}
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </div>

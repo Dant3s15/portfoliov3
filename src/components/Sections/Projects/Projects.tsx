@@ -1,14 +1,17 @@
-import { Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import { useSpring } from 'react-spring';
 import { useScroll } from '@use-gesture/react';
 import classes from './Projects.module.scss';
 import ProjectsList from './ProjectsList';
-import AllSkills from '../../../components/Utils/AllSkills';
+// import AllSkills from '../../../components/Utils/AllSkills';
 import project1 from '../../../resources/img/projects/project1.webp';
 import project2 from '../../../resources/img/projects/project2.webp';
 import { skillInterface } from '../../../Types/types';
 
-const Projects = () => {
+interface Props {
+  allSkillsData: skillInterface[];
+}
+const Projects: FC<Props> = props => {
   //TODO
   //SPRING AND GESTURE
   const [style, set] = useSpring(() => ({
@@ -19,10 +22,12 @@ const Projects = () => {
 
   const getSkills = (charArr: any[]) => {
     const findSkill = (skillNmb: number) => {
-      AllSkills.map(skill => {
+      props.allSkillsData.map(skill => {
         return skill;
       });
-      const resultSkill = { ...AllSkills.find(skill => skill.id === skillNmb) };
+      const resultSkill = {
+        ...props.allSkillsData.find(skill => skill.id === skillNmb),
+      };
       return resultSkill;
     };
     let resultArr: any[] = [];

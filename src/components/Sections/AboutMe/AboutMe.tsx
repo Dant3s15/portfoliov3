@@ -1,11 +1,16 @@
-import { Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import Character from '../Hero/Characters/Character';
 import CardGlass from '../../UI/CardGlass';
 import ContactForm from '../ContactForm/ContactForm';
 import Projects from '../Projects/Projects';
 import Typewriter from 'typewriter-effect';
 import classes from './AboutMe.module.scss';
-const AboutMe = () => {
+import { skillInterface } from '../../../Types/types';
+
+interface Props {
+  allSkillsData: skillInterface[];
+}
+const AboutMe: FC<Props> = props => {
   return (
     <Fragment>
       <section id='about-me' className={classes['about-me']}>
@@ -73,7 +78,7 @@ const AboutMe = () => {
           </CardGlass>
         </div>
       </section>
-      <Projects />
+      <Projects allSkillsData={props.allSkillsData} />
     </Fragment>
   );
 };

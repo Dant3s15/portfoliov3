@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 //TODO remove?
 import './App.css';
 import SelectedContext from './context/selected-context';
@@ -8,7 +8,7 @@ import AboutMe from './components/Sections/AboutMe/AboutMe';
 import CharacterCreator from './components/Sections/CharacterCreator/CharacterCreator';
 import Footer from './components/Sections/Footer/Footer';
 import FutureChar from './components/Sections/FutureChar';
-
+import axios from 'axios';
 //FIREBASE
 import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
@@ -23,6 +23,7 @@ import {
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { skillInterface } from './Types/types';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA4Biu3C9D3pJF7f3cOgNfMYG4OtewhwNY',
@@ -46,6 +47,18 @@ function App() {
   // const [renderSection, setRenderSection] = useState(false);
   const [ctaButtonClicked, setCtaButtonClicked] = useState({ clicked: false });
   const [user] = useAuthState(auth);
+  const [allSkillsData, setAllSkillsData] = useState<skillInterface[]>([]);
+
+  useEffect(() => {
+    const getAllSkillsData = async () => {
+      const response = await axios.get(
+        'https://web-dev-skills-api.herokuapp.com/v1/skills'
+      );
+      setAllSkillsData(response.data);
+      return response.data;
+    };
+    getAllSkillsData();
+  }, []);
 
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
@@ -76,10 +89,18 @@ function App() {
         ></Header>
 
         <main>
-          <Hero></Hero>
+          <Hero allSkillsData={allSkillsData}></Hero>
           {/* {user ? <SignOut user={user}></SignOut> : <SignIn></SignIn>} */}
-          {whichSelected === 0 && selected ? <CharacterCreator /> : ''}
-          {whichSelected === 1 && selected ? <AboutMe /> : ''}
+          {whichSelected === 0 && selected ? (
+            <CharacterCreator allSkillsData={allSkillsData} />
+          ) : (
+            ''
+          )}
+          {whichSelected === 1 && selected ? (
+            <AboutMe allSkillsData={allSkillsData} />
+          ) : (
+            ''
+          )}
           {whichSelected === 2 && selected ? <FutureChar /> : ''}
         </main>
       </SelectedContext.Provider>
