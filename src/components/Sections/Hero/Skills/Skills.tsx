@@ -217,21 +217,19 @@ const SkillsList: FC<Props> = props => {
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.leftChar}
                 >
-                  {/* {props.allSkillsData.length !== 0
-                    ? calcLevel(leftCharSkills)
-                    : ''} */}
+                  {props.allSkillsData.length ? calcLevel(leftCharSkills) : ''}
                 </div>
                 <div
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.frontChar}
                 >
-                  {/* {props.allSkillsData.length !== 0 ? calcLevel(frontChar) : ''} */}
+                  {props.allSkillsData.length !== 0 ? calcLevel(frontChar) : ''}
                 </div>
                 <div
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.rightChar}
                 >
-                  {/* {props.allSkillsData.length !== 0 ? calcLevel(rightChar) : ''} */}
+                  {props.allSkillsData.length !== 0 ? calcLevel(rightChar) : ''}
                 </div>
               </div>
             </div>
