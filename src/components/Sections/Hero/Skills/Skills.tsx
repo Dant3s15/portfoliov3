@@ -27,7 +27,9 @@ const SkillsList: FC<Props> = props => {
   // const [allSkillsData, setAllSkillsData] = useState<skillInterface[]>([]);
 
   const ctx = useContext(SelectedContext);
+
   const calcLevel = (skill: skillInterface[]) => {
+    console.log(skill);
     const charExp = skill.reduce((acc = 0, cur) => {
       if (
         cur.names[0] === 'JavaScript' ||
@@ -215,21 +217,21 @@ const SkillsList: FC<Props> = props => {
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.leftChar}
                 >
-                  {props.allSkillsData.length !== 0
+                  {/* {props.allSkillsData.length !== 0
                     ? calcLevel(leftCharSkills)
-                    : ''}
+                    : ''} */}
                 </div>
                 <div
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.frontChar}
                 >
-                  {props.allSkillsData.length !== 0 ? calcLevel(frontChar) : ''}
+                  {/* {props.allSkillsData.length !== 0 ? calcLevel(frontChar) : ''} */}
                 </div>
                 <div
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.rightChar}
                 >
-                  {props.allSkillsData.length !== 0 ? calcLevel(rightChar) : ''}
+                  {/* {props.allSkillsData.length !== 0 ? calcLevel(rightChar) : ''} */}
                 </div>
               </div>
             </div>
