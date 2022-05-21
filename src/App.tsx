@@ -8,7 +8,7 @@ import AboutMe from './components/Sections/AboutMe/AboutMe';
 import CharacterCreator from './components/Sections/CharacterCreator/CharacterCreator';
 import Footer from './components/Sections/Footer/Footer';
 import FutureChar from './components/Sections/FutureChar';
-import axios from 'axios';
+// import axios from 'axios';
 //FIREBASE
 import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
@@ -51,11 +51,21 @@ function App() {
 
   useEffect(() => {
     const getAllSkillsData = async () => {
-      const response = await axios.get(
-        'https://web-dev-skills-api.herokuapp.com/v1/skills'
-      );
-      setAllSkillsData(response.data);
-      return response.data;
+      await fetch('https://web-dev-skills-api.herokuapp.com/v1/skills')
+        .then(data => data.json())
+        .then(data => setAllSkillsData(data))
+        .catch(error => {
+          if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log('ERR', error.message);
+          }
+        });
+      // setAllSkillsData(response.data);
+      // return response.data;
     };
     getAllSkillsData();
   }, []);
