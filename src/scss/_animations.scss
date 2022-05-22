@@ -116,6 +116,31 @@
       0 0 150px var(--color-primary);
   }
 }
+@keyframes flicker3 {
+  0%,
+  19.999%,
+  22%,
+  62.999%,
+  64%,
+  64.999%,
+  70%,
+  100% {
+    text-shadow: none;
+    color: var(--color-border-transparent);
+  }
+  20%,
+  21.999%,
+  63%,
+  63.999%,
+  65%,
+  69.999% {
+    color: #fff;
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
+      0 0 40px var(--color-primary), 0 0 80px var(--color-primary),
+      0 0 90px var(--color-primary), 0 0 100px var(--color-primary),
+      0 0 150px var(--color-primary);
+  }
+}
 
 @keyframes shine3 {
   0% {

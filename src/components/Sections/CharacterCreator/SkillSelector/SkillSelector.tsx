@@ -31,6 +31,8 @@ const SkillSelector: FC<Props> = props => {
   const searchAllRef = useRef<HTMLInputElement>(null);
   const searchAddedRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
+    //TODO check local storage for errors
+
     if (localStorage.getItem('leftChar')) {
       const localSkills = JSON.parse(localStorage.getItem('leftChar') || '');
       setAddedSkills(localSkills);

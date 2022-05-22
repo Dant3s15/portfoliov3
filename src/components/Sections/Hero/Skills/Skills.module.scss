@@ -40,7 +40,7 @@
 
 .skills-window {
   color: var(--color-primary-transparent-3);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(50px);
   width: 450px;
   min-width: 450px;
   display: flex;
@@ -132,21 +132,26 @@
   height: 100%;
   text-align: center;
   padding: 3.875rem;
-  background-color: var(--color-gray);
-  animation: lineheight var(--transition-medium) forwards;
+  // background-color: var(--color-gray);
+  // animation: lineheight var(--transition-medium) forwards;
   font-weight: 700;
 
   strong {
-    background-color: var(--color-primary);
+    // background-color: var(--color-primary);
     display: block;
     font-size: 48px;
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
     z-index: 999;
 
-    animation: shine3 7s ease-in-out alternate infinite;
+    // @include textglowsmaller;
+    // text-shadow: 0 0 4px #fff, 0 0 11px var(--color-primary),
+    //   0 0 19px var(--color-primary);
+    // animation: shine3 7s ease-in-out alternate infinite;
     transition: all var(--transition-medium);
     transition-property: transform, opacity;
+    // color: #fff;
+    animation: flicker3 5s infinite alternate;
   }
 
   @media (max-width: $small-tablet) {
@@ -162,13 +167,17 @@
 
 .skills-window:hover .skills-text:not(.abs-up) {
   //TODO
-  animation: shine4 10s ease-in-out;
+  // animation: shine4 10s ease-in-out;
   transform: scale(1.05);
 
-  animation: lineheight2 var(--transition-medium) var(--transition-short)
-    forwards;
+  // animation: lineheight2 var(--transition-medium) var(--transition-short)
+  //   forwards;
+
   strong {
-    transform: scale(1.1);
+    animation: none;
+    @include textglow;
+    color: #fff;
+    // transform: scale(1.1);
   }
 }
 .skills-list {

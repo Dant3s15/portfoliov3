@@ -29,7 +29,6 @@ const SkillsList: FC<Props> = props => {
   const ctx = useContext(SelectedContext);
 
   const calcLevel = (skill: skillInterface[]) => {
-    console.log(skill);
     const charExp = skill.reduce((acc = 0, cur) => {
       if (
         cur.names[0] === 'JavaScript' ||
@@ -184,14 +183,13 @@ const SkillsList: FC<Props> = props => {
         } `}
       >
         <div
-          className={`${classes['skills-text']} shine ${
-            ctx.ctaButtonClicked?.clicked ? classes['abs-up'] : ''
-          }`}
+          className={`${classes['skills-text']} 
+         ${ctx.ctaButtonClicked?.clicked ? classes['abs-up'] : ''}`}
         >
           <p>Choose</p>
           <p>and</p>
           <p>
-            <strong className='shine'>level up</strong>
+            <strong>level up</strong>
           </p>
           <p>your</p>
           <p>developer!</p>
@@ -223,13 +221,13 @@ const SkillsList: FC<Props> = props => {
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.frontChar}
                 >
-                  {props.allSkillsData.length !== 0 ? calcLevel(frontChar) : ''}
+                  {props.allSkillsData.length ? calcLevel(frontChar) : ''}
                 </div>
                 <div
                   className={classes['character-level__level-number']}
                   data-character={props.charStateData.rightChar}
                 >
-                  {props.allSkillsData.length !== 0 ? calcLevel(rightChar) : ''}
+                  {props.allSkillsData.length ? calcLevel(rightChar) : ''}
                 </div>
               </div>
             </div>

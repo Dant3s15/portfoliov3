@@ -7,6 +7,13 @@ interface Props {
 }
 
 const Skill2: FC<Props> = (props: Props) => {
+  const nameShortener = (name: string) => {
+    if (name.length > 20) {
+      const shortName = name.slice(0, 20);
+      return `${shortName}...`;
+    } else return name;
+  };
+
   return (
     <Fragment>
       <button className={`${classes['skill-tile']}`}>
@@ -20,7 +27,7 @@ const Skill2: FC<Props> = (props: Props) => {
           ></img>
         </div>
         <div className={classes['skill-tile-name']}>
-          <p>{props.skill.names[0]}</p>
+          <p>{nameShortener(props.skill.names[0])}</p>
         </div>
       </button>
     </Fragment>
