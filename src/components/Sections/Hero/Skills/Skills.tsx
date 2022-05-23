@@ -30,14 +30,14 @@ const SkillsList: FC<Props> = props => {
 
   const calcLevel = (skill: skillInterface[]) => {
     const charExp = skill.reduce((acc = 0, cur) => {
-      if (
-        cur.names[0] === 'JavaScript' ||
-        cur.names[0] === 'React' ||
-        cur.names[0] === 'Vue' ||
-        cur.names[0] === 'Angular'
-      ) {
-        return (acc += 3 * cur.level);
-      }
+      // if (
+      //   cur.names[0] === 'JavaScript' ||
+      //   cur.names[0] === 'React' ||
+      //   cur.names[0] === 'Vue' ||
+      //   cur.names[0] === 'Angular'
+      // ) {
+      //   return (acc += 3 * cur.level);
+      // }
       return (acc += cur.level);
     }, 0);
 
@@ -87,32 +87,50 @@ const SkillsList: FC<Props> = props => {
     };
   }, []);
 
+  // const frontCharArr = [
+  //   [1, 8],
+  //   [2, 8],
+  //   [3, 7],
+  //   [49, 4],
+  //   [26, 6],
+  //   [13, 7],
+  //   [4, 4],
+  //   [5, 6],
+  //   [8, 5],
+  //   [27, 3],
+  //   [23, 7],
+  //   [10, 5],
+  // ];
+
   const frontCharArr = [
-    [1, 8],
-    [2, 8],
-    [3, 7],
-    [49, 4],
-    [26, 6],
-    [13, 7],
-    [4, 4],
-    [5, 6],
-    [8, 5],
-    [27, 3],
-    [23, 7],
-    [10, 5],
+    ['html', 8],
+    ['css', 8],
+    ['javascript', 7],
+    ['typescript', 4],
+    ['react', 6],
+    ['sass', 7],
+    ['git', 4],
+    ['github', 6],
+    ['npm', 5],
+    ['redux', 3],
+    ['css-modules', 7],
+    ['bem', 5],
   ];
 
   const rightCharArr = props.allSkillsData.map(skill => {
-    return [skill.id, 9];
+    return [skill.name, 9];
   });
 
   const getCharSkills = (charArr: any[]) => {
-    const findSkill = (skillNmb: number, level: number) => {
-      props.allSkillsData.map(skill => {
-        return skill;
-      });
+    const findSkill = (skillName: string, level: number) => {
+      // props.allSkillsData.map(skill => {
+      //   return skill;
+      // });
+
       const resultSkill = {
-        ...props.allSkillsData.find(skill => skill.id === skillNmb),
+        ...props.allSkillsData.find(skill => {
+          return skill.name === skillName;
+        }),
       };
       const addLevel = { ...resultSkill, level: level };
 

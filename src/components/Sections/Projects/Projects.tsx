@@ -21,12 +21,12 @@ const Projects: FC<Props> = props => {
   }));
 
   const getSkills = (charArr: any[]) => {
-    const findSkill = (skillNmb: number) => {
+    const findSkill = (skillName: string) => {
       props.allSkillsData.map(skill => {
         return skill;
       });
       const resultSkill = {
-        ...props.allSkillsData.find(skill => skill.id === skillNmb),
+        ...props.allSkillsData.find(skill => skill.name === skillName),
       };
       return resultSkill;
     };
@@ -65,7 +65,18 @@ const Projects: FC<Props> = props => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: getSkills([1, 2, 3, 26, 49, 13, 23, 4, 5, 21]),
+      skills: getSkills([
+        'html',
+        'css',
+        'javascript',
+        'react',
+        'typescript',
+        'sass',
+        'css-modules',
+        'git',
+        'github',
+        'vite',
+      ]),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/DevmianS/portfoliov3',
     },
@@ -80,7 +91,18 @@ const Projects: FC<Props> = props => {
           stack.
         </Fragment>
       ),
-      skills: getSkills([1, 2, 3, 26, 49, 13, 23, 4, 5, 21]),
+      skills: getSkills([
+        'html',
+        'css',
+        'javascript',
+        'react',
+        'typescript',
+        'sass',
+        'css-modules',
+        'git',
+        'github',
+        'vite',
+      ]),
       link: 'https://devmian-tip-calculator.web.app/',
       repo: 'https://github.com/DevmianS/tip-calculator-react',
     },
@@ -95,7 +117,18 @@ const Projects: FC<Props> = props => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: getSkills([3, 2, 3, 26, 49, 13, 23, 5, 21]),
+      skills: getSkills([
+        'html',
+        'css',
+        'javascript',
+        'react',
+        'typescript',
+        'sass',
+        'css-modules',
+        'git',
+        'github',
+        'vite',
+      ]),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
@@ -110,7 +143,18 @@ const Projects: FC<Props> = props => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: getSkills([4, 2, 3, 26, 49, 13, 23, 5, 21]),
+      skills: getSkills([
+        'html',
+        'css',
+        'javascript',
+        'react',
+        'typescript',
+        'sass',
+        'css-modules',
+        'git',
+        'github',
+        'vite',
+      ]),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
@@ -125,7 +169,18 @@ const Projects: FC<Props> = props => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: getSkills([5, 2, 3, 26, 49, 12, 23, 5, 21]),
+      skills: getSkills([
+        'html',
+        'css',
+        'javascript',
+        'react',
+        'typescript',
+        'sass',
+        'css-modules',
+        'git',
+        'github',
+        'vite',
+      ]),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },

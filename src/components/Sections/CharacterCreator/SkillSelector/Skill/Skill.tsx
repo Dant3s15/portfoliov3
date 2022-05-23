@@ -9,6 +9,13 @@ interface Props {
 }
 
 const Skill: FC<Props> = props => {
+  const nameShortener = (name: string) => {
+    if (name.length > 17) {
+      const shortName = name.slice(0, 17);
+      return `${shortName}...`;
+    } else return name;
+  };
+
   const levelHandler = (
     <div className={classes.level}>
       <p key={Math.random()} className={classes['level-number']}>
@@ -22,7 +29,7 @@ const Skill: FC<Props> = props => {
       <div className={classes.icon}>
         <img src={props.data.icon} alt={`${props.data.names[0]} icon`} />
       </div>
-      <div className={classes.name}>{props.data.names[0]}</div>
+      <div className={classes.name}>{nameShortener(props.data.names[0])}</div>
       {props.data.level ? levelHandler : ''}
       <button
         onClick={() => {

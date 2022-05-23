@@ -30,6 +30,7 @@ const SkillSelector: FC<Props> = props => {
 
   const searchAllRef = useRef<HTMLInputElement>(null);
   const searchAddedRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     //TODO check local storage for errors
 
