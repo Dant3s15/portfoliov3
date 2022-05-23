@@ -10,8 +10,8 @@ interface Props {
 
 const Skill: FC<Props> = props => {
   const nameShortener = (name: string) => {
-    if (name.length > 17) {
-      const shortName = name.slice(0, 17);
+    if (name.length > 13) {
+      const shortName = name.slice(0, 13);
       return `${shortName}...`;
     } else return name;
   };

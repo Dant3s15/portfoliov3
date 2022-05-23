@@ -37,10 +37,12 @@ const SkillSelector: FC<Props> = props => {
     if (localStorage.getItem('leftChar')) {
       const localSkills = JSON.parse(localStorage.getItem('leftChar') || '');
       setAddedSkills(localSkills);
-      const localSkillsIds = localSkills.map((el: { id: number }) => el.id);
+      const localSkillsIds = localSkills.map((el: { name: string }) => el.name);
 
       setAllSkillsArr(prevAllSkills =>
-        prevAllSkills.filter(curSkill => !localSkillsIds.includes(curSkill.id))
+        prevAllSkills.filter(
+          curSkill => !localSkillsIds.includes(curSkill.name)
+        )
       );
     }
   }, []);
