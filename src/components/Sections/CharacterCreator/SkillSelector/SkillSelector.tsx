@@ -174,14 +174,17 @@ const SkillSelector: FC<Props> = props => {
     const newArr = sortSkills(skillsArr);
 
     return newArr.map((skill: skillInterface) => {
-      return (
-        <Skill
-          onSkillChange={skillChangeHandler}
-          key={skill.id}
-          data={skill}
-          sign={sign}
-        ></Skill>
-      );
+      if (skill.id === 0) {
+        return;
+      } else
+        return (
+          <Skill
+            onSkillChange={skillChangeHandler}
+            key={skill.id}
+            data={skill}
+            sign={sign}
+          ></Skill>
+        );
     });
   };
 

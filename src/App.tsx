@@ -53,7 +53,9 @@ function App() {
     const getAllSkillsData = async () => {
       await fetch('https://web-dev-skills-api.herokuapp.com/v1/skills')
         .then(data => data.json())
-        .then(data => setAllSkillsData(data))
+        .then(data => {
+          return setAllSkillsData(data.skills);
+        })
         .catch(error => {
           if (error.response) {
             console.log(error.response.data);
