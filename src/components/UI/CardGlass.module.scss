@@ -7,7 +7,8 @@
   min-height: 300px;
   width: 101%;
   height: 100%;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(20px);
+
   transform-style: preserve-3d;
   @include flexbox;
   flex-direction: column;

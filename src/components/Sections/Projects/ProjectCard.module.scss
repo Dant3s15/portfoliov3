@@ -5,7 +5,7 @@
 .project-wrapper {
   scroll-snap-align: center;
   margin-right: -12rem;
-  min-width: 370px;
+  min-width: 390px;
   max-width: 450px;
   position: relative;
   transition: all var(--transition-short-medium);
@@ -106,6 +106,7 @@
     font-size: 32px;
     padding: 6px 24px;
     margin-right: -1rem;
+    text-align: end;
     transition: all var(--transition-short);
     transition-property: text-shadow, color;
   }
@@ -132,13 +133,16 @@
   .used-skills {
     position: relative;
     width: 100%;
-    height: fit-content;
+    height: 100%; // height: fit-content;
+    height: 200px;
     @include flexbox(center, flex-end);
-    @include corner-cut3(80px);
+    // @include corner-cut3(80px);
 
     flex-wrap: wrap;
 
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+    align-content: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    // box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
   }
 }
 .used-skills-title {
@@ -159,6 +163,7 @@
   background-color: rgba(0, 0, 0, 0.788);
   @include corner-cut(140px);
   position: absolute;
+
   a {
     padding: 6px;
     width: 70px;
@@ -177,26 +182,40 @@
 }
 
 .skill {
+  // * {
+  //   border: 1px solid red;
+  // }
+  // border: 1px solid red;
   cursor: help;
-  @include flexbox(flex-end);
+  @include flexbox(space-between);
   flex-direction: column;
-  gap: 0.5rem;
-  flex: 0 1 20%;
-  width: 0;
-  min-height: 50%;
+  position: relative;
+  // height: 50%;
+  max-width: 25%;
+  // min-height: 100%;
+  flex: 1 0 20%;
 
-  padding: 6px;
-
+  border-radius: 3px;
   transition: all var(--transition-short);
+  overflow: hidden;
+  transition-property: transform, background-color, color, box-shadow;
+  // @include corner-cut(0.625rem);
 
-  transition-property: transform, background-color, color;
-  @include corner-cut(0.625rem);
   color: var(--color-primary);
   &:hover {
     background-color: var(--color-gray);
-    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 10px 0px var(--color-gray);
     transform: scale(1.1);
     z-index: 999;
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   height: 100%;
+    //   width: 100%;
+    //   box-shadow: 0px 0px 10px 0px var(--color-gray);
+    // }
   }
   &:hover &-title {
     word-break: keep-all;
@@ -205,16 +224,29 @@
   &-title {
     font-size: 12px;
     font-weight: 700;
-    white-space: nowrap;
+    // white-space: nowrap;
     overflow: hidden;
     text-align: center;
-    width: 115%;
+    width: 110%;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 3px 0;
+    // @include flexbox;
   }
-
-  img {
+  .icon {
     width: 100%;
-    max-width: 100%;
+    height: 70px;
+    @include flexbox;
+    // position: relative;
+    // aspect-ratio: 1/1;
+    // background-color: red;
+    // border: 1px solid gold;
+    padding: 4px;
+    img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
 }

@@ -72,9 +72,10 @@ const Projects: FC<Props> = props => {
         'react',
         'typescript',
         'sass',
-        'css-modules',
+        // 'css-modules',
         'git',
         'github',
+        'firebase',
         'vite',
       ]),
       link: 'https://portfolio-27cdd.web.app/',
@@ -109,26 +110,14 @@ const Projects: FC<Props> = props => {
     {
       id: 2,
       image: project1,
-      title: 'portfolio3',
+      title: 'Web-dev-API',
       overview: (
         <Fragment>
-          Frontend game-like character <strong>selector</strong> and{' '}
-          <strong>creator</strong> , create your own character or contact me and{' '}
-          <strong>LEVEL ME UP!</strong>
+          Simple <strong>API</strong> database that gives you access to the list
+          of <strong>Web development technologies</strong> and skills.
         </Fragment>
       ),
-      skills: getSkills([
-        'html',
-        'css',
-        'javascript',
-        'react',
-        'typescript',
-        'sass',
-        'css-modules',
-        'git',
-        'github',
-        'vite',
-      ]),
+      skills: getSkills(['javascript', 'expressjs', 'git', 'github']),
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
@@ -149,10 +138,10 @@ const Projects: FC<Props> = props => {
         'javascript',
         'react',
         'typescript',
-        'sass',
-        'css-modules',
-        'git',
-        'github',
+        // 'sass',
+        // 'css-modules',
+        // 'git',
+        // 'github',
         'vite',
       ]),
       link: 'https://portfolio-27cdd.web.app/',
