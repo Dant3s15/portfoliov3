@@ -5,6 +5,7 @@ import Skill2 from './Skill2';
 // import AllSkills from '../../../Utils/AllSkills';
 import SelectedContext from '../../../../context/selected-context';
 import classes from './Skills.module.scss';
+import SkillInfo from '../../../UI/SkillInfo';
 // import axios from 'axios';
 
 interface Props {
@@ -19,14 +20,43 @@ interface Props {
 
 const SkillsList: FC<Props> = props => {
   const skillsWindowRef = useRef<HTMLDivElement>(null);
-  const characerSkills = useRef<HTMLDivElement>(null);
+  const characterSkills = useRef<HTMLDivElement>(null);
   const skillCharCol0 = useRef<HTMLDivElement>(null);
   const skillCharCol1 = useRef<HTMLDivElement>(null);
   const skillCharCol2 = useRef<HTMLDivElement>(null);
   const [leftCharSkills, setLeftCharSkills] = useState([]);
   // const [allSkillsData, setAllSkillsData] = useState<skillInterface[]>([]);
+  const [showInfo, setShowInfo] = useState(false);
+  const [curSkillInfo, setCurSkillInfo] = useState<skillInterface>();
 
   const ctx = useContext(SelectedContext);
+
+  useEffect(() => {
+    //SCROLLING SKILLS TO THE TOP ON CHARACTER CHANGE
+    if (skillCharCol0.current) skillCharCol0.current.scrollTop = 0;
+    if (skillCharCol1.current) skillCharCol1.current.scrollTop = 0;
+    if (skillCharCol2.current) skillCharCol2.current.scrollTop = 0;
+  }, [ctx.whichIsSelected]);
+
+  // useEffect(() => {
+  //   // let tooltipTimeout: NodeJS.Timeout;
+  //   let tooltipTimeout = setTimeout(() => {
+  //     setShowInfo(true);
+  //   }, 1000);
+
+  //   if (isHovering) {
+  //     console.log('call');
+  //     // setCurSkillInfo(skill);
+  //   } else {
+  //     clearTimeout(tooltipTimeout);
+
+  //     setShowInfo(false);
+  //     console.log('timeout');
+  //   }
+  //   return () => {
+  //     if (!isHovering) clearTimeout(tooltipTimeout);
+  //   };
+  // }, [isHovering]);
 
   const calcLevel = (skill: skillInterface[]) => {
     const charExp = skill.reduce((acc = 0, cur) => {
@@ -159,10 +189,39 @@ const SkillsList: FC<Props> = props => {
     pos: number,
     ref: React.RefObject<HTMLDivElement>
   ) => {
-    //SCROLLING SKILLS TO THE TOP ON CHARACTER CHANGE
-    if (skillCharCol0.current) skillCharCol0.current.scrollTop = 0;
-    if (skillCharCol1.current) skillCharCol1.current.scrollTop = 0;
-    if (skillCharCol2.current) skillCharCol2.current.scrollTop = 0;
+    //TODO move it somewhere
+    // //SCROLLING SKILLS TO THE TOP ON CHARACTER CHANGE
+    // if (skillCharCol0.current) skillCharCol0.current.scrollTop = 0;
+    // if (skillCharCol1.current) skillCharCol1.current.scrollTop = 0;
+    // if (skillCharCol2.current) skillCharCol2.current.scrollTop = 0;
+
+    const skillTooltipHandler = (skill: skillInterface, action?: string) => {
+      if (action) {
+        setCurSkillInfo(skill);
+        // setIsHovering(true);
+        setShowInfo(true);
+      } else {
+        // setIsHovering(false);
+        setShowInfo(false);
+      }
+      // let tooltipTimeout: NodeJS.Timeout;
+      // if (action) {
+      //   tooltipTimeout = setTimeout(() => {
+      //     setShowInfo(true);
+      //   }, 2000);
+      //   console.log('call');
+      // } else {
+      //   tooltipTimeout = clearTimeout(tooltipTimeout);
+      //   setShowInfo(false);
+      //   console.log('timeout');
+      // }
+    };
+
+    // const skillTooltipCancel = () => {
+    //   clearTimeout(tooltipTimeout);
+    //   setShowInfo(false);
+    //   console.log('timeout');
+    // };
 
     return (
       <div ref={ref} className={classes['skill-char-col']} data-character={pos}>
@@ -170,7 +229,17 @@ const SkillsList: FC<Props> = props => {
           {skillsByCharacters[id].map(item => {
             {
               if (item.id === 0) return;
-              return <Skill2 key={item.id} skill={item} />;
+              return (
+                <Skill2
+                  key={item.id}
+                  data={{
+                    skillTooltipHandler,
+                    // skillTooltipCancel,
+                    setShowInfo,
+                  }}
+                  skill={item}
+                />
+              );
             }
           })}
         </ul>
@@ -218,41 +287,51 @@ const SkillsList: FC<Props> = props => {
           }`}
         >
           <header className={classes['skills-window__header']}>
-            <div className={classes['skills-list-name']}>
-              <h2>Unlocked Skills</h2>
-            </div>
+            <SkillInfo data={{ showInfo }} skill={curSkillInfo}></SkillInfo>
+
             <div
-              className={`${classes['character-level']}`}
-              id='character-level'
+              className={`${classes['header-wrapper']} ${
+                showInfo ? classes['tooltip-open'] : ''
+              }`}
             >
-              <div className={classes['character-level__level-title']}>
-                level
+              <div className={classes['skills-list-name']}>
+                <h2>Unlocked Skills</h2>
               </div>
-              <div className={classes['character-levels']}>
-                <div
-                  className={classes['character-level__level-number']}
-                  data-character={props.charStateData.leftChar}
-                >
-                  {props.allSkillsData.length ? calcLevel(leftCharSkills) : ''}
+              <div
+                className={`${classes['character-level']}`}
+                id='character-level'
+              >
+                <div className={classes['character-level__level-title']}>
+                  level
                 </div>
-                <div
-                  className={classes['character-level__level-number']}
-                  data-character={props.charStateData.frontChar}
-                >
-                  {props.allSkillsData.length ? calcLevel(frontChar) : ''}
-                </div>
-                <div
-                  className={classes['character-level__level-number']}
-                  data-character={props.charStateData.rightChar}
-                >
-                  {props.allSkillsData.length ? calcLevel(rightChar) : ''}
+                <div className={classes['character-levels']}>
+                  <div
+                    className={classes['character-level__level-number']}
+                    data-character={props.charStateData.leftChar}
+                  >
+                    {props.allSkillsData.length
+                      ? calcLevel(leftCharSkills)
+                      : ''}
+                  </div>
+                  <div
+                    className={classes['character-level__level-number']}
+                    data-character={props.charStateData.frontChar}
+                  >
+                    {props.allSkillsData.length ? calcLevel(frontChar) : ''}
+                  </div>
+                  <div
+                    className={classes['character-level__level-number']}
+                    data-character={props.charStateData.rightChar}
+                  >
+                    {props.allSkillsData.length ? calcLevel(rightChar) : ''}
+                  </div>
                 </div>
               </div>
             </div>
           </header>
           {props.allSkillsData.length !== 0 ? (
             <div
-              ref={characerSkills}
+              ref={characterSkills}
               className={`${classes['character-skills']} `}
             >
               {leftCharSkills.length !== 0

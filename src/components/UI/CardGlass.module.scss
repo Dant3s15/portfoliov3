@@ -4,9 +4,9 @@
 
 .card--glass {
   border-radius: 3px;
-  min-height: 300px;
-  width: 101%;
-  height: 100%;
+  // min-height: 300px;
+  // width: 101%;
+  // height: 100%;
   backdrop-filter: blur(20px);
 
   transform-style: preserve-3d;
@@ -14,7 +14,7 @@
   flex-direction: column;
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
-  position: relative;
+  // position: relative;
   border: 1px solid var(--color-border-transparent);
   border-right: 7px solid var(--color-border-transparent);
   border-bottom: 5px solid var(--color-border-transparent);

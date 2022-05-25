@@ -1,12 +1,19 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useState } from 'react';
 import { skillInterface } from '../../../../Types/types';
+import SkillInfo from '../../../UI/SkillInfo';
 import classes from './Skill2.module.scss';
 
 interface Props {
   skill: skillInterface;
+  data: {
+    skillTooltipHandler: (skill: skillInterface, action?: string) => void;
+    // skillTooltipCancel: () => void;
+    setShowInfo: React.Dispatch<React.SetStateAction<boolean>>;
+  };
 }
 
 const Skill2: FC<Props> = (props: Props) => {
+  // const [showInfo, setShowInfo] = useState(false);
   const nameShortener = (name: string) => {
     if (name.length > 20) {
       const shortName = name.slice(0, 20);
@@ -15,8 +22,19 @@ const Skill2: FC<Props> = (props: Props) => {
   };
 
   return (
-    <Fragment>
-      <button className={`${classes['skill-tile']}`}>
+    <div className={classes.wrapper}>
+      {/* {showInfo ? <SkillInfo skill={props.skill}></SkillInfo> : ''} */}
+      <button
+        className={`${classes['skill-tile']}`}
+        onMouseDown={() => {
+          props.data.skillTooltipHandler(props.skill, 'add');
+
+          // setShowInfo(true);
+        }}
+        onMouseLeave={() => {
+          props.data.skillTooltipHandler(props.skill);
+        }}
+      >
         <div className={classes['skill-tile-level']}>
           <p>{props.skill.level}</p>
         </div>
@@ -30,7 +48,7 @@ const Skill2: FC<Props> = (props: Props) => {
           <p>{nameShortener(props.skill.names[0])}</p>
         </div>
       </button>
-    </Fragment>
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@
 .skill-tile {
   position: relative;
   z-index: 888;
-
+  cursor: help;
   height: 120px;
   min-width: 120px;
   overflow: hidden;
@@ -117,4 +117,8 @@
       }
     }
   }
+}
+.wrapper {
+  // border: 1px solid red;
+  position: relative;
 }

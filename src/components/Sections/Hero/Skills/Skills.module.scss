@@ -100,8 +100,7 @@
   }
 
   &__header {
-    display: flex;
-    align-items: center;
+    @include flexbox;
     justify-content: space-between;
     color: var(--color-gray);
     width: 90%;
@@ -110,11 +109,17 @@
     margin: 1rem 1rem 0 1rem;
     position: relative;
     @include corner-cut(30px, var(--color-primary), 2px, 29px);
+    height: 140px;
   }
 
   @media (max-width: $big-tablet) {
     transform: rotateY(0);
   }
+}
+.header-wrapper {
+  @include flexbox;
+  position: absolute;
+  transition: transform var(--transition-short);
 }
 
 .skills-text {
@@ -241,6 +246,7 @@
 }
 
 .skill-char-col {
+  position: relative;
   width: 100%;
   height: 100%;
   overflow-y: scroll;
@@ -402,4 +408,8 @@
   @media (max-width: $big-tablet) {
     transform: scale(1) !important;
   }
+}
+
+.tooltip-open {
+  transform: translateY(-130px);
 }
