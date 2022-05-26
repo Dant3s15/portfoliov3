@@ -27,6 +27,8 @@ const SkillSelector: FC<Props> = props => {
     props.allSkillsData[0]
   );
   const [levelIsSet, setlevelIsSet] = useState(false);
+  // const [showTooltip, setShowTooltip] = useState(false);
+  const [whichTooltip, setWhichTooltip] = useState(undefined);
 
   const searchAllRef = useRef<HTMLInputElement>(null);
   const searchAddedRef = useRef<HTMLInputElement>(null);
@@ -182,6 +184,10 @@ const SkillSelector: FC<Props> = props => {
       } else
         return (
           <Skill
+            onTooltip={{
+              whichTooltip,
+              setWhichTooltip,
+            }}
             onSkillChange={skillChangeHandler}
             key={skill.id}
             data={skill}

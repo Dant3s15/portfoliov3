@@ -3,11 +3,14 @@
 @import '../../../../../scss/animations';
 
 .skill {
+  // * {
+  //   border: 1px solid red;
+  // }
   @include corner-cut(15px, var(--color-primary), 2px, 14px);
   z-index: 10;
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
-  transform: translate3d(0, 0, 0);
+  // transform: translate3d(0, 0, 0);
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
   background-color: var(--color-border-transparent);
@@ -16,12 +19,12 @@
   width: 95%;
   min-height: 50px;
   max-height: 50px;
-
+  flex: 1 0 auto;
   border-radius: 3px;
   transition: all var(--transition-short);
-  transition-property: transform;
-
-  cursor: pointer;
+  transition-property: transform, height, max-height;
+  position: relative;
+  cursor: help;
 
   &:not(:last-child) {
     margin-bottom: 8px;
@@ -121,5 +124,24 @@
     .level {
       color: #fff;
     }
+  }
+}
+
+.has-tooltip {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 0.2fr 1fr 0.2fr;
+  height: 150px;
+  max-height: 150px;
+  transition: all var(--transition-short);
+  transition-property: transform, height, max-height;
+  .manage-skill {
+    grid-column: 3/4;
+    grid-row: -1/-2;
+  }
+  .icon,
+  .name {
+    justify-self: start;
+    // padding-left: 8px;
   }
 }

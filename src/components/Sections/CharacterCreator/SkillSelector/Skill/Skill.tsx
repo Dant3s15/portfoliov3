@@ -1,14 +1,21 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { skillInterface } from '../../../../../Types/types';
+import SkillTooltip from '../../../../UI/SkillTooltip';
 import classes from './Skill.module.scss';
 
 interface Props {
   onSkillChange: Function;
+  onTooltip?: {
+    whichTooltip: number | undefined;
+    setWhichTooltip: Function;
+  };
   data: skillInterface;
   sign?: string;
 }
 
 const Skill: FC<Props> = props => {
+  // const [showTooltip, setShowTooltip] = useState(false);
+
   const nameShortener = (name: string) => {
     if (name.length > 13) {
       const shortName = name.slice(0, 13);
@@ -25,22 +32,49 @@ const Skill: FC<Props> = props => {
   );
 
   return (
-    <div className={classes.skill}>
+    <div
+      className={`${classes.skill} ${
+        props?.onTooltip?.whichTooltip === props?.data?.id
+          ? classes['has-tooltip']
+          : ''
+      }`}
+      onClick={() => {
+        console.log('click');
+        // props.onTooltip.setShowTooltip(true);
+        if (props?.data?.id !== props?.onTooltip?.whichTooltip)
+          props?.onTooltip?.setWhichTooltip(props?.data?.id);
+        else props.onTooltip.setWhichTooltip(undefined);
+      }}
+    >
       <div className={classes.icon}>
         <img src={props.data.icon} alt={`${props.data.names[0]} icon`} />
       </div>
       <div className={classes.name}>{nameShortener(props.data.names[0])}</div>
       {props.data.level ? levelHandler : ''}
       <button
-        onClick={() => {
+        onClick={e => {
+          e.stopPropagation();
           props.onSkillChange(props.data);
         }}
         className={classes['manage-skill']}
       >
         <p>{props.sign}</p>
       </button>
+      {props?.onTooltip?.whichTooltip === props?.data?.id ? (
+        <SkillTooltip data={props.data} />
+      ) : (
+        ''
+      )}
     </div>
   );
 };
+
+// interface Skill {
+//   data: skillInterface;
+// }
+
+// const Tooltip: FC<Skill> = props => {
+//   return <div>{props.data.name}</div>;
+// };
 
 export default Skill;

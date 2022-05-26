@@ -118,6 +118,9 @@
 }
 .header-wrapper {
   @include flexbox;
+  // border: 1px solid red;
+  width: 100%;
+  // justify-content: space-between;
   position: absolute;
   transition: transform var(--transition-short);
 }
@@ -356,11 +359,11 @@
     }
   }
   @media (max-width: $big-tablet) {
-    height: 4rem;
+    height: 5rem;
     padding: 0.3125rem;
     // margin: 0;
     &__level-number {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       bottom: 7px;
     }
     &__level-title {
@@ -368,9 +371,9 @@
     }
   }
   @media (max-width: $mobile) {
-    height: 3rem;
+    height: 4rem;
     &__level-number {
-      font-size: 1rem;
+      font-size: 1.375rem;
       bottom: 4px;
     }
     &__level-title {

@@ -45,6 +45,9 @@
     font-weight: 700;
     font-size: 14px;
     text-align: center;
+    @media (max-width: $mobile) {
+      font-size: 10px;
+    }
   }
   .description {
     text-align: start;
@@ -52,6 +55,9 @@
     // text-overflow: ellipsis;
     // height: 100%;
     // justify-self: center;
+    @media (max-width: $mobile) {
+      font-size: 10px;
+    }
   }
 }
 
