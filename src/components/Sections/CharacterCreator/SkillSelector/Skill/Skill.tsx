@@ -60,11 +60,11 @@ const Skill: FC<Props> = props => {
       >
         <p>{props.sign}</p>
       </button>
-      {props?.onTooltip?.whichTooltip === props?.data?.id ? (
-        <SkillTooltip data={props.data} />
-      ) : (
+      {/* {props?.onTooltip?.whichTooltip === props?.data?.id ? ( */}
+      <SkillTooltip data={props.data} />
+      {/* ) : (
         ''
-      )}
+      )} */}
     </div>
   );
 };

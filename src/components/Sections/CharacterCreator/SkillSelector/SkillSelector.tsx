@@ -144,6 +144,7 @@ const SkillSelector: FC<Props> = props => {
   };
   const skillAddHandler = (skill: skillInterface) => {
     if (levelIsSet) {
+      setWhichTooltip(undefined);
       setIsAdded(true);
       skillChangeHandler(skill);
     } else {

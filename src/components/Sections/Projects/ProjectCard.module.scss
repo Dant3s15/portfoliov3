@@ -86,7 +86,8 @@
     filter: brightness(0.9);
     transition: var(--transition-short);
     &:hover {
-      filter: brightness(1.1);
+      filter: brightness(1.05);
+      transform: scale(1.1);
     }
   }
 
