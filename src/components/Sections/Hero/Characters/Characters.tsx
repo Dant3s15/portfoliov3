@@ -6,7 +6,6 @@ import Typewriter from 'typewriter-effect';
 import classes from './Characters.module.scss';
 
 interface Props {
-  // selectedState: any;
   charState: (data: any) => void;
   heroRef: React.MutableRefObject<null>;
 }
@@ -126,21 +125,17 @@ const Characters: FC<Props> = props => {
       setChars(direc);
       ctx.setSelected?.(true);
       renderContentHandler(charConstPos);
-
-      // ctx.setRenderSection?.(false);
     }
     if (charData === 2) {
       direc = -1;
       setChars(direc);
       ctx.setSelected?.(true);
       renderContentHandler(charConstPos);
-      // ctx.setRenderSection?.(false);
     }
     //disable selected if background is clicked
     if (e.target === charactersRef.current) {
       if (ctx.setSelected) ctx.setSelected(false);
       renderContentHandler(0);
-      // ctx.setRenderSection?.(false);
     }
   };
 

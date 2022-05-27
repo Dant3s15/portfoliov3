@@ -48,12 +48,15 @@ function App() {
   const [ctaButtonClicked, setCtaButtonClicked] = useState({ clicked: false });
   const [user] = useAuthState(auth);
   const [allSkillsData, setAllSkillsData] = useState<skillInterface[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getAllSkillsData = async () => {
       await fetch('https://web-dev-skills-api.herokuapp.com/v1/skills')
         .then(data => data.json())
         .then(data => {
+          setIsLoading(false);
+          console.log('Loaded skills');
           return setAllSkillsData(data.skills);
         })
         .catch(error => {
@@ -69,7 +72,10 @@ function App() {
       // setAllSkillsData(response.data);
       // return response.data;
     };
-    getAllSkillsData();
+
+    setTimeout(() => {
+      getAllSkillsData();
+    }, 5000);
   }, []);
 
   const signInWithGoogle = () => {
@@ -101,10 +107,13 @@ function App() {
         ></Header>
 
         <main>
-          <Hero allSkillsData={allSkillsData}></Hero>
+          <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
           {/* {user ? <SignOut user={user}></SignOut> : <SignIn></SignIn>} */}
           {whichSelected === 0 && selected ? (
-            <CharacterCreator allSkillsData={allSkillsData} />
+            <CharacterCreator
+              allSkillsData={allSkillsData}
+              isLoading={isLoading}
+            />
           ) : (
             ''
           )}

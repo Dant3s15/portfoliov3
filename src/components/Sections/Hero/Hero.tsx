@@ -7,6 +7,7 @@ import { useRef } from 'react';
 import { skillInterface } from '../../../Types/types';
 interface Props {
   allSkillsData: skillInterface[];
+  isLoading: boolean;
 }
 
 const Hero: FC<Props> = props => {
@@ -50,10 +51,10 @@ const Hero: FC<Props> = props => {
       <div className={classes['character-selection']}>
         <Characters
           heroRef={heroRef}
-          // selectedState={ctx}
           charState={charStateDataHandler}
         ></Characters>
         <SkillsList
+          isLoading={props.isLoading}
           className={classes['character-skills']}
           charStateData={charState}
           allSkillsData={props.allSkillsData}

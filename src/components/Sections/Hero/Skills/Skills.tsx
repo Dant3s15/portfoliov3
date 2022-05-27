@@ -6,6 +6,7 @@ import Skill2 from './Skill2';
 import SelectedContext from '../../../../context/selected-context';
 import classes from './Skills.module.scss';
 import SkillInfo from '../../../UI/SkillInfo';
+import LoadingSpinner from '../../../UI/LoadingSpinner';
 // import axios from 'axios';
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
     rightChar: number;
   };
   allSkillsData: skillInterface[];
+  isLoading: boolean;
 }
 
 const SkillsList: FC<Props> = props => {
@@ -38,36 +40,8 @@ const SkillsList: FC<Props> = props => {
     if (skillCharCol2.current) skillCharCol2.current.scrollTop = 0;
   }, [ctx.whichIsSelected]);
 
-  // useEffect(() => {
-  //   // let tooltipTimeout: NodeJS.Timeout;
-  //   let tooltipTimeout = setTimeout(() => {
-  //     setShowInfo(true);
-  //   }, 1000);
-
-  //   if (isHovering) {
-  //     console.log('call');
-  //     // setCurSkillInfo(skill);
-  //   } else {
-  //     clearTimeout(tooltipTimeout);
-
-  //     setShowInfo(false);
-  //     console.log('timeout');
-  //   }
-  //   return () => {
-  //     if (!isHovering) clearTimeout(tooltipTimeout);
-  //   };
-  // }, [isHovering]);
-
   const calcLevel = (skill: skillInterface[]) => {
     const charExp = skill.reduce((acc = 0, cur) => {
-      // if (
-      //   cur.names[0] === 'JavaScript' ||
-      //   cur.names[0] === 'React' ||
-      //   cur.names[0] === 'Vue' ||
-      //   cur.names[0] === 'Angular'
-      // ) {
-      //   return (acc += 3 * cur.level);
-      // }
       return (acc += cur.level);
     }, 0);
 
@@ -80,16 +54,6 @@ const SkillsList: FC<Props> = props => {
     const result = percentage(charExp, totalExp);
     return Math.ceil(result);
   };
-  // useEffect(() => {
-  //   const getAllSkillsData = async () => {
-  //     const response = await axios.get(
-  //       'https://web-dev-skills-api.herokuapp.com/v1/skills'
-  //     );
-  //     setAllSkillsData(response.data);
-  //     return response.data;
-  //   };
-  //   getAllSkillsData();
-  // }, []);
 
   useEffect(() => {
     if (ctx.isSelected && skillsWindowRef.current) {
@@ -117,21 +81,6 @@ const SkillsList: FC<Props> = props => {
     };
   }, []);
 
-  // const frontCharArr = [
-  //   [1, 8],
-  //   [2, 8],
-  //   [3, 7],
-  //   [49, 4],
-  //   [26, 6],
-  //   [13, 7],
-  //   [4, 4],
-  //   [5, 6],
-  //   [8, 5],
-  //   [27, 3],
-  //   [23, 7],
-  //   [10, 5],
-  // ];
-
   const frontCharArr = [
     ['html', 8],
     ['css', 8],
@@ -153,10 +102,6 @@ const SkillsList: FC<Props> = props => {
 
   const getCharSkills = (charArr: any[]) => {
     const findSkill = (skillName: string, level: number) => {
-      // props.allSkillsData.map(skill => {
-      //   return skill;
-      // });
-
       const resultSkill = {
         ...props.allSkillsData.find(skill => {
           return skill.name === skillName;
@@ -189,42 +134,39 @@ const SkillsList: FC<Props> = props => {
     pos: number,
     ref: React.RefObject<HTMLDivElement>
   ) => {
-    //TODO move it somewhere
-    // //SCROLLING SKILLS TO THE TOP ON CHARACTER CHANGE
-    // if (skillCharCol0.current) skillCharCol0.current.scrollTop = 0;
-    // if (skillCharCol1.current) skillCharCol1.current.scrollTop = 0;
-    // if (skillCharCol2.current) skillCharCol2.current.scrollTop = 0;
-
     const skillTooltipHandler = (skill: skillInterface, action?: string) => {
       if (action) {
         setCurSkillInfo(skill);
-        // setIsHovering(true);
         setShowInfo(true);
       } else {
-        // setIsHovering(false);
         setShowInfo(false);
       }
-      // let tooltipTimeout: NodeJS.Timeout;
-      // if (action) {
-      //   tooltipTimeout = setTimeout(() => {
-      //     setShowInfo(true);
-      //   }, 2000);
-      //   console.log('call');
-      // } else {
-      //   tooltipTimeout = clearTimeout(tooltipTimeout);
-      //   setShowInfo(false);
-      //   console.log('timeout');
-      // }
     };
-
-    // const skillTooltipCancel = () => {
-    //   clearTimeout(tooltipTimeout);
-    //   setShowInfo(false);
-    //   console.log('timeout');
-    // };
 
     return (
       <div ref={ref} className={classes['skill-char-col']} data-character={pos}>
+        {/* {props.isLoading ? (
+          <LoadingSpinner></LoadingSpinner>
+        ) : (
+          <ul className={classes['skills-list']}>
+            {skillsByCharacters[id].map(item => {
+              {
+                if (item.id === 0) return;
+                return (
+                  <Skill2
+                    key={item.id}
+                    data={{
+                      skillTooltipHandler,
+                      setShowInfo,
+                    }}
+                    skill={item}
+                  />
+                );
+              }
+            })}
+          </ul>
+        )} */}
+        {/* {props.isLoading && <LoadingSpinner></LoadingSpinner>} */}
         <ul className={classes['skills-list']}>
           {skillsByCharacters[id].map(item => {
             {
@@ -234,7 +176,6 @@ const SkillsList: FC<Props> = props => {
                   key={item.id}
                   data={{
                     skillTooltipHandler,
-                    // skillTooltipCancel,
                     setShowInfo,
                   }}
                   skill={item}
@@ -334,12 +275,14 @@ const SkillsList: FC<Props> = props => {
               ref={characterSkills}
               className={`${classes['character-skills']} `}
             >
-              {leftCharSkills.length !== 0
+              {leftCharSkills.length
                 ? skillsStruct(0, props.charStateData.leftChar, skillCharCol0)
                 : charCreatorText(props.charStateData.leftChar)}
               {skillsStruct(1, props.charStateData.frontChar, skillCharCol1)}
               {skillsStruct(2, props.charStateData.rightChar, skillCharCol2)}
             </div>
+          ) : ctx?.ctaButtonClicked?.clicked ? (
+            <LoadingSpinner></LoadingSpinner>
           ) : (
             ''
           )}

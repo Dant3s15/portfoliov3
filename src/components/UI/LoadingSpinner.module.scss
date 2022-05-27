@@ -1,0 +1,22 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.spinner {
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: 3.25rem;
+
+  text-transform: uppercase;
+  font-weight: 700;
+  @include textglow;
+  @include flexbox;
+  // background-color: re;
+
+  .wrapper {
+    display: inline-block;
+    text-align: left;
+    width: 18.75rem;
+    // border: 1px solid red;
+  }
+}

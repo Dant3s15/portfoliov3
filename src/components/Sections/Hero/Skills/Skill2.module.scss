@@ -1,3 +1,4 @@
+@import '../../../../scss/animations';
 @import '../../../../scss/variables';
 @import '../../../../scss/mixins';
 
@@ -9,7 +10,9 @@
   min-width: 120px;
   overflow: hidden;
   border-radius: 3px;
-
+  // transform: rotateY(90deg);
+  // transform-origin: bottom;
+  // animation: tilepopup 2s forwards;
   @include flexbox;
   flex-direction: column;
   transition: var(--transition-short);

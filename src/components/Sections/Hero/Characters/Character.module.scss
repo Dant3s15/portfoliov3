@@ -98,7 +98,7 @@
   &:hover &__name {
     animation: jumpnorotate 3s infinite;
     color: var(--color-primary);
-    @include textglow;
+    @include textglowmedium;
   }
 }
 

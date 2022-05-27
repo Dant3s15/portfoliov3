@@ -5,13 +5,15 @@ import Skill from './Skill/Skill';
 import SkillAddWindow from './SkillAddWindow';
 import ButtonBig from '../../../UI/ButtonBig';
 import classes from './SkillSelector.module.scss';
+import LoadingSpinner from '../../../UI/LoadingSpinner';
 import { skillInterface } from '../../../../Types/types';
 
 interface Props {
   allSkillsData: skillInterface[];
+  isLoading: boolean;
 }
 const SkillSelector: FC<Props> = props => {
-  const [allSkillsArr, setAllSkillsArr] = useState(props.allSkillsData);
+  const [allSkillsArr, setAllSkillsArr] = useState<skillInterface[]>([]);
   const [allSkillsArrFiltered, setAllSkillsArrFiltered] =
     useState(allSkillsArr);
   const [allSkillsIsFiltered, setAllSkillsIsFiltered] = useState(false);
@@ -33,6 +35,14 @@ const SkillSelector: FC<Props> = props => {
   const searchAllRef = useRef<HTMLInputElement>(null);
   const searchAddedRef = useRef<HTMLInputElement>(null);
 
+  //TODO fix allskills not loading when opened before getting skill data
+  useEffect(() => {
+    // const data = props.allSkillsData;
+    setAllSkillsArr(props.allSkillsData);
+    // console.log(data);
+    console.log(allSkillsArr);
+  }, [props.isLoading]);
+
   useEffect(() => {
     //TODO check local storage for errors
 
@@ -48,6 +58,7 @@ const SkillSelector: FC<Props> = props => {
       );
     }
   }, []);
+  //refresh all skills data when skill selector is rendered but skills not yet fetched
 
   const filterSkills = () => {
     const searchAllVal = searchAllRef.current?.value.toLowerCase();
@@ -201,65 +212,76 @@ const SkillSelector: FC<Props> = props => {
   return (
     <Fragment>
       <CardGlass className={classes['skill-selector--card']}>
-        <div className={classes['skill-selector']}>
-          {isAdding && (
-            <SkillAddWindow
-              onSetLevel={setlevelIsSet}
-              onCancel={cancelAddingHandler}
-              onSkillAdd={skillAddHandler}
-              skillData={skillAddingData}
-            ></SkillAddWindow>
-          )}
-          <div className={classes['skills-selector__grid']}>
-            <div className={classes['title-row']}>
-              <p className={classes['title']}>All Skills</p>
-              <div className={classes['search-field']}>
-                <label className={classes['search-label']} htmlFor='search-all'>
-                  Search
-                </label>
-                <input
-                  onChange={filterSkills}
-                  ref={searchAllRef}
-                  id='search-all'
-                  type='text'
-                />
+        {props.isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <div className={classes['skill-selector']}>
+            {isAdding && (
+              <SkillAddWindow
+                onSetLevel={setlevelIsSet}
+                onCancel={cancelAddingHandler}
+                onSkillAdd={skillAddHandler}
+                skillData={skillAddingData}
+              ></SkillAddWindow>
+            )}
+            <div className={classes['skills-selector__grid']}>
+              <div className={classes['title-row']}>
+                <p className={classes['title']}>All Skills</p>
+                <div className={classes['search-field']}>
+                  <label
+                    className={classes['search-label']}
+                    htmlFor='search-all'
+                  >
+                    Search
+                  </label>
+                  <input
+                    onChange={filterSkills}
+                    ref={searchAllRef}
+                    id='search-all'
+                    type='text'
+                  />
+                </div>
+              </div>
+              <div className={classes['title-row']}>
+                <p className={classes['title']}>Added Skills</p>
+                <div className={classes['search-field']}>
+                  <label
+                    className={classes['search-label']}
+                    htmlFor='search-added'
+                  >
+                    Search
+                  </label>
+                  <input
+                    onChange={filterSkills}
+                    ref={searchAddedRef}
+                    id='search-added'
+                    type='text'
+                  />
+                </div>
+              </div>
+              {!props.isLoading ? (
+                <div className={`${classes['skills-menu']} ${classes.all}`}>
+                  {allSkillsIsFiltered === false
+                    ? renderSkills(allSkillsArr, '+')
+                    : renderSkills(allSkillsArrFiltered, '+')}
+                </div>
+              ) : (
+                ''
+              )}
+              <div className={`${classes['skills-menu']} ${classes.added}`}>
+                {addedSkillsIsFiltered === false
+                  ? renderSkills(addedSkills, '-')
+                  : renderSkills(addedSkillsFiltered, '-')}
               </div>
             </div>
-            <div className={classes['title-row']}>
-              <p className={classes['title']}>Added Skills</p>
-              <div className={classes['search-field']}>
-                <label
-                  className={classes['search-label']}
-                  htmlFor='search-added'
-                >
-                  Search
-                </label>
-                <input
-                  onChange={filterSkills}
-                  ref={searchAddedRef}
-                  id='search-added'
-                  type='text'
-                />
-              </div>
-            </div>
-            <div className={`${classes['skills-menu']} ${classes.all}`}>
-              {allSkillsIsFiltered === false
-                ? renderSkills(allSkillsArr, '+')
-                : renderSkills(allSkillsArrFiltered, '+')}
-            </div>
-            <div className={`${classes['skills-menu']} ${classes.added}`}>
-              {addedSkillsIsFiltered === false
-                ? renderSkills(addedSkills, '-')
-                : renderSkills(addedSkillsFiltered, '-')}
-            </div>
+            <ButtonBig
+              onClick={saveCharHandler}
+              type='submit'
+              text='Save Character'
+              isGreyedOut={addedSkills.length === 0 ? true : false}
+            ></ButtonBig>
           </div>
-          <ButtonBig
-            onClick={saveCharHandler}
-            type='submit'
-            text='Save Character'
-            isGreyedOut={addedSkills.length === 0 ? true : false}
-          ></ButtonBig>
-        </div>
+        )}
       </CardGlass>
     </Fragment>
   );
