@@ -1,8 +1,11 @@
 import { FC, useEffect, useState } from 'react';
+import { skillInterface } from '../../../Types/types';
 import CardProject from './ProjectCard';
 
 interface ProjectsProps {
   data?: any;
+  isLoading: boolean;
+  allSkillsData: skillInterface[];
 }
 
 const ProjectsList: FC<ProjectsProps> = props => {
@@ -29,6 +32,8 @@ const ProjectsList: FC<ProjectsProps> = props => {
 
   return props.data.array.map((project: any) => (
     <CardProject
+      allSkillsData={props.allSkillsData}
+      isLoading={props.isLoading}
       style={props.data.style}
       selectedState={{
         whichSelected,

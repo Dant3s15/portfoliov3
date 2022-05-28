@@ -9,6 +9,7 @@ import { skillInterface } from '../../../Types/types';
 
 interface Props {
   allSkillsData: skillInterface[];
+  isLoading: boolean;
 }
 const AboutMe: FC<Props> = props => {
   return (
@@ -78,7 +79,10 @@ const AboutMe: FC<Props> = props => {
           </CardGlass>
         </div>
       </section>
-      <Projects allSkillsData={props.allSkillsData} />
+      <Projects
+        allSkillsData={props.allSkillsData}
+        isLoading={props.isLoading}
+      />
     </Fragment>
   );
 };

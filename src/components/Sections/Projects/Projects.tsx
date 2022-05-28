@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useEffect, useState } from 'react';
 import { useSpring } from 'react-spring';
 import { useScroll } from '@use-gesture/react';
 import classes from './Projects.module.scss';
@@ -10,6 +10,7 @@ import { skillInterface } from '../../../Types/types';
 
 interface Props {
   allSkillsData: skillInterface[];
+  isLoading: boolean;
 }
 const Projects: FC<Props> = props => {
   //TODO
@@ -65,7 +66,7 @@ const Projects: FC<Props> = props => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: getSkills([
+      skills: [
         'html',
         'css',
         'javascript',
@@ -77,7 +78,7 @@ const Projects: FC<Props> = props => {
         'github',
         'firebase',
         'vite',
-      ]),
+      ],
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/DevmianS/portfoliov3',
     },
@@ -92,7 +93,7 @@ const Projects: FC<Props> = props => {
           stack.
         </Fragment>
       ),
-      skills: getSkills([
+      skills: [
         'html',
         'css',
         'javascript',
@@ -103,7 +104,7 @@ const Projects: FC<Props> = props => {
         'git',
         'github',
         'vite',
-      ]),
+      ],
       link: 'https://devmian-tip-calculator.web.app/',
       repo: 'https://github.com/DevmianS/tip-calculator-react',
     },
@@ -117,62 +118,58 @@ const Projects: FC<Props> = props => {
           of <strong>Web development technologies</strong> and skills.
         </Fragment>
       ),
-      skills: getSkills(['javascript', 'expressjs', 'git', 'github']),
+      skills: ['javascript', 'expressjs', 'git', 'github'],
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
-    {
-      id: 3,
-      image: project1,
-      title: 'portfolio4',
-      overview: (
-        <Fragment>
-          Frontend game-like character <strong>selector</strong> and{' '}
-          <strong>creator</strong> , create your own character or contact me and{' '}
-          <strong>LEVEL ME UP!</strong>
-        </Fragment>
-      ),
-      skills: getSkills([
-        'html',
-        'css',
-        'javascript',
-        'react',
-        'typescript',
-        // 'sass',
-        // 'css-modules',
-        // 'git',
-        // 'github',
-        'vite',
-      ]),
-      link: 'https://portfolio-27cdd.web.app/',
-      repo: 'https://github.com/Dant3s15/portfoliov3',
-    },
-    {
-      id: 4,
-      image: project1,
-      title: 'portfolio5',
-      overview: (
-        <Fragment>
-          Frontend game-like character <strong>selector</strong> and{' '}
-          <strong>creator</strong> , create your own character or contact me and{' '}
-          <strong>LEVEL ME UP!</strong>
-        </Fragment>
-      ),
-      skills: getSkills([
-        'html',
-        'css',
-        'javascript',
-        'react',
-        'typescript',
-        'sass',
-        'css-modules',
-        'git',
-        'github',
-        'vite',
-      ]),
-      link: 'https://portfolio-27cdd.web.app/',
-      repo: 'https://github.com/Dant3s15/portfoliov3',
-    },
+    // {
+    //   id: 3,
+    //   image: project1,
+    //   title: 'portfolio4',
+    //   overview: (
+    //     <Fragment>
+    //       Frontend game-like character <strong>selector</strong> and{' '}
+    //       <strong>creator</strong> , create your own character or contact me and{' '}
+    //       <strong>LEVEL ME UP!</strong>
+    //     </Fragment>
+    //   ),
+    //   skills: getSkills([
+    //     'html',
+    //     'css',
+    //     'javascript',
+    //     'react',
+    //     'typescript',
+    //     'vite',
+    //   ]),
+    //   link: 'https://portfolio-27cdd.web.app/',
+    //   repo: 'https://github.com/Dant3s15/portfoliov3',
+    // },
+    // {
+    //   id: 4,
+    //   image: project1,
+    //   title: 'portfolio5',
+    //   overview: (
+    //     <Fragment>
+    //       Frontend game-like character <strong>selector</strong> and{' '}
+    //       <strong>creator</strong> , create your own character or contact me and{' '}
+    //       <strong>LEVEL ME UP!</strong>
+    //     </Fragment>
+    //   ),
+    //   skills: getSkills([
+    //     'html',
+    //     'css',
+    //     'javascript',
+    //     'react',
+    //     'typescript',
+    //     'sass',
+    //     'css-modules',
+    //     'git',
+    //     'github',
+    //     'vite',
+    //   ]),
+    //   link: 'https://portfolio-27cdd.web.app/',
+    //   repo: 'https://github.com/Dant3s15/portfoliov3',
+    // },
   ];
 
   return (
@@ -183,6 +180,8 @@ const Projects: FC<Props> = props => {
         // {...bind()}
       >
         <ProjectsList
+          allSkillsData={props.allSkillsData}
+          isLoading={props.isLoading}
           data={{
             array: projectsArr,
             style: style,

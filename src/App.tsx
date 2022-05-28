@@ -72,7 +72,7 @@ function App() {
       // setAllSkillsData(response.data);
       // return response.data;
     };
-
+    //TODO remove timeout
     setTimeout(() => {
       getAllSkillsData();
     }, 5000);
@@ -118,7 +118,7 @@ function App() {
             ''
           )}
           {whichSelected === 1 && selected ? (
-            <AboutMe allSkillsData={allSkillsData} />
+            <AboutMe allSkillsData={allSkillsData} isLoading={isLoading} />
           ) : (
             ''
           )}

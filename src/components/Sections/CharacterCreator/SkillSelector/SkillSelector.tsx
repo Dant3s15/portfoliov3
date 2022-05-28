@@ -35,12 +35,8 @@ const SkillSelector: FC<Props> = props => {
   const searchAllRef = useRef<HTMLInputElement>(null);
   const searchAddedRef = useRef<HTMLInputElement>(null);
 
-  //TODO fix allskills not loading when opened before getting skill data
   useEffect(() => {
-    // const data = props.allSkillsData;
     setAllSkillsArr(props.allSkillsData);
-    // console.log(data);
-    console.log(allSkillsArr);
   }, [props.isLoading]);
 
   useEffect(() => {
@@ -259,15 +255,12 @@ const SkillSelector: FC<Props> = props => {
                   />
                 </div>
               </div>
-              {!props.isLoading ? (
-                <div className={`${classes['skills-menu']} ${classes.all}`}>
-                  {allSkillsIsFiltered === false
-                    ? renderSkills(allSkillsArr, '+')
-                    : renderSkills(allSkillsArrFiltered, '+')}
-                </div>
-              ) : (
-                ''
-              )}
+
+              <div className={`${classes['skills-menu']} ${classes.all}`}>
+                {allSkillsIsFiltered === false
+                  ? renderSkills(allSkillsArr, '+')
+                  : renderSkills(allSkillsArrFiltered, '+')}
+              </div>
               <div className={`${classes['skills-menu']} ${classes.added}`}>
                 {addedSkillsIsFiltered === false
                   ? renderSkills(addedSkills, '-')

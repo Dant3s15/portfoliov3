@@ -13,6 +13,7 @@ const CharacterCreator: FC<Props> = props => {
     <section id='creator' className={classes.creator}>
       <div className={classes['skill-selector__col']}>
         <SkillSelector
+          key={Math.random()}
           allSkillsData={props.allSkillsData}
           isLoading={props.isLoading}
         ></SkillSelector>
