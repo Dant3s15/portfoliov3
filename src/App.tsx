@@ -73,9 +73,9 @@ function App() {
       // return response.data;
     };
     //TODO remove timeout
-    setTimeout(() => {
-      getAllSkillsData();
-    }, 5000);
+    // setTimeout(() => {
+    getAllSkillsData();
+    // }, 5000);
   }, []);
 
   const signInWithGoogle = () => {

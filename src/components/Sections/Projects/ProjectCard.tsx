@@ -4,6 +4,7 @@ import CardGlass from '../../UI/CardGlass';
 import github from '../../../resources/icons/logo-github.svg';
 import classes from './ProjectCard.module.scss';
 import { skillInterface } from '../../../Types/types';
+import LoadingSpinner from '../../UI/LoadingSpinner';
 
 interface CardProjectProps {
   projectData: {
@@ -28,6 +29,7 @@ const CardProject: FC<CardProjectProps> = props => {
 
   const cardClickHandler = (e: any) => {
     e.nativeEvent.stopPropagation();
+
     props.selectedState.setWhichSelected(props.projectData.id);
     if (projectCardRef.current)
       projectCardRef.current.scrollIntoView({
@@ -65,48 +67,46 @@ const CardProject: FC<CardProjectProps> = props => {
       style={{ ...props.style }}
     >
       <CardGlass className={`${classes.project}`}>
-        {props.isLoading ? (
-          ''
-        ) : (
-          <Fragment>
-            <div className={classes.links}>
-              <a href={props.projectData?.repo} target='_blank'>
-                <img src={github} alt='github' />
-              </a>
-            </div>
-            <div className={classes['project-image-window']}>
-              <a
-                className={classes['project-link']}
-                href={props.projectData?.link}
-                target='_blank'
-              >
-                <img
-                  src={props.projectData?.image}
-                  className={classes['project-image']}
-                />
-              </a>
-            </div>
-            <div
-              onClick={cardClickHandler}
-              className={classes['project-description']}
-            >
-              <h3 className={classes['project-title']}>
-                {props.projectData?.title ?? 'Title'}
-              </h3>
-              <div className={classes['project-overview']}>
-                <p>{props.projectData?.overview}</p>
-              </div>
-              <h3 className={classes['used-skills-title']}>Skills Used:</h3>
-              <ul className={classes['used-skills']}>
-                {/* {getSkills(props.projectData.skills)} */}
-                <ProjectSkillsList
-                  allSkillsData={props.allSkillsData}
-                  projectData={props.projectData}
-                ></ProjectSkillsList>
-              </ul>
-            </div>
-          </Fragment>
-        )}
+        <div className={classes.links}>
+          <a href={props.projectData?.repo} target='_blank'>
+            <img src={github} alt='github' />
+          </a>
+        </div>
+        <div className={classes['project-image-window']}>
+          <a
+            className={classes['project-link']}
+            href={props.projectData?.link}
+            target='_blank'
+          >
+            <img
+              src={props.projectData?.image}
+              className={classes['project-image']}
+            />
+          </a>
+        </div>
+        <div
+          onClick={cardClickHandler}
+          className={classes['project-description']}
+        >
+          <h3 className={classes['project-title']}>
+            {props.projectData?.title ?? 'Title'}
+          </h3>
+          <div className={classes['project-overview']}>
+            <p>{props.projectData?.overview}</p>
+          </div>
+          <h3 className={classes['used-skills-title']}>Skills Used:</h3>
+          <ul className={classes['used-skills']}>
+            {/* {getSkills(props.projectData.skills)} */}
+            {props.isLoading ? (
+              <LoadingSpinner></LoadingSpinner>
+            ) : (
+              <ProjectSkillsList
+                allSkillsData={props.allSkillsData}
+                projectData={props.projectData}
+              ></ProjectSkillsList>
+            )}
+          </ul>
+        </div>
       </CardGlass>
     </animated.div>
   );
@@ -140,7 +140,7 @@ const ProjectSkillsList: FC<ListProps> = props => {
 
   return props.projectData.skills.map((skill: string) => {
     const fetchedSkill = findSkill(skill);
-    console.log(fetchedSkill);
+    // console.log(fetchedSkill);
     // return <li key={Math.random()}>{skill}</li>;
     return (
       <li key={Math.random()} className={classes['skill']}>

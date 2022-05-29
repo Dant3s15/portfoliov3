@@ -183,45 +183,29 @@
 }
 
 .skill {
-  // * {
-  //   border: 1px solid red;
-  // }
-  // border: 1px solid red;
-  cursor: help;
+  cursor: default;
   @include flexbox(space-between);
   flex-direction: column;
   position: relative;
-  // height: 50%;
   max-width: 25%;
-  // min-height: 100%;
   flex: 1 0 20%;
 
   border-radius: 3px;
   transition: all var(--transition-short);
   overflow: hidden;
   transition-property: transform, background-color, color, box-shadow;
-  // @include corner-cut(0.625rem);
 
   color: var(--color-primary);
-  &:hover {
-    background-color: var(--color-gray);
-    box-shadow: 0px 0px 10px 0px var(--color-gray);
-    transform: scale(1.1);
-    z-index: 999;
-    // &::before {
-    //   content: '';
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   height: 100%;
-    //   width: 100%;
-    //   box-shadow: 0px 0px 10px 0px var(--color-gray);
-    // }
-  }
-  &:hover &-title {
-    word-break: keep-all;
-    color: black;
-  }
+  // &:hover {
+  //   background-color: var(--color-gray);
+  //   box-shadow: 0px 0px 10px 0px var(--color-gray);
+  //   transform: scale(1.1);
+  //   z-index: 999;
+  // }
+  // &:hover &-title {
+  //   word-break: keep-all;
+  //   color: black;
+  // }
   &-title {
     font-size: 12px;
     font-weight: 700;
@@ -232,16 +216,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 3px 0;
-    // @include flexbox;
   }
   .icon {
     width: 100%;
     height: 70px;
     @include flexbox;
-    // position: relative;
-    // aspect-ratio: 1/1;
-    // background-color: red;
-    // border: 1px solid gold;
     padding: 4px;
     img {
       width: 100%;
