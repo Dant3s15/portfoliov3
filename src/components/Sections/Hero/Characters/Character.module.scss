@@ -123,6 +123,7 @@
     animation: none !important;
     filter: brightness(1);
   }
-  transform: scale(1.1);
+  //TODO test
+  transform: scale(1.01);
   filter: drop-shadow(0 0 1px var(--color-primary)) blur(none);
 }
