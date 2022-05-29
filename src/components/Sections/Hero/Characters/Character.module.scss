@@ -12,7 +12,7 @@
   will-change: transform;
 
   gap: 1.5rem;
-  transition: all var(--transition-short-medium) ease-in-out;
+  transition: all var(--transition-short-medium);
   transition-property: transform, filter, width, z-index, margin, text-shadow;
   cursor: pointer;
   z-index: 10;
@@ -50,7 +50,7 @@
   &__front {
     color: var(--color-primary);
     width: 40%;
-    z-index: 2;
+    z-index: 3;
 
     & img {
       filter: brightness(0.9);
@@ -58,7 +58,7 @@
   }
 
   &__right {
-    z-index: -2;
+    z-index: 2;
     width: 30%;
     margin-bottom: 9rem;
     // filter: blur(5px);
@@ -73,9 +73,9 @@
 
   &__left {
     width: 32%;
-    z-index: -1;
+    z-index: 1;
     margin-bottom: 8rem;
-    filter: blur(5px);
+    // filter: blur(5px);
     transform: translateX(calc(var(--characters-width) * -1));
     @media (max-width: $small-mobile) {
       margin-bottom: 4rem;
@@ -110,6 +110,10 @@
   }
 }
 
+.blured {
+  filter: blur(5px);
+}
+
 .selected {
   & img {
     filter: brightness(1);
@@ -120,5 +124,5 @@
     filter: brightness(1);
   }
   transform: scale(1.1);
-  filter: drop-shadow(0 0 1px var(--color-primary));
+  filter: drop-shadow(0 0 1px var(--color-primary)) blur(none);
 }

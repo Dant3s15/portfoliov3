@@ -49,7 +49,7 @@
   justify-content: space-around;
   background-color: rgba(95, 95, 95, 0.109);
   height: 100%;
-  transition: all var(--transition-short-medium) ease-in-out;
+  transition: all var(--transition-short-medium);
   transition-property: transform, opacity, filter;
   position: relative;
   border: 1px solid var(--color-border-transparent);
@@ -195,7 +195,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
   flex-direction: column;
-  transition: all var(--transition-short-medium) ease-out;
+  transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
   position: absolute;
   width: 100%;
@@ -254,7 +254,7 @@
   height: 100%;
   overflow-y: scroll;
   overscroll-behavior: contain;
-  transition: all var(--transition-short-medium) ease-out;
+  transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
   &::-webkit-scrollbar {
     display: none;
@@ -339,7 +339,7 @@
     flex-shrink: 0;
     width: 5rem;
 
-    transition: all var(--transition-short-medium) ease-in-out;
+    transition: all var(--transition-short-medium);
     transition-property: transform, opacity;
     position: absolute;
     height: 100%;

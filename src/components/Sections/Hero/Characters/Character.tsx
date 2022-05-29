@@ -8,6 +8,7 @@ interface Props {
   selected?: boolean;
   name: string;
   onRotateCharacters: (e: any) => void;
+  selectedCtx?: boolean;
 }
 const Character = (props: Props) => {
   const whichSide = (data: number | string): string | undefined => {
@@ -23,7 +24,7 @@ const Character = (props: Props) => {
     <div
       className={`${classes.character} ${curChar ? curChar : ''} ${
         props.selected ? classes.selected : ''
-      }`}
+      } ${!props.selectedCtx ? '' : classes.blured}`}
       onClick={e => {
         props.onRotateCharacters(e);
       }}

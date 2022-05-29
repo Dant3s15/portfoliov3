@@ -45,7 +45,6 @@ const Characters: FC<Props> = props => {
       frontChar,
       rightChar,
     };
-
     props.charState && props.charState(charStateData);
   }, [leftChar, frontChar, rightChar]);
 
@@ -225,6 +224,7 @@ const Characters: FC<Props> = props => {
           dataConstPos={CONST_POS[0]}
           data={leftChar}
           selected={leftIsSelected}
+          selectedCtx={ctx.isSelected}
           name='Character Creator'
           onRotateCharacters={ctx.rotateCharactersHandler}
         ></Character>
@@ -233,6 +233,7 @@ const Characters: FC<Props> = props => {
           dataConstPos={CONST_POS[1]}
           data={frontChar}
           selected={frontIsSelected}
+          selectedCtx={ctx.isSelected}
           name='Damian'
           onRotateCharacters={ctx.rotateCharactersHandler}
         ></Character>
@@ -240,6 +241,7 @@ const Characters: FC<Props> = props => {
         <Character
           dataConstPos={CONST_POS[2]}
           selected={rightIsSelected}
+          selectedCtx={ctx.isSelected}
           data={rightChar}
           name='Future Damian'
           onRotateCharacters={ctx.rotateCharactersHandler}
