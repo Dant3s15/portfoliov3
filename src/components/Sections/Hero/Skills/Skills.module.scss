@@ -50,15 +50,16 @@
   background-color: rgba(95, 95, 95, 0.109);
   height: 100%;
   transition: all var(--transition-short-medium);
-  transition-property: transform, opacity, filter;
+  transition-property: transform, opacity, filter, background-color;
   position: relative;
   border: 1px solid var(--color-border-transparent);
   border-right: 7px solid var(--color-border-transparent);
   transform-origin: 5%;
   will-change: transform;
   @include corner-cut(63px, var(--color-border-transparent), 7px, 59px);
+  // @include textglowsmall;
   border-bottom: 5px solid var(--color-border-transparent);
-
+  // transform: scale(1) rotateY(-10deg);
   @media (max-width: $big-tablet) {
     height: 100%;
     width: 100%;
@@ -81,16 +82,16 @@
 
   &:hover {
     background-color: #e5e5e51a;
-    transform: rotateY(-5deg) scale(1.1);
+    // transform: rotateY(-5deg) scale(1.1);
     color: var(--color-primary);
     .character-skills {
       scrollbar-width: 50px;
     }
-    h2,
-    .character-level {
-      @include textglowsmall;
-      color: #fff;
-    }
+    // h2,
+    // .character-level {
+    //   @include textglowsmall;
+    //   color: #fff;
+    // }
 
     & button {
       transition: all var(--transition-short);
@@ -133,7 +134,7 @@
   align-items: center;
   font-size: 48px;
   height: 100%;
-
+  @include textglow;
   text-transform: uppercase;
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
@@ -143,7 +144,9 @@
   // background-color: var(--color-gray);
   // animation: lineheight var(--transition-medium) forwards;
   font-weight: 700;
-
+  &:hover {
+    @include textglow;
+  }
   strong {
     // background-color: var(--color-primary);
     display: block;
@@ -159,7 +162,7 @@
     transition: all var(--transition-medium);
     transition-property: transform, opacity;
     // color: #fff;
-    animation: flicker3 5s infinite alternate;
+    animation: flickerrev 5s infinite alternate;
   }
 
   @media (max-width: $small-tablet) {
@@ -176,7 +179,7 @@
 .skills-window:hover .skills-text:not(.abs-up) {
   //TODO
   // animation: shine4 10s ease-in-out;
-  transform: scale(1.05);
+  // transform: scale(1.05);
 
   // animation: lineheight2 var(--transition-medium) var(--transition-short)
   //   forwards;
@@ -184,7 +187,7 @@
   strong {
     animation: none;
     @include textglow;
-    color: #fff;
+    // color: #fff;
     // transform: scale(1.1);
   }
 }
@@ -219,7 +222,7 @@
     transition: all var(--transition-short);
     transition-property: color text-shadow;
     &:hover {
-      @include textglow;
+      // @include textglow(#fff);
       strong {
         color: #fff;
       }
@@ -290,8 +293,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: var(--color-primary);
+  // color: var(--color-primary);
   font-weight: 700;
+  // @include textglowsmall;
+  @include textglow;
   h2 {
     transition: all var(--transition-short);
     transition-property: text-shadow, color;
@@ -328,6 +333,7 @@
   @include corner-cut(20px, var(--color-primary), 4px, 17px);
   transition: all var(--transition-short);
   transition-property: color, text-shadow;
+  @include textglowsmall;
   &__level-title {
     text-transform: uppercase;
     font-weight: 700;
@@ -401,10 +407,10 @@
   background-color: #e5e5e51a;
   border-radius: 3px;
   transform: rotateY(-5deg) scale(1.1) !important;
-  h2,
-  .character-level {
-    @include textglowsmaller;
-  }
+  // h2,
+  // .character-level {
+  //   @include textglowsmaller;
+  // }
   &:first-child {
     color: var(--color-primary);
   }

@@ -94,13 +94,14 @@
   align-items: $align;
 }
 
-@mixin textglow {
-  color: var(--color-primary);
-  color: #fff;
+@mixin textglow($color1: var(--color-primary), $color2: #fff) {
+  // color: $color1;
+  color: $color2;
 
-  text-shadow: 0 0 4px #fff, 0 0 11px var(--color-primary),
-    0 0 19px var(--color-primary), 0 0 80px var(--color-primary);
+  text-shadow: 0 0 4px $color2, 0 0 11px $color1, 0 0 19px $color1,
+    0 0 80px $color1;
 }
+
 @mixin textglowmedium {
   color: var(--color-primary);
   color: #fff;
@@ -108,13 +109,18 @@
   text-shadow: 0 0 4px #fff, 0 0 11px var(--color-primary),
     0 0 19px var(--color-primary), 0 0 40px var(--color-primary);
 }
+@mixin textglowsmall($color1: var(--color-primary), $color2: #fff) {
+  // color: $color1;
+  color: $color2;
 
-@mixin textglowsmall {
-  color: var(--color-primary);
-  color: #fff;
-  text-shadow: 0 0 4px var(--color-primary), 0 0 11px var(--color-primary),
-    0 0 19px var(--color-primary);
+  text-shadow: 0 0 4px $color1, 0 0 11px $color1, 0 0 19px $color1;
 }
+// @mixin textglowsmall {
+//   color: var(--color-primary);
+//   color: #fff;
+//   text-shadow: 0 0 4px var(--color-primary), 0 0 11px var(--color-primary),
+//     0 0 19px var(--color-primary);
+// }
 @mixin textglowsmaller($color: var(--color-primary)) {
   color: var(--color-primary);
   color: #fff;
