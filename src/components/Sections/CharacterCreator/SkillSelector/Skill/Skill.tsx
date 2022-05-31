@@ -50,7 +50,7 @@ const Skill: FC<Props> = props => {
         <img src={props.data.icon} alt={`${props.data.names[0]} icon`} />
       </div>
       <div className={classes.name}>
-        {nameShortener(props.data.names[0], 13)}
+        {nameShortener(props.data.names[0], 10)}
       </div>
       {props.data.level ? levelHandler : ''}
       <button

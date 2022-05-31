@@ -103,13 +103,13 @@
   &__header {
     @include flexbox;
     justify-content: space-between;
-    color: var(--color-gray);
+    color: var(--color-border-transparent);
     width: 90%;
-    border: 2px solid var(--color-primary);
+    border: 2px solid var(--color-border-transparent);
     border-radius: 3px;
     margin: 1rem 1rem 0 1rem;
     position: relative;
-    @include corner-cut(30px, var(--color-primary), 2px, 29px);
+    @include corner-cut(30px, var(--color-border-transparent), 2px, 29px);
     height: 140px;
   }
 
@@ -176,7 +176,7 @@
   }
 }
 
-.skills-window:hover .skills-text:not(.abs-up) {
+.s-window:hover .skills-text:not(.abs-up) {
   //TODO
   // animation: shine4 10s ease-in-out;
   // transform: scale(1.05);
@@ -210,14 +210,15 @@
     height: 100%;
     text-transform: uppercase;
     padding: 0 6rem;
-    color: var(--color-gray);
+    // color: var(--color-gray);
     font-size: 2.75rem;
     line-height: 1.5;
     font-weight: 700;
+    @include textglow;
     strong {
       word-break: keep-all;
       font-size: 3.25rem;
-      color: var(--color-primary);
+      // color: var(--color-primary);
     }
     transition: all var(--transition-short);
     transition-property: color text-shadow;
@@ -296,7 +297,9 @@
   // color: var(--color-primary);
   font-weight: 700;
   // @include textglowsmall;
-  @include textglow;
+
+  color: var(--color-border-transparent);
+
   h2 {
     transition: all var(--transition-short);
     transition-property: text-shadow, color;
@@ -307,6 +310,12 @@
   @media (max-width: $mobile) {
     font-size: 14px;
   }
+}
+.glow {
+  @include textglow;
+}
+.glowsmall {
+  @include textglowsmall;
 }
 
 .skills-card {
@@ -319,8 +328,9 @@
 }
 
 .character-level {
-  border: 4px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 2px solid var(--color-border-transparent);
+  // border: 4px solid #fff;
+  // color: var(--color-border-transparent);
   border-radius: 3px;
   padding: 1rem;
   margin: 19px 16px;
@@ -330,10 +340,10 @@
   @include flexbox(space-between);
   flex-direction: column;
   // background-color: var(--color-primary-transparent-1);
-  @include corner-cut(20px, var(--color-primary), 4px, 17px);
+  @include corner-cut(20px, var(--color-border-transparent), 2px, 19px);
   transition: all var(--transition-short);
   transition-property: color, text-shadow;
-  @include textglowsmall;
+  // @include textglowsmall;
   &__level-title {
     text-transform: uppercase;
     font-weight: 700;

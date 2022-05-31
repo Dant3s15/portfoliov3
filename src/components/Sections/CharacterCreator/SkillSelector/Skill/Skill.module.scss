@@ -12,6 +12,7 @@
   -webkit-font-smoothing: subpixel-antialiased;
   // transform: translate3d(0, 0, 0);
   color: var(--color-primary);
+  @include textglowsmall;
   border: 2px solid var(--color-primary);
   background-color: var(--color-border-transparent);
   font-weight: 600;
@@ -135,7 +136,7 @@
     @include textglowsmall;
     // transform: translateZ(0) scale(1);
     transform: scale(1.05);
-    box-shadow: inset 0 0 5px 1px var(--color-primary);
+    box-shadow: inset 0 0 40px 1px rgb(136, 136, 136);
     .level {
       color: #fff;
     }

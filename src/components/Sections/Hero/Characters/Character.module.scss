@@ -111,7 +111,9 @@
 }
 
 .blured {
-  filter: blur(5px);
+  @media (min-width: $big-tablet) {
+    filter: blur(5px);
+  }
 }
 
 .selected {

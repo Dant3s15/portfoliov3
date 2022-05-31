@@ -5,6 +5,11 @@
   position: relative;
   height: 20vh;
   color: var(--color-gray-dark);
+  background: linear-gradient(
+    200deg,
+    var(--color-dark-shade-1) 0%,
+    var(--color-dark) 100%
+  );
   z-index: 1;
   @include flexbox(space-around);
   flex-direction: column;

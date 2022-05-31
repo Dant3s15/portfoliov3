@@ -17,7 +17,7 @@
     transform: perspective(500px) scale(1) translateX(var(--project-card-gap))
       rotateY(-15deg) !important;
     .project-title {
-      @include textglowsmall;
+      @include textglow;
     }
   }
   &:hover:first-child {
@@ -110,6 +110,7 @@
     text-align: end;
     transition: all var(--transition-short);
     transition-property: text-shadow, color;
+    @include textglowsmall;
   }
   .project-overview {
     text-align: left;
@@ -118,10 +119,11 @@
     padding: 0 6px;
     cursor: pointer;
     @include flexbox;
+    @include textglowsmall;
     p {
       display: inline-block;
       height: auto;
-      color: var(--color-dark);
+      // color: var(--color-dark);
     }
     @media (max-width: 1600px) {
       font-size: 1.25rem;

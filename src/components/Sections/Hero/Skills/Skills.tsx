@@ -194,9 +194,8 @@ const SkillsList: FC<Props> = props => {
         <div className={`${classes['skills-list--text']}`} data-character={pos}>
           <strong>create</strong>
           <p>your</p>
-
-          <p> frontend</p>
-          <strong>character</strong>
+          <p>web</p>
+          <strong>developer</strong>
         </div>
       </div>
     );
@@ -227,6 +226,7 @@ const SkillsList: FC<Props> = props => {
             !ctx.ctaButtonClicked?.clicked ? classes['abs-down'] : ''
           }`}
         >
+          {/* {leftCharSkills.length === 0 && ctx.whichIsSelected !== 0 ? ( */}
           <header className={classes['skills-window__header']}>
             <SkillInfo data={{ showInfo }} skill={curSkillInfo}></SkillInfo>
 
@@ -235,11 +235,21 @@ const SkillsList: FC<Props> = props => {
                 showInfo ? classes['tooltip-open'] : ''
               }`}
             >
-              <div className={classes['skills-list-name']}>
+              <div
+                className={`${classes['skills-list-name']} ${
+                  leftCharSkills.length !== 0 || ctx.whichIsSelected !== 0
+                    ? classes.glow
+                    : ''
+                }`}
+              >
                 <h2>Unlocked Skills</h2>
               </div>
               <div
-                className={`${classes['character-level']}`}
+                className={`${classes['character-level']} ${
+                  leftCharSkills.length !== 0 || ctx.whichIsSelected !== 0
+                    ? classes.glowsmall
+                    : ''
+                }`}
                 id='character-level'
               >
                 <div className={classes['character-level__level-title']}>
@@ -270,6 +280,9 @@ const SkillsList: FC<Props> = props => {
               </div>
             </div>
           </header>
+          {/* ) : (
+            ''
+          )} */}
           {props.allSkillsData.length !== 0 ? (
             <div
               ref={characterSkills}
