@@ -93,11 +93,11 @@
     //   color: #fff;
     // }
 
-    & button {
-      transition: all var(--transition-short);
-      transition-property: filter, transform;
-      filter: drop-shadow(0px 4px 1px rgba(0, 0, 0, 0.7));
-    }
+    // & button {
+    //   transition: all var(--transition-short);
+    //   transition-property: filter, transform;
+    //   filter: drop-shadow(0px 4px 1px rgba(0, 0, 0, 0.7));
+    // }
   }
 
   &__header {

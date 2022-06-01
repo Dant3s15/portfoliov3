@@ -10,6 +10,7 @@
   "dependencies": {
     "@use-gesture/react": "^10.2.12",
     "animate.css": "^4.1.1",
+    "cypress": "^9.7.0",
     "firebase": "^9.6.10",
     "formik": "^2.2.9",
     "react": "^17.0.2",
