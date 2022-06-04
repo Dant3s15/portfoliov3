@@ -5,12 +5,8 @@
   position: relative;
   height: 20vh;
   color: var(--color-gray-dark);
-  background: linear-gradient(
-    200deg,
-    var(--color-dark-shade-1) 0%,
-    var(--color-dark) 100%
-  );
-  z-index: 1;
+
+  z-index: 2;
   @include flexbox(space-around);
   flex-direction: column;
   letter-spacing: 1px;
@@ -107,5 +103,32 @@
         padding-left: 0;
       }
     }
+  }
+
+  &::before {
+    background: linear-gradient(190deg, #0c0910 30%, #1d1725 100%);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+.footer--gray {
+  &::before {
+    filter: grayscale(1);
+  }
+}
+
+.footer--creator {
+  &::before {
+    background: linear-gradient(190deg, #25292f 30%, #4b4e56 100%);
+  }
+}
+.footer--about {
+  &::before {
+    background: linear-gradient(190deg, #2f3e42 30%, #252a2c 100%);
   }
 }

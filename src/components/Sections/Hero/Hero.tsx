@@ -5,6 +5,7 @@ import Characters from './Characters/Characters';
 import SkillsList from './Skills/Skills';
 import { useRef } from 'react';
 import { skillInterface } from '../../../Types/types';
+// import skillsdb from './skills.json';
 interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
@@ -38,6 +39,17 @@ const Hero: FC<Props> = props => {
       // ctx.setRenderSection?.(false);
     }
   };
+
+  // const getSkills = () => {
+  //   skillsdb.forEach(skill => {
+  //     console.log(skill.name);
+  //     console.log(
+  //       `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.name}/${skill.name}-original.svg`
+  //     );
+  //   });
+  // };
+  // // console.log(skillsdb);
+  // getSkills();
 
   return (
     <section

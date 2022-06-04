@@ -16,8 +16,11 @@
   &:hover {
     transform: perspective(500px) scale(1) translateX(var(--project-card-gap))
       rotateY(-15deg) !important;
-    .project-title {
-      @include textglow;
+
+    .project-title,
+    .used-skills-title,
+    .project-overview {
+      @include textglowsmall;
     }
   }
   &:hover:first-child {
@@ -60,6 +63,13 @@
   transition: all var(--transition-short-medium);
   transition-property: transform;
   backdrop-filter: blur(20px);
+
+  & .project-title,
+  & .used-skills-title,
+  & .project-overview {
+    @include textglowsmaller;
+    // color: red;
+  }
 
   .project-image-window {
     @include corner-cut(30px);
@@ -110,7 +120,7 @@
     text-align: end;
     transition: all var(--transition-short);
     transition-property: text-shadow, color;
-    @include textglowsmall;
+    // @include textglowsmall;
   }
   .project-overview {
     text-align: left;
@@ -119,7 +129,7 @@
     padding: 0 6px;
     cursor: pointer;
     @include flexbox;
-    @include textglowsmall;
+    // @include textglowsmall;
     p {
       display: inline-block;
       height: auto;
@@ -153,7 +163,7 @@
   padding-left: 1rem;
   padding-bottom: 1rem;
   font-size: 24px;
-  @include textglowsmall;
+  // @include textglowsmall;
 }
 .links {
   @include flexbox(flex-start, flex-start);

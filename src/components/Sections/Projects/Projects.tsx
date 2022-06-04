@@ -122,6 +122,34 @@ const Projects: FC<Props> = props => {
       link: 'https://portfolio-27cdd.web.app/',
       repo: 'https://github.com/Dant3s15/portfoliov3',
     },
+    {
+      id: 3,
+      image: project1,
+      title: 'Web-dev-API',
+      overview: (
+        <Fragment>
+          Simple <strong>API</strong> database that gives you access to the list
+          of <strong>Web development technologies</strong> and skills.
+        </Fragment>
+      ),
+      skills: ['javascript', 'expressjs', 'git', 'github'],
+      link: 'https://portfolio-27cdd.web.app/',
+      repo: 'https://github.com/Dant3s15/portfoliov3',
+    },
+    {
+      id: 4,
+      image: project1,
+      title: 'Web-dev-API',
+      overview: (
+        <Fragment>
+          Simple <strong>API</strong> database that gives you access to the list
+          of <strong>Web development technologies</strong> and skills.
+        </Fragment>
+      ),
+      skills: ['javascript', 'expressjs', 'git', 'github'],
+      link: 'https://portfolio-27cdd.web.app/',
+      repo: 'https://github.com/Dant3s15/portfoliov3',
+    },
     // {
     //   id: 3,
     //   image: project1,

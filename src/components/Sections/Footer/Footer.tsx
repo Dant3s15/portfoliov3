@@ -2,7 +2,19 @@ import github from '../../../resources/icons/logo-github.svg';
 import linkedin from '../../../resources/icons/icon-linkedin-dark.svg';
 import logo from '../../../resources/logo.svg';
 import classes from './Footer.module.scss';
-const Footer = () => {
+import { FC } from 'react';
+
+interface Props {
+  data: {
+    ctaButtonClicked: { clicked: boolean };
+    whichSelected: number;
+    selected: boolean;
+  };
+}
+const Footer: FC<Props> = props => {
+  const { data } = props;
+  const { whichSelected, ctaButtonClicked, selected } = data;
+
   const testFetch = () => {
     async function getSkill() {
       const response = await fetch(
@@ -15,7 +27,17 @@ const Footer = () => {
   };
 
   return (
-    <footer className={classes.footer}>
+    <footer
+      className={`${classes.footer} 
+      ${!ctaButtonClicked.clicked ? classes['footer--gray'] : ''}
+      ${
+        ctaButtonClicked.clicked && selected && whichSelected === 0
+          ? classes['footer--creator']
+          : ''
+      }
+      ${selected && whichSelected === 1 ? classes['footer--about'] : ''}
+      `}
+    >
       <div className={classes.wrapper}>
         <div onClick={testFetch} className={`${classes.col} ${classes.logo}`}>
           <img src={logo} alt='Logo' />

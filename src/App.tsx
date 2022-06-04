@@ -124,8 +124,8 @@ function App() {
           )}
           {whichSelected === 2 && selected ? <FutureChar /> : ''}
         </main>
+        <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
       </SelectedContext.Provider>
-      <Footer></Footer>
     </Fragment>
   );
 }

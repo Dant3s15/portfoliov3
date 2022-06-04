@@ -221,7 +221,7 @@
       // color: var(--color-primary);
     }
     transition: all var(--transition-short);
-    transition-property: color text-shadow;
+    transition-property: color, text-shadow;
     &:hover {
       // @include textglow(#fff);
       strong {
