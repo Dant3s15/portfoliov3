@@ -3,6 +3,7 @@ import SkillSelector from './SkillSelector/SkillSelector';
 import classes from './CharacterCreator.module.scss';
 import { FC } from 'react';
 import { skillInterface } from '../../../Types/types';
+import { motion } from 'framer-motion';
 
 interface Props {
   allSkillsData: skillInterface[];
@@ -10,7 +11,13 @@ interface Props {
 }
 const CharacterCreator: FC<Props> = props => {
   return (
-    <section id='creator' className={classes.creator}>
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      id='creator'
+      className={classes.creator}
+    >
       <div className={classes['skill-selector__col']}>
         <SkillSelector
           key={Math.random()}
@@ -39,7 +46,7 @@ const CharacterCreator: FC<Props> = props => {
           <input type='submit' />
         </form> */}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState, Fragment, useEffect, Suspense } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import SelectedContext from './context/selected-context';
 import Header from './components/Sections/Header/Header';
@@ -44,6 +45,7 @@ const auth = getAuth(app);
 const firestore = getFirestore();
 
 function App() {
+  const location = useLocation();
   const [selected, setSelected] = useState(false);
   const [whichSelected, setWhichSelected] = useState(1);
   const [ctaButtonClicked, setCtaButtonClicked] = useState({ clicked: false });
@@ -94,7 +96,7 @@ function App() {
           }}
         ></Header>
         <main>
-          <Routes>
+          <Routes location={location} key={location.pathname}>
             <Route
               path='/'
               element={

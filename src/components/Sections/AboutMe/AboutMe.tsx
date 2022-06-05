@@ -6,6 +6,7 @@ import Projects from '../Projects/Projects';
 import Typewriter from 'typewriter-effect';
 import classes from './AboutMe.module.scss';
 import { skillInterface } from '../../../Types/types';
+import { motion } from 'framer-motion';
 
 interface Props {
   allSkillsData: skillInterface[];
@@ -14,7 +15,14 @@ interface Props {
 const AboutMe: FC<Props> = props => {
   return (
     <Fragment>
-      <section id='about-me' className={classes['about-me']}>
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        // transition={{ duration: 1 }}
+        id='about-me'
+        className={classes['about-me']}
+      >
         <div className={classes['about-me-char']}>
           <div className={`${classes['char__container']} cancel-absolute`}>
             <Character
@@ -78,7 +86,7 @@ const AboutMe: FC<Props> = props => {
             </div>
           </CardGlass>
         </div>
-      </section>
+      </motion.section>
       <Projects
         allSkillsData={props.allSkillsData}
         isLoading={props.isLoading}
