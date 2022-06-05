@@ -6,6 +6,7 @@ import CloseIcon from '../../Icons/CloseIcon';
 import GoogleLogIn from '../../Icons/google/GoogleLogIn';
 import logo from '../../../resources/logo.svg';
 import { User } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 interface Props {
   data: {
@@ -77,32 +78,39 @@ const Header: FC<Props> = props => {
       >
         <div className={classes.navigation}>
           <div className={classes['logo-item']}>
-            <a className={classes.logo} href='#'>
+            <Link
+              to={'/'}
+              className={classes.logo}
+              onClick={e => navItemHandler(e, 'hero')}
+            >
               <img src={logo} alt='' />
-            </a>
+            </Link>
           </div>
           <nav className={classes.nav}>
-            <button
+            <Link
+              to={'/about-me'}
               data-character='1'
               onClick={e => navItemHandler(e, 'my-projects')}
               className={classes.nav__item}
             >
               My projects
-            </button>
-            <button
+            </Link>
+            <Link
+              to={'/about-me'}
               data-character='1'
               onClick={e => navItemHandler(e, 'about-me')}
               className={classes.nav__item}
             >
               About Me
-            </button>
-            <button
+            </Link>
+            <Link
+              to={'/creator'}
               data-character='0'
               onClick={e => navItemHandler(e, 'creator')}
               className={classes.nav__item}
             >
               Character Creator
-            </button>
+            </Link>
             {!props.data.google.user && (
               <button
                 className={`${classes.nav__item} ${classes.google}`}

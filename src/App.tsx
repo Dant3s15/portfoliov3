@@ -1,21 +1,16 @@
 import React, { useState, Fragment, useEffect, Suspense } from 'react';
-
 import './App.css';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+
 import SelectedContext from './context/selected-context';
 import Header from './components/Sections/Header/Header';
 import Hero from './components/Sections/Hero/Hero';
-// import AboutMe from './components/Sections/AboutMe/AboutMe';
-const AboutMe = React.lazy(
-  () => import('./components/Sections/AboutMe/AboutMe')
-);
-const CharacterCreator = React.lazy(
-  () => import('./components/Sections/CharacterCreator/CharacterCreator')
-);
+import AboutMe from './components/Sections/AboutMe/AboutMe';
 
-// import CharacterCreator from './components/Sections/CharacterCreator/CharacterCreator';
+import CharacterCreator from './components/Sections/CharacterCreator/CharacterCreator';
 import Footer from './components/Sections/Footer/Footer';
 import FutureChar from './components/Sections/FutureChar';
-// import axios from 'axios';
+
 //FIREBASE
 import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
@@ -31,7 +26,6 @@ import {
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { skillInterface } from './Types/types';
-import LoadingSpinner from './components/UI/LoadingSpinner';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA4Biu3C9D3pJF7f3cOgNfMYG4OtewhwNY',
@@ -52,7 +46,6 @@ const firestore = getFirestore();
 function App() {
   const [selected, setSelected] = useState(false);
   const [whichSelected, setWhichSelected] = useState(1);
-  // const [renderSection, setRenderSection] = useState(false);
   const [ctaButtonClicked, setCtaButtonClicked] = useState({ clicked: false });
   const [user] = useAuthState(auth);
   const [allSkillsData, setAllSkillsData] = useState<skillInterface[]>([]);
@@ -87,8 +80,6 @@ function App() {
           setSelected,
           whichIsSelected: whichSelected,
           setWhichSelected,
-          // renderSection,
-          // setRenderSection,
           ctaButtonClicked,
           setCtaButtonClicked,
         }}
@@ -102,52 +93,117 @@ function App() {
             },
           }}
         ></Header>
-
         <main>
-          <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
-          {/* {user ? <SignOut user={user}></SignOut> : <SignIn></SignIn>} */}
-          {whichSelected === 0 && selected ? (
-            <Suspense fallback={<LoadingSpinner />}>
-              <CharacterCreator
-                allSkillsData={allSkillsData}
-                isLoading={isLoading}
-              />
-            </Suspense>
-          ) : (
-            ''
-          )}
-          {whichSelected === 1 && selected ? (
-            <Suspense fallback={<LoadingSpinner />}>
-              <AboutMe allSkillsData={allSkillsData} isLoading={isLoading} />
-            </Suspense>
-          ) : (
-            ''
-          )}
-          {whichSelected === 2 && selected ? <FutureChar /> : ''}
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <Hero
+                  allSkillsData={allSkillsData}
+                  isLoading={isLoading}
+                ></Hero>
+              }
+            ></Route>
+            {/* <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero> */}
+            <Route
+              path='/creator'
+              element={
+                <CharacterCreator
+                  allSkillsData={allSkillsData}
+                  isLoading={isLoading}
+                />
+              }
+            ></Route>
+            <Route
+              path='about-me'
+              element={
+                <AboutMe allSkillsData={allSkillsData} isLoading={isLoading} />
+              }
+            ></Route>
+          </Routes>
+          {/* <Outlet /> */}
         </main>
         <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
       </SelectedContext.Provider>
     </Fragment>
   );
+  // return (
+  //   <Fragment>
+  //     <SelectedContext.Provider
+  //       value={{
+  //         isSelected: selected,
+  //         setSelected,
+  //         whichIsSelected: whichSelected,
+  //         setWhichSelected,
+  //         ctaButtonClicked,
+  //         setCtaButtonClicked,
+  //       }}
+  //     >
+  //       <Header
+  //         data={{
+  //           google: {
+  //             user,
+  //             auth,
+  //             signInWithGoogle,
+  //           },
+  //         }}
+  //       ></Header>
+  //       <main>
+  //         <Hero allSkillsData={allSkillsData} isLoading={isLoading} />
+  //         <CharacterCreator
+  //           allSkillsData={allSkillsData}
+  //           isLoading={isLoading}
+  //         />
+  //         <AboutMe allSkillsData={allSkillsData} isLoading={isLoading} />
+  //       </main>
+  //       <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
+  //     </SelectedContext.Provider>
+  //   </Fragment>
+  // );
+
+  //************************* */
+  // return (
+  //   <Fragment>
+  //     <SelectedContext.Provider
+  //       value={{
+  //         isSelected: selected,
+  //         setSelected,
+  //         whichIsSelected: whichSelected,
+  //         setWhichSelected,
+  //         ctaButtonClicked,
+  //         setCtaButtonClicked,
+  //       }}
+  //     >
+  //       <Header
+  //         data={{
+  //           google: {
+  //             user,
+  //             auth,
+  //             signInWithGoogle,
+  //           },
+  //         }}
+  //       ></Header>
+  //       <main>
+  //         <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
+  //         {whichSelected === 0 && selected ? (
+  //           <CharacterCreator
+  //             allSkillsData={allSkillsData}
+  //             isLoading={isLoading}
+  //           />
+  //         ) : (
+  //           ''
+  //         )}
+  //         {whichSelected === 1 && selected ? (
+  //           <AboutMe allSkillsData={allSkillsData} isLoading={isLoading} />
+  //         ) : (
+  //           ''
+  //         )}
+  //         {whichSelected === 2 && selected ? <FutureChar /> : ''}
+  //       </main>
+  //       <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
+  //     </SelectedContext.Provider>
+  //   </Fragment>
+  // );
 }
-
-// function SignIn() {
-//   const signInWithGoogle = () => {
-//     const provider = new GoogleAuthProvider();
-//     signInWithPopup(auth, provider);
-//   };
-
-//   return <button onClick={signInWithGoogle}>Sign in with Google</button>;
-// }
-
-// function SignOut(props) {
-//   return (
-//     auth.currentUser && (
-//       <button onClick={() => auth.signOut()}>
-//         {` Sign Out, hello ${props.user.displayName}`}
-//       </button>
-//     )
-//   );
-// }
 
 export default App;

@@ -1,6 +1,7 @@
 // import ButtonBig from '../../../UI/ButtonBig';
 import classes from './Character.module.scss';
 import characterImage from '../../../../resources/img/character.png';
+import { Link } from 'react-router-dom';
 
 interface Props {
   dataConstPos?: number;
@@ -9,6 +10,7 @@ interface Props {
   name: string;
   onRotateCharacters: (e: any) => void;
   selectedCtx?: boolean;
+  // moveTo: string;
 }
 const Character = (props: Props) => {
   const whichSide = (data: number | string): string | undefined => {
@@ -18,10 +20,24 @@ const Character = (props: Props) => {
     if (side === 2) return 'right';
   };
 
+  const getMoveTo = (charNumb: number | undefined) => {
+    if (charNumb === 0) {
+      return 'creator';
+    }
+    if (charNumb === 1) {
+      return 'about-me';
+    }
+    if (charNumb === 2) {
+      return '/';
+    }
+    return '/';
+  };
+
   const curChar = classes[`character__${whichSide(props.data!)}`];
 
   return (
     <div
+      // to={getMoveTo(props?.dataConstPos)}
       className={`${classes.character} ${curChar ? curChar : ''} ${
         props.selected ? classes.selected : ''
       } ${!props.selectedCtx ? '' : classes.blured}`}

@@ -215,6 +215,7 @@
     line-height: 1.5;
     font-weight: 700;
     @include textglow;
+
     strong {
       word-break: keep-all;
       font-size: 3.25rem;
@@ -242,6 +243,12 @@
       font-size: 30px;
       strong {
         font-size: 36px;
+      }
+    }
+    @media (max-width: $small-mobile) {
+      font-size: 24px;
+      strong {
+        font-size: 30px;
       }
     }
   }

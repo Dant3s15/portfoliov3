@@ -1,5 +1,6 @@
 // import 'animate.css';
 import { CSSProperties, FC, MouseEventHandler } from 'react';
+import { Link } from 'react-router-dom';
 import classes from './ButtonBig.module.scss';
 
 interface Props {
@@ -25,12 +26,12 @@ const ButtonBig: FC<Props> = (props: any) => {
       onClick={props.onClick}
     >
       {props.type !== 'submit' ? (
-        <a
+        <Link
           className={classes['button-text']}
-          href={`#${props.moveTo ? props.moveTo : ''}`}
+          to={`${props.moveTo ? props.moveTo : ''}`}
         >
           {props.text}
-        </a>
+        </Link>
       ) : (
         <p className={classes['button-text']}>{props.text}</p>
       )}

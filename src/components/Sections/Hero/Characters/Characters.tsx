@@ -148,12 +148,15 @@ const Characters: FC<Props> = props => {
 
   const isAnythingSelected = () => {
     if (leftIsSelected) {
+      // setMoveTo('creator');
       return { isSelected: true, text: 'Create character', moveTo: 'creator' };
     }
     if (frontIsSelected) {
+      // setMoveTo('about-me');
       return { isSelected: true, text: 'Level me up', moveTo: 'about-me' };
     }
     if (rightIsSelected) {
+      // setMoveTo('/');
       return { isSelected: true, text: 'Character Locked', greyedOut: true };
     } else return { isSelected: false };
   };
@@ -227,6 +230,8 @@ const Characters: FC<Props> = props => {
           selectedCtx={ctx.isSelected}
           name='Character Creator'
           onRotateCharacters={ctx.rotateCharactersHandler}
+          // moveTo={moveTo}
+          // isAnythingSelected={isAnythingSelected().moveTo}
         ></Character>
 
         <Character
@@ -236,6 +241,8 @@ const Characters: FC<Props> = props => {
           selectedCtx={ctx.isSelected}
           name='Damian'
           onRotateCharacters={ctx.rotateCharactersHandler}
+          // moveTo={moveTo}
+          // isAnythingSelected={isAnythingSelected().moveTo}
         ></Character>
 
         <Character
@@ -245,6 +252,8 @@ const Characters: FC<Props> = props => {
           data={rightChar}
           name='Future Damian'
           onRotateCharacters={ctx.rotateCharactersHandler}
+          // moveTo={moveTo}
+          // isAnythingSelected={isAnythingSelected().moveTo}
         ></Character>
       </div>
     </div>
