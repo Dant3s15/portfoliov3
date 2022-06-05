@@ -9,7 +9,7 @@
   max-height: 100%;
   @include flexbox;
   flex-direction: column;
-  will-change: transform;
+  // will-change: transform;
 
   gap: 1.5rem;
   transition: all var(--transition-short-medium);
@@ -19,7 +19,7 @@
   position: absolute;
   transform-origin: center;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  will-change: transform, filter;
+  // will-change: transform, filter;
   &__name {
     font-size: 1.5rem;
     font-weight: 700;

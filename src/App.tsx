@@ -1,11 +1,18 @@
-import { useState, Fragment, useEffect } from 'react';
-//TODO remove?
+import React, { useState, Fragment, useEffect, Suspense } from 'react';
+
 import './App.css';
 import SelectedContext from './context/selected-context';
 import Header from './components/Sections/Header/Header';
 import Hero from './components/Sections/Hero/Hero';
-import AboutMe from './components/Sections/AboutMe/AboutMe';
-import CharacterCreator from './components/Sections/CharacterCreator/CharacterCreator';
+// import AboutMe from './components/Sections/AboutMe/AboutMe';
+const AboutMe = React.lazy(
+  () => import('./components/Sections/AboutMe/AboutMe')
+);
+const CharacterCreator = React.lazy(
+  () => import('./components/Sections/CharacterCreator/CharacterCreator')
+);
+
+// import CharacterCreator from './components/Sections/CharacterCreator/CharacterCreator';
 import Footer from './components/Sections/Footer/Footer';
 import FutureChar from './components/Sections/FutureChar';
 // import axios from 'axios';
@@ -24,6 +31,7 @@ import {
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { skillInterface } from './Types/types';
+import LoadingSpinner from './components/UI/LoadingSpinner';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA4Biu3C9D3pJF7f3cOgNfMYG4OtewhwNY',
@@ -52,30 +60,19 @@ function App() {
 
   useEffect(() => {
     const getAllSkillsData = async () => {
-      await fetch('https://web-dev-skills-api.herokuapp.com/v1/skills')
-        .then(data => data.json())
-        .then(data => {
-          setIsLoading(false);
-          console.log('Loaded skills');
-          return setAllSkillsData(data.skills);
-        })
-        .catch(error => {
-          if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log('ERR', error.message);
-          }
-        });
-      // setAllSkillsData(response.data);
-      // return response.data;
+      const response = await fetch(
+        'https://web-dev-skills-api.herokuapp.com/v1/skills'
+      );
+
+      if (!response.ok) {
+        throw new Error('Could not get Skills data');
+      }
+      const responseData = await response.json();
+      setIsLoading(false);
+      console.log('Loaded skills');
+      setAllSkillsData(responseData.skills);
     };
-    //TODO remove timeout
-    // setTimeout(() => {
     getAllSkillsData();
-    // }, 5000);
   }, []);
 
   const signInWithGoogle = () => {
@@ -110,15 +107,19 @@ function App() {
           <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
           {/* {user ? <SignOut user={user}></SignOut> : <SignIn></SignIn>} */}
           {whichSelected === 0 && selected ? (
-            <CharacterCreator
-              allSkillsData={allSkillsData}
-              isLoading={isLoading}
-            />
+            <Suspense fallback={<LoadingSpinner />}>
+              <CharacterCreator
+                allSkillsData={allSkillsData}
+                isLoading={isLoading}
+              />
+            </Suspense>
           ) : (
             ''
           )}
           {whichSelected === 1 && selected ? (
-            <AboutMe allSkillsData={allSkillsData} isLoading={isLoading} />
+            <Suspense fallback={<LoadingSpinner />}>
+              <AboutMe allSkillsData={allSkillsData} isLoading={isLoading} />
+            </Suspense>
           ) : (
             ''
           )}
