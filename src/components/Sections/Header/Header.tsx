@@ -48,7 +48,6 @@ const Header: FC<Props> = props => {
       ctx.ctaButtonHandler?.();
     }
     const charNr = Number(event.currentTarget.getAttribute('data-character'));
-    // console.log(charNr);
     let char = document
       .querySelector(`[data-const-pos="${charNr}"]`)
       ?.getAttribute('data-character');
@@ -62,9 +61,6 @@ const Header: FC<Props> = props => {
       const element = document.querySelector(`#${id}`);
       element?.scrollIntoView({ behavior: 'smooth' });
     }, 300);
-    //TODO switch sequence and remove anchors from characters
-    // const hero = document.querySelector(`#hero`);
-    // hero?.scrollIntoView();
   };
 
   return (

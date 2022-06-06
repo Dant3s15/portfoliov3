@@ -36,8 +36,8 @@ const Character = (props: Props) => {
   const curChar = classes[`character__${whichSide(props.data!)}`];
 
   return (
-    <div
-      // to={getMoveTo(props?.dataConstPos)}
+    <Link
+      to={getMoveTo(props?.dataConstPos)}
       className={`${classes.character} ${curChar ? curChar : ''} ${
         props.selected ? classes.selected : ''
       } ${!props.selectedCtx ? '' : classes.blured}`}
@@ -52,7 +52,7 @@ const Character = (props: Props) => {
         src={characterImage}
         alt='character image'
       />
-    </div>
+    </Link>
   );
 };
 

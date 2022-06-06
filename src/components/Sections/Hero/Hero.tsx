@@ -38,6 +38,9 @@ const Hero: FC<Props> = props => {
     e.stopPropagation();
     if (e.target.classList.contains(classes['section-hero'])) {
       ctx.setSelected?.(false);
+      // ctx.setWhichSelected?.(2)
+      // ctx.setCtaButtonClicked?.({ clicked: false });
+      // ctx.setWhichSelected?.(0);
       // ctx.setRenderSection?.(false);
     }
   };

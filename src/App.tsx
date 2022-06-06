@@ -96,17 +96,10 @@ function App() {
           }}
         ></Header>
         <main>
+          <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
           <Routes location={location} key={location.pathname}>
-            <Route
-              path='/'
-              element={
-                <Hero
-                  allSkillsData={allSkillsData}
-                  isLoading={isLoading}
-                ></Hero>
-              }
-            ></Route>
             {/* <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero> */}
+
             <Route
               path='/creator'
               element={
@@ -116,6 +109,7 @@ function App() {
                 />
               }
             ></Route>
+
             <Route
               path='about-me'
               element={

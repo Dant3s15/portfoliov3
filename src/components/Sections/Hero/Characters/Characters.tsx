@@ -148,22 +148,33 @@ const Characters: FC<Props> = props => {
 
   const isAnythingSelected = () => {
     if (leftIsSelected) {
-      // setMoveTo('creator');
       return { isSelected: true, text: 'Create character', moveTo: 'creator' };
     }
     if (frontIsSelected) {
-      // setMoveTo('about-me');
       return { isSelected: true, text: 'Level me up', moveTo: 'about-me' };
     }
     if (rightIsSelected) {
-      // setMoveTo('/');
-      return { isSelected: true, text: 'Character Locked', greyedOut: true };
+      return {
+        isSelected: true,
+        text: 'Character Locked',
+        greyedOut: true,
+        moveTo: 'hero',
+      };
     } else return { isSelected: false };
   };
 
-  const frontCharButtonHandler = () => {
-    // ctx.setRenderSection?.(true);
-    console.log('test');
+  const frontCharButtonHandler = (
+    event: { currentTarget: Element },
+    id: string | undefined
+  ) => {
+    ctx.setSelected?.(true);
+    setTimeout(() => {
+      if (!id) {
+        id = 'hero';
+      }
+      const element = document.querySelector(`#${id}`);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
   };
 
   return (
@@ -213,8 +224,9 @@ const Characters: FC<Props> = props => {
       >
         {isAnythingSelected().isSelected ? (
           <ButtonBig
-            onClick={frontCharButtonHandler}
-            // animate={true}
+            onClick={e =>
+              frontCharButtonHandler(e, isAnythingSelected().moveTo)
+            }
             moveTo={isAnythingSelected().moveTo}
             isAbsolute={true}
             text={isAnythingSelected().text}
@@ -230,8 +242,6 @@ const Characters: FC<Props> = props => {
           selectedCtx={ctx.isSelected}
           name='Character Creator'
           onRotateCharacters={ctx.rotateCharactersHandler}
-          // moveTo={moveTo}
-          // isAnythingSelected={isAnythingSelected().moveTo}
         ></Character>
 
         <Character
@@ -241,8 +251,6 @@ const Characters: FC<Props> = props => {
           selectedCtx={ctx.isSelected}
           name='Damian'
           onRotateCharacters={ctx.rotateCharactersHandler}
-          // moveTo={moveTo}
-          // isAnythingSelected={isAnythingSelected().moveTo}
         ></Character>
 
         <Character
@@ -252,8 +260,6 @@ const Characters: FC<Props> = props => {
           data={rightChar}
           name='Future Damian'
           onRotateCharacters={ctx.rotateCharactersHandler}
-          // moveTo={moveTo}
-          // isAnythingSelected={isAnythingSelected().moveTo}
         ></Character>
       </div>
     </div>
