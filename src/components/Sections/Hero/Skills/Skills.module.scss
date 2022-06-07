@@ -304,6 +304,7 @@
   @include corner-cut(20px, var(--color-border-transparent), 2px, 19px);
   transition: all var(--transition-short);
   transition-property: color, text-shadow;
+  cursor: help;
   &__level-title {
     text-transform: uppercase;
     font-weight: 700;
@@ -318,8 +319,8 @@
     transition: all var(--transition-short-medium);
     transition-property: transform, opacity;
     position: absolute;
-    height: 100%;
-    bottom: 12px;
+    top: -10%;
+    bottom: 15px;
     left: 50%;
     right: 50%;
     &[data-character='0'] {

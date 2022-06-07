@@ -561,3 +561,21 @@
     animation: none;
   }
 }
+
+@keyframes dropshadow {
+  0% {
+    filter: none;
+  }
+  20% {
+    filter: drop-shadow(0 0 10px #fff);
+  }
+  40% {
+    filter: none;
+  }
+  60% {
+    filter: drop-shadow(0 0 10px #fff);
+  }
+  100% {
+    filter: none;
+  }
+}

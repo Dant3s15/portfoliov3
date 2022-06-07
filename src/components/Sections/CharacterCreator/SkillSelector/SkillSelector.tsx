@@ -151,9 +151,6 @@ const SkillSelector: FC<Props> = props => {
       setWhichTooltip(undefined);
       setIsAdded(true);
       skillChangeHandler(skill);
-    } else {
-      //TODO select skill level popup
-      console.log('scroll');
     }
   };
 

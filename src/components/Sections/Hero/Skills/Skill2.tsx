@@ -1,7 +1,7 @@
 import { FC, Fragment, useState } from 'react';
 import { skillInterface } from '../../../../Types/types';
-import SkillInfo from '../../../UI/SkillInfo';
 import classes from './Skill2.module.scss';
+import Tooltip from '@mui/material/Tooltip';
 
 interface Props {
   skill: skillInterface;
@@ -22,7 +22,7 @@ const Skill2: FC<Props> = (props: Props) => {
   return (
     <div className={classes.wrapper}>
       <button
-        className={`${classes['skill-tile']}`}
+        className={`${classes['skill-tile']} `}
         onMouseDown={() => {
           props.data.skillTooltipHandler(props.skill, 'add');
         }}
@@ -30,9 +30,15 @@ const Skill2: FC<Props> = (props: Props) => {
           props.data.skillTooltipHandler(props.skill);
         }}
       >
-        <div className={classes['skill-tile-level']}>
-          <p>{props.skill.level}</p>
-        </div>
+        <Tooltip
+          arrow
+          placement='top'
+          title={`${props.skill.name.toUpperCase()} Proficiency Level`}
+        >
+          <div className={`${classes['skill-tile-level']}`}>
+            <span>{props.skill.level}</span>
+          </div>
+        </Tooltip>
         <div className={classes['skill-tile-icon']}>
           <img
             src={props.skill.icon}

@@ -58,7 +58,8 @@
       height: 25px;
       overflow: hidden;
       width: 400px;
-      cursor: pointer;
+      // cursor: pointer;
+      cursor: e-resize;
       transition: all var(--transition-short);
 
       &:hover {
@@ -76,7 +77,8 @@
         );
 
         box-shadow: -210px 0 0 200px var(--color-primary);
-        cursor: pointer;
+        // cursor: pointer;
+        cursor: e-resize;
 
         height: 20px;
         width: 20px;
@@ -93,4 +95,8 @@
       }
     }
   }
+}
+
+.click-me {
+  animation: dropshadow 1s infinite;
 }

@@ -5,6 +5,7 @@ import github from '../../../resources/icons/logo-github.svg';
 import classes from './ProjectCard.module.scss';
 import { skillInterface } from '../../../Types/types';
 import LoadingSpinner from '../../UI/LoadingSpinner';
+import Tooltip from '@mui/material/Tooltip';
 
 interface CardProjectProps {
   projectData: {
@@ -51,9 +52,15 @@ const CardProject: FC<CardProjectProps> = props => {
     >
       <CardGlass className={`${classes.project}`}>
         <div className={classes.links}>
-          <a href={props.projectData?.repo} target='_blank'>
-            <img src={github} alt='github' />
-          </a>
+          <Tooltip
+            key={Math.random()}
+            placement='top'
+            title={`Go To GitHub Repository`}
+          >
+            <a href={props.projectData?.repo} target='_blank'>
+              <img src={github} alt='github' />
+            </a>
+          </Tooltip>
         </div>
         <div className={classes['project-image-window']}>
           <a
@@ -61,10 +68,17 @@ const CardProject: FC<CardProjectProps> = props => {
             href={props.projectData?.link}
             target='_blank'
           >
-            <img
-              src={props.projectData?.image}
-              className={classes['project-image']}
-            />
+            <Tooltip
+              arrow
+              key={Math.random()}
+              placement='top'
+              title={`Go To Live Project Site`}
+            >
+              <img
+                src={props.projectData?.image}
+                className={classes['project-image']}
+              />
+            </Tooltip>
           </a>
         </div>
         <div
@@ -114,15 +128,22 @@ const ProjectSkillsList: FC<ListProps> = props => {
   return props.projectData.skills.map((skill: string) => {
     const fetchedSkill = findSkill(skill);
     return (
-      <li key={Math.random()} className={classes['skill']}>
-        <div className={classes.icon}>
-          <img
-            src={fetchedSkill.icon}
-            alt={`${fetchedSkill.names?.[0]} icon`}
-          />
-        </div>
-        <p className={classes['skill-title']}>{fetchedSkill.names?.[0]}</p>
-      </li>
+      <Tooltip
+        arrow
+        key={Math.random()}
+        placement='top'
+        title={`Skill Used To Create This Project`}
+      >
+        <li className={classes['skill']}>
+          <div className={classes.icon}>
+            <img
+              src={fetchedSkill.icon}
+              alt={`${fetchedSkill.names?.[0]} icon`}
+            />
+          </div>
+          <p className={classes['skill-title']}>{fetchedSkill.names?.[0]}</p>
+        </li>
+      </Tooltip>
     );
   });
 };

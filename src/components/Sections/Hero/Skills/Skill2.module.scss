@@ -5,7 +5,7 @@
 .skill-tile {
   position: relative;
   z-index: 888;
-  cursor: help;
+
   height: 120px;
   min-width: 120px;
   overflow: hidden;
@@ -41,6 +41,7 @@
   }
 
   &-level {
+    cursor: help;
     background-color: var(--color-primary);
     position: absolute;
     width: 55px;
@@ -54,7 +55,7 @@
     align-self: flex-end;
     clip-path: polygon(0% 0%, 100% 0, 100% 100%);
 
-    p {
+    span {
       transition: var(--transition-short);
       color: #222;
       font-weight: 700;

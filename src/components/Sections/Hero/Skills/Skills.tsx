@@ -5,6 +5,7 @@ import SelectedContext from '../../../../context/selected-context';
 import classes from './Skills.module.scss';
 import SkillInfo from '../../../UI/SkillInfo';
 import LoadingSpinner from '../../../UI/LoadingSpinner';
+import Tooltip from '@mui/material/Tooltip';
 
 interface Props {
   className: string;
@@ -217,40 +218,42 @@ const SkillsList: FC<Props> = props => {
               >
                 <h2>Unlocked Skills</h2>
               </div>
-              <div
-                className={`${classes['character-level']} ${
-                  leftCharSkills.length !== 0 || ctx.whichIsSelected !== 0
-                    ? classes.glowsmall
-                    : ''
-                }`}
-                id='character-level'
-              >
-                <div className={classes['character-level__level-title']}>
-                  level
+              <Tooltip placement='top' title='Calculated Total Level'>
+                <div
+                  className={`${classes['character-level']} ${
+                    leftCharSkills.length !== 0 || ctx.whichIsSelected !== 0
+                      ? classes.glowsmall
+                      : ''
+                  }`}
+                  id='character-level'
+                >
+                  <div className={classes['character-level__level-title']}>
+                    level
+                  </div>
+                  <div className={classes['character-levels']}>
+                    <div
+                      className={classes['character-level__level-number']}
+                      data-character={props.charStateData.leftChar}
+                    >
+                      {props.allSkillsData.length
+                        ? calcLevel(leftCharSkills)
+                        : ''}
+                    </div>
+                    <div
+                      className={classes['character-level__level-number']}
+                      data-character={props.charStateData.frontChar}
+                    >
+                      {props.allSkillsData.length ? calcLevel(frontChar) : ''}
+                    </div>
+                    <div
+                      className={classes['character-level__level-number']}
+                      data-character={props.charStateData.rightChar}
+                    >
+                      {props.allSkillsData.length ? calcLevel(rightChar) : ''}
+                    </div>
+                  </div>
                 </div>
-                <div className={classes['character-levels']}>
-                  <div
-                    className={classes['character-level__level-number']}
-                    data-character={props.charStateData.leftChar}
-                  >
-                    {props.allSkillsData.length
-                      ? calcLevel(leftCharSkills)
-                      : ''}
-                  </div>
-                  <div
-                    className={classes['character-level__level-number']}
-                    data-character={props.charStateData.frontChar}
-                  >
-                    {props.allSkillsData.length ? calcLevel(frontChar) : ''}
-                  </div>
-                  <div
-                    className={classes['character-level__level-number']}
-                    data-character={props.charStateData.rightChar}
-                  >
-                    {props.allSkillsData.length ? calcLevel(rightChar) : ''}
-                  </div>
-                </div>
-              </div>
+              </Tooltip>
             </div>
           </header>
           {props.allSkillsData.length !== 0 ? (

@@ -186,7 +186,7 @@
 }
 
 .skill {
-  cursor: default;
+  cursor: help;
   @include flexbox(space-between);
   flex-direction: column;
   position: relative;

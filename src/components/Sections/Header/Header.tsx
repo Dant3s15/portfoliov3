@@ -51,10 +51,12 @@ const Header: FC<Props> = props => {
     let char = document
       .querySelector(`[data-const-pos="${charNr}"]`)
       ?.getAttribute('data-character');
-
-    ctx.rotateCharactersHandler?.(char ? +char : null);
-    ctx.setWhichSelected?.(charNr);
-    ctx.setSelected?.(true);
+    console.log(char);
+    if (char) {
+      ctx.rotateCharactersHandler?.(char ? +char : null);
+      ctx.setWhichSelected?.(charNr);
+      ctx.setSelected?.(true);
+    }
 
     setTimeout(() => {
       const element = document.querySelector(`#${id}`);
@@ -75,7 +77,7 @@ const Header: FC<Props> = props => {
           <div className={classes['logo-item']}>
             <Link
               to={'/'}
-              data-character='1'
+              data-character='null'
               className={classes.logo}
               onClick={e => navItemHandler(e, 'hero')}
             >
