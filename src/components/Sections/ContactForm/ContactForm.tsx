@@ -69,7 +69,6 @@ const ContactForm = () => {
       const errorDiv = (
         <div className={classes['form-error']}>{formik.errors[inptName]}</div>
       );
-      // console.log(errorDiv);
       return errorDiv;
     }
     return null;

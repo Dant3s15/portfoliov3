@@ -1,13 +1,10 @@
 import { useEffect, useRef, useContext, FC, useState } from 'react';
 import { skillInterface } from '../../../../Types/types';
-
 import Skill2 from './Skill2';
-// import AllSkills from '../../../Utils/AllSkills';
 import SelectedContext from '../../../../context/selected-context';
 import classes from './Skills.module.scss';
 import SkillInfo from '../../../UI/SkillInfo';
 import LoadingSpinner from '../../../UI/LoadingSpinner';
-// import axios from 'axios';
 
 interface Props {
   className: string;
@@ -27,7 +24,6 @@ const SkillsList: FC<Props> = props => {
   const skillCharCol1 = useRef<HTMLDivElement>(null);
   const skillCharCol2 = useRef<HTMLDivElement>(null);
   const [leftCharSkills, setLeftCharSkills] = useState([]);
-  // const [allSkillsData, setAllSkillsData] = useState<skillInterface[]>([]);
   const [showInfo, setShowInfo] = useState(false);
   const [curSkillInfo, setCurSkillInfo] = useState<skillInterface>();
 
@@ -145,28 +141,6 @@ const SkillsList: FC<Props> = props => {
 
     return (
       <div ref={ref} className={classes['skill-char-col']} data-character={pos}>
-        {/* {props.isLoading ? (
-          <LoadingSpinner></LoadingSpinner>
-        ) : (
-          <ul className={classes['skills-list']}>
-            {skillsByCharacters[id].map(item => {
-              {
-                if (item.id === 0) return;
-                return (
-                  <Skill2
-                    key={item.id}
-                    data={{
-                      skillTooltipHandler,
-                      setShowInfo,
-                    }}
-                    skill={item}
-                  />
-                );
-              }
-            })}
-          </ul>
-        )} */}
-        {/* {props.isLoading && <LoadingSpinner></LoadingSpinner>} */}
         <ul className={classes['skills-list']}>
           {skillsByCharacters[id].map(item => {
             {
@@ -226,7 +200,6 @@ const SkillsList: FC<Props> = props => {
             !ctx.ctaButtonClicked?.clicked ? classes['abs-down'] : ''
           }`}
         >
-          {/* {leftCharSkills.length === 0 && ctx.whichIsSelected !== 0 ? ( */}
           <header className={classes['skills-window__header']}>
             <SkillInfo data={{ showInfo }} skill={curSkillInfo}></SkillInfo>
 
@@ -280,9 +253,6 @@ const SkillsList: FC<Props> = props => {
               </div>
             </div>
           </header>
-          {/* ) : (
-            ''
-          )} */}
           {props.allSkillsData.length !== 0 ? (
             <div
               ref={characterSkills}

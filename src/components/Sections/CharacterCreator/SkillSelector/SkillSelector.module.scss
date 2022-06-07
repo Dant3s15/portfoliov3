@@ -49,9 +49,6 @@
 
       @include scrollbar;
       & > div:hover {
-        // @include textglowsmaller;
-        // transform: translateZ(0) scale(1.05);
-
         .level {
           color: #fff;
         }

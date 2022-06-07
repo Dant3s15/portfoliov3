@@ -25,8 +25,6 @@ interface CardProjectProps {
 
 const CardProject: FC<CardProjectProps> = props => {
   const projectCardRef = useRef<null | HTMLDivElement>(null);
-  // const [projectSkills, setProjectSkills] = useState();
-
   const cardClickHandler = (e: any) => {
     e.nativeEvent.stopPropagation();
 
@@ -38,20 +36,6 @@ const CardProject: FC<CardProjectProps> = props => {
         block: 'nearest',
       });
   };
-  // useEffect(() => {
-  //   return () => {
-  //   };
-  // }, [props.isLoading]);
-
-  // const skillsArr = getSkills(props.projectData?.skills);
-  // const skills = skillsArr?.map(skill => (
-  //   <li key={Math.random()} className={classes['skill']}>
-  //     <div className={classes.icon}>
-  //       <img src={skill.icon} alt={`${skill.names[0]} icon`} />
-  //     </div>
-  //     <p className={classes['skill-title']}>{skill.names[0]}</p>
-  //   </li>
-  // ));
 
   return (
     <animated.div
@@ -64,7 +48,6 @@ const CardProject: FC<CardProjectProps> = props => {
           ? classes['selected-project']
           : ''
       } `}
-      style={{ ...props.style }}
     >
       <CardGlass className={`${classes.project}`}>
         <div className={classes.links}>
@@ -96,7 +79,6 @@ const CardProject: FC<CardProjectProps> = props => {
           </div>
           <h3 className={classes['used-skills-title']}>Skills Used:</h3>
           <ul className={classes['used-skills']}>
-            {/* {getSkills(props.projectData.skills)} */}
             {props.isLoading ? (
               <LoadingSpinner></LoadingSpinner>
             ) : (
@@ -117,15 +99,6 @@ interface ListProps {
 }
 
 const ProjectSkillsList: FC<ListProps> = props => {
-  // console.log(props.projectData);
-  // return (
-  //   <li key={Math.random()} className={classes['skill']}>
-  //     <div className={classes.icon}>
-  //       <img src={skill.icon} alt={`${skill.names[0]} icon`} />
-  //     </div>
-  //     <p className={classes['skill-title']}>{skill.names[0]}</p>
-  //   </li>
-  // );
   const findSkill = (skillName: string) => {
     props?.allSkillsData?.map((skill: skillInterface) => {
       return skill;
@@ -140,8 +113,6 @@ const ProjectSkillsList: FC<ListProps> = props => {
 
   return props.projectData.skills.map((skill: string) => {
     const fetchedSkill = findSkill(skill);
-    // console.log(fetchedSkill);
-    // return <li key={Math.random()}>{skill}</li>;
     return (
       <li key={Math.random()} className={classes['skill']}>
         <div className={classes.icon}>

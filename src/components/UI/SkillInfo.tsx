@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { skillInterface } from '../../Types/types';
-import CardGlass from './CardGlass';
 import classes from './SkillInfo.module.scss';
 
 interface Props {

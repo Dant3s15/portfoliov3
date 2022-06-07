@@ -7,13 +7,11 @@ interface Props {
   skill: skillInterface;
   data: {
     skillTooltipHandler: (skill: skillInterface, action?: string) => void;
-    // skillTooltipCancel: () => void;
     setShowInfo: React.Dispatch<React.SetStateAction<boolean>>;
   };
 }
 
 const Skill2: FC<Props> = (props: Props) => {
-  // const [showInfo, setShowInfo] = useState(false);
   const nameShortener = (name: string) => {
     if (name.length > 20) {
       const shortName = name.slice(0, 20);
@@ -23,13 +21,10 @@ const Skill2: FC<Props> = (props: Props) => {
 
   return (
     <div className={classes.wrapper}>
-      {/* {showInfo ? <SkillInfo skill={props.skill}></SkillInfo> : ''} */}
       <button
         className={`${classes['skill-tile']}`}
         onMouseDown={() => {
           props.data.skillTooltipHandler(props.skill, 'add');
-
-          // setShowInfo(true);
         }}
         onMouseLeave={() => {
           props.data.skillTooltipHandler(props.skill);

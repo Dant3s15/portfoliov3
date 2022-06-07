@@ -1,6 +1,5 @@
 import { FC, Fragment, useEffect, useRef, useState } from 'react';
 import CardGlass from '../../../UI/CardGlass';
-// import AllSkills from '../../../Utils/AllSkills';
 import Skill from './Skill/Skill';
 import SkillAddWindow from './SkillAddWindow';
 import ButtonBig from '../../../UI/ButtonBig';
@@ -29,7 +28,6 @@ const SkillSelector: FC<Props> = props => {
     props.allSkillsData[0]
   );
   const [levelIsSet, setlevelIsSet] = useState(false);
-  // const [showTooltip, setShowTooltip] = useState(false);
   const [whichTooltip, setWhichTooltip] = useState(undefined);
 
   const searchAllRef = useRef<HTMLInputElement>(null);
@@ -86,7 +84,6 @@ const SkillSelector: FC<Props> = props => {
   };
   const sortSkills = (arr: skillInterface[]) => {
     return arr.sort((a, b) => {
-      // if (arr === allSkillsArr) a.isAdded = false;
       return a.names[0].localeCompare(b.names[0]);
     });
   };
@@ -177,9 +174,6 @@ const SkillSelector: FC<Props> = props => {
       // );
       localStorage.setItem('leftChar', JSON.stringify(addedSkills));
       window.dispatchEvent(new Event('storage'));
-      // console.log('storage');
-      // const data = await response.json();
-      // console.log(data.name);
     }
   };
 

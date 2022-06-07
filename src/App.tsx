@@ -1,7 +1,5 @@
-import React, { useState, Fragment, useEffect, Suspense } from 'react';
-import './App.css';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { useState, Fragment, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import SelectedContext from './context/selected-context';
 import Header from './components/Sections/Header/Header';
@@ -98,8 +96,6 @@ function App() {
         <main>
           <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
           <Routes location={location} key={location.pathname}>
-            {/* <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero> */}
-
             <Route
               path='/creator'
               element={
@@ -109,7 +105,6 @@ function App() {
                 />
               }
             ></Route>
-
             <Route
               path='about-me'
               element={
@@ -117,89 +112,11 @@ function App() {
               }
             ></Route>
           </Routes>
-          {/* <Outlet /> */}
         </main>
         <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
       </SelectedContext.Provider>
     </Fragment>
   );
-  // return (
-  //   <Fragment>
-  //     <SelectedContext.Provider
-  //       value={{
-  //         isSelected: selected,
-  //         setSelected,
-  //         whichIsSelected: whichSelected,
-  //         setWhichSelected,
-  //         ctaButtonClicked,
-  //         setCtaButtonClicked,
-  //       }}
-  //     >
-  //       <Header
-  //         data={{
-  //           google: {
-  //             user,
-  //             auth,
-  //             signInWithGoogle,
-  //           },
-  //         }}
-  //       ></Header>
-  //       <main>
-  //         <Hero allSkillsData={allSkillsData} isLoading={isLoading} />
-  //         <CharacterCreator
-  //           allSkillsData={allSkillsData}
-  //           isLoading={isLoading}
-  //         />
-  //         <AboutMe allSkillsData={allSkillsData} isLoading={isLoading} />
-  //       </main>
-  //       <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
-  //     </SelectedContext.Provider>
-  //   </Fragment>
-  // );
-
-  //************************* */
-  // return (
-  //   <Fragment>
-  //     <SelectedContext.Provider
-  //       value={{
-  //         isSelected: selected,
-  //         setSelected,
-  //         whichIsSelected: whichSelected,
-  //         setWhichSelected,
-  //         ctaButtonClicked,
-  //         setCtaButtonClicked,
-  //       }}
-  //     >
-  //       <Header
-  //         data={{
-  //           google: {
-  //             user,
-  //             auth,
-  //             signInWithGoogle,
-  //           },
-  //         }}
-  //       ></Header>
-  //       <main>
-  //         <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
-  //         {whichSelected === 0 && selected ? (
-  //           <CharacterCreator
-  //             allSkillsData={allSkillsData}
-  //             isLoading={isLoading}
-  //           />
-  //         ) : (
-  //           ''
-  //         )}
-  //         {whichSelected === 1 && selected ? (
-  //           <AboutMe allSkillsData={allSkillsData} isLoading={isLoading} />
-  //         ) : (
-  //           ''
-  //         )}
-  //         {whichSelected === 2 && selected ? <FutureChar /> : ''}
-  //       </main>
-  //       <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
-  //     </SelectedContext.Provider>
-  //   </Fragment>
-  // );
 }
 
 export default App;

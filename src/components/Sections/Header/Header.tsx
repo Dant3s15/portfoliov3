@@ -53,7 +53,6 @@ const Header: FC<Props> = props => {
       ?.getAttribute('data-character');
 
     ctx.rotateCharactersHandler?.(char ? +char : null);
-    // ctx.setRenderSection?.(true);
     ctx.setWhichSelected?.(charNr);
     ctx.setSelected?.(true);
 
@@ -76,6 +75,7 @@ const Header: FC<Props> = props => {
           <div className={classes['logo-item']}>
             <Link
               to={'/'}
+              data-character='1'
               className={classes.logo}
               onClick={e => navItemHandler(e, 'hero')}
             >

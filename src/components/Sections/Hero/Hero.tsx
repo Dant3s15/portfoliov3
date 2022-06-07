@@ -6,8 +6,6 @@ import SkillsList from './Skills/Skills';
 import { useRef } from 'react';
 import { skillInterface } from '../../../Types/types';
 import { motion } from 'framer-motion';
-
-// import skillsdb from './skills.json';
 interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
@@ -38,30 +36,14 @@ const Hero: FC<Props> = props => {
     e.stopPropagation();
     if (e.target.classList.contains(classes['section-hero'])) {
       ctx.setSelected?.(false);
-      // ctx.setWhichSelected?.(2)
-      // ctx.setCtaButtonClicked?.({ clicked: false });
-      // ctx.setWhichSelected?.(0);
-      // ctx.setRenderSection?.(false);
     }
   };
-
-  // const getSkills = () => {
-  //   skillsdb.forEach(skill => {
-  //     console.log(skill.name);
-  //     console.log(
-  //       `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.name}/${skill.name}-original.svg`
-  //     );
-  //   });
-  // };
-  // // console.log(skillsdb);
-  // getSkills();
 
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      // transition={{ duration: 1 }}
       id='hero'
       ref={heroRef}
       onClick={heroOnClickHandler}

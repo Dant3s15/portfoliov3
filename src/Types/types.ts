@@ -7,5 +7,4 @@ export interface skillInterface {
   description?: string;
   web?: string;
   stacks?: string[];
-  // isAdded?: boolean;
 }

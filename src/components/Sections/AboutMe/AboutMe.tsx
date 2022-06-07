@@ -19,7 +19,6 @@ const AboutMe: FC<Props> = props => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        // transition={{ duration: 1 }}
         id='about-me'
         className={classes['about-me']}
       >
@@ -77,7 +76,6 @@ const AboutMe: FC<Props> = props => {
                       .typeString(
                         '<span>You can contact me by sending me an email📧 using the form below:</span>'
                       )
-
                       .start();
                   }}
                 />

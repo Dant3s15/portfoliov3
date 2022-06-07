@@ -55,11 +55,8 @@
   border: 1px solid var(--color-border-transparent);
   border-right: 7px solid var(--color-border-transparent);
   transform-origin: 5%;
-  // will-change: transform;
   @include corner-cut(63px, var(--color-border-transparent), 7px, 59px);
-  // @include textglowsmall;
   border-bottom: 5px solid var(--color-border-transparent);
-  // transform: scale(1) rotateY(-10deg);
   @media (max-width: $big-tablet) {
     height: 100%;
     width: 100%;
@@ -82,22 +79,10 @@
 
   &:hover {
     background-color: #e5e5e51a;
-    // transform: rotateY(-5deg) scale(1.1);
     color: var(--color-primary);
     .character-skills {
       scrollbar-width: 50px;
     }
-    // h2,
-    // .character-level {
-    //   @include textglowsmall;
-    //   color: #fff;
-    // }
-
-    // & button {
-    //   transition: all var(--transition-short);
-    //   transition-property: filter, transform;
-    //   filter: drop-shadow(0px 4px 1px rgba(0, 0, 0, 0.7));
-    // }
   }
 
   &__header {
@@ -119,9 +104,7 @@
 }
 .header-wrapper {
   @include flexbox;
-  // border: 1px solid red;
   width: 100%;
-  // justify-content: space-between;
   position: absolute;
   transition: transform var(--transition-short);
 }
@@ -141,27 +124,17 @@
   height: 100%;
   text-align: center;
   padding: 3.875rem;
-  // background-color: var(--color-gray);
-  // animation: lineheight var(--transition-medium) forwards;
   font-weight: 700;
   &:hover {
     @include textglow;
   }
   strong {
-    // background-color: var(--color-primary);
     display: block;
     font-size: 48px;
     position: relative;
-    // overflow: hidden;
     z-index: 999;
-
-    // @include textglowsmaller;
-    // text-shadow: 0 0 4px #fff, 0 0 11px var(--color-primary),
-    //   0 0 19px var(--color-primary);
-    // animation: shine3 7s ease-in-out alternate infinite;
     transition: all var(--transition-medium);
     transition-property: transform, opacity;
-    // color: #fff;
     animation: flickerrev 5s infinite alternate;
   }
 
@@ -177,18 +150,9 @@
 }
 
 .s-window:hover .skills-text:not(.abs-up) {
-  //TODO
-  // animation: shine4 10s ease-in-out;
-  // transform: scale(1.05);
-
-  // animation: lineheight2 var(--transition-medium) var(--transition-short)
-  //   forwards;
-
   strong {
     animation: none;
     @include textglow;
-    // color: #fff;
-    // transform: scale(1.1);
   }
 }
 .skills-list {
@@ -210,7 +174,6 @@
     height: 100%;
     text-transform: uppercase;
     padding: 0 6rem;
-    // color: var(--color-gray);
     font-size: 2.75rem;
     line-height: 1.5;
     font-weight: 700;
@@ -219,12 +182,10 @@
     strong {
       word-break: keep-all;
       font-size: 3.25rem;
-      // color: var(--color-primary);
     }
     transition: all var(--transition-short);
     transition-property: color, text-shadow;
     &:hover {
-      // @include textglow(#fff);
       strong {
         color: #fff;
       }
@@ -301,12 +262,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  // color: var(--color-primary);
   font-weight: 700;
-  // @include textglowsmall;
-
   color: var(--color-border-transparent);
-
   h2 {
     transition: all var(--transition-short);
     transition-property: text-shadow, color;
@@ -336,8 +293,6 @@
 
 .character-level {
   border: 2px solid var(--color-border-transparent);
-  // border: 4px solid #fff;
-  // color: var(--color-border-transparent);
   border-radius: 3px;
   padding: 1rem;
   margin: 19px 16px;
@@ -346,11 +301,9 @@
   overflow: hidden;
   @include flexbox(space-between);
   flex-direction: column;
-  // background-color: var(--color-primary-transparent-1);
   @include corner-cut(20px, var(--color-border-transparent), 2px, 19px);
   transition: all var(--transition-short);
   transition-property: color, text-shadow;
-  // @include textglowsmall;
   &__level-title {
     text-transform: uppercase;
     font-weight: 700;
@@ -384,7 +337,6 @@
   @media (max-width: $big-tablet) {
     height: 5rem;
     padding: 0.3125rem;
-    // margin: 0;
     &__level-number {
       font-size: 1.75rem;
       bottom: 7px;
@@ -424,10 +376,6 @@
   background-color: #e5e5e51a;
   border-radius: 3px;
   transform: rotateY(-5deg) scale(1.1) !important;
-  // h2,
-  // .character-level {
-  //   @include textglowsmaller;
-  // }
   &:first-child {
     color: var(--color-primary);
   }

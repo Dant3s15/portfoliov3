@@ -17,11 +17,9 @@ const SkillTooltip: FC<Skill> = props => {
   };
 
   return (
-    // <div className={classes['tooltip-wrapper']}>
     <div className={classes.tooltip}>
       {textShortener(props.data.description, 230)}
     </div>
-    // </div>
   );
 };
 

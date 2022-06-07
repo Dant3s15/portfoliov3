@@ -10,7 +10,6 @@ interface Props {
   name: string;
   onRotateCharacters: (e: any) => void;
   selectedCtx?: boolean;
-  // moveTo: string;
 }
 const Character = (props: Props) => {
   const whichSide = (data: number | string): string | undefined => {
