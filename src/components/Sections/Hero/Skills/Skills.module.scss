@@ -39,6 +39,7 @@
 }
 
 .skills-window {
+  transform: rotateY(-10deg);
   color: var(--color-primary-transparent-3);
   backdrop-filter: blur(30px);
   width: 450px;
