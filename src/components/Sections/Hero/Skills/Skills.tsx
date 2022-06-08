@@ -180,7 +180,7 @@ const SkillsList: FC<Props> = props => {
     <div className={classes['skills-col']}>
       <div
         ref={skillsWindowRef}
-        className={`card--glass ${classes['skills-window']} ${
+        className={`${classes['skills-window']} ${
           !ctx.ctaButtonClicked?.clicked ? 'not-started' : ''
         } `}
       >

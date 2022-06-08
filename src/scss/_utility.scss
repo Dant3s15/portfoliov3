@@ -36,12 +36,13 @@
   -webkit-background-clip: text;
 }
 
-.card--glass {
-  transform: rotateY(-10deg);
-  overflow: hidden;
-  transform-style: preserve-3d;
-  // backdrop-filter: blur(10px);
-}
+// .card--glass {
+//   transform: rotateY(-10deg);
+//   overflow: hidden;
+//   transform-style: preserve-3d;
+//   // backdrop-filter: blur(10px);
+//   border: 1px solid red;
+// }
 
 .not-started {
   transform: rotateY(-5deg) scale(1);

@@ -228,9 +228,10 @@
   overscroll-behavior: contain;
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  @include scrollbar(var(--color-primary));
+  // &::-webkit-scrollbar {
+  //   // display: none;
+  // }
   @include flexbox(center, flex-start);
   &[data-character='0'] {
     animation: none;
