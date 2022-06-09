@@ -6,7 +6,7 @@ import CloseIcon from '../../Icons/CloseIcon';
 import GoogleLogIn from '../../Icons/google/GoogleLogIn';
 import logo from '../../../resources/logo.svg';
 import { User } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface Props {
   data: {
@@ -75,40 +75,46 @@ const Header: FC<Props> = props => {
       >
         <div className={classes.navigation}>
           <div className={classes['logo-item']}>
-            <Link
+            <NavLink
               to={'/'}
               data-character='null'
               className={classes.logo}
               onClick={e => navItemHandler(e, 'hero')}
             >
               <img src={logo} alt='' />
-            </Link>
+            </NavLink>
           </div>
           <nav className={classes.nav}>
-            <Link
+            <NavLink
               to={'/about-me'}
               data-character='1'
               onClick={e => navItemHandler(e, 'my-projects')}
-              className={classes.nav__item}
+              className={({ isActive }) =>
+                `${classes.nav__item} ${isActive ? classes['nav--active'] : ''}`
+              }
             >
               My projects
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to={'/about-me'}
               data-character='1'
               onClick={e => navItemHandler(e, 'about-me')}
-              className={classes.nav__item}
+              className={({ isActive }) =>
+                `${classes.nav__item} ${isActive ? classes['nav--active'] : ''}`
+              }
             >
               About Me
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to={'/creator'}
               data-character='0'
               onClick={e => navItemHandler(e, 'creator')}
-              className={classes.nav__item}
+              className={({ isActive }) =>
+                `${classes.nav__item} ${isActive ? classes['nav--active'] : ''}`
+              }
             >
               Character Creator
-            </Link>
+            </NavLink>
             {!props.data.google.user && (
               <button
                 className={`${classes.nav__item} ${classes.google}`}

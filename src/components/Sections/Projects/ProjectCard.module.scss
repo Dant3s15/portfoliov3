@@ -7,6 +7,7 @@
   margin-right: -12rem;
   min-width: 390px;
   max-width: 450px;
+
   position: relative;
   transition: all var(--transition-short-medium);
   transition-property: transform;
@@ -15,9 +16,12 @@
   @include corner-cut(40px, rgba(255, 255, 255, 0.18), 10px, 38px);
 
   &:hover {
-    transform: perspective(500px) scale(0.9) translateX(var(--project-card-gap))
+    transform: perspective(500px) scale(0.8) translateX(var(--project-card-gap))
       rotateY(-15deg) !important;
-
+    @media (max-width: $mobile) {
+      transform: perspective(500px) scale(0.8)
+        translateX(var(--project-card-gap));
+    }
     .project-title,
     .used-skills-title,
     .project-overview {
@@ -26,6 +30,9 @@
   }
   &:hover:first-child {
     transform: perspective(500px) scale(1) translateX(0) rotateY(0deg) !important;
+    @media (max-width: $mobile) {
+      transform: perspective(500px) scale(0.9) translateX(0) rotateY(0deg) !important;
+    }
   }
   &:nth-child(1) {
     z-index: 10;
@@ -45,11 +52,17 @@
 
   &.selected-project:hover {
     transform: perspective(1000px) scale(1) translateX(35%) rotateY(0deg) !important;
+    @media (max-width: $mobile) {
+      transform: perspective(1000px) scale(0.9) translateX(35%) rotateY(0deg) !important;
+    }
   }
 
   &.selected-project {
     transform: perspective(1000px) scale(1) translateX(35%) !important;
     animation: zindex 100s forwards;
+    @media (max-width: $mobile) {
+      transform: perspective(1000px) scale(0.9) translateX(35%) !important;
+    }
   }
 }
 
