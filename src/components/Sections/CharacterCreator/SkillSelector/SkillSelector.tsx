@@ -84,7 +84,7 @@ const SkillSelector: FC<Props> = props => {
   };
   const sortSkills = (arr: skillInterface[]) => {
     return arr.sort((a, b) => {
-      return a.names[0].localeCompare(b.names[0]);
+      return a.names?.[0].localeCompare(b.names?.[0]);
     });
   };
 

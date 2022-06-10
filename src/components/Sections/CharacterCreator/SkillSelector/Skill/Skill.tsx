@@ -50,10 +50,10 @@ const Skill: FC<Props> = props => {
       }}
     >
       <div className={classes.icon}>
-        <img src={props.data.icon} alt={`${props.data.names[0]} icon`} />
+        <img src={props?.data?.icon} alt={`${props?.data?.names[0]} icon`} />
       </div>
       <div className={classes.name}>
-        {nameShortener(props.data.names[0], 10)}
+        {nameShortener(props.data.names[0], 12)}
       </div>
       {props.data.level ? levelHandler : ''}
 

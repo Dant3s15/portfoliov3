@@ -63,14 +63,26 @@ const SkillsList: FC<Props> = props => {
   }, [ctx]);
 
   useEffect(() => {
-    if (window.localStorage.getItem('leftChar'))
-      setLeftCharSkills(
-        JSON.parse(window.localStorage.getItem('leftChar') || '')
+    let error = false;
+    if (window.localStorage.getItem('leftChar')) {
+      const data = JSON.parse(window.localStorage.getItem('leftChar') || '');
+      console.log(data);
+      data.forEach(
+        (el: { name: string; id: string; stacks: any[]; names: any[] }) => {
+          if (!el.name || !el.id || !el.stacks || !el.names) {
+            console.log('error');
+            error = true;
+          }
+        }
       );
+      if (!error) setLeftCharSkills(data);
+    }
+    // if (!error) {
     const onStorage = () => {
       setLeftCharSkills(JSON.parse(localStorage.getItem('leftChar') || ''));
     };
     window.addEventListener('storage', () => onStorage());
+    // }
     return () => {
       window.removeEventListener('storage', () => {
         onStorage();

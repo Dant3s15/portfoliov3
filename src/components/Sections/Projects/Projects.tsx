@@ -5,6 +5,7 @@ import classes from './Projects.module.scss';
 import ProjectsList from './ProjectsList';
 import project1 from '../../../resources/img/projects/project1.webp';
 import project2 from '../../../resources/img/projects/project2.webp';
+import soon from '../../../resources/img/projects/soon.png';
 import { skillInterface } from '../../../Types/types';
 
 interface Props {
@@ -81,32 +82,27 @@ const Projects: FC<Props> = props => {
     },
     {
       id: 3,
-      image: project1,
-      title: 'Web-dev-API',
-      overview: (
-        <Fragment>
-          Simple <strong>API</strong> database that gives you access to the list
-          of <strong>Web development technologies</strong> and skills.
-        </Fragment>
-      ),
-      skills: ['javascript', 'expressjs', 'git', 'github'],
-      link: 'https://portfolio-27cdd.web.app/',
-      repo: 'https://github.com/Dant3s15/portfoliov3',
+      image: soon,
+      title: 'COMING SOON...',
+      overview: <Fragment></Fragment>,
+      skills: ['html', 'css', 'javascript', 'git', 'github'],
+      link: '#',
+      repo: '#',
     },
-    {
-      id: 4,
-      image: project1,
-      title: 'Web-dev-API',
-      overview: (
-        <Fragment>
-          Simple <strong>API</strong> database that gives you access to the list
-          of <strong>Web development technologies</strong> and skills.
-        </Fragment>
-      ),
-      skills: ['javascript', 'expressjs', 'git', 'github'],
-      link: 'https://portfolio-27cdd.web.app/',
-      repo: 'https://github.com/Dant3s15/portfoliov3',
-    },
+    // {
+    //   id: 4,
+    //   image: project1,
+    //   title: 'Web-dev-API',
+    //   overview: (
+    //     <Fragment>
+    //       Simple <strong>API</strong> database that gives you access to the list
+    //       of <strong>Web development technologies</strong> and skills.
+    //     </Fragment>
+    //   ),
+    //   skills: ['javascript', 'expressjs', 'git', 'github'],
+    //   link: 'https://portfolio-27cdd.web.app/',
+    //   repo: 'https://github.com/Dant3s15/portfoliov3',
+    // },
   ];
 
   return (

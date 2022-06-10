@@ -20,6 +20,8 @@
   .logo {
     grid-row: 1/1;
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+    // filter: contrast(0) brightness(10)
+    //   drop-shadow(0px 0px 8px rgba(2, 129, 255, 0.988));
     img {
       height: 100%;
       min-height: 70px;

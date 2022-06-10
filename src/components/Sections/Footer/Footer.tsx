@@ -53,7 +53,10 @@ const Footer: FC<Props> = props => {
             </div>
             <div className={classes.link}>
               <img src={linkedin} alt='linkedin' />
-              <a target='_blank' href='#'>
+              <a
+                target='_blank'
+                href='https://www.linkedin.com/in/damian-sobieraj-9148b7234/'
+              >
                 LinkedIn
               </a>
             </div>
