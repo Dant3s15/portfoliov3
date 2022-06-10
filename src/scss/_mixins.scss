@@ -127,25 +127,14 @@
   text-shadow: 0 0 4px $color, 0 0 11px $color;
 }
 
-// @mixin scrollbar {
-//   ::-webkit-scrollbar {
-//     width: 5px;
-//     height: 5px;
-//     background: transparent;
-//   }
-
-//   ::-webkit-scrollbar-thumb {
-//     border-radius: 3px;
-//     background: var(--color-border-transparent);
-//   }
-// }
 @mixin scrollbar($color: var(--color-primary)) {
   &::-webkit-scrollbar {
     width: 5px;
     height: 5px;
     background: transparent;
   }
-
+  scrollbar-color: $color transparent;
+  scrollbar-width: thin;
   &::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background: $color;

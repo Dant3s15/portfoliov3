@@ -1,4 +1,4 @@
-import { FC, Fragment, ReactNode, useEffect, useRef, useState } from 'react';
+import { FC, ReactNode, useRef } from 'react';
 import { animated } from 'react-spring';
 import CardGlass from '../../UI/CardGlass';
 import github from '../../../resources/icons/logo-github.svg';
