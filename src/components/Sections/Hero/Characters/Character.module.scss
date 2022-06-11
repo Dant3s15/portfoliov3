@@ -12,7 +12,8 @@
 
   gap: 1.5rem;
   transition: all var(--transition-short-medium);
-  transition-property: transform, filter, width, z-index, margin, text-shadow;
+  will-change: transform, filter, margin;
+  transition-property: transform, filter, width, z-index, margin;
   cursor: pointer;
   z-index: 10;
   position: absolute;

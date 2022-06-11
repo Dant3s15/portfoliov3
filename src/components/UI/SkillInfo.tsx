@@ -10,8 +10,8 @@ interface Props {
 const SkillInfo: FC<Props> = props => {
   const shortenDesc = (text: string | undefined) => {
     if (!text) return;
-    if (text.length > 230) {
-      const shortText = text.slice(0, 230);
+    if (text.length > 190) {
+      const shortText = text.slice(0, 190);
       return `${shortText}...`;
     } else return text;
   };

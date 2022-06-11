@@ -71,7 +71,9 @@ const SkillsList: FC<Props> = props => {
         (el: { name: string; id: string; stacks: any[]; names: any[] }) => {
           if (!el.name || !el.id || !el.stacks || !el.names) {
             console.log('error');
+            setLeftCharSkills([]);
             error = true;
+            return;
           }
         }
       );
@@ -79,7 +81,9 @@ const SkillsList: FC<Props> = props => {
     }
     // if (!error) {
     const onStorage = () => {
-      setLeftCharSkills(JSON.parse(localStorage.getItem('leftChar') || ''));
+      if (!error) {
+        setLeftCharSkills(JSON.parse(localStorage.getItem('leftChar') || ''));
+      }
     };
     window.addEventListener('storage', () => onStorage());
     // }
