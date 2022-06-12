@@ -1,6 +1,4 @@
 import { FC, Fragment } from 'react';
-import { useSpring } from 'react-spring';
-import { useScroll } from '@use-gesture/react';
 import classes from './Projects.module.scss';
 import ProjectsList from './ProjectsList';
 import project1 from '../../../resources/img/projects/project1.webp';

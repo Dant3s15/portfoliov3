@@ -2,7 +2,6 @@ import Skill from './Skill/Skill';
 import { useState, useRef, FC, useEffect } from 'react';
 import classes from './SkillAddWindow.module.scss';
 import { skillInterface } from '../../../../Types/types';
-import Tooltip from '@mui/material/Tooltip';
 
 interface Props {
   onSetLevel: React.Dispatch<React.SetStateAction<boolean>>;

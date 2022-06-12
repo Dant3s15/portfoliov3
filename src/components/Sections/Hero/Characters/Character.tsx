@@ -1,7 +1,6 @@
-// import ButtonBig from '../../../UI/ButtonBig';
+import { Link } from 'react-router-dom';
 import classes from './Character.module.scss';
 import characterImage from '../../../../resources/img/character.png';
-import { Link } from 'react-router-dom';
 
 interface Props {
   dataConstPos?: number;

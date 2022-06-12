@@ -1,10 +1,11 @@
 import { FC, Fragment, useEffect, useRef, useState } from 'react';
+import classes from './SkillSelector.module.scss';
+//COMPONENTS
+import ButtonBig from '../../../UI/ButtonBig';
 import CardGlass from '../../../UI/CardGlass';
+import LoadingSpinner from '../../../UI/LoadingSpinner';
 import Skill from './Skill/Skill';
 import SkillAddWindow from './SkillAddWindow';
-import ButtonBig from '../../../UI/ButtonBig';
-import classes from './SkillSelector.module.scss';
-import LoadingSpinner from '../../../UI/LoadingSpinner';
 import { skillInterface } from '../../../../Types/types';
 
 interface Props {

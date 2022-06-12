@@ -49,7 +49,6 @@
     @include flexbox;
     position: relative;
     overflow-x: scroll;
-    // justify-content: safe flex-start;
     @media (max-width: $big-laptop) {
       justify-content: safe flex-start;
     }

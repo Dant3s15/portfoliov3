@@ -1,7 +1,7 @@
-import { FC, Fragment, useState } from 'react';
-import { skillInterface } from '../../../../Types/types';
-import classes from './Skill2.module.scss';
+import { FC } from 'react';
 import Tooltip from '@mui/material/Tooltip';
+import classes from './Skill2.module.scss';
+import { skillInterface } from '../../../../Types/types';
 
 interface Props {
   skill: skillInterface;

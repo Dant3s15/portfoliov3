@@ -1,11 +1,11 @@
 import { useEffect, useRef, useContext, FC, useState } from 'react';
-import { skillInterface } from '../../../../Types/types';
-import Skill2 from './Skill2';
-import SelectedContext from '../../../../context/selected-context';
 import classes from './Skills.module.scss';
+import Tooltip from '@mui/material/Tooltip';
+import { skillInterface } from '../../../../Types/types';
+import SelectedContext from '../../../../context/selected-context';
+import Skill2 from './Skill2';
 import SkillInfo from '../../../UI/SkillInfo';
 import LoadingSpinner from '../../../UI/LoadingSpinner';
-import Tooltip from '@mui/material/Tooltip';
 
 interface Props {
   className: string;
