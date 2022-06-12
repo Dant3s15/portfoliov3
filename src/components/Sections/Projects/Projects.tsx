@@ -35,7 +35,7 @@ const Projects: FC<Props> = props => {
         'firebase',
         'vite',
       ],
-      link: 'https://portfolio-27cdd.web.app/',
+      link: 'https://devmian.web.app/',
       repo: 'https://github.com/DevmianS/portfoliov3',
     },
     {
