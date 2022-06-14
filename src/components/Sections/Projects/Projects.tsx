@@ -75,8 +75,8 @@ const Projects: FC<Props> = props => {
         </Fragment>
       ),
       skills: ['javascript', 'expressjs', 'git', 'github'],
-      link: 'https://portfolio-27cdd.web.app/',
-      repo: 'https://github.com/Dant3s15/portfoliov3',
+      link: 'https://web-dev-skills-api.herokuapp.com/',
+      repo: 'https://github.com/DevmianS/web-dev-skills-api',
     },
     {
       id: 3,

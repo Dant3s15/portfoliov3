@@ -1,5 +1,5 @@
 import { useState, Fragment, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 import SelectedContext from './context/selected-context';
 import Header from './components/Sections/Header/Header';
