@@ -23,9 +23,9 @@ const ButtonBig: FC<Props> = (props: any) => {
         props.isGreyedOut === true ? classes['greyed-out'] : ''
       } `}
       style={props.style}
-      onClick={props.onClick}
+      onClick={props.isGreyedOut ? null : props.onClick}
     >
-      {props.type !== 'submit' ? (
+      {props.type !== 'submit' && props.iGreyedOut ? (
         <Link
           className={classes['button-text']}
           to={`${props.moveTo ? props.moveTo : ''}`}

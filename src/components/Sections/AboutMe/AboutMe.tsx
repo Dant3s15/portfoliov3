@@ -15,6 +15,10 @@ interface Props {
 const AboutMe: FC<Props> = props => {
   return (
     <Fragment>
+      <Projects
+        allSkillsData={props.allSkillsData}
+        isLoading={props.isLoading}
+      />
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -85,10 +89,6 @@ const AboutMe: FC<Props> = props => {
           </CardGlass>
         </div>
       </motion.section>
-      <Projects
-        allSkillsData={props.allSkillsData}
-        isLoading={props.isLoading}
-      />
     </Fragment>
   );
 };

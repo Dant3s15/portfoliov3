@@ -1,32 +1,11 @@
 import { FormikValues, useFormik, FormikErrors } from 'formik';
 import classes from './ContactForm.module.scss';
 import ButtonBig from '../../UI/ButtonBig';
-
-const validate = (values: FormikValues) => {
-  const errors: FormikErrors<any> = {};
-
-  if (!values.name) {
-    errors.name = 'Required';
-  } else if (values.name.length < 2) {
-    errors.name = '> 1 characters';
-  }
-
-  if (!values.text) {
-    errors.text = 'Required';
-  } else if (values.text.length < 2) {
-    errors.text = '> 2 characters';
-  }
-
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email';
-  }
-  return errors;
-};
+import { useState } from 'react';
+// import Email from '../../Utils/smtp.js';
 
 //TODO send email
-// const sendEmail = values => {
+// const sendEmail = (values) => {
 //   Email.send({
 //     Host: 'smtp.gmail.com',
 //     Username: 'portfoliod3s@gmail.com',
@@ -39,6 +18,37 @@ const validate = (values: FormikValues) => {
 // };
 
 const ContactForm = () => {
+  const [formHasError, setFormHasError] = useState(true);
+  const validate = (values: FormikValues) => {
+    const errors: FormikErrors<any> = {};
+
+    if (!values.name) {
+      errors.name = 'Required';
+    } else if (values.name.length < 2) {
+      errors.name = '> 1 characters';
+    }
+
+    if (!values.text) {
+      errors.text = 'Required';
+    } else if (values.text.length < 2) {
+      errors.text = '> 2 characters';
+    }
+
+    if (!values.email) {
+      errors.email = 'Required';
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ) {
+      errors.email = 'Invalid email';
+    }
+    if (Object.keys(errors).length === 0) {
+      setFormHasError(false);
+    } else {
+      setFormHasError(true);
+    }
+    return errors;
+  };
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -59,6 +69,7 @@ const ContactForm = () => {
         }
       );
       const data = await response.json();
+      console.log(data);
     },
   });
 
@@ -95,6 +106,7 @@ const ContactForm = () => {
   return (
     <div id='contact-me' className={classes['contact-me']}>
       <div className={classes.container}>
+        {/* <form onSubmit={e => e.preventDefault()}> */}
         <form onSubmit={formik.handleSubmit}>
           <div className={classes['name-email']}>
             <div className={`${classes.name} ${checkCorner('name')}`}>
@@ -159,7 +171,11 @@ const ContactForm = () => {
               value={formik.values.text}
             />
           </div>
-          <ButtonBig type='submit' text='Send'></ButtonBig>
+          <ButtonBig
+            isGreyedOut={formHasError ? true : false}
+            type={formHasError ? 'button' : 'submit'}
+            text='Send'
+          ></ButtonBig>
         </form>
       </div>
     </div>
