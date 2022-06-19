@@ -12,7 +12,7 @@ interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
 }
-const SkillSelector: FC<Props> = props => {
+const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
   const [allSkillsArr, setAllSkillsArr] = useState<skillInterface[]>([]);
   const [allSkillsArrFiltered, setAllSkillsArrFiltered] =
     useState(allSkillsArr);
@@ -26,7 +26,7 @@ const SkillSelector: FC<Props> = props => {
   const [isAdding, setIsAdding] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const [skillAddingData, setSkillAddingData] = useState<skillInterface>(
-    props.allSkillsData[0]
+    allSkillsData[0]
   );
   const [levelIsSet, setlevelIsSet] = useState(false);
   const [whichTooltip, setWhichTooltip] = useState(undefined);
@@ -35,8 +35,8 @@ const SkillSelector: FC<Props> = props => {
   const searchAddedRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setAllSkillsArr(props.allSkillsData);
-  }, [props.isLoading]);
+    setAllSkillsArr(allSkillsData);
+  }, [isLoading]);
 
   useEffect(() => {
     //TODO check local storage for errors
@@ -200,7 +200,7 @@ const SkillSelector: FC<Props> = props => {
   return (
     <Fragment>
       <CardGlass className={classes['skill-selector--card']}>
-        {props.isLoading ? (
+        {isLoading ? (
           <LoadingSpinner />
         ) : (
           <div className={classes['skill-selector']}>

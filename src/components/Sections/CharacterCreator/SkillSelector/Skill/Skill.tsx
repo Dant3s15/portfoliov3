@@ -14,7 +14,7 @@ interface Props {
   sign?: string;
 }
 
-const Skill: FC<Props> = props => {
+const Skill: FC<Props> = ({ data, onTooltip, onSkillChange, sign }) => {
   const nameShortener = (name: string, length: number) => {
     if (name.length > length) {
       const shortName = name.slice(0, length);
@@ -25,11 +25,11 @@ const Skill: FC<Props> = props => {
   const levelHandler = (
     <Tooltip
       placement='top'
-      title={`${props.data.name.toUpperCase()} Proficiency Level`}
+      title={`${data.name.toUpperCase()} Proficiency Level`}
     >
       <div className={classes.level}>
         <p key={Math.random()} className={classes['level-number']}>
-          {props.data.level}
+          {data.level}
         </p>
       </div>
     </Tooltip>
@@ -38,35 +38,31 @@ const Skill: FC<Props> = props => {
   return (
     <div
       className={`${classes.skill} ${
-        props?.onTooltip?.whichTooltip === props?.data?.id
-          ? classes['has-tooltip']
-          : ''
+        onTooltip?.whichTooltip === data?.id ? classes['has-tooltip'] : ''
       }`}
       onClick={() => {
         console.log('click');
-        if (props?.data?.id !== props?.onTooltip?.whichTooltip)
-          props?.onTooltip?.setWhichTooltip(props?.data?.id);
-        else props.onTooltip.setWhichTooltip(undefined);
+        if (data?.id !== onTooltip?.whichTooltip)
+          onTooltip?.setWhichTooltip(data?.id);
+        else onTooltip.setWhichTooltip(undefined);
       }}
     >
       <div className={classes.icon}>
-        <img src={props?.data?.icon} alt={`${props?.data?.names[0]} icon`} />
+        <img src={data?.icon} alt={`${data?.names[0]} icon`} />
       </div>
-      <div className={classes.name}>
-        {nameShortener(props.data.names[0], 12)}
-      </div>
-      {props.data.level ? levelHandler : ''}
+      <div className={classes.name}>{nameShortener(data.names[0], 12)}</div>
+      {data.level ? levelHandler : ''}
 
       <button
         onClick={e => {
           e.stopPropagation();
-          props.onSkillChange(props.data);
+          onSkillChange(data);
         }}
         className={classes['manage-skill']}
       >
-        <p>{props.sign}</p>
+        <p>{sign}</p>
       </button>
-      <SkillTooltip data={props.data} />
+      <SkillTooltip data={data} />
     </div>
   );
 };

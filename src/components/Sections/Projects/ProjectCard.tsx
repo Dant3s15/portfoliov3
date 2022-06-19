@@ -24,12 +24,19 @@ interface CardProjectProps {
   allSkillsData: skillInterface[];
 }
 
-const CardProject: FC<CardProjectProps> = props => {
+const CardProject: FC<CardProjectProps> = ({
+  allSkillsData,
+  isLoading,
+  projectData,
+  onClick,
+  selectedState,
+  style,
+}) => {
   const projectCardRef = useRef<null | HTMLDivElement>(null);
   const cardClickHandler = (e: any) => {
     e.nativeEvent.stopPropagation();
 
-    props.selectedState.setWhichSelected(props.projectData.id);
+    selectedState.setWhichSelected(projectData.id);
     if (projectCardRef.current)
       projectCardRef.current.scrollIntoView({
         behavior: 'smooth',
@@ -41,11 +48,11 @@ const CardProject: FC<CardProjectProps> = props => {
   return (
     <animated.div
       onMouseLeave={() => {
-        props.selectedState.setWhichSelected(null);
+        selectedState.setWhichSelected(null);
       }}
       ref={projectCardRef}
       className={`${classes['project-wrapper']} ${
-        props.projectData.id === props.selectedState.whichSelected
+        projectData.id === selectedState.whichSelected
           ? classes['selected-project']
           : ''
       } `}
@@ -57,7 +64,7 @@ const CardProject: FC<CardProjectProps> = props => {
             placement='top'
             title={`Go To GitHub Repository`}
           >
-            <a href={props.projectData?.repo} target='_blank'>
+            <a href={projectData?.repo} target='_blank'>
               <img src={github} alt='github' />
             </a>
           </Tooltip>
@@ -65,7 +72,7 @@ const CardProject: FC<CardProjectProps> = props => {
         <div className={classes['project-image-window']}>
           <a
             className={classes['project-link']}
-            href={props.projectData?.link}
+            href={projectData?.link}
             target='_blank'
           >
             <Tooltip
@@ -75,7 +82,7 @@ const CardProject: FC<CardProjectProps> = props => {
               title={`Go To Live Project Site`}
             >
               <img
-                src={props.projectData?.image}
+                src={projectData?.image}
                 className={classes['project-image']}
               />
             </Tooltip>
@@ -86,19 +93,19 @@ const CardProject: FC<CardProjectProps> = props => {
           className={classes['project-description']}
         >
           <h3 className={classes['project-title']}>
-            {props.projectData?.title ?? 'Title'}
+            {projectData?.title ?? 'Title'}
           </h3>
           <div className={classes['project-overview']}>
-            <p>{props.projectData?.overview}</p>
+            <p>{projectData?.overview}</p>
           </div>
           <h3 className={classes['used-skills-title']}>Skills Used:</h3>
           <ul className={classes['used-skills']}>
-            {props.isLoading ? (
+            {isLoading ? (
               <LoadingSpinner></LoadingSpinner>
             ) : (
               <ProjectSkillsList
-                allSkillsData={props.allSkillsData}
-                projectData={props.projectData}
+                allSkillsData={allSkillsData}
+                projectData={projectData}
               ></ProjectSkillsList>
             )}
           </ul>
@@ -112,20 +119,20 @@ interface ListProps {
   projectData: any;
 }
 
-const ProjectSkillsList: FC<ListProps> = props => {
+const ProjectSkillsList: FC<ListProps> = ({ allSkillsData, projectData }) => {
   const findSkill = (skillName: string) => {
-    props?.allSkillsData?.map((skill: skillInterface) => {
+    allSkillsData?.map((skill: skillInterface) => {
       return skill;
     });
     const resultSkill = {
-      ...props.allSkillsData.find(
+      ...allSkillsData.find(
         (skill: skillInterface) => skill.name === skillName
       ),
     };
     return resultSkill;
   };
 
-  return props.projectData.skills.map((skill: string) => {
+  return projectData.skills.map((skill: string) => {
     const fetchedSkill = findSkill(skill);
     return (
       <Tooltip

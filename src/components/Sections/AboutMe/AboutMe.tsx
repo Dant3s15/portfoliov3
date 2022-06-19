@@ -12,13 +12,10 @@ interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
 }
-const AboutMe: FC<Props> = props => {
+const AboutMe: FC<Props> = ({ allSkillsData, isLoading }) => {
   return (
     <Fragment>
-      <Projects
-        allSkillsData={props.allSkillsData}
-        isLoading={props.isLoading}
-      />
+      <Projects allSkillsData={allSkillsData} isLoading={isLoading} />
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

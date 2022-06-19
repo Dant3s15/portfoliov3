@@ -10,7 +10,12 @@ interface Props {
   skillData: skillInterface;
 }
 
-const SkillAddWindow: FC<Props> = props => {
+const SkillAddWindow: FC<Props> = ({
+  skillData,
+  onSetLevel,
+  onCancel,
+  onSkillAdd,
+}) => {
   const [level, setLevel] = useState<number | null>(null);
   const levelSliderRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
@@ -21,18 +26,18 @@ const SkillAddWindow: FC<Props> = props => {
   const getLevel = (level: number | string) => {
     let lvl = +level;
     setLevel(+level);
-    props.skillData.level = lvl;
-    props.onSetLevel(true);
+    skillData.level = lvl;
+    onSetLevel(true);
   };
   const cancelHandler = () => {
-    props.skillData.level = 0;
-    props.onSetLevel(false);
-    props.onCancel();
+    skillData.level = 0;
+    onSetLevel(false);
+    onCancel();
   };
 
   const checkIfAddedLevel = () => {
     if (level) {
-      props.onSkillAdd(props.skillData);
+      onSkillAdd(skillData);
     } else {
       levelSliderRef.current?.classList.add(classes['click-me']);
       setTimeout(() => {
@@ -52,7 +57,7 @@ const SkillAddWindow: FC<Props> = props => {
         <p className={classes.title}>Adding Skill</p>
         <Skill
           onSkillChange={checkIfAddedLevel}
-          data={props.skillData}
+          data={skillData}
           sign={'+'}
         ></Skill>
         <div className={classes.levels}>

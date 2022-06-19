@@ -6,7 +6,7 @@ interface Skill {
   data: skillInterface;
 }
 
-const SkillTooltip: FC<Skill> = props => {
+const SkillTooltip: FC<Skill> = ({ data }) => {
   const textShortener = (name: string | undefined, length: number) => {
     if (name) {
       if (name.length > length) {
@@ -18,7 +18,7 @@ const SkillTooltip: FC<Skill> = props => {
 
   return (
     <div className={classes.tooltip}>
-      {textShortener(props.data.description, 230)}
+      {textShortener(data.description, 230)}
     </div>
   );
 };

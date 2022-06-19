@@ -11,9 +11,10 @@ interface Props {
     selected: boolean;
   };
 }
-const Footer: FC<Props> = props => {
-  const { data } = props;
-  const { whichSelected, ctaButtonClicked, selected } = data;
+const Footer: FC<Props> = ({
+  data: { whichSelected, ctaButtonClicked, selected },
+}) => {
+  // const { whichSelected, ctaButtonClicked, selected } = data;
 
   const testFetch = () => {
     async function getSkill() {

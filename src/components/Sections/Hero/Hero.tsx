@@ -13,8 +13,7 @@ interface Props {
   isLoading: boolean;
 }
 
-const Hero: FC<Props> = props => {
-  // const [heroIsVisible, setHeroIsVisible] = useState(false);
+const Hero: FC<Props> = ({ allSkillsData, isLoading }) => {
   const ctx = useContext(SelectedContext);
   const heroVisibleCtx = useContext(HeroVisibleContext);
   const heroRef = useRef(null);
@@ -27,12 +26,7 @@ const Hero: FC<Props> = props => {
     if (isVisible) {
       heroVisibleCtx.setHeroIsVisible(true);
     } else heroVisibleCtx.setHeroIsVisible(false);
-    // console.log(heroVisibleCtx.heroIsVisible);
-    // ctx.heroIsVisible = heroIsVisible;
   }, [isVisible]);
-
-  // heroVisibleCtx?.setHeroIsVisible(isVisible);
-  // console.log(heroVisibleCtx, isVisible);
 
   const [charState, setCharState] = useState({
     leftChar: 0,
@@ -76,10 +70,10 @@ const Hero: FC<Props> = props => {
           charState={charStateDataHandler}
         ></Characters>
         <SkillsList
-          isLoading={props.isLoading}
+          isLoading={isLoading}
           className={classes['character-skills']}
           charStateData={charState}
-          allSkillsData={props.allSkillsData}
+          allSkillsData={allSkillsData}
         ></SkillsList>
       </div>
     </motion.section>

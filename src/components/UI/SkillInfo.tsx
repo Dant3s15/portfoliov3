@@ -7,7 +7,7 @@ interface Props {
   data: { showInfo: boolean };
 }
 
-const SkillInfo: FC<Props> = props => {
+const SkillInfo: FC<Props> = ({ data, skill }) => {
   const shortenDesc = (text: string | undefined) => {
     if (!text) return;
     if (text.length > 190) {
@@ -18,15 +18,15 @@ const SkillInfo: FC<Props> = props => {
   return (
     <div
       className={`${classes.info} ${
-        props.data.showInfo ? classes['tooltip-open'] : ''
+        data.showInfo ? classes['tooltip-open'] : ''
       }`}
     >
       <div className={classes['icon-title']}>
-        <h3 className={classes.title}>{props?.skill?.names[0]}</h3>
-        <img src={props.skill?.icon} alt='' />
+        <h3 className={classes.title}>{skill?.names[0]}</h3>
+        <img src={skill?.icon} alt='' />
       </div>
       <span className={classes.description}>
-        {shortenDesc(props?.skill?.description)}
+        {shortenDesc(skill?.description)}
       </span>
     </div>
   );

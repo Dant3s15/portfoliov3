@@ -10,7 +10,14 @@ interface Props {
   onRotateCharacters: (e: any) => void;
   selectedCtx?: boolean;
 }
-const Character = (props: Props) => {
+const Character = ({
+  data,
+  dataConstPos,
+  selected,
+  name,
+  onRotateCharacters,
+  selectedCtx,
+}: Props) => {
   const whichSide = (data: number | string): string | undefined => {
     let side = +data;
     if (side === 0) return 'left';
@@ -31,22 +38,22 @@ const Character = (props: Props) => {
     return '/';
   };
 
-  const curChar = classes[`character__${whichSide(props.data!)}`];
+  const curChar = classes[`character__${whichSide(data!)}`];
 
   return (
     <Link
-      to={getMoveTo(props?.dataConstPos)}
+      to={getMoveTo(dataConstPos)}
       className={`${classes.character} ${curChar ? curChar : ''} ${
-        props.selected ? classes.selected : ''
-      } ${!props.selectedCtx ? '' : classes.blured}`}
+        selected ? classes.selected : ''
+      } ${!selectedCtx ? '' : classes.blured}`}
       onClick={e => {
-        props.onRotateCharacters(e);
+        onRotateCharacters(e);
       }}
     >
-      <div className={classes.character__name}>{props.name}</div>
+      <div className={classes.character__name}>{name}</div>
       <img
-        data-const-pos={props.dataConstPos}
-        data-character={props.data}
+        data-const-pos={dataConstPos}
+        data-character={data}
         src={characterImage}
         alt='character image'
       />

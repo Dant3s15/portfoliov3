@@ -8,7 +8,11 @@ interface ProjectsProps {
   allSkillsData: skillInterface[];
 }
 
-const ProjectsList: FC<ProjectsProps> = props => {
+const ProjectsList: FC<ProjectsProps> = ({
+  allSkillsData,
+  isLoading,
+  data,
+}) => {
   const [whichSelected, setWhichSelected] = useState(null);
   const myProjects = document.getElementById('my-projects');
 
@@ -30,11 +34,11 @@ const ProjectsList: FC<ProjectsProps> = props => {
     };
   }, [whichSelected]);
 
-  return props.data.array.map((project: any) => (
+  return data.array.map((project: any) => (
     <CardProject
-      allSkillsData={props.allSkillsData}
-      isLoading={props.isLoading}
-      style={props.data.style}
+      allSkillsData={allSkillsData}
+      isLoading={isLoading}
+      style={data.style}
       selectedState={{
         whichSelected,
         setWhichSelected,

@@ -18,7 +18,7 @@ interface Props {
   isLoading: boolean;
 }
 
-const SkillsList: FC<Props> = props => {
+const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
   const skillsWindowRef = useRef<HTMLDivElement>(null);
   const characterSkills = useRef<HTMLDivElement>(null);
   const skillCharCol0 = useRef<HTMLDivElement>(null);
@@ -42,7 +42,7 @@ const SkillsList: FC<Props> = props => {
       return (acc += cur.level);
     }, 0);
 
-    const totalExp = (props.allSkillsData.length - 1) * 10;
+    const totalExp = (allSkillsData.length - 1) * 10;
 
     function percentage(partialValue: number, totalValue: number) {
       return (100 * partialValue) / totalValue;
@@ -66,7 +66,6 @@ const SkillsList: FC<Props> = props => {
     let error = false;
     if (window.localStorage.getItem('leftChar')) {
       const data = JSON.parse(window.localStorage.getItem('leftChar') || '');
-      console.log(data);
       data.forEach(
         (el: { name: string; id: string; stacks: any[]; names: any[] }) => {
           if (!el.name || !el.id || !el.stacks || !el.names) {
@@ -109,14 +108,14 @@ const SkillsList: FC<Props> = props => {
     ['bem', 5],
   ];
 
-  const rightCharArr = props.allSkillsData.map(skill => {
+  const rightCharArr = allSkillsData.map(skill => {
     return [skill.name, 9];
   });
 
   const getCharSkills = (charArr: any[]) => {
     const findSkill = (skillName: string, level: number) => {
       const resultSkill = {
-        ...props.allSkillsData.find(skill => {
+        ...allSkillsData.find(skill => {
           return skill.name === skillName;
         }),
       };
@@ -249,39 +248,37 @@ const SkillsList: FC<Props> = props => {
                   <div className={classes['character-levels']}>
                     <div
                       className={classes['character-level__level-number']}
-                      data-character={props.charStateData.leftChar}
+                      data-character={charStateData.leftChar}
                     >
-                      {props.allSkillsData.length
-                        ? calcLevel(leftCharSkills)
-                        : ''}
+                      {allSkillsData.length ? calcLevel(leftCharSkills) : ''}
                     </div>
                     <div
                       className={classes['character-level__level-number']}
-                      data-character={props.charStateData.frontChar}
+                      data-character={charStateData.frontChar}
                     >
-                      {props.allSkillsData.length ? calcLevel(frontChar) : ''}
+                      {allSkillsData.length ? calcLevel(frontChar) : ''}
                     </div>
                     <div
                       className={classes['character-level__level-number']}
-                      data-character={props.charStateData.rightChar}
+                      data-character={charStateData.rightChar}
                     >
-                      {props.allSkillsData.length ? calcLevel(rightChar) : ''}
+                      {allSkillsData.length ? calcLevel(rightChar) : ''}
                     </div>
                   </div>
                 </div>
               </Tooltip>
             </div>
           </header>
-          {props.allSkillsData.length !== 0 ? (
+          {allSkillsData.length !== 0 ? (
             <div
               ref={characterSkills}
               className={`${classes['character-skills']} `}
             >
               {leftCharSkills.length
-                ? skillsStruct(0, props.charStateData.leftChar, skillCharCol0)
-                : charCreatorText(props.charStateData.leftChar)}
-              {skillsStruct(1, props.charStateData.frontChar, skillCharCol1)}
-              {skillsStruct(2, props.charStateData.rightChar, skillCharCol2)}
+                ? skillsStruct(0, charStateData.leftChar, skillCharCol0)
+                : charCreatorText(charStateData.leftChar)}
+              {skillsStruct(1, charStateData.frontChar, skillCharCol1)}
+              {skillsStruct(2, charStateData.rightChar, skillCharCol2)}
             </div>
           ) : ctx?.ctaButtonClicked?.clicked ? (
             <LoadingSpinner></LoadingSpinner>

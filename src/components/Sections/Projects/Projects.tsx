@@ -10,7 +10,7 @@ interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
 }
-const Projects: FC<Props> = props => {
+const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
   const projectsArr = [
     {
       id: 0,
@@ -108,8 +108,8 @@ const Projects: FC<Props> = props => {
       <p className={classes.title}>My Projects</p>
       <div className={classes['my-projects']}>
         <ProjectsList
-          allSkillsData={props.allSkillsData}
-          isLoading={props.isLoading}
+          allSkillsData={allSkillsData}
+          isLoading={isLoading}
           data={{
             array: projectsArr,
           }}

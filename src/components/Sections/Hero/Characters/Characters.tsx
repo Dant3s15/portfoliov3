@@ -10,7 +10,7 @@ interface Props {
   heroRef: React.MutableRefObject<null>;
 }
 
-const Characters: FC<Props> = props => {
+const Characters: FC<Props> = ({ charState, heroRef }) => {
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
@@ -45,7 +45,7 @@ const Characters: FC<Props> = props => {
       frontChar,
       rightChar,
     };
-    props.charState && props.charState(charStateData);
+    charState && charState(charStateData);
   }, [leftChar, frontChar, rightChar]);
 
   const CONST_POS = [0, 1, 2];

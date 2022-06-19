@@ -9,7 +9,7 @@ interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
 }
-const CharacterCreator: FC<Props> = props => {
+const CharacterCreator: FC<Props> = ({ allSkillsData, isLoading }) => {
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -21,8 +21,8 @@ const CharacterCreator: FC<Props> = props => {
       <div className={classes['skill-selector__col']}>
         <SkillSelector
           key={Math.random()}
-          allSkillsData={props.allSkillsData}
-          isLoading={props.isLoading}
+          allSkillsData={allSkillsData}
+          isLoading={isLoading}
         ></SkillSelector>
       </div>
       <div className={classes['image-selector__col']}>

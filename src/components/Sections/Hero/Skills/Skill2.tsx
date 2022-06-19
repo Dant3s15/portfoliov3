@@ -11,7 +11,7 @@ interface Props {
   };
 }
 
-const Skill2: FC<Props> = (props: Props) => {
+const Skill2: FC<Props> = ({ data, skill }: Props) => {
   const nameShortener = (name: string) => {
     if (name.length > 20) {
       const shortName = name.slice(0, 20);
@@ -24,29 +24,26 @@ const Skill2: FC<Props> = (props: Props) => {
       <button
         className={`${classes['skill-tile']} `}
         onMouseDown={() => {
-          props.data.skillTooltipHandler(props.skill, 'add');
+          data.skillTooltipHandler(skill, 'add');
         }}
         onMouseLeave={() => {
-          props.data.skillTooltipHandler(props.skill);
+          data.skillTooltipHandler(skill);
         }}
       >
         <Tooltip
           arrow
           placement='top'
-          title={`${props.skill.name.toUpperCase()} Proficiency Level`}
+          title={`${skill.name.toUpperCase()} Proficiency Level`}
         >
           <div className={`${classes['skill-tile-level']}`}>
-            <span>{props.skill.level}</span>
+            <span>{skill.level}</span>
           </div>
         </Tooltip>
         <div className={classes['skill-tile-icon']}>
-          <img
-            src={props.skill.icon}
-            alt={`${props.skill.names[0]} icon`}
-          ></img>
+          <img src={skill.icon} alt={`${skill.names[0]} icon`}></img>
         </div>
         <div className={classes['skill-tile-name']}>
-          <p>{nameShortener(props.skill.names[0])}</p>
+          <p>{nameShortener(skill.names[0])}</p>
         </div>
       </button>
     </div>
