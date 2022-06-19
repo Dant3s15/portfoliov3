@@ -54,6 +54,7 @@
 }
 
 .logo-item {
+  cursor: pointer;
   z-index: 99999;
   height: 100%;
   @media (max-width: $big-tablet) {
@@ -81,6 +82,7 @@
   transition-property: transform;
   height: 100%;
   &__item {
+    cursor: pointer;
     height: 3rem;
     width: 100%;
     font-size: 1rem;

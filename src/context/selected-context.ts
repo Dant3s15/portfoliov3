@@ -1,6 +1,7 @@
 import React from 'react';
 
 type ContextProps = {
+  heroIsVisible: boolean;
   isSelected: boolean;
   setSelected: React.Dispatch<React.SetStateAction<boolean>>;
   whichIsSelected: number;

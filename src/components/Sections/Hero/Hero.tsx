@@ -1,6 +1,8 @@
-import { useState, useContext, FC } from 'react';
+import { useState, useContext, FC, useEffect } from 'react';
+import { useIntersectionObserver } from 'usehooks-ts';
 import classes from './Hero.module.scss';
 import SelectedContext from '../../../context/selected-context';
+import HeroVisibleContext from '../../../context/hero-visible-context';
 import Characters from './Characters/Characters';
 import SkillsList from './Skills/Skills';
 import { useRef } from 'react';
@@ -12,8 +14,25 @@ interface Props {
 }
 
 const Hero: FC<Props> = props => {
+  // const [heroIsVisible, setHeroIsVisible] = useState(false);
   const ctx = useContext(SelectedContext);
+  const heroVisibleCtx = useContext(HeroVisibleContext);
   const heroRef = useRef(null);
+  const entry = useIntersectionObserver(heroRef, {
+    threshold: 0.7,
+  });
+  const isVisible = !!entry?.isIntersecting;
+
+  useEffect(() => {
+    if (isVisible) {
+      heroVisibleCtx.setHeroIsVisible(true);
+    } else heroVisibleCtx.setHeroIsVisible(false);
+    // console.log(heroVisibleCtx.heroIsVisible);
+    // ctx.heroIsVisible = heroIsVisible;
+  }, [isVisible]);
+
+  // heroVisibleCtx?.setHeroIsVisible(isVisible);
+  // console.log(heroVisibleCtx, isVisible);
 
   const [charState, setCharState] = useState({
     leftChar: 0,

@@ -1,12 +1,13 @@
 import { useState, useEffect, FC, MouseEventHandler, useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import SelectedContext from '../../../context/selected-context';
+import HeroVisibleContext from '../../../context/hero-visible-context';
 import classes from './Header.module.scss';
 import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
 import GoogleLogIn from '../../Icons/google/GoogleLogIn';
 import logo from '../../../resources/logo.svg';
 import { User } from 'firebase/auth';
-import { NavLink } from 'react-router-dom';
 
 interface Props {
   data: {
@@ -18,10 +19,12 @@ interface Props {
   };
 }
 
-const Header: FC<Props> = props => {
+const Header: FC<Props> = ({ data: { google } }) => {
   const [hamburgerState, setHamburgerState] = useState(false);
-
+  const location = useLocation();
+  const navigate = useNavigate();
   const ctx = useContext(SelectedContext);
+  const heroIsVisibleCtx = useContext(HeroVisibleContext);
 
   const hamburgerButtonHandler = () => {
     if (!hamburgerState) {
@@ -34,7 +37,6 @@ const Header: FC<Props> = props => {
     function closeHamburgerOnBigScreens() {
       setHamburgerState(false);
     }
-
     window.addEventListener('resize', closeHamburgerOnBigScreens);
     return () => {
       window.removeEventListener('resize', closeHamburgerOnBigScreens);
@@ -43,25 +45,51 @@ const Header: FC<Props> = props => {
     [hamburgerState];
 
   const navItemHandler = (event: { currentTarget: Element }, id: string) => {
-    setHamburgerState(false);
-    if (!ctx.ctaButtonClicked?.clicked) {
-      ctx.ctaButtonHandler?.();
-    }
-    const charNr = Number(event.currentTarget.getAttribute('data-character'));
-    let char = document
-      .querySelector(`[data-const-pos="${charNr}"]`)
-      ?.getAttribute('data-character');
-    console.log(char);
-    if (char) {
-      ctx.rotateCharactersHandler?.(char ? +char : null);
-      ctx.setWhichSelected?.(charNr);
-      ctx.setSelected?.(true);
-    }
-
-    setTimeout(() => {
-      const element = document.querySelector(`#${id}`);
+    const changeStates = (elem: Element) => {
+      setHamburgerState(false);
+      if (!ctx.ctaButtonClicked?.clicked) {
+        ctx.ctaButtonHandler?.();
+      }
+      const charNr = Number(elem?.getAttribute?.('data-character'));
+      if (isNaN(charNr)) {
+        if (ctx.setSelected) ctx?.setSelected(false);
+      }
+      let char = document
+        .querySelector(`[data-const-pos="${charNr}"]`)
+        ?.getAttribute('data-character');
+      if (char) {
+        ctx.rotateCharactersHandler?.(char ? +char : null);
+        ctx.setWhichSelected?.(charNr);
+        ctx.setSelected?.(true);
+      }
+    };
+    const scrollHandler = (overwrite = id) => {
+      const element = document.querySelector(`#${overwrite}`);
       element?.scrollIntoView({ behavior: 'smooth' });
-    }, 300);
+    };
+    const navEl = event.currentTarget;
+    if (heroIsVisibleCtx.heroIsVisible) {
+      changeStates(navEl);
+      navigate(`${navEl.getAttribute('data-to')}`);
+      if (location.pathname !== navEl.getAttribute('data-to')) {
+        setTimeout(() => {
+          scrollHandler();
+        }, 750);
+      } else scrollHandler();
+    } else {
+      if (location.pathname !== navEl.getAttribute('data-to')) {
+        scrollHandler('hero');
+        setTimeout(() => {
+          navigate(`${navEl.getAttribute('data-to')}`);
+          changeStates(navEl);
+          setTimeout(() => {
+            scrollHandler();
+          }, 600);
+        }, 750);
+      } else {
+        scrollHandler();
+      }
+    }
   };
 
   return (
@@ -75,60 +103,54 @@ const Header: FC<Props> = props => {
       >
         <div className={classes.navigation}>
           <div className={classes['logo-item']}>
-            <NavLink
-              to={'/'}
+            <a
+              data-to='/'
               data-character='null'
               className={classes.logo}
               onClick={e => navItemHandler(e, 'hero')}
             >
               <img src={logo} alt='' />
-            </NavLink>
+            </a>
           </div>
           <nav className={classes.nav}>
-            <NavLink
-              to={'/about-me'}
+            <a
+              data-to='/about-me'
               data-character='1'
               onClick={e => navItemHandler(e, 'my-projects')}
-              className={({ isActive }) =>
-                `${classes.nav__item} ${isActive ? classes['nav--active'] : ''}`
-              }
+              className={`${classes.nav__item} `}
             >
               My projects
-            </NavLink>
-            <NavLink
-              to={'/about-me'}
+            </a>
+            <a
+              data-to='/about-me'
               data-character='1'
               onClick={e => navItemHandler(e, 'about-me')}
-              className={({ isActive }) =>
-                `${classes.nav__item} ${isActive ? classes['nav--active'] : ''}`
-              }
+              className={`${classes.nav__item} `}
             >
               About Me
-            </NavLink>
-            <NavLink
-              to={'/creator'}
+            </a>
+            <a
+              data-to={'/creator'}
               data-character='0'
               onClick={e => navItemHandler(e, 'creator')}
-              className={({ isActive }) =>
-                `${classes.nav__item} ${isActive ? classes['nav--active'] : ''}`
-              }
+              className={`${classes.nav__item} `}
             >
               Character Creator
-            </NavLink>
-            {!props.data.google.user && (
+            </a>
+            {!google.user && (
               <button
                 className={`${classes.nav__item} ${classes.google}`}
-                onClick={props.data.google.signInWithGoogle}
+                onClick={google.signInWithGoogle}
                 id='login'
               >
                 <GoogleLogIn></GoogleLogIn>
                 <p>Sign in with Google</p>
               </button>
             )}
-            {props.data.google.auth.currentUser && (
+            {google.auth.currentUser && (
               <button
                 className={`${classes.nav__item} ${classes['google']}`}
-                onClick={() => props.data.google.auth.signOut()}
+                onClick={() => google.auth.signOut()}
                 id='login'
               >
                 <GoogleLogIn></GoogleLogIn>

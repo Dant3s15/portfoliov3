@@ -1,7 +1,8 @@
 import { useState, Fragment, useEffect } from 'react';
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import SelectedContext from './context/selected-context';
+import { HeroVisibleProvider } from './context/hero-visible-context';
 import Header from './components/Sections/Header/Header';
 import Hero from './components/Sections/Hero/Hero';
 import AboutMe from './components/Sections/AboutMe/AboutMe';
@@ -13,8 +14,8 @@ import FutureChar from './components/Sections/FutureChar';
 //FIREBASE
 import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
-import { getFirestore } from 'firebase/firestore';
+// import { getAnalytics } from 'firebase/analytics';
+// import { getFirestore } from 'firebase/firestore';
 import {
   getAuth,
   GoogleAuthProvider,
@@ -23,7 +24,7 @@ import {
 } from 'firebase/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+// import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { skillInterface } from './Types/types';
 
 const firebaseConfig = {
@@ -40,7 +41,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const firestore = getFirestore();
+// const firestore = getFirestore();
 
 function App() {
   const location = useLocation();
@@ -84,37 +85,42 @@ function App() {
           setCtaButtonClicked,
         }}
       >
-        <Header
-          data={{
-            google: {
-              user,
-              auth,
-              signInWithGoogle,
-            },
-          }}
-        ></Header>
-        <main>
-          <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
-          <Routes location={location} key={location.pathname}>
-            <Route
-              path='/creator'
-              element={
-                <CharacterCreator
-                  allSkillsData={allSkillsData}
-                  isLoading={isLoading}
-                />
-              }
-            ></Route>
-            <Route
-              path='about-me'
-              element={
-                <AboutMe allSkillsData={allSkillsData} isLoading={isLoading} />
-              }
-            ></Route>
-          </Routes>
-        </main>
+        <HeroVisibleProvider>
+          <Header
+            data={{
+              google: {
+                user,
+                auth,
+                signInWithGoogle,
+              },
+            }}
+          ></Header>
+          <main>
+            <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
+            <Routes location={location} key={location.pathname}>
+              <Route
+                path='/creator'
+                element={
+                  <CharacterCreator
+                    allSkillsData={allSkillsData}
+                    isLoading={isLoading}
+                  />
+                }
+              ></Route>
+              <Route
+                path='about-me'
+                element={
+                  <AboutMe
+                    allSkillsData={allSkillsData}
+                    isLoading={isLoading}
+                  />
+                }
+              ></Route>
+            </Routes>
+          </main>
+        </HeroVisibleProvider>
         <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
-      </SelectedContext.Provider>
+      </SelectedContext.Provider>{' '}
     </Fragment>
   );
 }
