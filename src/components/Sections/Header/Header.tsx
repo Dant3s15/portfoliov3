@@ -1,11 +1,11 @@
-import { useState, useEffect, FC, MouseEventHandler, useContext } from 'react';
+import { useState, useEffect, FC, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Nav from './Nav/Nav';
 import SelectedContext from '../../../context/selected-context';
 import HeroVisibleContext from '../../../context/hero-visible-context';
 import classes from './Header.module.scss';
 import HamburgerIcon from '../../Icons/HamburgerIcon';
 import CloseIcon from '../../Icons/CloseIcon';
-import GoogleLogIn from '../../Icons/google/GoogleLogIn';
 import logo from '../../../resources/logo.svg';
 import { User } from 'firebase/auth';
 
@@ -112,52 +112,8 @@ const Header: FC<Props> = ({ data: { google } }) => {
               <img src={logo} alt='' />
             </a>
           </div>
-          <nav className={classes.nav}>
-            <a
-              data-to='/about-me'
-              data-character='1'
-              onClick={e => navItemHandler(e, 'my-projects')}
-              className={`${classes.nav__item} `}
-            >
-              My projects
-            </a>
-            <a
-              data-to='/about-me'
-              data-character='1'
-              onClick={e => navItemHandler(e, 'about-me')}
-              className={`${classes.nav__item} `}
-            >
-              About Me
-            </a>
-            <a
-              data-to={'/creator'}
-              data-character='0'
-              onClick={e => navItemHandler(e, 'creator')}
-              className={`${classes.nav__item} `}
-            >
-              Character Creator
-            </a>
-            {!google.user && (
-              <button
-                className={`${classes.nav__item} ${classes.google}`}
-                onClick={google.signInWithGoogle}
-                id='login'
-              >
-                <GoogleLogIn></GoogleLogIn>
-                <p>Sign in with Google</p>
-              </button>
-            )}
-            {google.auth.currentUser && (
-              <button
-                className={`${classes.nav__item} ${classes['google']}`}
-                onClick={() => google.auth.signOut()}
-                id='login'
-              >
-                <GoogleLogIn></GoogleLogIn>
-                <p>Sign Out</p>
-              </button>
-            )}
-          </nav>
+          <Nav navItemHandler={navItemHandler} google={google}></Nav>
+
           <button
             className={classes['hamburger-button']}
             onClick={hamburgerButtonHandler}
