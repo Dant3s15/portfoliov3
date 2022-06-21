@@ -1,18 +1,18 @@
-@import '../../scss/variables.scss';
-@import '../../scss/animations.scss';
-@import '../../scss/mixins.scss';
-@import '../../scss/globals.scss';
+@import "../../scss/variables.scss";
+@import "../../scss/animations.scss";
+@import "../../scss/mixins.scss";
+@import "../../scss/globals.scss";
 
 .button-big {
-  display: block;
-  font-family: inherit;
   position: relative;
-  background-color: var(--color-primary);
+  z-index: 999;
+  display: block;
   color: var(--color-dark);
   font-size: 1.5rem;
+  font-family: inherit;
   text-transform: uppercase;
+  background-color: var(--color-primary);
   border: none;
-  z-index: 999;
 
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -24,46 +24,46 @@
     content: none;
   }
   .button-text {
-    animation: flicker2 5s infinite alternate;
-    font-weight: 700;
-    padding: 20px 30px;
-    white-space: nowrap;
     display: block;
     width: 100%;
     height: 100%;
+    padding: 20px 30px;
+    font-weight: 700;
+    white-space: nowrap;
+    animation: flicker2 5s infinite alternate;
   }
 
   &:hover,
   &:active {
-    box-shadow: inset 0 0 0 3px #fff;
-    outline-offset: -3px;
-    color: #fff;
     overflow: hidden;
+    color: #fff;
     text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
       0 0 150px var(--color-primary);
+    outline-offset: -3px;
+    box-shadow: inset 0 0 0 3px #fff;
 
     .button-text {
       animation: none;
     }
     &::after {
-      content: '';
-      opacity: 1;
+      content: "";
       position: absolute;
+      bottom: 0;
+      left: calc(100% - 33px);
       width: 3px;
       height: 200%;
+      background-color: #fff;
       transform: rotate(45deg);
       transform-origin: left bottom;
-      bottom: 0;
-      background-color: #fff;
-      left: calc(100% - 33px);
+      opacity: 1;
       @media (max-width: $big-tablet) {
         left: calc(100% - 24px);
       }
     }
     &:active {
-      transform: scale(0.95);
       text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
         0 0 150px var(--color-primary);
+      transform: scale(0.95);
     }
   }
 
@@ -98,20 +98,20 @@
 .absolute {
   position: absolute;
   top: 80%;
-  left: 0;
   right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  left: 0;
   width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .greyed-out {
-  animation: none;
   z-index: 999;
-  transition: none;
+  outline: none;
   transform: none !important;
   filter: grayscale(1) brightness(0.5);
-  outline: none;
+  transition: none;
+  animation: none;
   &::after {
     display: none;
   }
@@ -119,13 +119,13 @@
   &:active {
     color: var(--color-dark);
     text-shadow: none;
-    cursor: not-allowed;
-    transform: none;
     border: none;
     box-shadow: none;
+    transform: none;
+    cursor: not-allowed;
     &:active {
-      transform: none;
       text-shadow: none;
+      transform: none;
     }
   }
   a {

@@ -1,10 +1,10 @@
 *,
 *::before,
 *::after {
-  font-size: 100%;
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
 }
 // html:focus-within {
 //   scroll-behavior: smooth !important;
@@ -16,28 +16,27 @@ a {
 
 html,
 body {
-  background-color: var(--color-dark);
-  background-color: #232323;
-  // font-family: 'Audiowide', sans-serif;
-  font-family: 'Orbitron', sans-serif;
+  position: relative;
   // font-weight: 600;
   // font-family: 'Orbitron', sans-serif;
   overflow-x: hidden;
-
-  position: relative;
+  // font-family: 'Audiowide', sans-serif;
+  font-family: "Orbitron", sans-serif;
+  background-color: var(--color-dark);
+  background-color: #232323;
   scroll-behavior: smooth;
 }
 
 button,
-input[type='submit'],
-input[type='reset'] {
-  background: none;
-  color: inherit;
-  border: none;
+input[type="submit"],
+input[type="reset"] {
   padding: 0;
+  color: inherit;
   font: inherit;
-  cursor: pointer;
+  background: none;
+  border: none;
   outline: inherit;
+  cursor: pointer;
 }
 
 // #root {

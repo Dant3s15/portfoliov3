@@ -6,8 +6,10 @@
   $bg-color: #00000000,
   $width: 4px,
   $translate: 17px,
-  $after: ''
+  $after: ""
 ) {
+  // position: relative;
+  overflow: hidden;
   clip-path: polygon(
     0% 100%,
     calc(100% - $pixels) 100%,
@@ -15,19 +17,16 @@
     100% 0%,
     0% 0%
   );
-
-  position: relative;
-  overflow: hidden;
   &::after {
     content: $after;
     position: absolute;
-    width: $width;
-    height: 200%;
-    transform: rotate(45deg);
-    transform-origin: left bottom;
     bottom: 0;
     left: calc(100% - $translate);
+    width: $width;
+    height: 200%;
     background-color: $bg-color;
+    transform: rotate(45deg);
+    transform-origin: left bottom;
   }
 }
 
@@ -36,8 +35,9 @@
   $bg-color: #00000000,
   $width: 4px,
   $translate: 17px,
-  $after: ''
+  $after: ""
 ) {
+  position: relative;
   clip-path: polygon(
     0% 101%,
     calc(100% - $pixels) 100%,
@@ -45,18 +45,16 @@
     101% 0%,
     0% 0%
   );
-
-  position: relative;
   &::after {
     content: $after;
     position: absolute;
-    width: $width;
-    height: 200%;
-    transform: rotate(45deg);
-    transform-origin: left bottom;
     bottom: 0;
     left: calc(100% - $translate);
+    width: $width;
+    height: 200%;
     background-color: $bg-color;
+    transform: rotate(45deg);
+    transform-origin: left bottom;
   }
 }
 @mixin corner-cut3(
@@ -64,8 +62,10 @@
   $bg-color: #00000000,
   $width: 4px,
   $translate: 17px,
-  $after: ''
+  $after: ""
 ) {
+  // background-color: red;
+  position: relative;
   clip-path: polygon(
     -10% 110%,
     calc(110% - $pixels) 110%,
@@ -73,25 +73,23 @@
     110% -10%,
     -10% -10%
   );
-  // background-color: red;
-  position: relative;
   &::after {
     content: $after;
     position: absolute;
-    width: $width;
-    height: 200%;
-    transform: rotate(45deg);
-    transform-origin: left bottom;
     bottom: 0;
     left: calc(100% - $translate);
+    width: $width;
+    height: 200%;
     background-color: $bg-color;
+    transform: rotate(45deg);
+    transform-origin: left bottom;
   }
 }
 
 @mixin flexbox($justify: center, $align: center) {
   display: flex;
-  justify-content: $justify;
   align-items: $align;
+  justify-content: $justify;
 }
 
 @mixin textglow($color1: var(--color-primary), $color2: #fff) {
@@ -136,7 +134,7 @@
   scrollbar-color: $color transparent;
   scrollbar-width: thin;
   &::-webkit-scrollbar-thumb {
-    border-radius: 3px;
     background: $color;
+    border-radius: 3px;
   }
 }

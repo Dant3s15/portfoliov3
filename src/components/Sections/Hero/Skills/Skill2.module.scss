@@ -1,29 +1,29 @@
-@import '../../../../scss/animations';
-@import '../../../../scss/variables';
-@import '../../../../scss/mixins';
+@import "../../../../scss/animations";
+@import "../../../../scss/variables";
+@import "../../../../scss/mixins";
 
 .skill-tile {
   position: relative;
   z-index: 888;
+  flex-direction: column;
+  min-width: 120px;
 
   height: 120px;
-  min-width: 120px;
   overflow: hidden;
   border-radius: 3px;
+  transition: var(--transition-short);
   @include textglowsmaller;
   @include flexbox;
-  flex-direction: column;
-  transition: var(--transition-short);
 
   &::before {
     @include corner-cut;
-    background-color: #fffffff7;
-    opacity: 0.2;
-    content: '';
+    content: "";
+    position: absolute;
+    z-index: -1;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    position: absolute;
+    background-color: #fffffff7;
+    opacity: 0.2;
   }
   &:hover {
     position: relative;
@@ -41,36 +41,36 @@
   }
 
   &-level {
-    cursor: help;
-    background-color: var(--color-primary);
     position: absolute;
+    top: 5px;
+    top: 0;
+    right: 5px;
+    right: 0;
+    align-self: flex-end;
     width: 55px;
     height: 55px;
-    top: 5px;
-    right: 5px;
-    top: 0;
-    right: 0;
     font-weight: 700;
     font-size: 24px;
-    align-self: flex-end;
+    background-color: var(--color-primary);
+    cursor: help;
     clip-path: polygon(0% 0%, 100% 0, 100% 100%);
 
     span {
-      transition: var(--transition-short);
+      position: absolute;
+      top: 5%;
+      right: 10%;
+      display: block;
       color: #222;
       font-weight: 700;
-      display: block;
-      position: absolute;
-      right: 10%;
-      top: 5%;
+      transition: var(--transition-short);
     }
   }
   &-icon {
-    padding: 16px 6px;
-    padding-bottom: 0;
     max-width: 100%;
     height: 70%;
     min-height: 70%;
+    padding: 16px 6px;
+    padding-bottom: 0;
     img {
       width: 100%;
       height: 100%;
@@ -79,33 +79,33 @@
   &-name {
     width: 90%;
     height: 100%;
+    overflow: hidden;
     font-weight: 700;
     font-size: 0.75rem;
-    overflow: hidden;
     text-align: center;
     @include flexbox;
   }
   @media (max-width: $big-tablet) {
-    height: 6.25rem;
-    min-width: 6.25rem;
     width: 6.25rem;
+    min-width: 6.25rem;
+    height: 6.25rem;
     &-level {
       width: 2.1875rem;
       height: 2.1875rem;
       font-size: 1rem;
     }
     @media (max-width: $mobile) {
-      height: 85px;
-      min-width: 85px;
       width: 85px;
+      min-width: 85px;
+      height: 85px;
       &-name {
         font-size: 10px;
       }
     }
     @media (max-width: $small-mobile) {
-      height: 70px;
-      min-width: 70px;
       width: 70px;
+      min-width: 70px;
+      height: 70px;
       &-name {
         font-size: 8px;
       }

@@ -1,38 +1,38 @@
-@import '../../../scss/mixins.scss';
-@import '../../../scss/variables.scss';
-@import '../../../scss/animations.scss';
+@import "../../../scss/mixins.scss";
+@import "../../../scss/variables.scss";
+@import "../../../scss/animations.scss";
 
 .skill {
-  cursor: help;
-  @include flexbox(space-between);
-  flex-direction: column;
   position: relative;
-  max-width: 25%;
   flex: 1 0 20%;
-  border-radius: 3px;
-  transition: all var(--transition-short);
+  flex-direction: column;
+  max-width: 25%;
   overflow: hidden;
-  transition-property: transform, background-color, color, box-shadow;
   color: var(--color-primary);
+  border-radius: 3px;
+  cursor: help;
+  transition: all var(--transition-short);
+  transition-property: transform, background-color, color, box-shadow;
+  @include flexbox(space-between);
   &-title {
-    font-size: 12px;
-    font-weight: 700;
-    overflow: hidden;
-    text-align: center;
     width: 110%;
-    overflow: hidden;
-    text-overflow: ellipsis;
     padding: 3px 0;
+    overflow: hidden;
+    overflow: hidden;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+    text-overflow: ellipsis;
   }
   .icon {
     width: 100%;
     height: 70px;
-    @include flexbox;
     padding: 4px;
+    @include flexbox;
     img {
       width: 100%;
-      height: 100%;
       max-width: 100%;
+      height: 100%;
       max-height: 100%;
     }
   }

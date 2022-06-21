@@ -1,22 +1,22 @@
-@import '../../../scss/mixins.scss';
-@import '../../../scss/variables.scss';
+@import "../../../scss/mixins.scss";
+@import "../../../scss/variables.scss";
 .contact-me {
   width: 100%;
   @include flexbox;
 
   .input {
-    transition: all var(--transition-short);
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem;
+    color: var(--color-gray);
+    font-weight: 500;
     font-size: 1.25rem;
     font-family: inherit;
     background-color: var(--color-gray-tint-dark-transparent-1);
     border: none;
-    outline: none;
-    max-width: 300px;
-    width: 100%;
     border-radius: 3px;
-    color: var(--color-gray);
-    padding: 1rem;
-    font-weight: 500;
+    outline: none;
+    transition: all var(--transition-short);
     &:hover,
     &:active {
       box-shadow: 0 0 4px var(--color-primary), 0 0 11px var(--color-primary),
@@ -32,9 +32,9 @@
   }
 
   .container {
+    width: 100%;
     transition: all var(--transition-short);
     transition-property: perspective;
-    width: 100%;
     form {
       @include flexbox;
       flex-direction: column;
@@ -54,9 +54,9 @@
     .name,
     .email {
       position: relative;
-      @include flexbox;
 
       column-gap: 1.25rem;
+      @include flexbox;
 
       .name,
       .email {
@@ -81,15 +81,15 @@
     }
 
     .label {
-      font-size: 1.25rem;
-      align-self: flex-start;
-      text-transform: uppercase;
-      font-weight: 700;
-      padding: 10px;
       position: absolute;
       top: -5.5px;
-      @include textglowsmaller;
+      align-self: flex-start;
       width: 100%;
+      padding: 10px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      @include textglowsmaller;
       @media (max-width: $big-tablet) {
         font-size: 1rem;
       }
@@ -103,22 +103,22 @@
     }
 
     textarea {
-      transition: all var(--transition-short);
-      font-family: inherit;
-      font-size: 1.25rem;
-      font-weight: 500;
-      border: none;
-      outline: none;
       width: 100%;
       height: 87%;
-      resize: none;
-      border-radius: 3px;
-      background-color: var(--color-gray-tint-dark-transparent-1);
-      color: var(--color-gray);
       padding: 1rem;
+      color: var(--color-gray);
+      font-weight: 500;
+      font-size: 1.25rem;
+      font-family: inherit;
+      background-color: var(--color-gray-tint-dark-transparent-1);
+      border: none;
+      border-radius: 3px;
+      outline: none;
+      transition: all var(--transition-short);
+      resize: none;
       &.input-error {
-        border: none;
         background-color: rgba(255, 0, 0, 0.168);
+        border: none;
       }
       &:hover,
       &:active {
@@ -131,18 +131,18 @@
     }
   }
   .form-error {
-    color: red;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: 700;
     position: absolute;
     right: 7px;
     bottom: -30px;
+    color: red;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
     @include textglowsmaller(red);
   }
   .input-error {
-    box-shadow: 0 0 4px red, 0 0 11px red, 0 0 19px red !important;
     background-color: rgba(255, 0, 0, 0.168);
+    box-shadow: 0 0 4px red, 0 0 11px red, 0 0 19px red !important;
     &:hover,
     &:active {
       box-shadow: 0 0 1px 3px red !important;

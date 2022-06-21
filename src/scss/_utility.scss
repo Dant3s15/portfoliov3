@@ -9,12 +9,12 @@
 
 .absolute-center {
   position: absolute;
-  left: 0;
   right: 0;
+  left: 0;
+  width: 500px;
+  margin-right: auto;
   // bottom: 50%;
   margin-left: auto;
-  margin-right: auto;
-  width: 500px;
 }
 
 .cancel-absolute {
@@ -32,8 +32,8 @@
     transparent 100%
   );
   background-size: 300% 100%;
-  -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 // .card--glass {

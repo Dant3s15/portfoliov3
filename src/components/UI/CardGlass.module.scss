@@ -1,20 +1,20 @@
-@import '../../scss/mixins.scss';
-@import '../../scss/variables.scss';
-@import '../../scss/utility.scss';
+@import "../../scss/mixins.scss";
+@import "../../scss/variables.scss";
+@import "../../scss/utility.scss";
 
 .card--glass {
-  border-radius: 3px;
-  backdrop-filter: blur(20px);
-
-  transform-style: preserve-3d;
-  @include flexbox;
   flex-direction: column;
-  transition: all var(--transition-short-medium);
-  transition-property: transform, opacity;
+  background-color: rgba(95, 95, 95, 0.109);
   border: 1px solid var(--color-border-transparent);
   border-right: 7px solid var(--color-border-transparent);
   border-bottom: 5px solid var(--color-border-transparent);
-  background-color: rgba(95, 95, 95, 0.109);
+  border-radius: 3px;
+
+  transform-style: preserve-3d;
+  backdrop-filter: blur(20px);
+  transition: all var(--transition-short-medium);
+  transition-property: transform, opacity;
+  @include flexbox;
   @-moz-document url-prefix() {
     background-color: rgba(60, 60, 60, 0.609);
   }

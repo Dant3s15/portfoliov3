@@ -1,30 +1,30 @@
-@import '../../../../scss/mixins.scss';
-@import '../../../../scss/variables.scss';
-@import '../../../../scss/animations.scss';
+@import "../../../../scss/mixins.scss";
+@import "../../../../scss/variables.scss";
+@import "../../../../scss/animations.scss";
 
 .character {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  @include flexbox;
+  position: absolute;
+  z-index: 10;
   flex-direction: column;
 
   gap: 1.5rem;
-  transition: all var(--transition-short-medium);
-  will-change: transform, filter, margin;
-  transition-property: transform, filter, width, z-index, margin;
-  cursor: pointer;
-  z-index: 10;
-  position: absolute;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
   transform-origin: center;
+  cursor: pointer;
+  transition: all var(--transition-short-medium);
+  transition-property: transform, filter, width, z-index, margin;
+  will-change: transform, filter, margin;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  @include flexbox;
   &__name {
-    font-size: 1.5rem;
+    color: var(--color-gray);
     font-weight: 700;
+    font-size: 1.5rem;
     text-align: center;
     text-transform: uppercase;
-    color: var(--color-gray);
     transition: all var(--transition-short);
     transition-property: transform, filter, color;
     @media (max-width: $big-tablet) {
@@ -36,20 +36,20 @@
   }
 
   & img {
-    max-width: 100%;
-    max-height: 100%;
-    height: auto;
     width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    filter: brightness(0.4);
 
     transition: all var(--transition-short);
     transition-property: transform, filter;
-    filter: brightness(0.4);
   }
 
   &__front {
-    color: var(--color-primary);
-    width: 40%;
     z-index: 3;
+    width: 40%;
+    color: var(--color-primary);
 
     & img {
       filter: brightness(0.9);
@@ -70,8 +70,8 @@
   }
 
   &__left {
-    width: 32%;
     z-index: 1;
+    width: 32%;
     margin-bottom: 8rem;
     transform: translateX(calc(var(--characters-width) * -1));
     @media (max-width: $small-mobile) {
@@ -82,7 +82,7 @@
     }
   }
 
-  [data-const-pos='2'] {
+  [data-const-pos="2"] {
     filter: brightness(0.1) !important;
     &:hover {
       filter: brightness(0.1) drop-shadow(0 0 2px #fff) !important;
@@ -91,8 +91,8 @@
   [data-const-pos] {
     &:hover {
       filter: brightness(1);
-      animation: jump 3s infinite;
       filter: drop-shadow(0 0 2px #fff);
+      animation: jump 3s infinite;
     }
   }
 
@@ -101,8 +101,8 @@
   }
 
   &:hover &__name {
-    animation: jumpnorotate 3s infinite;
     color: var(--color-primary);
+    animation: jumpnorotate 3s infinite;
     @include textglowmedium;
   }
 }
@@ -119,8 +119,8 @@
   }
   &:hover img,
   &:hover .character__name {
-    animation: none !important;
     filter: brightness(1);
+    animation: none !important;
   }
   transform: scale(1.01);
   filter: drop-shadow(0 0 1px var(--color-primary)) blur(none);

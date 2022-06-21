@@ -1,29 +1,29 @@
-@import '../../../../scss/mixins.scss';
-@import '../../../../scss/variables.scss';
+@import "../../../../scss/mixins.scss";
+@import "../../../../scss/variables.scss";
 
 .nav {
+  z-index: 9999;
   gap: 1.5rem;
-  @include flexbox(space-between, center);
   justify-self: flex-start;
   order: 1;
-  z-index: 9999;
   width: 90%;
-  text-decoration: none;
+  height: 100%;
   color: var(--color-gray);
+  text-decoration: none;
   transition: all var(--transition-short);
   transition-property: transform;
-  height: 100%;
+  @include flexbox(space-between, center);
   &__item {
-    cursor: pointer;
-    height: 3rem;
     width: 100%;
-    font-size: 1rem;
-    @include flexbox;
     width: fit-content;
+    height: 3rem;
+    padding: 0 1rem;
     font-weight: 600;
+    font-size: 1rem;
     text-align: center;
     text-transform: uppercase;
-    padding: 0 1rem;
+    cursor: pointer;
+    @include flexbox;
     @media (max-width: $laptop) {
       padding: 0;
       font-size: 14px;
@@ -38,11 +38,10 @@
   }
 
   &__item {
-    font-family: 'Orbitron', sans-serif;
-
     overflow: hidden;
-    text-decoration: none;
     color: var(--color-gray);
+    font-family: "Orbitron", sans-serif;
+    text-decoration: none;
     transition: all var(--transition-short);
   }
 
@@ -63,25 +62,25 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 100vh;
-    width: 100%;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
+    height: 100vh;
   }
 }
 
 .google {
+  min-width: 17rem;
+  height: 40px;
   margin-right: 0.7rem;
   color: black;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 600;
-  border-radius: 3px;
-  background-color: white;
   color: #000;
-  height: 40px;
-  min-width: 17rem;
-  transition: inherit;
+  font-weight: 600;
+  font-family: "Orbitron", sans-serif;
   text-transform: none;
+  background-color: white;
+  border-radius: 3px;
+  transition: inherit;
   &:hover {
     color: var(--color-primary);
   }
@@ -95,8 +94,8 @@
     padding: 0;
   }
   @media (max-width: $laptop) {
-    font-size: 14px;
     min-width: 15.5rem;
+    font-size: 14px;
   }
   @media (max-width: $big-tablet) {
     height: 4rem;

@@ -1,7 +1,7 @@
-import Tooltip from '@mui/material/Tooltip/';
-import { FC } from 'react';
-import { skillInterface } from '../../../Types/types';
-import classes from './ProjectSkillsList.module.scss';
+import Tooltip from "@mui/material/Tooltip/";
+import { FC } from "react";
+import { skillInterface } from "../../../Types/types";
+import classes from "./ProjectSkillsList.module.scss";
 
 interface ListProps {
   allSkillsData: skillInterface[];
@@ -27,17 +27,17 @@ const ProjectSkillsList: FC<ListProps> = ({ allSkillsData, projectData }) => {
       <Tooltip
         arrow
         key={Math.random()}
-        placement='top'
+        placement="top"
         title={`Skill Used To Create This Project`}
       >
-        <li className={classes['skill']}>
+        <li className={classes["skill"]}>
           <div className={classes.icon}>
             <img
               src={fetchedSkill.icon}
               alt={`${fetchedSkill.names?.[0]} icon`}
             />
           </div>
-          <p className={classes['skill-title']}>{fetchedSkill.names?.[0]}</p>
+          <p className={classes["skill-title"]}>{fetchedSkill.names?.[0]}</p>
         </li>
       </Tooltip>
     );

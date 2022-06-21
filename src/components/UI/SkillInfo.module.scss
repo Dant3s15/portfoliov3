@@ -1,29 +1,29 @@
-@import '../../scss/mixins';
-@import '../../scss/variables';
+@import "../../scss/mixins";
+@import "../../scss/variables";
 
 .info {
-  z-index: 9999999;
   position: absolute;
-  height: 150px;
+  z-index: 9999999;
+  gap: 6px;
   width: 100%;
+  height: 150px;
   height: 100%;
-  font-size: 12px;
   font-weight: 600;
-  @include textglowsmall;
-  pointer-events: none;
+  font-size: 12px;
   transform: translateY(140px);
   transition: transform var(--transition-short);
+  pointer-events: none;
+  @include textglowsmall;
   @include flexbox;
-  gap: 6px;
   .icon-title {
     @include flexbox;
-    gap: 6px;
     flex: 0 0 auto;
-    height: 100%;
-    max-width: 100px;
-    width: 100px;
-    flex-direction: column;
     flex-basis: 100px;
+    flex-direction: column;
+    gap: 6px;
+    width: 100px;
+    max-width: 100px;
+    height: 100%;
     padding: 6px;
     img {
       width: 80%;

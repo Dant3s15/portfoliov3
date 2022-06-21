@@ -1,4 +1,4 @@
-@import './mixins';
+@import "./mixins";
 @keyframes slide-right-left {
   0% {
     transform: translateX(-100%);
@@ -44,17 +44,17 @@
 
 @keyframes shine {
   10% {
-    opacity: 1;
     top: -30%;
     left: -30%;
-    transition-property: left, top, opacity;
+    opacity: 1;
     transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-property: left, top, opacity;
     // transition-timing-function: ease;
   }
   100% {
-    opacity: 0;
     top: -30%;
     left: -30%;
+    opacity: 0;
     transition-property: left, top, opacity;
   }
 }
@@ -101,8 +101,8 @@
   64.999%,
   70%,
   100% {
-    text-shadow: none;
     color: var(--color-dark);
+    text-shadow: none;
   }
   20%,
   21.999%,
@@ -126,8 +126,8 @@
   64.999%,
   70%,
   100% {
-    text-shadow: none;
     color: var(--color-border-transparent);
+    text-shadow: none;
   }
   20%,
   21.999%,
@@ -165,9 +165,9 @@
   63.999%,
   65%,
   69.999% {
-    text-shadow: none;
     color: var(--color-border-transparent);
     color: transparent;
+    text-shadow: none;
   }
 }
 
@@ -286,24 +286,24 @@
   }
   80% {
     z-index: 11;
-    perspective: 2000px;
     transform: rotateY(0deg) scale(0.9) translateX(0px);
+    perspective: 2000px;
   }
   100% {
-    perspective: 2000px;
     transform: rotateY(0deg) scale(0.9) translateX(0px);
+    perspective: 2000px;
   }
 }
 
 @keyframes cardmoverev {
   0% {
-    perspective: 2000px;
     transform: rotateY(0deg) scale(0.9) translateX(0px);
+    perspective: 2000px;
   }
   20% {
     z-index: 11;
-    perspective: 2000px;
     transform: rotateY(0deg) scale(0.9) translateX(0px);
+    perspective: 2000px;
   }
   50% {
     transform: rotateY(0deg) scale(0.9) translateX(250px);
@@ -384,30 +384,30 @@
 
 @keyframes cardrotate {
   0% {
-    perspective: 400px;
     transform: scale(1) translateX(0px) rotateY(-10deg);
+    perspective: 400px;
   }
 
   100% {
-    perspective: 4000px;
     transform: scale(1.2) translateX(180px) rotateY(0deg);
+    perspective: 4000px;
   }
 }
 @keyframes cardrotate2 {
   0% {
-    perspective: 4000px;
     transform: scale(1.2) translateX(180px) rotateY(0deg);
+    perspective: 4000px;
   }
   100% {
-    perspective: 400px;
     transform: scale(1) translateX(0px) rotateY(-10deg);
+    perspective: 400px;
   }
 }
 
 @keyframes fadein {
   from {
-    opacity: 0;
     transform: translateX(-300px);
+    opacity: 0;
   }
   to {
     opacity: 100;
@@ -462,8 +462,8 @@
     transform: scale(1.3) translateX(200px) rotateY(0deg);
   }
   100% {
-    transition: all var(--transition-short-medium);
     transform: scale(1) translateX(0px) rotateY(-15deg);
+    transition: all var(--transition-short-medium);
   }
 }
 
@@ -518,8 +518,8 @@
 
 @keyframes slideinfromtop {
   from {
-    opacity: 0;
     transform: translateX(100px);
+    opacity: 0;
   }
   to {
     opacity: 100;
@@ -534,8 +534,8 @@
   }
   50% {
     color: #fff;
-    transform: scale(1.1);
     text-shadow: 0 0 4px #fff, 0 0 11px var(--color-primary);
+    transform: scale(1.1);
   }
   100% {
     text-shadow: none;

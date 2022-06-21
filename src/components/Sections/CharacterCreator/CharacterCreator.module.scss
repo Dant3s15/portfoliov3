@@ -1,26 +1,26 @@
-@import '../../../scss/variables.scss';
-@import '../../../scss/mixins.scss';
+@import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
 
 .creator {
-  scroll-snap-align: center;
-  height: 100vh;
-  background-color: #232323;
-  @include flexbox(center, center);
   position: relative;
+  height: 100vh;
   overflow: hidden;
+  background-color: #232323;
+  scroll-snap-align: center;
+  @include flexbox(center, center);
 
   &::before {
+    content: "";
     position: absolute;
-    content: '';
     min-width: 100%;
     height: 100%;
+    background: url("../../../resources/img/hero3.webp");
     background-color: gray;
-    background: url('../../../resources/img/hero3.webp');
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
-    transition: all 3s 10s;
+    background-size: cover;
     filter: saturate(0.5) blur(3px);
+    transition: all 3s 10s;
   }
   .skill-selector__col {
     position: relative;
@@ -28,10 +28,10 @@
     height: fit-content;
     @include flexbox;
     @media (max-width: $big-tablet) {
-      width: 80vh;
-      height: 60vh;
       z-index: 10;
       align-self: flex-end;
+      width: 80vh;
+      height: 60vh;
       padding-bottom: 3rem;
     }
   }
@@ -58,6 +58,6 @@
   }
 }
 form {
-  color: #fff;
   z-index: 999;
+  color: #fff;
 }
