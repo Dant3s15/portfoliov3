@@ -1,12 +1,12 @@
-import { FC, Fragment, useEffect, useRef, useState } from 'react';
-import classes from './SkillSelector.module.scss';
+import { FC, Fragment, useEffect, useRef, useState } from "react";
+import classes from "./SkillSelector.module.scss";
 //COMPONENTS
-import ButtonBig from '../../../UI/ButtonBig';
-import CardGlass from '../../../UI/CardGlass';
-import LoadingSpinner from '../../../UI/LoadingSpinner';
-import Skill from './Skill/Skill';
-import SkillAddWindow from './SkillAddWindow';
-import { skillInterface } from '../../../../Types/types';
+import ButtonBig from "../../../UI/ButtonBig";
+import CardGlass from "../../../UI/CardGlass";
+import LoadingSpinner from "../../../UI/LoadingSpinner";
+import Skill from "./Skill/Skill";
+import SkillAddWindow from "./SkillAddWindow";
+import { skillInterface } from "../../../../Types/types";
 
 interface Props {
   allSkillsData: skillInterface[];
@@ -41,14 +41,14 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
   useEffect(() => {
     //TODO check local storage for errors
 
-    if (localStorage.getItem('leftChar')) {
-      const localSkills = JSON.parse(localStorage.getItem('leftChar') || '');
+    if (localStorage.getItem("leftChar")) {
+      const localSkills = JSON.parse(localStorage.getItem("leftChar") || "");
       setAddedSkills(localSkills);
       const localSkillsIds = localSkills.map((el: { name: string }) => el.name);
 
-      setAllSkillsArr(prevAllSkills =>
+      setAllSkillsArr((prevAllSkills) =>
         prevAllSkills.filter(
-          curSkill => !localSkillsIds.includes(curSkill.name)
+          (curSkill) => !localSkillsIds.includes(curSkill.name)
         )
       );
     }
@@ -60,7 +60,7 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
     const searchAddedVal = searchAddedRef.current?.value.toLowerCase();
 
     if (searchAllVal) {
-      const newArr = allSkillsArr.filter(skill => {
+      const newArr = allSkillsArr.filter((skill) => {
         return skill.names[0].toLowerCase().includes(searchAllVal);
       });
       setAllSkillsIsFiltered(true);
@@ -69,7 +69,7 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
       setAllSkillsIsFiltered(false);
     }
     if (searchAddedVal !== undefined) {
-      const newArr: skillInterface[] = addedSkills.filter(skill =>
+      const newArr: skillInterface[] = addedSkills.filter((skill) =>
         skill.names[0].toLowerCase().includes(searchAddedVal)
       );
       setAddedSkillsIsFiltered(true);
@@ -92,26 +92,26 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
   const skillChangeHandler = (skill: skillInterface) => {
     //SKILL ADDING
 
-    if (allSkillsArr.some(curSkill => curSkill === skill)) {
+    if (allSkillsArr.some((curSkill) => curSkill === skill)) {
       setIsAdding(true);
       setSkillAddingData(skill);
       if (isAdding && !isAdded) {
-        setAllSkillsArr(prevAllSkills => {
+        setAllSkillsArr((prevAllSkills) => {
           return sortSkills(
-            prevAllSkills.filter(curSkill => {
+            prevAllSkills.filter((curSkill) => {
               return curSkill !== skill;
             })
           );
         });
-        setAllSkillsArrFiltered(prevAllSkills => {
+        setAllSkillsArrFiltered((prevAllSkills) => {
           return sortSkills(
-            prevAllSkills.filter(curSkill => curSkill !== skill)
+            prevAllSkills.filter((curSkill) => curSkill !== skill)
           );
         });
 
-        setAddedSkills(prevAddedSKills => {
+        setAddedSkills((prevAddedSKills) => {
           return sortSkills([
-            ...allSkillsArr.filter(curSkill => {
+            ...allSkillsArr.filter((curSkill) => {
               return curSkill === skill;
             }),
             ...prevAddedSKills,
@@ -120,23 +120,23 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
         setIsAdding(false);
         setIsAdded(false);
       }
-    } else if (allSkillsArr.some(curSkill => curSkill !== skill)) {
+    } else if (allSkillsArr.some((curSkill) => curSkill !== skill)) {
       //SKILL REMOVING
       if (!isAdding) {
-        setAddedSkills(prevAllSkills => {
+        setAddedSkills((prevAllSkills) => {
           return sortSkills(
-            prevAllSkills.filter(curSkill => curSkill !== skill)
+            prevAllSkills.filter((curSkill) => curSkill !== skill)
           );
         });
-        setAddedSkillsFiltered(prevAllSkills => {
+        setAddedSkillsFiltered((prevAllSkills) => {
           return sortSkills(
-            prevAllSkills.filter(curSkill => curSkill !== skill)
+            prevAllSkills.filter((curSkill) => curSkill !== skill)
           );
         });
 
-        setAllSkillsArr(prevAllSkills => {
+        setAllSkillsArr((prevAllSkills) => {
           return sortSkills([
-            ...addedSkills.filter(curSkill => {
+            ...addedSkills.filter((curSkill) => {
               skill.level = 0;
               return curSkill === skill;
             }),
@@ -157,7 +157,7 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
 
   const saveCharHandler = () => {
     if (addedSkills.length === 0) {
-      console.log('add Skills');
+      console.log("add Skills");
       return;
     } else {
       // const response = await fetch(
@@ -170,8 +170,8 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
       //     },
       //   }
       // );
-      localStorage.setItem('leftChar', JSON.stringify(addedSkills));
-      window.dispatchEvent(new Event('storage'));
+      localStorage.setItem("leftChar", JSON.stringify(addedSkills));
+      window.dispatchEvent(new Event("storage"));
     }
   };
 
@@ -199,11 +199,11 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
 
   return (
     <Fragment>
-      <CardGlass className={classes['skill-selector--card']}>
+      <CardGlass className={classes["skill-selector--card"]}>
         {isLoading ? (
           <LoadingSpinner />
         ) : (
-          <div className={classes['skill-selector']}>
+          <div className={classes["skill-selector"]}>
             {isAdding && (
               <SkillAddWindow
                 onSetLevel={setlevelIsSet}
@@ -212,57 +212,57 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
                 skillData={skillAddingData}
               ></SkillAddWindow>
             )}
-            <div className={classes['skills-selector__grid']}>
-              <div className={classes['title-row']}>
-                <p className={classes['title']}>All Skills</p>
-                <div className={classes['search-field']}>
+            <div className={classes["skills-selector__grid"]}>
+              <div className={classes["title-row"]}>
+                <p className={classes["title"]}>All Skills</p>
+                <div className={classes["search-field"]}>
                   <label
-                    className={classes['search-label']}
-                    htmlFor='search-all'
+                    className={classes["search-label"]}
+                    htmlFor="search-all"
                   >
                     Search
                   </label>
                   <input
                     onChange={filterSkills}
                     ref={searchAllRef}
-                    id='search-all'
-                    type='text'
+                    id="search-all"
+                    type="text"
                   />
                 </div>
               </div>
-              <div className={classes['title-row']}>
-                <p className={classes['title']}>Added Skills</p>
-                <div className={classes['search-field']}>
+              <div className={classes["title-row"]}>
+                <p className={classes["title"]}>Added Skills</p>
+                <div className={classes["search-field"]}>
                   <label
-                    className={classes['search-label']}
-                    htmlFor='search-added'
+                    className={classes["search-label"]}
+                    htmlFor="search-added"
                   >
                     Search
                   </label>
                   <input
                     onChange={filterSkills}
                     ref={searchAddedRef}
-                    id='search-added'
-                    type='text'
+                    id="search-added"
+                    type="text"
                   />
                 </div>
               </div>
 
-              <div className={`${classes['skills-menu']} ${classes.all}`}>
+              <div className={`${classes["skills-menu"]} ${classes.all}`}>
                 {allSkillsIsFiltered === false
-                  ? renderSkills(allSkillsArr, '+')
-                  : renderSkills(allSkillsArrFiltered, '+')}
+                  ? renderSkills(allSkillsArr, "+")
+                  : renderSkills(allSkillsArrFiltered, "+")}
               </div>
-              <div className={`${classes['skills-menu']} ${classes.added}`}>
+              <div className={`${classes["skills-menu"]} ${classes.added}`}>
                 {addedSkillsIsFiltered === false
-                  ? renderSkills(addedSkills, '-')
-                  : renderSkills(addedSkillsFiltered, '-')}
+                  ? renderSkills(addedSkills, "-")
+                  : renderSkills(addedSkillsFiltered, "-")}
               </div>
             </div>
             <ButtonBig
-              onClick={saveCharHandler}
-              type='submit'
-              text='Save Character'
+              onClck={saveCharHandler}
+              type="submit"
+              text="Save Character"
               isGreyedOut={addedSkills.length === 0 ? true : false}
             ></ButtonBig>
           </div>

@@ -27,7 +27,8 @@
     "react-router-dom": "^6.3.0",
     "react-spring": "^9.4.4",
     "typewriter-effect": "^2.18.2",
-    "usehooks-ts": "^2.5.4"
+    "usehooks-ts": "^2.5.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

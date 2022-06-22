@@ -1,59 +1,34 @@
-import {
-  Form,
-  Formik,
-  Field,
-  ErrorMessage,
-  FormikErrors,
-  FormikTouched,
-} from "formik";
+import { Form, Formik, Field, ErrorMessage, FormikErrors } from "formik";
+import * as Yup from "yup";
+
 import classes from "./ContactForm.module.scss";
 import ButtonBig from "../../UI/ButtonBig";
 
-const ContactForm = () => {
-  const checkErrorsAndTouched = (
-    errors: FormikErrors<{ name: string; email: string; text: string }>,
-    touched: FormikTouched<{ name: string; email: string; text: string }>
-  ) => {
-    return (
-      Object.keys(errors).length > 0 ||
-      !touched.name ||
-      !touched.email ||
-      !touched.text
-    );
-  };
+const ContactFormSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Too Short")
+    .max(50, "Too Long")
+    .required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
+  text: Yup.string()
+    .min(2, "Too Short")
+    .max(200, "Too Long")
+    .required("Required"),
+});
 
+const ContactForm = () => {
   return (
     <div id="contact-me" className={classes["contact-me"]}>
       <div className={classes.container}>
         <Formik
           initialValues={{ name: "", email: "", text: "" }}
-          validate={(values) => {
-            const errors: { [key: string]: string } = {};
-            if (!values.name) {
-              errors.name = "Required";
-            } else if (values.name.length < 2) {
-              errors.name = "> 1 characters";
-            }
-            if (!values.email) {
-              errors.email = "Required";
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = "Invalid email";
-            }
-            if (!values.text) {
-              errors.text = "Required";
-            } else if (values.text.length < 2) {
-              errors.text = "> 2 characters";
-            }
-            return errors;
-          }}
-          onSubmit={async (values, { setSubmitting }) => {
+          validationSchema={ContactFormSchema}
+          onSubmit={async (values, { resetForm }) => {
             const response = await fetch(
               "https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app/emails.json",
               {
                 method: "POST",
-                body: JSON.stringify(values, null, 2),
+                body: JSON.stringify(values),
                 headers: {
                   "Content-Type": "application/json",
                 },
@@ -61,9 +36,10 @@ const ContactForm = () => {
             );
             const data = await response.json();
             console.log(data);
+            resetForm();
           }}
         >
-          {({ errors, touched }) => (
+          {({ errors, touched, dirty, isValid }) => (
             <Form>
               <div className={classes["name-email"]}>
                 <div className={classes.name}>
@@ -133,14 +109,9 @@ const ContactForm = () => {
                   )}
                 />
               </div>
-
               <ButtonBig
-                isGreyedOut={
-                  checkErrorsAndTouched(errors, touched) ? true : false
-                }
-                type={
-                  checkErrorsAndTouched(errors, touched) ? "button" : "submit"
-                }
+                isGreyedOut={!dirty || (dirty && !isValid)}
+                type="submit"
                 text="Send"
               />
             </Form>

@@ -5,7 +5,7 @@ import classes from "./ButtonBig.module.scss";
 
 interface Props {
   style?: CSSProperties | undefined;
-  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+  onClck?: MouseEventHandler<HTMLButtonElement> | undefined;
   type?: "button" | "submit" | "reset" | undefined;
   isAbsolute?: boolean;
   isGreyedOut?: boolean;
@@ -13,27 +13,31 @@ interface Props {
   text?: string;
 }
 
-const ButtonBig: FC<Props> = (props: any) => {
+const ButtonBig: FC<Props> = ({
+  type,
+  isAbsolute,
+  isGreyedOut,
+  moveTo,
+  text,
+  style,
+  onClck,
+}) => {
   return (
     <button
-      type={props.type ? props.type : undefined}
-      key={Math.random()}
+      type={type}
       className={`${classes["button-big"]}
-    ${props.isAbsolute && props.isAbsolute ? classes.absolute : ""}  ${
-        props.isGreyedOut === true ? classes["greyed-out"] : ""
+    ${isAbsolute && classes.absolute}  ${
+        isGreyedOut && classes["greyed-out"]
       } `}
-      style={props.style}
-      onClick={props.isGreyedOut ? null : props.onClick}
+      style={style}
+      onClick={onClck}
     >
-      {props.type !== "submit" && props.iGreyedOut ? (
-        <Link
-          className={classes["button-text"]}
-          to={`${props.moveTo ? props.moveTo : ""}`}
-        >
-          {props.text}
+      {type !== "submit" && isGreyedOut ? (
+        <Link className={classes["button-text"]} to={`${moveTo ? moveTo : ""}`}>
+          {text}
         </Link>
       ) : (
-        <p className={classes["button-text"]}>{props.text}</p>
+        <p className={classes["button-text"]}>{text}</p>
       )}
     </button>
   );

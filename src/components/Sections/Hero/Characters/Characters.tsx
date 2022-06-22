@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef, useContext, FC } from 'react';
-import Character from './Character';
-import SelectedContext from '../../../../context/selected-context';
-import ButtonBig from '../../../UI/ButtonBig';
-import Typewriter from 'typewriter-effect';
-import classes from './Characters.module.scss';
+import { useState, useEffect, useRef, useContext, FC } from "react";
+import Character from "./Character";
+import SelectedContext from "../../../../context/selected-context";
+import ButtonBig from "../../../UI/ButtonBig";
+import Typewriter from "typewriter-effect";
+import classes from "./Characters.module.scss";
 
 interface Props {
   charState: (data: any) => void;
@@ -69,14 +69,14 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
       charactersComputedWith = characterImgComputedWidth * 0.4;
       let root = document.documentElement;
       root.style.setProperty(
-        '--characters-width',
-        charactersComputedWith + 'px'
+        "--characters-width",
+        charactersComputedWith + "px"
       );
     }
   };
   const processChange = debounce(calcCharWidth, 1000);
 
-  window.addEventListener('resize', processChange);
+  window.addEventListener("resize", processChange);
 
   // ********************************************************
 
@@ -98,7 +98,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
     ctx.setWhichSelected?.(constPos);
   };
 
-  ctx.rotateCharactersHandler = e => {
+  ctx.rotateCharactersHandler = (e) => {
     const setChars = (direc: number) => {
       setLeftChar(wrapRotate(leftChar, direc));
       setFrontChar(wrapRotate(frontChar, direc));
@@ -108,7 +108,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
     let direc = 0;
 
     let charData;
-    if (typeof e === 'number') {
+    if (typeof e === "number") {
       charData = e;
     } else charData = +e.target?.dataset.character;
 
@@ -148,17 +148,17 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
 
   const isAnythingSelected = () => {
     if (leftIsSelected) {
-      return { isSelected: true, text: 'Create character', moveTo: 'creator' };
+      return { isSelected: true, text: "Create character", moveTo: "creator" };
     }
     if (frontIsSelected) {
-      return { isSelected: true, text: 'Level me up', moveTo: 'about-me' };
+      return { isSelected: true, text: "Level me up", moveTo: "about-me" };
     }
     if (rightIsSelected) {
       return {
         isSelected: true,
-        text: 'Character Locked',
+        text: "Character Locked",
         greyedOut: true,
-        moveTo: 'hero',
+        moveTo: "hero",
       };
     } else return { isSelected: false };
   };
@@ -170,47 +170,47 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
     ctx.setSelected?.(true);
     setTimeout(() => {
       if (!id) {
-        id = 'hero';
+        id = "hero";
       }
       const element = document.querySelector(`#${id}`);
-      element?.scrollIntoView({ behavior: 'smooth' });
+      element?.scrollIntoView({ behavior: "smooth" });
     }, 300);
   };
 
   return (
-    <div ref={charactersColRef} className={classes['character-col']}>
+    <div ref={charactersColRef} className={classes["character-col"]}>
       <div
-        className={`${classes['character__overlay']} ${
+        className={`${classes["character__overlay"]} ${
           ctx.ctaButtonClicked?.clicked
-            ? classes['character__overlay--hidden']
-            : ''
+            ? classes["character__overlay--hidden"]
+            : ""
         }`}
       >
         <div className={classes.cta}>
           <ButtonBig
             isAbsolute={false}
-            onClick={ctaButtonHandler}
-            text='Choose your dev'
+            onClck={ctaButtonHandler}
+            text="Choose your dev"
           ></ButtonBig>
-          <div className={`${classes['cta__text']}`}>
+          <div className={`${classes["cta__text"]}`}>
             <Typewriter
               options={{
                 loop: true,
                 delay: 100,
-                cursor: '',
+                cursor: "",
               }}
-              onInit={typewriter => {
+              onInit={(typewriter) => {
                 typewriter
-                  .typeString('Create')
+                  .typeString("Create")
                   .pauseFor(4000)
                   .deleteAll()
-                  .typeString('Level Up')
+                  .typeString("Level Up")
                   .pauseFor(4000)
                   .deleteAll()
                   .start();
               }}
             />
-            <span className={classes['your-dev']}>your Dev</span>
+            <span className={classes["your-dev"]}>your Dev</span>
           </div>
         </div>
       </div>
@@ -219,12 +219,12 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
         ref={charactersRef}
         onClick={ctx.rotateCharactersHandler}
         className={`${classes.characters} ${
-          !ctx.ctaButtonClicked?.clicked ? classes.hidden : ''
+          !ctx.ctaButtonClicked?.clicked ? classes.hidden : ""
         }`}
       >
         {isAnythingSelected().isSelected ? (
           <ButtonBig
-            onClick={e =>
+            onClck={(e) =>
               frontCharButtonHandler(e, isAnythingSelected().moveTo)
             }
             moveTo={isAnythingSelected().moveTo}
@@ -233,14 +233,14 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
             isGreyedOut={isAnythingSelected().greyedOut}
           ></ButtonBig>
         ) : (
-          ''
+          ""
         )}
         <Character
           dataConstPos={CONST_POS[0]}
           data={leftChar}
           selected={leftIsSelected}
           selectedCtx={ctx.isSelected}
-          name='Character Creator'
+          name="Character Creator"
           onRotateCharacters={ctx.rotateCharactersHandler}
         ></Character>
 
@@ -249,7 +249,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
           data={frontChar}
           selected={frontIsSelected}
           selectedCtx={ctx.isSelected}
-          name='Damian'
+          name="Damian"
           onRotateCharacters={ctx.rotateCharactersHandler}
         ></Character>
 
@@ -258,7 +258,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
           selected={rightIsSelected}
           selectedCtx={ctx.isSelected}
           data={rightChar}
-          name='Future Damian'
+          name="Future Damian"
           onRotateCharacters={ctx.rotateCharactersHandler}
         ></Character>
       </div>
