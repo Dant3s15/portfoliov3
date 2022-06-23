@@ -3,6 +3,7 @@ import * as Yup from "yup";
 
 import classes from "./ContactForm.module.scss";
 import ButtonBig from "../../UI/ButtonBig";
+import { useState } from "react";
 
 const ContactFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -17,6 +18,7 @@ const ContactFormSchema = Yup.object().shape({
 });
 
 const ContactForm = () => {
+  const [responseHasError, setResponseHasError] = useState(false);
   return (
     <div id="contact-me" className={classes["contact-me"]}>
       <div className={classes.container}>
@@ -24,7 +26,7 @@ const ContactForm = () => {
           initialValues={{ name: "", email: "", text: "" }}
           validationSchema={ContactFormSchema}
           onSubmit={async (values, { resetForm }) => {
-            const response = await fetch(
+            await fetch(
               "https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app/emails.json",
               {
                 method: "POST",
@@ -33,10 +35,22 @@ const ContactForm = () => {
                   "Content-Type": "application/json",
                 },
               }
-            );
-            const data = await response.json();
-            console.log(data);
-            resetForm();
+            )
+              .then((response) => {
+                if (response.status >= 400 && response.status < 600) {
+                  throw new Error(
+                    `Bad response from server: error ${response.status}(${response.statusText})`
+                  );
+                }
+                return response;
+              })
+              .then((returnedResponse) => {
+                resetForm();
+              })
+              .catch((error) => {
+                setResponseHasError(true);
+                alert(error);
+              });
           }}
         >
           {({ errors, touched, dirty, isValid }) => (
