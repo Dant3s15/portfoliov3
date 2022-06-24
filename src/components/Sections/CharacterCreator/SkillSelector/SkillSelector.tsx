@@ -1,7 +1,7 @@
 import { FC, Fragment, useEffect, useRef, useState } from "react";
 import classes from "./SkillSelector.module.scss";
 //COMPONENTS
-import ButtonBig from "../../../UI/ButtonBig";
+import ButtonPrimary from "../../../UI/ButtonPrimary";
 import CardGlass from "../../../UI/CardGlass";
 import LoadingSpinner from "../../../UI/LoadingSpinner";
 import Skill from "./Skill/Skill";
@@ -259,12 +259,12 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
                   : renderSkills(addedSkillsFiltered, "-")}
               </div>
             </div>
-            <ButtonBig
+            <ButtonPrimary
               onClck={saveCharHandler}
               type="submit"
               text="Save Character"
               isGreyedOut={addedSkills.length === 0 ? true : false}
-            ></ButtonBig>
+            ></ButtonPrimary>
           </div>
         )}
       </CardGlass>

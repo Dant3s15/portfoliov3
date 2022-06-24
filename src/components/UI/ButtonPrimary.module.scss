@@ -7,9 +7,12 @@
   position: relative;
   z-index: 999;
   display: block;
+  padding: 20px 30px;
   color: var(--color-dark);
+  font-weight: 700;
   font-size: 1.5rem;
   font-family: inherit;
+  white-space: nowrap;
   text-transform: uppercase;
   background-color: var(--color-primary);
   border: none;
@@ -18,19 +21,11 @@
   cursor: pointer;
   transition: all var(--transition-short), color 0.1s, text-shadow 0.1s;
   transition-property: transform, opacity, outline, filter;
+  animation: flicker2 5s infinite alternate;
   @include corner-cut2(29px, var(--color-primary), 4px, 17px);
 
   &::after {
     content: none;
-  }
-  .button-text {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 20px 30px;
-    font-weight: 700;
-    white-space: nowrap;
-    animation: flicker2 5s infinite alternate;
   }
 
   &:hover,
@@ -42,9 +37,8 @@
     outline-offset: -3px;
     box-shadow: inset 0 0 0 3px #fff;
 
-    .button-text {
-      animation: none;
-    }
+    animation: none;
+
     &::after {
       content: "";
       position: absolute;

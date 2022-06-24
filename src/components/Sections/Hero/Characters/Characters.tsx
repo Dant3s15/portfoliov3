@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef, useContext, FC } from "react";
 import Character from "./Character";
+// import { useNavigate } from "react-router-dom";
 import SelectedContext from "../../../../context/selected-context";
-import ButtonBig from "../../../UI/ButtonBig";
 import Typewriter from "typewriter-effect";
 import classes from "./Characters.module.scss";
+import ButtonPrimary from "../../../UI/ButtonPrimary";
+// import { to } from "react-spring";
 
 interface Props {
   charState: (data: any) => void;
@@ -11,6 +13,7 @@ interface Props {
 }
 
 const Characters: FC<Props> = ({ charState, heroRef }) => {
+  // const navigate = useNavigate();
   const [leftChar, setLeftChar] = useState(0);
   const [frontChar, setFrontChar] = useState(1);
   const [rightChar, setRightChar] = useState(2);
@@ -187,11 +190,11 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
         }`}
       >
         <div className={classes.cta}>
-          <ButtonBig
+          <ButtonPrimary
             isAbsolute={false}
             onClck={ctaButtonHandler}
             text="Choose your dev"
-          ></ButtonBig>
+          ></ButtonPrimary>
           <div className={`${classes["cta__text"]}`}>
             <Typewriter
               options={{
@@ -223,7 +226,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
         }`}
       >
         {isAnythingSelected().isSelected ? (
-          <ButtonBig
+          <ButtonPrimary
             onClck={(e) =>
               frontCharButtonHandler(e, isAnythingSelected().moveTo)
             }
@@ -231,7 +234,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
             isAbsolute={true}
             text={isAnythingSelected().text}
             isGreyedOut={isAnythingSelected().greyedOut}
-          ></ButtonBig>
+          ></ButtonPrimary>
         ) : (
           ""
         )}

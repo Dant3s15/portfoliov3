@@ -1,7 +1,6 @@
 // import 'animate.css';
 import { CSSProperties, FC, MouseEventHandler } from "react";
-import { Link } from "react-router-dom";
-import classes from "./ButtonBig.module.scss";
+import classes from "./ButtonPrimary.module.scss";
 
 interface Props {
   style?: CSSProperties | undefined;
@@ -17,7 +16,6 @@ const ButtonBig: FC<Props> = ({
   type,
   isAbsolute,
   isGreyedOut,
-  moveTo,
   text,
   style,
   onClck,
@@ -32,13 +30,7 @@ const ButtonBig: FC<Props> = ({
       style={style}
       onClick={onClck}
     >
-      {type !== "submit" && isGreyedOut ? (
-        <Link className={classes["button-text"]} to={`${moveTo ? moveTo : ""}`}>
-          {text}
-        </Link>
-      ) : (
-        <p className={classes["button-text"]}>{text}</p>
-      )}
+      {text}
     </button>
   );
 };

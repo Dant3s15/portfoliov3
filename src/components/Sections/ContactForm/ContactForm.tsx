@@ -2,7 +2,7 @@ import { Form, Formik, Field, ErrorMessage, FormikErrors } from "formik";
 import * as Yup from "yup";
 
 import classes from "./ContactForm.module.scss";
-import ButtonBig from "../../UI/ButtonBig";
+import ButtonPrimary from "../../UI/ButtonPrimary";
 import { useState } from "react";
 
 const ContactFormSchema = Yup.object().shape({
@@ -123,7 +123,7 @@ const ContactForm = () => {
                   )}
                 />
               </div>
-              <ButtonBig
+              <ButtonPrimary
                 isGreyedOut={!dirty || (dirty && !isValid)}
                 type="submit"
                 text="Send"
