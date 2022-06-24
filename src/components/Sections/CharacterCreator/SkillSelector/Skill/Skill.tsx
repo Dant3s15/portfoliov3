@@ -1,8 +1,8 @@
-import { FC, useState } from 'react';
-import { skillInterface } from '../../../../../Types/types';
-import SkillTooltip from '../../../../UI/SkillTooltip';
-import classes from './Skill.module.scss';
-import Tooltip from '@mui/material/Tooltip';
+import { FC, useState } from "react";
+import { skillInterface } from "../../../../../Types/types";
+import SkillTooltip from "../../../../UI/SkillTooltip";
+import classes from "./Skill.module.scss";
+import Tooltip from "@mui/material/Tooltip";
 
 interface Props {
   onSkillChange: Function;
@@ -24,11 +24,11 @@ const Skill: FC<Props> = ({ data, onTooltip, onSkillChange, sign }) => {
 
   const levelHandler = (
     <Tooltip
-      placement='top'
+      placement="top"
       title={`${data.name.toUpperCase()} Proficiency Level`}
     >
       <div className={classes.level}>
-        <p key={Math.random()} className={classes['level-number']}>
+        <p key={Math.random()} className={classes["level-number"]}>
           {data.level}
         </p>
       </div>
@@ -38,10 +38,10 @@ const Skill: FC<Props> = ({ data, onTooltip, onSkillChange, sign }) => {
   return (
     <div
       className={`${classes.skill} ${
-        onTooltip?.whichTooltip === data?.id ? classes['has-tooltip'] : ''
+        onTooltip?.whichTooltip === data?.id ? classes["has-tooltip"] : ""
       }`}
       onClick={() => {
-        console.log('click');
+        console.log("click");
         if (data?.id !== onTooltip?.whichTooltip)
           onTooltip?.setWhichTooltip(data?.id);
         else onTooltip.setWhichTooltip(undefined);
@@ -51,16 +51,16 @@ const Skill: FC<Props> = ({ data, onTooltip, onSkillChange, sign }) => {
         <img src={data?.icon} alt={`${data?.names[0]} icon`} />
       </div>
       <div className={classes.name}>{nameShortener(data.names[0], 12)}</div>
-      {data.level ? levelHandler : ''}
+      {data.level ? levelHandler : ""}
 
       <button
-        onClick={e => {
+        onClick={(e) => {
           e.stopPropagation();
           onSkillChange(data);
         }}
-        className={classes['manage-skill']}
+        className={classes["manage-skill"]}
       >
-        <p>{sign}</p>
+        {sign}
       </button>
       <SkillTooltip data={data} />
     </div>
