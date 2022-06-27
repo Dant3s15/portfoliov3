@@ -129,7 +129,7 @@ function App() {
           </main>
         </HeroVisibleProvider>
         <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
-      </SelectedContext.Provider>{" "}
+      </SelectedContext.Provider>
     </Fragment>
   );
 }

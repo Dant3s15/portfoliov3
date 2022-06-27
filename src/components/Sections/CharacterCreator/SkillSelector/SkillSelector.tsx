@@ -155,21 +155,22 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
     }
   };
 
-  const saveCharHandler = () => {
+  const saveCharHandler = async () => {
     if (addedSkills.length === 0) {
       console.log("add Skills");
       return;
     } else {
       // const response = await fetch(
-      //   'https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app/saved-characters.json',
+      //   "https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app/saved-characters.json",
       //   {
-      //     method: 'POST',
+      //     method: "POST",
       //     body: JSON.stringify(addedSkills),
       //     headers: {
-      //       'Content-Type': 'application/json',
+      //       "Content-Type": "application/json",
       //     },
       //   }
       // );
+      // console.log(response);
       localStorage.setItem("leftChar", JSON.stringify(addedSkills));
       window.dispatchEvent(new Event("storage"));
     }

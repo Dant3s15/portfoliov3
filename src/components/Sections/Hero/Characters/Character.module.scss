@@ -43,7 +43,7 @@
     filter: brightness(0.4);
 
     transition: all var(--transition-short);
-    transition-property: transform, filter;
+    transition-property: transform;
   }
 
   &__front {
