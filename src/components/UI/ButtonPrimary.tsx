@@ -12,7 +12,7 @@ interface Props {
   text?: string;
 }
 
-const ButtonBig: FC<Props> = ({
+const ButtonPrimary: FC<Props> = ({
   type,
   isAbsolute,
   isGreyedOut,
@@ -23,7 +23,7 @@ const ButtonBig: FC<Props> = ({
   return (
     <button
       type={type}
-      className={`${classes["button-big"]}
+      className={`${classes["button-primary"]}
     ${isAbsolute && classes.absolute}  ${
         isGreyedOut && classes["greyed-out"]
       } `}
@@ -35,4 +35,4 @@ const ButtonBig: FC<Props> = ({
   );
 };
 
-export default ButtonBig;
+export default ButtonPrimary;

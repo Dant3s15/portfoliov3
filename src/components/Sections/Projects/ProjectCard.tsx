@@ -1,12 +1,12 @@
-import { FC, ReactNode, useRef } from 'react';
-import { animated } from 'react-spring';
-import CardGlass from '../../UI/CardGlass';
-import github from '../../../resources/icons/logo-github.svg';
-import classes from './ProjectCard.module.scss';
-import { skillInterface } from '../../../Types/types';
-import LoadingSpinner from '../../UI/LoadingSpinner';
-import Tooltip from '@mui/material/Tooltip';
-import ProjectSkillsList from './ProjectSkillList';
+import { FC, ReactNode, useRef } from "react";
+import { animated } from "react-spring";
+import CardGlass from "../../UI/CardGlass";
+import github from "../../../resources/icons/logo-github.svg";
+import classes from "./ProjectCard.module.scss";
+import { skillInterface } from "../../../Types/types";
+import LoadingSpinner from "../../UI/LoadingSpinner";
+import Tooltip from "@mui/material/Tooltip";
+import ProjectSkillsList from "./ProjectSkillList";
 
 interface CardProjectProps {
   projectData: {
@@ -40,9 +40,9 @@ const CardProject: FC<CardProjectProps> = ({
     selectedState.setWhichSelected(projectData.id);
     if (projectCardRef.current)
       projectCardRef.current.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-        block: 'nearest',
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
       });
   };
 
@@ -52,55 +52,55 @@ const CardProject: FC<CardProjectProps> = ({
         selectedState.setWhichSelected(null);
       }}
       ref={projectCardRef}
-      className={`${classes['project-wrapper']} ${
+      className={`${classes["project-wrapper"]} ${
         projectData.id === selectedState.whichSelected
-          ? classes['selected-project']
-          : ''
+          ? classes["selected-project"]
+          : ""
       } `}
     >
-      <CardGlass className={`${classes.project}`}>
+      <CardGlass corner className={`${classes.project}`}>
         <div className={classes.links}>
           <Tooltip
             key={Math.random()}
-            placement='top'
+            placement="top"
             title={`Go To GitHub Repository`}
           >
-            <a href={projectData?.repo} target='_blank'>
-              <img src={github} alt='github' />
+            <a href={projectData?.repo} target="_blank">
+              <img src={github} alt="github" />
             </a>
           </Tooltip>
         </div>
-        <div className={classes['project-image-window']}>
+        <div className={classes["project-image-window"]}>
           <a
-            className={classes['project-link']}
+            className={classes["project-link"]}
             href={projectData?.link}
-            target='_blank'
+            target="_blank"
           >
             <Tooltip
               arrow
               key={Math.random()}
-              placement='top'
+              placement="top"
               title={`Go To Live Project Site`}
             >
               <img
                 src={projectData?.image}
-                className={classes['project-image']}
+                className={classes["project-image"]}
               />
             </Tooltip>
           </a>
         </div>
         <div
           onClick={cardClickHandler}
-          className={classes['project-description']}
+          className={classes["project-description"]}
         >
-          <h3 className={classes['project-title']}>
-            {projectData?.title ?? 'Title'}
+          <h3 className={classes["project-title"]}>
+            {projectData?.title ?? "Title"}
           </h3>
-          <div className={classes['project-overview']}>
+          <div className={classes["project-overview"]}>
             <p>{projectData?.overview}</p>
           </div>
-          <h3 className={classes['used-skills-title']}>Skills Used:</h3>
-          <ul className={classes['used-skills']}>
+          <h3 className={classes["used-skills-title"]}>Skills Used:</h3>
+          <ul className={classes["used-skills"]}>
             {isLoading ? (
               <LoadingSpinner></LoadingSpinner>
             ) : (

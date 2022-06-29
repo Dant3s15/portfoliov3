@@ -15,7 +15,7 @@
     .glass-card--custom {
       position: relative;
       height: 80%;
-      padding: 2.25rem;
+      // padding: 2.25rem;
       transform: rotateY(-5deg);
       @media (max-width: $big-tablet) {
         transform: none;
@@ -55,6 +55,7 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+    padding: 2.25rem;
     @include textglow;
     @include flexbox(space-around, flex-start);
   }

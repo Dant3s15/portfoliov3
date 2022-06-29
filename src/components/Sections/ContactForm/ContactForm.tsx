@@ -3,7 +3,7 @@ import * as Yup from "yup";
 
 import classes from "./ContactForm.module.scss";
 import ButtonPrimary from "../../UI/ButtonPrimary";
-import { useState } from "react";
+import { FC, useState } from "react";
 
 const ContactFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -17,8 +17,18 @@ const ContactFormSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const ContactForm = () => {
-  const [responseHasError, setResponseHasError] = useState(false);
+interface Props {
+  popupState: React.Dispatch<React.SetStateAction<boolean>>;
+  setPopupTxt: React.Dispatch<
+    React.SetStateAction<{
+      message: string;
+      btnTxt: string;
+    }>
+  >;
+}
+
+const ContactForm: FC<Props> = ({ popupState, setPopupTxt }) => {
+  // const [responseHasError, setResponseHasError] = useState(false);
   return (
     <div id="contact-me" className={classes["contact-me"]}>
       <div className={classes.container}>
@@ -42,14 +52,26 @@ const ContactForm = () => {
                     `Bad response from server: error ${response.status}(${response.statusText})`
                   );
                 }
+                if (!response.ok) {
+                  throw new Error("Message sending error");
+                }
                 return response;
               })
               .then((returnedResponse) => {
+                setPopupTxt({
+                  btnTxt: "ok",
+                  message: "Message sent",
+                });
+                popupState(true);
                 resetForm();
               })
               .catch((error) => {
-                setResponseHasError(true);
-                alert(error);
+                console.log(`${error}`);
+                setPopupTxt({
+                  btnTxt: "ok",
+                  message: "Sending error",
+                });
+                popupState(true);
               });
           }}
         >

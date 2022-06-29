@@ -17,5 +17,7 @@
   @-moz-document url-prefix() {
     background-color: rgba(60, 60, 60, 0.609);
   }
+}
+.corner {
   @include corner-cut(40px, var(--color-border-transparent), 10px, 38px);
 }

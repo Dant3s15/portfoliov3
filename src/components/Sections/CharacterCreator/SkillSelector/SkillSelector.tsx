@@ -200,7 +200,7 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
 
   return (
     <Fragment>
-      <CardGlass className={classes["skill-selector--card"]}>
+      <CardGlass corner className={classes["skill-selector--card"]}>
         {isLoading ? (
           <LoadingSpinner />
         ) : (
