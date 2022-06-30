@@ -192,7 +192,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
         <div className={classes.cta}>
           <ButtonPrimary
             isAbsolute={false}
-            onClck={ctaButtonHandler}
+            onClick={ctaButtonHandler}
             text="Choose your dev"
           ></ButtonPrimary>
           <div className={`${classes["cta__text"]}`}>
@@ -227,7 +227,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
       >
         {isAnythingSelected().isSelected ? (
           <ButtonPrimary
-            onClck={(e) =>
+            onClick={(e) =>
               frontCharButtonHandler(e, isAnythingSelected().moveTo)
             }
             moveTo={isAnythingSelected().moveTo}

@@ -8,15 +8,15 @@ interface Props {
   onClick?: any;
 }
 
-const CardGlass: FC<Props> = (props) => {
+const CardGlass: FC<Props> = ({ onClick, className, corner, children }) => {
   return (
     <div
-      onClick={props.onClick}
-      className={`${classes["card--glass"]} ${
-        props.className ? props.className : ""
-      } ${props.corner && classes.corner}`}
+      onClick={onClick}
+      className={`${classes["card--glass"]} ${className ? className : ""} ${
+        corner && classes.corner
+      }`}
     >
-      {props.children}
+      {children}
     </div>
   );
 };

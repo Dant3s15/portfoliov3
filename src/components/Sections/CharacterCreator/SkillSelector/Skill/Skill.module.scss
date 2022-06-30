@@ -1,44 +1,47 @@
-@import '../../../../../scss/variables';
-@import '../../../../../scss/mixins';
-@import '../../../../../scss/animations';
+@import "../../../../../scss/variables";
+@import "../../../../../scss/mixins";
+@import "../../../../../scss/animations";
 
 .skill {
-  cursor: pointer;
-  @include corner-cut(15px, var(--color-primary), 2px, 14px);
+  position: relative;
   z-index: 10;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
-  color: var(--color-primary);
-  @include textglowsmall;
-  border: 2px solid var(--color-primary);
-  background-color: var(--color-border-transparent);
-  font-weight: 600;
   display: grid;
-  grid-template-columns: 0.2fr 1fr 0.2fr 0.2fr;
+  flex: 1 0 auto;
   grid-template-rows: 50px 1fr 1fr;
+  grid-template-columns: 0.2fr 1fr 0.2fr 0.2fr;
   width: 95%;
+
   min-height: 50px;
   max-height: 55px;
-  flex: 1 0 auto;
+  color: var(--color-primary);
+  font-weight: 600;
+  background-color: var(--color-border-transparent);
+  border: 2px solid var(--color-primary);
   border-radius: 3px;
+  backface-visibility: hidden;
+  cursor: pointer;
   transition: all var(--transition-short);
-  transition-property: transform, height, max-height;
-  position: relative;
+  transition-property: transform, height, max-height, filter;
+  -webkit-font-smoothing: subpixel-antialiased;
+  @include corner-cut(15px, var(--color-primary), 2px, 14px);
+  @include textglowsmall;
 
   &:not(:last-child) {
     margin-bottom: 8px;
   }
   .icon {
-    grid-column: 1/2;
     grid-row: 1/2;
+    grid-column: 1/2;
     min-width: 50px;
     border-radius: 3px;
+    transition: all var(--transition-short);
+    transition-property: transform, height, max-height, filter;
     @include flexbox;
     img {
-      height: auto;
-      max-width: 40px;
-      max-height: 40px;
       width: 100%;
+      max-width: 40px;
+      height: auto;
+      max-height: 40px;
     }
     @media (max-width: $mobile) {
       min-width: 30px;
@@ -48,14 +51,15 @@
     width: 100%;
     height: 50px;
     padding: 0 6px;
-    font-size: 1.125rem;
-    text-align: start;
     overflow: hidden;
+    font-size: 1.125rem;
+    white-space: nowrap;
+    text-align: start;
+    text-overflow: ellipsis;
+    transition: all var(--transition-short);
+    transition-property: transform, height, max-height, filter;
 
     @include flexbox(flex-start);
-    white-space: nowrap;
-
-    text-overflow: ellipsis;
     @media (max-width: $laptop) {
       font-size: 1rem;
     }
@@ -70,17 +74,17 @@
     }
   }
   .manage-skill {
+    position: relative;
+    grid-row: 1/1;
+    grid-column: 4/5;
+    align-self: center;
+    min-width: 40px;
     height: 50px;
     color: var(--color-primary);
-    min-width: 40px;
     font-weight: 400;
     font-size: 40px;
-    grid-column: 4/5;
-    grid-row: 1/1;
-    align-self: center;
-    @include flexbox;
-    position: relative;
     background-color: #232323;
+    @include flexbox;
     p {
       margin: 0;
       padding: 0;
@@ -90,29 +94,31 @@
       @include textglowsmall;
     }
     @media (max-width: $small-tablet) {
-      font-size: 1.875rem;
       min-width: 30px;
+      font-size: 1.875rem;
     }
   }
   .level {
-    cursor: help;
-    color: black;
-    height: 50px;
-    min-width: 50px;
-    text-align: center;
+    position: relative;
     display: grid;
     grid-column: 3/4;
-    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    position: relative;
-    background-color: var(--color-primary);
-    clip-path: polygon(0% 0%, 100% 0, 100% 100%);
+    grid-template-columns: 1fr 1fr;
     align-self: flex-start;
+    min-width: 50px;
+    height: 50px;
+    color: black;
+    text-align: center;
+    background-color: var(--color-primary);
+    cursor: help;
+    transition: all var(--transition-short);
+    transition-property: transform, height, max-height, filter;
     animation: slideinfromtop 0.3s;
+    clip-path: polygon(0% 0%, 100% 0, 100% 100%);
     &-number {
       grid-area: 1/2;
-      padding-right: 5px;
       padding-top: 5px;
+      padding-right: 5px;
       font-size: 18px;
     }
     @media (max-width: $mobile) {
@@ -126,9 +132,14 @@
   &:hover {
     @include textglowsmall;
     transform: scale(1.05);
-    box-shadow: inset 0 0 40px 1px rgb(136, 136, 136);
+    filter: drop-shadow(0px 15px 2.5px rgba(0, 0, 0, 0.5));
     .level {
       color: #fff;
+    }
+    .name,
+    .icon,
+    .level {
+      filter: drop-shadow(0px 15px 2.5px rgba(0, 0, 0, 0.3));
     }
   }
 }
@@ -140,10 +151,10 @@
   height: 150px;
   max-height: 150px;
   transition: all var(--transition-short);
-  transition-property: transform, height, max-height;
+  transition-property: transform, height, max-height, filter;
   .manage-skill {
-    grid-column: 4/5;
     grid-row: 1/1;
+    grid-column: 4/5;
   }
 
   .icon,

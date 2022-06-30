@@ -6,15 +6,15 @@ import { FC } from "react";
 interface Props {
   message: string;
   btnTxt: string;
-  onClck: () => void;
+  onClick: () => void;
 }
 
-const PopUpWindow: FC<Props> = ({ message, onClck, btnTxt }) => {
+const PopUpWindow: FC<Props> = ({ message, onClick, btnTxt }) => {
   return (
-    <div className={classes.backdrop} onClick={onClck}>
+    <div className={classes.backdrop} onClick={onClick}>
       <CardGlass className={classes.popup}>
         <span className={classes.text}>{message}</span>
-        <ButtonPrimary onClck={onClck} text={btnTxt}></ButtonPrimary>
+        <ButtonPrimary onClick={onClick} text={btnTxt}></ButtonPrimary>
       </CardGlass>
     </div>
   );

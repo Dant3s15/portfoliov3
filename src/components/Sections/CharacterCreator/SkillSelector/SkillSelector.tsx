@@ -261,7 +261,7 @@ const SkillSelector: FC<Props> = ({ allSkillsData, isLoading }) => {
               </div>
             </div>
             <ButtonPrimary
-              onClck={saveCharHandler}
+              onClick={saveCharHandler}
               type="submit"
               text="Save Character"
               isGreyedOut={addedSkills.length === 0 ? true : false}

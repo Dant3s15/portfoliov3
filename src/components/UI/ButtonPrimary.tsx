@@ -4,7 +4,7 @@ import classes from "./ButtonPrimary.module.scss";
 
 interface Props {
   style?: CSSProperties | undefined;
-  onClck?: MouseEventHandler<HTMLButtonElement> | undefined;
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   type?: "button" | "submit" | "reset" | undefined;
   isAbsolute?: boolean;
   isGreyedOut?: boolean;
@@ -18,7 +18,7 @@ const ButtonPrimary: FC<Props> = ({
   isGreyedOut,
   text,
   style,
-  onClck,
+  onClick,
 }) => {
   return (
     <button
@@ -28,7 +28,7 @@ const ButtonPrimary: FC<Props> = ({
         isGreyedOut && classes["greyed-out"]
       } `}
       style={style}
-      onClick={onClck}
+      onClick={onClick}
     >
       {text}
     </button>

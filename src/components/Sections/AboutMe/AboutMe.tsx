@@ -48,7 +48,7 @@ const AboutMe: FC<Props> = ({ allSkillsData, isLoading }) => {
               <PopUpWindow
                 message={popupText.message}
                 btnTxt={popupText.btnTxt}
-                onClck={() => {
+                onClick={() => {
                   setPopupVisible(false);
                 }}
               />
