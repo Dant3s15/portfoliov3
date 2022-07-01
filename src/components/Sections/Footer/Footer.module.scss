@@ -68,7 +68,7 @@
     img {
       width: 24px;
       height: 24px;
-      filter: invert(1);
+      filter: grayscale(1) brightness(10) invert(1);
     }
   }
   .copyright {

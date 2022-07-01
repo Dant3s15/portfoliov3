@@ -1,8 +1,9 @@
-import github from '../../../resources/icons/logo-github.svg';
-import linkedin from '../../../resources/icons/icon-linkedin-dark.svg';
-import logo from '../../../resources/logo.svg';
-import classes from './Footer.module.scss';
-import { FC } from 'react';
+import github from "../../../resources/icons/logo-github.svg";
+import linkedin from "../../../resources/icons/icon-linkedin-dark.svg";
+import twitter from "../../../resources/icons/icon-twitter.svg";
+import logo from "../../../resources/logo.svg";
+import classes from "./Footer.module.scss";
+import { FC } from "react";
 
 interface Props {
   data: {
@@ -19,7 +20,7 @@ const Footer: FC<Props> = ({
   const testFetch = () => {
     async function getSkill() {
       const response = await fetch(
-        'https://web-dev-skills-api.herokuapp.com/v1/skills'
+        "https://web-dev-skills-api.herokuapp.com/v1/skills"
       );
       const data = await response.json();
       console.log(data);
@@ -30,35 +31,41 @@ const Footer: FC<Props> = ({
   return (
     <footer
       className={`${classes.footer} 
-      ${!ctaButtonClicked.clicked ? classes['footer--gray'] : ''}
+      ${!ctaButtonClicked.clicked ? classes["footer--gray"] : ""}
       ${
         ctaButtonClicked.clicked && selected && whichSelected === 0
-          ? classes['footer--creator']
-          : ''
+          ? classes["footer--creator"]
+          : ""
       }
-      ${selected && whichSelected === 1 ? classes['footer--about'] : ''}
+      ${selected && whichSelected === 1 ? classes["footer--about"] : ""}
       `}
     >
       <div className={classes.wrapper}>
         <div onClick={testFetch} className={`${classes.col} ${classes.logo}`}>
-          <img src={logo} alt='Logo' />
+          <img src={logo} alt="Logo" />
         </div>
         <div className={`${classes.col} ${classes.links}`}>
           <p className={classes.title}>Links:</p>
-          <div className={classes['links-list']}>
+          <div className={classes["links-list"]}>
             <div className={classes.link}>
-              <img src={github} alt='github' />
-              <a target='_blank' href='https://github.com/DevmianS'>
+              <img src={github} alt="github" />
+              <a target="_blank" href="https://github.com/DevmianS">
                 Github
               </a>
             </div>
             <div className={classes.link}>
-              <img src={linkedin} alt='linkedin' />
+              <img src={linkedin} alt="linkedin" />
               <a
-                target='_blank'
-                href='https://www.linkedin.com/in/damian-sobieraj-9148b7234/'
+                target="_blank"
+                href="https://www.linkedin.com/in/damian-sobieraj-9148b7234/"
               >
                 LinkedIn
+              </a>
+            </div>
+            <div className={classes.link}>
+              <img src={twitter} alt="twitter" />
+              <a target="_blank" href="https://twitter.com/DevmianS">
+                Twitter
               </a>
             </div>
           </div>
@@ -66,7 +73,7 @@ const Footer: FC<Props> = ({
         <div className={`${classes.col} ${classes.contact}`}>
           <p className={classes.title}>Contact:</p>
           <div>
-            <a href='mailto:damiansobierajdev@gmail.com'>
+            <a href="mailto:damiansobierajdev@gmail.com">
               damiansobierajdev@gmail.com
             </a>
           </div>
