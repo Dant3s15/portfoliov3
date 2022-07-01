@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import classes from './Character.module.scss';
-import characterImage from '../../../../resources/img/character.png';
+import { Link } from "react-router-dom";
+import classes from "./Character.module.scss";
+import characterImage from "../../../../resources/img/character.png";
 
 interface Props {
   dataConstPos?: number;
@@ -20,22 +20,22 @@ const Character = ({
 }: Props) => {
   const whichSide = (data: number | string): string | undefined => {
     let side = +data;
-    if (side === 0) return 'left';
-    if (side === 1) return 'front';
-    if (side === 2) return 'right';
+    if (side === 0) return "left";
+    if (side === 1) return "front";
+    if (side === 2) return "right";
   };
 
   const getMoveTo = (charNumb: number | undefined) => {
     if (charNumb === 0) {
-      return 'creator';
+      return "creator";
     }
     if (charNumb === 1) {
-      return 'about-me';
+      return "about-me";
     }
     if (charNumb === 2) {
-      return '/';
+      return "/";
     }
-    return '/';
+    return "/";
   };
 
   const curChar = classes[`character__${whichSide(data!)}`];
@@ -43,10 +43,10 @@ const Character = ({
   return (
     <Link
       to={getMoveTo(dataConstPos)}
-      className={`${classes.character} ${curChar ? curChar : ''} ${
-        selected ? classes.selected : ''
-      } ${!selectedCtx ? '' : classes.blured}`}
-      onClick={e => {
+      className={`${classes.character} ${curChar ? curChar : ""} ${
+        selected ? classes.selected : ""
+      } ${!selectedCtx ? "" : classes.blured}`}
+      onClick={(e) => {
         onRotateCharacters(e);
       }}
     >
@@ -55,7 +55,7 @@ const Character = ({
         data-const-pos={dataConstPos}
         data-character={data}
         src={characterImage}
-        alt='character image'
+        alt="character image"
       />
     </Link>
   );

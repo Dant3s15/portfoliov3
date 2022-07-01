@@ -57,7 +57,7 @@ const Footer: FC<Props> = ({
               <img src={linkedin} alt="linkedin" />
               <a
                 target="_blank"
-                href="https://www.linkedin.com/in/damian-sobieraj-9148b7234/"
+                href="https://www.linkedin.com/in/damiansobieraj"
               >
                 LinkedIn
               </a>
