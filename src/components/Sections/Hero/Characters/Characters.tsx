@@ -3,6 +3,7 @@ import Character from "./Character";
 // import { useNavigate } from "react-router-dom";
 import SelectedContext from "../../../../context/selected-context";
 import Typewriter from "typewriter-effect";
+import { ShepherdTourContext } from "react-shepherd";
 import classes from "./Characters.module.scss";
 import ButtonPrimary from "../../../UI/ButtonPrimary";
 // import { to } from "react-spring";
@@ -21,8 +22,12 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
 
   const charactersRef = useRef<HTMLDivElement>(null);
   const charactersColRef = useRef<HTMLDivElement>(null);
+  const tour = useContext(ShepherdTourContext);
 
   const ctaButtonHandler = () => {
+    setTimeout(() => {
+      tour?.start();
+    }, 1200);
     if (ctx.setCtaButtonClicked !== undefined) {
       if (!ctx.ctaButtonClicked?.clicked) {
         ctx.setCtaButtonClicked({ clicked: true });
@@ -227,9 +232,12 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
       >
         {isAnythingSelected().isSelected ? (
           <ButtonPrimary
-            onClick={(e) =>
-              frontCharButtonHandler(e, isAnythingSelected().moveTo)
-            }
+            id={ctx.whichIsSelected === 1 ? "tourButton" : ""}
+            onClick={(e) => {
+              tour?.complete();
+
+              return frontCharButtonHandler(e, isAnythingSelected().moveTo);
+            }}
             moveTo={isAnythingSelected().moveTo}
             isAbsolute={true}
             text={isAnythingSelected().text}
@@ -253,7 +261,11 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
           selected={frontIsSelected}
           selectedCtx={ctx.isSelected}
           name="Damian"
-          onRotateCharacters={ctx.rotateCharactersHandler}
+          id="tourStart"
+          onRotateCharacters={() => {
+            tour?.next();
+            return ctx.rotateCharactersHandler;
+          }}
         ></Character>
 
         <Character

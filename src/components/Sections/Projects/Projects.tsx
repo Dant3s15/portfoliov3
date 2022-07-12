@@ -1,10 +1,10 @@
-import { FC, Fragment } from 'react';
-import classes from './Projects.module.scss';
-import ProjectsList from './ProjectsList';
-import project1 from '../../../resources/img/projects/project1.webp';
-import project2 from '../../../resources/img/projects/project2.webp';
-import soon from '../../../resources/img/projects/soon.png';
-import { skillInterface } from '../../../Types/types';
+import { FC, Fragment } from "react";
+import classes from "./Projects.module.scss";
+import ProjectsList from "./ProjectsList";
+import project1 from "../../../resources/img/projects/project1.webp";
+import project2 from "../../../resources/img/projects/project2.webp";
+import soon from "../../../resources/img/projects/soon.png";
+import { skillInterface } from "../../../Types/types";
 
 interface Props {
   allSkillsData: skillInterface[];
@@ -15,77 +15,77 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
     {
       id: 0,
       image: project1,
-      title: 'Portfolio',
+      title: "Portfolio",
       overview: (
         <Fragment>
-          Frontend game-like character <strong>selector</strong> and{' '}
-          <strong>creator</strong> , create your own character or contact me and{' '}
+          Frontend game-like character <strong>selector</strong> and{" "}
+          <strong>creator</strong> , create your own character or contact me and{" "}
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
       skills: [
-        'html',
-        'css',
-        'javascript',
-        'react',
-        'typescript',
-        'sass',
-        'git',
-        'github',
-        'firebase',
-        'vite',
+        "html",
+        "css",
+        "javascript",
+        "react",
+        "typescript",
+        "sass",
+        "git",
+        "github",
+        "firebase",
+        "vite",
       ],
-      link: 'https://devmian.web.app/',
-      repo: 'https://github.com/DevmianS/portfoliov3',
+      link: "https://damiansobieraj.com/",
+      repo: "https://github.com/DevmianS/portfoliov3",
     },
     {
       id: 1,
       image: project2,
-      title: 'Splitter',
+      title: "Splitter",
       overview: (
         <Fragment>
-          <strong>FrontendMentor.io</strong> challenge{' '}
-          <strong>Tip Calculator</strong>, done in <strong>overkill</strong>{' '}
+          <strong>FrontendMentor.io</strong> challenge{" "}
+          <strong>Tip Calculator</strong>, done in <strong>overkill</strong>{" "}
           stack.
         </Fragment>
       ),
       skills: [
-        'html',
-        'css',
-        'javascript',
-        'react',
-        'typescript',
-        'sass',
-        'css-modules',
-        'git',
-        'github',
-        'vite',
+        "html",
+        "css",
+        "javascript",
+        "react",
+        "typescript",
+        "sass",
+        "css-modules",
+        "git",
+        "github",
+        "vite",
       ],
-      link: 'https://devmian-tip-calculator.web.app/',
-      repo: 'https://github.com/DevmianS/tip-calculator-react',
+      link: "https://devmian-tip-calculator.web.app/",
+      repo: "https://github.com/DevmianS/tip-calculator-react",
     },
     {
       id: 2,
       image: project1,
-      title: 'Web-dev-API',
+      title: "Web-dev-API",
       overview: (
         <Fragment>
           Simple <strong>API</strong> database that gives you access to the list
           of <strong>Web development technologies</strong> and skills.
         </Fragment>
       ),
-      skills: ['javascript', 'expressjs', 'git', 'github'],
-      link: 'https://web-dev-skills-api.herokuapp.com/',
-      repo: 'https://github.com/DevmianS/web-dev-skills-api',
+      skills: ["javascript", "expressjs", "git", "github"],
+      link: "https://web-dev-skills-api.herokuapp.com/",
+      repo: "https://github.com/DevmianS/web-dev-skills-api",
     },
     {
       id: 3,
       image: soon,
-      title: 'COMING SOON...',
+      title: "COMING SOON...",
       overview: <Fragment></Fragment>,
-      skills: ['html', 'css', 'javascript', 'git', 'github'],
-      link: '#',
-      repo: '#',
+      skills: ["html", "css", "javascript", "git", "github"],
+      link: "#",
+      repo: "#",
     },
     // {
     //   id: 4,
@@ -104,9 +104,9 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
   ];
 
   return (
-    <section id='my-projects' className={classes.projects}>
+    <section id="my-projects" className={classes.projects}>
       <p className={classes.title}>My Projects</p>
-      <div className={classes['my-projects']}>
+      <div className={classes["my-projects"]}>
         <ProjectsList
           allSkillsData={allSkillsData}
           isLoading={isLoading}

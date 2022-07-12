@@ -91,7 +91,7 @@ const AboutMe: FC<Props> = ({ allSkillsData, isLoading }) => {
                       )
                       .pauseFor(2000)
                       .typeString(
-                        "<span>You can contact me by sending me an email📧 using the form below:</span>"
+                        '<span>You can contact me by sending me an <a href="mailto:damiansobierajdev@gmail.com">email📧</a> or using the form below:</span>'
                       )
                       .start();
                   }}

@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import { skillInterface } from '../../Types/types';
-import classes from './SkillTooltip.module.scss';
+import { FC } from "react";
+import { skillInterface } from "../../Types/types";
+import classes from "./SkillTooltip.module.scss";
 
 interface Skill {
   data: skillInterface;

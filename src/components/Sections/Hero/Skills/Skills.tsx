@@ -1,11 +1,11 @@
-import { useEffect, useRef, useContext, FC, useState } from 'react';
-import classes from './Skills.module.scss';
-import Tooltip from '@mui/material/Tooltip';
-import { skillInterface } from '../../../../Types/types';
-import SelectedContext from '../../../../context/selected-context';
-import Skill2 from './Skill2';
-import SkillInfo from '../../../UI/SkillInfo';
-import LoadingSpinner from '../../../UI/LoadingSpinner';
+import { useEffect, useRef, useContext, FC, useState } from "react";
+import classes from "./Skills.module.scss";
+import Tooltip from "@mui/material/Tooltip";
+import { skillInterface } from "../../../../Types/types";
+import SelectedContext from "../../../../context/selected-context";
+import Skill2 from "./Skill2";
+import SkillInfo from "../../../UI/SkillInfo";
+import LoadingSpinner from "../../../UI/LoadingSpinner";
 
 interface Props {
   className: string;
@@ -54,22 +54,22 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
 
   useEffect(() => {
     if (ctx.isSelected && skillsWindowRef.current) {
-      skillsWindowRef.current.classList.add(`${classes['selected--skills']}`);
+      skillsWindowRef.current.classList.add(`${classes["selected--skills"]}`);
     } else if (!ctx.isSelected && skillsWindowRef.current) {
       skillsWindowRef.current.classList.remove(
-        `${classes['selected--skills']}`
+        `${classes["selected--skills"]}`
       );
     }
   }, [ctx]);
 
   useEffect(() => {
     let error = false;
-    if (window.localStorage.getItem('leftChar')) {
-      const data = JSON.parse(window.localStorage.getItem('leftChar') || '');
+    if (window.localStorage.getItem("leftChar")) {
+      const data = JSON.parse(window.localStorage.getItem("leftChar") || "");
       data.forEach(
         (el: { name: string; id: string; stacks: any[]; names: any[] }) => {
           if (!el.name || !el.id || !el.stacks || !el.names) {
-            console.log('error');
+            console.log("error");
             setLeftCharSkills([]);
             error = true;
             return;
@@ -81,41 +81,42 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
     // if (!error) {
     const onStorage = () => {
       if (!error) {
-        setLeftCharSkills(JSON.parse(localStorage.getItem('leftChar') || ''));
+        setLeftCharSkills(JSON.parse(localStorage.getItem("leftChar") || ""));
       }
     };
-    window.addEventListener('storage', () => onStorage());
+    window.addEventListener("storage", () => onStorage());
     // }
     return () => {
-      window.removeEventListener('storage', () => {
+      window.removeEventListener("storage", () => {
         onStorage();
       });
     };
   }, []);
 
   const frontCharArr = [
-    ['html', 8],
-    ['css', 8],
-    ['javascript', 7],
-    ['typescript', 5],
-    ['react', 7],
-    ['sass', 7],
-    ['git', 5],
-    ['github', 6],
-    ['npm', 5],
-    ['redux', 5],
-    ['css-modules', 9],
-    ['bem', 5],
+    ["html", 8],
+    ["css", 8],
+    ["javascript", 7],
+    ["typescript", 5],
+    ["react", 7],
+    ["sass", 7],
+    ["git", 5],
+    ["github", 6],
+    ["npm", 5],
+    ["redux", 5],
+    ["css-modules", 9],
+    ["bem", 5],
+    ["nextjs", 4],
   ];
 
-  const rightCharArr = allSkillsData.map(skill => {
+  const rightCharArr = allSkillsData.map((skill) => {
     return [skill.name, 9];
   });
 
   const getCharSkills = (charArr: any[]) => {
     const findSkill = (skillName: string, level: number) => {
       const resultSkill = {
-        ...allSkillsData.find(skill => {
+        ...allSkillsData.find((skill) => {
           return skill.name === skillName;
         }),
       };
@@ -124,7 +125,7 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
       return addLevel;
     };
     let resultArr: any[] = [];
-    charArr.forEach(item => {
+    charArr.forEach((item) => {
       const findResult = findSkill(item[0], item[1]);
       return resultArr.push(findResult);
     });
@@ -156,9 +157,9 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
     };
 
     return (
-      <div ref={ref} className={classes['skill-char-col']} data-character={pos}>
-        <ul className={classes['skills-list']}>
-          {skillsByCharacters[id].map(item => {
+      <div ref={ref} className={classes["skill-char-col"]} data-character={pos}>
+        <ul className={classes["skills-list"]}>
+          {skillsByCharacters[id].map((item) => {
             {
               if (item.id === 0) return;
               return (
@@ -180,8 +181,8 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
 
   const charCreatorText = (pos: number) => {
     return (
-      <div className={classes['skill-char-col']} data-character={pos}>
-        <div className={`${classes['skills-list--text']}`} data-character={pos}>
+      <div className={classes["skill-char-col"]} data-character={pos}>
+        <div className={`${classes["skills-list--text"]}`} data-character={pos}>
           <strong>create</strong>
           <p>your</p>
           <p>web</p>
@@ -192,16 +193,17 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
   };
 
   return (
-    <div className={classes['skills-col']}>
+    <div className={classes["skills-col"]}>
       <div
         ref={skillsWindowRef}
-        className={`${classes['skills-window']} ${
-          !ctx.ctaButtonClicked?.clicked ? 'not-started' : ''
+        id="tourSkills"
+        className={`${classes["skills-window"]} ${
+          !ctx.ctaButtonClicked?.clicked ? "not-started" : ""
         } `}
       >
         <div
-          className={`${classes['skills-text']} 
-         ${ctx.ctaButtonClicked?.clicked ? classes['abs-up'] : ''}`}
+          className={`${classes["skills-text"]} 
+         ${ctx.ctaButtonClicked?.clicked ? classes["abs-up"] : ""}`}
         >
           <p>Choose</p>
           <p>and</p>
@@ -212,57 +214,57 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
           <p>developer!</p>
         </div>
         <div
-          className={`${classes['skills-card']} ${
-            !ctx.ctaButtonClicked?.clicked ? classes['abs-down'] : ''
+          className={`${classes["skills-card"]} ${
+            !ctx.ctaButtonClicked?.clicked ? classes["abs-down"] : ""
           }`}
         >
-          <header className={classes['skills-window__header']}>
+          <header className={classes["skills-window__header"]}>
             <SkillInfo data={{ showInfo }} skill={curSkillInfo}></SkillInfo>
 
             <div
-              className={`${classes['header-wrapper']} ${
-                showInfo ? classes['tooltip-open'] : ''
+              className={`${classes["header-wrapper"]} ${
+                showInfo ? classes["tooltip-open"] : ""
               }`}
             >
               <div
-                className={`${classes['skills-list-name']} ${
+                className={`${classes["skills-list-name"]} ${
                   leftCharSkills.length !== 0 || ctx.whichIsSelected !== 0
                     ? classes.glow
-                    : ''
+                    : ""
                 }`}
               >
                 <h2>Unlocked Skills</h2>
               </div>
-              <Tooltip placement='top' title='Calculated Total Level'>
+              <Tooltip placement="top" title="Calculated Total Level">
                 <div
-                  className={`${classes['character-level']} ${
+                  className={`${classes["character-level"]} ${
                     leftCharSkills.length !== 0 || ctx.whichIsSelected !== 0
                       ? classes.glowsmall
-                      : ''
+                      : ""
                   }`}
-                  id='character-level'
+                  id="character-level"
                 >
-                  <div className={classes['character-level__level-title']}>
+                  <div className={classes["character-level__level-title"]}>
                     level
                   </div>
-                  <div className={classes['character-levels']}>
+                  <div className={classes["character-levels"]}>
                     <div
-                      className={classes['character-level__level-number']}
+                      className={classes["character-level__level-number"]}
                       data-character={charStateData.leftChar}
                     >
-                      {allSkillsData.length ? calcLevel(leftCharSkills) : ''}
+                      {allSkillsData.length ? calcLevel(leftCharSkills) : ""}
                     </div>
                     <div
-                      className={classes['character-level__level-number']}
+                      className={classes["character-level__level-number"]}
                       data-character={charStateData.frontChar}
                     >
-                      {allSkillsData.length ? calcLevel(frontChar) : ''}
+                      {allSkillsData.length ? calcLevel(frontChar) : ""}
                     </div>
                     <div
-                      className={classes['character-level__level-number']}
+                      className={classes["character-level__level-number"]}
                       data-character={charStateData.rightChar}
                     >
-                      {allSkillsData.length ? calcLevel(rightChar) : ''}
+                      {allSkillsData.length ? calcLevel(rightChar) : ""}
                     </div>
                   </div>
                 </div>
@@ -272,7 +274,7 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
           {allSkillsData.length !== 0 ? (
             <div
               ref={characterSkills}
-              className={`${classes['character-skills']} `}
+              className={`${classes["character-skills"]} `}
             >
               {leftCharSkills.length
                 ? skillsStruct(0, charStateData.leftChar, skillCharCol0)
@@ -283,7 +285,7 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
           ) : ctx?.ctaButtonClicked?.clicked ? (
             <LoadingSpinner></LoadingSpinner>
           ) : (
-            ''
+            ""
           )}
         </div>
       </div>

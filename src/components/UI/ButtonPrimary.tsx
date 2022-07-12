@@ -10,6 +10,7 @@ interface Props {
   isGreyedOut?: boolean;
   moveTo?: string;
   text?: string;
+  id?: string;
 }
 
 const ButtonPrimary: FC<Props> = ({
@@ -19,14 +20,16 @@ const ButtonPrimary: FC<Props> = ({
   text,
   style,
   onClick,
+  id,
 }) => {
   return (
     <button
       type={type}
       className={`${classes["button-primary"]}
     ${isAbsolute && classes.absolute}  ${
-        isGreyedOut && classes["greyed-out"]
+        isGreyedOut ? classes["greyed-out"] : ""
       } `}
+      id={id}
       style={style}
       onClick={onClick}
     >

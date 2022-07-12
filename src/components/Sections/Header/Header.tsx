@@ -1,13 +1,14 @@
-import { useState, useEffect, FC, useContext } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import Nav from './Nav/Nav';
-import SelectedContext from '../../../context/selected-context';
-import HeroVisibleContext from '../../../context/hero-visible-context';
-import classes from './Header.module.scss';
-import HamburgerIcon from '../../Icons/HamburgerIcon';
-import CloseIcon from '../../Icons/CloseIcon';
-import logo from '../../../resources/logo.svg';
-import { User } from 'firebase/auth';
+import { useState, useEffect, FC, useContext } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import Nav from "./Nav/Nav";
+import SelectedContext from "../../../context/selected-context";
+import HeroVisibleContext from "../../../context/hero-visible-context";
+import classes from "./Header.module.scss";
+import HamburgerIcon from "../../Icons/HamburgerIcon";
+import CloseIcon from "../../Icons/CloseIcon";
+import logo from "../../../resources/logo.svg";
+import { User } from "firebase/auth";
+import { ShepherdTourContext } from "react-shepherd";
 
 interface Props {
   data: {
@@ -25,6 +26,7 @@ const Header: FC<Props> = ({ data: { google } }) => {
   const navigate = useNavigate();
   const ctx = useContext(SelectedContext);
   const heroIsVisibleCtx = useContext(HeroVisibleContext);
+  const tour = useContext(ShepherdTourContext);
 
   const hamburgerButtonHandler = () => {
     if (!hamburgerState) {
@@ -37,26 +39,27 @@ const Header: FC<Props> = ({ data: { google } }) => {
     function closeHamburgerOnBigScreens() {
       setHamburgerState(false);
     }
-    window.addEventListener('resize', closeHamburgerOnBigScreens);
+    window.addEventListener("resize", closeHamburgerOnBigScreens);
     return () => {
-      window.removeEventListener('resize', closeHamburgerOnBigScreens);
+      window.removeEventListener("resize", closeHamburgerOnBigScreens);
     };
   }),
     [hamburgerState];
 
   const navItemHandler = (event: { currentTarget: Element }, id: string) => {
+    tour?.complete();
     const changeStates = (elem: Element) => {
       setHamburgerState(false);
       if (!ctx.ctaButtonClicked?.clicked) {
         ctx.ctaButtonHandler?.();
       }
-      const charNr = Number(elem?.getAttribute?.('data-character'));
+      const charNr = Number(elem?.getAttribute?.("data-character"));
       if (isNaN(charNr)) {
         if (ctx.setSelected) ctx?.setSelected(false);
       }
       let char = document
         .querySelector(`[data-const-pos="${charNr}"]`)
-        ?.getAttribute('data-character');
+        ?.getAttribute("data-character");
       if (char) {
         ctx.rotateCharactersHandler?.(char ? +char : null);
         ctx.setWhichSelected?.(charNr);
@@ -65,22 +68,22 @@ const Header: FC<Props> = ({ data: { google } }) => {
     };
     const scrollHandler = (overwrite = id) => {
       const element = document.querySelector(`#${overwrite}`);
-      element?.scrollIntoView({ behavior: 'smooth' });
+      element?.scrollIntoView({ behavior: "smooth" });
     };
     const navEl = event.currentTarget;
     if (heroIsVisibleCtx.heroIsVisible) {
       changeStates(navEl);
-      navigate(`${navEl.getAttribute('data-to')}`);
-      if (location.pathname !== navEl.getAttribute('data-to')) {
+      navigate(`${navEl.getAttribute("data-to")}`);
+      if (location.pathname !== navEl.getAttribute("data-to")) {
         setTimeout(() => {
           scrollHandler();
         }, 750);
       } else scrollHandler();
     } else {
-      if (location.pathname !== navEl.getAttribute('data-to')) {
-        scrollHandler('hero');
+      if (location.pathname !== navEl.getAttribute("data-to")) {
+        scrollHandler("hero");
         setTimeout(() => {
-          navigate(`${navEl.getAttribute('data-to')}`);
+          navigate(`${navEl.getAttribute("data-to")}`);
           changeStates(navEl);
           setTimeout(() => {
             scrollHandler();
@@ -93,43 +96,47 @@ const Header: FC<Props> = ({ data: { google } }) => {
   };
 
   return (
-    <header className={classes.header}>
+    <header
+      className={`${classes.header} ${
+        ctx.ctaButtonClicked?.clicked ? "" : classes["header-hidden"]
+      }`}
+    >
       <div
-        className={`${classes['header-wrapper']} card-glass ${
+        className={`${classes["header-wrapper"]} card-glass ${
           hamburgerState
-            ? classes['hamburger-active']
-            : classes['hamburger-not-active']
+            ? classes["hamburger-active"]
+            : classes["hamburger-not-active"]
         }`}
       >
         <div className={classes.navigation}>
-          <div className={classes['logo-item']}>
+          <div className={classes["logo-item"]}>
             <a
-              data-to='/'
-              data-character='null'
+              data-to="/"
+              data-character="null"
               className={classes.logo}
-              onClick={e => navItemHandler(e, 'hero')}
+              onClick={(e) => navItemHandler(e, "hero")}
             >
-              <img src={logo} alt='' />
+              <img src={logo} alt="" />
             </a>
           </div>
           <Nav navItemHandler={navItemHandler} google={google}></Nav>
 
           <button
-            className={classes['hamburger-button']}
+            className={classes["hamburger-button"]}
             onClick={hamburgerButtonHandler}
           >
             <HamburgerIcon
-              className={`${classes['hamburger-icon']} ${
-                hamburgerState ? classes['hidden-btn'] : ''
+              className={`${classes["hamburger-icon"]} ${
+                hamburgerState ? classes["hidden-btn"] : ""
               } `}
-              alt='hamburger icon'
+              alt="hamburger icon"
             ></HamburgerIcon>
 
             <CloseIcon
-              className={`${classes['close-icon']} ${
-                !hamburgerState ? classes['hidden-btn'] : ''
+              className={`${classes["close-icon"]} ${
+                !hamburgerState ? classes["hidden-btn"] : ""
               }`}
-              alt='close icon'
+              alt="close icon"
             ></CloseIcon>
           </button>
         </div>

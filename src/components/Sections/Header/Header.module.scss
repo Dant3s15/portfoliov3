@@ -1,12 +1,14 @@
-@import "../../../scss/mixins.scss";
-@import "../../../scss/variables.scss";
+// @import "../../../scss/mixins.scss";
+// @import "../../../scss/variables.scss";
+@import "../../../scss/style.scss";
 
 .header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 99;
   width: 100%;
+  transition: transform var(--transition-short-medium);
 }
 
 .header,
@@ -118,4 +120,8 @@
   &::after {
     left: calc(100% - 28px);
   }
+}
+
+.header-hidden {
+  transform: translateY(-100%);
 }

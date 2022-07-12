@@ -1,6 +1,7 @@
-@import "../../../scss/variables";
-@import "../../../scss/animations";
-@import "../../../scss/mixins";
+// @import "../../../scss/variables";
+// @import "../../../scss/animations";
+// @import "../../../scss/mixins";
+@import "../../../scss/style.scss";
 
 .about-me {
   position: relative;
@@ -105,6 +106,9 @@
     span {
       display: inline-block;
       width: 100%;
+    }
+    span a {
+      text-decoration: underline;
     }
     span :first-child {
       padding-top: 10px;
