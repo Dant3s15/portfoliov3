@@ -53,6 +53,7 @@
   }
 
   .text-container {
+    position: relative;
     flex-direction: column;
     width: 100%;
     height: 100%;
@@ -102,9 +103,9 @@
     height: 100%;
     font-size: 24px;
     text-align: left;
-    @include flexbox;
+    // @include flexbox;
     span {
-      display: inline-block;
+      display: block;
       width: 100%;
     }
     span a {

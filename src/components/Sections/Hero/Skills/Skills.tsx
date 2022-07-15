@@ -107,6 +107,7 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
     ["css-modules", 9],
     ["bem", 5],
     ["nextjs", 4],
+    ["tailwind-css", 6],
   ];
 
   const rightCharArr = allSkillsData.map((skill) => {
