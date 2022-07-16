@@ -98,7 +98,7 @@ const tourSteps = [
     },
     title: "The Skills",
     text: [
-      "Those are the skills that I've learned so far. <br/>And the list is still growing!<br/>Feel free to click on them to get more info!",
+      "I can create responsive websites and apps using those skills.<br/>Check them out by clicking them!",
     ],
     when: {
       show: () => {

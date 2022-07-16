@@ -206,13 +206,14 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
           className={`${classes["skills-text"]} 
          ${ctx.ctaButtonClicked?.clicked ? classes["abs-up"] : ""}`}
         >
-          <p>Choose</p>
-          <p>and</p>
-          <p>
-            <strong>level up</strong>
-          </p>
-          <p>your</p>
-          <p>developer!</p>
+          <p>Welcome</p>
+          <p>to my</p>
+          <p>Portfolio</p>
+          <p>website!</p>
+          <br />
+
+          <strong>"START"</strong>
+          <p>to know more</p>
         </div>
         <div
           className={`${classes["skills-card"]} ${
