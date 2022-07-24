@@ -3,6 +3,7 @@ import classes from "./Projects.module.scss";
 import ProjectsList from "./ProjectsList";
 import project1 from "../../../resources/img/projects/project1.webp";
 import project2 from "../../../resources/img/projects/project2.webp";
+import lightapp from "../../../resources/img/projects/lightapp.webp";
 import soon from "../../../resources/img/projects/soon.png";
 import { skillInterface } from "../../../Types/types";
 
@@ -40,6 +41,31 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
     },
     {
       id: 1,
+      image: lightapp,
+      title: "LightApp",
+      overview: (
+        <Fragment>
+          This app will help you with choosing <strong>the best</strong> light
+          bulb to buy given room size, light bulb count and few other parameters
+          💡
+        </Fragment>
+      ),
+      skills: [
+        "html",
+        "css",
+        "javascript",
+        "react",
+        "typescript",
+        "tailwind-css",
+        "git",
+        "github",
+        "vite",
+      ],
+      link: "https://lightapp.netlify.app/",
+      repo: "https://github.com/DevmianS/LightApp",
+    },
+    {
+      id: 2,
       image: project2,
       title: "Splitter",
       overview: (
@@ -65,7 +91,7 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
       repo: "https://github.com/DevmianS/tip-calculator-react",
     },
     {
-      id: 2,
+      id: 3,
       image: project1,
       title: "Web-dev-API",
       overview: (
@@ -79,7 +105,7 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
       repo: "https://github.com/DevmianS/web-dev-skills-api",
     },
     {
-      id: 3,
+      id: 4,
       image: soon,
       title: "COMING SOON...",
       overview: <Fragment></Fragment>,
