@@ -56,7 +56,7 @@ const AboutMe: FC<Props> = ({ allSkillsData, isLoading }) => {
             <div className={`${classes["text-container"]} `}>
               <Typewriter
                 options={{
-                  delay: 200,
+                  delay: 100,
                   cursor: "_",
                   wrapperClassName: classes.title,
                   cursorClassName: classes["title__cursor"],
@@ -65,37 +65,39 @@ const AboutMe: FC<Props> = ({ allSkillsData, isLoading }) => {
                 onInit={(typewriter) => {
                   typewriter
                     .typeString(`<h2>About Me</h2>`)
-                    .pauseFor(4000)
+                    .pauseFor(2000)
                     .deleteAll()
                     .typeString(`<h2>Contact Me</h2>`)
-                    .pauseFor(4000)
+                    .pauseFor(2000)
                     .deleteAll()
                     .start();
                 }}
               />
               <div className={classes.text}>
-                <Typewriter
-                  options={{
-                    delay: 60,
-                    cursor: "",
-                  }}
-                  onInit={(typewriter) => {
-                    typewriter
-                      .pauseFor(2000)
-                      .typeString(
-                        "<span>Hey, I'm Damian, your Frontend Developer from Poland 😊</span>"
-                      )
-                      .pauseFor(2000)
-                      .typeString(
-                        "<span>I can help you build your dream project 😉</span>"
-                      )
-                      .pauseFor(2000)
-                      .typeString(
-                        '<span>You can contact me by sending me an <a href="mailto:damiansobierajdev@gmail.com">email📧</a> or using the form below:</span>'
-                      )
-                      .start();
-                  }}
-                />
+                {
+                  <Typewriter
+                    options={{
+                      delay: 30,
+                      cursor: "",
+                    }}
+                    onInit={(typewriter) => {
+                      typewriter
+                        .pauseFor(1000)
+                        .typeString(
+                          "<span>Hey, I'm Damian, your Frontend Developer from Poland 😊</span>"
+                        )
+                        .pauseFor(1000)
+                        .typeString(
+                          "<span>I can help you build your dream project 😉</span>"
+                        )
+                        .pauseFor(1000)
+                        .typeString(
+                          '<span>You can contact me by sending me an <a href="mailto:damiansobierajdev@gmail.com">email📧</a> or using the form below:</span>'
+                        )
+                        .start();
+                    }}
+                  />
+                }
               </div>
               <ContactForm
                 setPopupTxt={setPopupText}

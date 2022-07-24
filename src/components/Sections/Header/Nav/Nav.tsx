@@ -30,7 +30,7 @@ const Nav: FC<Props> = ({ navItemHandler, google }) => {
         onClick={(e) => navItemHandler(e, "about-me")}
         className={`${classes.nav__item} `}
       >
-        About Me
+        Contact Me
       </a>
       <a
         data-to={"/creator"}

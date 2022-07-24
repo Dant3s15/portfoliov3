@@ -60,6 +60,9 @@
     padding: 2.25rem;
     @include textglow;
     @include flexbox(space-around, flex-start);
+    @media (max-width: $small-tablet) {
+      padding: 0;
+    }
   }
   .text-wrapper {
     width: 100%;
