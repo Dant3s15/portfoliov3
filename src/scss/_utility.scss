@@ -162,6 +162,7 @@
   border-bottom: 5px solid var(--color-border-transparent);
   border-radius: 3px;
   transform-style: preserve-3d;
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity;

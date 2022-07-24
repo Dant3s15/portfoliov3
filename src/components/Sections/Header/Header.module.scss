@@ -45,6 +45,7 @@
   border: 1px solid var(--color-border-transparent);
   border-right: 7px solid var(--color-border-transparent);
   border-bottom: 5px solid var(--color-border-transparent);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   transition: all var(--transition-short-medium) ease-in-out;
   @supports not (backdrop-filter: blur(20px)) {

@@ -55,6 +55,7 @@
   border-bottom: 5px solid var(--color-border-transparent);
   transform: rotateY(-10deg);
   transform-origin: 5%;
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(30px);
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity, background-color;
@@ -88,6 +89,7 @@
     .character-skills {
       scrollbar-width: 50px;
     }
+
     @supports not (backdrop-filter: blur(20px)) {
       background-color: rgba(70, 70, 70, 0.509);
     }
