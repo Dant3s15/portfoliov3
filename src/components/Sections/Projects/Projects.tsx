@@ -24,18 +24,7 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
           <strong>LEVEL ME UP!</strong>
         </Fragment>
       ),
-      skills: [
-        "html",
-        "css",
-        "javascript",
-        "react",
-        "typescript",
-        "sass",
-        "git",
-        "github",
-        "firebase",
-        "vite",
-      ],
+      skills: ["react", "typescript", "sass"],
       link: "https://damiansobieraj.com/",
       repo: "https://github.com/DevmianS/portfoliov3",
     },
@@ -50,17 +39,7 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
           💡
         </Fragment>
       ),
-      skills: [
-        "html",
-        "css",
-        "javascript",
-        "react",
-        "typescript",
-        "tailwind-css",
-        "git",
-        "github",
-        "vite",
-      ],
+      skills: ["react", "typescript", "tailwind-css"],
       link: "https://lightapp.netlify.app/",
       repo: "https://github.com/DevmianS/LightApp",
     },
@@ -71,22 +50,11 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
       overview: (
         <Fragment>
           <strong>FrontendMentor.io</strong> challenge{" "}
-          <strong>Tip Calculator</strong>, done in <strong>overkill</strong>{" "}
-          stack.
+          <strong>Tip Calculator</strong>, made in using <strong>React</strong>,
+          <strong>TypeScript</strong> and <strong>Sass</strong>
         </Fragment>
       ),
-      skills: [
-        "html",
-        "css",
-        "javascript",
-        "react",
-        "typescript",
-        "sass",
-        "css-modules",
-        "git",
-        "github",
-        "vite",
-      ],
+      skills: ["react", "typescript", "sass"],
       link: "https://devmian-tip-calculator.web.app/",
       repo: "https://github.com/DevmianS/tip-calculator-react",
     },
@@ -96,11 +64,11 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
       title: "Web-dev-API",
       overview: (
         <Fragment>
-          Simple <strong>API</strong> database that gives you access to the list
-          of <strong>Web development technologies</strong> and skills.
+          <strong>API</strong> database that gives you access to the list of{" "}
+          <strong>Web development technologies</strong> and skills.
         </Fragment>
       ),
-      skills: ["javascript", "expressjs", "git", "github"],
+      skills: ["javascript", "expressjs"],
       link: "https://web-dev-skills-api.herokuapp.com/",
       repo: "https://github.com/DevmianS/web-dev-skills-api",
     },
