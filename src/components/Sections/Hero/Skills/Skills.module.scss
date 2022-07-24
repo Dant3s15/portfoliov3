@@ -66,6 +66,9 @@
     transform: rotateY(0deg) !important;
     transform-origin: center !important;
   }
+  @supports not (backdrop-filter: blur(20px)) {
+    background-color: rgba(51, 51, 51, 0.509);
+  }
 
   &::before {
     content: "";
@@ -81,9 +84,12 @@
 
   &:hover {
     color: var(--color-primary);
-    background-color: #e5e5e51a;
+    // background-color: rgba(230, 230, 230, 0.102);
     .character-skills {
       scrollbar-width: 50px;
+    }
+    @supports not (backdrop-filter: blur(20px)) {
+      background-color: rgba(70, 70, 70, 0.509);
     }
   }
 
@@ -384,6 +390,9 @@
   }
   @media (max-width: $big-tablet) {
     transform: scale(1) !important;
+  }
+  @supports not (backdrop-filter: blur(20px)) {
+    background-color: rgba(51, 51, 51, 0.509);
   }
 }
 

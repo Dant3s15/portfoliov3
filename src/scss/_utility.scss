@@ -166,8 +166,8 @@
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
   animation: tvon var(--transition-short-medium) forwards;
-  @-moz-document url-prefix() {
-    background-color: rgba(60, 60, 60, 0.609);
+  @supports not (backdrop-filter: blur(20px)) {
+    background-color: rgba(69, 69, 69, 0.909);
   }
 
   @include flexbox;

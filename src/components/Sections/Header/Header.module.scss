@@ -47,6 +47,9 @@
   border-bottom: 5px solid var(--color-border-transparent);
   backdrop-filter: blur(20px);
   transition: all var(--transition-short-medium) ease-in-out;
+  @supports not (backdrop-filter: blur(20px)) {
+    background-color: rgba(49, 51, 58, 0.909);
+  }
 }
 
 .logo:link,
