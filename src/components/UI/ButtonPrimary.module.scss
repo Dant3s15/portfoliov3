@@ -21,8 +21,8 @@
 
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: all var(--transition-short), color 0.1s, text-shadow 0.1s;
-  transition-property: transform, opacity, outline, filter;
+  transition: all var(--transition-short), color 0.3s, box-shadow 0.1s;
+  // transition-property: transform, opacity, outline, filter, border, box-shadow;
   animation: flicker2 5s infinite alternate;
   @include corner-cut2(29px, var(--color-primary), 4px, 17px);
 
