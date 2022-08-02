@@ -1,13 +1,13 @@
-import { useState, useContext, FC, useEffect } from 'react';
-import { useIntersectionObserver } from 'usehooks-ts';
-import classes from './Hero.module.scss';
-import SelectedContext from '../../../context/selected-context';
-import HeroVisibleContext from '../../../context/hero-visible-context';
-import Characters from './Characters/Characters';
-import SkillsList from './Skills/Skills';
-import { useRef } from 'react';
-import { skillInterface } from '../../../Types/types';
-import { motion } from 'framer-motion';
+import { useState, useContext, FC, useEffect } from "react";
+import { useIntersectionObserver } from "usehooks-ts";
+import classes from "./Hero.module.scss";
+import SelectedContext from "../../../context/selected-context";
+import HeroVisibleContext from "../../../context/hero-visible-context";
+import Characters from "./Characters/Characters";
+import SkillsList from "./Skills/Skills";
+import { useRef } from "react";
+import { skillInterface } from "../../../Types/types";
+// import { motion } from 'framer-motion';
 interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
@@ -47,36 +47,36 @@ const Hero: FC<Props> = ({ allSkillsData, isLoading }) => {
     target: any;
   }) => {
     e.stopPropagation();
-    if (e.target.classList.contains(classes['section-hero'])) {
+    if (e.target.classList.contains(classes["section-hero"])) {
       ctx.setSelected?.(false);
     }
   };
 
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      id='hero'
+    <section
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+      id="hero"
       ref={heroRef}
       onClick={heroOnClickHandler}
-      className={`${classes['section-hero']} ${
-        !ctx.ctaButtonClicked?.clicked ? classes.gray : ''
+      className={`${classes["section-hero"]} ${
+        !ctx.ctaButtonClicked?.clicked ? classes.gray : ""
       }`}
     >
-      <div className={classes['character-selection']}>
+      <div className={classes["character-selection"]}>
         <Characters
           heroRef={heroRef}
           charState={charStateDataHandler}
         ></Characters>
         <SkillsList
           isLoading={isLoading}
-          className={classes['character-skills']}
+          className={classes["character-skills"]}
           charStateData={charState}
           allSkillsData={allSkillsData}
         ></SkillsList>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

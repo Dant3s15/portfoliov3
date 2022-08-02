@@ -29,12 +29,12 @@ import { HeroVisibleProvider } from "./context/hero-visible-context";
 // import { initializeApp } from "firebase/app";
 // import { getAnalytics } from 'firebase/analytics';
 // import { getFirestore } from 'firebase/firestore';
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  onAuthStateChanged,
-} from "firebase/auth";
+// import {
+//   getAuth,
+//   GoogleAuthProvider,
+//   signInWithPopup,
+//   onAuthStateChanged,
+// } from "firebase/auth";
 
 // import { useAuthState } from "react-firebase-hooks/auth";
 // import { useCollectionData } from 'react-firebase-hooks/firestore';

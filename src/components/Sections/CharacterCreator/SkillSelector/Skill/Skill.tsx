@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { skillInterface } from "../../../../../Types/types";
 import SkillTooltip from "../../../../UI/SkillTooltip";
 import classes from "./Skill.module.scss";
-import Tooltip from "@mui/material/Tooltip";
+// import Tooltip from "@mui/material/Tooltip";
 
 interface Props {
   onSkillChange: Function;
@@ -23,16 +23,16 @@ const Skill: FC<Props> = ({ data, onTooltip, onSkillChange, sign }) => {
   };
 
   const levelHandler = (
-    <Tooltip
-      placement="top"
-      title={`${data.name.toUpperCase()} Proficiency Level`}
-    >
-      <div className={classes.level}>
-        <p key={Math.random()} className={classes["level-number"]}>
-          {data.level}
-        </p>
-      </div>
-    </Tooltip>
+    // <Tooltip
+    //   placement="top"
+    //   title={`${data.name.toUpperCase()} Proficiency Level`}
+    // >
+    <div className={classes.level}>
+      <p key={Math.random()} className={classes["level-number"]}>
+        {data.level}
+      </p>
+    </div>
+    // </Tooltip>
   );
 
   return (

@@ -7,7 +7,7 @@ import classes from "./Header.module.scss";
 import HamburgerIcon from "../../Icons/HamburgerIcon";
 import CloseIcon from "../../Icons/CloseIcon";
 import logo from "../../../resources/logo.svg";
-import { User } from "firebase/auth";
+// import { User } from "firebase/auth";
 import { ShepherdTourContext } from "react-shepherd";
 
 // interface Props {

@@ -6,7 +6,6 @@ import Typewriter from "typewriter-effect";
 import { ShepherdTourContext } from "react-shepherd";
 import classes from "./Characters.module.scss";
 import ButtonPrimary from "../../../UI/ButtonPrimary";
-// import { to } from "react-spring";
 
 interface Props {
   charState: (data: any) => void;

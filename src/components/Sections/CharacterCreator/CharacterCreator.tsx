@@ -3,7 +3,7 @@ import SkillSelector from "./SkillSelector/SkillSelector";
 import classes from "./CharacterCreator.module.scss";
 import { FC } from "react";
 import { skillInterface } from "../../../Types/types";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 interface Props {
   allSkillsData: skillInterface[];
@@ -11,10 +11,10 @@ interface Props {
 }
 const CharacterCreator: FC<Props> = ({ allSkillsData, isLoading }) => {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    <section
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
       id="creator"
       className={classes.creator}
     >
@@ -36,7 +36,7 @@ const CharacterCreator: FC<Props> = ({ allSkillsData, isLoading }) => {
           ></Character>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

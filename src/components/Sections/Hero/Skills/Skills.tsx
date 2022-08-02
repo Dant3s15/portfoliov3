@@ -1,6 +1,6 @@
 import { useEffect, useRef, useContext, FC, useState } from "react";
 import classes from "./Skills.module.scss";
-import Tooltip from "@mui/material/Tooltip";
+// import Tooltip from "@mui/material/Tooltip";
 import { skillInterface } from "../../../../Types/types";
 import SelectedContext from "../../../../context/selected-context";
 import Skill2 from "./Skill2";
@@ -237,40 +237,40 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
               >
                 <h2>Unlocked Skills</h2>
               </div>
-              <Tooltip placement="top" title="Calculated Total Level">
-                <div
-                  className={`${classes["character-level"]} ${
-                    leftCharSkills.length !== 0 || ctx.whichIsSelected !== 0
-                      ? classes.glowsmall
-                      : ""
-                  }`}
-                  id="character-level"
-                >
-                  <div className={classes["character-level__level-title"]}>
-                    level
+              {/* <Tooltip placement="top" title="Calculated Total Level"> */}
+              <div
+                className={`${classes["character-level"]} ${
+                  leftCharSkills.length !== 0 || ctx.whichIsSelected !== 0
+                    ? classes.glowsmall
+                    : ""
+                }`}
+                id="character-level"
+              >
+                <div className={classes["character-level__level-title"]}>
+                  level
+                </div>
+                <div className={classes["character-levels"]}>
+                  <div
+                    className={classes["character-level__level-number"]}
+                    data-character={charStateData.leftChar}
+                  >
+                    {allSkillsData.length ? calcLevel(leftCharSkills) : ""}
                   </div>
-                  <div className={classes["character-levels"]}>
-                    <div
-                      className={classes["character-level__level-number"]}
-                      data-character={charStateData.leftChar}
-                    >
-                      {allSkillsData.length ? calcLevel(leftCharSkills) : ""}
-                    </div>
-                    <div
-                      className={classes["character-level__level-number"]}
-                      data-character={charStateData.frontChar}
-                    >
-                      {allSkillsData.length ? calcLevel(frontChar) : ""}
-                    </div>
-                    <div
-                      className={classes["character-level__level-number"]}
-                      data-character={charStateData.rightChar}
-                    >
-                      {allSkillsData.length ? calcLevel(rightChar) : ""}
-                    </div>
+                  <div
+                    className={classes["character-level__level-number"]}
+                    data-character={charStateData.frontChar}
+                  >
+                    {allSkillsData.length ? calcLevel(frontChar) : ""}
+                  </div>
+                  <div
+                    className={classes["character-level__level-number"]}
+                    data-character={charStateData.rightChar}
+                  >
+                    {allSkillsData.length ? calcLevel(rightChar) : ""}
                   </div>
                 </div>
-              </Tooltip>
+              </div>
+              {/* </Tooltip> */}
             </div>
           </header>
           {allSkillsData.length !== 0 ? (

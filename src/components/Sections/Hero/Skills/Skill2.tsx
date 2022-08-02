@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import Tooltip from '@mui/material/Tooltip';
-import classes from './Skill2.module.scss';
-import { skillInterface } from '../../../../Types/types';
+import { FC } from "react";
+// import Tooltip from '@mui/material/Tooltip';
+import classes from "./Skill2.module.scss";
+import { skillInterface } from "../../../../Types/types";
 
 interface Props {
   skill: skillInterface;
@@ -22,27 +22,27 @@ const Skill2: FC<Props> = ({ data, skill }: Props) => {
   return (
     <div className={classes.wrapper}>
       <button
-        className={`${classes['skill-tile']} `}
+        className={`${classes["skill-tile"]} `}
         onMouseDown={() => {
-          data.skillTooltipHandler(skill, 'add');
+          data.skillTooltipHandler(skill, "add");
         }}
         onMouseLeave={() => {
           data.skillTooltipHandler(skill);
         }}
       >
-        <Tooltip
+        {/* <Tooltip
           arrow
           placement='top'
           title={`${skill.name.toUpperCase()} Proficiency Level`}
-        >
-          <div className={`${classes['skill-tile-level']}`}>
-            <span>{skill.level}</span>
-          </div>
-        </Tooltip>
-        <div className={classes['skill-tile-icon']}>
+        > */}
+        <div className={`${classes["skill-tile-level"]}`}>
+          <span>{skill.level}</span>
+        </div>
+        {/* </Tooltip> */}
+        <div className={classes["skill-tile-icon"]}>
           <img src={skill.icon} alt={`${skill.names[0]} icon`}></img>
         </div>
-        <div className={classes['skill-tile-name']}>
+        <div className={classes["skill-tile-name"]}>
           <p>{nameShortener(skill.names[0])}</p>
         </div>
       </button>

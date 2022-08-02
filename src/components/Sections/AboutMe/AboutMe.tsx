@@ -6,7 +6,7 @@ import Projects from "../Projects/Projects";
 import Typewriter from "typewriter-effect";
 import classes from "./AboutMe.module.scss";
 import { skillInterface } from "../../../Types/types";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import PopUpWindow from "../../UI/PopUpWindow";
 
 interface Props {
@@ -23,10 +23,10 @@ const AboutMe: FC<Props> = ({ allSkillsData, isLoading }) => {
   return (
     <Fragment>
       <Projects allSkillsData={allSkillsData} isLoading={isLoading} />
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+      <div
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // exit={{ opacity: 0 }}
         id="about-me"
         className={classes["about-me"]}
       >
@@ -107,7 +107,7 @@ const AboutMe: FC<Props> = ({ allSkillsData, isLoading }) => {
             </div>
           </CardGlass>
         </div>
-      </motion.section>
+      </div>
     </Fragment>
   );
 };
