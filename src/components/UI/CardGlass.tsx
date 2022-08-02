@@ -1,4 +1,3 @@
-// import { Fragment, useEffect } from 'react';
 import { FC } from "react";
 import classes from "./CardGlass.module.scss";
 interface Props {

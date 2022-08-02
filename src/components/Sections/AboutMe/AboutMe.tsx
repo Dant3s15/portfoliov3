@@ -6,7 +6,6 @@ import Projects from "../Projects/Projects";
 import Typewriter from "typewriter-effect";
 import classes from "./AboutMe.module.scss";
 import { skillInterface } from "../../../Types/types";
-// import { motion } from "framer-motion";
 import PopUpWindow from "../../UI/PopUpWindow";
 
 interface Props {
@@ -23,13 +22,7 @@ const AboutMe: FC<Props> = ({ allSkillsData, isLoading }) => {
   return (
     <Fragment>
       <Projects allSkillsData={allSkillsData} isLoading={isLoading} />
-      <div
-        // initial={{ opacity: 0 }}
-        // animate={{ opacity: 1 }}
-        // exit={{ opacity: 0 }}
-        id="about-me"
-        className={classes["about-me"]}
-      >
+      <div id="about-me" className={classes["about-me"]}>
         <div className={classes["about-me-char"]}>
           <div className={`${classes["char__container"]} cancel-absolute`}>
             <Character
@@ -101,7 +94,6 @@ const AboutMe: FC<Props> = ({ allSkillsData, isLoading }) => {
               </div>
               <ContactForm
                 setPopupTxt={setPopupText}
-                // popupText={popupText}
                 popupState={setPopupVisible}
               />
             </div>

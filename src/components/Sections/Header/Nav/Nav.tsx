@@ -1,16 +1,8 @@
 import { FC } from "react";
-// import GoogleLogIn from "../../../Icons/google/GoogleLogIn";
-// import { User } from "firebase/auth";
-
 import classes from "./Nav.module.scss";
 
 interface Props {
   navItemHandler: (event: { currentTarget: Element }, id: string) => void;
-  // google: {
-  //   user?: User | null | undefined;
-  //   auth?: any;
-  //   signInWithGoogle?: () => void;
-  // };
 }
 
 const Nav: FC<Props> = ({ navItemHandler }) => {
@@ -40,26 +32,6 @@ const Nav: FC<Props> = ({ navItemHandler }) => {
       >
         Character Creator
       </a>
-      {/* {!google.user && (
-        <button
-          className={`${classes.nav__item} ${classes.google}`}
-          onClick={google.signInWithGoogle}
-          id="login"
-        >
-          <GoogleLogIn></GoogleLogIn>
-          <p>Sign in with Google</p>
-        </button>
-      )}
-      {google.auth.currentUser && (
-        <button
-          className={`${classes.nav__item} ${classes["google"]}`}
-          onClick={() => google.auth.signOut()}
-          id="login"
-        >
-          <GoogleLogIn></GoogleLogIn>
-          <p>Sign Out</p>
-        </button>
-      )} */}
     </nav>
   );
 };

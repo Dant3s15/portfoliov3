@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useContext, FC } from "react";
 import Character from "./Character";
-// import { useNavigate } from "react-router-dom";
 import SelectedContext from "../../../../context/selected-context";
 import Typewriter from "typewriter-effect";
 import { ShepherdTourContext } from "react-shepherd";

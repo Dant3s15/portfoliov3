@@ -1,4 +1,3 @@
-// import 'animate.css';
 import { CSSProperties, FC, MouseEventHandler } from "react";
 import classes from "./ButtonPrimary.module.scss";
 

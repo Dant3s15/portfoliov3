@@ -1,5 +1,4 @@
 import { FC } from "react";
-// import Tooltip from '@mui/material/Tooltip';
 import classes from "./Skill2.module.scss";
 import { skillInterface } from "../../../../Types/types";
 
@@ -30,15 +29,9 @@ const Skill2: FC<Props> = ({ data, skill }: Props) => {
           data.skillTooltipHandler(skill);
         }}
       >
-        {/* <Tooltip
-          arrow
-          placement='top'
-          title={`${skill.name.toUpperCase()} Proficiency Level`}
-        > */}
         <div className={`${classes["skill-tile-level"]}`}>
           <span>{skill.level}</span>
         </div>
-        {/* </Tooltip> */}
         <div className={classes["skill-tile-icon"]}>
           <img src={skill.icon} alt={`${skill.names[0]} icon`}></img>
         </div>

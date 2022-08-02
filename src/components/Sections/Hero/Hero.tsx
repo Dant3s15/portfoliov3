@@ -7,7 +7,6 @@ import Characters from "./Characters/Characters";
 import SkillsList from "./Skills/Skills";
 import { useRef } from "react";
 import { skillInterface } from "../../../Types/types";
-// import { motion } from 'framer-motion';
 interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
@@ -54,9 +53,6 @@ const Hero: FC<Props> = ({ allSkillsData, isLoading }) => {
 
   return (
     <section
-      // initial={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
-      // exit={{ opacity: 0 }}
       id="hero"
       ref={heroRef}
       onClick={heroOnClickHandler}

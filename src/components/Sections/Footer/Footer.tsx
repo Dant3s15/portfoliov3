@@ -15,8 +15,6 @@ interface Props {
 const Footer: FC<Props> = ({
   data: { whichSelected, ctaButtonClicked, selected },
 }) => {
-  // const { whichSelected, ctaButtonClicked, selected } = data;
-
   const testFetch = () => {
     async function getSkill() {
       const response = await fetch(

@@ -7,20 +7,9 @@ import classes from "./Header.module.scss";
 import HamburgerIcon from "../../Icons/HamburgerIcon";
 import CloseIcon from "../../Icons/CloseIcon";
 import logo from "../../../resources/logo.svg";
-// import { User } from "firebase/auth";
 import { ShepherdTourContext } from "react-shepherd";
 
-// interface Props {
-//   data: {
-//     google: {
-//       user?: User | null | undefined;
-//       auth?: any;
-//       signInWithGoogle?: () => void;
-//     };
-//   };
-// }
-
-const Header: FC = (props) => {
+const Header: FC = () => {
   const [hamburgerState, setHamburgerState] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();

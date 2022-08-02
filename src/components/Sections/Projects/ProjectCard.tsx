@@ -1,11 +1,9 @@
 import { FC, ReactNode, useRef } from "react";
-// import { animated } from "react-spring";
 import CardGlass from "../../UI/CardGlass";
 import github from "../../../resources/icons/logo-github.svg";
 import classes from "./ProjectCard.module.scss";
 import { skillInterface } from "../../../Types/types";
 import LoadingSpinner from "../../UI/LoadingSpinner";
-// import Tooltip from "@mui/material/Tooltip";
 import ProjectSkillsList from "./ProjectSkillList";
 
 interface CardProjectProps {
@@ -60,15 +58,9 @@ const CardProject: FC<CardProjectProps> = ({
     >
       <CardGlass corner className={`${classes.project}`}>
         <div className={classes.links}>
-          {/* <Tooltip */}
-          {/* key={Math.random()}
-            placement="top"
-            title={`Go To GitHub Repository`}
-          > */}
           <a href={projectData?.repo} target="_blank">
             <img src={github} alt="github" />
           </a>
-          {/* </Tooltip> */}
         </div>
         <div className={classes["project-image-window"]}>
           <a
@@ -76,17 +68,10 @@ const CardProject: FC<CardProjectProps> = ({
             href={projectData?.link}
             target="_blank"
           >
-            {/* <Tooltip
-              arrow
-              key={Math.random()}
-              placement="top"
-              title={`Go To Live Project Site`}
-            > */}
             <img
               src={projectData?.image}
               className={classes["project-image"]}
             />
-            {/* </Tooltip> */}
           </a>
         </div>
         <div

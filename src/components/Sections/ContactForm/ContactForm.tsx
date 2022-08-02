@@ -1,9 +1,9 @@
-import { Form, Formik, Field, ErrorMessage, FormikErrors } from "formik";
+import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import classes from "./ContactForm.module.scss";
 import ButtonPrimary from "../../UI/ButtonPrimary";
-import { FC, useState } from "react";
+import { FC } from "react";
 
 const ContactFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,7 +28,6 @@ interface Props {
 }
 
 const ContactForm: FC<Props> = ({ popupState, setPopupTxt }) => {
-  // const [responseHasError, setResponseHasError] = useState(false);
   return (
     <div id="contact-me" className={classes["contact-me"]}>
       <div className={classes.container}>

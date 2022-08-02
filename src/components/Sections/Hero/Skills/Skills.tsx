@@ -1,6 +1,5 @@
 import { useEffect, useRef, useContext, FC, useState } from "react";
 import classes from "./Skills.module.scss";
-// import Tooltip from "@mui/material/Tooltip";
 import { skillInterface } from "../../../../Types/types";
 import SelectedContext from "../../../../context/selected-context";
 import Skill2 from "./Skill2";
@@ -78,7 +77,6 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
       );
       if (!error) setLeftCharSkills(data);
     }
-    // if (!error) {
     const onStorage = () => {
       if (!error) {
         setLeftCharSkills(JSON.parse(localStorage.getItem("leftChar") || ""));
@@ -237,7 +235,6 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
               >
                 <h2>Unlocked Skills</h2>
               </div>
-              {/* <Tooltip placement="top" title="Calculated Total Level"> */}
               <div
                 className={`${classes["character-level"]} ${
                   leftCharSkills.length !== 0 || ctx.whichIsSelected !== 0
@@ -270,7 +267,6 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
                   </div>
                 </div>
               </div>
-              {/* </Tooltip> */}
             </div>
           </header>
           {allSkillsData.length !== 0 ? (
