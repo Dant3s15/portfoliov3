@@ -25,8 +25,8 @@ import SelectedContext from "./context/selected-context";
 import { HeroVisibleProvider } from "./context/hero-visible-context";
 
 //FIREBASE
-import firebase from "firebase/compat/app";
-import { initializeApp } from "firebase/app";
+// import firebase from "firebase/compat/app";
+// import { initializeApp } from "firebase/app";
 // import { getAnalytics } from 'firebase/analytics';
 // import { getFirestore } from 'firebase/firestore';
 import {
@@ -36,27 +36,27 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-import { useAuthState } from "react-firebase-hooks/auth";
+// import { useAuthState } from "react-firebase-hooks/auth";
 // import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { skillInterface } from "./Types/types";
 import LoadingSpinner from "./components/UI/LoadingSpinner";
-import zIndex from "@mui/material/styles/zIndex";
+// import zIndex from "@mui/material/styles/zIndex";
 import tourSteps from "./components/Utils/ShepherdTour/tourSteps";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyA4Biu3C9D3pJF7f3cOgNfMYG4OtewhwNY",
-  authDomain: "portfolio-27cdd.firebaseapp.com",
-  databaseURL:
-    "https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "portfolio-27cdd",
-  storageBucket: "portfolio-27cdd.appspot.com",
-  messagingSenderId: "156569045681",
-  appId: "1:156569045681:web:7e9b36b440d0a31ac3f090",
-  measurementId: "G-B13VR57PZH",
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyA4Biu3C9D3pJF7f3cOgNfMYG4OtewhwNY",
+//   authDomain: "portfolio-27cdd.firebaseapp.com",
+//   databaseURL:
+//     "https://portfolio-27cdd-default-rtdb.europe-west1.firebasedatabase.app",
+//   projectId: "portfolio-27cdd",
+//   storageBucket: "portfolio-27cdd.appspot.com",
+//   messagingSenderId: "156569045681",
+//   appId: "1:156569045681:web:7e9b36b440d0a31ac3f090",
+//   measurementId: "G-B13VR57PZH",
+// };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+// const app = initializeApp(firebaseConfig);
+// const auth = getAuth(app);
 // const firestore = getFirestore();
 
 const tourOptions = {
@@ -74,7 +74,7 @@ function App() {
   const [selected, setSelected] = useState(false);
   const [whichSelected, setWhichSelected] = useState(1);
   const [ctaButtonClicked, setCtaButtonClicked] = useState({ clicked: false });
-  const [user] = useAuthState(auth);
+  // const [user] = useAuthState(auth);
   const [allSkillsData, setAllSkillsData] = useState<skillInterface[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -95,10 +95,10 @@ function App() {
     getAllSkillsData();
   }, []);
 
-  const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
-  };
+  // const signInWithGoogle = () => {
+  //   const provider = new GoogleAuthProvider();
+  //   signInWithPopup(auth, provider);
+  // };
   return (
     <Fragment>
       <ShepherdTour steps={tourSteps} tourOptions={tourOptions}>
@@ -114,13 +114,13 @@ function App() {
         >
           <HeroVisibleProvider>
             <Header
-              data={{
-                google: {
-                  user,
-                  auth,
-                  signInWithGoogle,
-                },
-              }}
+            // data={{
+            //   google: {
+            //     user,
+            //     auth,
+            //     signInWithGoogle,
+            //   },
+            // }}
             ></Header>
             <main>
               <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>

@@ -13,7 +13,7 @@
   text-decoration: none;
   transition: all var(--transition-short);
   transition-property: transform;
-  @include flexbox(space-between, center);
+  @include flexbox(space-evenly, center);
   &__item {
     width: 100%;
     width: fit-content;
@@ -50,8 +50,8 @@
   &__item:active {
     transform: scale(1.1);
   }
-  &__item:hover:not(:last-child),
-  &__item:active:not(:last-child) {
+  &__item:hover,
+  &__item:active {
     @include textglowsmall;
   }
 
@@ -70,43 +70,43 @@
   }
 }
 
-.google {
-  min-width: 17rem;
-  height: 40px;
-  margin-right: 0.7rem;
-  color: black;
-  color: #000;
-  font-weight: 600;
-  font-family: "Orbitron", sans-serif;
-  text-transform: none;
-  background-color: white;
-  border-radius: 3px;
-  transition: inherit;
-  &:hover {
-    color: var(--color-primary);
-  }
-  @include flexbox;
+// .google {
+//   min-width: 17rem;
+//   height: 40px;
+//   margin-right: 0.7rem;
+//   color: black;
+//   color: #000;
+//   font-weight: 600;
+//   font-family: "Orbitron", sans-serif;
+//   text-transform: none;
+//   background-color: white;
+//   border-radius: 3px;
+//   transition: inherit;
+//   &:hover {
+//     color: var(--color-primary);
+//   }
+//   @include flexbox;
 
-  @include corner-cut(20px);
-  p {
-    padding: 0 2rem 0 1rem;
-  }
-  @media (max-width: $desktop) {
-    padding: 0;
-  }
-  @media (max-width: $laptop) {
-    min-width: 15.5rem;
-    font-size: 14px;
-  }
-  @media (max-width: $big-tablet) {
-    height: 4rem;
-    font-size: 30px;
-  }
-  @media (max-width: $mobile) {
-    height: 3rem;
-    font-size: 1rem;
-  }
-}
+//   @include corner-cut(20px);
+//   p {
+//     padding: 0 2rem 0 1rem;
+//   }
+//   @media (max-width: $desktop) {
+//     padding: 0;
+//   }
+//   @media (max-width: $laptop) {
+//     min-width: 15.5rem;
+//     font-size: 14px;
+//   }
+//   @media (max-width: $big-tablet) {
+//     height: 4rem;
+//     font-size: 30px;
+//   }
+//   @media (max-width: $mobile) {
+//     height: 3rem;
+//     font-size: 1rem;
+//   }
+// }
 
 .nav-hidden {
   transform: translateY(-100%);

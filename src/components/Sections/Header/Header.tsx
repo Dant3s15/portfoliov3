@@ -10,17 +10,17 @@ import logo from "../../../resources/logo.svg";
 import { User } from "firebase/auth";
 import { ShepherdTourContext } from "react-shepherd";
 
-interface Props {
-  data: {
-    google: {
-      user?: User | null | undefined;
-      auth?: any;
-      signInWithGoogle?: () => void;
-    };
-  };
-}
+// interface Props {
+//   data: {
+//     google: {
+//       user?: User | null | undefined;
+//       auth?: any;
+//       signInWithGoogle?: () => void;
+//     };
+//   };
+// }
 
-const Header: FC<Props> = ({ data: { google } }) => {
+const Header: FC = (props) => {
   const [hamburgerState, setHamburgerState] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -119,7 +119,7 @@ const Header: FC<Props> = ({ data: { google } }) => {
               <img src={logo} alt="" />
             </a>
           </div>
-          <Nav navItemHandler={navItemHandler} google={google}></Nav>
+          <Nav navItemHandler={navItemHandler}></Nav>
 
           <button
             className={classes["hamburger-button"]}

@@ -1,19 +1,19 @@
 import { FC } from "react";
-import GoogleLogIn from "../../../Icons/google/GoogleLogIn";
-import { User } from "firebase/auth";
+// import GoogleLogIn from "../../../Icons/google/GoogleLogIn";
+// import { User } from "firebase/auth";
 
 import classes from "./Nav.module.scss";
 
 interface Props {
   navItemHandler: (event: { currentTarget: Element }, id: string) => void;
-  google: {
-    user?: User | null | undefined;
-    auth?: any;
-    signInWithGoogle?: () => void;
-  };
+  // google: {
+  //   user?: User | null | undefined;
+  //   auth?: any;
+  //   signInWithGoogle?: () => void;
+  // };
 }
 
-const Nav: FC<Props> = ({ navItemHandler, google }) => {
+const Nav: FC<Props> = ({ navItemHandler }) => {
   return (
     <nav className={classes.nav}>
       <a
@@ -40,7 +40,7 @@ const Nav: FC<Props> = ({ navItemHandler, google }) => {
       >
         Character Creator
       </a>
-      {!google.user && (
+      {/* {!google.user && (
         <button
           className={`${classes.nav__item} ${classes.google}`}
           onClick={google.signInWithGoogle}
@@ -59,7 +59,7 @@ const Nav: FC<Props> = ({ navItemHandler, google }) => {
           <GoogleLogIn></GoogleLogIn>
           <p>Sign Out</p>
         </button>
-      )}
+      )} */}
     </nav>
   );
 };
