@@ -1,6 +1,6 @@
 import React, { Suspense, useState, Fragment, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { ShepherdTour } from "react-shepherd";
+// import { ShepherdTour } from "react-shepherd";
 import { skillInterface } from "./Types/types";
 
 import Header from "./components/Sections/Header/Header";
@@ -56,48 +56,48 @@ function App() {
 
   return (
     <Fragment>
-      <ShepherdTour steps={tourSteps} tourOptions={tourOptions}>
-        <SelectedContext.Provider
-          value={{
-            isSelected: selected,
-            setSelected,
-            whichIsSelected: whichSelected,
-            setWhichSelected,
-            ctaButtonClicked,
-            setCtaButtonClicked,
-          }}
-        >
-          <HeroVisibleProvider>
-            <Header />
-            <main>
-              <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
-              <Suspense fallback={<LoadingSpinner />}>
-                <Routes location={location} key={location.pathname}>
-                  <Route
-                    path="/creator"
-                    element={
-                      <CharacterCreator
-                        allSkillsData={allSkillsData}
-                        isLoading={isLoading}
-                      />
-                    }
-                  ></Route>
-                  <Route
-                    path="about-me"
-                    element={
-                      <AboutMe
-                        allSkillsData={allSkillsData}
-                        isLoading={isLoading}
-                      />
-                    }
-                  ></Route>
-                </Routes>
-              </Suspense>
-            </main>
-          </HeroVisibleProvider>
-          <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
-        </SelectedContext.Provider>
-      </ShepherdTour>
+      {/* <ShepherdTour steps={tourSteps} tourOptions={tourOptions}> */}
+      <SelectedContext.Provider
+        value={{
+          isSelected: selected,
+          setSelected,
+          whichIsSelected: whichSelected,
+          setWhichSelected,
+          ctaButtonClicked,
+          setCtaButtonClicked,
+        }}
+      >
+        <HeroVisibleProvider>
+          <Header />
+          <main>
+            <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes location={location} key={location.pathname}>
+                <Route
+                  path="/creator"
+                  element={
+                    <CharacterCreator
+                      allSkillsData={allSkillsData}
+                      isLoading={isLoading}
+                    />
+                  }
+                ></Route>
+                <Route
+                  path="about-me"
+                  element={
+                    <AboutMe
+                      allSkillsData={allSkillsData}
+                      isLoading={isLoading}
+                    />
+                  }
+                ></Route>
+              </Routes>
+            </Suspense>
+          </main>
+        </HeroVisibleProvider>
+        <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
+      </SelectedContext.Provider>
+      {/* </ShepherdTour> */}
     </Fragment>
   );
 }

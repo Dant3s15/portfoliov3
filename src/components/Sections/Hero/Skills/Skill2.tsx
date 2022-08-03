@@ -29,9 +29,9 @@ const Skill2: FC<Props> = ({ data, skill }: Props) => {
           data.skillTooltipHandler(skill);
         }}
       >
-        <div className={`${classes["skill-tile-level"]}`}>
+        {/* <div className={`${classes["skill-tile-level"]}`}>
           <span>{skill.level}</span>
-        </div>
+        </div> */}
         <div className={classes["skill-tile-icon"]}>
           <img src={skill.icon} alt={`${skill.names[0]} icon`}></img>
         </div>

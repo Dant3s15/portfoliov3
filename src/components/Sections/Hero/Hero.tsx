@@ -7,6 +7,7 @@ import Characters from "./Characters/Characters";
 import SkillsList from "./Skills/Skills";
 import { useRef } from "react";
 import { skillInterface } from "../../../Types/types";
+import InfoPreview from "./InfoPreview/InfoPreview";
 interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
@@ -65,12 +66,13 @@ const Hero: FC<Props> = ({ allSkillsData, isLoading }) => {
           heroRef={heroRef}
           charState={charStateDataHandler}
         ></Characters>
-        <SkillsList
+        {/* <SkillsList
           isLoading={isLoading}
           className={classes["character-skills"]}
           charStateData={charState}
           allSkillsData={allSkillsData}
-        ></SkillsList>
+        ></SkillsList> */}
+        <InfoPreview></InfoPreview>
       </div>
     </section>
   );

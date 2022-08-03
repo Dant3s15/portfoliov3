@@ -1,0 +1,102 @@
+@import "../../../../scss/style.scss";
+
+.info-col {
+  position: relative;
+  width: 50%;
+  height: 70%;
+  perspective: 400px;
+}
+
+.info-preview {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  transform: rotateY(-10deg);
+  transition-timing-function: ease-in-out;
+  transition-duration: var(--transition-short-medium);
+  @include corner-cut(63px, var(--color-border-transparent), 7px, 59px);
+  &:hover {
+    color: var(--color-primary);
+    transform: rotateY(-5deg);
+    @supports not (backdrop-filter: blur(20px)) {
+      background-color: rgba(70, 70, 70, 0.509);
+    }
+    .img-mobile {
+      transform: translateX(-10px) scale(1.05);
+    }
+    .stack-items {
+      transform: translateX(-10px) scale(1.05);
+    }
+  }
+}
+
+.title {
+  padding-bottom: 1rem;
+  font-size: 2.25rem;
+  @include textglowmedium;
+}
+
+.imagesNtitle {
+  height: 60%;
+}
+
+.descNstack {
+  flex-direction: column;
+  height: 40%;
+  padding: 24px;
+  color: var(--color-gray);
+  @include flexbox(space-between);
+  .description {
+    font-size: 18px;
+  }
+  .stack {
+    align-self: flex-start;
+    &-items {
+      @include flexbox(space-evenly);
+
+      width: 400px;
+      transition: all var(--transition-short-medium) ease-in-out;
+    }
+  }
+}
+
+.images {
+  // @include flexbox;
+  position: relative;
+  img {
+    position: absolute;
+    border-radius: 5px;
+
+    // max-width: 500px;
+    // max-height: 500px;
+  }
+  &:hover {
+    .img-desktop {
+      transform: scale(1.05);
+      // transition: all var(--transition-medium) ease-in-out;
+    }
+    .img-mobile {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.img-desktop {
+  top: 0rem;
+  left: 0;
+  max-width: 550px;
+  max-height: 400px;
+  transition: all var(--transition-short-medium) ease-in-out;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 70%,
+    transparent 100%
+  );
+}
+.img-mobile {
+  top: -3rem;
+  right: 0;
+  max-height: 300px;
+  filter: drop-shadow(10px 10px 30px #000);
+  transition: all var(--transition-short-medium) ease-in-out;
+}

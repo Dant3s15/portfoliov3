@@ -38,7 +38,7 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
 
   const calcLevel = (skill: skillInterface[]) => {
     const charExp = skill.reduce((acc = 0, cur) => {
-      return (acc += cur.level);
+      if (cur.level) return (acc += cur.level);
     }, 0);
 
     const totalExp = (allSkillsData.length - 1) * 10;
@@ -47,7 +47,7 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
       return (100 * partialValue) / totalValue;
     }
 
-    const result = percentage(charExp, totalExp);
+    const result = percentage(charExp!, totalExp);
     return Math.ceil(result);
   };
 
@@ -161,6 +161,7 @@ const SkillsList: FC<Props> = ({ allSkillsData, charStateData }) => {
           {skillsByCharacters[id].map((item) => {
             {
               if (item.id === 0) return;
+              console.log(item);
               return (
                 <Skill2
                   key={item.id}

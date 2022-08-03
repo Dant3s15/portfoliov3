@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useContext, FC } from "react";
 import Character from "./Character";
 import SelectedContext from "../../../../context/selected-context";
 import Typewriter from "typewriter-effect";
-import { ShepherdTourContext } from "react-shepherd";
+// import { ShepherdTourContext } from "react-shepherd";
 import classes from "./Characters.module.scss";
 import ButtonPrimary from "../../../UI/ButtonPrimary";
 
@@ -20,11 +20,11 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
 
   const charactersRef = useRef<HTMLDivElement>(null);
   const charactersColRef = useRef<HTMLDivElement>(null);
-  const tour = useContext(ShepherdTourContext);
+  // const tour = useContext(ShepherdTourContext);
 
   const ctaButtonHandler = () => {
     setTimeout(() => {
-      tour?.start();
+      // tour?.start();
     }, 1200);
     if (ctx.setCtaButtonClicked !== undefined) {
       if (!ctx.ctaButtonClicked?.clicked) {
@@ -232,7 +232,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
           <ButtonPrimary
             id={ctx.whichIsSelected === 1 ? "tourButton" : ""}
             onClick={(e) => {
-              tour?.complete();
+              // tour?.complete();
 
               return frontCharButtonHandler(e, isAnythingSelected().moveTo);
             }}
@@ -261,11 +261,11 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
           name="Damian"
           id="tourStart"
           onRotateCharacters={() => {
-            tour?.next();
+            // tour?.next();
             return ctx.rotateCharactersHandler;
           }}
         ></Character>
-
+        {/* 
         <Character
           dataConstPos={CONST_POS[2]}
           selected={rightIsSelected}
@@ -273,7 +273,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
           data={rightChar}
           name="Future Damian"
           onRotateCharacters={ctx.rotateCharactersHandler}
-        ></Character>
+        ></Character> */}
       </div>
     </div>
   );
