@@ -71,7 +71,7 @@
   display: grid;
   grid-template-rows: 1fr 2fr;
   min-width: 350px;
-  font-family: "Orbitron", sans-serif;
+  // font-family: "Orbitron", sans-serif;
   backdrop-filter: blur(20px);
   transition: all var(--transition-short-medium);
   transition-property: transform;
