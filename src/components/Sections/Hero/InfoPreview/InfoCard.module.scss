@@ -25,12 +25,13 @@
   // background-color: var(--color-border-transparent);
   @include corner-cut;
 
-  @include flexbox(space-between);
+  @include flexbox(space-evenly);
   .description {
     font-size: 22px;
   }
   .stack {
     @include flexbox;
+
     flex-direction: column;
     gap: 6px;
     align-self: flex-start;
@@ -92,11 +93,7 @@
   max-width: 550px;
   max-height: 400px;
   transition: all var(--transition-short-medium) ease-in-out;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 70%,
-    transparent 100%
-  );
+  @include mask-image;
 }
 .img-mobile {
   top: -3rem;

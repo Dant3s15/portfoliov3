@@ -28,15 +28,18 @@ const Footer: FC<Props> = ({
 
   return (
     <footer
-      className={`${classes.footer} 
-      ${!ctaButtonClicked.clicked ? classes["footer--gray"] : ""}
-      ${
-        ctaButtonClicked.clicked && selected && whichSelected === 0
-          ? classes["footer--creator"]
-          : ""
-      }
-      ${selected && whichSelected === 1 ? classes["footer--about"] : ""}
-      `}
+      className={`${classes.footer} ${
+        !ctaButtonClicked.clicked ? classes["footer--gray"] : ""
+      }`}
+      // className={`${classes.footer}
+      // ${!ctaButtonClicked.clicked ? classes["footer--gray"] : ""}
+      // ${
+      //   ctaButtonClicked.clicked && selected && whichSelected === 0
+      //     ? classes["footer--creator"]
+      //     : ""
+      // }
+      // ${selected && whichSelected === 1 ? classes["footer--about"] : ""}
+      // `}
     >
       <div className={classes.wrapper}>
         <div onClick={testFetch} className={`${classes.col} ${classes.logo}`}>

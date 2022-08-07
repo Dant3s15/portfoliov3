@@ -5,6 +5,7 @@ import Typewriter from "typewriter-effect";
 // import { ShepherdTourContext } from "react-shepherd";
 import classes from "./Characters.module.scss";
 import ButtonPrimary from "../../../UI/ButtonPrimary";
+import { rootCertificates } from "tls";
 
 interface Props {
   charState: (data: any) => void;
@@ -29,6 +30,9 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
     if (ctx.setCtaButtonClicked !== undefined) {
       if (!ctx.ctaButtonClicked?.clicked) {
         ctx.setCtaButtonClicked({ clicked: true });
+        const root = document.documentElement;
+
+        root.style.setProperty("--body-grayscale", 0);
       } else ctx.setCtaButtonClicked({ clicked: false });
     }
     calcCharWidth();

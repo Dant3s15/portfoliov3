@@ -9,6 +9,12 @@
   height: 100vh;
   padding-top: 4rem;
   overflow: hidden;
+  // background: linear-gradient(
+  //   50deg,
+  //   var(--color-dark-3) 30%,
+  //   var(--color-blue-shade-1) 100%
+  // );
+
   &::before {
     content: "";
     position: absolute;
@@ -19,6 +25,7 @@
     height: 100%;
     background-image: url(../../../resources/img/hero8.webp);
     background-repeat: no-repeat;
+
     background-position: center bottom;
     background-size: cover;
     transform: scale(1.02);
@@ -26,6 +33,7 @@
     transition: all var(--transition-medium);
     transition-delay: var(--transition-short);
     transition-property: filter;
+    @include mask-image($to: bottom, $percent: 70%);
   }
 }
 

@@ -140,3 +140,11 @@
     border-radius: 3px;
   }
 }
+
+@mixin mask-image($to: bottom, $percent: 80%) {
+  -webkit-mask-image: linear-gradient(
+    to $to,
+    rgba(0, 0, 0, 1) $percent,
+    transparent 100%
+  );
+}
