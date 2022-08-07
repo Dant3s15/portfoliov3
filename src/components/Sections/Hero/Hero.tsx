@@ -7,7 +7,7 @@ import Characters from "./Characters/Characters";
 import SkillsList from "./Skills/Skills";
 import { useRef } from "react";
 import { skillInterface } from "../../../Types/types";
-import InfoPreview from "./InfoPreview/InfoPreview";
+import ProjectCarousel from "./ProjectsCarousel/ProjectCarousel";
 interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
@@ -72,7 +72,7 @@ const Hero: FC<Props> = ({ allSkillsData, isLoading }) => {
           charStateData={charState}
           allSkillsData={allSkillsData}
         ></SkillsList> */}
-        <InfoPreview></InfoPreview>
+        <ProjectCarousel></ProjectCarousel>
       </div>
     </section>
   );

@@ -54,6 +54,8 @@ body::before {
     var(--color-blue-shade-1) 100%
   );
   filter: var(--body-grayscale);
+  transition: all 3s;
+  transition-property: filter;
 }
 // section {
 //   border-top: 10px solid var(--color-dark);

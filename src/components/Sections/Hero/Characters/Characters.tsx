@@ -32,7 +32,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
         ctx.setCtaButtonClicked({ clicked: true });
         const root = document.documentElement;
 
-        root.style.setProperty("--body-grayscale", 0);
+        root.style.setProperty("--body-grayscale", "0");
       } else ctx.setCtaButtonClicked({ clicked: false });
     }
     calcCharWidth();

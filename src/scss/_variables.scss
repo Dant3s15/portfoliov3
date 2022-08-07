@@ -33,6 +33,7 @@ $big-desktop: 2400px;
   --color-primary-transparent-1: #fca2111f;
   --color-primary-transparent-2: #fca2114d;
   --color-primary-transparent-3: #fca21185;
+  --color-primary-transparent-4: #fca21140;
   --color-dark: #090d20;
   --color-dark-2: #14213d;
   --color-dark-3: #1a1725;
@@ -48,11 +49,13 @@ $big-desktop: 2400px;
 
   --color-border-transparent: rgba(255, 255, 255, 0.18);
   --color-border-transparent-2: rgba(128, 128, 128, 0.5);
+  --color-border-transparent-3: rgba(255, 255, 255, 0.072);
 
   //TRANSITIONS TIMES
   --transition-short: 0.3s;
   --transition-short-medium: 0.5s;
   --transition-medium: 0.9s;
+  --transition-medium-long: 1.5s;
   --transition-long: 3s;
   --transition-very-long: 8s;
 
