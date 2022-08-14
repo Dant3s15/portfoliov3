@@ -8,6 +8,7 @@
   left: 0;
   z-index: 99;
   width: 100%;
+
   transition: transform var(--transition-short-medium);
 }
 
@@ -45,6 +46,7 @@
   border: 1px solid var(--color-border-transparent);
   border-right: 7px solid var(--color-border-transparent);
   border-bottom: 5px solid var(--color-border-transparent);
+  border-radius: 0 0 20px 20px;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   transition: all var(--transition-short-medium) ease-in-out;
@@ -105,7 +107,7 @@
 }
 
 .hamburger-not-active {
-  @include corner-cut(32px, var(--color-border-transparent), 7px, 32px);
+  // @include corner-cut(32px, var(--color-border-transparent), 7px, 32px);
   z-index: 990;
   width: 100%;
   height: 100%;
@@ -123,7 +125,7 @@
   height: 99.5vh;
   overflow: hidden;
   transform: none !important;
-  @include corner-cut(32px, var(--color-border-transparent), 7px, 32px);
+  // @include corner-cut(32px, var(--color-border-transparent), 7px, 32px);
 
   &::after {
     left: calc(100% - 28px);

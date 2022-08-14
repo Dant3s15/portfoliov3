@@ -200,7 +200,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
           <ButtonPrimary
             isAbsolute={false}
             onClick={ctaButtonHandler}
-            text="Start"
+            text="Continue"
           ></ButtonPrimary>
           <div className={`${classes["cta__text"]}`}>
             <Typewriter

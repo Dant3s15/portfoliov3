@@ -28,6 +28,21 @@ const Hero: FC<Props> = ({ allSkillsData, isLoading }) => {
     } else heroVisibleCtx.setHeroIsVisible(false);
   }, [isVisible]);
 
+  //TODO
+  // useEffect(() => {
+  //   const root = document.documentElement;
+  //   const degInterval = setInterval(() => {
+  //     let deg = parseInt(
+  //       getComputedStyle(document.documentElement).getPropertyValue(
+  //         "--gradient-deg"
+  //       )
+  //     );
+  //     console.log(deg);
+  //     root.style.setProperty("--gradient-deg", `${deg + 1}deg`);
+  //   }, 500);
+  //   return () => clearInterval(degInterval);
+  // }, []);
+
   const [charState, setCharState] = useState({
     leftChar: 0,
     frontChar: 1,

@@ -24,7 +24,7 @@
   transition: all var(--transition-short), color 0.3s, box-shadow 0.1s;
   // transition-property: transform, opacity, outline, filter, border, box-shadow;
   animation: flicker2 5s infinite alternate;
-  @include corner-cut2(29px, var(--color-primary), 4px, 17px);
+  // @include corner-cut2(29px, var(--color-primary), 4px, 17px);
 
   &::after {
     content: none;
@@ -41,21 +41,21 @@
 
     animation: none;
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: calc(100% - 33px);
-      width: 3px;
-      height: 200%;
-      background-color: #fff;
-      transform: rotate(45deg);
-      transform-origin: left bottom;
-      opacity: 1;
-      @media (max-width: $big-tablet) {
-        left: calc(100% - 24px);
-      }
-    }
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   bottom: 0;
+    //   left: calc(100% - 33px);
+    //   width: 3px;
+    //   height: 200%;
+    //   background-color: #fff;
+    //   transform: rotate(45deg);
+    //   transform-origin: left bottom;
+    //   opacity: 1;
+    //   @media (max-width: $big-tablet) {
+    //     left: calc(100% - 24px);
+    //   }
+    // }
     &:active {
       text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
         0 0 150px var(--color-primary);
@@ -69,7 +69,7 @@
   @media (max-width: $big-tablet) {
     font-size: 20px;
 
-    @include corner-cut2(20px, var(--color-primary), 4px, 17px);
+    // @include corner-cut2(20px, var(--color-primary), 4px, 17px);
   }
 
   @media (max-width: $big-tablet) {

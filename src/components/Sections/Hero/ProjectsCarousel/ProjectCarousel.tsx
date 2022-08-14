@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CardGlass from "../../../UI/CardGlass";
 import ProjectCard from "./ProjectCard";
 import classes from "./ProjectCarousel.module.scss";
 import projectsData from "../../../../data/projectsData";
-///PROJECT DATA
-// import lightappDesktop from "../../../../resources/img/projects/lightapp/lightapp_desktop.jpg";
-// import lightappMobile from "../../../../resources/img/projects/lightapp/lightapp_mobile.jpg";
+import SelectedContext from "../../../../context/selected-context";
+import CTAtext from "../CTAtext";
 
 const ProjectCarousel = () => {
   const [selected, setSelected] = useState(0);
   const [direction, setdirection] = useState<-1 | 1>(1);
   const [isHovering, setIsHovering] = useState(false);
+  const selectedCtx = useContext(SelectedContext);
 
   useEffect(() => {
     let intervalId: string | number | NodeJS.Timeout | undefined;
@@ -43,7 +43,6 @@ const ProjectCarousel = () => {
   };
   const hoverHandler = () => {
     setIsHovering(true);
-    console.log("hover");
   };
 
   const carouselHandler = (direction: -1 | 1) => {
@@ -67,9 +66,19 @@ const ProjectCarousel = () => {
     <div
       onMouseOver={hoverHandler}
       onMouseLeave={() => setIsHovering(false)}
-      className={classes["project-carousel"]}
+      className={`${classes["project-carousel"]}`}
     >
-      <CardGlass className={classes["project-preview"]} ariaLabel="Projects">
+      <CTAtext
+        className={`${
+          selectedCtx.ctaButtonClicked?.clicked ? classes.hidden : ""
+        }`}
+      ></CTAtext>
+      <div
+        className={`${classes["project-preview"]} ${
+          selectedCtx.ctaButtonClicked?.clicked ? "" : classes["hidden-left"]
+        }`}
+        // ariaLabel="Projects"
+      >
         <button
           onClick={() => {
             carouselHandler(-1);
@@ -86,8 +95,8 @@ const ProjectCarousel = () => {
         >
           &#10097;
         </button>
-        <ul>{renderProjects()}</ul>
-      </CardGlass>
+        <ul className={classes.projects}>{renderProjects()}</ul>
+      </div>
     </div>
   );
 };
