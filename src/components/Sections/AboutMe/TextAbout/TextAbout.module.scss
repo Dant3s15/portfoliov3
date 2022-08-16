@@ -1,0 +1,11 @@
+@import "../../../../scss/style.scss";
+.text-about {
+  flex-direction: column;
+  color: var(--color-gray);
+  font-size: 44px;
+  font-family: "Orbitron", sans-serif;
+  // transform: rotateY(10deg);
+  transform-origin: 0%;
+  @include textglowmedium;
+  @include flexbox;
+}

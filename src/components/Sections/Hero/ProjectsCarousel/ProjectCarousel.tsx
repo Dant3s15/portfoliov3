@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCard";
 import classes from "./ProjectCarousel.module.scss";
 import projectsData from "../../../../data/projectsData";
 import SelectedContext from "../../../../context/selected-context";
-import CTAtext from "../CTAtext";
+// import CTAtext from "../CTAtext";
 
 const ProjectCarousel = () => {
   const [selected, setSelected] = useState(0);
@@ -48,6 +48,7 @@ const ProjectCarousel = () => {
   const carouselHandler = (direction: -1 | 1) => {
     const length = projectsData.length;
     setdirection(direction);
+
     if (direction === 1) {
       setSelected((prev) => {
         if (prev + 1 >= length) return 0;
@@ -68,15 +69,16 @@ const ProjectCarousel = () => {
       onMouseLeave={() => setIsHovering(false)}
       className={`${classes["project-carousel"]}`}
     >
-      <CTAtext
+      {/* <CTAtext
         className={`${
           selectedCtx.ctaButtonClicked?.clicked ? classes.hidden : ""
         }`}
-      ></CTAtext>
+      ></CTAtext> */}
       <div
-        className={`${classes["project-preview"]} ${
-          selectedCtx.ctaButtonClicked?.clicked ? "" : classes["hidden-left"]
-        }`}
+        className={`${classes["project-preview"]}`}
+        // ${
+        //   selectedCtx.ctaButtonClicked?.clicked ? "" : classes["hidden-left"]
+        // }
         // ariaLabel="Projects"
       >
         <button

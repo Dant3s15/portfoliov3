@@ -196,7 +196,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
             : ""
         }`}
       >
-        <div className={classes.cta}>
+        {/* <div className={classes.cta}>
           <ButtonPrimary
             isAbsolute={false}
             onClick={ctaButtonHandler}
@@ -222,7 +222,7 @@ const Characters: FC<Props> = ({ charState, heroRef }) => {
             />
             <span className={classes["your-dev"]}>your Dev</span>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div

@@ -63,12 +63,12 @@ const Footer: FC<Props> = ({
                 LinkedIn
               </a>
             </div>
-            <div className={classes.link}>
+            {/* <div className={classes.link}>
               <img src={twitter} alt="twitter" />
               <a target="_blank" href="https://twitter.com/DevmianS">
                 Twitter
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className={`${classes.col} ${classes.contact}`}>

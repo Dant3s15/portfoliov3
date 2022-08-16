@@ -8,12 +8,14 @@ import SkillsList from "./Skills/Skills";
 import { useRef } from "react";
 import { skillInterface } from "../../../Types/types";
 import ProjectCarousel from "./ProjectsCarousel/ProjectCarousel";
+import Cta from "./Cta/Cta";
+
 interface Props {
-  allSkillsData: skillInterface[];
-  isLoading: boolean;
+  // allSkillsData: skillInterface[];
+  // isLoading: boolean;
 }
 
-const Hero: FC<Props> = ({ allSkillsData, isLoading }) => {
+const Hero: FC<Props> = () => {
   const ctx = useContext(SelectedContext);
   const heroVisibleCtx = useContext(HeroVisibleContext);
   const heroRef = useRef(null);
@@ -72,23 +74,25 @@ const Hero: FC<Props> = ({ allSkillsData, isLoading }) => {
       id="hero"
       ref={heroRef}
       onClick={heroOnClickHandler}
-      className={`${classes["section-hero"]} ${
-        !ctx.ctaButtonClicked?.clicked ? classes.gray : ""
-      }`}
+      className={`${classes["section-hero"]} 
+      ${!ctx.ctaButtonClicked?.clicked ? classes.gray : ""}
+      `}
     >
-      <div className={classes["character-selection"]}>
-        <Characters
+      {/* <div className={classes["character-selection"]}> */}
+      <Cta></Cta>
+      {/* <Characters
           heroRef={heroRef}
           charState={charStateDataHandler}
-        ></Characters>
-        {/* <SkillsList
+        ></Characters> */}
+      {/* <SkillsList
           isLoading={isLoading}
           className={classes["character-skills"]}
           charStateData={charState}
           allSkillsData={allSkillsData}
         ></SkillsList> */}
-        <ProjectCarousel></ProjectCarousel>
-      </div>
+
+      {/* <ProjectCarousel></ProjectCarousel> */}
+      {/* </div> */}
     </section>
   );
 };

@@ -1,0 +1,18 @@
+@import "../../../../scss/style.scss";
+.skills {
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 5rem;
+  transform: rotateY(-10deg);
+  transform-origin: 90%;
+  // transform-style: preserve-3d;
+  transition: all var(--transition-short-medium) ease-in-out;
+  @include flexbox;
+  @media (max-width: $desktop) {
+    padding: 1rem;
+  }
+  &:hover {
+    transform: rotateY(-5deg);
+  }
+  // @include mask-image($percent: 50%);
+}

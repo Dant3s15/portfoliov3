@@ -85,11 +85,7 @@ const Header: FC = () => {
   };
 
   return (
-    <header
-      className={`${classes.header} ${
-        ctx.ctaButtonClicked?.clicked ? "" : classes["header-hidden"]
-      }`}
-    >
+    <header className={`${classes.header} `}>
       <div
         className={`${classes["header-wrapper"]} card-glass ${
           hamburgerState

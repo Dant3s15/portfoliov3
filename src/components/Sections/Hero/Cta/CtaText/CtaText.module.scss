@@ -1,0 +1,114 @@
+@import "../../../../../scss/style.scss";
+
+.textWrapper {
+  @include flexbox;
+  width: 100%;
+  height: 50%;
+  // padding: 3rem;
+  // transform: rotateY(-10deg);
+  transition: all var(--transition-short-medium) ease-in-out;
+  // @media (min-width: $big-tablet) {
+  //   &:hover {
+  //     transform: rotateY(-5deg);
+  //   }
+  // }
+  // @media (max-width: $big-tablet) {
+  //   height: 50%;
+  // }
+  @media (max-width: $small-tablet) {
+    // width: 90%;
+  }
+  @media (max-width: $mobile) {
+    padding: 0.375rem;
+  }
+  .CtaText {
+    @include flexbox(center, flex-end);
+    flex-direction: column;
+    width: 100%;
+    height: 60%;
+    // position: absolute;
+    // color: var(--color-gray);
+    font-weight: 700;
+
+    font-family: "Orbitron", sans-serif;
+    text-align: left;
+    text-transform: uppercase;
+    // border-radius: 20px;
+    // transform-origin: 30%;
+    // transform-style: preserve-3d;
+    // backdrop-filter: blur(10px);
+
+    // & span span:nth-child(1) {
+    //   font-size: 80px;
+    // }
+    .title {
+      font-size: 86px;
+      @media (max-width: $big-laptop) {
+        font-size: 74px;
+      }
+      @media (max-width: $laptop) {
+        font-size: 62px;
+      }
+    }
+
+    .sub-title {
+      gap: 1rem;
+      justify-self: flex-end;
+      // width: 60%;
+      height: auto;
+      font-size: 44px;
+      @include flexbox(flex-end);
+      @media (max-width: $desktop) {
+        font-size: 36px;
+      }
+      @media (max-width: $laptop) {
+        font-size: 30px;
+      }
+    }
+    // .first {
+    //   align-self: flex-end;
+    //   justify-self: end;
+    // }
+    span {
+      height: 100%;
+    }
+    & :first-child {
+      width: 100%;
+      height: 100%;
+      @media (max-width: $big-tablet) {
+        height: auto;
+      }
+    }
+    @include textglowmedium;
+    // @media (min-width: $big-tablet) {
+    //   &:hover {
+    //     transform: rotateY(-5deg);
+    //   }
+    // }
+    @media (max-width: $big-laptop) {
+      font-size: 48px;
+    }
+    @media (max-width: $laptop) {
+      font-size: 42px;
+    }
+    // @media (max-width: $big-tablet) {
+    //   font-size: 40px;
+    // }
+    // @media (max-width: $small-tablet) {
+    //   font-size: 44px;
+    // }
+    @media (max-width: $mobile) {
+      height: 70%;
+      font-size: 36px;
+    }
+    @media (max-width: $small-mobile) {
+      font-size: 30px;
+    }
+  }
+}
+
+.typewriter {
+  width: 100%;
+  height: 100%;
+  // background-color: red;
+}

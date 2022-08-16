@@ -5,8 +5,8 @@ import { skillInterface } from "./Types/types";
 
 import Header from "./components/Sections/Header/Header";
 import Hero from "./components/Sections/Hero/Hero";
-const AboutMe = React.lazy(
-  () => import("./components/Sections/AboutMe/AboutMe")
+const ContactMe = React.lazy(
+  () => import("./components/Sections/ContactMe/ContactMe")
 );
 const CharacterCreator = React.lazy(
   () => import("./components/Sections/CharacterCreator/CharacterCreator")
@@ -17,7 +17,9 @@ import SelectedContext from "./context/selected-context";
 import { HeroVisibleProvider } from "./context/hero-visible-context";
 
 import LoadingSpinner from "./components/UI/LoadingSpinner";
-import tourSteps from "./components/Utils/ShepherdTour/tourSteps";
+// import tourSteps from "./components/Utils/ShepherdTour/tourSteps";
+import AboutMe from "./components/Sections/AboutMe/AboutMe";
+import Main from "./components/Sections/Main/Main";
 
 const tourOptions = {
   defaultStepOptions: {
@@ -69,31 +71,34 @@ function App() {
       >
         <HeroVisibleProvider>
           <Header />
-          <main>
-            <Hero allSkillsData={allSkillsData} isLoading={isLoading}></Hero>
-            <Suspense fallback={<LoadingSpinner />}>
-              <Routes location={location} key={location.pathname}>
-                <Route
+          <Main>
+            <Hero></Hero>
+            <AboutMe></AboutMe>
+          </Main>
+          {/* <main> */}
+          {/* <Suspense fallback={<LoadingSpinner />}> */}
+          {/* <Routes location={location} key={location.pathname}> */}
+          {/* <Route
                   path="/creator"
                   element={
                     <CharacterCreator
-                      allSkillsData={allSkillsData}
-                      isLoading={isLoading}
+                    allSkillsData={allSkillsData}
+                    isLoading={isLoading}
                     />
                   }
-                ></Route>
-                <Route
+                ></Route> */}
+          {/* <Route
                   path="about-me"
                   element={
                     <AboutMe
                       allSkillsData={allSkillsData}
                       isLoading={isLoading}
-                    />
-                  }
-                ></Route>
-              </Routes>
-            </Suspense>
-          </main>
+                      />
+                    }
+                  ></Route> */}
+          {/* </Routes> */}
+          {/* </Suspense> */}
+          {/* </main> */}
         </HeroVisibleProvider>
         <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
       </SelectedContext.Provider>

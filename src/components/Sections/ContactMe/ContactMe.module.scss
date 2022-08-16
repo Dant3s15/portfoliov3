@@ -1,0 +1,177 @@
+@import "../../../scss/style.scss";
+
+.about-me {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  min-height: fill-available;
+  padding: 0 8rem;
+  overflow: hidden;
+  // background: linear-gradient(
+  //   190deg,
+  //   var(--color-dark-2) 30%,
+  //   var(--color-dark-3) 100%
+  // );
+  border-top: 10px solid var(--color-dark);
+
+  & .text-wrapper {
+    transition: all var(--transition-short);
+    .glass-card--custom {
+      position: relative;
+      height: 80%;
+      // padding: 2.25rem;
+      transform: rotateY(-5deg);
+      @media (max-width: $big-tablet) {
+        transform: none;
+      }
+      @media (max-width: $mobile) {
+        padding: 16px;
+      }
+    }
+  }
+  & .text-wrapper:hover {
+    perspective: 600px;
+    transition: all var(--transition-short);
+  }
+  & .text-container * div {
+    animation: slidedown 0.7s;
+  }
+  & .char__container {
+    animation: slidedown 0.7s forwards, jump 3s 0.7s;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    // background: url("../../../resources/img/hero5.webp");
+    // background-color: gray;
+    background-repeat: no-repeat;
+    background-position: center 65%;
+    background-size: 100%;
+    background-size: cover;
+    filter: saturate(0.5) blur(3px);
+    transition: all 3s 10s;
+  }
+
+  .text-container {
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 2.25rem;
+    @include textglow;
+    @include flexbox(space-around, flex-start);
+    @media (max-width: $small-tablet) {
+      padding: 0;
+    }
+  }
+  .text-wrapper {
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    perspective: 400px;
+    @include flexbox;
+
+    @media (max-width: $big-tablet) {
+      align-self: flex-end;
+      justify-self: center;
+      height: 80%;
+    }
+  }
+  .title {
+    display: inline-flex;
+    color: var(--color-primary);
+    color: white;
+    font-size: 54px;
+    text-transform: uppercase;
+    &__cursor {
+      font-size: 54px;
+      animation: cursor 1.1s infinite;
+      @media (max-width: $big-laptop) {
+        font-size: 2.25rem;
+      }
+      @media (max-width: $big-tablet) {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: $big-laptop) {
+      font-size: 2.25rem;
+    }
+    @media (max-width: $big-tablet) {
+      font-size: 2rem;
+    }
+  }
+
+  .text {
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    text-align: left;
+    // @include flexbox;
+    span {
+      display: block;
+      width: 100%;
+      line-height: 1.5;
+    }
+    span a {
+      text-decoration: underline;
+    }
+    span :first-child {
+      padding-top: 10px;
+    }
+    span span:not(:last-child) {
+      padding-bottom: 1.2rem;
+    }
+    @media (max-width: $big-tablet) {
+      font-size: 1.25rem;
+    }
+    @media (max-width: $mobile) {
+      font-size: 14px;
+      span span:not(:last-child) {
+        padding-bottom: 0rem;
+      }
+    }
+  }
+
+  &-char {
+    @include flexbox;
+    width: 100%;
+    height: 100%;
+
+    .char__container {
+      width: 15.625rem;
+      height: 80%;
+      padding-top: 2.25rem;
+      @include flexbox(center, flex-end);
+      img {
+        &:hover {
+          animation: jump 3s;
+        }
+      }
+      @media (max-width: $big-tablet) {
+        align-items: flex-start;
+      }
+      @media (max-width: $mobile) {
+        width: 11.3rem;
+      }
+    }
+    @media (max-width: $big-tablet) {
+      position: absolute;
+      padding-bottom: 3.375rem;
+    }
+  }
+  @media (max-width: $laptop) {
+    padding: 0 4rem;
+  }
+
+  @media (max-width: $big-tablet) {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+  }
+  @media (max-width: $small-tablet) {
+    padding: 0 1rem;
+  }
+}
