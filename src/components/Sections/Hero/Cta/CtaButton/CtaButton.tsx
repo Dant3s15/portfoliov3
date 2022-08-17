@@ -12,7 +12,7 @@ const CtaButton = () => {
         }}
         text="Continue"
       ></ButtonPrimary>
-      <div className={`${classes["cta__text"]}`}>
+      {/* <div className={`${classes["cta__text"]}`}>
         <Typewriter
           options={{
             loop: true,
@@ -31,7 +31,7 @@ const CtaButton = () => {
           }}
         />
         <span className={classes["your-dev"]}>your Dev</span>
-      </div>
+      </div> */}
     </div>
   );
 };

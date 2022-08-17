@@ -1,11 +1,12 @@
 @import "../../../../scss/style.scss";
 .cta-wrapper {
-  @include flexbox(space-evenly);
+  @include flexbox;
   content: "";
   // position: absolute;
   top: 0;
   left: 0;
   z-index: 9999;
+
   width: 100%;
   height: 100%;
   perspective: 400px;
@@ -13,11 +14,13 @@
   transition-property: transform, opacity;
   @media (max-width: $big-tablet) {
     flex-direction: column-reverse;
+    align-items: flex-start;
   }
   .cta {
     @include flexbox;
     flex-direction: column;
     gap: 1.5rem;
+
     width: 50%;
     height: 100%;
     transform: scale(1);

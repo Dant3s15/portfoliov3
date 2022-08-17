@@ -67,7 +67,7 @@ const ProjectCard: FC<Props> = ({
       <div className={classes.overview}>
         <span className={classes.description}>{projectData.description}</span>
         <div className={classes.stack}>
-          <p>Created with:</p>
+          <p className={classes.created}>Created with:</p>
           <ul className={classes["stack-items"]}>{renderStack()}</ul>
         </div>
       </div>

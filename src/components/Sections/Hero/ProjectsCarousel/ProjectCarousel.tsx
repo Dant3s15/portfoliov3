@@ -46,6 +46,7 @@ const ProjectCarousel = () => {
   };
 
   const carouselHandler = (direction: -1 | 1) => {
+    //blur
     const length = projectsData.length;
     setdirection(direction);
 
@@ -82,7 +83,8 @@ const ProjectCarousel = () => {
         // ariaLabel="Projects"
       >
         <button
-          onClick={() => {
+          onClick={(e) => {
+            e.currentTarget.blur();
             carouselHandler(-1);
           }}
           className={`${classes["carousel-btn"]} ${classes.prev}`}
@@ -90,7 +92,8 @@ const ProjectCarousel = () => {
           &#10096;
         </button>
         <button
-          onClick={() => {
+          onClick={(e) => {
+            e.currentTarget.blur();
             carouselHandler(1);
           }}
           className={`${classes["carousel-btn"]} ${classes.next}`}
