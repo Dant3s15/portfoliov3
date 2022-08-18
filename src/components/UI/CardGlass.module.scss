@@ -21,10 +21,10 @@
   @supports not (backdrop-filter: blur(20px)) {
     background-color: rgba(67, 74, 73, 0.909);
   }
-  @media (max-width: $big-tablet) {
-    background-color: rgba(50, 55, 54, 0.909);
-    // backdrop-filter: none;
-  }
+  // @media (max-width: $big-tablet) {
+  //   background-color: rgba(50, 55, 54, 0.909);
+  //   // backdrop-filter: none;
+  // }
 }
 .corner {
   @include corner-cut(40px, var(--color-border-transparent), 10px, 38px);

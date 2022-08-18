@@ -2,17 +2,26 @@
 .skills {
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 5rem;
+
+  // padding: 5rem;
   transform: rotateY(-10deg);
-  transform-origin: 90%;
+  transform-origin: 100%;
   // transform-style: preserve-3d;
   transition: all var(--transition-short-medium) ease-in-out;
   @include flexbox;
-  @media (max-width: $desktop) {
-    padding: 1rem;
-  }
+  // @media (max-width: $desktop) {
+  //   padding: 1rem;
+  // }
   &:hover {
     transform: rotateY(-5deg);
+  }
+  @media (max-width: $big-tablet) {
+    padding-right: 5rem;
+    transform: rotateY(-5deg);
+  }
+  @media (max-width: $mobile) {
+    padding: 0;
+    font-size: 30px;
   }
   // @include mask-image($percent: 50%);
 }

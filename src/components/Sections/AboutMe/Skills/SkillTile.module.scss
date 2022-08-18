@@ -65,4 +65,11 @@
       // border: 1px solid red;
     }
   }
+  @media (max-width: $mobile) {
+    max-width: 120px;
+    height: 150px;
+    .title {
+      font-size: 14px;
+    }
+  }
 }

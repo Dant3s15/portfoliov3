@@ -80,6 +80,7 @@ const Hero: FC<Props> = () => {
     >
       {/* <div className={classes["character-selection"]}> */}
       <Cta></Cta>
+
       {/* <Characters
           heroRef={heroRef}
           charState={charStateDataHandler}

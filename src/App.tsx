@@ -20,6 +20,7 @@ import LoadingSpinner from "./components/UI/LoadingSpinner";
 // import tourSteps from "./components/Utils/ShepherdTour/tourSteps";
 import AboutMe from "./components/Sections/AboutMe/AboutMe";
 import Main from "./components/Sections/Main/Main";
+import Hexgrid from "./components/UI/Hexgrid/Hexgrid";
 
 const tourOptions = {
   defaultStepOptions: {
@@ -73,6 +74,7 @@ function App() {
           <Header />
           <Main>
             <Hero></Hero>
+            {/* <Hexgrid></Hexgrid> */}
             <AboutMe></AboutMe>
           </Main>
           {/* <main> */}
