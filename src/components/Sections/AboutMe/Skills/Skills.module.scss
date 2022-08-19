@@ -2,12 +2,17 @@
 .skills {
   flex-wrap: wrap;
   gap: 1rem;
-
   // padding: 5rem;
   transform: rotateY(-10deg);
   transform-origin: 100%;
   // transform-style: preserve-3d;
   transition: all var(--transition-short-medium) ease-in-out;
+  // @for $i from 1 through 11 {
+  //   div:nth-child(3n + #{$i}) {
+  //     animation: flip 1.3s forwards ease-in-out;
+  //     animation-delay: calc(#{$i}00ms + #{$i}00ms);
+  //   }
+  // }
   @include flexbox;
   // @media (max-width: $desktop) {
   //   padding: 1rem;

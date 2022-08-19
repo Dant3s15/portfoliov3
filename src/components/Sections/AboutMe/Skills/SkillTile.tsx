@@ -29,7 +29,7 @@ const SkillTile = ({ skillName }: { skillName: string }) => {
 
   // const iconSrc = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skillNameLower}/${skillNameLower}-original.svg`;
   return (
-    <CardGlass className={classes["skill-tile"]}>
+    <CardGlass className={`${classes["skill-tile"]}`}>
       {/* <div className={classes.time}>
     <img
       className={classes["time-icon"]}

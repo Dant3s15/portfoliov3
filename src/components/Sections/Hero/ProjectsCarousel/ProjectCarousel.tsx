@@ -4,6 +4,7 @@ import ProjectCard from "./ProjectCard";
 import classes from "./ProjectCarousel.module.scss";
 import projectsData from "../../../../data/projectsData";
 import SelectedContext from "../../../../context/selected-context";
+import { useInView } from "react-intersection-observer";
 // import CTAtext from "../CTAtext";
 
 const ProjectCarousel = () => {
@@ -11,7 +12,9 @@ const ProjectCarousel = () => {
   const [direction, setdirection] = useState<-1 | 1>(1);
   const [isHovering, setIsHovering] = useState(false);
   const selectedCtx = useContext(SelectedContext);
-
+  const { ref, inView, entry } = useInView({
+    threshold: 0.6,
+  });
   useEffect(() => {
     let intervalId: string | number | NodeJS.Timeout | undefined;
     //TODO stop interval when hovering
@@ -22,6 +25,7 @@ const ProjectCarousel = () => {
     }
     return () => clearInterval(intervalId);
   }, [selected, isHovering]);
+
   const renderProjects = () => {
     return projectsData.map((proj) => (
       <ProjectCard
@@ -66,9 +70,12 @@ const ProjectCarousel = () => {
 
   return (
     <div
+      ref={ref}
       onMouseOver={hoverHandler}
       onMouseLeave={() => setIsHovering(false)}
-      className={`${classes["project-carousel"]}`}
+      className={`${classes["project-carousel"]} ${
+        inView ? "fade-in" : "fade-out"
+      }`}
     >
       {/* <CTAtext
         className={`${

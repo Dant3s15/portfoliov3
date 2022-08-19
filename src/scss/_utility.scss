@@ -267,3 +267,19 @@
   //     border: 1px solid red;
   //   }
 }
+
+.fade-in {
+  animation: fadein var(--transition-medium);
+}
+.fade-out {
+  animation: fadeout var(--transition-medium);
+}
+
+.skill-flip {
+  @for $i from 1 through 11 {
+    div:nth-child(3n + #{$i}) {
+      animation: flip 1.2s ease-in-out;
+      animation-delay: calc(#{$i}00ms + #{$i}00ms);
+    }
+  }
+}

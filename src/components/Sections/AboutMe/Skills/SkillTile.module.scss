@@ -6,8 +6,9 @@
   flex-direction: column;
   max-width: 150px;
   height: 200px;
-  filter: drop-shadow(0px 5px 2.5px rgba(0, 0, 0, 0.2));
-  transition: var(--transition-short);
+  // animation: fadein var(--transition-medium) forwards;
+  transition: all var(--transition-short);
+  // filter: drop-shadow(0px 5px 2.5px rgba(0, 0, 0, 0.2));
 
   // text-transform: uppercase;
   &:hover {

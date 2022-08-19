@@ -5,9 +5,8 @@ const TextAbout = () => {
     <div className={classes["text-about"]}>
       <header className={classes.title}>About me</header>
       <span className={classes.text}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum nulla
-        quis placeat dignissimos? Commodi sunt eligendi quaerat cupiditate
-        dolorem dolorum.
+        Hey, my name is Damian, I'm knowledge-hungry, react, frontend web
+        developer from Poland.
       </span>
     </div>
   );
