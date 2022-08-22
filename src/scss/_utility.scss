@@ -254,6 +254,7 @@
 //   z-index: 9999999;
 // }
 .highlight {
+  color: hsl(39, 100%, 50%);
   // z-index: -99999;
   border: 2px solid white;
   transform: inherit;
@@ -272,14 +273,30 @@
   animation: fadein var(--transition-medium);
 }
 .fade-out {
-  animation: fadeout var(--transition-medium);
+  animation: fadeout var(--transition-medium) forwards;
 }
 
 .skill-flip {
   @for $i from 1 through 11 {
     div:nth-child(3n + #{$i}) {
-      animation: flip 1.2s ease-in-out;
+      // background-color: var(--color-gray-tint-dark-transparent-1);
+      border-right: 1px solid var(--color-border-transparent);
+      border-bottom: 5px solid var(--color-border-transparent);
+      border-left: 7px solid var(--color-border-transparent);
+
+      transform: perspective(1000px)
+        scale3d(1, 1, 1)
+        translate3d(0, 0, 0)
+        rotate3d(0, 1, 0, -180deg);
+      transition: all var(--transition-short);
+      animation: flip 1.2s ease-in-out forwards;
       animation-delay: calc(#{$i}00ms + #{$i}00ms);
+      p,
+      img {
+        filter: blur(2px);
+        animation: blur 1.2s ease-in-out forwards;
+        animation-delay: calc(#{$i}00ms + #{$i}00ms);
+      }
     }
   }
 }

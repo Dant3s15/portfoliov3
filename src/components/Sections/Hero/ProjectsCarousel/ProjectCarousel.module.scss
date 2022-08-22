@@ -3,10 +3,10 @@
 .project-carousel {
   position: relative;
   width: 50%;
-  height: 70%;
-
+  height: 80%;
   perspective: 400px;
   transition: all var(--transition-medium);
+
   // animation: fadeinrev var(--transition-medium) forwards;
   @media (max-width: $big-laptop) {
     height: 70%;
@@ -39,7 +39,6 @@
 .project-preview {
   // position: relative;
   // flex-direction: row;
-
   width: 100%;
   // max-width: 700px;
   height: 100%;

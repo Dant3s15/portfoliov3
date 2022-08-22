@@ -10,7 +10,7 @@ const CtaButton = () => {
         onClick={() => {
           console.log("todo");
         }}
-        text="Continue"
+        text="Learn More"
       ></ButtonPrimary>
       {/* <div className={`${classes["cta__text"]}`}>
         <Typewriter

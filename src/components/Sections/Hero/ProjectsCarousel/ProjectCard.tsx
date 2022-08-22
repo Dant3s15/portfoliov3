@@ -1,5 +1,6 @@
 import { FC, Fragment } from "react";
 import classes from "./ProjectCard.module.scss";
+import smarthphone from "../../../../resources/img/smartphone.png";
 
 interface Props {
   dataActive?: boolean | null;
@@ -52,16 +53,36 @@ const ProjectCard: FC<Props> = ({
       <div className={classes["images-title"]}>
         <header className={classes.title}>{projectData.title}</header>
         <div className={classes.images}>
-          <img
-            className={classes["img-desktop"]}
-            src={projectData.img.desktop}
-            alt="lightapp desktop"
-          />
-          <img
-            className={classes["img-mobile"]}
-            src={projectData.img.mobile}
-            alt="lightapp mobile"
-          />
+          <div className={classes["img-desktop-container"]}>
+            <img
+              className={classes["img-desktop"]}
+              src={projectData.img.desktop}
+              alt="lightapp desktop"
+            />
+          </div>
+          <div className={classes["img-mobile-container"]}>
+            <img
+              className={classes["img-mobile"]}
+              src={projectData.img.mobile}
+              alt="lightapp mobile"
+            />
+            {/* <iframe
+              // className={classes["img-mobile"]}
+              src="https://lightapp.netlify.app/"
+              // style="border:0px #ffffff none;"
+              name="myiFrame"
+              scrolling="no"
+              frameBorder="0"
+              width="100%"
+              height="200%"
+              allowFullScreen
+            ></iframe> */}
+          </div>
+          {/* <img
+            className={`${classes["img-smartphone"]}`}
+            src={smarthphone}
+            alt=""
+          /> */}
         </div>
       </div>
       <div className={classes.overview}>

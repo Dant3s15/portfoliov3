@@ -14,7 +14,7 @@
   transition-property: transform, opacity;
   @media (max-width: $big-tablet) {
     flex-direction: column-reverse;
-    align-items: flex-start;
+    // align-items: flex-start;
   }
   .cta {
     @include flexbox;
