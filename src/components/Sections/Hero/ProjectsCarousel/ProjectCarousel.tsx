@@ -6,6 +6,7 @@ import projectsData from "../../../../data/projectsData";
 import SelectedContext from "../../../../context/selected-context";
 import { useInView } from "react-intersection-observer";
 // import CTAtext from "../CTAtext";
+import Tilt from "react-parallax-tilt";
 
 const ProjectCarousel = () => {
   const [selected, setSelected] = useState(0);
@@ -21,13 +22,13 @@ const ProjectCarousel = () => {
     if (!isHovering) {
       intervalId = setInterval(() => {
         carouselHandler(1);
-      }, 5000);
+      }, 50000);
     }
     return () => clearInterval(intervalId);
   }, [selected, isHovering]);
 
   const renderProjects = () => {
-    return projectsData.map((proj) => (
+    return projectsData.map((proj, id) => (
       <ProjectCard
         direction={direction}
         projLength={projectsData.length}
@@ -37,8 +38,12 @@ const ProjectCarousel = () => {
             desktop: proj.img.desktop,
             mobile: proj.img.mobile,
           },
+          github: proj.github,
+          live: proj.live,
           description: proj.description,
           stack: proj.stack,
+          curId: selected,
+          id: id,
         }}
         key={proj.id}
         dataActive={proj.id === selected}
@@ -69,6 +74,19 @@ const ProjectCarousel = () => {
   };
 
   return (
+    // <Tilt
+    //   tiltAngleYInitial={10}
+    //   transitionSpeed={500}
+    //   scale={1.05}
+    //   glareEnable={true}
+    //   glareColor="#fff"
+    //   glarePosition="all"
+    //   glareMaxOpacity={1}
+    //   perspective={700}
+    //   tiltMaxAngleX={2}
+    //   tiltMaxAngleY={3}
+    //   className={classes.tilt}
+    // >
     <div
       ref={ref}
       onMouseOver={hoverHandler}
@@ -110,6 +128,7 @@ const ProjectCarousel = () => {
         <ul className={classes.projects}>{renderProjects()}</ul>
       </div>
     </div>
+    // </Tilt>
   );
 };
 

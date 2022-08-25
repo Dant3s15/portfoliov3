@@ -14,13 +14,13 @@ const CtaButton = () => {
       ></ButtonPrimary>
       {/* <div className={`${classes["cta__text"]}`}>
         <Typewriter
-          options={{
-            loop: true,
-            delay: 100,
-            cursor: "",
-          }}
-          onInit={(typewriter) => {
-            typewriter
+        options={{
+          loop: true,
+          delay: 100,
+          cursor: "",
+        }}
+        onInit={(typewriter) => {
+          typewriter
               .typeString("Create")
               .pauseFor(4000)
               .deleteAll()
@@ -28,7 +28,7 @@ const CtaButton = () => {
               .pauseFor(4000)
               .deleteAll()
               .start();
-          }}
+            }}
         />
         <span className={classes["your-dev"]}>your Dev</span>
       </div> */}

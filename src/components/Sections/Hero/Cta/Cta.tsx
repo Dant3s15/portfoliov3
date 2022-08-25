@@ -16,12 +16,14 @@ const Cta = () => {
         ></CTAtext>
         <CtaButton></CtaButton>
       </div>
+
       <ProjectCarousel></ProjectCarousel>
+
       {/* <CTAtext
         className={""} // className={`${
-        //   selectedCtx.ctaButtonClicked?.clicked ? classes.hidden : ""
-        // }`}
-      ></CTAtext> */}
+          //   selectedCtx.ctaButtonClicked?.clicked ? classes.hidden : ""
+          // }`}
+        ></CTAtext> */}
     </div>
   );
 };

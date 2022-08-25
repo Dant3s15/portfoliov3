@@ -21,6 +21,7 @@
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
     "react-intersection-observer": "^9.4.0",
+    "react-parallax-tilt": "^1.7.57",
     "react-router-dom": "^6.3.0",
     "react-shepherd": "^4.1.0",
     "typewriter-effect": "^2.18.2",

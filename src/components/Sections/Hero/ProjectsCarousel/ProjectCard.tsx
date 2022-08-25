@@ -1,6 +1,9 @@
 import { FC, Fragment } from "react";
 import classes from "./ProjectCard.module.scss";
+import live from "../../../../resources/img/live.png";
 import smarthphone from "../../../../resources/img/smartphone.png";
+import Tilt from "react-parallax-tilt";
+import CardGlass from "../../../UI/CardGlass";
 
 interface Props {
   dataActive?: boolean | null;
@@ -10,8 +13,12 @@ interface Props {
       desktop: string;
       mobile: string;
     };
+    github: string;
+    live: string;
     description: string;
     stack: { img: string; name: string }[];
+    curId: number;
+    id: number;
   };
   projLength: number;
   direction: -1 | 1;
@@ -32,12 +39,20 @@ const ProjectCard: FC<Props> = ({
     ));
   };
   const activeClassHandler = () => {
-    //TODO
     if (!dataActive) {
-      if (direction === -1) {
+      if (
+        projectData.curId < projectData.id ||
+        (projectData.id === 0 && projectData.curId === projLength - 1)
+      ) {
+        if (projectData.id === projLength - 1 && projectData.curId === 0) {
+          return classes["not-active-l"];
+        }
         return classes["not-active-r"];
       }
-      if (direction === 1) {
+      if (
+        projectData.curId > projectData.id ||
+        (projectData.id === projLength - 1 && projectData.curId === 0)
+      ) {
         return classes["not-active-l"];
       }
     } else {
@@ -47,26 +62,66 @@ const ProjectCard: FC<Props> = ({
 
   return (
     <li
-      data-active={dataActive}
+      // data-active={dataActive}
       className={`${classes.card} ${activeClassHandler()}`}
     >
       <div className={classes["images-title"]}>
         <header className={classes.title}>{projectData.title}</header>
         <div className={classes.images}>
-          <div className={classes["img-desktop-container"]}>
-            <img
-              className={classes["img-desktop"]}
-              src={projectData.img.desktop}
-              alt="lightapp desktop"
-            />
-          </div>
-          <div className={classes["img-mobile-container"]}>
-            <img
-              className={classes["img-mobile"]}
-              src={projectData.img.mobile}
-              alt="lightapp mobile"
-            />
-            {/* <iframe
+          <Tilt
+            tiltAngleYInitial={10}
+            transitionSpeed={900}
+            scale={1.05}
+            glareEnable={true}
+            glareColor="#fff"
+            glarePosition="all"
+            glareMaxOpacity={0.2}
+            perspective={1700}
+            tiltMaxAngleX={5}
+            tiltMaxAngleY={10}
+            className={classes.tilt}
+          >
+            <CardGlass className={classes.links}>
+              <a target="_blank" href={projectData.live}>
+                <img src={live} alt="Live link" />
+              </a>
+              <a target="_blank" href={projectData.github}>
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
+                  alt="Github link"
+                />
+              </a>
+            </CardGlass>
+            <div className={classes["img-desktop-container"]}>
+              <img
+                className={classes["img-desktop"]}
+                src={projectData.img.desktop}
+                alt="lightapp desktop"
+              />
+            </div>
+          </Tilt>
+          <Tilt
+            tiltAngleYInitial={15}
+            transitionSpeed={900}
+            scale={1.1}
+            glareEnable={true}
+            glareColor="#fff"
+            glarePosition="all"
+            glareMaxOpacity={0.2}
+            perspective={200}
+            tiltMaxAngleX={2}
+            tiltMaxAngleY={5}
+            className={classes["tilt-mobile"]}
+          >
+            <div className={classes["img-mobile-container"]}>
+              {/* <Tilt> */}
+              <img
+                className={classes["img-mobile"]}
+                src={projectData.img.mobile}
+                alt="lightapp mobile"
+              />
+              {/* </Tilt> */}
+              {/* <iframe
               // className={classes["img-mobile"]}
               src="https://lightapp.netlify.app/"
               // style="border:0px #ffffff none;"
@@ -77,7 +132,8 @@ const ProjectCard: FC<Props> = ({
               height="200%"
               allowFullScreen
             ></iframe> */}
-          </div>
+            </div>
+          </Tilt>
           {/* <img
             className={`${classes["img-smartphone"]}`}
             src={smarthphone}

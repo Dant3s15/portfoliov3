@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type ContextProps = {
   heroIsVisible: boolean;
@@ -18,5 +18,9 @@ type ContextProps = {
 };
 
 const SelectedContext = React.createContext<Partial<ContextProps>>({});
+
+export const test = {
+  prop1: 2,
+};
 
 export default SelectedContext;

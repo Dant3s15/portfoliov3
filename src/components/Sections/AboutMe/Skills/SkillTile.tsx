@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CardGlass from "../../../UI/CardGlass";
 import classes from "./SkillTile.module.scss";
-
+// import Tilt from "react-parallax-tilt";
 const SkillTile = ({ skillName }: { skillName: string }) => {
   const skillNameLower = skillName.toLowerCase();
   const [icon, setIcon] = useState<string>();
@@ -35,9 +35,9 @@ const SkillTile = ({ skillName }: { skillName: string }) => {
       className={classes["time-icon"]}
       src="https://cdn-icons.flaticon.com/png/512/2364/premium/2364820.png?token=exp=1660662853~hmac=d6db4b97798d7b62f3488914ab1e90c9"
       alt=""
-    />
-    <p>14 months</p>
-  </div> */}
+      />
+      <p>14 months</p>
+    </div> */}
 
       <img className={classes.icon} alt={skillName} src={icon} />
       <p className={classes.title}>{skillName}</p>

@@ -11,6 +11,8 @@ const projectsData = [
       desktop: lightappDesktop,
       mobile: lightappMobile,
     },
+    github: "https://github.com/DevmianS/LightApp",
+    live: "https://lightapp.netlify.app/",
     description:
       "Responsive web app for getting the best suited light bulb luminocity depending on the lamp and room types.",
     stack: [
@@ -39,6 +41,8 @@ const projectsData = [
       desktop: splitterDesktop,
       mobile: splitterMobile,
     },
+    github: "https://github.com/DevmianS/tip-calculator-react",
+    live: "https://devmian-tip-calculator.web.app/",
     description:
       "Mobile first,responsive tip calculator app. You can calculate the tip by specifying bill amount, number of people and percent you want to tip.",
     stack: [
@@ -63,6 +67,8 @@ const projectsData = [
       desktop: splitterDesktop,
       mobile: splitterMobile,
     },
+    github: "https://github.com/DevmianS/LightApp",
+    live: "https://lightapp.netlify.app/",
     description:
       "Mobile first,responsive tip calculator app. You can calculate the tip by specifying bill amount, number of people and percent you want to tip.",
     stack: [
