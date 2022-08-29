@@ -19,9 +19,9 @@
   // @media (max-width: $desktop) {
   //   padding: 1rem;
   // }
-  &:hover {
-    transform: rotateY(-5deg);
-  }
+  // &:hover {
+  //   transform: rotateY(-5deg);
+  // }
   @media (max-width: $big-tablet) {
     padding-right: 5rem;
     transform: rotateY(-5deg);

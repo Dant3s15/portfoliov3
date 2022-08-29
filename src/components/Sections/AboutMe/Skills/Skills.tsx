@@ -26,9 +26,9 @@ const Skills = () => {
     ));
   };
 
-  useEffect(() => {
-    console.log(inView);
-  }, [inView]);
+  // useEffect(() => {
+  //   console.log(inView);
+  // }, [inView]);
   return (
     <div
       ref={ref}

@@ -91,6 +91,40 @@ const ProjectCard: FC<Props> = ({ selected }) => {
             <div className={`${classes["img-mobile-container"]} `}>
               {projectsData.map((proj, id) => {
                 return (
+                  // <iframe
+                  //   src="https://devmian-tip-calculator.web.app/"
+                  //   // style="border:0px #ffffff none;"
+                  //   name="myiFrame"
+                  //   scrolling="no"
+                  //   frameBorder="0"
+                  //   className={`${classes["img-mobile"]} ${activeClassHandler(
+                  //     id
+                  //   )}`}
+                  //   // marginheight="0px"
+                  //   // marginwidth="0px"
+                  //   // height="915px"
+                  //   // width="412px"
+                  //   allowFullScreen
+                  // ></iframe>
+                  // <iframe
+                  //   className={`${classes["img-mobile"]} ${activeClassHandler(
+                  //     id
+                  //   )}`}
+                  //   src={proj.live}
+                  //   //                   style="width:1000px; height:1400px;-moz-transform: scale(0.5, 0.5);
+                  //   // -webkit-transform: scale(0.5, 0.5);
+                  //   // -o-transform: scale(0.5, 0.5);
+                  //   // -ms-transform: scale(0.5, 0.5);
+                  //   // transform: scale(0.5, 0.5);
+                  //   // -moz-transform-origin: top left;
+                  //   // -webkit-transform-origin: top left;
+                  //   // -o-transform-origin: top left;
+                  //   // -ms-transform-origin: top left;
+                  //   // transform-origin: top left;"
+                  // >
+                  //   <p>Your browser does not support iframes.</p>
+                  // </iframe>
+
                   <img
                     key={id}
                     className={`${classes["img-mobile"]} ${activeClassHandler(

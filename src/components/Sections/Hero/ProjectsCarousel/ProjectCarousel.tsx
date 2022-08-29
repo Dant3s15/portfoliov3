@@ -28,8 +28,17 @@ const ProjectCarousel = () => {
     setIsHovering(true);
   };
 
+  useEffect(() => {
+    let intervalId: string | number | NodeJS.Timeout | undefined;
+    if (btnDelayed) {
+      intervalId = setInterval(() => {
+        setBtnDelayed(() => false);
+      }, 800);
+    }
+    return () => clearInterval(intervalId);
+  }, [btnDelayed]);
+
   const carouselHandler = (direction: -1 | 1) => {
-    // if (!btnDelayed) {
     setBtnDelayed(() => true);
     const length = projectsData.length;
     setdirection(direction);
@@ -46,12 +55,6 @@ const ProjectCarousel = () => {
         else return prev - 1;
       });
     }
-    // }
-    // else {
-    //   setTimeout(() => {
-    //     setBtnDelayed(() => false);
-    //   }, 1000);
-    // }
   };
 
   return (
@@ -67,7 +70,7 @@ const ProjectCarousel = () => {
         <button
           onClick={(e) => {
             e.currentTarget.blur();
-            carouselHandler(-1);
+            if (!btnDelayed) carouselHandler(-1);
           }}
           className={`${classes["carousel-btn"]} ${classes.prev}`}
         >
@@ -76,7 +79,7 @@ const ProjectCarousel = () => {
         <button
           onClick={(e) => {
             e.currentTarget.blur();
-            carouselHandler(1);
+            if (!btnDelayed) carouselHandler(1);
           }}
           className={`${classes["carousel-btn"]} ${classes.next}`}
         >
