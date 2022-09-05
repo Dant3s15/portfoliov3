@@ -800,3 +800,34 @@
     filter: none;
   }
 }
+
+@keyframes lightpass {
+  from {
+    @include textglowmedium;
+  }
+  5% {
+    // transform: scale(1.02);
+    // transform-origin: bottom center;
+  }
+  15% {
+    text-shadow: none;
+    // transform: scale(1);
+  }
+  to {
+  }
+}
+
+@keyframes lightpassshort {
+  from {
+    // transform: scale(1);
+    @include textglowmedium;
+  }
+  80% {
+    // text-shadow: none;
+    @include textglowmedium;
+  }
+  to {
+    // transform: scale(1.35);
+    @include textglowmedium;
+  }
+}

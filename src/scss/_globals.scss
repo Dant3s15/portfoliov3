@@ -144,3 +144,8 @@ input[type="reset"] {
 //     @include mask-image($to: bottom, $percent: 70%);
 //   }
 // }
+
+@font-face {
+  font-family: "Library3amsoft";
+  src: url(../resources/fonts/Library3amsoft.otf);
+}

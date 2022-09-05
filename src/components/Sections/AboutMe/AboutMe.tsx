@@ -1,6 +1,6 @@
 import classes from "./AboutMe.module.scss";
 import Skills from "./Skills/Skills";
-import TextAbout from "./TextAbout/TextAbout";
+import TextAbout from "./SkillsText/SkillsText";
 
 const AboutMe = () => {
   return (

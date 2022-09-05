@@ -18,8 +18,8 @@ const ProjectCarousel = () => {
     let intervalId: string | number | NodeJS.Timeout | undefined;
     if (!isHovering) {
       intervalId = setInterval(() => {
-        carouselHandler(1);
-      }, 5000);
+        carouselHandler(-1);
+      }, 10000);
     }
     return () => clearInterval(intervalId);
   }, [selected, isHovering]);

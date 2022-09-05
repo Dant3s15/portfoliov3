@@ -5,6 +5,7 @@ import smarthphone from "../../../../resources/img/smartphone.png";
 import Tilt from "react-parallax-tilt";
 import CardGlass from "../../../UI/CardGlass";
 import projectsData from "../../../../data/projectsData";
+import { motion } from "framer-motion";
 
 interface Props {
   selected: number;
@@ -49,20 +50,29 @@ const ProjectCard: FC<Props> = ({ selected }) => {
                 </span>
               ))}
             </header>
-            <div className={classes["img-desktop-container"]}>
-              {projectsData.map((proj, id) => {
-                return (
-                  <img
-                    key={id}
-                    className={`${classes["img-desktop"]} ${activeClassHandler(
-                      id
-                    )}`}
-                    src={proj.img.desktop}
-                    alt="lightapp desktop"
-                  />
-                );
-              })}
-            </div>
+            <motion.div className={classes["img-desktop-container"]}>
+              <motion.div
+                className={classes["img-drag-container"]}
+                // drag="x"
+                // whileDrag={{ cursor: "grabbing" }}
+                // style={{ opacity: 0.1 }}
+              >
+                {projectsData.map((proj, id) => {
+                  return (
+                    // <motion.div >
+                    <img
+                      key={id}
+                      className={`${
+                        classes["img-desktop"]
+                      } ${activeClassHandler(id)}`}
+                      src={proj.img.desktop}
+                      alt="lightapp desktop"
+                    />
+                    // </motion.div>
+                  );
+                })}
+              </motion.div>
+            </motion.div>
             <CardGlass className={classes.links}>
               <a target="_blank" href={projectsData[selected].live}>
                 <img src={live} alt="Live link" />

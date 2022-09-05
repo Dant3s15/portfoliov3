@@ -21,18 +21,20 @@
   @media (max-width: $mobile) {
     padding: 0.375rem;
   }
-  .CtaText {
+  .cta-text {
     @include flexbox(center, flex-end);
     flex-direction: column;
     width: 100%;
     height: 60%;
+    // color: var(--color-primary);
     // position: absolute;
-    // color: var(--color-gray);
+    color: var(--color-gray);
     font-weight: 700;
 
-    font-family: "Orbitron", sans-serif;
+    // font-family: "Orbitron", sans-serif;
     text-align: left;
     text-transform: uppercase;
+
     // border-radius: 20px;
     // transform-origin: 30%;
     // transform-style: preserve-3d;
@@ -42,23 +44,67 @@
     //   font-size: 80px;
     // }
     .title {
-      font-size: 86px;
-      @media (max-width: $big-laptop) {
+      @for $i from 1 through 11 {
+        span:nth-child(3n + #{$i}) {
+          transition: all var(--transition-short);
+          animation: lightpass 5s ease-in-out;
+          animation-delay: calc(#{$i}ms);
+        }
+      }
+      font-weight: 700;
+      // @include textglowmedium;
+      font-size: 98px;
+      font-family: "Library3amsoft", sans-serif;
+      span {
+        display: inline-block;
+        width: fit-content;
+        height: fit-content;
+        cursor: default;
+        // transform: scale(1) !important;
+        // transform-origin: center center;
+        transition: all var(--transition-medium);
+        user-select: none;
+      }
+      span:hover {
+        transition: all 1ms;
+        animation: lightpassshort 1.3s ease-in-out infinite;
+      }
+      .hi {
+        font-weight: 400;
         font-size: 74px;
+      }
+      @media (max-width: $desktop) {
+        font-size: 86px;
+        .hi {
+          font-size: 62px;
+        }
+      }
+      @media (max-width: $big-laptop) {
+        font-size: 62px;
+        .hi {
+          font-size: 52px;
+        }
       }
       @media (max-width: $laptop) {
         font-size: 62px;
+        .hi {
+          font-size: 44px;
+        }
       }
       @media (max-width: $mobile) {
         font-size: 44px;
+        .hi {
+          font-size: 36px;
+        }
       }
     }
 
     .sub-title {
       gap: 1rem;
       justify-self: flex-end;
-      // width: 60%;
       height: auto;
+      // width: 60%;
+      font-weight: 700;
       font-size: 44px;
       @include flexbox(flex-end);
       @media (max-width: $desktop) {
@@ -85,7 +131,6 @@
         height: auto;
       }
     }
-    @include textglowmedium;
     // @media (min-width: $big-tablet) {
     //   &:hover {
     //     transform: rotateY(-5deg);
