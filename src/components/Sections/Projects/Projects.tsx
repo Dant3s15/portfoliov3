@@ -6,12 +6,18 @@ import project2 from "../../../resources/img/projects/project2.webp";
 import lightapp from "../../../resources/img/projects/lightapp.webp";
 import soon from "../../../resources/img/projects/soon.png";
 import { skillInterface } from "../../../Types/types";
+import Typewriter from "typewriter-effect";
+import { useInView } from "react-intersection-observer";
 
 interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
 }
 const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
+  const { ref, inView, entry } = useInView({
+    threshold: 0.1,
+  });
+
   const projectsArr = [
     {
       id: 0,
@@ -96,10 +102,48 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
     //   repo: 'https://github.com/Dant3s15/portfoliov3',
     // },
   ];
-
+  //TODO reverse letters if not in view
   return (
-    <section id="my-projects" className={classes.projects}>
-      <p className={classes.title}>My Projects</p>
+    <section ref={ref} id="my-projects" className={classes.projects}>
+      <div className={classes["title-wrapper"]}>
+        <h2 className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}>
+          {inView && (
+            <Typewriter
+              options={{
+                delay: 30,
+                cursor: "",
+              }}
+              onInit={(typewriter) => {
+                typewriter
+                  .pauseFor(300)
+                  .typeString(
+                    `<h2 class =${classes["title-span"]}><span>M</span><span>y</span> <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span></h2>`
+                  )
+                  .start();
+              }}
+            />
+          )}
+
+          {/* <Typewriter
+          key={Math.random()}
+          options={{
+            delay: 30,
+            cursor: "",
+          }}
+          onInit={(typewriter) => {
+            !inView &&
+              typewriter
+                .pasteString(
+                  `<span class =${classes["title-span"]}><span>M</span><span>y</span> <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span></span>`
+                )
+                .deleteAll(30)
+                .pauseFor(300)
+                .start();
+          }}
+        /> */}
+          {/* )} */}
+        </h2>
+      </div>
       <div className={classes["my-projects"]}>
         <ProjectsList
           allSkillsData={allSkillsData}

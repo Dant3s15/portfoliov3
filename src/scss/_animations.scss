@@ -804,6 +804,8 @@
 @keyframes lightpass {
   from {
     @include textglowmedium;
+
+    filter: drop-shadow(0px 10px rgba(0, 0, 0, 0.4));
   }
   5% {
     // transform: scale(1.02);
@@ -811,6 +813,7 @@
   }
   15% {
     text-shadow: none;
+    filter: none;
     // transform: scale(1);
   }
   to {
@@ -821,13 +824,17 @@
   from {
     // transform: scale(1);
     @include textglowmedium;
+
+    filter: drop-shadow(0px 10px rgba(0, 0, 0, 0.4));
   }
   80% {
+    filter: drop-shadow(0px 10px rgba(0, 0, 0, 0.4));
     // text-shadow: none;
     @include textglowmedium;
   }
   to {
     // transform: scale(1.35);
     @include textglowmedium;
+    filter: drop-shadow(0px 10px rgba(0, 0, 0, 0.4));
   }
 }

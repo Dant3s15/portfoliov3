@@ -1,14 +1,14 @@
-import classes from "./AboutMe.module.scss";
+import classes from "./SkillsSection.module.scss";
 import Skills from "./Skills/Skills";
 import TextAbout from "./SkillsText/SkillsText";
 
-const AboutMe = () => {
+const SkillsSection = () => {
   return (
-    <section className={classes["about-me"]}>
+    <section className={classes["skills-section"]}>
       <TextAbout></TextAbout>
       <Skills></Skills>
     </section>
   );
 };
 
-export default AboutMe;
+export default SkillsSection;

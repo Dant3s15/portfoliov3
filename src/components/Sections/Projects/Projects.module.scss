@@ -3,7 +3,8 @@
 .projects {
   position: relative;
   flex-direction: column;
-  height: 100vh;
+  // height: 100vh;
+
   overflow: hidden;
   // background-color: #232323;
   // background: linear-gradient(
@@ -13,27 +14,104 @@
   // );
   border-top: 10px solid var(--color-dark);
   @include flexbox(space-around);
+  .title-wrapper {
+    width: 100%;
+    margin-top: 8rem;
+    margin-bottom: 4rem;
+    //TODO PADDING
+    padding-right: 8rem;
+    @media (max-width: $mobile) {
+      margin-top: 4em;
+      margin-bottom: 2rem;
+    }
+    // border: 1px solid red;
+    @include flexbox(flex-end);
+    // @media (max-width: $laptop) {
+    //   font-size: 36px;
+    //   .title {
+    //     font-size: 74px;
+    //   }
+    // }
+    // @media (max-width: $big-tablet) {
+    //   font-size: 36px;
+
+    //   .title {
+    //     font-size: 74px;
+    //   }
+    // }
+    // // @media (max-width: $big-laptop) {
+    // //   font-size: 36px;
+    // //   .title {
+    // //     font-size: 62px;
+    // //   }
+    // // }
+    // @media (max-width: $big-laptop) {
+    //   // font-size: 36px;
+
+    //   .title {
+    //     width: 68%;
+    //     // width: 350px;
+    //     font-size: 62px;
+    //   }
+    // }
+    // @media (max-width: $mobile) {
+    //   font-size: 30px;
+    //   .title {
+    //     width: 250px;
+    //     font-size: 44px;
+    //   }
+    // }
+  }
 
   .title {
+    @include title-effect;
     z-index: 1;
-    padding-top: 4rem;
+    // width: 545px;
+    width: calc(1em * 7.33);
+    // padding-top: 4rem;
     color: var(--color-gray);
-    font-size: 5.375rem;
-    text-transform: uppercase;
-    @include textglow;
-    @media (max-width: $big-tablet) {
-      font-size: 4.625rem;
-    }
-    @media (max-width: $small-tablet) {
-      font-size: 3.875rem;
-    }
-    @media (max-width: $mobile) {
-      padding-top: 1.5rem;
-      font-size: 2.75rem;
-    }
-    @media (max-width: $small-mobile) {
-      font-size: 2.25rem;
-    }
+    // &-span {
+    //   @for $i from 1 through 11 {
+    //     span:nth-child(3n + #{$i}) {
+    //       transition: all var(--transition-short);
+    //       animation: lightpass 5s ease-in-out;
+    //       animation-delay: calc(#{$i}ms);
+    //     }
+    //   }
+    //   span:hover {
+    //     transition: all 1ms;
+    //     animation: lightpassshort 1.3s ease-in-out infinite;
+    //   }
+    // }
+    // @include textglow;
+    // @media (max-width: $big-tablet) {
+    //   width: 70%;
+    //   font-size: 4.625rem;
+    // }
+    // @media (max-width: $small-tablet) {
+    //   font-size: 3.875rem;
+    // }
+    // @media (max-width: $mobile) {
+    //   width: 100%;
+    //   // padding-top: 1.5rem;
+    //   font-size: 2.75rem;
+    // }
+    // @media (max-width: $small-mobile) {
+    //   font-size: 2.25rem;
+    // }
+    // border: 1px solid red;
+    // font-weight: 700;
+    // font-size: 74px;
+    // font-family: "Library3amsoft", sans-serif;
+    // text-align: start;
+    // text-transform: uppercase;
+    border: 1px solid red;
+    // @media (max-width: $big-tablet) {
+    //   width: 455px;
+    // }
+    // @media (max-width: $mobile) {
+    //   width: 325px;
+    // }
   }
 
   &::before {

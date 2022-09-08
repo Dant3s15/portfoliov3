@@ -8,7 +8,10 @@ const TextAbout = () => {
   });
   return (
     <div className={classes["text-about"]}>
-      <header ref={ref} className={classes.title}>
+      <header
+        ref={ref}
+        className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}
+      >
         {inView && (
           <Typewriter
             options={{

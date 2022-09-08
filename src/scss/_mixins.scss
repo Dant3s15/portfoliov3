@@ -148,3 +148,43 @@
     transparent 100%
   );
 }
+
+@mixin title-effect {
+  // height: 82px;
+  font-weight: 700;
+  font-size: 74px;
+  font-family: "Library3amsoft", sans-serif;
+  text-align: start;
+  text-transform: uppercase;
+  cursor: default;
+  user-select: none;
+  &-span {
+    @for $i from 1 through 11 {
+      span:nth-child(3n + #{$i}) {
+        transition: all var(--transition-short);
+        animation: lightpass 5s ease-in-out;
+        animation-delay: calc(#{$i}ms);
+      }
+    }
+    span:hover {
+      transition: all 1ms;
+      animation: lightpassshort 1.3s ease-in-out infinite;
+    }
+  }
+  @media (max-width: $laptop) {
+    // height: 82px;
+    font-size: 74px;
+  }
+  @media (max-width: $big-tablet) {
+    // height: 70px;
+    font-size: 62px;
+  }
+  @media (max-width: $mobile) {
+    // height: 50px;
+    font-size: 44px;
+  }
+
+  span:global(.Typewriter__cursor) {
+    display: none;
+  }
+}

@@ -9,6 +9,7 @@ import { useRef } from "react";
 import { skillInterface } from "../../../Types/types";
 import ProjectCarousel from "./ProjectsCarousel/ProjectCarousel";
 import Cta from "./Cta/Cta";
+import ParallaxBackground from "../../Utils/ParallaxBackground/ParallaxBackground";
 
 interface Props {
   // allSkillsData: skillInterface[];

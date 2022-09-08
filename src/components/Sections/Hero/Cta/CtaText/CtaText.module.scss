@@ -44,6 +44,7 @@
     //   font-size: 80px;
     // }
     .title {
+      // @include title-effect;
       @for $i from 1 through 11 {
         span:nth-child(3n + #{$i}) {
           transition: all var(--transition-short);

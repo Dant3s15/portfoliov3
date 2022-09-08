@@ -18,9 +18,11 @@ import { HeroVisibleProvider } from "./context/hero-visible-context";
 
 import LoadingSpinner from "./components/UI/LoadingSpinner";
 // import tourSteps from "./components/Utils/ShepherdTour/tourSteps";
-import AboutMe from "./components/Sections/AboutMe/AboutMe";
+import SkillsSection from "./components/Sections/SkillsSection/SkillsSection";
 import Main from "./components/Sections/Main/Main";
 import Hexgrid from "./components/UI/Hexgrid/Hexgrid";
+import Projects from "./components/Sections/Projects/Projects";
+import ParallaxBackground from "./components/Utils/ParallaxBackground/ParallaxBackground";
 
 const tourOptions = {
   defaultStepOptions: {
@@ -72,10 +74,17 @@ function App() {
       >
         <HeroVisibleProvider>
           <Header />
+
           <Main>
-            <Hero></Hero>
-            {/* <Hexgrid></Hexgrid> */}
-            <AboutMe></AboutMe>
+            <ParallaxBackground>
+              <Hero></Hero>
+              {/* <Hexgrid></Hexgrid> */}
+              <Projects
+                allSkillsData={allSkillsData}
+                isLoading={false}
+              ></Projects>
+            </ParallaxBackground>
+            <SkillsSection></SkillsSection>
           </Main>
           {/* <main> */}
           {/* <Suspense fallback={<LoadingSpinner />}> */}

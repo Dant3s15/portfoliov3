@@ -11,27 +11,29 @@ const CtaText: FC<Props> = ({ className }) => {
     <div className={classes.textWrapper}>
       <div className={`${classes["cta-text"]} ${className}`}>
         {
-          <Typewriter
-            options={{
-              delay: 50,
-              cursor: "",
-            }}
-            onInit={(typewriter) => {
-              typewriter
-                .pauseFor(300)
-                .typeString(
-                  `<span class =${classes.title}><span class = ${classes.hi}>H</span><span class = ${classes.hi}>i</span></span>`
-                )
-                .pauseFor(500)
-                .typeString(
-                  `<span class =${classes.title}></br><span>I</span><span>'</span><span>m</span> <span>D</span><span>a</span><span>m</span><span>i</span><span>a</span><span>n</span></span>`
-                )
-                .pauseFor(1000)
-                .start();
-            }}
-          />
+          <h1>
+            <Typewriter
+              options={{
+                delay: 50,
+                cursor: "",
+              }}
+              onInit={(typewriter) => {
+                typewriter
+                  .pauseFor(300)
+                  .typeString(
+                    `<span class =${classes.title}><span class = ${classes.hi}>H</span><span class = ${classes.hi}>i</span></span>`
+                  )
+                  .pauseFor(500)
+                  .typeString(
+                    `<span class =${classes.title}></br><span>I</span><span>'</span><span>m</span> <span>D</span><span>a</span><span>m</span><span>i</span><span>a</span><span>n</span></span>`
+                  )
+                  .pauseFor(1000)
+                  .start();
+              }}
+            />
+          </h1>
         }
-        <span className={classes["sub-title"]}>
+        <h3 className={classes["sub-title"]}>
           {
             <Typewriter
               options={{
@@ -71,7 +73,7 @@ const CtaText: FC<Props> = ({ className }) => {
             />
           }
           {/* <span>Developer</span> */}
-        </span>
+        </h3>
       </div>
     </div>
   );

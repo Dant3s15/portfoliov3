@@ -58,11 +58,12 @@
   //   background-size: cover;
   //   transform: scale(1.02);
 
-  //   filter: brightness(0.8) saturate(0.6) blur(5px);
+  //   filter: brightness(0.8) saturate(0.1) blur(5px);
   //   transition: all var(--transition-medium);
   //   transition-delay: var(--transition-short);
   //   transition-property: filter;
-  //   @include mask-image($to: bottom, $percent: 70%);
+
+  //   // @include mask-image($to: bottom, $percent: 70%);
   // }
 }
 
