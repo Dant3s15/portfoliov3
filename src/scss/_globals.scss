@@ -16,7 +16,7 @@ a {
   text-decoration: inherit;
 }
 // html {
-//   overflow: hidden;
+//   scroll-snap-type: y proximity;
 // }
 
 html,
@@ -24,9 +24,11 @@ body {
   position: relative;
   // font-weight: 600;
   // font-family: 'Orbitron', sans-serif;
-  overflow-x: hidden;
+  //TODO overflow
+  // overflow-x: hidden;
   font-family: "Orbitron", sans-serif;
   font-family: "Jura", sans-serif;
+
   // font-family: "Audiowide", sans-serif;
   // transition: all var(--transition-medium) ease-in-out;
   scroll-behavior: smooth;
@@ -54,7 +56,7 @@ body::before {
     var(--color-dark-3) 30%,
     var(--color-blue-shade-1) 100%
   );
-  filter: var(--body-grayscale);
+  filter: var(--saturation);
   transition: all 3s;
   transition-property: filter;
 }
@@ -149,3 +151,14 @@ input[type="reset"] {
   font-family: "Library3amsoft";
   src: url(../resources/fonts/Library3amsoft.otf);
 }
+
+.padding {
+  @media (min-width: $big-tablet) {
+    padding-right: 8rem;
+    padding-left: 8rem;
+  }
+}
+
+// section {
+//   padding-top: 15rem !important;
+// }

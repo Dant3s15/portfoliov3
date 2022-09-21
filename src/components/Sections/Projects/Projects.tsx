@@ -8,6 +8,8 @@ import soon from "../../../resources/img/projects/soon.png";
 import { skillInterface } from "../../../Types/types";
 import Typewriter from "typewriter-effect";
 import { useInView } from "react-intersection-observer";
+import ProjectCarousel from "../Hero/ProjectsCarousel/ProjectCarousel";
+import Tilt from "react-parallax-tilt";
 
 interface Props {
   allSkillsData: skillInterface[];
@@ -15,7 +17,15 @@ interface Props {
 }
 const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
   const { ref, inView, entry } = useInView({
-    threshold: 0.1,
+    threshold: 0.2,
+    onChange(inView) {
+      let root = document.documentElement;
+      if (inView) {
+        root.style.setProperty("--saturation", `saturate(${1})`);
+        root.style.setProperty("--mask-percent", `${50}%`);
+        root.style.setProperty("--blur", `blur(${30}px)`);
+      }
+    },
   });
 
   const projectsArr = [
@@ -64,29 +74,29 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
       link: "https://devmian-tip-calculator.web.app/",
       repo: "https://github.com/DevmianS/tip-calculator-react",
     },
-    {
-      id: 3,
-      image: project1,
-      title: "Web-dev-API",
-      overview: (
-        <Fragment>
-          <strong>API</strong> database that gives you access to the list of{" "}
-          <strong>Web development technologies</strong> and skills.
-        </Fragment>
-      ),
-      skills: ["javascript", "expressjs"],
-      link: "https://web-dev-skills-api.herokuapp.com/",
-      repo: "https://github.com/DevmianS/web-dev-skills-api",
-    },
-    {
-      id: 4,
-      image: soon,
-      title: "COMING SOON...",
-      overview: <Fragment></Fragment>,
-      skills: ["html", "css", "javascript", "git", "github"],
-      link: "#",
-      repo: "#",
-    },
+    // {
+    //   id: 3,
+    //   image: project1,
+    //   title: "Web-dev-API",
+    //   overview: (
+    //     <Fragment>
+    //       <strong>API</strong> database that gives you access to the list of{" "}
+    //       <strong>Web development technologies</strong> and skills.
+    //     </Fragment>
+    //   ),
+    //   skills: ["javascript", "expressjs"],
+    //   link: "https://web-dev-skills-api.herokuapp.com/",
+    //   repo: "https://github.com/DevmianS/web-dev-skills-api",
+    // },
+    // {
+    //   id: 4,
+    //   image: soon,
+    //   title: "COMING SOON...",
+    //   overview: <Fragment></Fragment>,
+    //   skills: ["html", "css", "javascript", "git", "github"],
+    //   link: "#",
+    //   repo: "#",
+    // },
     // {
     //   id: 4,
     //   image: project1,
@@ -102,29 +112,49 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
     //   repo: 'https://github.com/Dant3s15/portfoliov3',
     // },
   ];
+
+  const tiltSettings = {
+    tiltAngleYInitial: -30,
+    transitionSpeed: 900,
+    scale: 1,
+    glareEnable: true,
+    glareColor: "#fff",
+    glarePosition: "all" as const,
+    glareMaxOpacity: 0.2,
+    perspective: 1700,
+    tiltMaxAngleX: 5,
+    tiltMaxAngleY: 30,
+    className: classes.tilt,
+    tiltReverse: true,
+  };
   //TODO reverse letters if not in view
   return (
-    <section ref={ref} id="my-projects" className={classes.projects}>
-      <div className={classes["title-wrapper"]}>
-        <h2 className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}>
-          {inView && (
-            <Typewriter
-              options={{
-                delay: 30,
-                cursor: "",
-              }}
-              onInit={(typewriter) => {
-                typewriter
-                  .pauseFor(300)
-                  .typeString(
-                    `<h2 class =${classes["title-span"]}><span>M</span><span>y</span> <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span></h2>`
-                  )
-                  .start();
-              }}
-            />
-          )}
+    <section
+      ref={ref}
+      id="my-projects"
+      className={`${classes.projects} padding`}
+    >
+      <div className={classes["projects-text"]}>
+        <div className={classes["title-wrapper"]}>
+          <h2 className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}>
+            {inView && (
+              <Typewriter
+                options={{
+                  delay: 30,
+                  cursor: "",
+                }}
+                onInit={(typewriter) => {
+                  typewriter
+                    .pauseFor(300)
+                    .typeString(
+                      `<h2 class =${classes["title-span"]}><span>M</span><span>y</span> <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span></h2>`
+                    )
+                    .start();
+                }}
+              />
+            )}
 
-          {/* <Typewriter
+            {/* <Typewriter
           key={Math.random()}
           options={{
             delay: 30,
@@ -132,19 +162,25 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
           }}
           onInit={(typewriter) => {
             !inView &&
-              typewriter
-                .pasteString(
-                  `<span class =${classes["title-span"]}><span>M</span><span>y</span> <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span></span>`
-                )
-                .deleteAll(30)
-                .pauseFor(300)
-                .start();
-          }}
-        /> */}
-          {/* )} */}
-        </h2>
+            typewriter
+            .pasteString(
+              `<span class =${classes["title-span"]}><span>M</span><span>y</span> <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span></span>`
+              )
+              .deleteAll(30)
+              .pauseFor(300)
+              .start();
+            }}
+          /> */}
+            {/* )} */}
+          </h2>
+        </div>
+        <div className={classes.text}>Those are some of my projects.</div>
       </div>
-      <div className={classes["my-projects"]}>
+      <div
+        className={`${classes["my-projects"]} ${
+          inView ? "fade-in" : "fade-out"
+        }`}
+      >
         <ProjectsList
           allSkillsData={allSkillsData}
           isLoading={isLoading}
@@ -152,6 +188,28 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
             array: projectsArr,
           }}
         ></ProjectsList>
+        {/* {<ProjectCarousel />} */}
+        {/* <div className={classes["project-list"]}>
+          <Tilt {...tiltSettings}>
+            <div className={classes.project}>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
+              incidunt.
+            </div>
+          </Tilt>
+          <Tilt {...tiltSettings}>
+            <div className={classes.project}>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
+              incidunt.
+            </div>
+          </Tilt>
+        </div> */}
+        {/* <div className={classes.text}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti
+          labore itaque laborum, ullam harum est beatae hic inventore. Doloribus
+          et libero porro sapiente tempore officiis numquam. Esse, perferendis
+          ipsam numquam deserunt fugit nihil temporibus perspiciatis sequi
+          iusto! Accusantium, dignissimos voluptatem!
+        </div> */}
       </div>
     </section>
   );

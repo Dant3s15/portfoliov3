@@ -1,10 +1,12 @@
+@import "../../../scss//style.scss";
+
 .background {
+  // position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
-  // height: fit-content;
-  border: 1px solid red;
-  // position: absolute;
-
+  scroll-snap-type: y mandatory;
+  // height: 100%;
   // right: 0;
   // bottom: 100vh;
   // left: 0;
@@ -14,40 +16,53 @@
   // height: 100vh;
   // background-image: url(../../../resources/img/hero8.webp);
   // background-repeat: no-repeat;
-
   // background-position: center bottom;
   // background-size: cover;
+  // // background-size: contain;
+  // background-attachment: fixed;
+  // border: 1px solid red;
+  // height: fit-content;
   // transform: scale(1.02);
-
   // filter: brightness(0.8) saturate(0.1) blur(5px);
   // transition: all var(--transition-medium);
   // transition-delay: var(--transition-short);
   // transition-property: filter;
-  &::before {
+  .bg-container {
     content: "";
-    position: fixed;
-    // top: 0;
-    // right: 0;
-    // bottom: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    // border: 1px solid red;
+  }
+  .bg-img {
+    // content: "";
+    position: sticky;
+    top: 0;
     // left: 0;
-    // z-index: 999;
     width: 100%;
     min-width: 100%;
-    height: 100%;
+    height: 1000px;
     background-image: url(../../../resources/img/hero8.webp);
+
     background-repeat: no-repeat;
 
     background-position: center bottom;
     background-size: cover;
-    background-attachment: scroll;
-    border: 1px solid red;
-    transform: scale(1.02);
 
-    filter: brightness(0.8) saturate(0.1) blur(5px);
-    transition: all var(--transition-medium);
+    // background-size: contain;
+    background-attachment: scroll;
+    // background-attachment: scroll;
+    // border: 1px solid red;
+    // transform: scale(1.02);
+
+    filter: brightness(0.8) var(--saturation) var(--blur);
+    transition: all var(--transition-medium-long);
     transition-delay: var(--transition-short);
     transition-property: filter;
 
-    // @include mask-image($to: bottom, $percent: 70%);
+    @include mask-image($to: bottom, $percent: 70%);
   }
 }

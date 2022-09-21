@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const Skills = () => {
   const { ref, inView, entry } = useInView({
-    threshold: 0,
+    threshold: 0.2,
   });
   const mySkills = [
     "HTML5",
@@ -34,7 +34,7 @@ const Skills = () => {
       ref={ref}
       className={`${classes.skills} ${
         inView ? "fade-in skill-flip" : "fade-out"
-      }`}
+      } `}
     >
       {renderSkills()}
     </div>

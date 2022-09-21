@@ -1,10 +1,11 @@
-import { FC, ReactNode, useRef } from "react";
+import { FC, ReactNode, useRef, useState } from "react";
 import CardGlass from "../../UI/CardGlass";
 import github from "../../../resources/icons/logo-github.svg";
 import classes from "./ProjectCard.module.scss";
 import { skillInterface } from "../../../Types/types";
 import LoadingSpinner from "../../UI/LoadingSpinner";
 import ProjectSkillsList from "./ProjectSkillList";
+import Tilt from "react-parallax-tilt";
 
 interface CardProjectProps {
   projectData: {
@@ -38,25 +39,52 @@ const CardProject: FC<CardProjectProps> = ({
     selectedState.setWhichSelected(projectData.id);
     if (projectCardRef.current)
       projectCardRef.current.scrollIntoView({
-        behavior: "smooth",
+        behavior: "auto",
         inline: "center",
         block: "nearest",
       });
   };
 
   return (
+    // <Tilt
+    //   tiltAngleYInitial={25}
+    //   transitionSpeed={900}
+    //   scale={1}
+    //   glareEnable={false}
+    //   glareColor="#fff"
+    //   // onEnter={() => {
+    //   //   setHasEnterClass(true);
+    //   // }}
+    //   // glarePosition="all"
+    //   glareMaxOpacity={0.3}
+    //   perspective={400}
+    //   tiltMaxAngleX={2}
+    //   tiltMaxAngleY={5}
+    //   // className={classes["tilt-mobile"]}
+    //   className={`${classes["project-wrapper"]} ${
+    //     projectData.id === selectedState.whichSelected
+    //       ? classes["selected-project"]
+    //       : ""
+    //   } ${hasEnterClass ? classes.hasEnter : ""} `}
+    // >
     <div
       onMouseLeave={() => {
+        // setHasEnterClass(false);
         selectedState.setWhichSelected(null);
       }}
-      ref={projectCardRef}
       className={`${classes["project-wrapper"]} ${
         projectData.id === selectedState.whichSelected
           ? classes["selected-project"]
           : ""
-      } `}
+      }`}
+      ref={projectCardRef}
+      // className={`${classes["project-wrapper"]} ${
+      //   projectData.id === selectedState.whichSelected
+      //     ? classes["selected-project"]
+      //     : ""
+      // } `}
     >
-      <CardGlass corner className={`${classes.project}`}>
+      <CardGlass className={`${classes.project}`}>
         <div className={classes.links}>
           <a href={projectData?.repo} target="_blank">
             <img src={github} alt="github" />
@@ -98,6 +126,7 @@ const CardProject: FC<CardProjectProps> = ({
         </div>
       </CardGlass>
     </div>
+    // </Tilt>
   );
 };
 

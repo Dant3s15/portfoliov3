@@ -23,16 +23,18 @@ import Main from "./components/Sections/Main/Main";
 import Hexgrid from "./components/UI/Hexgrid/Hexgrid";
 import Projects from "./components/Sections/Projects/Projects";
 import ParallaxBackground from "./components/Utils/ParallaxBackground/ParallaxBackground";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import background from "./resources/img/hero8.webp";
 
-const tourOptions = {
-  defaultStepOptions: {
-    cancelIcon: {
-      enabled: true,
-    },
-    classes: "max-index shepherd-window",
-  },
-  useModalOverlay: true,
-};
+// const tourOptions = {
+//   defaultStepOptions: {
+//     cancelIcon: {
+//       enabled: true,
+//     },
+//     classes: "max-index shepherd-window",
+//   },
+//   useModalOverlay: true,
+// };
 
 function App() {
   const location = useLocation();
@@ -62,7 +64,7 @@ function App() {
   return (
     <Fragment>
       {/* <ShepherdTour steps={tourSteps} tourOptions={tourOptions}> */}
-      <SelectedContext.Provider
+      {/* <SelectedContext.Provider
         value={{
           isSelected: selected,
           setSelected,
@@ -71,25 +73,37 @@ function App() {
           ctaButtonClicked,
           setCtaButtonClicked,
         }}
-      >
-        <HeroVisibleProvider>
-          <Header />
+      > */}
+      {/* <HeroVisibleProvider> */}
+      <Header />
 
-          <Main>
-            <ParallaxBackground>
-              <Hero></Hero>
-              {/* <Hexgrid></Hexgrid> */}
-              <Projects
-                allSkillsData={allSkillsData}
-                isLoading={false}
-              ></Projects>
-            </ParallaxBackground>
-            <SkillsSection></SkillsSection>
-          </Main>
-          {/* <main> */}
-          {/* <Suspense fallback={<LoadingSpinner />}> */}
-          {/* <Routes location={location} key={location.pathname}> */}
-          {/* <Route
+      {/* <Parallax pages={4}> */}
+      <Main>
+        <ParallaxBackground>
+          {/* <ParallaxLayer
+            speed={0.4}
+            factor={2}
+            style={{
+              backgroundImage: `url(${background})`,
+              backgroundSize: "contain",
+              backgroundPosition: "center bottom",
+            }}
+          > */}
+          <Hero></Hero>
+          {/* </ParallaxLayer>
+          <ParallaxLayer offset={1} speed={0.1}> */}
+          <Projects allSkillsData={allSkillsData} isLoading={false}></Projects>
+          {/* </ParallaxLayer>
+          <ParallaxLayer offset={2} speed={0.2}> */}
+          <SkillsSection></SkillsSection>
+        </ParallaxBackground>
+        {/* </ParallaxLayer> */}
+      </Main>
+
+      {/* <main> */}
+      {/* <Suspense fallback={<LoadingSpinner />}> */}
+      {/* <Routes location={location} key={location.pathname}> */}
+      {/* <Route
                   path="/creator"
                   element={
                     <CharacterCreator
@@ -98,7 +112,7 @@ function App() {
                     />
                   }
                 ></Route> */}
-          {/* <Route
+      {/* <Route
                   path="about-me"
                   element={
                     <AboutMe
@@ -107,12 +121,15 @@ function App() {
                       />
                     }
                   ></Route> */}
-          {/* </Routes> */}
-          {/* </Suspense> */}
-          {/* </main> */}
-        </HeroVisibleProvider>
-        <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
-      </SelectedContext.Provider>
+      {/* </Routes> */}
+      {/* </Suspense> */}
+      {/* </main> */}
+      {/* </HeroVisibleProvider> */}
+      {/* <ParallaxLayer offset={3}> */}
+      <Footer data={{ ctaButtonClicked, whichSelected, selected }}></Footer>
+      {/* </ParallaxLayer> */}
+      {/* </Parallax> */}
+      {/* </SelectedContext.Provider> */}
       {/* </ShepherdTour> */}
     </Fragment>
   );

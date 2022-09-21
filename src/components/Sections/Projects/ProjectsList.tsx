@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from 'react';
-import { skillInterface } from '../../../Types/types';
-import CardProject from './ProjectCard';
+import { FC, useEffect, useState } from "react";
+import { skillInterface } from "../../../Types/types";
+import CardProject from "./ProjectCard";
 
 interface ProjectsProps {
   data?: any;
@@ -14,21 +14,21 @@ const ProjectsList: FC<ProjectsProps> = ({
   data,
 }) => {
   const [whichSelected, setWhichSelected] = useState(null);
-  const myProjects = document.getElementById('my-projects');
+  const myProjects = document.getElementById("my-projects");
 
   useEffect(() => {
-    myProjects?.addEventListener('click', () => {
+    myProjects?.addEventListener("click", () => {
       setWhichSelected(null);
     });
-    myProjects?.addEventListener('touch', () => {
+    myProjects?.addEventListener("touch", () => {
       setWhichSelected(null);
     });
 
     return () => {
-      myProjects?.removeEventListener('click', () => {
+      myProjects?.removeEventListener("click", () => {
         setWhichSelected(null);
       });
-      myProjects?.removeEventListener('touch', () => {
+      myProjects?.removeEventListener("touch", () => {
         setWhichSelected(null);
       });
     };

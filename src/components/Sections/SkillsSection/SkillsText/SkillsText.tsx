@@ -5,6 +5,14 @@ import { useInView } from "react-intersection-observer";
 const TextAbout = () => {
   const { ref, inView, entry } = useInView({
     threshold: 0.6,
+    onChange(inView) {
+      let root = document.documentElement;
+      if (inView) {
+        root.style.setProperty("--saturation", `saturate(${1})`);
+        root.style.setProperty("--mask-percent", `${50}%`);
+        root.style.setProperty("--blur", `blur(${30}px)`);
+      }
+    },
   });
   return (
     <div className={classes["text-about"]}>

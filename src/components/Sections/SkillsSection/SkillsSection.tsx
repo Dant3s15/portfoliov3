@@ -4,7 +4,7 @@ import TextAbout from "./SkillsText/SkillsText";
 
 const SkillsSection = () => {
   return (
-    <section className={classes["skills-section"]}>
+    <section className={`${classes["skills-section"]} padding`}>
       <TextAbout></TextAbout>
       <Skills></Skills>
     </section>

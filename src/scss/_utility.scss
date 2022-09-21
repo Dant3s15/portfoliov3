@@ -280,31 +280,67 @@
 .skill-flip {
   @for $i from 1 through 11 {
     div:nth-child(3n + #{$i}) {
+      background-color: transparent;
+
       // background-color: var(--color-gray-tint-dark-transparent-1);
       border-right: 1px solid var(--color-border-transparent);
       border-bottom: 5px solid var(--color-border-transparent);
       border-left: 7px solid var(--color-border-transparent);
 
-      transform: perspective(1000px)
-        scale3d(1, 1, 1)
-        translate3d(0, 0, 0)
-        rotate3d(0, 1, 0, -180deg);
+      // transform: perspective(1000px)
+      //   scale3d(1, 1, 1)
+      //   translate3d(0, 0, 0)
+      //   rotate3d(0, 1, 0, -180deg);
       transition: all var(--transition-short);
       animation: flip 1.2s ease-in-out forwards;
       animation-delay: calc(#{$i}00ms + #{$i}00ms);
-      p,
-      img {
-        filter: blur(2px);
-        animation: blur 1.2s ease-in-out forwards;
-        animation-delay: calc(#{$i}00ms + #{$i}00ms);
-      }
+      // p,
+      // img {
+      //   filter: blur(2px);
+      //   animation: blur 1.2s ease-in-out forwards;
+      //   animation-delay: calc(#{$i}00ms + #{$i}00ms);
+      // }
     }
   }
 }
 
 .glare-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 999;
   width: 99% !important;
-  height: 98% !important;
-  border-radius: 15px !important;
+  height: 95% !important;
+  margin: auto;
+  // margin-top: 8px;
+  border-radius: 5px !important;
+  @media (max-width: $mobile) {
+    width: 96% !important;
+    height: 92% !important;
+  }
+}
+
+.rotate-out {
+  // & > div {
+  @for $i from 1 through 11 {
+    & > div:nth-child(3n + #{$i}) {
+      transform: scale(1) perspective(1000px) rotateY(-80deg);
+      animation: rotateout 1s forwards;
+      animation-delay: calc(#{$i}00ms + #{$i}00ms);
+    }
+  }
+}
+
+.rotate-in {
+  // & > div {
+  @for $i from 1 through 11 {
+    & > div:nth-child(3n + #{$i}) {
+      // transform: scale(1) perspective(1000px) rotateY(-80deg);
+      animation: rotatein 1s;
+      // animation: rotateout 1s forwards;
+      animation-delay: calc(#{$i}00ms);
+    }
+  }
 }

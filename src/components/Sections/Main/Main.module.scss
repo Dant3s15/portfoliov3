@@ -1,7 +1,11 @@
 @import "../../../scss/style.scss";
 .background {
+  // section {
+  //   // border: 1px solid red;
+  //   scroll-snap-align: start;
+  // }
   &::after {
-    content: "";
+    // content: "";
     position: fixed;
     top: 0;
     left: 0;

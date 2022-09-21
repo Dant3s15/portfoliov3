@@ -2,6 +2,7 @@
 .skills {
   flex-wrap: wrap;
   gap: 1rem;
+  // padding-top: 15rem;
   transform: perspective(1000px) scale3d(1, 1, 1) translate3d(0, 0, 0)
     rotate3d(0, 1, 0, -180deg);
   // padding: 5rem;

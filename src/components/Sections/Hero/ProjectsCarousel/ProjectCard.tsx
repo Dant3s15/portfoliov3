@@ -25,7 +25,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
       return classes["active"];
     }
   };
-
+  //TODO drag!!!
   return (
     <li className={`${classes.card}}`}>
       <div className={classes["images-title"]}>
@@ -43,13 +43,6 @@ const ProjectCard: FC<Props> = ({ selected }) => {
             tiltMaxAngleY={10}
             className={classes.tilt}
           >
-            <header className={`${classes.title}`}>
-              {projectsData.map((proj, id) => (
-                <span key={id} className={`${activeClassHandler(id)}`}>
-                  {proj.title}
-                </span>
-              ))}
-            </header>
             <motion.div className={classes["img-desktop-container"]}>
               <motion.div
                 className={classes["img-drag-container"]}
@@ -61,6 +54,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
                   return (
                     // <motion.div >
                     <img
+                      draggable="false"
                       key={id}
                       className={`${
                         classes["img-desktop"]
@@ -84,6 +78,13 @@ const ProjectCard: FC<Props> = ({ selected }) => {
                 />
               </a>
             </CardGlass>
+            <header className={`${classes.title}`}>
+              {projectsData.map((proj, id) => (
+                <span key={id} className={`${activeClassHandler(id)}`}>
+                  {proj.title}
+                </span>
+              ))}
+            </header>
           </Tilt>
           <Tilt
             tiltAngleYInitial={15}

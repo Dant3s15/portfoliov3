@@ -150,7 +150,7 @@
 }
 
 @mixin title-effect {
-  // height: 82px;
+  height: 1.2em;
   font-weight: 700;
   font-size: 74px;
   font-family: "Library3amsoft", sans-serif;
@@ -187,4 +187,11 @@
   span:global(.Typewriter__cursor) {
     display: none;
   }
+}
+
+@mixin section-text {
+  flex-direction: column;
+  min-height: 600px;
+
+  @include flexbox(space-evenly);
 }

@@ -10,7 +10,7 @@ import { skillInterface } from "../../../Types/types";
 import ProjectCarousel from "./ProjectsCarousel/ProjectCarousel";
 import Cta from "./Cta/Cta";
 import ParallaxBackground from "../../Utils/ParallaxBackground/ParallaxBackground";
-
+import { useInView } from "react-intersection-observer";
 interface Props {
   // allSkillsData: skillInterface[];
   // isLoading: boolean;
@@ -18,18 +18,37 @@ interface Props {
 
 const Hero: FC<Props> = () => {
   const ctx = useContext(SelectedContext);
-  const heroVisibleCtx = useContext(HeroVisibleContext);
-  const heroRef = useRef(null);
-  const entry = useIntersectionObserver(heroRef, {
+  // const heroVisibleCtx = useContext(HeroVisibleContext);
+  // const heroRef = useRef(null);
+  // const entry = useIntersectionObserver(heroRef, {
+  //   threshold: 0.7,
+  // });
+  // const isVisible = !!entry?.isIntersecting;
+  const { ref, inView, entry } = useInView({
     threshold: 0.7,
+    onChange(inView) {
+      let root = document.documentElement;
+      if (inView) {
+        root.style.setProperty("--saturation", `saturate(${0.1})`);
+        root.style.setProperty("--mask-percent", `${100}%`);
+        root.style.setProperty("--blur", `blur(${200}px)`);
+      }
+      // else root.style.setProperty("--saturation", `saturate(${0.1})`);
+    },
   });
-  const isVisible = !!entry?.isIntersecting;
+  // useEffect(() => {
+  //   console.log(entry?.intersectionRatio);
+  //   if (inView) {
+  //     console.log("yep");
+  //   } else console.log("nope");
+  // }, [entry?.intersectionRatio]);
 
-  useEffect(() => {
-    if (isVisible) {
-      heroVisibleCtx.setHeroIsVisible(true);
-    } else heroVisibleCtx.setHeroIsVisible(false);
-  }, [isVisible]);
+  // useEffect(() => {
+  //   console.log(entry?.intersectionRatio);
+  //   // if (isVisible) {
+  //   //   heroVisibleCtx.setHeroIsVisible(true);
+  //   // } else heroVisibleCtx.setHeroIsVisible(false);
+  // }, [entry?.intersectionRatio]);
 
   //TODO
   // useEffect(() => {
@@ -73,7 +92,7 @@ const Hero: FC<Props> = () => {
   return (
     <section
       id="hero"
-      ref={heroRef}
+      ref={ref}
       onClick={heroOnClickHandler}
       className={`${classes["section-hero"]} 
       ${!ctx.ctaButtonClicked?.clicked ? classes.gray : ""}
