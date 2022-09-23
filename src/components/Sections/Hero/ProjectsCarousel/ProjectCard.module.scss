@@ -17,8 +17,10 @@
   min-width: 30%;
   height: fit-content;
   padding: 10px;
+  background-color: rgba(56, 56, 57, 0.582);
   // background-color: rgba(0, 0, 0, 0.2) !important;
   transform: translateZ(150px);
+  backdrop-filter: blur(20px);
   @media (max-width: $mobile) {
     bottom: -2rem;
     left: 5rem;
@@ -67,7 +69,7 @@
   &::before {
     content: "";
     position: absolute;
-    top: 5%;
+    top: 4%;
     right: 0;
     left: 7%;
     z-index: 199;
@@ -295,6 +297,7 @@ span.not-active-right,
   height: 100%;
   padding-top: 6px;
   padding-bottom: 10px;
+
   // transform-origin: top left;
   // width: 412px;
   // height: 920px;
@@ -383,4 +386,5 @@ span.not-active-right,
   height: 95% !important;
   margin-top: 5.5% !important;
   border-radius: 6% 6% !important;
+  aspect-ratio: 9/20;
 }

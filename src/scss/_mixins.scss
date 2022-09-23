@@ -158,6 +158,7 @@
   text-transform: uppercase;
   cursor: default;
   user-select: none;
+
   &-span {
     @for $i from 1 through 11 {
       span:nth-child(3n + #{$i}) {
@@ -191,7 +192,30 @@
 
 @mixin section-text {
   flex-direction: column;
-  min-height: 600px;
+  // min-height: 600px;
+  .text {
+    align-self: flex-end;
+    width: 80%;
+    color: var(--color-gray);
+    font-size: 44px;
+    font-family: Jura, sans-serif;
+    text-align: left;
+    @media (max-width: $laptop) {
+      font-size: 36px;
+    }
 
+    @media (max-width: $mobile) {
+      font-size: 30px;
+    }
+  }
   @include flexbox(space-evenly);
+}
+
+@mixin section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  @media (max-width: $big-tablet) {
+    grid-template-columns: 1fr;
+  }
 }

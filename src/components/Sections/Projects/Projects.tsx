@@ -134,6 +134,41 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
       id="my-projects"
       className={`${classes.projects} padding`}
     >
+      <div
+        className={`${classes["my-projects"]} ${
+          inView ? "fade-in" : "fade-out"
+        }`}
+      >
+        <ProjectsList
+          allSkillsData={allSkillsData}
+          isLoading={isLoading}
+          data={{
+            array: projectsArr,
+          }}
+        ></ProjectsList>
+        {/* {<ProjectCarousel />} */}
+        {/* <div className={classes["project-list"]}>
+                  <Tilt {...tiltSettings}>
+                    <div className={classes.project}>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
+                      incidunt.
+                    </div>
+                  </Tilt>
+                  <Tilt {...tiltSettings}>
+                    <div className={classes.project}>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
+                      incidunt.
+                    </div>
+                  </Tilt>
+                </div> */}
+        {/* <div className={classes.text}>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti
+                  labore itaque laborum, ullam harum est beatae hic inventore. Doloribus
+                  et libero porro sapiente tempore officiis numquam. Esse, perferendis
+                  ipsam numquam deserunt fugit nihil temporibus perspiciatis sequi
+                  iusto! Accusantium, dignissimos voluptatem!
+                </div> */}
+      </div>
       <div className={classes["projects-text"]}>
         <div className={classes["title-wrapper"]}>
           <h2 className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}>
@@ -175,41 +210,6 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
           </h2>
         </div>
         <div className={classes.text}>Those are some of my projects.</div>
-      </div>
-      <div
-        className={`${classes["my-projects"]} ${
-          inView ? "fade-in" : "fade-out"
-        }`}
-      >
-        <ProjectsList
-          allSkillsData={allSkillsData}
-          isLoading={isLoading}
-          data={{
-            array: projectsArr,
-          }}
-        ></ProjectsList>
-        {/* {<ProjectCarousel />} */}
-        {/* <div className={classes["project-list"]}>
-          <Tilt {...tiltSettings}>
-            <div className={classes.project}>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
-              incidunt.
-            </div>
-          </Tilt>
-          <Tilt {...tiltSettings}>
-            <div className={classes.project}>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
-              incidunt.
-            </div>
-          </Tilt>
-        </div> */}
-        {/* <div className={classes.text}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti
-          labore itaque laborum, ullam harum est beatae hic inventore. Doloribus
-          et libero porro sapiente tempore officiis numquam. Esse, perferendis
-          ipsam numquam deserunt fugit nihil temporibus perspiciatis sequi
-          iusto! Accusantium, dignissimos voluptatem!
-        </div> */}
       </div>
     </section>
   );

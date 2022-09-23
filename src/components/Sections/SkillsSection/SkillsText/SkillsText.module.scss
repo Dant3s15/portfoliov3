@@ -25,20 +25,18 @@
 
     // animation: flicker4 8s infinite;
   }
-  .text {
-    // @include textglowsmall;
+  // .text {
+  //   // @include textglowsmall;
 
-    font-family: "Jura", sans-serif;
-    text-align: right;
-  }
+  //   font-family: "Jura", sans-serif;
+  //   text-align: right;
+  // }
 
-  @media (max-width: $laptop) {
-    font-size: 36px;
-  }
-  @media (max-width: $big-tablet) {
-    font-size: 36px;
-  }
-  @media (max-width: $mobile) {
-    font-size: 30px;
-  }
+  // @media (max-width: $laptop) {
+  //   font-size: 36px;
+  // }
+
+  // @media (max-width: $mobile) {
+  //   font-size: 30px;
+  // }
 }

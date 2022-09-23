@@ -2,9 +2,8 @@
 
 .projects {
   position: relative;
-  flex-direction: row-reverse;
+  // flex-direction: row-reverse;
   height: 100%;
-  padding-top: 15rem;
   // gap: 15rem;
   // padding-top: 8rem;
   // overflow: hidden;
@@ -16,15 +15,19 @@
   // );
 
   border-top: 10px solid var(--color-dark);
+  @include section-grid;
 
   // & div {
   //   border: 1px solid red;
   // }
   // height: 100vh;
   @media (max-width: $big-tablet) {
-    flex-direction: column;
+    // padding-top: 15rem;
   }
-  @include flexbox(space-between, flex-start);
+  // @media (max-width: $big-tablet) {
+  //   flex-direction: column;
+  // }
+  // @include flexbox(space-between);
   .title-wrapper {
     width: 100%;
     // margin-top: 8rem;
@@ -78,12 +81,15 @@
 
   .projects-text {
     @include section-text;
-    .text {
-      color: var(--color-gray);
-      font-size: 44px;
-      font-family: Jura, sans-serif;
-      text-align: left;
-    }
+    // order: 1;
+    // .text {
+    //   align-self: flex-end;
+    //   width: 70%;
+    //   color: var(--color-gray);
+    //   font-size: 44px;
+    //   font-family: Jura, sans-serif;
+    //   text-align: left;
+    // }
   }
 
   .title {
@@ -157,15 +163,18 @@
   .my-projects {
     position: relative;
     flex-flow: row nowrap;
-    // width: 100%;
-    // width: 100%;
-    // width: 100%;
     gap: 1.5rem;
+    // width: 100%;
+    // width: 100%;
+    // width: 100%;
+
     min-width: 50%;
     // padding: 2rem;
     // height: 100%;
     // padding: 0 5rem;
     // overflow: hidden;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     // border: 1px solid red;
     scroll-behavior: smooth;
     @include flexbox(flex-start);
@@ -173,6 +182,7 @@
       justify-content: safe flex-start;
     }
     @media (max-width: $big-tablet) {
+      order: 2;
       width: 100%;
       overflow-x: scroll;
       overflow-y: hidden;

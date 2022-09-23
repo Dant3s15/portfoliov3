@@ -5,7 +5,7 @@
 
 .project-wrapper {
   position: relative;
-  min-width: 350px;
+  min-width: 290px;
   max-width: 350px;
   margin-right: -12rem;
   overflow: hidden;
@@ -18,6 +18,10 @@
     cubic-bezier(0.53, -0.3, 0.25, 0.99);
   transition-property: transform;
   scroll-snap-align: center;
+  // max-width: 350px;
+  // @media (max-width: $laptop) {
+  //   font-size: 24px;
+  // }
   // @include corner-cut(40px, rgba(255, 255, 255, 0.18), 10px, 38px);
 
   &:hover {
@@ -33,6 +37,7 @@
     //   @include textglowsmall;
     // }
   }
+
   &:hover:first-child {
     transform: perspective(1000px) scale(1) translateX(0) rotateY(0deg) !important;
     @media (max-width: $mobile) {
@@ -83,9 +88,15 @@
   position: relative;
   display: grid;
   grid-template-rows: 1fr 2fr;
-  min-width: 350px;
-
+  min-width: 290px;
   color: var(--color-gray);
+  background: linear-gradient(
+    60deg,
+    var(--color-dark-3) 30%,
+    var(--color-blue-shade-1) 100%
+  );
+  background-repeat: no-repeat;
+  // background-color: rgba(57, 57, 57, 0.9);
   transform-style: preserve-3d;
   // font-family: "Orbitron", sans-serif;
   // backdrop-filter: blur(20px);
@@ -124,7 +135,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
     transform-style: preserve-3d;
     filter: brightness(0.9);
     transition: var(--transition-short);
@@ -155,6 +166,9 @@
     text-transform: uppercase;
     transition: all var(--transition-short);
     transition-property: text-shadow, color;
+    @media (max-width: $big-tablet) {
+      font-size: 24px;
+    }
   }
   .project-overview {
     padding: 0 6px;
@@ -183,6 +197,7 @@
     // height: 100%;
     height: 100px;
     background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
     @include flexbox(center, flex-end);
   }
 }
