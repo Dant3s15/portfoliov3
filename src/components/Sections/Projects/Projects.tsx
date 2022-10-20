@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useRef } from "react";
 import classes from "./Projects.module.scss";
 import ProjectsList from "./ProjectsList";
 import project1 from "../../../resources/img/projects/project1.webp";
@@ -10,12 +10,16 @@ import Typewriter from "typewriter-effect";
 import { useInView } from "react-intersection-observer";
 import ProjectCarousel from "../Hero/ProjectsCarousel/ProjectCarousel";
 import Tilt from "react-parallax-tilt";
+import useInViewDelay from "../../../hooks/useInViewDelay";
+import projectsData from "../../../data/projectsData";
 
 interface Props {
   allSkillsData: skillInterface[];
   isLoading: boolean;
 }
 const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
+  const projectsContainerRef = useRef(null);
+
   const { ref, inView, entry } = useInView({
     threshold: 0.2,
     onChange(inView) {
@@ -24,9 +28,13 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
         root.style.setProperty("--saturation", `saturate(${1})`);
         root.style.setProperty("--mask-percent", `${50}%`);
         root.style.setProperty("--blur", `blur(${30}px)`);
+        root.style.setProperty("--vmin", `5.5vmin 5.5vmin`);
+        root.style.setProperty("--dot-opacity", `0.65`);
+        root.style.setProperty("--dot-position", `0% 0%`);
       }
     },
   });
+  const [inViewDelay, setInViewDelay] = useInViewDelay({ inView });
 
   const projectsArr = [
     {
@@ -61,6 +69,21 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
     },
     {
       id: 2,
+      image: lightapp,
+      title: "LightApp",
+      overview: (
+        <Fragment>
+          This app will help you with choosing <strong>the best</strong> light
+          bulb to buy given room size, light bulb count and few other parameters
+          💡
+        </Fragment>
+      ),
+      skills: ["react", "typescript", "tailwind-css"],
+      link: "https://lightapp.netlify.app/",
+      repo: "https://github.com/DevmianS/LightApp",
+    },
+    {
+      id: 3,
       image: project2,
       title: "Splitter",
       overview: (
@@ -129,50 +152,15 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
   };
   //TODO reverse letters if not in view
   return (
-    <section
-      ref={ref}
-      id="my-projects"
-      className={`${classes.projects} padding`}
-    >
-      <div
-        className={`${classes["my-projects"]} ${
-          inView ? "fade-in" : "fade-out"
-        }`}
-      >
-        <ProjectsList
-          allSkillsData={allSkillsData}
-          isLoading={isLoading}
-          data={{
-            array: projectsArr,
-          }}
-        ></ProjectsList>
-        {/* {<ProjectCarousel />} */}
-        {/* <div className={classes["project-list"]}>
-                  <Tilt {...tiltSettings}>
-                    <div className={classes.project}>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
-                      incidunt.
-                    </div>
-                  </Tilt>
-                  <Tilt {...tiltSettings}>
-                    <div className={classes.project}>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
-                      incidunt.
-                    </div>
-                  </Tilt>
-                </div> */}
-        {/* <div className={classes.text}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti
-                  labore itaque laborum, ullam harum est beatae hic inventore. Doloribus
-                  et libero porro sapiente tempore officiis numquam. Esse, perferendis
-                  ipsam numquam deserunt fugit nihil temporibus perspiciatis sequi
-                  iusto! Accusantium, dignissimos voluptatem!
-                </div> */}
-      </div>
+    <section ref={ref} id="projects-section" className={`${classes.projects} `}>
       <div className={classes["projects-text"]}>
-        <div className={classes["title-wrapper"]}>
-          <h2 className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}>
-            {inView && (
+        <div className={`${classes["title-wrapper"]} padding`}>
+          <div
+            className={`${classes.title} ${
+              inView ? "fade-in-r" : "fade-out-r"
+            }`}
+          >
+            {inViewDelay && (
               <Typewriter
                 options={{
                   delay: 30,
@@ -207,9 +195,47 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
             }}
           /> */}
             {/* )} */}
-          </h2>
+          </div>
         </div>
-        <div className={classes.text}>Those are some of my projects.</div>
+        {/* <div
+          className={`${classes.text}  ${inView ? "fade-in-r" : "fade-out-r"}`}
+        >
+          Here is the list of selected projects
+        </div> */}
+      </div>
+      <div
+        id="my-projects"
+        className={`${classes["my-projects"]} ${
+          inView ? "fade-in" : "fade-out"
+        }`}
+      >
+        <ProjectsList
+          allSkillsData={allSkillsData}
+          isLoading={isLoading}
+          data={projectsData}
+        ></ProjectsList>
+        {/* {<ProjectCarousel />} */}
+        {/* <div className={classes["project-list"]}>
+                  <Tilt {...tiltSettings}>
+                    <div className={classes.project}>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
+                      incidunt.
+                    </div>
+                  </Tilt>
+                  <Tilt {...tiltSettings}>
+                    <div className={classes.project}>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
+                      incidunt.
+                    </div>
+                  </Tilt>
+                </div> */}
+        {/* <div className={classes.text}>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti
+                  labore itaque laborum, ullam harum est beatae hic inventore. Doloribus
+                  et libero porro sapiente tempore officiis numquam. Esse, perferendis
+                  ipsam numquam deserunt fugit nihil temporibus perspiciatis sequi
+                  iusto! Accusantium, dignissimos voluptatem!
+                </div> */}
       </div>
     </section>
   );

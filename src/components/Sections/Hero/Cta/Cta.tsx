@@ -5,7 +5,11 @@ import CTAtext from "./CtaText/CtaText";
 import ProjectCarousel from "../ProjectsCarousel/ProjectCarousel";
 import CtaButton from "./CtaButton/CtaButton";
 
-const Cta = () => {
+type Props = {
+  heroInView: boolean;
+};
+
+const Cta = ({ heroInView }: Props) => {
   return (
     <div className={classes["cta-wrapper"]}>
       <div className={classes.cta}>
@@ -17,7 +21,7 @@ const Cta = () => {
         <CtaButton></CtaButton>
       </div>
 
-      <ProjectCarousel></ProjectCarousel>
+      <ProjectCarousel heroInView={heroInView}></ProjectCarousel>
 
       {/* <CTAtext
         className={""} // className={`${

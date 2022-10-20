@@ -2,9 +2,16 @@
 
 .projects {
   position: relative;
+  width: 100%;
   // flex-direction: row-reverse;
   height: 100%;
-  // gap: 15rem;
+  // background-image: radial-gradient(
+  //   rgba(255, 255, 255, 0.1) 9%,
+  //   transparent 9%
+  // );
+
+  // background-position: 0% 25%;
+  // background-size: 4.9vmin 4.9vmin;
   // padding-top: 8rem;
   // overflow: hidden;
   // background-color: #232323;
@@ -14,16 +21,17 @@
   //   var(--color-blue-shade-1) 100%
   // );
 
-  border-top: 10px solid var(--color-dark);
-  @include section-grid;
+  // border-top: 10px solid var(--color-dark);
+  @include section-grid(1fr, 1fr);
 
   // & div {
   //   border: 1px solid red;
   // }
   // height: 100vh;
-  @media (max-width: $big-tablet) {
-    // padding-top: 15rem;
-  }
+  // @media (max-width: $big-laptop) {
+  //   // padding-top: 15rem;
+  //   // grid-template-columns: 1fr;
+  // }
   // @media (max-width: $big-tablet) {
   //   flex-direction: column;
   // }
@@ -81,6 +89,12 @@
 
   .projects-text {
     @include section-text;
+    .title {
+      align-self: flex-end;
+    }
+    .text {
+      align-self: flex-end;
+    }
     // order: 1;
     // .text {
     //   align-self: flex-end;
@@ -163,22 +177,26 @@
   .my-projects {
     position: relative;
     flex-flow: row nowrap;
-    gap: 1.5rem;
-    // width: 100%;
-    // width: 100%;
-    // width: 100%;
-
+    gap: 2rem;
     min-width: 50%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     // padding: 2rem;
     // height: 100%;
     // padding: 0 5rem;
-    // overflow: hidden;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    // overflow: scroll;
+    // transform: rotateY(-15deg) perspective(400px);
     // border: 1px solid red;
     scroll-behavior: smooth;
+    // @include mask-image(right, -150%);
+    // width: 100%;
+    // width: 100%;
+    // width: 100%;
+    // @include mask-image(left, 80%);
+    // @include mask-image;
     @include flexbox(flex-start);
     @media (max-width: $big-laptop) {
+      gap: 0.2rem;
       justify-content: safe flex-start;
     }
     @media (max-width: $big-tablet) {
@@ -193,7 +211,8 @@
     // }
 
     @media (max-width: $small-tablet) {
-      scroll-snap-type: x proximity;
+      scroll-snap-type: x;
+      scroll-behavior: smooth;
     }
   }
 }
@@ -203,6 +222,7 @@
   gap: 1rem;
   max-width: 100%;
   padding: 3rem;
+
   overflow-x: scroll;
   border: 1px solid red;
   // @for $i from 1 to 4 {
@@ -213,9 +233,10 @@
 
   transform: rotateX(30deg);
   scroll-snap-type: mandatory;
+  scroll-margin-right: 0px;
   .project {
-    min-width: 200px;
-    min-height: 600px;
+    // min-width: 200px;
+    // min-height: 400px;
     background-color: rgb(194, 194, 194);
     scroll-snap-align: center;
   }

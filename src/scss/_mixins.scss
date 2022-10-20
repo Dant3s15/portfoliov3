@@ -112,7 +112,7 @@
 @mixin textglowsmall($color1: var(--color-primary), $color2: #fff) {
   // color: $color1;
   color: $color2;
-
+  // color: transparent;
   text-shadow: 0 0 4px $color1, 0 0 11px $color1, 0 0 19px $color1;
 }
 // @mixin textglowsmall {
@@ -152,13 +152,13 @@
 @mixin title-effect {
   height: 1.2em;
   font-weight: 700;
-  font-size: 74px;
+  font-size: 98px;
   font-family: "Library3amsoft", sans-serif;
   text-align: start;
   text-transform: uppercase;
+  // transform: rotate(-90deg);
   cursor: default;
   user-select: none;
-
   &-span {
     @for $i from 1 through 11 {
       span:nth-child(3n + #{$i}) {
@@ -192,10 +192,13 @@
 
 @mixin section-text {
   flex-direction: column;
+
+  gap: 3.5rem;
   // min-height: 600px;
   .text {
-    align-self: flex-end;
-    width: 80%;
+    // align-self: flex-end;
+    justify-self: center;
+    // width: 80%;
     color: var(--color-gray);
     font-size: 44px;
     font-family: Jura, sans-serif;
@@ -208,14 +211,15 @@
       font-size: 30px;
     }
   }
-  @include flexbox(space-evenly);
+  @include flexbox(flex-start);
 }
 
-@mixin section-grid {
+@mixin section-grid($cols: 2fr 1fr, $colsTablet: 1fr) {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: $cols;
   gap: 2rem;
+  overflow: hidden;
   @media (max-width: $big-tablet) {
-    grid-template-columns: 1fr;
+    grid-template-columns: $colsTablet;
   }
 }

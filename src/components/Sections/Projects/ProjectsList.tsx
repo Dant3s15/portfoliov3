@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { skillInterface } from "../../../Types/types";
-import CardProject from "./ProjectCard";
+import ProjectCard from "./ProjectCard";
 
 interface ProjectsProps {
   data?: any;
@@ -13,30 +13,30 @@ const ProjectsList: FC<ProjectsProps> = ({
   isLoading,
   data,
 }) => {
-  const [whichSelected, setWhichSelected] = useState(null);
+  const [whichSelected, setWhichSelected] = useState<number | null>(null);
   const myProjects = document.getElementById("my-projects");
 
-  useEffect(() => {
-    myProjects?.addEventListener("click", () => {
-      setWhichSelected(null);
-    });
-    myProjects?.addEventListener("touch", () => {
-      setWhichSelected(null);
-    });
+  // useEffect(() => {
+  //   myProjects?.addEventListener("click", () => {
+  //     setWhichSelected(null);
+  //   });
+  //   myProjects?.addEventListener("touch", () => {
+  //     setWhichSelected(null);
+  //   });
 
-    return () => {
-      myProjects?.removeEventListener("click", () => {
-        setWhichSelected(null);
-      });
-      myProjects?.removeEventListener("touch", () => {
-        setWhichSelected(null);
-      });
-    };
-  }, [whichSelected]);
+  //   return () => {
+  //     myProjects?.removeEventListener("click", () => {
+  //       setWhichSelected(null);
+  //     });
+  //     myProjects?.removeEventListener("touch", () => {
+  //       setWhichSelected(null);
+  //     });
+  //   };
+  // }, [whichSelected]);
 
-  return data.array.map((project: any) => (
-    <CardProject
-      allSkillsData={allSkillsData}
+  return data.map((project: any) => (
+    <ProjectCard
+      // allSkillsData={allSkillsData}
       isLoading={isLoading}
       style={data.style}
       selectedState={{

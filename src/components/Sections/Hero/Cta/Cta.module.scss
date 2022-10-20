@@ -16,7 +16,7 @@
     flex-direction: column-reverse;
     // align-items: flex-start;
   }
-  @media (min-width: calc($big-tablet + 1px)) {
+  @media (min-width: calc($laptop + 1px)) {
     gap: 5rem;
   }
   .cta {

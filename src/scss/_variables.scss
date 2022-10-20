@@ -48,6 +48,7 @@ $big-desktop: 2400px;
   // --color-primary-background2: #162050;
 
   --color-border-transparent: rgba(255, 255, 255, 0.18);
+  --color-border-transparent-1: rgba(255, 255, 255, 0.547);
   --color-border-transparent-2: rgba(128, 128, 128, 0.5);
   --color-border-transparent-3: rgba(255, 255, 255, 0.072);
   --color-border-transparent-4: rgba(255, 255, 255, 0.306);
@@ -66,17 +67,20 @@ $big-desktop: 2400px;
   //JS variables
   --characters-width: 100px;
   --body-grayscale: grayscale(0);
-  --gradient-deg: 90deg;
+  --gradient-deg: 100deg;
   --saturation: saturate(0.1);
   --blur: blur(15px);
   --mask-percent: 100%;
-
+  //background dots
+  --vmin: 5vmin 5vmin;
+  --dot-opacity: 0.05;
+  --dot-position: 0% 0%;
   //BORDER RADIUS
   --border-radius: 10px;
   // --border-radius: 3px;
 
   //DYNAMIC VARIABLES
-  --project-card-gap: 150px;
+  --project-card-gap: 160px;
   @media (max-width: $big-laptop) {
     --project-card-gap: 160px;
   }

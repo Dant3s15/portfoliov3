@@ -15,6 +15,7 @@
   // @media (max-width: $big-tablet) {
   //   height: 50%;
   // }
+
   @media (max-width: $small-tablet) {
     // width: 90%;
   }
@@ -54,7 +55,7 @@
       }
       font-weight: 700;
       // @include textglowmedium;
-      font-size: 98px;
+      font-size: 110px;
       font-family: "Library3amsoft", sans-serif;
       span {
         display: inline-block;
@@ -75,13 +76,13 @@
         font-size: 74px;
       }
       @media (max-width: $desktop) {
-        font-size: 86px;
+        font-size: 88px;
         .hi {
           font-size: 62px;
         }
       }
       @media (max-width: $big-laptop) {
-        font-size: 62px;
+        font-size: 70px;
         .hi {
           font-size: 52px;
         }

@@ -1,42 +1,16 @@
 @import "../../../../scss/style.scss";
 .text-about {
-  color: var(--color-gray);
-  font-size: 44px;
-  font-family: "Orbitron", sans-serif;
-  // transform: rotateY(10deg);
-  transform-origin: 0%;
-
   @include section-text;
   .title {
-    align-self: flex-end;
+    align-self: flex-start;
     width: calc(1em * 5.7);
-    // width: 410px;
-    // width: 7rem;
-    // padding-left: 30%;
     color: var(--color-gray);
-    // font-weight: 700;
     font-size: 74px;
-    // line-height: 2;
-    text-align: start;
     text-transform: uppercase;
-    // border: 1px solid red;
-    // font-family: "Library3amsoft", sans-serif;
+
     @include title-effect;
-
-    // animation: flicker4 8s infinite;
   }
-  // .text {
-  //   // @include textglowsmall;
-
-  //   font-family: "Jura", sans-serif;
-  //   text-align: right;
-  // }
-
-  // @media (max-width: $laptop) {
-  //   font-size: 36px;
-  // }
-
-  // @media (max-width: $mobile) {
-  //   font-size: 30px;
-  // }
+  .text {
+    align-self: flex-start;
+  }
 }

@@ -273,15 +273,33 @@
 .fade-in {
   animation: fadein var(--transition-medium);
 }
+.fade-in-r {
+  animation: fadeinr var(--transition-medium);
+}
+// .fade-in2 {
+//   @for $i from 1 through 3 {
+//     & > div:nth-child(3n + #{$i}) {
+//       animation: fadein2 var(--transition-medium);
+//       animation-delay: calc($i * 30ms);
+//     }
+//   }
+
+//   animation: fadein var(--transition-medium);
+//   // & > div {
+//   // }
+// }
 .fade-out {
   animation: fadeout var(--transition-medium) forwards;
+}
+.fade-out-r {
+  animation: fadeoutr var(--transition-medium) forwards;
 }
 
 .skill-flip {
   @for $i from 1 through 11 {
     div:nth-child(3n + #{$i}) {
-      background-color: transparent;
-
+      // background-color: transparent;
+      background-color: var(--color-border-transparent);
       // background-color: var(--color-gray-tint-dark-transparent-1);
       border-right: 1px solid var(--color-border-transparent);
       border-bottom: 5px solid var(--color-border-transparent);

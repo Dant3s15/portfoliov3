@@ -14,7 +14,7 @@ const CtaText: FC<Props> = ({ className }) => {
           <h1>
             <Typewriter
               options={{
-                delay: 50,
+                delay: 30,
                 cursor: "",
               }}
               onInit={(typewriter) => {
@@ -44,19 +44,19 @@ const CtaText: FC<Props> = ({ className }) => {
               onInit={(typewriter) => {
                 typewriter
 
-                  .pauseFor(4000)
+                  .pauseFor(2000)
                   .typeString(`Frontend`)
-                  .pauseFor(4000)
+                  .pauseFor(2000)
                   .deleteAll()
                   .typeString(`React`)
-                  .pauseFor(4000)
+                  .pauseFor(2000)
                   .deleteAll()
                   .typeString(`Frontend`)
-                  .pauseFor(4000)
+                  .pauseFor(2000)
                   .deleteAll()
                   .typeString(`React`)
-                  .pauseFor(4000)
-                  .deleteAll()
+                  .pauseFor(2000)
+                  // .deleteAll()
                   .start();
               }}
             />
@@ -64,11 +64,11 @@ const CtaText: FC<Props> = ({ className }) => {
           {
             <Typewriter
               options={{
-                delay: 70,
+                delay: 50,
                 cursor: "",
               }}
               onInit={(typewriter) => {
-                typewriter.pauseFor(4600).typeString(`Developer`).start();
+                typewriter.pauseFor(2400).typeString(`Developer`).start();
               }}
             />
           }

@@ -31,7 +31,10 @@ const Hero: FC<Props> = () => {
       if (inView) {
         root.style.setProperty("--saturation", `saturate(${0.1})`);
         root.style.setProperty("--mask-percent", `${100}%`);
-        root.style.setProperty("--blur", `blur(${200}px)`);
+        root.style.setProperty("--blur", `blur(${50}px)`);
+        root.style.setProperty("--vmin", `30vmin 1vmin`);
+        root.style.setProperty("--dot-opacity", `0.05`);
+        root.style.setProperty("--dot-position", `0% 0%`);
       }
       // else root.style.setProperty("--saturation", `saturate(${0.1})`);
     },
@@ -99,7 +102,7 @@ const Hero: FC<Props> = () => {
       `}
     >
       {/* <div className={classes["character-selection"]}> */}
-      <Cta></Cta>
+      <Cta heroInView={inView}></Cta>
 
       {/* <Characters
           heroRef={heroRef}

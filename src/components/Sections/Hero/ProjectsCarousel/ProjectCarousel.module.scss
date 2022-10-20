@@ -2,20 +2,48 @@
 
 .project-carousel {
   position: relative;
+  // align-self: center;
   width: 50%;
-  height: 70%;
   perspective: 400px;
   transition: all var(--transition-medium);
-
+  // height: 70%;
+  aspect-ratio: 1/1;
+  // @media (max-width: $desktop) {
+  //   // width: 60%;
+  //   aspect-ratio: 1/1.1;
+  // }
+  @media (max-width: $big-laptop) {
+    // width: 60%;
+    aspect-ratio: 1/1.2;
+  }
+  @media (max-width: $laptop) {
+    width: 50%;
+    aspect-ratio: 1/1.6;
+  }
   @media (max-width: $big-tablet) {
-    width: 90%;
+    width: 80%;
+    // min-width: 70%;
+    // max-width: 90%;
     margin-top: 7rem;
+    aspect-ratio: 1/2;
+  }
+  @media (max-width: $small-tablet) {
+    width: 95%;
+    // width: 80%;
+    // min-width: 70%;
+    max-width: 95%;
+    margin-top: 7rem;
+    // aspect-ratio: 1/2;
   }
   @media (max-width: $mobile) {
     width: 95%;
     max-height: 50%;
     margin-top: 5rem;
+    aspect-ratio: 1/2;
   }
+  // @media (max-width: $mobile) {
+  //   width: 85%;
+  // }
 }
 .project-preview {
   width: 100%;
@@ -36,8 +64,12 @@
     // }
   }
   @media (min-width: $big-tablet) {
+    // height: 85%;
     transform: rotateY(-5deg);
   }
+  // @media (max-width: $big-tablet) {
+  //   height: 85%;
+  // }
 }
 
 .carousel-btn {

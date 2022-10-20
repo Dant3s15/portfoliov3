@@ -8,6 +8,12 @@ const CtaButton = () => {
       <ButtonPrimary
         isAbsolute={false}
         onClick={() => {
+          let projects = document.getElementById("projects-section");
+          projects?.scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "center",
+          });
           console.log("todo");
         }}
         text="Learn More"

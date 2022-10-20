@@ -20,7 +20,7 @@
   border: 2px solid var(--color-border-transparent-4);
   border-right: 7px solid var(--color-border-transparent-4);
   border-bottom: 5px solid var(--color-border-transparent-4);
-  border-radius: 20px;
+  border-radius: 0px 20px;
   transform-style: preserve-3d;
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity;

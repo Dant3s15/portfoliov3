@@ -6,7 +6,7 @@ interface Props {
   dataConstPos?: number;
   data?: number | string;
   selected?: boolean;
-  name: string;
+  // name: string;
   onRotateCharacters: (e: any) => void;
   selectedCtx?: boolean;
   id?: string;
@@ -15,7 +15,7 @@ const Character = ({
   data,
   dataConstPos,
   selected,
-  name,
+  // name,
   onRotateCharacters,
   selectedCtx,
   id,
@@ -53,7 +53,7 @@ const Character = ({
       }}
       id={id}
     >
-      <div className={classes.character__name}>{name}</div>
+      {/* <div className={classes.character__name}>{name}</div> */}
       <img
         data-const-pos={dataConstPos}
         data-character={data}

@@ -4,7 +4,7 @@ import CardGlass from "../../UI/CardGlass";
 import ContactForm from "../ContactForm/ContactForm";
 import Projects from "../Projects/Projects";
 import Typewriter from "typewriter-effect";
-import classes from "./AboutMe.module.scss";
+import classes from "./ContactMe.module.scss";
 import { skillInterface } from "../../../Types/types";
 import PopUpWindow from "../../UI/PopUpWindow";
 
@@ -21,7 +21,7 @@ const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
 
   return (
     <Fragment>
-      <Projects allSkillsData={allSkillsData} isLoading={isLoading} />
+      {/* <Projects allSkillsData={allSkillsData} isLoading={isLoading} /> */}
       <div id="about-me" className={classes["about-me"]}>
         <div className={classes["about-me-char"]}>
           <div className={`${classes["char__container"]} cancel-absolute`}>
@@ -30,7 +30,7 @@ const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
                 return;
               }}
               data={3}
-              name="Damian"
+              // name="Damian"
             ></Character>
           </div>
         </div>
@@ -92,10 +92,10 @@ const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
                   />
                 }
               </div>
-              <ContactForm
+              {/* <ContactForm
                 setPopupTxt={setPopupText}
                 popupState={setPopupVisible}
-              />
+              /> */}
             </div>
           </CardGlass>
         </div>

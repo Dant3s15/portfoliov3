@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
 import CardGlass from "../../../UI/CardGlass";
 import classes from "./SkillTile.module.scss";
+import getDevicon from "../../../Utils/getDevicon";
 // import Tilt from "react-parallax-tilt";
 const SkillTile = ({ skillName }: { skillName: string }) => {
-  const skillNameLower = skillName.toLowerCase();
+  // const skillNameLower = skillName.toLowerCase();
   const [icon, setIcon] = useState<string>();
 
   const fetchIcon = async () => {
     let modifier = "original";
-    const getLink = () => {
-      return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skillNameLower}/${skillNameLower}-${modifier}.svg`;
-    };
 
-    let res = await fetch(getLink());
+    let res = await fetch(getDevicon(skillName, modifier));
     if (!res.ok) {
       modifier = "plain";
-      res = await fetch(getLink());
+      res = await fetch(getDevicon(skillName, modifier));
     }
 
     const iconBlob = await res.blob();

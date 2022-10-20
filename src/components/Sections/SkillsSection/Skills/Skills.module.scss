@@ -6,7 +6,7 @@
   transform: perspective(1000px) scale3d(1, 1, 1) translate3d(0, 0, 0)
     rotate3d(0, 1, 0, -180deg);
   // padding: 5rem;
-  transform: rotateY(-10deg);
+  transform: rotateY(1deg);
   transform-origin: 100%;
   // transform-style: preserve-3d;
   transition: transform var(--transition-short-medium) ease-in-out;

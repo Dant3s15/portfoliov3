@@ -1,26 +1,28 @@
 import Typewriter from "typewriter-effect";
 import classes from "./SkillsText.module.scss";
 import { useInView } from "react-intersection-observer";
+import useInViewDelay from "../../../../hooks/useInViewDelay";
 
 const TextAbout = () => {
   const { ref, inView, entry } = useInView({
-    threshold: 0.6,
+    threshold: 0.4,
     onChange(inView) {
       let root = document.documentElement;
       if (inView) {
         root.style.setProperty("--saturation", `saturate(${1})`);
         root.style.setProperty("--mask-percent", `${50}%`);
         root.style.setProperty("--blur", `blur(${30}px)`);
+        root.style.setProperty("--vmin", `6vmin 6vmin`);
+        root.style.setProperty("--dot-opacity", `0.75`);
+        root.style.setProperty("--dot-position", `30% 30%`);
       }
     },
   });
+  const [inViewDelay, setInViewDelay] = useInViewDelay({ inView });
   return (
-    <div className={classes["text-about"]}>
-      <header
-        ref={ref}
-        className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}
-      >
-        {inView && (
+    <div ref={ref} className={classes["text-about"]}>
+      <div className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}>
+        {inViewDelay && (
           <Typewriter
             options={{
               delay: 30,
@@ -36,10 +38,9 @@ const TextAbout = () => {
             }}
           />
         )}
-      </header>
-      <span className={classes.text}>
-        Hey, my name is Damian, I'm knowledge-hungry, react, frontend web
-        developer from Poland.
+      </div>
+      <span className={`${classes.text}  ${inView ? "fade-in" : "fade-out"}`}>
+        Hey, my name is Damian
       </span>
     </div>
   );

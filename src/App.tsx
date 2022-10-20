@@ -23,8 +23,8 @@ import Main from "./components/Sections/Main/Main";
 import Hexgrid from "./components/UI/Hexgrid/Hexgrid";
 import Projects from "./components/Sections/Projects/Projects";
 import ParallaxBackground from "./components/Utils/ParallaxBackground/ParallaxBackground";
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import background from "./resources/img/hero8.webp";
+// import background from "./resources/img/hero8.webp";
+import AboutMe from "./components/Sections/AboutMe/AboutMe";
 
 // const tourOptions = {
 //   defaultStepOptions: {
@@ -96,6 +96,7 @@ function App() {
           {/* </ParallaxLayer>
           <ParallaxLayer offset={2} speed={0.2}> */}
           <SkillsSection></SkillsSection>
+          <AboutMe allSkillsData={[]} isLoading={false}></AboutMe>
         </ParallaxBackground>
         {/* </ParallaxLayer> */}
       </Main>

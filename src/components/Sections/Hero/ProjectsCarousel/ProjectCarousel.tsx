@@ -5,7 +5,11 @@ import projectsData from "../../../../data/projectsData";
 import SelectedContext from "../../../../context/selected-context";
 import { useInView } from "react-intersection-observer";
 
-const ProjectCarousel = () => {
+type Props = {
+  heroInView: boolean;
+};
+
+const ProjectCarousel = ({ heroInView }: Props) => {
   const [selected, setSelected] = useState(0);
   const [direction, setdirection] = useState<-1 | 1>(1);
   const [isHovering, setIsHovering] = useState(false);
@@ -16,13 +20,13 @@ const ProjectCarousel = () => {
   });
   useEffect(() => {
     let intervalId: string | number | NodeJS.Timeout | undefined;
-    if (!isHovering) {
+    if (!isHovering && heroInView) {
       intervalId = setInterval(() => {
         carouselHandler(-1);
-      }, 10000);
+      }, 5000);
     }
     return () => clearInterval(intervalId);
-  }, [selected, isHovering]);
+  }, [selected, isHovering, heroInView]);
 
   const hoverHandler = () => {
     setIsHovering(true);

@@ -185,12 +185,12 @@ span.not-active-right,
   @include flexbox(space-evenly);
   .description {
     font-weight: 500;
-    font-size: 22px;
+    font-size: 30px;
     transition: all var(--transition-short-medium) ease-in-out;
-    @media (max-width: $big-tablet) {
-      font-size: 30px;
-    }
-    @media (max-width: $small-tablet) {
+    // @media (max-width: $big-tablet) {
+    //   font-size: 30px;
+    // }
+    @media (max-width: $big-laptop) {
       font-size: 24px;
     }
     @media (max-width: $mobile) {
@@ -204,15 +204,17 @@ span.not-active-right,
     flex-direction: column;
     gap: 6px;
     align-self: flex-start;
+    width: 100%;
     font-weight: 700;
     transition: all var(--transition-short-medium) ease-in-out;
     @include flexbox;
     &-items {
       display: grid;
-      grid-template-rows: auto auto;
-      grid-template-columns: auto auto;
+      // grid-template-rows: auto auto;
+      grid-template-columns: 1fr 1fr;
       width: 100%;
-      column-gap: 2rem;
+      padding: 0 1rem;
+      // column-gap: 2rem;
       transition: all var(--transition-short-medium);
     }
     .created {
@@ -242,10 +244,12 @@ span.not-active-right,
       }
     }
     li {
-      display: block;
+      // display: block;
       gap: 4px;
+      justify-content: flex-start;
       justify-self: start;
-      padding-left: 2rem;
+      // width: 100%;
+      // padding-left: 2rem;
       @include flexbox;
       img {
         max-height: 24px;

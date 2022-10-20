@@ -33,7 +33,7 @@ const Skills = () => {
     <div
       ref={ref}
       className={`${classes.skills} ${
-        inView ? "fade-in skill-flip" : "fade-out"
+        inView ? "fade-in-r skill-flip" : "fade-out-r"
       } `}
     >
       {renderSkills()}

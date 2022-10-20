@@ -442,6 +442,23 @@
     opacity: 100;
   }
 }
+@keyframes fadeinr {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+@keyframes fadein2 {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 100;
+  }
+}
 @keyframes fadeout {
   from {
     transform: translateX(0);
@@ -449,6 +466,16 @@
   }
   to {
     transform: translateX(-100px);
+    opacity: 0;
+  }
+}
+@keyframes fadeoutr {
+  from {
+    transform: translateX(0);
+    opacity: 100;
+  }
+  to {
+    transform: translateX(100px);
     opacity: 0;
   }
 }
@@ -747,7 +774,8 @@
   // }
 
   from {
-    background-color: transparent;
+    // background-color: transparent;
+    background-color: var(--color-border-transparent);
     transform: perspective(1000px) scale3d(1, 1, 1) translate3d(0, 0, 0)
       rotate3d(0, 1, 0, -180deg);
     animation-timing-function: ease-out;
@@ -756,6 +784,7 @@
   50% {
     // background-color: white;
     // background-color: var(--color-border-transparent);
+    background-color: var(--color-border-transparent);
     border-right: 1px solid var(--color-border-transparent);
     border-bottom: 5px solid var(--color-border-transparent);
     border-left: 7px solid var(--color-border-transparent);
@@ -764,7 +793,7 @@
     animation-timing-function: ease-in;
   }
   66% {
-    background-color: transparent;
+    background-color: var(--color-border-transparent-1);
   }
   67% {
     background-color: var(--color-border-transparent);
@@ -838,12 +867,12 @@
   80% {
     filter: drop-shadow(0px 10px rgba(0, 0, 0, 0.4));
     // text-shadow: none;
-    @include textglowmedium;
+    @include textglowsmall;
   }
   to {
-    // transform: scale(1.35);
-    @include textglowmedium;
     filter: drop-shadow(0px 10px rgba(0, 0, 0, 0.4));
+    // transform: scale(1.35);
+    @include textglowsmall;
   }
 }
 

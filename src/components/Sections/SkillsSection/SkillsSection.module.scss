@@ -3,7 +3,7 @@
   // display: grid;
   // grid-template-columns: 1fr 1fr;
   // gap: 2rem;
-  @include section-grid;
+  @include section-grid(1fr, 1fr);
   // font-size: 60px;
   // padding-left: 50rem;
   // margin-top: 15rem;
