@@ -35,6 +35,7 @@
 
 .my-photo {
   // order: 1;
+  z-index: 100;
   @media (max-width: $big-tablet) {
     order: 2;
   }
@@ -236,3 +237,7 @@
 //     padding: 0 1rem;
 //   }
 // }
+
+.bg-title {
+  @include background-title;
+}

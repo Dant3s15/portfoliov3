@@ -199,6 +199,18 @@
       gap: 0.2rem;
       justify-content: safe flex-start;
     }
+    @media (min-width: $desktop) {
+      padding-right: 8rem;
+      padding-left: 8rem;
+    }
+    @media (min-width: $big-laptop) {
+      padding-right: 5rem;
+      padding-left: 5rem;
+    }
+    @media (min-width: $laptop) {
+      padding-right: 2rem;
+      padding-left: 2rem;
+    }
     @media (max-width: $big-tablet) {
       order: 2;
       width: 100%;
@@ -245,3 +257,8 @@
 //   max-width: 50%;
 //   color: var(--color-primary);
 // }
+
+.bg-title {
+  position: relative;
+  @include background-title(0rem);
+}

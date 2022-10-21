@@ -223,3 +223,21 @@
     grid-template-columns: $colsTablet;
   }
 }
+
+@mixin background-title($top: -2rem, $left: false) {
+  position: absolute;
+  top: $top;
+  bottom: 0;
+
+  color: var(--color-border-transparent-5);
+  font-weight: 700;
+  font-size: 15vw;
+  font-family: Orbitron, sans-serif;
+  pointer-events: none;
+
+  @if $left {
+    left: 0;
+  } @else {
+    right: 0;
+  }
+}

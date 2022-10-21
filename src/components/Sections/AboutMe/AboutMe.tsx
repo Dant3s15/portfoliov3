@@ -32,6 +32,7 @@ const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
         root.style.setProperty("--blur", `blur(${2}px)`);
         root.style.setProperty("--vmin", `6.5vmin 6.5vmin`);
         root.style.setProperty("--dot-opacity", `0.25`);
+        root.style.setProperty("--dot-position", `50% 80%`);
       }
     },
   });
@@ -53,6 +54,11 @@ const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
 
   return (
     <div ref={ref} id="about-me" className={`${classes["about-me"]} padding`}>
+      <div
+        className={`${inView ? "fade-in" : "fade-out"} ${classes["bg-title"]}`}
+      >
+        ABOUT ME
+      </div>
       <div className={classes["my-photo"]}>
         {/* <div className={`${classes["char__container"]} cancel-absolute`}> */}
         {/* <Character
@@ -65,7 +71,7 @@ const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
         <img
           className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}
           src={myPhoto}
-          alt=""
+          alt="photo of me"
         />
         {/* </div> */}
       </div>

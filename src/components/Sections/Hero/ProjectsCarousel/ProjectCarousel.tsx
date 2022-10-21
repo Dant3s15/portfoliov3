@@ -44,7 +44,7 @@ const ProjectCarousel = ({ heroInView }: Props) => {
 
   const carouselHandler = (direction: -1 | 1) => {
     setBtnDelayed(() => true);
-    const length = projectsData.length;
+    const length = projectsData.filter((project) => project.featured).length;
     setdirection(direction);
 
     if (direction === 1) {

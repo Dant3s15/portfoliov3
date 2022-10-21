@@ -5,7 +5,11 @@ interface Props {
   className?: string;
   children: any;
   onClick?: any;
+  onMouseEnter?: any;
+  onMouseLeave?: any;
+  onMouseOver?: any;
   ariaLabel?: string;
+  datatile?: string;
 }
 
 const CardGlass: FC<Props> = ({
@@ -14,9 +18,17 @@ const CardGlass: FC<Props> = ({
   corner,
   children,
   ariaLabel,
+  onMouseEnter,
+  onMouseLeave,
+  onMouseOver,
+  datatile,
 }) => {
   return (
     <div
+      data-tile={datatile}
+      onMouseOver={onMouseOver}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       aria-label={ariaLabel}
       onClick={onClick}
       className={`${classes["card--glass"]} ${className ? className : ""} ${

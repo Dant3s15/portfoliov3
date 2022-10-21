@@ -12,7 +12,7 @@ const TextAbout = () => {
         root.style.setProperty("--saturation", `saturate(${1})`);
         root.style.setProperty("--mask-percent", `${50}%`);
         root.style.setProperty("--blur", `blur(${30}px)`);
-        root.style.setProperty("--vmin", `6vmin 6vmin`);
+        root.style.setProperty("--vmin", `8vmin 8vmin`);
         root.style.setProperty("--dot-opacity", `0.75`);
         root.style.setProperty("--dot-position", `30% 30%`);
       }
@@ -40,7 +40,9 @@ const TextAbout = () => {
         )}
       </div>
       <span className={`${classes.text}  ${inView ? "fade-in" : "fade-out"}`}>
-        Hey, my name is Damian
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+        cupiditate adipisci accusantium blanditiis perspiciatis culpa autem
+        ratione illum explicabo eveniet.
       </span>
     </div>
   );

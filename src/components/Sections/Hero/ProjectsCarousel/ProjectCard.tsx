@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
 import classes from "./ProjectCard.module.scss";
 import live from "../../../../resources/img/live.png";
 import smarthphone from "../../../../resources/img/smartphone.png";
@@ -12,14 +12,45 @@ interface Props {
 }
 
 const ProjectCard: FC<Props> = ({ selected }) => {
+  const [featuredProjects, setFeaturedProjects] = useState<
+    {
+      id: number;
+      featured: boolean;
+      title: string;
+      img: {
+        desktop: string;
+        mobile: string;
+      };
+      github: string;
+      live: string;
+      description: string;
+      stack: {
+        img: string;
+        name: string;
+      }[];
+    }[]
+  >(projectsData);
+  useEffect(() => {
+    setFeaturedProjects(projectsData.filter((project) => project.featured));
+    // console.log(projectsData.filter((project) => project.featured));
+    // console.log(projectsData);
+    // const featuredProjects = projectsData.filter((project) => project.featured);
+  }, []);
+
   const activeClassHandler = (id: number) => {
-    if (selected < id || (id === 0 && selected === projectsData.length - 1)) {
-      if (id === projectsData.length - 1 && selected === 0) {
+    if (
+      selected < id ||
+      (id === 0 && selected === featuredProjects.length - 1)
+    ) {
+      if (id === featuredProjects.length - 1 && selected === 0) {
         return classes["not-active-left"];
       }
       return classes["not-active-right"];
     }
-    if (selected > id || (id === projectsData.length - 1 && selected === 0)) {
+    if (
+      selected > id ||
+      (id === featuredProjects.length - 1 && selected === 0)
+    ) {
       return classes["not-active-left"];
     } else {
       return classes["active"];
@@ -50,7 +81,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
                 // whileDrag={{ cursor: "grabbing" }}
                 // style={{ opacity: 0.1 }}
               >
-                {projectsData.map((proj, id) => {
+                {featuredProjects.map((proj, id) => {
                   return (
                     // <motion.div >
                     <img
@@ -68,10 +99,10 @@ const ProjectCard: FC<Props> = ({ selected }) => {
               </motion.div>
             </motion.div>
             <CardGlass className={classes.links}>
-              <a target="_blank" href={projectsData[selected].live}>
+              <a target="_blank" href={featuredProjects[selected].live}>
                 <img src={live} alt="Live link" />
               </a>
-              <a target="_blank" href={projectsData[selected].github}>
+              <a target="_blank" href={featuredProjects[selected].github}>
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
                   alt="Github link"
@@ -79,7 +110,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
               </a>
             </CardGlass>
             <header className={`${classes.title}`}>
-              {projectsData.map((proj, id) => (
+              {featuredProjects.map((proj, id) => (
                 <span key={id} className={`${activeClassHandler(id)}`}>
                   {proj.title}
                 </span>
@@ -100,7 +131,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
             className={classes["tilt-mobile"]}
           >
             <div className={`${classes["img-mobile-container"]} `}>
-              {projectsData.map((proj, id) => {
+              {featuredProjects.map((proj, id) => {
                 return (
                   // <iframe
                   //   src="https://devmian-tip-calculator.web.app/"
@@ -150,7 +181,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
           </Tilt>
         </div>
       </div>
-      {projectsData.map((proj, id) => {
+      {featuredProjects.map((proj, id) => {
         return (
           <div
             key={id}

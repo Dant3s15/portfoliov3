@@ -767,29 +767,19 @@
   }
 }
 @keyframes flip {
-  // from {
-  //   transform: perspective(1000px) scale3d(1, 1, 1) translate3d(0, 0, 0)
-  //     rotate3d(0, 1, 0, -360deg);
-  //   animation-timing-function: ease-out;
-  // }
-
   from {
-    // background-color: transparent;
     background-color: var(--color-border-transparent);
-    transform: perspective(1000px) scale3d(1, 1, 1) translate3d(0, 0, 0)
-      rotate3d(0, 1, 0, -180deg);
+    transform: rotateY(-180deg);
+
     animation-timing-function: ease-out;
   }
 
   50% {
-    // background-color: white;
-    // background-color: var(--color-border-transparent);
     background-color: var(--color-border-transparent);
     border-right: 1px solid var(--color-border-transparent);
     border-bottom: 5px solid var(--color-border-transparent);
     border-left: 7px solid var(--color-border-transparent);
-    transform: perspective(1000px) scale3d(1, 1, 1) translate3d(0, 0, 0)
-      rotate3d(0, 1, 0, -170deg);
+    transform: rotateY(-170deg);
     animation-timing-function: ease-in;
   }
   66% {
@@ -804,13 +794,11 @@
     border: 1px solid var(--color-border-transparent);
     border-right: 7px solid var(--color-border-transparent);
     border-bottom: 5px solid var(--color-border-transparent);
-    transform: perspective(1000px) scale3d(1, 1, 1) translate3d(0, 0, 0)
-      rotate3d(0, 1, 0, 30deg);
+    transform: rotateY(30deg);
     animation-timing-function: ease-in;
   }
   90% {
-    transform: perspective(1000px) scale3d(1, 1, 1) translate3d(0, 0, 0)
-      rotate3d(0, 1, 0, 0deg);
+    transform: rotateY(0deg);
     animation-timing-function: ease-in;
   }
 
@@ -819,10 +807,57 @@
     border: 1px solid var(--color-border-transparent);
     border-right: 7px solid var(--color-border-transparent);
     border-bottom: 5px solid var(--color-border-transparent);
-    transform: perspective(1000px) scale3d(1, 1, 1) translate3d(0, 0, 0)
-      rotate3d(0, 1, 0, 0deg);
+    transform: rotateY(0deg);
 
     animation-timing-function: ease-in;
+  }
+}
+
+@keyframes flip-back {
+  from {
+    background-color: var(--color-border-transparent);
+    border: 1px solid var(--color-border-transparent);
+    border-right: 7px solid var(--color-border-transparent);
+    border-bottom: 5px solid var(--color-border-transparent);
+    transform: rotateY(0deg);
+    animation-timing-function: ease-in;
+  }
+
+  10% {
+    transform: rotateY(0deg);
+    animation-timing-function: ease-in;
+  }
+  20% {
+    background-color: var(--color-border-transparent);
+    border: 1px solid var(--color-border-transparent);
+    border-right: 7px solid var(--color-border-transparent);
+    border-bottom: 5px solid var(--color-border-transparent);
+    transform: rotateY(30deg);
+    animation-timing-function: ease-in;
+  }
+  43% {
+    background-color: var(--color-border-transparent);
+  }
+
+  44% {
+    background-color: var(--color-border-transparent-1);
+  }
+  // 50% {
+  //   background-color: var(--color-border-transparent);
+  //   border-right: 1px solid var(--color-border-transparent);
+  //   border-bottom: 5px solid var(--color-border-transparent);
+  //   border-left: 7px solid var(--color-border-transparent);
+  //   transform: rotateY(-170deg);
+  //   animation-timing-function: ease-in;
+  // }
+
+  to {
+    background-color: var(--color-border-transparent);
+    background-color: var(--color-border-transparent);
+    border: 1px solid var(--color-border-transparent);
+    border-bottom: 5px solid var(--color-border-transparent);
+    border-left: 7px solid var(--color-border-transparent);
+    transform: rotateY(-180deg);
   }
 }
 

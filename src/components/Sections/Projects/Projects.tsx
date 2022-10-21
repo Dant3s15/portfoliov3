@@ -21,7 +21,7 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
   const projectsContainerRef = useRef(null);
 
   const { ref, inView, entry } = useInView({
-    threshold: 0.2,
+    threshold: 0.3,
     onChange(inView) {
       let root = document.documentElement;
       if (inView) {
@@ -236,6 +236,11 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
                   ipsam numquam deserunt fugit nihil temporibus perspiciatis sequi
                   iusto! Accusantium, dignissimos voluptatem!
                 </div> */}
+      </div>
+      <div
+        className={`${inView ? "fade-in" : "fade-out"} ${classes["bg-title"]}`}
+      >
+        PROJECTS
       </div>
     </section>
   );
