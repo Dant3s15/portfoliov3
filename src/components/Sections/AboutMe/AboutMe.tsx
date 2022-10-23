@@ -12,10 +12,9 @@ import { useInView } from "react-intersection-observer";
 import useInViewDelay from "../../../hooks/useInViewDelay";
 
 interface Props {
-  allSkillsData: skillInterface[];
   isLoading: boolean;
 }
-const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
+const AboutMe: FC<Props> = ({ isLoading }) => {
   // const [popupVisible, setPopupVisible] = useState(false);
   // const [popupText, setPopupText] = useState({
   //   message: "test",
@@ -33,6 +32,7 @@ const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
         root.style.setProperty("--vmin", `6.5vmin 6.5vmin`);
         root.style.setProperty("--dot-opacity", `0.25`);
         root.style.setProperty("--dot-position", `50% 80%`);
+        root.style.setProperty("--bg-opacity", `1`);
       }
     },
   });
@@ -54,6 +54,9 @@ const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
 
   return (
     <div ref={ref} id="about-me" className={`${classes["about-me"]} padding`}>
+      {/* <div className={classes["bg-container"]}>
+        <div className={classes.bg}></div>
+      </div> */}
       <div
         className={`${inView ? "fade-in" : "fade-out"} ${classes["bg-title"]}`}
       >
@@ -107,7 +110,7 @@ const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
   );
 };
 
-export default ContactMe;
+export default AboutMe;
 {
   /* <div className={classes["text-wrapper"]}>
   <CardGlass corner className={classes["glass-card--custom"]}>

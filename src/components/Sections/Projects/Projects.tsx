@@ -21,7 +21,7 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
   const projectsContainerRef = useRef(null);
 
   const { ref, inView, entry } = useInView({
-    threshold: 0.3,
+    threshold: 0.2,
     onChange(inView) {
       let root = document.documentElement;
       if (inView) {

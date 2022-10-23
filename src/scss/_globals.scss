@@ -172,6 +172,9 @@ input[type="reset"] {
 }
 
 section {
-  margin-bottom: 12rem;
+  margin-bottom: 18rem;
+  @media (max-width: $big-tablet) {
+    margin-bottom: 12rem;
+  }
   // border-bottom: 10px solid var(--color-dark);
 }

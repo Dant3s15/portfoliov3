@@ -3,8 +3,11 @@
 .skill-tile {
   position: relative;
   display: block;
-  width: 150px;
-  height: 180px;
+  width: auto;
+  overflow: hidden;
+  // height: 180px;
+  // height: 100%;
+  // min-height: 150px;
   transform: translateY(0);
   transform-style: preserve-3d;
   perspective: 1000px;
@@ -19,6 +22,7 @@
   // transform: scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -180deg);
   // perspective: 1000px;
   transition: all var(--transition-short);
+  aspect-ratio: 1/1.2;
   // &:hover {
   //   position: relative;
   //   z-index: 999px;
@@ -32,12 +36,12 @@
     padding: 2rem 1rem 0.5rem 1rem;
   }
   .title {
+    z-index: 900;
     padding: 0.5rem 0 1rem 0;
     color: var(--color-gray);
-
     // color: var(--color-gray);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.2vw;
     // @include textglowsmaller;
   }
   .time-text {
@@ -65,9 +69,13 @@
       width: 100%;
       // padding: 10px;
       font-weight: 700;
-      font-size: 24px;
+      // font-size: 24px;
+      font-size: 1.5vw;
       text-align: center;
       text-transform: capitalize;
+      @media (max-width: $big-tablet) {
+        font-size: 2.5vw;
+      }
       @media (max-width: $mobile) {
         font-size: 12px;
       }
@@ -90,23 +98,37 @@
     // }
   }
 
-  @media (max-width: $mobile) {
-    max-width: 100px;
-    height: 100px;
+  // @media (max-width: $big-laptop) {
+  //   max-width: 150px;
+  //   height: 150px;
+  // }
+  @media (max-width: $big-tablet) {
     .title {
       padding: 0 0 10px 0;
-      font-size: 12px;
+      font-size: 2.5vw;
+    }
+    .icon {
+      padding: 10px;
+    }
+  }
+
+  @media (max-width: $small-tablet) {
+    // max-width: 100px;
+    // height: 100px;
+    .title {
+      padding: 0 0 10px 0;
+      // font-size: 12px;
     }
     .icon {
       padding: 10px;
     }
   }
   @media (max-width: $small-mobile) {
-    max-width: 80px;
-    height: 90px;
+    // max-width: 80px;
+    // height: 90px;
     .title {
       padding: 0 0 10px 0;
-      font-size: 12px;
+      font-size: 10px;
     }
     .icon {
       padding: 10px;

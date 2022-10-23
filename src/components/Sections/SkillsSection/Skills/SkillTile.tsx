@@ -6,9 +6,15 @@ import getDevicon from "../../../Utils/getDevicon";
 const SkillTile = ({
   skill,
   inView,
-}: {
+  activeId,
+  skillId,
+}: // initialAnimation,
+{
   skill: { name: string; time: string };
   inView: boolean;
+  activeId: number;
+  skillId: number;
+  // initialAnimation: boolean;
 }) => {
   // const skillNameLower = skillName.toLowerCase();
   const [icon, setIcon] = useState<string>();
@@ -40,6 +46,10 @@ const SkillTile = ({
       clearTimeout(timeout);
     };
   }, [isHovering]);
+
+  // useEffect(() => {
+  //   setIsHovering(!inView);
+  // }, [inView]);
 
   const calcTime = () => {
     const dateNow = new Date();
@@ -74,7 +84,9 @@ const SkillTile = ({
         //   setIsHovering(false);
         // }}
         className={`${classes["card-inner"]} ${
-          isHovering ? classes["flip-back"] : classes["flip"]
+          isHovering || activeId === skillId
+            ? classes["flip-back"]
+            : classes["flip"]
         }`}
       >
         <div className={classes["card-front"]}>
