@@ -20,7 +20,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
-    padding-top: 2rem;
+    // padding-top: 2rem;
   }
   .logo {
     grid-row: 1/1;
@@ -88,13 +88,12 @@
   @media (max-width: $mobile) {
     height: 35vh;
     .wrapper {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
 
     .col {
-      justify-self: flex-start;
-      padding-left: 3rem;
+      justify-self: center;
     }
 
     .links {

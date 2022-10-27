@@ -1,22 +1,7 @@
-// @import "../../scss/mixins.scss";
-// @import "../../scss/variables.scss";
-// @import "../../scss/utility.scss";
 @import "../../scss/style.scss";
 
 .card--glass {
   flex-direction: column;
-
-  // backdrop-filter: blur(20px);
-  // background: linear-gradient(
-  //   60deg,
-  //   var(--color-dark-3) 30%,
-  //   var(--color-blue-shade-1) 100%
-  // );
-  // background-repeat: no-repeat;
-  // border-radius: 3px;
-  // background-color: rgba(56, 56, 57, 0.582);
-  // background-color: rgba(67, 74, 73, 0.909);
-  // background-color: rgba(95, 95, 95, 0.109);
   border: 2px solid var(--color-border-transparent-4);
   border-right: 7px solid var(--color-border-transparent-4);
   border-bottom: 5px solid var(--color-border-transparent-4);
@@ -24,19 +9,6 @@
   transform-style: preserve-3d;
   transition: all var(--transition-short-medium);
   transition-property: transform, opacity;
-  // @supports not (backdrop-filter: blur(20px)) {
-  //   background-color: rgba(67, 74, 73, 0.909);
-  // }
-  // @media (min-width: $big-tablet) {
-  //   -webkit-backdrop-filter: blur(20px);
-  //   backdrop-filter: blur(20px);
-  //   // backdrop-filter: none;
-  // }
-  // @media (max-width: calc($big-tablet - 1px)) {
-  //   background-color: #2d2f3be6;
-
-  //   // backdrop-filter: none;
-  // }
 }
 .corner {
   @include corner-cut(40px, var(--color-border-transparent), 10px, 38px);

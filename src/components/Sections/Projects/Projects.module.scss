@@ -10,6 +10,7 @@
   //   transparent 9%
   // );
 
+  scroll-padding-bottom: 10%;
   // background-position: 0% 25%;
   // background-size: 4.9vmin 4.9vmin;
   // padding-top: 8rem;
@@ -176,17 +177,21 @@
   }
   .my-projects {
     position: relative;
+    // display: grid;
     flex-flow: row nowrap;
+    // grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2rem;
     min-width: 50%;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
     // padding: 2rem;
     // height: 100%;
     // padding: 0 5rem;
     // overflow: scroll;
     // transform: rotateY(-15deg) perspective(400px);
     // border: 1px solid red;
+    padding: 2rem 4rem;
+    padding-right: 18rem;
+    // padding-top: 2rem;
+    // padding-bottom: 2rem;
     scroll-behavior: smooth;
     // @include mask-image(right, -150%);
     // width: 100%;
@@ -214,8 +219,9 @@
     @media (max-width: $big-tablet) {
       order: 2;
       width: 100%;
-      overflow-x: scroll;
-      overflow-y: hidden;
+      // overflow-x: scroll;
+      // overflow-y: hidden;
+      overflow: var(--projects-overflow);
     }
     @include scrollbar;
     // & > div:last-child {

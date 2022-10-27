@@ -8,7 +8,11 @@ const SkillsSection = () => {
     threshold: 0.2,
   });
   return (
-    <section ref={ref} className={`${classes["skills-section"]} padding`}>
+    <section
+      id="my-skills"
+      ref={ref}
+      className={`${classes["skills-section"]} padding`}
+    >
       <TextAbout></TextAbout>
       <Skills inView={inView}></Skills>
     </section>

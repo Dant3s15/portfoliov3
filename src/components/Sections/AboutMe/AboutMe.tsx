@@ -1,7 +1,7 @@
 import { FC, Fragment, useEffect, useState } from "react";
 import Character from "../Hero/Characters/Character";
 import CardGlass from "../../UI/CardGlass";
-import ContactForm from "../ContactForm/ContactForm";
+import ContactForm from "../ContactMe/ContactForm/ContactForm";
 import Projects from "../Projects/Projects";
 import Typewriter from "typewriter-effect";
 import classes from "./AboutMe.module.scss";
@@ -53,7 +53,11 @@ const AboutMe: FC<Props> = ({ isLoading }) => {
   // }, [inView]);
 
   return (
-    <div ref={ref} id="about-me" className={`${classes["about-me"]} padding`}>
+    <section
+      ref={ref}
+      id="about-me"
+      className={`${classes["about-me"]} padding`}
+    >
       {/* <div className={classes["bg-container"]}>
         <div className={classes.bg}></div>
       </div> */}
@@ -106,7 +110,7 @@ const AboutMe: FC<Props> = ({ isLoading }) => {
           developer from Poland.
         </span>
       </div>
-    </div>
+    </section>
   );
 };
 

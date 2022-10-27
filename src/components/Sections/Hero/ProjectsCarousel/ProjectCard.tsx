@@ -1,11 +1,11 @@
-import { FC, Fragment, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import classes from "./ProjectCard.module.scss";
 import live from "../../../../resources/img/live.png";
-import smarthphone from "../../../../resources/img/smartphone.png";
+// import smarthphone from "../../../../resources/img/smartphone.png";
 import Tilt from "react-parallax-tilt";
 import CardGlass from "../../../UI/CardGlass";
 import projectsData from "../../../../data/projectsData";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 interface Props {
   selected: number;
@@ -58,7 +58,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
   };
   //TODO drag!!!
   return (
-    <li className={`${classes.card}}`}>
+    <li className={`${classes.card}`}>
       <div className={classes["images-title"]}>
         <div className={classes.images}>
           <Tilt
@@ -74,8 +74,8 @@ const ProjectCard: FC<Props> = ({ selected }) => {
             tiltMaxAngleY={10}
             className={classes.tilt}
           >
-            <motion.div className={classes["img-desktop-container"]}>
-              <motion.div
+            <div className={classes["img-desktop-container"]}>
+              <div
                 className={classes["img-drag-container"]}
                 // drag="x"
                 // whileDrag={{ cursor: "grabbing" }}
@@ -96,8 +96,8 @@ const ProjectCard: FC<Props> = ({ selected }) => {
                     // </motion.div>
                   );
                 })}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
             <CardGlass className={classes.links}>
               <a target="_blank" href={featuredProjects[selected].live}>
                 <img src={live} alt="Live link" />

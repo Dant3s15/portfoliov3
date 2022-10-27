@@ -1,106 +1,117 @@
-import { FC, Fragment, useState } from "react";
-import Character from "../Hero/Characters/Character";
-import CardGlass from "../../UI/CardGlass";
-import ContactForm from "../ContactForm/ContactForm";
-import Projects from "../Projects/Projects";
 import Typewriter from "typewriter-effect";
 import classes from "./ContactMe.module.scss";
-import { skillInterface } from "../../../Types/types";
-import PopUpWindow from "../../UI/PopUpWindow";
+import { useInView } from "react-intersection-observer";
+import useInViewDelay from "../../../hooks/useInViewDelay";
+import ContactForm from "./ContactForm/ContactForm";
+import { SetStateAction, useEffect, useState } from "react";
 
-interface Props {
-  allSkillsData: skillInterface[];
-  isLoading: boolean;
-}
-const ContactMe: FC<Props> = ({ allSkillsData, isLoading }) => {
-  const [popupVisible, setPopupVisible] = useState(false);
-  const [popupText, setPopupText] = useState({
-    message: "test",
-    btnTxt: "test",
+import linkedinlogo from "../../../resources/icons/logo-linkedin.svg";
+import twitterlogo from "../../../resources/icons/logo-twitter.svg";
+
+const ContactMe = () => {
+  const [popupVisible, setPopupVisible] = useState<boolean>(true);
+  //TODO popup window
+  const [popupTxt, setPopupTxt] = useState({
+    message: "",
+    btnTxt: "",
+  });
+  useEffect(() => {
+    console.log(popupTxt, popupVisible);
+  }, [popupTxt, popupVisible]);
+
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    onChange(inView) {
+      let root = document.documentElement;
+      if (inView) {
+        root.style.setProperty("--saturation", `saturate(${1})`);
+        root.style.setProperty("--mask-percent", `${50}%`);
+        root.style.setProperty("--blur", `blur(${2}px)`);
+        root.style.setProperty("--vmin", `10vmin 10vmin`);
+        root.style.setProperty("--dot-opacity", `0.25`);
+        root.style.setProperty("--dot-position", `80% 20%`);
+        root.style.setProperty("--bg-opacity", `1`);
+      }
+    },
   });
 
+  const [inViewDelay, setInViewDelay] = useInViewDelay({ inView });
+
   return (
-    <Fragment>
-      {/* <Projects allSkillsData={allSkillsData} isLoading={isLoading} /> */}
-      <div id="about-me" className={classes["about-me"]}>
-        <div className={classes["about-me-char"]}>
-          <div className={`${classes["char__container"]} cancel-absolute`}>
-            <Character
-              onRotateCharacters={() => {
-                return;
+    <section ref={ref} id="contact-me" className={`${classes["contact-me"]}`}>
+      <div
+        className={`${inView ? "fade-in-r" : "fade-out-r"} ${
+          classes["bg-title"]
+        }`}
+      >
+        CONTACT
+      </div>
+
+      <div className={`${classes["text-contact"]} padding`}>
+        <div className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}>
+          {inViewDelay && (
+            <Typewriter
+              options={{
+                delay: 30,
+                cursor: "",
               }}
-              data={3}
-              // name="Damian"
-            ></Character>
-          </div>
+              onInit={(typewriter) => {
+                typewriter
+                  .pauseFor(300)
+                  .typeString(
+                    `<span class =${classes["title-span"]}><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span> <span>M</span><span>e</span></span>`
+                  )
+                  .start();
+              }}
+            />
+          )}
         </div>
 
-        <div className={classes["text-wrapper"]}>
-          <CardGlass corner className={classes["glass-card--custom"]}>
-            {popupVisible && (
-              <PopUpWindow
-                message={popupText.message}
-                btnTxt={popupText.btnTxt}
-                onClick={() => {
-                  setPopupVisible(false);
-                }}
-              />
-            )}
-            <div className={`${classes["text-container"]} `}>
-              <Typewriter
-                options={{
-                  delay: 100,
-                  cursor: "_",
-                  wrapperClassName: classes.title,
-                  cursorClassName: classes["title__cursor"],
-                  loop: true,
-                }}
-                onInit={(typewriter) => {
-                  typewriter
-                    .typeString(`<h2>About Me</h2>`)
-                    .pauseFor(2000)
-                    .deleteAll()
-                    .typeString(`<h2>Contact Me</h2>`)
-                    .pauseFor(2000)
-                    .deleteAll()
-                    .start();
-                }}
-              />
-              <div className={classes.text}>
-                {
-                  <Typewriter
-                    options={{
-                      delay: 30,
-                      cursor: "",
-                    }}
-                    onInit={(typewriter) => {
-                      typewriter
-                        .pauseFor(1000)
-                        .typeString(
-                          "<span>Hey, I'm Damian, your Frontend Developer from Poland 😊</span>"
-                        )
-                        .pauseFor(1000)
-                        .typeString(
-                          "<span>I can help you build your dream project 😉</span>"
-                        )
-                        .pauseFor(1000)
-                        .typeString(
-                          '<span>You can contact me by sending me an <a href="mailto:damiansobierajdev@gmail.com">email📧</a> or using the form below:</span>'
-                        )
-                        .start();
-                    }}
-                  />
-                }
-              </div>
-              {/* <ContactForm
-                setPopupTxt={setPopupText}
-                popupState={setPopupVisible}
-              /> */}
-            </div>
-          </CardGlass>
+        <div className={classes.links}>
+          <span
+            className={`${classes.text}  ${inView ? "fade-in" : "fade-out"}`}
+          >
+            You can contact me using:
+          </span>
+          <ul
+            className={`${classes["links-row"]} ${
+              inView ? "fade-in-r" : "fade-out-r"
+            }`}
+          >
+            <li className={classes.link}>
+              <a
+                className={classes.logo}
+                target="_blank"
+                href="https://www.linkedin.com/in/damiansobieraj"
+              >
+                <img src={linkedinlogo} alt="linkedin logo" />
+                <p className={classes["link-name"]}>LinkedIn</p>
+              </a>
+            </li>
+            <li className={classes.link}>
+              <a
+                className={classes.logo}
+                target="_blank"
+                href="https://twitter.com/DevmianS"
+              >
+                <img src={twitterlogo} alt="twitter logo" />
+                <p className={classes["link-name"]}>Twitter</p>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </Fragment>
+      <span className={`${classes.text}  ${inView ? "fade-in" : "fade-out"}`}>
+        Or send me a message using form below:
+      </span>
+      <ContactForm
+        className={`${classes.title} ${
+          inView ? "fade-in" : "fade-out"
+        } padding`}
+        popupState={setPopupVisible}
+        setPopupTxt={setPopupTxt}
+      ></ContactForm>
+    </section>
   );
 };
 

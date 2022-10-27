@@ -1,4 +1,6 @@
 import SkillTile from "./SkillTile";
+import Tilt from "react-parallax-tilt";
+
 import classes from "./Skills.module.scss";
 import { useInView } from "react-intersection-observer";
 import { Fragment, useEffect, useState } from "react";
@@ -82,6 +84,17 @@ const Skills = ({ inView }: { inView: boolean }) => {
   // }, [inView]);
   return (
     <Fragment>
+      {/* <Tilt
+        tiltAngleYInitial={3}
+        transitionSpeed={900}
+        // scale={1.05}
+        // glareEnable={false}
+        glareMaxOpacity={0.2}
+        perspective={1700}
+        tiltMaxAngleX={1}
+        tiltMaxAngleY={3}
+        className={classes.tilt}
+      > */}
       <div
         className={`${classes.skills} ${
           inView ? "fade-in-r skill-flip" : "fade-out-r"
@@ -89,6 +102,7 @@ const Skills = ({ inView }: { inView: boolean }) => {
       >
         {renderSkills()}
       </div>
+      {/* </Tilt> */}
       <div
         className={`${inView ? "fade-in-r" : "fade-out-r"} ${
           classes["bg-title"]

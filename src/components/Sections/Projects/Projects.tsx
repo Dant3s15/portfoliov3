@@ -1,4 +1,4 @@
-import { FC, Fragment, useRef } from "react";
+import { FC, Fragment, useEffect, useRef } from "react";
 import classes from "./Projects.module.scss";
 import ProjectsList from "./ProjectsList";
 import project1 from "../../../resources/img/projects/project1.webp";
@@ -34,107 +34,126 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
       }
     },
   });
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (inView) {
+      let root = document.documentElement;
+      timeout = setTimeout(() => {
+        root.style.setProperty("--projects-overflow", `scroll hidden`);
+      }, 1000);
+    } else {
+      let root = document.documentElement;
+      timeout = setTimeout(() => {
+        root.style.setProperty("--projects-overflow", `visible`);
+      }, 1000);
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [inView]);
+
   const [inViewDelay, setInViewDelay] = useInViewDelay({ inView });
 
-  const projectsArr = [
-    {
-      id: 0,
-      image: project1,
-      title: "Portfolio",
-      overview: (
-        <Fragment>
-          Frontend game-like character <strong>selector</strong> and{" "}
-          <strong>creator</strong> , create your own character or contact me and{" "}
-          <strong>LEVEL ME UP!</strong>
-        </Fragment>
-      ),
-      skills: ["react", "typescript", "sass"],
-      link: "https://damiansobieraj.com/",
-      repo: "https://github.com/DevmianS/portfoliov3",
-    },
-    {
-      id: 1,
-      image: lightapp,
-      title: "LightApp",
-      overview: (
-        <Fragment>
-          This app will help you with choosing <strong>the best</strong> light
-          bulb to buy given room size, light bulb count and few other parameters
-          💡
-        </Fragment>
-      ),
-      skills: ["react", "typescript", "tailwind-css"],
-      link: "https://lightapp.netlify.app/",
-      repo: "https://github.com/DevmianS/LightApp",
-    },
-    {
-      id: 2,
-      image: lightapp,
-      title: "LightApp",
-      overview: (
-        <Fragment>
-          This app will help you with choosing <strong>the best</strong> light
-          bulb to buy given room size, light bulb count and few other parameters
-          💡
-        </Fragment>
-      ),
-      skills: ["react", "typescript", "tailwind-css"],
-      link: "https://lightapp.netlify.app/",
-      repo: "https://github.com/DevmianS/LightApp",
-    },
-    {
-      id: 3,
-      image: project2,
-      title: "Splitter",
-      overview: (
-        <Fragment>
-          <strong>FrontendMentor.io</strong> challenge{" "}
-          <strong>Tip Calculator</strong>, made in using <strong>React</strong>,
-          <strong>TypeScript</strong> and <strong>Sass</strong>
-        </Fragment>
-      ),
-      skills: ["react", "typescript", "sass"],
-      link: "https://devmian-tip-calculator.web.app/",
-      repo: "https://github.com/DevmianS/tip-calculator-react",
-    },
-    // {
-    //   id: 3,
-    //   image: project1,
-    //   title: "Web-dev-API",
-    //   overview: (
-    //     <Fragment>
-    //       <strong>API</strong> database that gives you access to the list of{" "}
-    //       <strong>Web development technologies</strong> and skills.
-    //     </Fragment>
-    //   ),
-    //   skills: ["javascript", "expressjs"],
-    //   link: "https://web-dev-skills-api.herokuapp.com/",
-    //   repo: "https://github.com/DevmianS/web-dev-skills-api",
-    // },
-    // {
-    //   id: 4,
-    //   image: soon,
-    //   title: "COMING SOON...",
-    //   overview: <Fragment></Fragment>,
-    //   skills: ["html", "css", "javascript", "git", "github"],
-    //   link: "#",
-    //   repo: "#",
-    // },
-    // {
-    //   id: 4,
-    //   image: project1,
-    //   title: 'Web-dev-API',
-    //   overview: (
-    //     <Fragment>
-    //       Simple <strong>API</strong> database that gives you access to the list
-    //       of <strong>Web development technologies</strong> and skills.
-    //     </Fragment>
-    //   ),
-    //   skills: ['javascript', 'expressjs', 'git', 'github'],
-    //   link: 'https://portfolio-27cdd.web.app/',
-    //   repo: 'https://github.com/Dant3s15/portfoliov3',
-    // },
-  ];
+  // const projectsArr = [
+  //   {
+  //     id: 0,
+  //     image: project1,
+  //     title: "Portfolio",
+  //     overview: (
+  //       <Fragment>
+  //         Frontend game-like character <strong>selector</strong> and{" "}
+  //         <strong>creator</strong> , create your own character or contact me and{" "}
+  //         <strong>LEVEL ME UP!</strong>
+  //       </Fragment>
+  //     ),
+  //     skills: ["react", "typescript", "sass"],
+  //     link: "https://damiansobieraj.com/",
+  //     repo: "https://github.com/DevmianS/portfoliov3",
+  //   },
+  //   {
+  //     id: 1,
+  //     image: lightapp,
+  //     title: "LightApp",
+  //     overview: (
+  //       <Fragment>
+  //         This app will help you with choosing <strong>the best</strong> light
+  //         bulb to buy given room size, light bulb count and few other parameters
+  //         💡
+  //       </Fragment>
+  //     ),
+  //     skills: ["react", "typescript", "tailwind-css"],
+  //     link: "https://lightapp.netlify.app/",
+  //     repo: "https://github.com/DevmianS/LightApp",
+  //   },
+  //   {
+  //     id: 2,
+  //     image: lightapp,
+  //     title: "LightApp",
+  //     overview: (
+  //       <Fragment>
+  //         This app will help you with choosing <strong>the best</strong> light
+  //         bulb to buy given room size, light bulb count and few other parameters
+  //         💡
+  //       </Fragment>
+  //     ),
+  //     skills: ["react", "typescript", "tailwind-css"],
+  //     link: "https://lightapp.netlify.app/",
+  //     repo: "https://github.com/DevmianS/LightApp",
+  //   },
+  //   {
+  //     id: 3,
+  //     image: project2,
+  //     title: "Splitter",
+  //     overview: (
+  //       <Fragment>
+  //         <strong>FrontendMentor.io</strong> challenge{" "}
+  //         <strong>Tip Calculator</strong>, made in using <strong>React</strong>,
+  //         <strong>TypeScript</strong> and <strong>Sass</strong>
+  //       </Fragment>
+  //     ),
+  //     skills: ["react", "typescript", "sass"],
+  //     link: "https://devmian-tip-calculator.web.app/",
+  //     repo: "https://github.com/DevmianS/tip-calculator-react",
+  //   },
+  // {
+  //   id: 3,
+  //   image: project1,
+  //   title: "Web-dev-API",
+  //   overview: (
+  //     <Fragment>
+  //       <strong>API</strong> database that gives you access to the list of{" "}
+  //       <strong>Web development technologies</strong> and skills.
+  //     </Fragment>
+  //   ),
+  //   skills: ["javascript", "expressjs"],
+  //   link: "https://web-dev-skills-api.herokuapp.com/",
+  //   repo: "https://github.com/DevmianS/web-dev-skills-api",
+  // },
+  // {
+  //   id: 4,
+  //   image: soon,
+  //   title: "COMING SOON...",
+  //   overview: <Fragment></Fragment>,
+  //   skills: ["html", "css", "javascript", "git", "github"],
+  //   link: "#",
+  //   repo: "#",
+  // },
+  // {
+  //   id: 4,
+  //   image: project1,
+  //   title: 'Web-dev-API',
+  //   overview: (
+  //     <Fragment>
+  //       Simple <strong>API</strong> database that gives you access to the list
+  //       of <strong>Web development technologies</strong> and skills.
+  //     </Fragment>
+  //   ),
+  //   skills: ['javascript', 'expressjs', 'git', 'github'],
+  //   link: 'https://portfolio-27cdd.web.app/',
+  //   repo: 'https://github.com/Dant3s15/portfoliov3',
+  // },
+  // ];
 
   const tiltSettings = {
     tiltAngleYInitial: -30,
@@ -152,7 +171,7 @@ const Projects: FC<Props> = ({ allSkillsData, isLoading }) => {
   };
   //TODO reverse letters if not in view
   return (
-    <section ref={ref} id="projects-section" className={`${classes.projects} `}>
+    <section id="projects-section" ref={ref} className={`${classes.projects} `}>
       <div className={classes["projects-text"]}>
         <div className={`${classes["title-wrapper"]} padding`}>
           <div

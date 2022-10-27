@@ -59,6 +59,9 @@
     transform: perspective(1000px) scale(1.1) translateX(35%) rotateY(0deg) !important;
     @media (max-width: $mobile) {
       transform: perspective(1000px) scale(1.1) translateX(35%) rotateY(0deg) !important;
+      &:is(:last-child) {
+        transform: perspective(1000px) scale(1.1) translateX(-10%) rotateY(0deg) !important;
+      }
     }
   }
 
@@ -67,6 +70,9 @@
     animation: zindex 100s forwards;
     @media (max-width: $mobile) {
       transform: perspective(1000px) scale(1.1) translateX(35%) !important;
+      &:is(:last-child) {
+        transform: perspective(1000px) scale(1.1) translateX(-10%) rotateY(0deg) !important;
+      }
     }
   }
 }
@@ -91,6 +97,7 @@
   display: grid;
   grid-template-rows: 1fr 2fr;
   min-width: 290px;
+  min-height: 540px;
   color: var(--color-gray);
   background: linear-gradient(
     60deg,
@@ -107,7 +114,7 @@
   transition: all var(--transition-short-medium);
   transition-property: transform;
   user-select: none;
-  aspect-ratio: 1/1.7;
+  // aspect-ratio: 1/1.7;
   // & .project-title,
   // & .used-skills-title,
   // & .project-overview {

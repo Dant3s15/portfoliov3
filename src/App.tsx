@@ -97,6 +97,7 @@ function App() {
           <ParallaxLayer offset={2} speed={0.2}> */}
           <SkillsSection></SkillsSection>
           <AboutMe isLoading={false}></AboutMe>
+          <ContactMe></ContactMe>
         </ParallaxBackground>
         {/* </ParallaxLayer> */}
       </Main>

@@ -52,7 +52,7 @@ $big-desktop: 2400px;
   --color-border-transparent-2: rgba(128, 128, 128, 0.5);
   --color-border-transparent-3: rgba(255, 255, 255, 0.072);
   --color-border-transparent-4: rgba(255, 255, 255, 0.306);
-  --color-border-transparent-5: rgba(255, 255, 255, 0.05);
+  --color-border-transparent-5: rgba(255, 255, 255, 0.04);
 
   //TRANSITIONS TIMES
   --transition-short: 0.3s;
@@ -71,6 +71,7 @@ $big-desktop: 2400px;
   --gradient-deg: 100deg;
   --saturation: saturate(0.1);
   --blur: blur(15px);
+  --projects-overflow: visible;
   --mask-percent: 100%;
   //background dots
   --vmin: 5vmin 5vmin;
@@ -78,7 +79,7 @@ $big-desktop: 2400px;
   --bg-opacity: 0;
   --dot-position: 0% 0%;
   //BORDER RADIUS
-  --border-radius: 10px;
+  --border-radius: 0 10px;
   // --border-radius: 3px;
 
   //DYNAMIC VARIABLES

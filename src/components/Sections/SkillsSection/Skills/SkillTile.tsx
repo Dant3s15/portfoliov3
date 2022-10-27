@@ -71,7 +71,7 @@ const SkillTile = ({
   };
 
   const skillTime = calcTime();
-
+  //TODO check skill tile styled as navbar
   // const iconSrc = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skillNameLower}/${skillNameLower}-original.svg`;
   return (
     <div className={`${classes["skill-tile"]}`}>

@@ -2,7 +2,7 @@ import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import classes from "./ContactForm.module.scss";
-import ButtonPrimary from "../../UI/ButtonPrimary";
+import ButtonPrimary from "../../../UI/ButtonPrimary";
 import { FC } from "react";
 
 const ContactFormSchema = Yup.object().shape({
@@ -25,11 +25,12 @@ interface Props {
       btnTxt: string;
     }>
   >;
+  className?: string;
 }
 
-const ContactForm: FC<Props> = ({ popupState, setPopupTxt }) => {
+const ContactForm: FC<Props> = ({ popupState, setPopupTxt, className }) => {
   return (
-    <div id="contact-me" className={classes["contact-me"]}>
+    <div id="contact-me" className={`${classes["contact-me"]} ${className}`}>
       <div className={classes.container}>
         <Formik
           initialValues={{ name: "", email: "", text: "" }}
@@ -130,6 +131,7 @@ const ContactForm: FC<Props> = ({ popupState, setPopupTxt }) => {
                 </div>
                 <Field
                   as="textarea"
+                  rows="5"
                   className={
                     errors.text && touched.text && classes["input-error"]
                   }

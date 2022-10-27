@@ -228,7 +228,7 @@
   position: absolute;
   top: $top;
   bottom: 0;
-
+  z-index: -1;
   color: var(--color-border-transparent-5);
   font-weight: 700;
   font-size: 15vw;
@@ -239,5 +239,24 @@
     left: 0;
   } @else {
     right: 0;
+  }
+}
+
+@mixin paddingWrapper {
+  @media (max-width: $desktop) {
+    padding-right: 8rem;
+    padding-left: 8rem;
+  }
+  @media (max-width: $big-laptop) {
+    padding-right: 5rem;
+    padding-left: 5rem;
+  }
+  @media (max-width: $laptop) {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  @media (max-width: $small-mobile) {
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
 }
