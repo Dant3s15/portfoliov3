@@ -26,9 +26,15 @@ interface Props {
     }>
   >;
   className?: string;
+  children: any;
 }
 
-const ContactForm: FC<Props> = ({ popupState, setPopupTxt, className }) => {
+const ContactForm: FC<Props> = ({
+  popupState,
+  setPopupTxt,
+  className,
+  children,
+}) => {
   return (
     <div id="contact-me" className={`${classes["contact-me"]} ${className}`}>
       <div className={classes.container}>
@@ -155,6 +161,7 @@ const ContactForm: FC<Props> = ({ popupState, setPopupTxt, className }) => {
           )}
         </Formik>
       </div>
+      {children}
     </div>
   );
 };

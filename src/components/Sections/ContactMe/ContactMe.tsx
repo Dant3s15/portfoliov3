@@ -7,9 +7,10 @@ import { SetStateAction, useEffect, useState } from "react";
 
 import linkedinlogo from "../../../resources/icons/logo-linkedin.svg";
 import twitterlogo from "../../../resources/icons/logo-twitter.svg";
+import PopUpWindow from "../../UI/PopUpWindow";
 
 const ContactMe = () => {
-  const [popupVisible, setPopupVisible] = useState<boolean>(true);
+  const [popupVisible, setPopupVisible] = useState<boolean>(false);
   //TODO popup window
   const [popupTxt, setPopupTxt] = useState({
     message: "",
@@ -110,7 +111,17 @@ const ContactMe = () => {
         } padding`}
         popupState={setPopupVisible}
         setPopupTxt={setPopupTxt}
-      ></ContactForm>
+      >
+        {popupVisible && (
+          <PopUpWindow
+            message={popupTxt.message}
+            btnTxt={popupTxt.btnTxt}
+            onClick={() => {
+              setPopupVisible(false);
+            }}
+          ></PopUpWindow>
+        )}
+      </ContactForm>
     </section>
   );
 };

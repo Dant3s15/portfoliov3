@@ -4,6 +4,7 @@ import splitterDesktop from "../resources/img/projects/splitter/splitter_desktop
 import splitterMobile from "../resources/img/projects/splitter/splitter_mobile.webp";
 import devjobsDesktop from "../resources/img/projects/devjobs/devjobs_desktop.webp";
 import devjobsMobile from "../resources/img/projects/devjobs/devjobs_mobile.webp";
+import portfolioMobile from "../resources/img/projects/portfolio/portfolio_desktop.webp";
 
 const projectsData = [
   {
@@ -95,14 +96,14 @@ const projectsData = [
     id: 3,
     featured: false,
     img: {
-      desktop: splitterDesktop,
-      mobile: splitterMobile,
+      desktop: portfolioMobile,
+      mobile: portfolioMobile,
     },
     title: "Portfolio",
     github: "https://github.com/DevmianS/portfoliov3",
     live: "https://damiansobieraj.com/",
     description:
-      "Mobile first,responsive tip calculator app. You can calculate the tip by specifying bill amount, number of people and percent you want to tip.",
+      "My Portfolio website, with information about my projects, my skills and myself",
 
     stack: [
       {
