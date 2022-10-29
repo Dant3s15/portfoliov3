@@ -1,15 +1,10 @@
-import { FC } from "react";
 import Typewriter from "typewriter-effect";
 import classes from "./CtaText.module.scss";
 
-interface Props {
-  className: string;
-}
-
-const CtaText: FC<Props> = ({ className }) => {
+const CtaText = () => {
   return (
     <div className={classes.textWrapper}>
-      <div className={`${classes["cta-text"]} ${className}`}>
+      <div className={`${classes["cta-text"]}`}>
         {
           <h1>
             <Typewriter
@@ -56,7 +51,6 @@ const CtaText: FC<Props> = ({ className }) => {
                   .deleteAll()
                   .typeString(`React`)
                   .pauseFor(2000)
-                  // .deleteAll()
                   .start();
               }}
             />
@@ -72,7 +66,6 @@ const CtaText: FC<Props> = ({ className }) => {
               }}
             />
           }
-          {/* <span>Developer</span> */}
         </h3>
       </div>
     </div>

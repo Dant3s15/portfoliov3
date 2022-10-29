@@ -1,6 +1,3 @@
-//@include corner-cut(20px, var(--color-primary), 4px, 17px);
-
-//TODO DON'T FORGET TO SET PARENT'S POSITION TO RELATIVE!
 @mixin corner-cut(
   $pixels: 20px,
   $bg-color: #00000000,
@@ -8,7 +5,6 @@
   $translate: 17px,
   $after: ""
 ) {
-  // position: relative;
   overflow: hidden;
   clip-path: polygon(
     0% 100%,
@@ -65,7 +61,6 @@
   $translate: 17px,
   $after: ""
 ) {
-  // background-color: red;
   position: relative;
   clip-path: polygon(
     -10% 110%,
@@ -95,7 +90,6 @@
 }
 
 @mixin textglow($color1: var(--color-primary), $color2: #fff) {
-  // color: $color1;
   color: $color2;
 
   text-shadow: 0 0 4px $color2, 0 0 11px $color1, 0 0 19px $color1,
@@ -110,17 +104,10 @@
     0 0 19px var(--color-primary), 0 0 40px var(--color-primary);
 }
 @mixin textglowsmall($color1: var(--color-primary), $color2: #fff) {
-  // color: $color1;
   color: $color2;
-  // color: transparent;
   text-shadow: 0 0 4px $color1, 0 0 11px $color1, 0 0 19px $color1;
 }
-// @mixin textglowsmall {
-//   color: var(--color-primary);
-//   color: #fff;
-//   text-shadow: 0 0 4px var(--color-primary), 0 0 11px var(--color-primary),
-//     0 0 19px var(--color-primary);
-// }
+
 @mixin textglowsmaller($color: var(--color-primary)) {
   color: var(--color-primary);
   color: #fff;
@@ -156,7 +143,6 @@
   font-family: "Library3amsoft", sans-serif;
   text-align: start;
   text-transform: uppercase;
-  // transform: rotate(-90deg);
   cursor: default;
   user-select: none;
   &-span {
@@ -173,15 +159,12 @@
     }
   }
   @media (max-width: $laptop) {
-    // height: 82px;
     font-size: 74px;
   }
   @media (max-width: $big-tablet) {
-    // height: 70px;
     font-size: 62px;
   }
   @media (max-width: $mobile) {
-    // height: 50px;
     font-size: 44px;
   }
 
@@ -194,11 +177,8 @@
   flex-direction: column;
 
   gap: 3.5rem;
-  // min-height: 600px;
   .text {
-    // align-self: flex-end;
     justify-self: center;
-    // width: 80%;
     color: var(--color-gray);
     font-size: 44px;
     font-family: Jura, sans-serif;

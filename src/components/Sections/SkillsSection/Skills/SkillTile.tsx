@@ -2,21 +2,17 @@ import { useEffect, useState } from "react";
 import CardGlass from "../../../UI/CardGlass";
 import classes from "./SkillTile.module.scss";
 import getDevicon from "../../../Utils/getDevicon";
-// import Tilt from "react-parallax-tilt";
 const SkillTile = ({
   skill,
   inView,
   activeId,
   skillId,
-}: // initialAnimation,
-{
+}: {
   skill: { name: string; time: string };
   inView: boolean;
   activeId: number;
   skillId: number;
-  // initialAnimation: boolean;
 }) => {
-  // const skillNameLower = skillName.toLowerCase();
   const [icon, setIcon] = useState<string>();
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
@@ -47,10 +43,6 @@ const SkillTile = ({
     };
   }, [isHovering]);
 
-  // useEffect(() => {
-  //   setIsHovering(!inView);
-  // }, [inView]);
-
   const calcTime = () => {
     const dateNow = new Date();
     const skillDate = new Date(skill.time);
@@ -71,8 +63,6 @@ const SkillTile = ({
   };
 
   const skillTime = calcTime();
-  //TODO check skill tile styled as navbar
-  // const iconSrc = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skillNameLower}/${skillNameLower}-original.svg`;
   return (
     <div className={`${classes["skill-tile"]}`}>
       <CardGlass
@@ -80,9 +70,6 @@ const SkillTile = ({
         onMouseOver={() => {
           setIsHovering(true);
         }}
-        // onMouseLeave={() => {
-        //   setIsHovering(false);
-        // }}
         className={`${classes["card-inner"]} ${
           isHovering || activeId === skillId
             ? classes["flip-back"]
@@ -93,14 +80,7 @@ const SkillTile = ({
           <img className={classes.icon} alt={skill.name} src={icon} />
           <p className={classes.title}>{skill.name}</p>
         </div>
-        {/* <div className={classes.time}>
-    <img
-    className={classes["time-icon"]}
-    src="https://cdn-icons.flaticon.com/png/512/2364/premium/2364820.png?token=exp=1660662853~hmac=d6db4b97798d7b62f3488914ab1e90c9"
-    alt=""
-    />
-    <p>14 months</p>
-  </div> */}
+
         <div className={classes["card-back"]}>
           <div className={classes["time-text"]}>
             <p className={classes.subtitle}>Using</p>

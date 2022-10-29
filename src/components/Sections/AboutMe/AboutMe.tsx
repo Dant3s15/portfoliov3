@@ -1,25 +1,12 @@
-import { FC, Fragment, useEffect, useState } from "react";
-import Character from "../Hero/Characters/Character";
-import CardGlass from "../../UI/CardGlass";
-import ContactForm from "../ContactMe/ContactForm/ContactForm";
-import Projects from "../Projects/Projects";
 import Typewriter from "typewriter-effect";
 import classes from "./AboutMe.module.scss";
-import { skillInterface } from "../../../Types/types";
-import PopUpWindow from "../../UI/PopUpWindow";
 import myPhoto from "../../../resources/img/character.png";
 import { useInView } from "react-intersection-observer";
 import useInViewDelay from "../../../hooks/useInViewDelay";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
-interface Props {
-  isLoading: boolean;
-}
-const AboutMe: FC<Props> = ({ isLoading }) => {
-  // const [popupVisible, setPopupVisible] = useState(false);
-  // const [popupText, setPopupText] = useState({
-  //   message: "test",
-  //   btnTxt: "test",
-  // });
+const AboutMe = () => {
+  const { isMobile } = useWindowDimensions();
 
   const { ref, inView } = useInView({
     threshold: 0.3,
@@ -38,19 +25,6 @@ const AboutMe: FC<Props> = ({ isLoading }) => {
   });
 
   const [inViewDelay, setInViewDelay] = useInViewDelay({ inView });
-  // const [inViewDelay, setInViewDelay] = useState(inView);
-
-  // useEffect(() => {
-  //   let timeout: NodeJS.Timeout;
-  //   if (!inView) {
-  //     timeout = setTimeout(() => {
-  //       setInViewDelay(inView);
-  //     }, 1000);
-  //   } else setInViewDelay(inView);
-  //   return () => {
-  //     clearTimeout(timeout);
-  //   };
-  // }, [inView]);
 
   return (
     <section
@@ -58,35 +32,23 @@ const AboutMe: FC<Props> = ({ isLoading }) => {
       id="about-me"
       className={`${classes["about-me"]} padding`}
     >
-      {/* <div className={classes["bg-container"]}>
-        <div className={classes.bg}></div>
-      </div> */}
       <div
         className={`${inView ? "fade-in" : "fade-out"} ${classes["bg-title"]}`}
       >
         ABOUT ME
       </div>
       <div className={classes["my-photo"]}>
-        {/* <div className={`${classes["char__container"]} cancel-absolute`}> */}
-        {/* <Character
-              onRotateCharacters={() => {
-                return;
-              }}
-              data={3}
-              // name="Damian"
-            ></Character> */}
         <img
           className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}
           src={myPhoto}
           alt="photo of me"
         />
-        {/* </div> */}
       </div>
       <div className={classes["text-about"]}>
         <div
           className={`${classes.title} ${inView ? "fade-in-r" : "fade-out-r"}`}
         >
-          {inViewDelay && (
+          {inViewDelay && !isMobile ? (
             <Typewriter
               options={{
                 delay: 30,
@@ -96,11 +58,13 @@ const AboutMe: FC<Props> = ({ isLoading }) => {
                 typewriter
                   .pauseFor(300)
                   .typeString(
-                    `<span class =${classes["title-span"]}><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span> <span>M</span><span>e</span></span>`
+                    `<h2 class =${classes["title-span"]}><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span> <span>M</span><span>e</span></h2>`
                   )
                   .start();
               }}
             />
+          ) : (
+            <h2 className={classes["title-span"]}>About Me</h2>
           )}
         </div>
         <span
@@ -115,66 +79,3 @@ const AboutMe: FC<Props> = ({ isLoading }) => {
 };
 
 export default AboutMe;
-{
-  /* <div className={classes["text-wrapper"]}>
-  <CardGlass corner className={classes["glass-card--custom"]}>
-  {popupVisible && (
-    <PopUpWindow
-    message={popupText.message}
-    btnTxt={popupText.btnTxt}
-                onClick={() => {
-                  setPopupVisible(false);
-                }}
-              />
-            )}
-            <div className={`${classes["text-container"]} `}>
-              <Typewriter
-                options={{
-                  delay: 100,
-                  cursor: "_",
-                  wrapperClassName: classes.title,
-                  cursorClassName: classes["title__cursor"],
-                  loop: true,
-                }}
-                onInit={(typewriter) => {
-                  typewriter
-                    .typeString(`<h2>About Me</h2>`)
-                    .pauseFor(2000)
-                    .deleteAll()
-                    .typeString(`<h2>Contact Me</h2>`)
-                    .pauseFor(2000)
-                    .deleteAll()
-                    .start();
-                }}
-              />
-              <div className={classes.text}>
-                {
-                  <Typewriter
-                    options={{
-                      delay: 30,
-                      cursor: "",
-                    }}
-                    onInit={(typewriter) => {
-                      typewriter
-                        .pauseFor(1000)
-                        .typeString(
-                          "<span>Hey, I'm Damian, your Frontend Developer from Poland 😊</span>"
-                        )
-                        .pauseFor(1000)
-                        .typeString(
-                          "<span>I can help you build your dream project 😉</span>"
-                        )
-                        .pauseFor(1000)
-                        .typeString(
-                          '<span>You can contact me by sending me an <a href="mailto:damiansobierajdev@gmail.com">email📧</a> or using the form below:</span>'
-                        )
-                        .start();
-                    }}
-                  />
-                }
-              </div>
-[]
-            </div>
-          </CardGlass>
-        </div> */
-}

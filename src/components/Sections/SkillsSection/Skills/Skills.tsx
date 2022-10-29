@@ -1,17 +1,10 @@
 import SkillTile from "./SkillTile";
-import Tilt from "react-parallax-tilt";
 
 import classes from "./Skills.module.scss";
-import { useInView } from "react-intersection-observer";
 import { Fragment, useEffect, useState } from "react";
 
 const Skills = ({ inView }: { inView: boolean }) => {
-  // const { ref, inView, entry } = useInView({
-  //   threshold: 0.2,
-  // });
   const [whichIsActive, setWhichIsActive] = useState<number>(-1);
-
-  // const [initialAnimation, setInitialAnimation] = useState(true);
 
   const mySkills = [
     { name: "HTML5", time: "2021-04-10T13:28:15.000Z" },
@@ -51,25 +44,9 @@ const Skills = ({ inView }: { inView: boolean }) => {
     };
   }, [inView]);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setWhichIsActive((prev) => {
-  //       console.log(prev);
-  //       if (prev >= mySkills.length) {
-  //         setWhichIsActive(0);
-  //       }
-  //       return prev + 1;
-  //     });
-  //   }, 550);
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [inView]);
-
   const renderSkills = () => {
     return mySkills.map((skill, id) => (
       <SkillTile
-        // initialAnimation={initialAnimation}
         skillId={id}
         activeId={whichIsActive}
         key={skill.name}
@@ -79,22 +56,8 @@ const Skills = ({ inView }: { inView: boolean }) => {
     ));
   };
 
-  // useEffect(() => {
-  //   console.log(inView);
-  // }, [inView]);
   return (
     <Fragment>
-      {/* <Tilt
-        tiltAngleYInitial={3}
-        transitionSpeed={900}
-        // scale={1.05}
-        // glareEnable={false}
-        glareMaxOpacity={0.2}
-        perspective={1700}
-        tiltMaxAngleX={1}
-        tiltMaxAngleY={3}
-        className={classes.tilt}
-      > */}
       <div
         className={`${classes.skills} ${
           inView ? "fade-in-r skill-flip" : "fade-out-r"
@@ -102,7 +65,6 @@ const Skills = ({ inView }: { inView: boolean }) => {
       >
         {renderSkills()}
       </div>
-      {/* </Tilt> */}
       <div
         className={`${inView ? "fade-in-r" : "fade-out-r"} ${
           classes["bg-title"]

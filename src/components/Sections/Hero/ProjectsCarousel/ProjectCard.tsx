@@ -1,11 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import classes from "./ProjectCard.module.scss";
 import live from "../../../../resources/img/live.png";
-// import smarthphone from "../../../../resources/img/smartphone.png";
 import Tilt from "react-parallax-tilt";
 import CardGlass from "../../../UI/CardGlass";
 import projectsData from "../../../../data/projectsData";
-// import { motion } from "framer-motion";
 
 interface Props {
   selected: number;
@@ -32,9 +30,6 @@ const ProjectCard: FC<Props> = ({ selected }) => {
   >(projectsData);
   useEffect(() => {
     setFeaturedProjects(projectsData.filter((project) => project.featured));
-    // console.log(projectsData.filter((project) => project.featured));
-    // console.log(projectsData);
-    // const featuredProjects = projectsData.filter((project) => project.featured);
   }, []);
 
   const activeClassHandler = (id: number) => {
@@ -75,15 +70,9 @@ const ProjectCard: FC<Props> = ({ selected }) => {
             className={classes.tilt}
           >
             <div className={classes["img-desktop-container"]}>
-              <div
-                className={classes["img-drag-container"]}
-                // drag="x"
-                // whileDrag={{ cursor: "grabbing" }}
-                // style={{ opacity: 0.1 }}
-              >
+              <div className={classes["img-drag-container"]}>
                 {featuredProjects.map((proj, id) => {
                   return (
-                    // <motion.div >
                     <img
                       draggable="false"
                       key={id}
@@ -93,7 +82,6 @@ const ProjectCard: FC<Props> = ({ selected }) => {
                       src={proj.img.desktop}
                       alt="lightapp desktop"
                     />
-                    // </motion.div>
                   );
                 })}
               </div>
@@ -133,40 +121,6 @@ const ProjectCard: FC<Props> = ({ selected }) => {
             <div className={`${classes["img-mobile-container"]} `}>
               {featuredProjects.map((proj, id) => {
                 return (
-                  // <iframe
-                  //   src="https://devmian-tip-calculator.web.app/"
-                  //   // style="border:0px #ffffff none;"
-                  //   name="myiFrame"
-                  //   scrolling="no"
-                  //   frameBorder="0"
-                  //   className={`${classes["img-mobile"]} ${activeClassHandler(
-                  //     id
-                  //   )}`}
-                  //   // marginheight="0px"
-                  //   // marginwidth="0px"
-                  //   // height="915px"
-                  //   // width="412px"
-                  //   allowFullScreen
-                  // ></iframe>
-                  // <iframe
-                  //   className={`${classes["img-mobile"]} ${activeClassHandler(
-                  //     id
-                  //   )}`}
-                  //   src={proj.live}
-                  //   //                   style="width:1000px; height:1400px;-moz-transform: scale(0.5, 0.5);
-                  //   // -webkit-transform: scale(0.5, 0.5);
-                  //   // -o-transform: scale(0.5, 0.5);
-                  //   // -ms-transform: scale(0.5, 0.5);
-                  //   // transform: scale(0.5, 0.5);
-                  //   // -moz-transform-origin: top left;
-                  //   // -webkit-transform-origin: top left;
-                  //   // -o-transform-origin: top left;
-                  //   // -ms-transform-origin: top left;
-                  //   // transform-origin: top left;"
-                  // >
-                  //   <p>Your browser does not support iframes.</p>
-                  // </iframe>
-
                   <img
                     key={id}
                     className={`${classes["img-mobile"]} ${activeClassHandler(

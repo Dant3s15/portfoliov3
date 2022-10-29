@@ -1,11 +1,6 @@
 @import "../../../scss/style.scss";
 .background {
-  // section {
-  //   // border: 1px solid red;
-  //   scroll-snap-align: start;
-  // }
   &::after {
-    // content: "";
     position: fixed;
     top: 0;
     left: 0;
@@ -13,8 +8,6 @@
     width: 100%;
     min-width: 100%;
     height: 100%;
-    // background-color: red;
-    // background-image: url(../../../resources/img/hero8.webp);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
@@ -28,8 +21,6 @@
 }
 
 .gray {
-  // transform: scale(1);
-
   &::before {
     transform: scale(1.02);
     filter: brightness(0.8) saturate(0.1) blur(10px);

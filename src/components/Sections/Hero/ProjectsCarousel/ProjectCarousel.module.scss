@@ -2,42 +2,26 @@
 
 .project-carousel {
   position: relative;
-  // align-self: center;
   width: auto;
   min-width: 50%;
   perspective: 400px;
   transition: all var(--transition-medium);
-  // height: 70%;
   aspect-ratio: 1/0.8;
-  // * {
-  //   border: 1px solid red;
-  // }
   @media (max-width: $desktop) {
-    // width: 60%;
     aspect-ratio: 1/0.9;
   }
   @media (max-width: $big-laptop) {
-    // width: 60%;
     aspect-ratio: 1/1;
-  }
-  @media (max-width: $laptop) {
-    // width: auto;
-    // aspect-ratio: 1/1.1;
   }
   @media (max-width: $big-tablet) {
     width: 80%;
-    // min-width: 70%;
-    // max-width: 90%;
     margin-top: 7rem;
     aspect-ratio: 1/1.2.3;
   }
   @media (max-width: $small-tablet) {
     width: 95%;
-    // width: 80%;
-    // min-width: 70%;
     max-width: 95%;
     margin-top: 7rem;
-    // aspect-ratio: 1/2;
   }
   @media (max-width: $mobile) {
     width: 90%;
@@ -46,7 +30,6 @@
     aspect-ratio: 1/1.2;
   }
   @media (max-width: $small-mobile) {
-    // width: 75%;
     aspect-ratio: 1/1;
   }
 }
@@ -61,20 +44,12 @@
   transition-duration: var(--transition-medium);
   &:hover {
     color: rgba(255, 255, 255, 0.803);
-    // transform: rotateY(-5deg);
     transition: all var(--transition-short-medium) ease-in-out;
     transition-delay: 0;
-    // @supports not (backdrop-filter: blur(20px)) {
-    //   background-color: rgba(70, 70, 70, 0.509);
-    // }
   }
   @media (min-width: $big-tablet) {
-    // height: 85%;
     transform: rotateY(-5deg);
   }
-  // @media (max-width: $big-tablet) {
-  //   height: 85%;
-  // }
 }
 
 .carousel-btn {

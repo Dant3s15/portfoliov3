@@ -3,18 +3,8 @@ import linkedin from "../../../resources/icons/icon-linkedin-dark.svg";
 import twitter from "../../../resources/icons/icon-twitter.svg";
 import logo from "../../../resources/logo.svg";
 import classes from "./Footer.module.scss";
-import { FC } from "react";
 
-interface Props {
-  data: {
-    ctaButtonClicked: { clicked: boolean };
-    whichSelected: number;
-    selected: boolean;
-  };
-}
-const Footer: FC<Props> = ({
-  data: { whichSelected, ctaButtonClicked, selected },
-}) => {
+const Footer = () => {
   const testFetch = () => {
     async function getSkill() {
       const response = await fetch(
@@ -27,20 +17,7 @@ const Footer: FC<Props> = ({
   };
 
   return (
-    <footer
-      className={`${classes.footer} ${
-        !ctaButtonClicked.clicked ? classes["footer--gray"] : ""
-      }`}
-      // className={`${classes.footer}
-      // ${!ctaButtonClicked.clicked ? classes["footer--gray"] : ""}
-      // ${
-      //   ctaButtonClicked.clicked && selected && whichSelected === 0
-      //     ? classes["footer--creator"]
-      //     : ""
-      // }
-      // ${selected && whichSelected === 1 ? classes["footer--about"] : ""}
-      // `}
-    >
+    <footer className={`${classes.footer} `}>
       <div className={classes.wrapper}>
         <div onClick={testFetch} className={`${classes.col} ${classes.logo}`}>
           <img src={logo} alt="Logo" />

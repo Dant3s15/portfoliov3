@@ -1,6 +1,3 @@
-// @import "../../../scss/mixins.scss";
-// @import "../../../scss/variables.scss";
-// @import "../../../scss/animations.scss";
 @import "../../../scss/style.scss";
 
 .project-wrapper {
@@ -10,19 +7,12 @@
   margin-right: -12rem;
   overflow: hidden;
   transform: scale(1) perspective(1000px) rotateY(-15deg);
-  // transform: scale(0.9);
   transform-origin: right;
   transform-style: preserve-3d;
-  // backdrop-filter: blur(20px);
   transition: all var(--transition-short-medium)
     cubic-bezier(0.53, -0.3, 0.25, 0.99);
   transition-property: transform;
   scroll-snap-align: center;
-  // max-width: 350px;
-  // @media (max-width: $laptop) {
-  //   font-size: 24px;
-  // }
-  // @include corner-cut(40px, rgba(255, 255, 255, 0.18), 10px, 38px);
 
   &:hover {
     transform: perspective(1000px) scale(1) translateX(var(--project-card-gap))
@@ -84,14 +74,6 @@
   }
 }
 
-// .hasEnter {
-//   transform: perspective(1000px) scale(1) translateX(var(--project-card-gap))
-//     rotateY(-15deg) !important;
-//   @media (max-width: $mobile) {
-//     transform: perspective(1000px) scale(1) translateX(var(--project-card-gap));
-//   }
-// }
-
 .project {
   position: relative;
   display: grid;
@@ -105,22 +87,11 @@
     var(--color-blue-shade-1) 100%
   );
   background-repeat: no-repeat;
-  // background-color: rgba(57, 57, 57, 0.9);
   transform-style: preserve-3d;
-  // font-family: "Orbitron", sans-serif;
-  // backdrop-filter: blur(20px);
-  // transform: scale(0.9);
   perspective: 400px;
   transition: all var(--transition-short-medium);
   transition-property: transform;
   user-select: none;
-  // aspect-ratio: 1/1.7;
-  // & .project-title,
-  // & .used-skills-title,
-  // & .project-overview {
-  //   @include textglowsmaller;
-  // }
-
   .project-image-window {
     position: relative;
     display: flex;
@@ -128,7 +99,6 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    // @include corner-cut(30px);
 
     a {
       min-width: 100%;
@@ -159,7 +129,6 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     width: 100%;
-    // height: 100%;
     padding: 6px 6px;
     overflow: hidden;
     cursor: pointer;
@@ -190,9 +159,6 @@
       display: inline-block;
       height: auto;
     }
-    // @media (max-width: 1600px) {
-    //   font-size: 1.25rem;
-    // }
     @media (max-width: $big-tablet) {
       font-size: 1.125rem;
     }
@@ -200,26 +166,6 @@
       font-size: 1rem;
     }
   }
-
-  // .used-skills {
-  //   position: relative;
-  //   flex-wrap: wrap;
-  //   align-content: center;
-  //   width: 100%;
-  //   // height: 100%;
-  //   height: 100px;
-  //   background-color: var(--color-border-transparent-3);
-  //   border-radius: 0 10px;
-  //   @include flexbox(center, flex-end);
-  // }
-  // .used-skills-title {
-  //   align-self: flex-end;
-  //   padding-bottom: 1rem;
-  //   padding-left: 1rem;
-  //   font-size: 24px;
-  //   // transform: translateZ(100px);
-  //   transform-style: preserve-3d;
-  // }
 }
 
 .links {
@@ -232,7 +178,6 @@
   width: 130px;
   height: 130px;
   background-color: rgba(0, 0, 0, 0.788);
-  // border-radius: 20p[x;
   @include corner-cut(140px);
 
   a {

@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import ProjectCard from "./ProjectCard";
 import classes from "./ProjectCarousel.module.scss";
 import projectsData from "../../../../data/projectsData";
-import SelectedContext from "../../../../context/selected-context";
-import { useInView } from "react-intersection-observer";
 
 type Props = {
   heroInView: boolean;
@@ -13,7 +12,6 @@ const ProjectCarousel = ({ heroInView }: Props) => {
   const [selected, setSelected] = useState(0);
   const [direction, setdirection] = useState<-1 | 1>(1);
   const [isHovering, setIsHovering] = useState(false);
-  const selectedCtx = useContext(SelectedContext);
   const [btnDelayed, setBtnDelayed] = useState(false);
   const { ref, inView, entry } = useInView({
     threshold: 0.6,

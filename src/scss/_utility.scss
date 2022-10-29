@@ -1,19 +1,9 @@
-// .hidden {
-//   opacity: 0;
-//   transform: translateX(50vw);
-// }
-
-// .no-scroll {
-//   overflow: hidden;
-// }
-
 .absolute-center {
   position: absolute;
   right: 0;
   left: 0;
   width: 500px;
   margin-right: auto;
-  // bottom: 50%;
   margin-left: auto;
 }
 
@@ -36,13 +26,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-// .card--glass {
-//   transform: rotateY(-10deg);
-//   overflow: hidden;
-//   transform-style: preserve-3d;
-//   // backdrop-filter: blur(10px);
-// }
-
 .not-started {
   transform: rotateY(-5deg) scale(1);
   &:hover {
@@ -58,17 +41,9 @@
   }
 }
 
-//HAMBURGER BUTTON:
 .hidden-btn {
   transform: rotateY(90deg) rotateX(45deg) !important;
 }
-
-// .max-index {
-//   z-index: 99999;
-// }
-// .max-index-1 {
-//   z-index: 99998;
-// }
 
 .shepherd-button {
   position: relative;
@@ -83,12 +58,10 @@
   text-transform: uppercase;
   background-color: var(--color-primary);
   border: none;
-
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: all var(--transition-short), color 0.1s, text-shadow 0.1s;
   transition-property: transform, opacity, outline, filter;
-  // animation: flicker2 5s infinite alternate;
   @include corner-cut2(29px, var(--color-primary), 4px, 17px);
 
   &::after {
@@ -155,7 +128,6 @@
   flex-direction: column;
   gap: 2rem;
   padding: 1rem;
-  // z-index: 9999;
   background-color: rgba(177, 177, 177, 0.109);
   border: 1px solid var(--color-border-transparent);
   border-right: 7px solid var(--color-border-transparent);
@@ -179,14 +151,11 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    // border: 1px solid red;
     font-weight: 700;
     font-size: 30px;
     transform: translateY(-100px);
     animation: tvon3 var(--transition-short-medium) var(--transition-short)
       forwards;
-    // @include flexbox;
-    // animation: tvon2 var(--transition-short-medium) forwards;
     @include textglowsmall;
     .shepherd-cancel-icon {
       span {
@@ -219,55 +188,28 @@
 .shepherd-modal-overlay-container {
   position: fixed;
   top: 0;
-  // position: fixed;
-  // top: 50%;
   left: 0;
-  // left: 50%;
-  // z-index: 997;
   width: 100vw;
   height: 0;
   overflow: hidden;
-  // // position: fixed;
-  // // top: 0;
-  // // left: 0;
-  // z-index: 9997;
-  // width: 100%;
-  // height: 100%;
-  // transform: translateZ(0);
-  // // background: rgba(11, 11, 11, 0.346);
-  // transform: translate(-50%, -50%);
   opacity: 0;
   transition: all 0.3s ease-out, height 0ms 0.3s, opacity 0.3s 0ms;
   pointer-events: none;
-  // fill: rgba(11, 11, 11, 0.846);
 }
 .shepherd-modal-overlay-container.shepherd-modal-is-visible path {
   pointer-events: all;
 }
 .shepherd-modal-overlay-container.shepherd-modal-is-visible {
   height: 100vh;
-  // transform: translateZ(0);
   opacity: 0.5;
   transition: all 0.3s ease-out, height 0s 0s, opacity 0.3s 0s;
 }
-// .shepherd-element {
-//   z-index: 9999999;
-// }
+
 .highlight {
   color: hsl(39, 100%, 50%);
   // z-index: -99999;
   border: 2px solid white;
   transform: inherit;
-}
-
-.Typewriter {
-  // position: absolute;
-  // width: 100%;
-  // height: 100%;
-  //   .Typewriter__wrapper {
-  //     height: 100%;
-  //     border: 1px solid red;
-  //   }
 }
 
 .fade-in {
@@ -276,18 +218,7 @@
 .fade-in-r {
   animation: fadeinr var(--transition-medium);
 }
-// .fade-in2 {
-//   @for $i from 1 through 3 {
-//     & > div:nth-child(3n + #{$i}) {
-//       animation: fadein2 var(--transition-medium);
-//       animation-delay: calc($i * 30ms);
-//     }
-//   }
 
-//   animation: fadein var(--transition-medium);
-//   // & > div {
-//   // }
-// }
 .fade-out {
   animation: fadeout var(--transition-medium) forwards;
 }
@@ -297,40 +228,15 @@
 
 .skill-flip {
   @for $i from 1 through 11 {
-    // div:first-child {
-    //   border: 1px solid red !important;
-    // }
-    // perspective: 1000px;
-    // transform-style: preserve-3d;
-
     div:nth-child(3n + #{$i}) > [data-tile="tile"] {
-      // div:first-child() {
-      // background-color: transparent;
-      //TODO Skill Tile Sequence logic
       background-color: var(--color-border-transparent);
-      // border: 1px solid red !important;
-      // background-color: var(--color-gray-tint-dark-transparent-1);
       border-right: 1px solid var(--color-border-transparent);
       border-bottom: 5px solid var(--color-border-transparent);
       border-left: 7px solid var(--color-border-transparent);
       transform: rotateY(0deg);
-
-      // transform: perspective(1000px)
-      //   scale3d(1, 1, 1)
-      //   translate3d(0, 0, 0)
-      //   rotate3d(0, 1, 0, -180deg);
-
       transition: all var(--transition-short);
-      // transition-delay: calc(#{$i}00ms / 2 + #{$i}0ms);
       animation: flip 1.2s ease-in-out forwards;
       animation-delay: calc(#{$i}00ms / 2 + #{$i}0ms);
-
-      // p,
-      // img {
-      //   filter: blur(2px);
-      //   animation: blur 1.2s ease-in-out forwards;
-      //   animation-delay: calc(#{$i}00ms + #{$i}00ms);
-      // }
     }
   }
 }
@@ -345,7 +251,6 @@
   width: 99% !important;
   height: 95% !important;
   margin: auto;
-  // margin-top: 8px;
   border-radius: 5px !important;
   @media (max-width: $mobile) {
     width: 96% !important;
@@ -354,7 +259,6 @@
 }
 
 .rotate-out {
-  // & > div {
   @for $i from 1 through 11 {
     & > div:nth-child(3n + #{$i}) {
       transform: scale(1) perspective(1000px) rotateY(-80deg);
@@ -365,26 +269,10 @@
 }
 
 .rotate-in {
-  // & > div {
   @for $i from 1 through 11 {
     & > div:nth-child(3n + #{$i}) {
-      // transform: scale(1) perspective(1000px) rotateY(-80deg);
       animation: rotatein 1s;
-      // animation: rotateout 1s forwards;
       animation-delay: calc(#{$i}00ms);
     }
   }
 }
-
-// .background-title {
-//   position: absolute;
-//   top: -2rem;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   color: var(--color-border-transparent-5);
-//   font-weight: 700;
-//   font-size: 15vw;
-//   font-family: Orbitron;
-//   animation-delay: 1s;
-// }

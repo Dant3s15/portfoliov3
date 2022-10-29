@@ -10,13 +10,7 @@ const Nav: FC<Props> = ({ navItemHandler, setHamburgerState }) => {
   return (
     <nav className={classes.nav}>
       <a
-        // data-to="/projects-section"
-        // data-character="1"
         onClick={(e) => navItemHandler(e, "projects-section")}
-        // onClick={() => {
-        //   setHamburgerState(false);
-        // }}
-        // href="#projects-section"
         className={`${classes.nav__item} `}
       >
         Projects

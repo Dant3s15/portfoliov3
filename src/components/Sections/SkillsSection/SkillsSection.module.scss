@@ -1,31 +1,11 @@
 @import "../../../scss/style.scss";
 .skills-section {
-  // display: grid;
-  // grid-template-columns: 1fr 1fr;
-  // gap: 2rem;
   @include section-grid(1fr 1fr, 1fr);
-  // font-size: 60px;
-  // padding-left: 50rem;
-  // margin-top: 15rem;
-  // padding: 6rem 2rem;
   padding-bottom: 2rem;
   perspective: 400px;
-  // @media (max-width: $big-tablet) {
-  //   grid-template-columns: 1fr;
-  // }
-  @media (max-width: $big-laptop) {
-    // padding: 5rem 3rem;
-  }
-  @media (max-width: $laptop) {
-    // padding: 6rem 1rem 6rem 4rem;
-  }
-  @media (max-width: $big-tablet) {
-    // gap: 6rem;
-    // padding: 6rem 4rem;
-  }
+
   @media (max-width: $mobile) {
     padding: 0 1rem;
     font-size: 30px;
   }
-  // height: 100vh;
 }

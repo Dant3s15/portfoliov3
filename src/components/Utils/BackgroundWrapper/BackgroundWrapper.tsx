@@ -1,6 +1,6 @@
-import classes from "./ParallaxBackground.module.scss";
+import classes from "./BackgroundWrapper.module.scss";
 
-export default function ParallaxBackground({ children }: any) {
+export default function BackgroundWrapper({ children }: any) {
   return (
     <div className={classes.background}>
       <div className={classes["bg-container"]}>

@@ -2,6 +2,7 @@ import Typewriter from "typewriter-effect";
 import classes from "./SkillsText.module.scss";
 import { useInView } from "react-intersection-observer";
 import useInViewDelay from "../../../../hooks/useInViewDelay";
+import useWindowDimensions from "../../../../hooks/useWindowDimensions";
 
 const TextAbout = () => {
   const { ref, inView, entry } = useInView({
@@ -18,11 +19,14 @@ const TextAbout = () => {
       }
     },
   });
+
+  const { isMobile } = useWindowDimensions();
+
   const [inViewDelay, setInViewDelay] = useInViewDelay({ inView });
   return (
     <div ref={ref} className={classes["text-about"]}>
       <div className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}>
-        {inViewDelay && (
+        {inViewDelay && !isMobile ? (
           <Typewriter
             options={{
               delay: 30,
@@ -32,11 +36,13 @@ const TextAbout = () => {
               typewriter
                 .pauseFor(300)
                 .typeString(
-                  `<span class =${classes["title-span"]}><span>M</span><span>y</span> <span>S</span><span>k</span><span>i</span><span>l</span><span>l</span><span>s</span></span>`
+                  `<h2 class =${classes["title-span"]}><span>M</span><span>y</span> <span>S</span><span>k</span><span>i</span><span>l</span><span>l</span><span>s</span></h2>`
                 )
                 .start();
             }}
           />
+        ) : (
+          <h2 className={classes["title-span"]}>My Skills</h2>
         )}
       </div>
       <span className={`${classes.text}  ${inView ? "fade-in" : "fade-out"}`}>

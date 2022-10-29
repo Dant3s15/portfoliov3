@@ -3,22 +3,21 @@ import classes from "./ContactMe.module.scss";
 import { useInView } from "react-intersection-observer";
 import useInViewDelay from "../../../hooks/useInViewDelay";
 import ContactForm from "./ContactForm/ContactForm";
-import { SetStateAction, useEffect, useState } from "react";
-
+import { useState } from "react";
 import linkedinlogo from "../../../resources/icons/logo-linkedin.svg";
 import twitterlogo from "../../../resources/icons/logo-twitter.svg";
 import PopUpWindow from "../../UI/PopUpWindow";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 const ContactMe = () => {
   const [popupVisible, setPopupVisible] = useState<boolean>(false);
-  //TODO popup window
+
   const [popupTxt, setPopupTxt] = useState({
     message: "",
     btnTxt: "",
   });
-  useEffect(() => {
-    console.log(popupTxt, popupVisible);
-  }, [popupTxt, popupVisible]);
+
+  const { isMobile } = useWindowDimensions();
 
   const { ref, inView } = useInView({
     threshold: 0.3,
@@ -50,7 +49,7 @@ const ContactMe = () => {
 
       <div className={`${classes["text-contact"]} padding`}>
         <div className={`${classes.title} ${inView ? "fade-in" : "fade-out"}`}>
-          {inViewDelay && (
+          {inViewDelay && !isMobile ? (
             <Typewriter
               options={{
                 delay: 30,
@@ -60,11 +59,13 @@ const ContactMe = () => {
                 typewriter
                   .pauseFor(300)
                   .typeString(
-                    `<span class =${classes["title-span"]}><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span> <span>M</span><span>e</span></span>`
+                    `<h2 class =${classes["title-span"]}><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span> <span>M</span><span>e</span></h2>`
                   )
                   .start();
               }}
             />
+          ) : (
+            <h2 className={classes["title-span"]}>Contact Me</h2>
           )}
         </div>
 
