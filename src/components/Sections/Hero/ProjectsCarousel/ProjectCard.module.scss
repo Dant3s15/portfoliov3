@@ -3,9 +3,13 @@
 .tilt {
   position: relative;
   z-index: 50;
+  overflow: visible;
   border-radius: 30px;
   transform-style: preserve-3d;
   aspect-ratio: 16/9;
+  @-moz-document url-prefix() {
+    transform-style: flat;
+  }
 }
 .links {
   position: absolute;
@@ -124,10 +128,11 @@ span.not-active-right,
   font-weight: 700;
   font-size: 2.75rem;
   font-family: "Library3amsoft", sans-serif;
-  transform: translateZ(120px);
+  transform: translateZ(60px);
   cursor: default;
   transition: all var(--transition-short-medium) ease-in-out;
   user-select: none;
+  will-change: transform;
   @include textglowmedium;
   @media (max-width: $mobile) {
     font-size: 24px;
@@ -138,6 +143,7 @@ span.not-active-right,
     left: 2rem;
     width: 100%;
     height: 100%;
+    transform-style: preserve-3d;
     transition: all var(--transition-medium)
       cubic-bezier(0.53, -0.3, 0.25, 0.99);
     transition-delay: calc(var(--transition-short));

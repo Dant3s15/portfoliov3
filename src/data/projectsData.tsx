@@ -5,6 +5,7 @@ import splitterMobile from "../resources/img/projects/splitter/splitter_mobile.w
 import devjobsDesktop from "../resources/img/projects/devjobs/devjobs_desktop.webp";
 import devjobsMobile from "../resources/img/projects/devjobs/devjobs_mobile.webp";
 import portfolioMobile from "../resources/img/projects/portfolio/portfolio_desktop.webp";
+import asgbalancerDesktop from "../resources/img/projects/asgbalancer/asgbalancer_desktop.webp";
 
 const projectsData = [
   {
@@ -18,7 +19,7 @@ const projectsData = [
     github: "https://github.com/CodeReactOrNext/Devjobs_web_app",
     live: "https://devjobs-web-app-livid.vercel.app/",
     description:
-      "Mobile first, responsive developer jobs board app with dark mode toggle. Created as a team effort using Jira and Agile methodology to test our teamwork skills. ",
+      "Mobile first, responsive developer jobs board app with dark mode toggle. \nCreated as a team effort using Jira and Agile methodology to test our teamwork skills. ",
     stack: [
       {
         img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -61,7 +62,7 @@ const projectsData = [
       },
       {
         img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
-        name: "Tailwind CSS",
+        name: "Tailwind",
       },
     ],
   },
@@ -76,7 +77,7 @@ const projectsData = [
     github: "https://github.com/DevmianS/tip-calculator-react",
     live: "https://devmian-tip-calculator.web.app/",
     description:
-      "Mobile first,responsive tip calculator app. You can calculate the tip by specifying bill amount, number of people and percent you want to tip.",
+      "Mobile first,responsive tip calculator app.\nYou can calculate the tip by specifying bill amount, number of people and percent you want to tip.",
     stack: [
       {
         img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -96,6 +97,34 @@ const projectsData = [
     id: 3,
     featured: false,
     img: {
+      desktop: asgbalancerDesktop,
+      mobile: asgbalancerDesktop,
+    },
+    title: "ASG balancer",
+    github: "https://github.com/DevmianS/airsoft_team_balancer",
+    live: "https://asgteambalancer.netlify.app/",
+    description:
+      "Mobile first Airsoft team balancer app in style of Counter Strike Global Offensive. \nAdd your list of players and get randomized but balanced teams!",
+
+    stack: [
+      {
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        name: "React",
+      },
+      {
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+        name: "TypeScript",
+      },
+      {
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+        name: "Tailwind",
+      },
+    ],
+  },
+  {
+    id: 4,
+    featured: false,
+    img: {
       desktop: portfolioMobile,
       mobile: portfolioMobile,
     },
@@ -103,7 +132,7 @@ const projectsData = [
     github: "https://github.com/DevmianS/portfoliov3",
     live: "https://damiansobieraj.com/",
     description:
-      "My Portfolio website, with information about my projects, my skills and myself",
+      "My Portfolio website, with information about my projects, my skills and myself. \nDesigned and coded with passion.",
 
     stack: [
       {

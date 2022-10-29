@@ -46,9 +46,14 @@ const TextAbout = () => {
         )}
       </div>
       <span className={`${classes.text}  ${inView ? "fade-in" : "fade-out"}`}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-        cupiditate adipisci accusantium blanditiis perspiciatis culpa autem
-        ratione illum explicabo eveniet.
+        <p>
+          Here is the list of skills I acquired since the start of my{" "}
+          <strong>coding journey</strong>.
+        </p>
+        <p>
+          {isMobile ? "Tap" : "Hover"} on skill icon to check how long I'm using
+          it.
+        </p>
       </span>
     </div>
   );

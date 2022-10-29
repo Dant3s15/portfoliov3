@@ -9,7 +9,7 @@ const AboutMe = () => {
   const { isMobile } = useWindowDimensions();
 
   const { ref, inView } = useInView({
-    threshold: 0.3,
+    threshold: 0.2,
     onChange(inView) {
       let root = document.documentElement;
       if (inView) {
@@ -70,8 +70,13 @@ const AboutMe = () => {
         <span
           className={`${classes.text}  ${inView ? "fade-in-r" : "fade-out-r"}`}
         >
-          Hey, my name is Damian, I'm knowledge-hungry, react, frontend web
-          developer from Poland.
+          <p>
+            I'm Damian, a <strong>React Frontend Developer</strong>. <br />
+            Hungry for knowledge and eager to learn.
+          </p>
+          <p>
+            Always learning, always improving, <br /> be better than yesterday.
+          </p>
         </span>
       </div>
     </section>

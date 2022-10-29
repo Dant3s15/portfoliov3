@@ -11,6 +11,16 @@
     @include title-effect;
   }
   .text {
-    align-self: flex-start;
+    // flex-direction: column;
+    // gap: 2rem;
+    // align-self: flex-start;
+    // height: 100%;
+    // @include flexbox(space-evenly);
+    // p:first-child {
+    //   padding-left: 10%;
+    // }
+    // p:nth-child(2) {
+    //   padding-left: 20%;
+    // }
   }
 }

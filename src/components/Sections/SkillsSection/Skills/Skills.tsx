@@ -70,7 +70,7 @@ const Skills = ({ inView }: { inView: boolean }) => {
           classes["bg-title"]
         }`}
       >
-        SKILLS
+        skills
       </div>
     </Fragment>
   );

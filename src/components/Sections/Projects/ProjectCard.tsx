@@ -118,7 +118,11 @@ const ProjectCard: FC<CardProjectProps> = ({
             {projectData?.title ?? "Title"}
           </h3>
           <div className={classes["project-overview"]}>
-            <p>{projectData?.description}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: projectData?.description.replace(/\n/g, "<br />"),
+              }}
+            ></p>
           </div>
           <ProjectSkillsList stack={projectData.stack}></ProjectSkillsList>
         </div>

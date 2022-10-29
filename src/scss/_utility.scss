@@ -276,3 +276,11 @@
     }
   }
 }
+
+@function set-color($color) {
+  @if $color is #fca311 {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}

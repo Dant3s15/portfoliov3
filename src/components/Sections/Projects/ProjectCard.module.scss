@@ -2,21 +2,24 @@
 
 .project-wrapper {
   position: relative;
-  min-width: 290px;
+  min-width: 330px;
   max-width: 350px;
   margin-right: -12rem;
   overflow: hidden;
   transform: scale(1) perspective(1000px) rotateY(-15deg);
   transform-origin: right;
   transform-style: preserve-3d;
+  filter: drop-shadow(30px 20px 20px rgba(0, 0, 0, 0.3));
   transition: all var(--transition-short-medium)
     cubic-bezier(0.53, -0.3, 0.25, 0.99);
-  transition-property: transform;
+  transition-property: transform, filter;
   scroll-snap-align: center;
-
+  @media (max-width: $big-tablet) {
+    max-width: 90vw;
+  }
   &:hover {
-    transform: perspective(1000px) scale(1) translateX(var(--project-card-gap))
-      rotateY(-15deg) !important;
+    transform: perspective(1000px) scale(1)
+      translateX(calc(170px - var(--project-card-gap))) rotateY(-15deg) !important;
     @media (max-width: $mobile) {
       transform: perspective(1000px) scale(1)
         translateX(var(--project-card-gap));
@@ -46,7 +49,9 @@
   }
 
   &.selected-project:hover {
-    transform: perspective(1000px) scale(1.1) translateX(35%) rotateY(0deg) !important;
+    transform: perspective(1000px) scale(1.1)
+      translateX(calc(230px - var(--project-card-gap))) rotateY(0deg) !important;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
     @media (max-width: $mobile) {
       transform: perspective(1000px) scale(1.1) translateX(35%) rotateY(0deg) !important;
       &:is(:last-child) {
@@ -67,8 +72,8 @@
   }
 }
 .selected-step1 {
-  transform: perspective(1000px) scale(1) translateX(var(--project-card-gap))
-    rotateY(-15deg) !important;
+  transform: perspective(1000px) scale(1)
+    translateX(calc(170px - var(--project-card-gap))) rotateY(-15deg) !important;
   @media (max-width: $mobile) {
     transform: perspective(1000px) scale(1) translateX(var(--project-card-gap));
   }
@@ -92,6 +97,7 @@
   transition: all var(--transition-short-medium);
   transition-property: transform;
   user-select: none;
+  aspect-ratio: 1/1.7;
   .project-image-window {
     position: relative;
     display: flex;
@@ -144,7 +150,7 @@
     text-transform: uppercase;
     transition: all var(--transition-short);
     transition-property: text-shadow, color;
-    @media (max-width: $big-tablet) {
+    @media (max-width: $laptop) {
       font-size: 24px;
     }
   }
@@ -154,16 +160,13 @@
     line-height: 1.5;
     text-align: left;
     cursor: pointer;
-    @include flexbox;
+    @include flexbox(center, flex-start);
     p {
       display: inline-block;
       height: auto;
     }
     @media (max-width: $big-tablet) {
-      font-size: 1.125rem;
-    }
-    @media (max-width: $mobile) {
-      font-size: 1rem;
+      font-size: 20px;
     }
   }
 }

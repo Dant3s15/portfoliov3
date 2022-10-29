@@ -20,7 +20,7 @@ const ContactMe = () => {
   const { isMobile } = useWindowDimensions();
 
   const { ref, inView } = useInView({
-    threshold: 0.3,
+    threshold: 0.1,
     onChange(inView) {
       let root = document.documentElement;
       if (inView) {

@@ -9,6 +9,7 @@
   justify-content: center;
   justify-self: center;
   width: 90%;
+  padding-bottom: 2rem;
   transform: perspective(1000px) scale3d(1, 1, 1) translate3d(0, 0, 0)
     rotate3d(0, 1, 0, -180deg);
   transform: rotateY(-5deg);
@@ -25,6 +26,7 @@
   @media (max-width: $mobile) {
     gap: 6px;
     padding: 0;
+    padding-bottom: 2rem;
     font-size: 30px;
   }
 
@@ -55,7 +57,7 @@
   & > :nth-child(5) {
     grid-area: 2 / 2 / 3 / 3;
     img {
-      filter: drop-shadow(0 0 60px rgb(48, 48, 48));
+      filter: drop-shadow(0 0 60px rgb(48, 48, 48)) invert(1);
     }
   }
   & > :nth-child(6) {
@@ -85,7 +87,7 @@
   & > :nth-child(10) {
     grid-area: 3 / 4 / 4 / 5;
     img {
-      filter: drop-shadow(0 0 60px rgb(48, 48, 48));
+      filter: drop-shadow(0 0 60px rgb(0, 0, 0)) invert(1);
     }
   }
 }

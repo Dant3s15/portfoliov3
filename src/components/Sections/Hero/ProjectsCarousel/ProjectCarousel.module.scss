@@ -64,8 +64,9 @@
   transition: all var(--transition-short);
   &:hover,
   &:focus {
-    color: var(--color-primary);
+    // color: var(--color-primary);
     transform: translateY(-50%) scale(1.2);
+    @include textglowmedium;
   }
   &.prev {
     left: 0;
