@@ -3,8 +3,8 @@ export interface skillInterface {
   id: number;
   name: string;
   names: string[];
-  level: number;
+  level?: number;
   description?: string;
-  web?: string;
+  web?: string[];
   stacks?: string[];
 }

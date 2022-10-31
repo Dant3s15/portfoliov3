@@ -25,7 +25,7 @@ const ButtonPrimary: FC<Props> = ({
     <button
       type={type}
       className={`${classes["button-primary"]}
-    ${isAbsolute && classes.absolute}  ${
+    ${isAbsolute ? classes.absolute : ""}  ${
         isGreyedOut ? classes["greyed-out"] : ""
       } `}
       id={id}

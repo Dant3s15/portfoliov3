@@ -33,7 +33,11 @@ $big-desktop: 2400px;
   --color-primary-transparent-1: #fca2111f;
   --color-primary-transparent-2: #fca2114d;
   --color-primary-transparent-3: #fca21185;
-  --color-dark: rgb(9, 13, 32);
+  --color-primary-transparent-4: #fca21140;
+  --color-dark: #090d20;
+  --color-dark-2: #14213d;
+  --color-dark-3: rgb(26, 23, 37);
+  --color-blue-shade-1: rgb(46, 95, 117);
   --color-dark-shade-1: rgb(34, 37, 54);
 
   --color-gray: #e5e5e5;
@@ -44,12 +48,17 @@ $big-desktop: 2400px;
   // --color-primary-background2: #162050;
 
   --color-border-transparent: rgba(255, 255, 255, 0.18);
+  --color-border-transparent-1: rgba(255, 255, 255, 0.547);
   --color-border-transparent-2: rgba(128, 128, 128, 0.5);
+  --color-border-transparent-3: rgba(255, 255, 255, 0.072);
+  --color-border-transparent-4: rgba(255, 255, 255, 0.306);
+  --color-border-transparent-5: rgba(255, 255, 255, 0.04);
 
   //TRANSITIONS TIMES
   --transition-short: 0.3s;
   --transition-short-medium: 0.5s;
   --transition-medium: 0.9s;
+  --transition-medium-long: 1.5s;
   --transition-long: 3s;
   --transition-very-long: 8s;
 
@@ -58,13 +67,30 @@ $big-desktop: 2400px;
 
   //JS variables
   --characters-width: 100px;
-
+  --body-grayscale: grayscale(0);
+  --gradient-deg: 100deg;
+  --saturation: saturate(0.1);
+  --blur: blur(15px);
+  --projects-overflow: visible;
+  --mask-percent: 100%;
+  //background dots
+  --vmin: 5vmin 5vmin;
+  --dot-opacity: 0.05;
+  --bg-opacity: 0;
+  --dot-position: 0% 0%;
   //BORDER RADIUS
-  --border-radius: 3px;
+  --border-radius: 0 10px;
+  // --border-radius: 3px;
 
   //DYNAMIC VARIABLES
-  --project-card-gap: 140px;
+  --project-card-gap: 5vw;
   @media (max-width: $big-laptop) {
-    --project-card-gap: 150px;
+    --project-card-gap: 2.5vw;
+  }
+  @media (max-width: $laptop) {
+    --project-card-gap: 1.5vw;
+  }
+  @media (max-width: $big-tablet) {
+    --project-card-gap: 15vw;
   }
 }

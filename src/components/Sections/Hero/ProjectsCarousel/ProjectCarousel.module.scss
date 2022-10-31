@@ -1,0 +1,104 @@
+@import "../../../../scss/style.scss";
+
+.project-carousel {
+  position: relative;
+  width: auto;
+  min-width: 50%;
+  perspective: 400px;
+  transition: all var(--transition-medium);
+  aspect-ratio: 1/0.8;
+  @media (max-width: $desktop) {
+    aspect-ratio: 1/0.9;
+  }
+  @media (max-width: $big-laptop) {
+    aspect-ratio: 1/1;
+  }
+  @media (max-width: $big-tablet) {
+    width: 80%;
+    margin-top: 7rem;
+    aspect-ratio: 1/1.2.3;
+  }
+  @media (max-width: $small-tablet) {
+    width: 95%;
+    max-width: 95%;
+    margin-top: 7rem;
+  }
+  @media (max-width: $mobile) {
+    width: 90%;
+    max-height: 50%;
+    margin-top: 5rem;
+    aspect-ratio: 1/1.2;
+  }
+  @media (max-width: $small-mobile) {
+    aspect-ratio: 1/1;
+  }
+}
+.project-preview {
+  width: 100%;
+  height: 100%;
+  color: var(--color-border-transparent-4);
+  transform: rotateY(-5deg);
+  transition: all 3s ease-in-out;
+  transition-delay: var(--transition-short-medium);
+  transition-timing-function: ease-in-out;
+  transition-duration: var(--transition-medium);
+  &:hover {
+    color: rgba(255, 255, 255, 0.803);
+    transition: all var(--transition-short-medium) ease-in-out;
+    transition-delay: 0;
+  }
+  @media (min-width: $big-tablet) {
+    transform: rotateY(-5deg);
+  }
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 999;
+  font-size: 6rem;
+  background: none;
+  border: none;
+  transform: translateY(-50%);
+
+  transition: all var(--transition-short);
+  &:hover,
+  &:focus {
+    // color: var(--color-primary);
+    transform: translateY(-50%) scale(1.2);
+    @include textglowmedium;
+  }
+  &.prev {
+    left: 0;
+    transform: translateY(-50%) scale(1.2);
+    @media (min-width: $small-tablet) {
+      left: -2rem;
+    }
+    &:hover,
+    &:focus {
+      transform: translateY(-50%) scale(1.4);
+    }
+  }
+  &.next {
+    right: 0;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 4rem;
+  }
+}
+.projects {
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+}
+
+.hidden-left {
+  transform: translateX(250%);
+  @media (max-width: $big-tablet) {
+    transform: translateX(-250%);
+  }
+}
+.hidden {
+  transform: translateX(150%) !important;
+}

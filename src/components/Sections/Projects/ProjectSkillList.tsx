@@ -1,38 +1,24 @@
-import { FC } from "react";
-import { skillInterface } from "../../../Types/types";
 import classes from "./ProjectSkillsList.module.scss";
 
 interface ListProps {
-  allSkillsData: skillInterface[];
-  projectData: any;
+  stack: { img: string; name: string }[];
 }
 
-const ProjectSkillsList: FC<ListProps> = ({ allSkillsData, projectData }) => {
-  const findSkill = (skillName: string) => {
-    allSkillsData?.map((skill: skillInterface) => {
-      return skill;
-    });
-    const resultSkill = {
-      ...allSkillsData.find(
-        (skill: skillInterface) => skill.name === skillName
-      ),
-    };
-    return resultSkill;
-  };
-
-  return projectData.skills.map((skill: string) => {
-    const fetchedSkill = findSkill(skill);
-    return (
-      <li key={Math.random()} className={classes["skill"]}>
-        <div className={classes.icon}>
-          <img
-            src={fetchedSkill.icon}
-            alt={`${fetchedSkill.names?.[0]} icon`}
-          />
-        </div>
-        <p className={classes["skill-title"]}>{fetchedSkill.names?.[0]}</p>
-      </li>
-    );
-  });
+const ProjectSkillsList = ({ stack }: ListProps) => {
+  return (
+    <ul className={classes["used-skills"]}>
+      <h3 className={classes["used-skills-title"]}>Used</h3>
+      {stack.map((skill) => {
+        return (
+          <li key={Math.random()} className={classes["skill"]}>
+            <div className={classes.icon}>
+              <img src={skill.img} alt={`${skill.name} icon`} />
+            </div>
+            <p className={classes["skill-title"]}>{skill.name}</p>
+          </li>
+        );
+      })}
+    </ul>
+  );
 };
 export default ProjectSkillsList;

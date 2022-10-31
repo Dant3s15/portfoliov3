@@ -1,0 +1,187 @@
+// @import "../../../scss/mixins.scss";
+// @import "../../../scss/variables.scss";
+@import "../../../../scss/style.scss";
+.contact-me {
+  position: relative;
+  justify-self: center;
+  width: 50%;
+  @media (max-width: $big-tablet) {
+    width: 75%;
+  }
+  @media (max-width: $small-tablet) {
+    width: 85%;
+  }
+  @media (max-width: $mobile) {
+    width: 100%;
+  }
+  // border: 1px solid red;
+  @include flexbox;
+  .input,
+  textarea {
+    width: 100%;
+    // max-width: 300px;
+    padding: 1rem;
+    color: var(--color-gray);
+    font-weight: 500;
+    font-size: 1.25rem;
+    font-family: inherit;
+    // background-color: var(--color-gray-tint-dark-transparent-1);
+    background-color: var(--color-border-transparent-2);
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+    transition: all var(--transition-short);
+    &:hover,
+    &:active {
+      // outline: solid 1px #fff;
+      box-shadow: 0 0 1px 2px var(--color-primary), 0 0 8px var(--color-primary);
+      // 0 0 19px var(--color-primary);
+    }
+
+    &:focus {
+      animation: input-focus 5s infinite;
+      // box-shadow: 0 0 1px 3px var(--color-primary);
+    }
+    // @media (max-width: $mobile) {
+    //   height: 40px;
+    // }
+  }
+
+  .container {
+    width: 100%;
+    transition: all var(--transition-short);
+    transition-property: perspective;
+    form {
+      @include flexbox;
+      flex-direction: column;
+      gap: 1.5rem;
+      @media (max-width: $mobile) {
+        gap: 0.75rem;
+      }
+    }
+    .labels {
+      position: relative;
+      width: 100%;
+      padding-top: 1rem;
+      @include flexbox(space-between);
+    }
+
+    .name-email,
+    .name,
+    .email {
+      position: relative;
+      width: 100%;
+
+      column-gap: 1.25rem;
+      @include flexbox;
+      .name,
+      .email {
+        &:hover,
+        &:focus,
+        &:active {
+          .label {
+            transform: scale(1.1) translateY(-30%);
+          }
+        }
+        flex-direction: column;
+        &::after {
+          left: calc(100% - 25px);
+        }
+        &.error-corner {
+          &::after {
+            left: calc(100% - 25px);
+          }
+        }
+      }
+    }
+
+    .textfield {
+      position: relative;
+      width: 100%;
+
+      &:hover {
+        .label {
+          transform: scale(1.1) translateY(-30%);
+        }
+      }
+      // @media (max-width: $mobile) {
+      //   height: 70px;
+      // }
+    }
+
+    .label {
+      position: absolute;
+      top: -5.5px;
+      align-self: flex-start;
+      width: 100%;
+      padding: 10px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      transform-origin: left bottom;
+      transition: all var(--transition-short);
+      @include textglowsmaller;
+      @media (max-width: $big-tablet) {
+        font-size: 1rem;
+      }
+      @media (max-width: $mobile) {
+        font-size: 14px;
+      }
+    }
+
+    .label-error {
+      @include textglowsmaller(red);
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 100%;
+
+      // height: 87%;
+      padding: 1rem;
+      color: var(--color-gray);
+      font-weight: 500;
+      font-size: 1.25rem;
+      font-family: inherit;
+      // background-color: var(--color-gray-tint-dark-transparent-1);
+      background-color: var(--color-border-transparent-2);
+      border: none;
+      border-radius: var(--border-radius);
+      outline: none;
+      transition: all var(--transition-short);
+      resize: none;
+      &:hover,
+      &:active {
+        // outline: solid 1px #fff;
+        box-shadow: 0 0 1px 2px var(--color-primary),
+          0 0 8px var(--color-primary);
+      }
+      &:focus {
+        // box-shadow: 0 0 1px 3px var(--color-primary);
+        animation: input-focus 5s infinite;
+      }
+    }
+  }
+}
+
+.form-error {
+  position: absolute;
+  right: 5px;
+  bottom: 8px;
+  color: red;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  @include textglowsmaller(red);
+}
+.input-error {
+  background-color: rgba(255, 0, 0, 0.168) !important;
+  box-shadow: 0 0 4px red, 0 0 11px red, 0 0 19px red !important;
+  &:hover,
+  &:active {
+    box-shadow: 0 0 1px 3px red !important;
+  }
+  &:focus {
+    box-shadow: 0 0 1px 3px red;
+  }
+}

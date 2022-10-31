@@ -1,37 +1,35 @@
-// @import "../../../scss/mixins.scss";
-// @import "../../../scss/variables.scss";
-// @import "../../../scss/animations.scss";
 @import "../../../scss/style.scss";
 
 .project-wrapper {
   position: relative;
-  min-width: 390px;
-  max-width: 450px;
+  min-width: 330px;
+  max-width: 350px;
   margin-right: -12rem;
-  transform: scale(0.8) perspective(500px) rotateY(-15deg);
-  backdrop-filter: blur(20px);
-  transition: all var(--transition-short-medium);
-  transition-property: transform;
+  overflow: hidden;
+  transform: scale(1) perspective(1000px) rotateY(-15deg);
+  transform-origin: right;
+  transform-style: preserve-3d;
+  filter: drop-shadow(30px 20px 20px rgba(0, 0, 0, 0.3));
+  transition: all var(--transition-short-medium)
+    cubic-bezier(0.53, -0.3, 0.25, 0.99);
+  transition-property: transform, filter;
   scroll-snap-align: center;
-  @include corner-cut(40px, rgba(255, 255, 255, 0.18), 10px, 38px);
-
+  @media (max-width: $big-tablet) {
+    max-width: 90vw;
+  }
   &:hover {
-    transform: perspective(500px) scale(0.8) translateX(var(--project-card-gap))
-      rotateY(-15deg) !important;
+    transform: perspective(1000px) scale(1)
+      translateX(calc(170px - var(--project-card-gap))) rotateY(-15deg) !important;
     @media (max-width: $mobile) {
-      transform: perspective(500px) scale(0.8)
+      transform: perspective(1000px) scale(1)
         translateX(var(--project-card-gap));
     }
-    .project-title,
-    .used-skills-title,
-    .project-overview {
-      @include textglowsmall;
-    }
   }
+
   &:hover:first-child {
-    transform: perspective(500px) scale(1) translateX(0) rotateY(0deg) !important;
+    transform: perspective(1000px) scale(1) translateX(0) rotateY(0deg) !important;
     @media (max-width: $mobile) {
-      transform: perspective(500px) scale(0.9) translateX(0) rotateY(0deg) !important;
+      transform: perspective(1000px) scale(1) translateX(0) rotateY(0deg) !important;
     }
   }
   &:nth-child(1) {
@@ -51,18 +49,33 @@
   }
 
   &.selected-project:hover {
-    transform: perspective(1000px) scale(1) translateX(35%) rotateY(0deg) !important;
+    transform: perspective(1000px) scale(1.1)
+      translateX(calc(230px - var(--project-card-gap))) rotateY(0deg) !important;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
     @media (max-width: $mobile) {
-      transform: perspective(1000px) scale(0.9) translateX(35%) rotateY(0deg) !important;
+      transform: perspective(1000px) scale(1.1) translateX(35%) rotateY(0deg) !important;
+      &:is(:last-child) {
+        transform: perspective(1000px) scale(1.1) translateX(-10%) rotateY(0deg) !important;
+      }
     }
   }
 
   &.selected-project {
-    transform: perspective(1000px) scale(1) translateX(35%) !important;
+    transform: perspective(1000px) scale(1.1) translateX(35%) !important;
     animation: zindex 100s forwards;
     @media (max-width: $mobile) {
-      transform: perspective(1000px) scale(0.9) translateX(35%) !important;
+      transform: perspective(1000px) scale(1.1) translateX(35%) !important;
+      &:is(:last-child) {
+        transform: perspective(1000px) scale(1.1) translateX(-10%) rotateY(0deg) !important;
+      }
     }
+  }
+}
+.selected-step1 {
+  transform: perspective(1000px) scale(1)
+    translateX(calc(170px - var(--project-card-gap))) rotateY(-15deg) !important;
+  @media (max-width: $mobile) {
+    transform: perspective(1000px) scale(1) translateX(var(--project-card-gap));
   }
 }
 
@@ -70,22 +83,22 @@
   position: relative;
   display: grid;
   grid-template-rows: 1fr 2fr;
-  min-width: 350px;
-  font-family: "Orbitron", sans-serif;
-  backdrop-filter: blur(20px);
+  min-width: 290px;
+  min-height: 540px;
+  color: var(--color-gray);
+  background: linear-gradient(
+    60deg,
+    var(--color-dark-3) 30%,
+    var(--color-blue-shade-1) 100%
+  );
+  background-repeat: no-repeat;
+  transform-style: preserve-3d;
+  perspective: 400px;
   transition: all var(--transition-short-medium);
   transition-property: transform;
   user-select: none;
   aspect-ratio: 1/1.7;
-
-  & .project-title,
-  & .used-skills-title,
-  & .project-overview {
-    @include textglowsmaller;
-  }
-
   .project-image-window {
-    @include corner-cut(30px);
     position: relative;
     display: flex;
     align-items: flex-end;
@@ -107,21 +120,21 @@
     position: relative;
     width: 100%;
     height: 100%;
+    border-radius: 0px 7px 0 0;
     transform-style: preserve-3d;
     filter: brightness(0.9);
     transition: var(--transition-short);
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1);
       filter: brightness(1.05);
     }
   }
 
   &-description {
     display: grid;
-    grid-template-rows: 0.5fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
     width: 100%;
-    height: 100%;
     padding: 6px 6px;
     overflow: hidden;
     cursor: pointer;
@@ -137,43 +150,27 @@
     text-transform: uppercase;
     transition: all var(--transition-short);
     transition-property: text-shadow, color;
+    @media (max-width: $laptop) {
+      font-size: 24px;
+    }
   }
   .project-overview {
     padding: 0 6px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1.5;
     text-align: left;
     cursor: pointer;
-    @include flexbox;
+    @include flexbox(center, flex-start);
     p {
       display: inline-block;
       height: auto;
     }
-    @media (max-width: 1600px) {
-      font-size: 1.25rem;
-    }
     @media (max-width: $big-tablet) {
-      font-size: 1.125rem;
+      font-size: 20px;
     }
   }
+}
 
-  .used-skills {
-    position: relative;
-    flex-wrap: wrap;
-    align-content: center;
-    width: 100%;
-    height: 100%;
-    height: 120px;
-    background-color: rgba(0, 0, 0, 0.2);
-    @include flexbox(center, flex-end);
-  }
-}
-.used-skills-title {
-  align-self: flex-end;
-  padding-bottom: 1rem;
-  padding-left: 1rem;
-  font-size: 24px;
-}
 .links {
   @include flexbox(flex-start, flex-start);
   position: absolute;

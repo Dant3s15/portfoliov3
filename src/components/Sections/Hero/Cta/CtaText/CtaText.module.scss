@@ -1,0 +1,119 @@
+@import "../../../../../scss/style.scss";
+
+.textWrapper {
+  @include flexbox;
+  width: 100%;
+  height: 50%;
+  transition: all var(--transition-short-medium) ease-in-out;
+  @media (max-width: $mobile) {
+    padding: 0.375rem;
+  }
+  .cta-text {
+    @include flexbox(center, flex-end);
+    flex-direction: column;
+    width: 100%;
+    height: 60%;
+    color: var(--color-gray);
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+    .title {
+      @for $i from 1 through 11 {
+        span:nth-child(3n + #{$i}) {
+          transition: all var(--transition-short);
+          animation: lightpass 5s ease-in-out;
+          animation-delay: calc(#{$i}ms);
+        }
+      }
+      font-weight: 700;
+      font-size: 110px;
+      font-family: "Library3amsoft", sans-serif;
+      span {
+        display: inline-block;
+        width: fit-content;
+        height: fit-content;
+        cursor: default;
+        transition: all var(--transition-medium);
+        user-select: none;
+      }
+      span:hover {
+        transition: all 1ms;
+        animation: lightpassshort 1.3s ease-in-out infinite;
+      }
+      .hi {
+        font-weight: 400;
+        font-size: 74px;
+      }
+      @media (max-width: $desktop) {
+        font-size: 88px;
+        .hi {
+          font-size: 62px;
+        }
+      }
+      @media (max-width: $big-laptop) {
+        font-size: 70px;
+        .hi {
+          font-size: 52px;
+        }
+      }
+      @media (max-width: $laptop) {
+        font-size: 62px;
+        .hi {
+          font-size: 44px;
+        }
+      }
+      @media (max-width: $mobile) {
+        font-size: 44px;
+        .hi {
+          font-size: 36px;
+        }
+      }
+    }
+
+    .sub-title {
+      gap: 1rem;
+      justify-self: flex-end;
+      height: auto;
+      font-weight: 700;
+      font-size: 44px;
+      @include flexbox(flex-end);
+      @media (max-width: $desktop) {
+        font-size: 36px;
+      }
+      @media (max-width: $laptop) {
+        font-size: 30px;
+      }
+      @media (max-width: $mobile) {
+        font-size: 20px;
+      }
+    }
+    span {
+      height: 100%;
+    }
+    & :first-child {
+      width: 100%;
+      height: 100%;
+      @media (max-width: $big-tablet) {
+        height: auto;
+      }
+    }
+    @media (max-width: $big-laptop) {
+      font-size: 48px;
+    }
+    @media (max-width: $laptop) {
+      font-size: 42px;
+    }
+    @media (max-width: $mobile) {
+      height: 70%;
+      font-size: 36px;
+    }
+    @media (max-width: $small-mobile) {
+      font-size: 30px;
+    }
+  }
+}
+
+.typewriter {
+  width: 100%;
+  height: 100%;
+}

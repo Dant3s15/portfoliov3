@@ -1,24 +1,24 @@
-// @import "../../../scss/mixins.scss";
-// @import "../../../scss/variables.scss";
 @import "../../../scss/style.scss";
 
 .header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 99999;
   width: 100%;
+
   transition: transform var(--transition-short-medium);
 }
 
 .header,
 .header-wrapper {
   height: 3.25rem;
-  padding: 0 0.625rem;
+  padding: 0 2.25rem;
 
   @include flexbox(null, flex-start);
   @media (max-width: $big-tablet) {
     height: 4rem;
+    padding: 0 0.625rem;
   }
 }
 
@@ -41,10 +41,8 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid var(--color-border-transparent);
-  border-right: 7px solid var(--color-border-transparent);
-  border-bottom: 5px solid var(--color-border-transparent);
+  background-color: rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid var(--color-border-transparent);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   transition: all var(--transition-short-medium) ease-in-out;
@@ -52,8 +50,8 @@
     background-color: rgba(49, 51, 58, 0.909);
   }
   @media (max-width: $small-tablet) {
-    background-color: rgba(49, 51, 58, 0.909);
-    backdrop-filter: none;
+    background-color: rgba(49, 51, 58, 0.5);
+    border-top: 1px solid var(--color-border-transparent);
   }
 }
 
@@ -105,7 +103,6 @@
 }
 
 .hamburger-not-active {
-  @include corner-cut(32px, var(--color-border-transparent), 7px, 32px);
   z-index: 990;
   width: 100%;
   height: 100%;
@@ -123,7 +120,6 @@
   height: 99.5vh;
   overflow: hidden;
   transform: none !important;
-  @include corner-cut(32px, var(--color-border-transparent), 7px, 32px);
 
   &::after {
     left: calc(100% - 28px);

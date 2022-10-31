@@ -1,77 +1,32 @@
-import { useState, useContext, FC, useEffect } from "react";
-import { useIntersectionObserver } from "usehooks-ts";
+import { useState, useContext, FC } from "react";
 import classes from "./Hero.module.scss";
-import SelectedContext from "../../../context/selected-context";
-import HeroVisibleContext from "../../../context/hero-visible-context";
-import Characters from "./Characters/Characters";
-import SkillsList from "./Skills/Skills";
-import { useRef } from "react";
-import { skillInterface } from "../../../Types/types";
-interface Props {
-  allSkillsData: skillInterface[];
-  isLoading: boolean;
-}
+import Cta from "./Cta/Cta";
+import { useInView } from "react-intersection-observer";
 
-const Hero: FC<Props> = ({ allSkillsData, isLoading }) => {
-  const ctx = useContext(SelectedContext);
-  const heroVisibleCtx = useContext(HeroVisibleContext);
-  const heroRef = useRef(null);
-  const entry = useIntersectionObserver(heroRef, {
+const Hero = () => {
+  const { ref, inView, entry } = useInView({
     threshold: 0.7,
+    onChange(inView) {
+      let root = document.documentElement;
+      if (inView) {
+        root.style.setProperty("--saturation", `saturate(${0.1})`);
+        root.style.setProperty("--mask-percent", `${100}%`);
+        root.style.setProperty("--blur", `blur(${50}px)`);
+        root.style.setProperty("--vmin", `30vmin 1vmin`);
+        root.style.setProperty("--dot-opacity", `0.05`);
+        root.style.setProperty("--dot-position", `0% 0%`);
+      }
+    },
   });
-  const isVisible = !!entry?.isIntersecting;
-
-  useEffect(() => {
-    if (isVisible) {
-      heroVisibleCtx.setHeroIsVisible(true);
-    } else heroVisibleCtx.setHeroIsVisible(false);
-  }, [isVisible]);
-
-  const [charState, setCharState] = useState({
-    leftChar: 0,
-    frontChar: 1,
-    rightChar: 2,
-  });
-
-  const charStateDataHandler = (data: {
-    leftChar: number;
-    frontChar: number;
-    rightChar: number;
-  }) => {
-    setCharState(data);
-  };
-
-  const heroOnClickHandler = (e: {
-    stopPropagation: () => void;
-    target: any;
-  }) => {
-    e.stopPropagation();
-    if (e.target.classList.contains(classes["section-hero"])) {
-      ctx.setSelected?.(false);
-    }
-  };
 
   return (
     <section
       id="hero"
-      ref={heroRef}
-      onClick={heroOnClickHandler}
-      className={`${classes["section-hero"]} ${
-        !ctx.ctaButtonClicked?.clicked ? classes.gray : ""
-      }`}
+      ref={ref}
+      className={`${classes["section-hero"]} 
+      `}
     >
-      <div className={classes["character-selection"]}>
-        <Characters
-          heroRef={heroRef}
-          charState={charStateDataHandler}
-        ></Characters>
-        <SkillsList
-          isLoading={isLoading}
-          className={classes["character-skills"]}
-          charStateData={charState}
-          allSkillsData={allSkillsData}
-        ></SkillsList>
-      </div>
+      <Cta heroInView={inView}></Cta>
     </section>
   );
 };

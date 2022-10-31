@@ -1,0 +1,26 @@
+@import "../../../../scss/style.scss";
+.text-about {
+  @include section-text;
+  .title {
+    align-self: flex-start;
+    width: calc(1em * 5.7);
+    color: var(--color-gray);
+    font-size: 74px;
+    text-transform: uppercase;
+
+    @include title-effect;
+  }
+  .text {
+    // flex-direction: column;
+    // gap: 2rem;
+    // align-self: flex-start;
+    // height: 100%;
+    // @include flexbox(space-evenly);
+    // p:first-child {
+    //   padding-left: 10%;
+    // }
+    // p:nth-child(2) {
+    //   padding-left: 20%;
+    // }
+  }
+}

@@ -1,5 +1,5 @@
-import Typewriter from 'typewriter-effect';
-import classes from './LoadingSpinner.module.scss';
+import Typewriter from "typewriter-effect";
+import classes from "./LoadingSpinner.module.scss";
 const LoadingSpinner = () => {
   return (
     <div className={classes.spinner}>
@@ -8,10 +8,10 @@ const LoadingSpinner = () => {
           options={{
             loop: true,
             delay: 150,
-            cursor: '_',
+            cursor: "_",
           }}
-          onInit={typewriter => {
-            typewriter.typeString('Loading').pauseFor(1000).deleteAll().start();
+          onInit={(typewriter) => {
+            typewriter.typeString("Loading").pauseFor(1000).deleteAll().start();
           }}
         />
       </div>

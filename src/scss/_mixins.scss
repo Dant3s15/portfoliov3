@@ -1,6 +1,3 @@
-//@include corner-cut(20px, var(--color-primary), 4px, 17px);
-
-//TODO DON'T FORGET TO SET PARENT'S POSITION TO RELATIVE!
 @mixin corner-cut(
   $pixels: 20px,
   $bg-color: #00000000,
@@ -8,7 +5,6 @@
   $translate: 17px,
   $after: ""
 ) {
-  // position: relative;
   overflow: hidden;
   clip-path: polygon(
     0% 100%,
@@ -65,7 +61,6 @@
   $translate: 17px,
   $after: ""
 ) {
-  // background-color: red;
   position: relative;
   clip-path: polygon(
     -10% 110%,
@@ -95,7 +90,6 @@
 }
 
 @mixin textglow($color1: var(--color-primary), $color2: #fff) {
-  // color: $color1;
   color: $color2;
 
   text-shadow: 0 0 4px $color2, 0 0 11px $color1, 0 0 19px $color1,
@@ -110,17 +104,10 @@
     0 0 19px var(--color-primary), 0 0 40px var(--color-primary);
 }
 @mixin textglowsmall($color1: var(--color-primary), $color2: #fff) {
-  // color: $color1;
   color: $color2;
-
   text-shadow: 0 0 4px $color1, 0 0 11px $color1, 0 0 19px $color1;
 }
-// @mixin textglowsmall {
-//   color: var(--color-primary);
-//   color: #fff;
-//   text-shadow: 0 0 4px var(--color-primary), 0 0 11px var(--color-primary),
-//     0 0 19px var(--color-primary);
-// }
+
 @mixin textglowsmaller($color: var(--color-primary)) {
   color: var(--color-primary);
   color: #fff;
@@ -138,5 +125,134 @@
   &::-webkit-scrollbar-thumb {
     background: $color;
     border-radius: 3px;
+  }
+}
+
+@mixin mask-image($to: bottom, $percent: 80%) {
+  -webkit-mask-image: linear-gradient(
+    to $to,
+    rgba(0, 0, 0, 1) $percent,
+    transparent 100%
+  );
+}
+
+@mixin title-effect {
+  height: 1.2em;
+  color: var(--color-primary) !important;
+  font-weight: 700;
+  font-size: 98px;
+
+  font-family: "Library3amsoft", sans-serif;
+  // font-family: "Quantico", sans-serif;
+
+  text-align: start;
+  text-transform: uppercase;
+  cursor: default;
+  user-select: none;
+  &-span {
+    @for $i from 1 through 11 {
+      span:nth-child(3n + #{$i}) {
+        transition: all var(--transition-short);
+        animation: lightpass 5s ease-in-out infinite;
+        animation-delay: calc(#{$i}ms);
+      }
+    }
+    span:hover {
+      transition: all 1ms;
+      animation: lightpassshort 1.3s ease-in-out infinite;
+    }
+  }
+  @media (max-width: $laptop) {
+    font-size: 74px;
+  }
+  @media (max-width: $big-tablet) {
+    font-size: 62px;
+  }
+  @media (max-width: $mobile) {
+    font-size: 44px;
+  }
+
+  span:global(.Typewriter__cursor) {
+    display: none;
+  }
+}
+
+@mixin section-text {
+  flex-direction: column;
+  .text {
+    flex-direction: column;
+    gap: 2rem;
+    align-self: flex-start;
+    justify-self: center;
+    height: 100%;
+    margin-top: 8%;
+    color: var(--color-gray);
+    font-size: 36px;
+    font-family: Jura, sans-serif;
+    text-align: left;
+    @include flexbox(flex-start);
+    p:first-child {
+      padding-left: 10%;
+    }
+    p:nth-child(2) {
+      padding-left: 20%;
+      font-size: 28px;
+    }
+    @media (max-width: $laptop) {
+      font-size: 32px;
+    }
+
+    @media (max-width: $mobile) {
+      font-size: 30px;
+    }
+  }
+  @include flexbox(flex-start);
+}
+
+@mixin section-grid($cols: 2fr 1fr, $colsTablet: 1fr) {
+  display: grid;
+  grid-template-columns: $cols;
+  gap: 2rem;
+  overflow: hidden;
+  @media (max-width: $big-tablet) {
+    grid-template-columns: $colsTablet;
+  }
+}
+
+@mixin background-title($top: -2rem, $left: false) {
+  position: absolute;
+  top: $top;
+  bottom: 0;
+  z-index: -1;
+  color: var(--color-border-transparent-5);
+  font-weight: 700;
+  font-size: 15vw;
+  font-family: Orbitron, sans-serif;
+  text-transform: uppercase;
+  pointer-events: none;
+
+  @if $left {
+    left: 0;
+  } @else {
+    right: 0;
+  }
+}
+
+@mixin paddingWrapper {
+  @media (max-width: $desktop) {
+    padding-right: 8rem;
+    padding-left: 8rem;
+  }
+  @media (max-width: $big-laptop) {
+    padding-right: 5rem;
+    padding-left: 5rem;
+  }
+  @media (max-width: $laptop) {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  @media (max-width: $small-mobile) {
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
 }

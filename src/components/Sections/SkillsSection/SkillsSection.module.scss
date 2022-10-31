@@ -1,0 +1,11 @@
+@import "../../../scss/style.scss";
+.skills-section {
+  @include section-grid(1fr 1fr, 1fr);
+  padding-bottom: 2rem;
+  perspective: 400px;
+
+  @media (max-width: $mobile) {
+    padding: 0 1rem;
+    font-size: 30px;
+  }
+}

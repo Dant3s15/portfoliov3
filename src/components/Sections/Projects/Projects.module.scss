@@ -1,36 +1,31 @@
-// @import "../../../scss/mixins.scss";
-// @import "../../../scss/variables.scss";
-// @import "../../../scss/animations.scss";
 @import "../../../scss/style.scss";
 
 .projects {
   position: relative;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #232323;
-  @include flexbox(space-around);
+  width: 100%;
+  height: 100%;
+  scroll-padding-bottom: 10%;
+  @include section-grid(1fr, 1fr);
+  .title-wrapper {
+    width: 100%;
+    @include flexbox(flex-end);
+  }
+
+  .projects-text {
+    @include section-text;
+    .title {
+      align-self: flex-end;
+    }
+    .text {
+      align-self: flex-end;
+    }
+  }
 
   .title {
+    @include title-effect;
     z-index: 1;
-    padding-top: 4rem;
+    width: calc(1em * 7.6);
     color: var(--color-gray);
-    font-size: 5.375rem;
-    text-transform: uppercase;
-    @include textglow;
-    @media (max-width: $big-tablet) {
-      font-size: 4.625rem;
-    }
-    @media (max-width: $small-tablet) {
-      font-size: 3.875rem;
-    }
-    @media (max-width: $mobile) {
-      padding-top: 1.5rem;
-      font-size: 2.75rem;
-    }
-    @media (max-width: $small-mobile) {
-      font-size: 2.25rem;
-    }
   }
 
   &::before {
@@ -40,31 +35,71 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../../../resources/img/hero2.webp");
     background-repeat: no-repeat;
     background-position-y: 65%;
     background-size: cover;
     filter: blur(2px) saturate(0.7);
+    @include mask-image(top);
   }
   .my-projects {
-    @include flexbox;
     position: relative;
     flex-flow: row nowrap;
-    width: 100%;
-    min-width: 100%;
-    height: 100%;
-    overflow-x: scroll;
+    gap: var(--project-card-gap);
+    width: fit-content;
+    min-width: 50%;
+    padding: 2rem 4rem;
+    padding-right: 18rem;
+    padding-bottom: 6rem;
     scroll-behavior: smooth;
+    @include flexbox(flex-start);
     @media (max-width: $big-laptop) {
       justify-content: safe flex-start;
     }
-    @include scrollbar;
-    & > div:last-child {
-      margin-right: 2rem;
+    @media (min-width: $desktop) {
+      padding-right: 8rem;
+      padding-left: 8rem;
     }
+    @media (min-width: $big-laptop) {
+      padding-right: 5rem;
+      padding-left: 5rem;
+    }
+    @media (min-width: $laptop) {
+      padding-right: 2rem;
+      padding-left: 2rem;
+    }
+    @media (max-width: $big-tablet) {
+      order: 2;
+      width: 100%;
+      overflow: var(--projects-overflow);
+    }
+    @include scrollbar;
 
     @media (max-width: $small-tablet) {
-      scroll-snap-type: x proximity;
+      scroll-snap-type: x;
+      scroll-behavior: smooth;
     }
   }
+}
+
+.project-list {
+  display: flex;
+  gap: 1rem;
+  max-width: 100%;
+  padding: 3rem;
+
+  overflow-x: scroll;
+  border: 1px solid red;
+
+  transform: rotateX(30deg);
+  scroll-snap-type: mandatory;
+  scroll-margin-right: 0px;
+  .project {
+    background-color: rgb(194, 194, 194);
+    scroll-snap-align: center;
+  }
+}
+
+.bg-title {
+  position: relative;
+  @include background-title(0rem);
 }

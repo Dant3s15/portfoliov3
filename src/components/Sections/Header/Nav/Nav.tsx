@@ -3,34 +3,35 @@ import classes from "./Nav.module.scss";
 
 interface Props {
   navItemHandler: (event: { currentTarget: Element }, id: string) => void;
+  setHamburgerState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Nav: FC<Props> = ({ navItemHandler }) => {
+const Nav: FC<Props> = ({ navItemHandler, setHamburgerState }) => {
   return (
     <nav className={classes.nav}>
       <a
-        data-to="/about-me"
-        data-character="1"
-        onClick={(e) => navItemHandler(e, "my-projects")}
+        onClick={(e) => navItemHandler(e, "projects-section")}
         className={`${classes.nav__item} `}
       >
-        My projects
+        Projects
       </a>
       <a
-        data-to="/about-me"
-        data-character="1"
+        onClick={(e) => navItemHandler(e, "my-skills")}
+        className={`${classes.nav__item} `}
+      >
+        Skills
+      </a>
+      <a
         onClick={(e) => navItemHandler(e, "about-me")}
         className={`${classes.nav__item} `}
       >
-        Contact Me
+        About
       </a>
       <a
-        data-to={"/creator"}
-        data-character="0"
-        onClick={(e) => navItemHandler(e, "creator")}
+        onClick={(e) => navItemHandler(e, "contact-me")}
         className={`${classes.nav__item} `}
       >
-        Character Creator
+        Contact
       </a>
     </nav>
   );

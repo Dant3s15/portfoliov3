@@ -1,75 +1,111 @@
-import { FC, ReactNode, useRef } from "react";
+import { FC, ReactNode, useEffect, useRef, useState } from "react";
 import CardGlass from "../../UI/CardGlass";
 import github from "../../../resources/icons/logo-github.svg";
 import classes from "./ProjectCard.module.scss";
-import { skillInterface } from "../../../Types/types";
-import LoadingSpinner from "../../UI/LoadingSpinner";
 import ProjectSkillsList from "./ProjectSkillList";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 interface CardProjectProps {
   projectData: {
-    skills: any[];
-    repo: string;
-    link: string;
-    image: string;
+    stack: { img: string; name: string }[];
+    github: string;
+    live: string;
+    img: { desktop: string; mobile: string };
     title: string;
     overview: ReactNode | undefined;
     id: number;
+    description: string;
+    featured: boolean;
   };
   onClick?: any;
   style?: any;
   selectedState?: any;
-  isLoading: boolean;
-  allSkillsData: skillInterface[];
 }
 
-const CardProject: FC<CardProjectProps> = ({
-  allSkillsData,
-  isLoading,
+const ProjectCard: FC<CardProjectProps> = ({
   projectData,
   onClick,
   selectedState,
   style,
 }) => {
   const projectCardRef = useRef<null | HTMLDivElement>(null);
+  const [step, setStep] = useState(0);
+
   const cardClickHandler = (e: any) => {
     e.nativeEvent.stopPropagation();
 
-    selectedState.setWhichSelected(projectData.id);
-    if (projectCardRef.current)
-      projectCardRef.current.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
+    if (projectData.id === selectedState.whichSelected) {
+      selectedState.setWhichSelected(null);
+    } else {
+      selectedState.setWhichSelected(projectData.id);
+    }
+
+    setStep(1);
   };
 
+  const { width } = useWindowDimensions();
+  const calcTime = () => {
+    if (width > 992) return 0;
+    else return 400;
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (step === 1) {
+        setStep(2);
+      }
+    }, calcTime());
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [step]);
   return (
     <div
-      onMouseLeave={() => {
-        selectedState.setWhichSelected(null);
+      onMouseEnter={() => {
+        const root = document.documentElement;
+        root.style.setProperty(
+          "--dot-position",
+          `${projectData.id}0% ${projectData.id}0%`
+        );
+        root.style.setProperty("--dot-opacity", `0.2`);
+        root.style.setProperty("--vmin", `15vmin 15vmin`);
       }}
-      ref={projectCardRef}
+      onMouseLeave={() => {
+        const root = document.documentElement;
+        root.style.setProperty(
+          "--dot-position",
+          `${projectData.id}0% ${projectData.id}0%`
+        );
+        root.style.setProperty("--dot-opacity", `0.5`);
+        selectedState.setWhichSelected(null);
+        root.style.setProperty("--vmin", `5.5vmin 5.5vmin`);
+      }}
+      id={`project${projectData.id}`}
       className={`${classes["project-wrapper"]} ${
-        projectData.id === selectedState.whichSelected
+        projectData.id === selectedState.whichSelected && step === 1
+          ? classes["selected-step1"]
+          : ""
+      } ${
+        projectData.id === selectedState.whichSelected && step === 2
           ? classes["selected-project"]
           : ""
-      } `}
+      }`}
+      ref={projectCardRef}
     >
-      <CardGlass corner className={`${classes.project}`}>
+      <CardGlass className={`${classes.project}`}>
         <div className={classes.links}>
-          <a href={projectData?.repo} target="_blank">
+          <a href={projectData?.github} target="_blank">
             <img src={github} alt="github" />
           </a>
         </div>
         <div className={classes["project-image-window"]}>
           <a
             className={classes["project-link"]}
-            href={projectData?.link}
+            href={projectData?.live}
             target="_blank"
           >
             <img
-              src={projectData?.image}
+              src={projectData?.img.desktop}
               className={classes["project-image"]}
             />
           </a>
@@ -82,23 +118,17 @@ const CardProject: FC<CardProjectProps> = ({
             {projectData?.title ?? "Title"}
           </h3>
           <div className={classes["project-overview"]}>
-            <p>{projectData?.overview}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: projectData?.description.replace(/\n/g, "<br />"),
+              }}
+            ></p>
           </div>
-          <h3 className={classes["used-skills-title"]}>Skills Used:</h3>
-          <ul className={classes["used-skills"]}>
-            {isLoading ? (
-              <LoadingSpinner></LoadingSpinner>
-            ) : (
-              <ProjectSkillsList
-                allSkillsData={allSkillsData}
-                projectData={projectData}
-              ></ProjectSkillsList>
-            )}
-          </ul>
+          <ProjectSkillsList stack={projectData.stack}></ProjectSkillsList>
         </div>
       </CardGlass>
     </div>
   );
 };
 
-export default CardProject;
+export default ProjectCard;
