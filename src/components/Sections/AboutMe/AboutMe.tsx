@@ -71,12 +71,14 @@ const AboutMe = () => {
           className={`${classes.text}  ${inView ? "fade-in-r" : "fade-out-r"}`}
         >
           <p>
-            I'm Damian, a <strong>React Frontend Developer</strong>. <br />
+            I'm Damian,
+            <br /> <strong>React Frontend Developer</strong> from Poland.
+            <br />
             Hungry for knowledge and eager to learn.
           </p>
-          <p>
+          {/* <p>
             Always learning, always improving, <br /> be better than yesterday.
-          </p>
+          </p> */}
         </span>
       </div>
     </section>
