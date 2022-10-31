@@ -8,6 +8,13 @@
   font-size: 100%;
   // outline: 1px solid red;
 }
+@font-face {
+  font-weight: normal;
+  font-family: "Library3amsoft";
+  font-style: normal;
+  src: url("/src/resources/fonts/library3amsoft-webfont.woff2") format("woff2"),
+    url("/src/resources/fonts/library3amsoft-webfont.woff") format("woff");
+}
 
 a {
   color: inherit;
