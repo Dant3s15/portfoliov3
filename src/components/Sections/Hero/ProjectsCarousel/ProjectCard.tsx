@@ -58,7 +58,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
         <div className={classes.images}>
           <Tilt
             tiltAngleYInitial={5}
-            transitionSpeed={900}
+            transitionSpeed={3500}
             scale={1.05}
             glareEnable={true}
             glareColor="#fff"
@@ -107,7 +107,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
           </Tilt>
           <Tilt
             tiltAngleYInitial={2}
-            transitionSpeed={900}
+            transitionSpeed={2500}
             scale={1.1}
             glareEnable={true}
             glareColor="#fff"
