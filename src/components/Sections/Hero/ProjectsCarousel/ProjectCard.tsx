@@ -57,7 +57,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
       <div className={classes["images-title"]}>
         <div className={classes.images}>
           <Tilt
-            tiltAngleYInitial={10}
+            tiltAngleYInitial={5}
             transitionSpeed={900}
             scale={1.05}
             glareEnable={true}
@@ -65,8 +65,8 @@ const ProjectCard: FC<Props> = ({ selected }) => {
             glarePosition="all"
             glareMaxOpacity={0.2}
             perspective={1700}
-            tiltMaxAngleX={5}
-            tiltMaxAngleY={10}
+            tiltMaxAngleX={2}
+            tiltMaxAngleY={5}
             className={classes.tilt}
           >
             <div className={classes["img-desktop-container"]}>
@@ -106,7 +106,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
             </header>
           </Tilt>
           <Tilt
-            tiltAngleYInitial={15}
+            tiltAngleYInitial={2}
             transitionSpeed={900}
             scale={1.1}
             glareEnable={true}
@@ -115,7 +115,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
             glareMaxOpacity={0.3}
             perspective={200}
             tiltMaxAngleX={2}
-            tiltMaxAngleY={5}
+            tiltMaxAngleY={2}
             className={classes["tilt-mobile"]}
           >
             <div className={`${classes["img-mobile-container"]} `}>

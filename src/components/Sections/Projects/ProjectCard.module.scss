@@ -49,24 +49,26 @@
   }
 
   &.selected-project:hover {
-    transform: perspective(1000px) scale(1.1)
-      translateX(calc(230px - var(--project-card-gap))) rotateY(0deg) !important;
+    transform: perspective(1000px) scale(1.05)
+      translateX(calc(210px - var(--project-card-gap))) rotateY(0deg) !important;
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
     @media (max-width: $mobile) {
-      transform: perspective(1000px) scale(1.1) translateX(35%) rotateY(0deg) !important;
+      transform: perspective(1000px) scale(1.05) translateX(35%) rotateY(0deg) !important;
       &:is(:last-child) {
-        transform: perspective(1000px) scale(1.1) translateX(-10%) rotateY(0deg) !important;
+        transform: perspective(1000px) scale(1.05) translateX(-10%)
+          rotateY(0deg) !important;
       }
     }
   }
 
   &.selected-project {
-    transform: perspective(1000px) scale(1.1) translateX(35%) !important;
+    transform: perspective(1000px) scale(1.05) translateX(35%) !important;
     animation: zindex 100s forwards;
     @media (max-width: $mobile) {
-      transform: perspective(1000px) scale(1.1) translateX(35%) !important;
+      transform: perspective(1000px) scale(1.05) translateX(35%) !important;
       &:is(:last-child) {
-        transform: perspective(1000px) scale(1.1) translateX(-10%) rotateY(0deg) !important;
+        transform: perspective(1000px) scale(1.05) translateX(-10%)
+          rotateY(0deg) !important;
       }
     }
   }
