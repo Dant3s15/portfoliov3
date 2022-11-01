@@ -1,7 +1,6 @@
-import { useState, useContext, FC } from "react";
-import classes from "./Hero.module.scss";
-import Cta from "./Cta/Cta";
 import { useInView } from "react-intersection-observer";
+import Cta from "./Cta/Cta";
+import classes from "./Hero.module.scss";
 
 const Hero = () => {
   const { ref, inView, entry } = useInView({
@@ -24,7 +23,7 @@ const Hero = () => {
       id="hero"
       ref={ref}
       className={`${classes["section-hero"]} 
-      `}
+      wrapper`}
     >
       <Cta heroInView={inView}></Cta>
     </section>

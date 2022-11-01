@@ -30,7 +30,7 @@ const AboutMe = () => {
     <section
       ref={ref}
       id="about-me"
-      className={`${classes["about-me"]} padding`}
+      className={`${classes["about-me"]} padding wrapper`}
     >
       <div
         className={`${inView ? "fade-in" : "fade-out"} ${classes["bg-title"]}`}

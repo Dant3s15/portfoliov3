@@ -40,7 +40,7 @@ const Header: FC = () => {
   };
 
   return (
-    <header className={`${classes.header} `}>
+    <header className={`${classes.header}`}>
       <div
         className={`${classes["header-wrapper"]} card-glass ${
           hamburgerState
@@ -48,7 +48,7 @@ const Header: FC = () => {
             : classes["hamburger-not-active"]
         }`}
       >
-        <div className={classes.navigation}>
+        <div className={`${classes.navigation} wrapper`}>
           <div className={classes["logo-item"]}>
             <a
               data-to="/"

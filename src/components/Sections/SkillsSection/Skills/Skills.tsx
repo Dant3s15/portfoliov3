@@ -19,23 +19,15 @@ const Skills = ({ inView }: { inView: boolean }) => {
     { name: "NextJS", time: "2022-09-10T13:28:15.000Z" },
   ];
 
-  function getRandomInt(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
   useEffect(() => {
     let interval: NodeJS.Timer;
     if (inView) {
       interval = setInterval(() => {
         setWhichIsActive((prev) => {
-          let randomNmb = getRandomInt(0, mySkills.length - 1);
-          while (randomNmb === prev) {
-            randomNmb = getRandomInt(0, mySkills.length - 1);
+          if (prev >= mySkills.length - 1) {
+            return 0;
           }
-
-          return randomNmb;
+          return prev + 1;
         });
       }, 2500);
     }

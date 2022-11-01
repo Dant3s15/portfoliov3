@@ -46,7 +46,11 @@ const Projects = () => {
   const [inViewDelay, setInViewDelay] = useInViewDelay({ inView });
 
   return (
-    <section id="projects-section" ref={ref} className={`${classes.projects} `}>
+    <section
+      id="projects-section"
+      ref={ref}
+      className={`${classes.projects} wrapper`}
+    >
       <div className={classes["projects-text"]}>
         <div className={`${classes["title-wrapper"]} padding`}>
           <div

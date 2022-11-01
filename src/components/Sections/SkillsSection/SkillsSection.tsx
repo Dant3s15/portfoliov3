@@ -11,7 +11,7 @@ const SkillsSection = () => {
     <section
       id="my-skills"
       ref={ref}
-      className={`${classes["skills-section"]} padding`}
+      className={`${classes["skills-section"]} padding wrapper`}
     >
       <TextAbout></TextAbout>
       <Skills inView={inView}></Skills>

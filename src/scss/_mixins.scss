@@ -231,6 +231,10 @@
   text-transform: uppercase;
   pointer-events: none;
 
+  @media (min-width: calc($desktop + 1px)) {
+    font-size: 260px;
+  }
+
   @if $left {
     left: 0;
   } @else {

@@ -13,7 +13,6 @@ const CtaButton = () => {
             inline: "center",
             block: "center",
           });
-          console.log("todo");
         }}
         text="Learn More"
       />

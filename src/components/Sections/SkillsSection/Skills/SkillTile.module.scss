@@ -22,6 +22,9 @@
     color: var(--color-gray);
     font-weight: 700;
     font-size: 1.2vw;
+    @media (min-width: calc($big-desktop + 1px)) {
+      font-size: 22px;
+    }
   }
   .time-text {
     flex-direction: column;
@@ -48,6 +51,9 @@
       font-size: 1.5vw;
       text-align: center;
       text-transform: capitalize;
+      @media (min-width: calc($big-desktop + 1px)) {
+        font-size: 24px;
+      }
       @media (max-width: $big-tablet) {
         font-size: 2.5vw;
       }

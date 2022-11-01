@@ -38,7 +38,11 @@ const ContactMe = () => {
   const [inViewDelay, setInViewDelay] = useInViewDelay({ inView });
 
   return (
-    <section ref={ref} id="contact-me" className={`${classes["contact-me"]}`}>
+    <section
+      ref={ref}
+      id="contact-me"
+      className={`${classes["contact-me"]} wrapper`}
+    >
       <div
         className={`${inView ? "fade-in-r" : "fade-out-r"} ${
           classes["bg-title"]

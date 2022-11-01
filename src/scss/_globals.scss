@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   font-size: 100%;
+
   // outline: 1px solid red;
 }
 @font-face {
@@ -27,6 +28,14 @@ body {
   font-family: "Orbitron", sans-serif;
   font-family: "Jura", sans-serif;
   scroll-behavior: smooth;
+
+  scrollbar-color: var(--color-gray-dark) var(--color-gray-tint-dark2);
+  &::-webkit-scrollbar {
+    background-color: var(--color-gray-tint-dark2);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray-dark);
+  }
 }
 
 body::before {

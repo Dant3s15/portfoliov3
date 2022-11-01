@@ -8,7 +8,7 @@ interface Props {
 
 const Nav: FC<Props> = ({ navItemHandler, setHamburgerState }) => {
   return (
-    <nav className={classes.nav}>
+    <nav className={`${classes.nav}`}>
       <a
         onClick={(e) => navItemHandler(e, "projects-section")}
         className={`${classes.nav__item} `}
