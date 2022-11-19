@@ -46,7 +46,7 @@ const projectsData = [
     github: "https://github.com/DevmianS/LightApp",
     live: "https://lightapp.netlify.app/",
     description:
-      "Responsive web app for getting the best suited light bulb luminocity depending on the lamp and room types.",
+      "Responsive web app for getting the best suited light bulb luminosity depending on the lamp and room types.",
     stack: [
       {
         img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
