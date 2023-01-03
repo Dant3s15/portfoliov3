@@ -6,7 +6,7 @@
   min-width: 50%;
   perspective: 400px;
   transition: all var(--transition-medium);
-  aspect-ratio: 1/0.8;
+  aspect-ratio: 1/0.9;
   @media (max-width: $desktop) {
     aspect-ratio: 1/0.9;
   }

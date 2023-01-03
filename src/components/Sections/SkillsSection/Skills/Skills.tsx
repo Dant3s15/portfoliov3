@@ -17,6 +17,7 @@ const Skills = ({ inView }: { inView: boolean }) => {
     { name: "TypeScript", time: "2022-04-10T13:28:15.000Z" },
     { name: "TailwindCSS", time: "2022-07-10T13:28:15.000Z" },
     { name: "NextJS", time: "2022-09-10T13:28:15.000Z" },
+    { name: "Redux", time: "2022-11-10T13:28:15.000Z" },
   ];
 
   useEffect(() => {

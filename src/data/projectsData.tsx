@@ -6,10 +6,47 @@ import devjobsDesktop from "../resources/img/projects/devjobs/devjobs_desktop.we
 import devjobsMobile from "../resources/img/projects/devjobs/devjobs_mobile.webp";
 import portfolioMobile from "../resources/img/projects/portfolio/portfolio_desktop.webp";
 import asgbalancerDesktop from "../resources/img/projects/asgbalancer/asgbalancer_desktop.webp";
+import cwiczymyRazemDesktop from "../resources/img/projects/cwiczymyRazem/cwiczymyRazem_desktop.webp";
+import cwiczymyRazemMobile from "../resources/img/projects/cwiczymyRazem/cwiczymyRazem_mobile.webp";
 
 const projectsData = [
   {
     id: 0,
+    featured: true,
+    title: "Cwiczymy Razem",
+    img: {
+      desktop: cwiczymyRazemDesktop,
+      mobile: cwiczymyRazemMobile,
+    },
+    github: "https://github.com/CodeReactOrNext/CwiczymyRazem",
+    live: "https://cwiczymy-razem.vercel.app/",
+    description:
+      "A guitar exercise tracker featuring a leaderboard, leveling system, and Figma-designed interface. Record and track progress, compete with others, and earn rewards as you improve your skills.",
+    stack: [
+      {
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+        name: "NextJS",
+      },
+      {
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+        name: "Tailwind",
+      },
+      {
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+        name: "TypeScript",
+      },
+      {
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+        name: "Redux",
+      },
+      {
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+        name: "Firebase",
+      },
+    ],
+  },
+  {
+    id: 1,
     featured: true,
     title: "DevJobs",
     img: {
@@ -36,7 +73,7 @@ const projectsData = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     featured: true,
     title: "Light App",
     img: {
@@ -67,7 +104,7 @@ const projectsData = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     featured: true,
     title: "Splitter",
     img: {
@@ -94,7 +131,7 @@ const projectsData = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     featured: false,
     img: {
       desktop: asgbalancerDesktop,
@@ -122,7 +159,7 @@ const projectsData = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     featured: false,
     img: {
       desktop: portfolioMobile,
