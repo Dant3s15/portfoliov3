@@ -40,12 +40,6 @@ const Footer = () => {
                 LinkedIn
               </a>
             </div>
-            <div className={classes.link}>
-              <img src={twitter} alt="twitter" />
-              <a target="_blank" href="https://twitter.com/DevmianS">
-                Twitter
-              </a>
-            </div>
           </div>
         </div>
         <div className={`${classes.col} ${classes.contact}`}>
@@ -59,7 +53,7 @@ const Footer = () => {
       </div>
 
       <div className={classes.copyright}>
-        <p>© 2022 Damian Sobieraj. </p>
+        <p>© 2022-2023 Damian Sobieraj. </p>
         <p>All Rights Reserved.</p>
       </div>
     </footer>

@@ -47,12 +47,9 @@ const TextAbout = () => {
       </div>
       <span className={`${classes.text}  ${inView ? "fade-in" : "fade-out"}`}>
         <p>
-          Here is the list of skills I acquired since the start of my{" "}
-          <strong>coding journey</strong>.
-        </p>
-        <p>
-          {isMobile ? "Tap" : "Hover"} on skill icon to check how long I'm using
-          it.
+          I have a wide range of web development skills including proficiency in
+          modern frontend technologies and understanding of web development
+          concepts.
         </p>
       </span>
     </div>

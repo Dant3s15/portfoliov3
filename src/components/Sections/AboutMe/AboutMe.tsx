@@ -70,15 +70,22 @@ const AboutMe = () => {
         <span
           className={`${classes.text}  ${inView ? "fade-in-r" : "fade-out-r"}`}
         >
-          <p>
+          {/* <p>
             I'm Damian,
             <br /> <strong>React Frontend Developer</strong> from Poland.
             <br />
             Hungry for knowledge and eager to learn.
-          </p>
-          {/* <p>
-            Always learning, always improving, <br /> be better than yesterday.
           </p> */}
+          <p>
+            I am Damian, a frontend developer with passion for creating
+            user-friendly web applications.
+            <br />
+            <br />I am a quick learner, team player and have strong
+            problem-solving skills. <br />
+            <br />
+            Continuously seeking to improve and create visually appealing and
+            high-performance web applications.
+          </p>
         </span>
       </div>
     </section>

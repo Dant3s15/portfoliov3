@@ -4,7 +4,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 32px;
   width: 100%;
   @media (max-width: $big-tablet) {
     grid-template-columns: 1fr;
@@ -22,7 +22,7 @@
     align-self: flex-start;
     width: calc(1em * 5.8);
     color: var(--color-gray);
-    font-size: 74px;
+    font-size: 4.625rem;
     text-align: start;
     text-transform: uppercase;
     @include title-effect;
@@ -30,6 +30,12 @@
 
   .text {
     align-self: flex-start;
+    p {
+      font-size: 1.75rem;
+    }
+    @media (max-width: $big-tablet) {
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -40,8 +46,8 @@
   @include flexbox;
   img {
     max-height: 60vh;
-    margin-bottom: 8rem;
-    margin-bottom: 8rem;
+    margin-bottom: 128px;
+    margin-bottom: 128px;
   }
 }
 

@@ -11,6 +11,12 @@
     @include title-effect;
   }
   .text {
+    p {
+      font-size: 1.75rem;
+    }
+    @media (max-width: $big-tablet) {
+      font-size: 1.5rem;
+    }
     // flex-direction: column;
     // gap: 2rem;
     // align-self: flex-start;
