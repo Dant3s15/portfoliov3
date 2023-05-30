@@ -79,21 +79,27 @@
     }
   }
   & > :nth-child(9) {
-    grid-area: 3 / 2 / 4 / 3;
+    grid-area: 3 / 1 / 4 / 2;
     img {
       filter: drop-shadow(0 0 60px rgb(7, 173, 202));
     }
   }
   & > :nth-child(10) {
-    grid-area: 3 / 3 / 4 / 4;
+    grid-area: 3 / 2 / 4 / 3;
     img {
       filter: drop-shadow(0 0 60px rgb(0, 0, 0)) invert(1);
     }
   }
   & > :nth-child(11) {
-    grid-area: 3 / 4 / 4 / 5;
+    grid-area: 3 / 3 / 4 / 4;
     img {
       filter: drop-shadow(0 0 60px #7248b6);
+    }
+  }
+  & > :nth-child(12) {
+    grid-area: 3 / 4 / 4 / 5;
+    img {
+      filter: drop-shadow(0 0 60px #1fa6ca);
     }
   }
 }
