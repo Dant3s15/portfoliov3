@@ -1,6 +1,6 @@
 import Typewriter from "typewriter-effect";
 import classes from "./AboutMe.module.scss";
-import myPhoto from "../../../resources/img/character.png";
+import myPhoto from "../../../resources/img/character.webp";
 import { useInView } from "react-intersection-observer";
 import useInViewDelay from "../../../hooks/useInViewDelay";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";

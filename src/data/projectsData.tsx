@@ -11,7 +11,34 @@ import cwiczymyRazemMobile from "../resources/img/projects/cwiczymyRazem/cwiczym
 
 const projectsData = [
   {
-    id: 0,
+    id: 1,
+    featured: true,
+    title: "ShoeStore",
+    img: {
+      desktop: devjobsDesktop,
+      mobile: devjobsMobile,
+    },
+    github: "https://github.com/CodeReactOrNext/Devjobs_web_app",
+    live: "https://devjobs-web-app-livid.vercel.app/",
+    description:
+      "Mobile first, responsive developer jobs board app with dark mode toggle. \nCreated as a team effort using Jira and Agile methodology to test our teamwork skills. ",
+    stack: [
+      {
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        name: "React",
+      },
+      {
+        img: "https://cdn.worldvectorlogo.com/logos/styled-components-1.svg",
+        name: "Styled Components",
+      },
+      {
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+        name: "TypeScript",
+      },
+    ],
+  },
+  {
+    id: 1,
     featured: true,
     title: "Cwiczymy Razem",
     img: {
@@ -45,8 +72,9 @@ const projectsData = [
       },
     ],
   },
+
   {
-    id: 1,
+    id: 2,
     featured: true,
     title: "DevJobs",
     img: {
@@ -73,7 +101,7 @@ const projectsData = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     featured: true,
     title: "Light App",
     img: {
@@ -104,7 +132,7 @@ const projectsData = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     featured: true,
     title: "Splitter",
     img: {
@@ -131,7 +159,7 @@ const projectsData = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     featured: false,
     img: {
       desktop: asgbalancerDesktop,
@@ -159,7 +187,7 @@ const projectsData = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     featured: false,
     img: {
       desktop: portfolioMobile,

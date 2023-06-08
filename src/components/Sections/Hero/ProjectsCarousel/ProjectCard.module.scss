@@ -172,9 +172,13 @@ span.not-active-right,
   transition-delay: calc(var(--transition-short) - 50ms);
   @include corner-cut;
   @include flexbox(space-evenly);
+  // border: 1px solid red;
+  height: 40%;
   .description {
-    font-weight: 500;
-    font-size: 1.5vw;
+    font-weight: 300;
+    // border: 1px solid red;
+    font-size: 1.3vw;
+    line-height: 1.2;
     transition: all var(--transition-short-medium) ease-in-out;
     @media (min-width: calc($big-desktop + 1px)) {
       font-size: 28px;
@@ -194,7 +198,7 @@ span.not-active-right,
   }
   .stack {
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
     align-self: flex-start;
     width: 100%;
     font-weight: 700;
@@ -204,18 +208,20 @@ span.not-active-right,
       display: grid;
       grid-template-columns: 1fr 1fr;
       width: 100%;
+      gap: 4px;
       padding: 0 1rem;
       transition: all var(--transition-short-medium);
     }
     .created {
-      font-size: 1.4vw;
+      font-size: 1.3vw;
+      font-weight: 700;
       @media (max-width: $mobile) {
         font-size: 16px;
       }
     }
     p {
       align-self: flex-start;
-      font-size: 24px;
+      font-size: 18px;
       white-space: nowrap;
       @media (max-width: $laptop) {
         font-size: 18px;
