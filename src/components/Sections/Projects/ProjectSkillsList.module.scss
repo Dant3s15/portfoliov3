@@ -12,7 +12,7 @@
   transition-property: transform, background-color, color, box-shadow;
   @include flexbox(space-between);
   &-title {
-    width: 110%;
+    // width: 110%;
     padding: 3px 0;
     overflow: hidden;
     overflow: hidden;
