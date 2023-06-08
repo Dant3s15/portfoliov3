@@ -47,6 +47,9 @@
   &:nth-child(5) {
     z-index: 6;
   }
+  &:nth-child(6) {
+    z-index: 5;
+  }
 
   &.selected-project:hover {
     transform: perspective(1000px) scale(1.05)
