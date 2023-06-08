@@ -20,7 +20,7 @@ const ProjectCarousel = ({ heroInView }: Props) => {
     let intervalId: string | number | NodeJS.Timeout | undefined;
     if (!isHovering && heroInView) {
       intervalId = setInterval(() => {
-        carouselHandler(-1);
+        carouselHandler(1);
       }, 5000);
     }
     return () => clearInterval(intervalId);
@@ -72,7 +72,7 @@ const ProjectCarousel = ({ heroInView }: Props) => {
         <button
           onClick={(e) => {
             e.currentTarget.blur();
-            if (!btnDelayed) carouselHandler(-1);
+            if (!btnDelayed) carouselHandler(1);
           }}
           className={`${classes["carousel-btn"]} ${classes.prev}`}
         >
@@ -81,15 +81,15 @@ const ProjectCarousel = ({ heroInView }: Props) => {
         <button
           onClick={(e) => {
             e.currentTarget.blur();
-            if (!btnDelayed) carouselHandler(1);
+            if (!btnDelayed) carouselHandler(-1);
           }}
           className={`${classes["carousel-btn"]} ${classes.next}`}
         >
           &#10097;
         </button>
-        <ul className={classes.projects}>
+        <div className={classes.projects}>
           <ProjectCard selected={selected}></ProjectCard>
-        </ul>
+        </div>
       </div>
     </div>
   );

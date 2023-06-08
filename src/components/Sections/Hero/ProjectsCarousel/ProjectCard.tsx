@@ -53,7 +53,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
   };
   //TODO drag!!!
   return (
-    <li className={`${classes.card}`}>
+    <div className={`${classes.card}`}>
       <div className={classes["images-title"]}>
         <div className={classes.images}>
           <Tilt
@@ -156,7 +156,7 @@ const ProjectCard: FC<Props> = ({ selected }) => {
           </div>
         );
       })}
-    </li>
+    </div>
   );
 };
 

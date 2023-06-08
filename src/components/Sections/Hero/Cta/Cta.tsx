@@ -11,10 +11,10 @@ const Cta = ({ heroInView }: Props) => {
   return (
     <div className={classes["cta-wrapper"]}>
       <div className={classes.cta}>
-        <CTAtext></CTAtext>
-        <CtaButton></CtaButton>
+        <CTAtext />
+        <CtaButton />
       </div>
-      <ProjectCarousel heroInView={heroInView}></ProjectCarousel>
+      <ProjectCarousel heroInView={heroInView} />
     </div>
   );
 };

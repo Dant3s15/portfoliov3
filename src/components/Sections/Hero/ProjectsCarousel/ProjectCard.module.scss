@@ -166,14 +166,14 @@ span.not-active-right,
   z-index: -1;
   flex-direction: column;
   gap: 1rem;
+  // border: 1px solid red;
+  height: 40%;
   padding: 0 18px;
   color: var(--color-gray);
   transition: all var(--transition-medium) cubic-bezier(0.53, -0.3, 0.25, 0.99);
   transition-delay: calc(var(--transition-short) - 50ms);
   @include corner-cut;
   @include flexbox(space-evenly);
-  // border: 1px solid red;
-  height: 40%;
   .description {
     font-weight: 300;
     // border: 1px solid red;
@@ -205,16 +205,17 @@ span.not-active-right,
     transition: all var(--transition-short-medium) ease-in-out;
     @include flexbox;
     &-items {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 100%;
-      gap: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-evenly;
+      width: fit-content;
       padding: 0 1rem;
       transition: all var(--transition-short-medium);
     }
     .created {
-      font-size: 1.3vw;
       font-weight: 700;
+      font-size: 1.3vw;
       @media (max-width: $mobile) {
         font-size: 16px;
       }
@@ -245,6 +246,7 @@ span.not-active-right,
       justify-self: start;
       @include flexbox;
       img {
+        min-width: 25px;
         max-height: 24px;
         @media (max-width: $big-tablet) {
           max-height: 24px;
